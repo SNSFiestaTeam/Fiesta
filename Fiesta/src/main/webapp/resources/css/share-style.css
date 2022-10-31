@@ -1,0 +1,161 @@
+:root {
+  --background-color: white;
+  --main-font-color: #8e8e8e;
+  --icon-button-color: #262626;
+  --point-font-color: #0095f6;
+  --mention-font-color: #00376b;
+  --fiesta-color: #dd4132;
+  --small-font-size: 12px;
+  --medium-font-size: 16px;
+  --large-icon-size: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+
+a{
+  color:black;
+}
+
+
+.share-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000070;
+  position: absolute;
+  top: 0;
+  z-index: 500;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+}
+
+.feed-menu {
+  width: 500px;
+  height: 350px;
+  background-color: white;
+
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.share-title {
+  width: 100%;
+  flex-basis: 20%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* border: 1px solid black; */
+}
+
+
+.share-title span {
+  color: var(--fiesta-color);
+  font-weight: bold;
+  font-size: 17px;
+}
+
+
+.share-content {
+  flex-basis: 70%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border-bottom: 1px solid #ddd;
+  
+  /* border: 1px solid blue; */
+}
+
+
+.share-content div {
+  margin: 10px;
+}
+
+.share-content i {
+  margin-right: 10px;
+}
+
+.share-content a {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+/* .share-content div {} */
+/* 
+.share-content-icon, .share-content-text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  border: 1px solid blue;
+} */
+
+
+/* .share-container span {
+  margin: 15px;
+  border: 1px solid black;
+}
+
+
+#declaration-textarea {
+  box-sizing: border-box;
+  margin-top: 10px;
+  width: 100%;
+  height: 200px;
+  resize: none;
+  outline: none;
+
+  padding: 5px;
+
+  border: 1px solid #828282;
+} */
+
+.feed-menu-btn {
+  width: 100%;
+
+  flex-basis: 15%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feed-menu-btn > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: black;
+  font-size: 14px;
+}
+
+.btn1 > span {
+  color: orangered;
+  font-weight: bold;
+}
+
+.btn2 > a {
+  border-bottom: 1px solid #ddd;
+}
