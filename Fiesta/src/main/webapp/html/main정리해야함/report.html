@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../resources/css/report-style.css" />
+  </head>
+  <body>
+    <div class="declaration-container">
+      <div class="feed-menu">
+        <div class="feed-menu-btn btn1"><span>신고하기</span></div>
+        <div class="declaration-content">
+          <form action="#">
+            <select name="declarationOption" id="declarationOption" required>
+              <option value="none">신고 사유 선택</option>
+              <option value="spam">광고 또는 스팸</option>
+              <option value="sexual">성적인 게시물</option>
+              <option value="Disgust">혐오 조장</option>
+              <option value="violence">폭력적인 게시물</option>
+              <option value="illegal">불법적인 게시물</option>
+              <option value="etc">기타</option>
+            </select>
+            <textarea
+              name="declaration-content"
+              id="declaration-textarea"
+              placeholder="신고 내용 입력"
+            ></textarea>
+          </form>
+        </div>
+        <div class="feed-menu-btn btn2"><a href="#">제출</a></div>
+        <div class="feed-menu-btn btn3"><a href="#">취소</a></div>
+      </div>
+    </div>
+  </body>
+</html>

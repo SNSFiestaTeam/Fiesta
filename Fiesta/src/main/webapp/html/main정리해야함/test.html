@@ -1,0 +1,95 @@
+<template>
+  <div class="Wrapper">
+    <span v-on:click="pre" v-bind:class="{ hidden: selected == 1 }">
+      <i class="fas fa-chevron-circle-left fa-2x left"></i>
+    </span>
+    <div
+      class="imageContainer"
+      v-bind:style="{
+        transform: 'translate(-' + (selected - 1) * 300 + 'px, 0px)'
+      }"
+    >
+      <div v-for="i in images">
+        <div
+          class="image"
+          v-bind:style="{ 'background-image': 'url(' + i + ')' }"
+        ></div>
+      </div>
+    </div>
+    <span v-on:click="next" v-bind:class="{ hidden: selected == length }">
+      <i class="fas fa-chevron-circle-right fa-2x right"></i>
+    </span>
+  </div>
+</template>
+
+<script>
+  export default {
+    props: ['images'],
+    data() {
+      return {
+        length: this.images.length,
+        selected: 1,
+      };
+    },
+    mounted() {},
+    methods: {
+      next() {
+        if (this.selected == this.length) {
+          this.selected = 1;
+        } else {
+          this.selected = this.selected + 1;
+        }
+        console.log(this.selected);
+      },
+      pre() {
+        if (this.selected == 1) {
+          this.selected = this.length;
+        } else {
+          this.selected = this.selected - 1;
+        }
+        console.log(this.selected);
+      },
+    },
+  };
+</script>
+
+<style>
+  .Wrapper {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    /* overflow: hidden; */
+  }
+  .imageContainer {
+    display: flex;
+    transition: 0.6s;
+  }
+  .image {
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .left {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    cursor: pointer;
+  }
+
+  .right {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+
+    cursor: pointer;
+  }
+  svg {
+    z-index: 2;
+    color: rgba(0, 0, 0, 0.2);
+  }
+  .hidden {
+    display: hidden;
+  }
+</style>
