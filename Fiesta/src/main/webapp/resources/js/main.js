@@ -9,6 +9,7 @@ const commentPostingBtn = document.querySelector("#commentInput+button");
 const commentLikeBtn = document.querySelectorAll("a.comment-like-btn");
 const moreBtn = document.querySelector("#moreBtn");
 const feedContent = document.querySelector("#feed-content");
+
 // 피드 헤더 ...아이콘 클릭 시 메뉴창
 function feedHeaderIconClicked() {
   feedMenu.style.display = "flex";

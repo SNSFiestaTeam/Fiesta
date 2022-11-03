@@ -30,7 +30,7 @@ public class MemberController {
 		String path = null;
 		
 		if(loginMember != null) {
-			path = "/";
+			path = "main";
 			model.addAttribute("loginMember",loginMember);
 			
 			System.out.println("로그인 성공");
@@ -40,14 +40,16 @@ public class MemberController {
 			// 쿠키 유지 시간 지정
 			
 			// 1년 동안 쿠키 유지
+			return path;
 		}else {
 			path = referer;
 		}
 		
 		
 		
-		return "redirect:"+path;
+		return "redirect:" + path;
 	}
+	
 	
 	@GetMapping("/member/signUp")
 	public String signUp(){
