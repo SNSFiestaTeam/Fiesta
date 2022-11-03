@@ -1,0 +1,363 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>instagram</title>
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    <link rel="stylesheet" href="/resources/css/main-style.css" />
+    <link rel="stylesheet" href="/resources/css/feed-menu-style.css">
+    <script
+      src="https://kit.fontawesome.com/591746f9e8.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" defer src="/resources/js/main.js"></script>
+  </head>
+  <body>
+     <!-- 헤더 -->
+     <header>
+      <section id="header-section">
+        <!-- 로고 -->
+        <section class="logo-section">
+          <a href="../views/main(신보경).html"
+            >Fiesta</a>
+        </section>
+        <!-- 검색창 -->
+        <section class="search-section">
+          <form action="#">
+            <fieldset>
+              <button id="search-glass">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <input
+                type="text"
+                name="search"
+                id="searchInput"
+                placeholder="검색"
+                autocapitalize="none"
+                autocomplete="off"
+              />
+              <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
+            </fieldset>
+              
+            </button>
+          </form>
+        </section>
+        <!-- 메뉴 -->
+        <nav id="nav-bar">
+          <ul>
+            <li>
+              <a href="#" id="searchBtn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </a>
+            </li>
+            <li>
+              <a href="/"> <i class="fa-solid fa-house"></i></a>
+            </li>
+            <li>
+              <a href="common/dm(용환재).html">
+                <i class="fa-regular fa-paper-plane"></i>
+              </a>
+            </li>
+            <li>
+              <a href="common/newpost-file(윤주영).html">
+                <i class="fa-regular fa-square-plus"></i>
+              </a>
+            </li>
+            <li>
+              <a href="common/popularfeed(신아민) .html">
+                <i class="fa-regular fa-compass"></i>
+              </a>
+            </li>
+            <li>
+              <a href="common/myfeed(신아민).html">
+                <i class="fa-regular fa-user"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+    <section class="toggle-search-section">
+      <form action="#">
+        <fieldset>
+          <input
+          type="text"
+          name="search"
+          id="searchInput"
+          placeholder="검색"
+          autocapitalize="none"
+          autocomplete="off"
+          />
+          <button id="search-glass">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </fieldset>
+          
+        </button>
+      </form>
+    </section>
+
+    <!-- 메인 섹션 -->
+    <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
+    <main>
+      <section>
+        <!-- 인스타 피드 -->
+        <section class="feed-section">
+          <!-- 피드 리스트 -->
+          <div id="feed">
+            <div class="profile-image-area">
+
+              <!-- 작성자 프로필 -->
+              <div class="feed-header">
+                <div class="writer-info">
+                  <a href="common/memberfeed(신아민) .html" id="profile-photo">
+                    <img
+                      id="feed-profile-image"
+                      src="/resources/images/karina.jpeg"
+                    />
+                  </a>
+                  <a href="#" class="feed-memberId">karina_aespas_</a>
+                </div>
+                <div>
+                  <button
+                    type="button"
+                    id="feed-header-menu"
+                    class="fa-solid fa-ellipsis"
+                  ></button>
+                </div>
+              </div>
+  
+              <!-- 사진 목록 -->
+              <div class="image-list">
+                <ul>
+                  <li>
+                    <img
+                      class="uploaded-image"
+                      src="/resources/images/karina-feed.jpg"
+                      alt=""
+                    />
+                  </li>
+                </ul>
+                <button type="button" id="right-btn">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- 본문 -->
+            <div id="main-content-section">
+              <div class="comment-icon-menu">
+                <div>
+                  <a href="#" id="likeBtn"><i class="fa-regular fa-heart"></i></a>
+                  <a href="#" id="commentBtn"><i class="fa-regular fa-comment"></i></a>
+                  <a href="#" id="dmBtn"><i class="fa-regular fa-paper-plane"></i></a>
+                </div>
+                <div>
+                  <a href="#bookmarkBtn" id="bookmarkBtn"><i class="fa-regular fa-bookmark"></i></a>
+                </div>
+              </div>
+
+              <div id="main-container">
+                <!-- 좋야요 수 표시 -->
+                <div class="like-count">좋아요 27,654개</div>
+  
+                <!-- 본문 내용 -->
+                <div class="feed-main-content">
+                  <a href="#"><span class="memberId">karina_aespas_</span></a>
+                  <div id="feed-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptate sint corporis officiis quibusdam natus eveniet. Error doloribus itaque voluptatem in neque totam? Ut tenetur omnis unde in, dignissimos nobis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi tempora placeat ad consectetur eligendi consequuntur facere alias doloribus eveniet vero. Cumque enim ipsa iusto eos voluptatum distinctio inventore rem repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore commodi suscipit expedita mollitia officia, veniam dolor quibusdam dolores officiis error similique. Odit, fuga consequuntur! Vel eos cumque veniam et!</div>
+
+                  <div class="hashtag">
+                    <a href="#">#aespa</a><a href="#">#에스파</a><a href="#">#KARINA</a><a href="#">#카리나</a>
+                  </div>
+                  <button type="button" id="moreBtn">
+                    <span id="btn-more"> 더 보기</span>
+                  </button>
+                </div>
+  
+                <!-- 댓글 리스트 -->
+                <div class="all-comment-list">
+                  <a href="#">댓글 12개 모두 보기</a>
+                  <div class="comment-list">
+                    <ul>
+
+                      <!-- 첫번째 댓글(답글 보기 X) -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="../resources/images/안유진.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">_yujin_an</a>
+                                <span class="comment-content">이 언니 넘모 이뿌당</span>
+                              </div>
+                              <div>
+                                <a href="#" class="comment-like-btn" ><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li>
+
+                      <!-- 두번째 댓글(답글 보기 O) -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="../resources/images/장원영.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">for_everyoung10</a>
+                                <span class="comment-content">사랑해</span>
+                              </div>
+                              <div>
+                                <a href="#" class="comment-like-btn" ><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">답글 숨기기</a>
+                        <!-- 답글 리스트 -->
+                        <ul>
+                          <!-- 두번째 댓글의 답글 -->
+                          <li class="comment" id="reply">
+                            <div class="reply-firstchild">
+                              <a href="#" id="comment-profile">
+                                <img
+                                  id="comment-profile-image"
+                                  src="../resources/images/karina.jpeg"
+                                />
+                              </a>
+                              <div>
+                                <div class="reply-firstline">
+                                  <div>
+                                    <a href="#" class="comment-memberId">karina_aespas_</a>
+                                    <a href="#" class="mention">@for_everyoung10</a>
+                                    <span class="comment-content">나두 사랑해</span>
+                                  </div>
+                                  <div>
+                                    <a href="#" class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                                  </div>
+                                </div>
+                                <div class="create-reply">
+                                  <a href="#">2주</a>
+                                  <a href="#">답글 달기</a>
+                                  <button
+                                    type="button"
+                                    class="fa-solid fa-ellipsis hover-btn"
+                                  ></button>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="../resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">레전드</span>
+                              </div>
+                              <div>
+                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li> 
+                    </ul>
+                  </div>
+                  <a href="#" class="create-date">10월 19</a>
+                </div>
+              </div>
+              <div id="comment-input-area">
+                <form name="commentForm" action="#">
+                  <input name="comment" id="commentInput" type="text" placeholder="댓글 달기..." autocomplete="off"/>
+                  <button disabled>게시</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        
+        </section>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Copyright &copy; KH Information Educational Institute A-Class SNS Team
+      </p>
+      <article>
+        <a href="#">프로젝트 소개</a>
+        <span>|</span>
+        <a href="#">이용약관</a>
+        <span>|</span>
+        <a href="#">개인정보처리방침</a>
+        <span>|</span>
+        <a href="#">고객센터</a>
+      </article>
+    </footer>
+
+    <div class="feed-menu-container" id="feedMenu">
+      <div class="feed-menu">
+        <div class="feed-menu-btn btn1"><a href="#">신고</a></div>
+        <div class="feed-menu-btn btn2"><a href="#">공유하기</a></div>
+        <div class="feed-menu-btn btn3" ><a href="#" id="feedMenuCancel">취소</a></div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
