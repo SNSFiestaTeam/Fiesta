@@ -12,10 +12,14 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	/** 로그인 DAO
+	 * @param memberEmail
+	 * @return loginMember
+	 */
 	public Member login(String memberEmail) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne("memberMapper.login", memberEmail);
 	}
 
+	
 	
 }

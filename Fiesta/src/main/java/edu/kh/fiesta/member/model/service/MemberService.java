@@ -4,13 +4,13 @@ import edu.kh.fiesta.member.model.vo.Member;
 
 public interface MemberService {
 
-	/** ·Î±×ÀÎ ¼­ºñ½º
+	/** ë¡œê·¸ì¸ ì„œë¹„ìŠ¤
 	 * @param inputMember
 	 * @return loginMember
 	 */
 	Member login(Member inputMember);
 
-	/** È¸¿ø °¡ÀÔ ¼­ºñ½º
+	/** íšŒì›ê°€ì… ì„œë¹„ìŠ¤
 	 * @param inputMember
 	 * @return result
 	 */

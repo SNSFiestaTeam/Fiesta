@@ -31,22 +31,22 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			path = "main";
-			model.addAttribute("loginMember",loginMember);
+			model.addAttribute("loginMember", loginMember);
 			
-			System.out.println("·Î±×ÀÎ ¼º°ø");
+			System.out.println("ë¡œê·¸ì¸ ì„±ê³µ!");
 			
-			// ÄíÅ° »ı¼º
+			// ì¿ í‚¤ ìƒì„±
 			
-			// ÄíÅ° À¯Áö ½Ã°£ ÁöÁ¤
+			// ì¿ í‚¤ ìœ ì§€ ì‹œê°„ ì§€ì •
 			
-			// 1³â µ¿¾È ÄíÅ° À¯Áö
+			// 1ë…„ ë™ì•ˆ ì¿ í‚¤ ìœ ì§€
 			return path;
+			
 		}else {
 			path = referer;
 			
-			ra.addFlashAttribute("message", "¾ÆÀÌµğ ¶Ç´Â ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+			ra.addFlashAttribute("message", "ì•„ì´ë”” ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		}
-		
 		
 		return "redirect:" + path;
 	}
@@ -59,7 +59,7 @@ public class MemberController {
 
 
 
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	@PostMapping("/member/signUp")
 	public String signUp(Member inputMember, @RequestHeader("referer") String referer, RedirectAttributes ra) {
 		

@@ -159,3 +159,19 @@ ORDER BY BOARD_CREATE_DATE DESC;
 -- 본문에 샘플이라는 단어를 포함하고 있는 게시글 조회
 
 
+SELECT * FROM "MEMBER";
+
+-- 로그인 비밀번호 암호화 bcyrpt
+-- user03 진행
+UPDATE "MEMBER" SET
+MEMBER_PW = '$2a$10$32o6kC9ooqzyOfPX.vIlQebZOOVxkHrY8rG8LStMtdqDmbppfNr.e'
+WHERE MEMBER_EMAIL='user03@naver.com';
+
+COMMIT;
+
+
+
+
+
+
+

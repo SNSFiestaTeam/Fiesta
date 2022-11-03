@@ -14,6 +14,7 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberDAO dao;
 	
+	// spring-security.xml에서 등록한 bean을 의존성 주입(DI)
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
@@ -22,8 +23,8 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member login(Member inputMember) {
 		
-		System.out.println("�Է��� ��й�ȣ : " + inputMember.getMemberPw());
-		System.out.println("��ȣȭ ��й�ȣ : " + bcrypt.encode(inputMember.getMemberPw()));
+//		System.out.println("입력한 비밀번호 : " + inputMember.getMemberPw());
+//		System.out.println("암호화 비밀번호 : " + bcrypt.encode(inputMember.getMemberPw()));
 		
 		Member loginMember = dao.login(inputMember.getMemberEmail());
 		
