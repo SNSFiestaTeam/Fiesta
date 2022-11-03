@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>가입하기</title>
-    <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="../../resources/css/signUp-style.css" />
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    <link rel="stylesheet" href="/resources/css/signUp-style.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -25,7 +25,6 @@
         <!-- 로고 -->
         <div class="logo-area">
           <a href="#">Fiesta</a>
-          <!-- p태그 대신 div로  -->
           <p id="logo-sentence">
             친구들의 사진과 동영상을 보려면<br />
             가입하세요.

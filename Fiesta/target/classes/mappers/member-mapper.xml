@@ -22,11 +22,10 @@
   </resultMap>
   
   <select id = "login" parameterType="string" resultMap="member_rm">
-SELECT *
-FROM "MEMBER"
-WHERE MEMBER_EMAIL = #{memberEmail}
-AND MEMBER_PW = #{memberPw}
-AND SECESSION_FL ='N'
+			SELECT *
+			FROM "MEMBER"
+			WHERE MEMBER_EMAIL = #{memberEmail}
+			AND SECESSION_FL ='N'
   </select>
   
 </mapper>

@@ -12,13 +12,10 @@ public class MemberDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public Member login(Member inputMember) {
+	public Member login(String memberEmail) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("memberMapper.login", memberEmail);
+	}
 
-		return sqlSession.selectOne("memberMapper.login", inputMember);
-		
-	} 
-	
-	
-	
 	
 }

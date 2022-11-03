@@ -43,8 +43,9 @@ public class MemberController {
 			return path;
 		}else {
 			path = referer;
+			
+			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}
-		
 		
 		
 		return "redirect:" + path;
@@ -56,5 +57,37 @@ public class MemberController {
 		return "member/signUp";
 	}
 
+
+
+	// 회원가입
+	@PostMapping("/member/signUp")
+	public String signUp(Member inputMember, @RequestHeader("referer") String referer, RedirectAttributes ra) {
+		
+		int result = service.signUp(inputMember);
+
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+			path = "/main";
+			message = "Welcome to Fiesta!";
+			
+		} else {
+			path = referer;
+			message = "Please try again..";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+		
+	}
 	
+
+	
+
 }
+
+
+
+
