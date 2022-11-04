@@ -30,7 +30,7 @@ public class MemberController {
 		String path = null;
 		
 		if(loginMember != null) {
-			path = "main";
+			path = "feed/main";
 			model.addAttribute("loginMember", loginMember);
 			
 			System.out.println("로그인 성공!");
