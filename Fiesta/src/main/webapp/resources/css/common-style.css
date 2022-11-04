@@ -84,9 +84,6 @@ header > section {
   align-items: center;
 }
 
-.logo-section {
-}
-
 .logo-section a {
   font-family: "Cookie", cursive;
   /* font-family: 'Chewy', cursive; */
@@ -236,7 +233,7 @@ nav i {
     justify-content: center;
     align-items: center;
     z-index: 40;
-    /* display: none; */
+    display: none;
   }
 
   .toggle-search-section fieldset {
