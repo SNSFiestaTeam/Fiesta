@@ -44,9 +44,12 @@
             </a>
           </li>
           <li>
-            <a href="#">
+            <button id="new-post-open" onclik="">
               <i class="fa-regular fa-square-plus"></i>
-            </a>
+            </button>
+            <!-- <a href="#">
+              
+            </a> -->
           </li>
           <li>
             <a href="#">
@@ -75,7 +78,7 @@
   <!-- 메인 섹션 -->
   <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
   <main>
-      <button onclick="history.back()" name="close" id="close-post">
+      <button onclick="history.back()" name="close" id="new-post-close" class="new-post-close">
         <span id="post-x"><i class="fa-solid fa-x"></i></span>
       </button>
 
@@ -134,6 +137,7 @@
       <a href="#">고객센터</a>
     </article>
   </footer>
+  <script src="newpost.js"></script>
 </body>
 
 </html>
