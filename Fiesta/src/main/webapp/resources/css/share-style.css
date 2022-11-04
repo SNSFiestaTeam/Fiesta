@@ -16,6 +16,8 @@
   box-sizing: 0;
   text-decoration: none;
   list-style: none;
+
+  /* border: 1px solid black; */
 }
 
 body {
@@ -23,139 +25,93 @@ body {
   height: 100vh;
 }
 
-
-a{
-  color:black;
-}
-
-
 .share-container {
   width: 100vw;
   height: 100vh;
   background-color: #00000070;
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 500;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: none; */
+  display: none;
 }
 
-.feed-menu {
-  width: 500px;
-  height: 350px;
+.share-menu {
+  width: 350px;
+  /* height: 250px; */
   background-color: white;
 
   border-radius: 7px;
   display: flex;
   flex-direction: column;
-
   align-items: center;
 }
 
+/* 공유하기 */
 .share-title {
   width: 100%;
-  flex-basis: 20%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* border: 1px solid black; */
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
 }
-
 
 .share-title span {
   color: var(--fiesta-color);
-  font-weight: bold;
   font-size: 17px;
 }
 
-
 .share-content {
+  margin: 10px 0;
   flex-basis: 70%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  border-bottom: 1px solid #ddd;
-  
-  /* border: 1px solid blue; */
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-
-.share-content div {
-  margin: 10px;
-}
-
-.share-content i {
-  margin-right: 10px;
-}
-
-.share-content a {
-  font-size: 0.9em;
-  font-weight: bold;
-}
-
-/* .share-content div {} */
-/* 
-.share-content-icon, .share-content-text {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: space-between;
-  border: 1px solid blue;
-} */
-
-
-/* .share-container span {
-  margin: 15px;
-  border: 1px solid black;
-}
-
-
-#declaration-textarea {
-  box-sizing: border-box;
-  margin-top: 10px;
+.share-content button {
   width: 100%;
-  height: 200px;
-  resize: none;
-  outline: none;
-
-  padding: 5px;
-
-  border: 1px solid #828282;
-} */
-
-.feed-menu-btn {
-  width: 100%;
-
-  flex-basis: 15%;
+  padding: 13px 20px;
 
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
 }
 
-.feed-menu-btn > a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+.share-content button:hover {
+  background-color: rgba(250, 145, 103, 0.2);
+}
+
+.share-content > button {
   color: black;
-  font-size: 14px;
+  width: 100%;
+  height: 100%;
 }
 
-.btn1 > span {
-  color: orangered;
-  font-weight: bold;
+.share-content > button > span {
+  text-align: left;
 }
 
-.btn2 > a {
-  border-bottom: 1px solid #ddd;
+.icon-area {
+  width: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-area {
+  width: 100px;
+  margin-left: 10px;
+  font-size: 15px;
 }

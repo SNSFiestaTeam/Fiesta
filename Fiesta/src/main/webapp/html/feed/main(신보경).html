@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../../resources/css/common-style.css" />
     <link rel="stylesheet" href="../../resources/css/main-style.css" />
     <link rel="stylesheet" href="../../resources/css/feed-menu-style.css">
+    <link rel="stylesheet" href="../../resources/css/share-style.css">
+    <link rel="stylesheet" href="../../resources/css/report-style.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -20,7 +22,7 @@
       <section id="header-section">
         <!-- 로고 -->
         <section class="logo-section">
-          <a href="../views/main(신보경).html"
+          <a href="../../views/main(신보경).html"
             >Fiesta</a>
         </section>
         <!-- 검색창 -->
@@ -61,7 +63,7 @@
               </a>
             </li>
             <li>
-              <a href="../main정리해야함/newpost-file(윤주영).html">
+              <a href="common/newpost-file(윤주영).html">
                 <i class="fa-regular fa-square-plus"></i>
               </a>
             </li>
@@ -117,10 +119,10 @@
               <!-- 작성자 프로필 -->
               <div class="feed-header">
                 <div class="writer-info">
-                  <a href="common/memberfeed(신아민) .html" id="profile-photo">
+                  <a href="../profile/memberfeed(신아민) .html" id="profile-photo">
                     <img
                       id="feed-profile-image"
-                      src="../resources/images/karina.jpeg"
+                      src="../../resources/images/karina.jpeg"
                     />
                   </a>
                   <a href="#" class="feed-memberId">karina_aespas_</a>
@@ -129,7 +131,7 @@
                   <button
                     type="button"
                     id="feed-header-menu"
-                    class="fa-solid fa-ellipsis"
+                    class="fa-solid fa-ellipsis feed-header-menu"
                   ></button>
                 </div>
               </div>
@@ -140,7 +142,7 @@
                   <li>
                     <img
                       class="uploaded-image"
-                      src="../resources/images/karina-feed.jpg"
+                      src="../../resources/images/karina-feed.jpg"
                       alt=""
                     />
                   </li>
@@ -193,7 +195,7 @@
                           <a href="#" id="comment-profile">
                             <img
                               id="comment-profile-image"
-                              src="../resources/images/안유진.jpg"
+                              src="../../resources/images/안유진.jpg"
                             />
                           </a>
                           <div>
@@ -225,7 +227,7 @@
                           <a href="#" id="comment-profile">
                             <img
                               id="comment-profile-image"
-                              src="../resources/images/장원영.jpg"
+                              src="../../resources/images/장원영.jpg"
                             />
                           </a>
                           <div>
@@ -257,7 +259,7 @@
                               <a href="#" id="comment-profile">
                                 <img
                                   id="comment-profile-image"
-                                  src="../resources/images/karina.jpeg"
+                                  src="../../resources/images/karina.jpeg"
                                 />
                               </a>
                               <div>
@@ -291,7 +293,7 @@
                           <a href="#" id="comment-profile">
                             <img
                               id="comment-profile-image"
-                              src="../resources/images/이영지.jpg"
+                              src="../../resources/images/이영지.jpg"
                             />
                           </a>
                           <div>
@@ -344,7 +346,7 @@
                   <a href="common/memberfeed(신아민) .html" id="profile-photo">
                     <img
                       id="feed-profile-image"
-                      src="../resources/images/karina.jpeg"
+                      src="../../resources/images/karina.jpeg"
                     />
                   </a>
                   <a href="#" class="feed-memberId">karina_aespas_</a>
@@ -353,7 +355,7 @@
                   <button
                     type="button"
                     id="feed-header-menu"
-                    class="fa-solid fa-ellipsis"
+                    class="fa-solid fa-ellipsis feed-header-menu"
                   ></button>
                 </div>
               </div>
@@ -364,7 +366,7 @@
                   <li>
                     <img
                       class="uploaded-image"
-                      src="../resources/images/karina-feed.jpg"
+                      src="../../resources/images/karina-feed.jpg"
                       alt=""
                     />
                   </li>
@@ -417,7 +419,7 @@
                           <a href="#" id="comment-profile">
                             <img
                               id="comment-profile-image"
-                              src="../resources/images/안유진.jpg"
+                              src="../../resources/images/안유진.jpg"
                             />
                           </a>
                           <div>
@@ -449,7 +451,7 @@
                           <a href="#" id="comment-profile">
                             <img
                               id="comment-profile-image"
-                              src="../resources/images/장원영.jpg"
+                              src="../../resources/images/장원영.jpg"
                             />
                           </a>
                           <div>
@@ -481,7 +483,7 @@
                               <a href="#" id="comment-profile">
                                 <img
                                   id="comment-profile-image"
-                                  src="../resources/images/karina.jpeg"
+                                  src="../../resources/images/karina.jpeg"
                                 />
                               </a>
                               <div>
@@ -515,7 +517,7 @@
                           <a href="#" id="comment-profile">
                             <img
                               id="comment-profile-image"
-                              src="../resources/images/이영지.jpg"
+                              src="../../resources/images/이영지.jpg"
                             />
                           </a>
                           <div>
@@ -581,12 +583,64 @@
 
     <div class="feed-menu-container" id="feedMenu">
       <div class="feed-menu">
-        <div class="feed-menu-btn btn1"><a href="#">신고</a></div>
-        <div class="feed-menu-btn btn2"><a href="#">공유하기</a></div>
-        <div class="feed-menu-btn btn3" ><a href="#" id="feedMenuCancel">취소</a></div>
+        <div class="feed-menu-btn btn1"><button>신고</button></div>
+        <div class="feed-menu-btn btn2"><button id="feedShareBtn">공유하기</button></div>
+        <div class="feed-menu-btn btn3" ><button id="feedMenuCancel">취소</button></div>
       </div>
     </div>
 
     
+    <div class="share-container" id="share">
+      <div class="share-menu">
+        <div class="share-title"><span>공유하기</span></div>
+        <div class="share-content">
+            <button>
+              <span class="icon-area"><i class="fa-solid fa-link"></i></span>
+              <span class="text-area">링크 복사</span>
+            </button>
+            <button>
+              <span class="icon-area"><i class="fa-regular fa-comment"></i></span>
+              <span class="text-area">카카오톡 공유</span>
+            </button>
+            <button>
+              <span class="icon-area"><i class="fa-regular fa-envelope"></i></span>
+              <span class="text-area">이메일 공유</span>
+            </button>
+            <button>
+              <span class="icon-area"><i class="fa-solid fa-arrow-rotate-left"></i></span>
+              <span class="text-area" id="shareCancleBtn">취소</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="declaration-container">
+      <div class="report-menu">
+        <div class="report-menu-title btn1"><span>신고하기</span></div>
+        <div class="declaration-content">
+          <form action="#">
+            <select name="declarationOption" id="declarationOption" required>
+              <option value="none">신고 사유 선택</option>
+              <option value="spam">광고 또는 스팸</option>
+              <option value="sexual">성적인 게시물</option>
+              <option value="Disgust">혐오 조장</option>
+              <option value="violence">폭력적인 게시물</option>
+              <option value="illegal">불법적인 게시물</option>
+              <option value="etc">기타</option>
+            </select>
+            <textarea
+              name="declaration-content"
+              id="declaration-textarea"
+              placeholder="신고 내용 입력"
+            ></textarea>
+          </form>
+        </div>
+        <div class="report-menu-btn btn2"><button>제출</button></div>
+        <div class="report-menu-btn btn3"><button>취소</button></div>
+      </div>
+    </div>
+
+
   </body>
 </html>
