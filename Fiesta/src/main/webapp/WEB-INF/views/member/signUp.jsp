@@ -47,7 +47,8 @@
 
           <form action="#" method="post" class="signUp-frm">
             <div class="signUp-area"> <!-- 이메일 -->
-              <input type="text" name="memberEmail" id="memberEmail" value="" required>
+              <input type="text" name="memberEmail" id="memberEmail" value="" 
+                    maxlength="50" autocomplete="off" required>
               <!-- placeholder="이메일 주소"  -->
               <label for="memberEmail">이메일</label>
 
@@ -61,7 +62,8 @@
   
 
             <div class="signUp-area"> <!-- 성명 -->
-              <input type="text" name="memberName" id="memberName" value="" required>
+              <input type="text" name="memberName" id="memberName" value="" 
+                    maxlength="50" autocomplete="off" required>
               <!-- placeholder="성명"  -->
               <label for="memberName">성명</label>
              
@@ -74,7 +76,8 @@
   
 
             <div class="signUp-area"> <!-- 사용자 이름 -->
-              <input type="text" name="memberNickname" id="memberNickname" value="" required>
+              <input type="text" name="memberNickname" id="memberNickname" value="" 
+                    maxlength="50" autocomplete="off" required>
               <!-- placeholder="사용자 이름"  -->
               <label for="memberNickname">사용자 이름</label>
               
