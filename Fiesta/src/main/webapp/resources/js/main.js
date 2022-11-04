@@ -1,25 +1,68 @@
-const feedHeaderIcon = document.querySelector("#feed-header-menu");
-const feedMenu = document.querySelector("#feedMenu");
-const feedMenuCancel = document.querySelector("#feedMenuCancel");
-const likeBtn = document.querySelector("a#likeBtn");
-const commentBtn = document.querySelector("a#commentBtn");
-const bookmarkBtn = document.querySelector("#bookmarkBtn");
-const commentInput = document.querySelector("input#commentInput");
-const commentPostingBtn = document.querySelector("#commentInput+button");
-const commentLikeBtn = document.querySelectorAll("a.comment-like-btn");
-const moreBtn = document.querySelector("#moreBtn");
-const feedContent = document.querySelector("#feed-content");
+const feedMenu = document.getElementById("feedMenu");
+const feedHeaderMenu = document.getElementsByClassName("feed-header-menu");
+const body = document.getElementsByTagName("body")[0];
+const feedMenuCancel = document.getElementById("feedMenuCancel");
 
 // 피드 헤더 ...아이콘 클릭 시 메뉴창
-function feedHeaderIconClicked() {
-  feedMenu.style.display = "flex";
-  console.log(likeBtn.style.color);
+for (let i = 0; i < feedHeaderMenu.length; i++) {
+  feedHeaderMenu[i].addEventListener("click", function () {
+    feedMenu.style.display = "flex";
+
+    body.classList.add("scrollLock");
+  });
 }
 
 // 피트 헤더 메뉴창 취소 클릭시 닫힘
 function feedMenuCancelClicked() {
   feedMenu.style.display = "none";
+
+  body.classList.remove("scrollLock");
 }
+
+const feedReportBtn = document.getElementById("feedReportBtn");
+const report = document.getElementById("report");
+
+// 피드 신고 버튼 클릭시 신고 창 열림
+feedReportBtn.addEventListener("click", function () {
+  feedMenu.style.display = "none";
+  report.style.display = "flex";
+
+  body.classList.add("scrollLock");
+});
+
+const reportCancle = document.getElementById("reportCancle");
+reportCancle.addEventListener("click", function () {
+  report.style.display = "none";
+
+  body.classList.remove("scrollLock");
+});
+
+const share = document.getElementById("share");
+const feedShareBtn = document.getElementById("feedShareBtn");
+
+// 피드 공유하기 버튼 클릭시 공유하기 창 열림
+feedShareBtn.addEventListener("click", function () {
+  feedMenu.style.display = "none";
+  share.style.display = "flex";
+
+  body.classList.add("scrollLock");
+});
+
+// 공유하기 모달창에서 클릭버튼 클릭 시
+const shareCancleBtn = document.getElementById("shareCancleBtn");
+shareCancleBtn.addEventListener("click", function () {
+  share.style.display = "none";
+  body.classList.remove("scrollLock");
+});
+
+const likeBtn = document.getElementById("likeBtn");
+const commentBtn = document.getElementById("commentBtn");
+const bookmarkBtn = document.getElementById("bookmarkBtn");
+const commentInput = document.getElementById("commentInput");
+const commentPostingBtn = document.getElementById("commentInput+button");
+const commentLikeBtn = document.querySelectorAll("a.comment-like-btn");
+const moreBtn = document.getElementById("moreBtn");
+const feedContent = document.getElementById("feed-content");
 
 // 좋아요 버튼 클릭시 색상 변경
 function likeBtnClicked() {
@@ -85,7 +128,6 @@ function moreBtnClicked() {
   moreBtn.style.display = "none";
 }
 
-feedHeaderIcon.addEventListener("click", feedHeaderIconClicked);
 feedMenuCancel.addEventListener("click", feedMenuCancelClicked);
 likeBtn.addEventListener("click", likeBtnClicked);
 commentBtn.addEventListener("click", commentBtnClicked);

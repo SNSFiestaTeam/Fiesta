@@ -15,19 +15,20 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #00000070;
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 500;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: none; */
+  display: none;
 }
 
-.feed-menu {
+.report-menu {
   width: 500px;
-  height: 350px;
+  height: 380px;
   background-color: white;
 
   border-radius: 7px;
@@ -61,7 +62,8 @@ body {
   border: 1px solid #828282;
 }
 
-.feed-menu-btn {
+.report-menu-title,
+.report-menu-btn {
   width: 100%;
 
   flex-basis: 15%;
@@ -71,7 +73,7 @@ body {
   justify-content: center;
 }
 
-.feed-menu-btn > a {
+.report-menu-btn > button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,10 +85,9 @@ body {
 
 .btn1 > span {
   color: orangered;
-  font-weight: bold;
 }
 
-.btn2 > a {
+.btn2 > button {
   border-bottom: 1px solid #ddd;
 }
 
