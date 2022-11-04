@@ -159,16 +159,26 @@ ORDER BY BOARD_CREATE_DATE DESC;
 -- 본문에 샘플이라는 단어를 포함하고 있는 게시글 조회
 
 
-SELECT * FROM "MEMBER";
+
 
 -- 로그인 비밀번호 암호화 bcyrpt
--- user03 진행
+-- user03, user04
 UPDATE "MEMBER" SET
 MEMBER_PW = '$2a$10$32o6kC9ooqzyOfPX.vIlQebZOOVxkHrY8rG8LStMtdqDmbppfNr.e'
 WHERE MEMBER_EMAIL='user03@naver.com';
 
 COMMIT;
 
+-- 로그인 비밀번호 암호화 bcyrpt
+-- user04, user01
+UPDATE "MEMBER" SET
+MEMBER_PW = '$2a$10$XIL0ILVBvzqlaMT1Kn839u7uPFXM2iepjHsUqgYVQO9CnlQ0FxWLm'
+WHERE MEMBER_EMAIL='user08@naver.com';
+
+COMMIT;
+
+
+SELECT * FROM "MEMBER";
 
 
 

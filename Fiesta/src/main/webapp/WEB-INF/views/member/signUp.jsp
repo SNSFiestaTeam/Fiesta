@@ -45,7 +45,7 @@
             비밀번호 숨기기 : <i class="fa-regular fa-eye-slash"></i>
           -->
 
-          <form action="#" method="post" class="signUp-frm">
+          <form action="/member/signUp" method="post" class="signUp-frm">
             <div class="signUp-area"> <!-- 이메일 -->
               <input type="text" name="memberEmail" id="memberEmail" value="" 
                     maxlength="50" autocomplete="off" required>

@@ -40,11 +40,16 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
-
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int signUp(Member inputMember) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		inputMember.setMemberPw(encPw);
+		
+		int result = dao.signUp(inputMember);
+		
+		return result;
 	}
 
 	
