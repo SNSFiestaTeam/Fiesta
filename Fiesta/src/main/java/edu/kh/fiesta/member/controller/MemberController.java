@@ -69,7 +69,7 @@ public class MemberController {
 		String message = null;
 		
 		if(result > 0) {
-			path = "/main";
+			path = "feed/main";
 			message = "Welcome to Fiesta!";
 			
 		} else {
