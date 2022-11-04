@@ -23,8 +23,8 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member login(Member inputMember) {
 		
-//		System.out.println("입력한 비밀번호 : " + inputMember.getMemberPw());
-//		System.out.println("암호화 비밀번호 : " + bcrypt.encode(inputMember.getMemberPw()));
+		System.out.println("입력한 비밀번호 : " + inputMember.getMemberPw());
+		System.out.println("암호화 비밀번호 : " + bcrypt.encode(inputMember.getMemberPw()));
 		
 		Member loginMember = dao.login(inputMember.getMemberEmail());
 		
@@ -36,16 +36,20 @@ public class MemberServiceImpl implements MemberService{
 				loginMember = null;
 			}
 		}
-		
 		return loginMember;
 	}
 
 
-
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int signUp(Member inputMember) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		inputMember.setMemberPw(encPw);
+		
+		int result = dao.signUp(inputMember);
+		
+		return result;
 	}
 
 	
