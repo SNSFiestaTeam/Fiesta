@@ -55,28 +55,39 @@ shareCancleBtn.addEventListener("click", function () {
   body.classList.remove("scrollLock");
 });
 
-const likeBtn = document.getElementById("likeBtn");
+const likeBtn = document.getElementsByClassName("like-btn");
+
+// 좋아요 버튼 클릭 시
+//  -> 버튼 색상 변경
+//  -> 좋아요 카운트 상승
+for (let i = 0; i < likeBtn.length; i++) {
+  likeBtn[i].addEventListener("click", function () {
+    const emptyHeart = '<i class="fa-regular fa-heart"></i>';
+    const solidHeart = '<i class="fa-solid fa-heart"></i>';
+
+    if (!likeBtn[i].classList.contains("red")) {
+      likeBtn[i].innerHTML = "";
+      likeBtn[i].innerHTML = solidHeart;
+      likeBtn[i].classList.add("red");
+    } else {
+      likeBtn[i].innerHTML = emptyHeart;
+      likeBtn[i].classList.remove("red");
+    }
+  });
+}
+
+// 북마크 버튼 클릭 시
+//  -> 북마크 버튼 색상 검정
+//  -> 북마크에 추가
+const bookmarkBtn = document.getElementsByClassName("bookmark-btn");
+// for(let i=0)
+
 const commentBtn = document.getElementById("commentBtn");
-const bookmarkBtn = document.getElementById("bookmarkBtn");
 const commentInput = document.getElementById("commentInput");
 const commentPostingBtn = document.getElementById("commentInput+button");
 const commentLikeBtn = document.querySelectorAll("a.comment-like-btn");
 const moreBtn = document.getElementById("moreBtn");
 const feedContent = document.getElementById("feed-content");
-
-// 좋아요 버튼 클릭시 색상 변경
-function likeBtnClicked() {
-  const emptyHeart = '<i class="fa-regular fa-heart"></i>';
-  const solidHeart = '<i class="fa-solid fa-heart"></i>';
-
-  if (likeBtn.innerHTML === emptyHeart) {
-    likeBtn.innerHTML = solidHeart;
-    likeBtn.style.color = "red";
-  } else {
-    likeBtn.innerHTML = emptyHeart;
-    likeBtn.style.color = "black";
-  }
-}
 
 // 댓글(말풍선) 버튼 클릭시 댓글 입력창 포커스
 function commentBtnClicked() {

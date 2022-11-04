@@ -10,6 +10,10 @@
   --large-icon-size: 24px;
 }
 
+.red {
+  color: red;
+}
+
 .scrollLock {
   overflow: hidden;
 }
@@ -171,6 +175,10 @@ main > section {
 
 .comment-icon-menu > div:first-child {
   flex-basis: 22%;
+}
+
+.comment-icon-menu > div > button {
+  font-size: var(--large-icon-size);
 }
 
 .like-count {

@@ -73,12 +73,12 @@
             <div id="main-content-section">
               <div class="comment-icon-menu">
                 <div>
-                  <a href="#" id="likeBtn"><i class="fa-regular fa-heart"></i></a>
-                  <a href="#" id="commentBtn"><i class="fa-regular fa-comment"></i></a>
-                  <a href="#" id="dmBtn"><i class="fa-regular fa-paper-plane"></i></a>
+                  <button id="likeBtn" class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                  <button href="#" id="commentBtn"><i class="fa-regular fa-comment"></i></button>
+                  <button href="#" id="dmBtn"><i class="fa-regular fa-paper-plane"></i></button>
                 </div>
                 <div>
-                  <a href="#bookmarkBtn" id="bookmarkBtn"><i class="fa-regular fa-bookmark"></i></a>
+                  <a href="#bookmarkBtn" id="bookmarkBtn"><i class="fa-regular fa-bookmark bookmark-btn"></i></a>
                 </div>
               </div>
 
@@ -234,8 +234,6 @@
                         </div>
                         <a href="#" class="more-reply">모든 답글 보기(1개)</a>
                       </li>
-                     
-                      
                     </ul>
                   </div>
                   <a href="#" class="create-date">10월 19</a>
@@ -297,12 +295,12 @@
             <div id="main-content-section">
               <div class="comment-icon-menu">
                 <div>
-                  <a href="#" id="likeBtn"><i class="fa-regular fa-heart"></i></a>
-                  <a href="#" id="commentBtn"><i class="fa-regular fa-comment"></i></a>
-                  <a href="#" id="dmBtn"><i class="fa-regular fa-paper-plane"></i></a>
+                  <button id="likeBtn" class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                  <button id="commentBtn"><i class="fa-regular fa-comment"></i></button>
+                  <button id="dmBtn"><i class="fa-regular fa-paper-plane"></i></button>
                 </div>
                 <div>
-                  <a href="#bookmarkBtn" id="bookmarkBtn"><i class="fa-regular fa-bookmark"></i></a>
+                  <button id="bookmarkBtn" class="bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
                 </div>
               </div>
 
@@ -457,9 +455,7 @@
                           </div>
                         </div>
                         <a href="#" class="more-reply">모든 답글 보기(1개)</a>
-                      </li>
-                     
-                      
+                      </li> 
                     </ul>
                   </div>
                   <a href="#" class="create-date">10월 19</a>
