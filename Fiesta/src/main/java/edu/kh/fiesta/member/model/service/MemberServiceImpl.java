@@ -19,12 +19,12 @@ public class MemberServiceImpl implements MemberService{
 	private BCryptPasswordEncoder bcrypt;
 	
 	
-	
+	// 로그인
 	@Override
 	public Member login(Member inputMember) {
 		
-		System.out.println("입력한 비밀번호 : " + inputMember.getMemberPw());
-		System.out.println("암호화 비밀번호 : " + bcrypt.encode(inputMember.getMemberPw()));
+//		System.out.println("입력한 비밀번호 : " + inputMember.getMemberPw());
+//		System.out.println("암호화 비밀번호 : " + bcrypt.encode(inputMember.getMemberPw()));
 		
 		Member loginMember = dao.login(inputMember.getMemberEmail());
 		
@@ -40,6 +40,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	// 회원가입
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int signUp(Member inputMember) {

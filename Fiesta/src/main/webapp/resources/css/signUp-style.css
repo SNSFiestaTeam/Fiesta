@@ -105,7 +105,7 @@ main{
 } 
 
 .signUp-area i {
-    color: lightgray;
+    /* color: lightgray; */
     right: 10px;
     position: absolute;
 }
@@ -120,15 +120,22 @@ main{
     position: absolute;
 }
 
+/* 아이콘 색상 지정 */
+.gray{ color : lightgray; }
+.green{ color : #00cc66;}
+.red{ color : red;}
+.blue{ color : #0066ff; }
+.black{ color : #111111; }
 
-#i-check:hover{ color: #00cc66;}
 
-#i-x:hover{ color: red; }
+/* #iCheck:hover{ color: #00cc66;}
 
-#i-refresh:hover{ color: #0066ff;}
+#iXmark:hover{ color: red; }
 
-#i-eye:hover{color:#111111;}
-#i-eyeSlash:hover{ color:#111111;}
+#iRefresh:hover{ color: #0066ff;}
+
+#iEye:hover{color:#111111;}
+#iEyeSlash:hover{ color:#111111;} */
 
 
 
