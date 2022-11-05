@@ -33,7 +33,7 @@
         <!-- 나중에 링크 바꾸기 -->
         <form action="/member/login" method="post" id="login-frm">
           <div class="login-area">
-            <input type="text" name="memberEmail"  id="memberEmail" value="" required>
+            <input type="text" name="memberEmail"  id="memberEmail" value="" autocomplete="off" required>
             <!-- placeholder="이메일"  -->
             <label for="memberEmail">이메일</label>
           </div>

@@ -44,10 +44,8 @@ public class MemberController {
 			
 		}else {
 			path = referer;
-			
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}
-		
 		return "redirect:" + path;
 	}
 	
@@ -69,7 +67,7 @@ public class MemberController {
 		String message = null;
 		
 		if(result > 0) {
-			path = "/main";
+			path = "feed/main";
 			message = "Welcome to Fiesta!";
 			
 		} else {
@@ -82,6 +80,7 @@ public class MemberController {
 		return "redirect:" + path;
 		
 	}
+	
 	
 
 	
