@@ -201,27 +201,19 @@ main > section {
   margin-right: 5px;
 }
 
-#feed-content {
+.feed-content {
   margin-top: 10px;
-
-  overflow: hidden;
-  line-height: 1.6;
-  text-align: left;
-  word-wrap: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
 }
 
-#btn-more {
+#textMore {
   color: var(--main-font-color);
 }
 
-.all-comment-list {
+.comment-container {
   height: auto;
 }
 
-.all-comment-list > a {
+.comment-container > button {
   display: block;
   padding-top: 8px;
   color: var(--main-font-color);
@@ -231,12 +223,7 @@ main > section {
   color: var(--main-font-color);
 }
 
-.comment-list > ul {
-  height: 48px;
-  overflow: hidden;
-}
-
-.comment-list > ul > li {
+.comment-area > ul > li {
   width: 100%;
 }
 
@@ -276,7 +263,7 @@ a#comment-profile {
   margin-right: 5px;
 }
 
-.comment-list li {
+.comment-area li {
   display: flex;
   margin: 4px 0;
 }
@@ -320,6 +307,28 @@ a#comment-profile {
   cursor: default;
 }
 
+.one-line {
+  overflow: hidden;
+  line-height: 1.6;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.two-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6;
+  height: 3.8em;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 @media screen and (min-width: 1024px) {
   /* Desktop */
   main > section {
@@ -355,40 +364,8 @@ a#comment-profile {
     object-fit: cover;
   }
 
-  #main-content-section {
-    margin-top: 10px;
-    margin-right: 10px;
-    flex-basis: 45%;
-    width: 450px;
-    margin-left: 10px;
-  }
-
-  .memberId {
-    display: none;
-  }
-
-  .comment-list > ul {
-    height: auto;
-  }
-
-  #feed-content {
-    width: 440px;
-    text-overflow: clip;
-    display: block;
-    height: auto;
-    line-height: 1.5;
-  }
-
-  #btn-more {
-    display: none;
-  }
-
-  .feed-main-content > button > span:first-child {
-    display: none;
-  }
-
   #main-container {
-    width: 450px;
+    width: 100%;
     margin-top: 5px;
     height: 480px;
     overflow: scroll;
@@ -400,7 +377,38 @@ a#comment-profile {
     display: none;
   }
 
-  .all-comment-list > a:first-child {
+  #main-content-section {
+    margin-top: 10px;
+    margin-right: 10px;
+    flex-basis: 45%;
+    margin-left: 10px;
+  }
+
+  .memberId {
+    display: none;
+  }
+
+  .comment-area > ul {
+    height: auto;
+  }
+
+  .feed-content {
+    width: 100%;
+    text-overflow: clip;
+    display: block;
+    height: auto;
+    line-height: 1.5;
+  }
+
+  #textMore {
+    display: none;
+  }
+
+  .feed-main-content > button > span:first-child {
+    display: none;
+  }
+
+  .comment-container > button:first-child {
     display: none;
   }
 
@@ -413,12 +421,12 @@ a#comment-profile {
   }
 
   /* 댓글 상세보기 설정 */
-  all-comment-list {
+  .comment-container {
     display: flex;
     flex-direction: column;
   }
 
-  .comment-list > ul > li {
+  .comment-area > ul > li {
     justify-content: center;
     margin-top: 30px;
   }
@@ -491,8 +499,9 @@ a#comment-profile {
   }
 
   .more-reply::before {
-    content: "";
+    content: '';
   }
+
   /* 댓글 상세보기 스타일 end */
 
   /* 답글 스타일 */
@@ -553,4 +562,9 @@ a#comment-profile {
     overflow: hidden;
     object-fit: cover;
   }
+}
+
+/* 클래스로 효과 주기 */
+.hide {
+  display: none;
 }

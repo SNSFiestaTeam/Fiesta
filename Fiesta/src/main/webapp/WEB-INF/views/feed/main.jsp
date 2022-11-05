@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,8 +20,8 @@
     <script type="text/javascript" defer src="../resources/js/main.js"></script>
   </head>
   <body>
-     
-     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+    <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
     <!-- 메인 섹션 -->
     <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
@@ -74,11 +75,11 @@
               <div class="comment-icon-menu">
                 <div>
                   <button id="likeBtn" class="like-btn"><i class="fa-regular fa-heart"></i></button>
-                  <button href="#" id="commentBtn"><i class="fa-regular fa-comment"></i></button>
-                  <button href="#" id="dmBtn"><i class="fa-regular fa-paper-plane"></i></button>
+                  <button id="commentBtn" class="comment-btn"><i class="fa-regular fa-comment"></i></button>
+                  <button id="dmBtn"><i class="fa-regular fa-paper-plane"></i></button>
                 </div>
                 <div>
-                  <a href="#bookmarkBtn" id="bookmarkBtn"><i class="fa-regular fa-bookmark bookmark-btn"></i></a>
+                  <button id="bookmarkBtn" class="bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
                 </div>
               </div>
 
@@ -89,21 +90,21 @@
                 <!-- 본문 내용 -->
                 <div class="feed-main-content">
                   <a href="#"><span class="memberId">karina_aespas_</span></a>
-                  <div id="feed-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptate sint corporis officiis quibusdam natus eveniet. Error doloribus itaque voluptatem in neque totam? Ut tenetur omnis unde in, dignissimos nobis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi tempora placeat ad consectetur eligendi consequuntur facere alias doloribus eveniet vero. Cumque enim ipsa iusto eos voluptatum distinctio inventore rem repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore commodi suscipit expedita mollitia officia, veniam dolor quibusdam dolores officiis error similique. Odit, fuga consequuntur! Vel eos cumque veniam et!</div>
+                  <div class="feed-content one-line">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro voluptate sint corporis officiis quibusdam natus eveniet. Error doloribus itaque voluptatem in neque totam? Ut tenetur omnis unde in, dignissimos nobis. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi tempora placeat ad consectetur eligendi consequuntur facere alias doloribus eveniet vero. Cumque enim ipsa iusto eos voluptatum distinctio inventore rem repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore commodi suscipit expedita mollitia officia, veniam dolor quibusdam dolores officiis error similique. Odit, fuga consequuntur! Vel eos cumque veniam et!</div>
 
                   <div class="hashtag">
                     <a href="#">#aespa</a><a href="#">#에스파</a><a href="#">#KARINA</a><a href="#">#카리나</a>
                   </div>
-                  <button type="button" id="moreBtn">
-                    <span id="btn-more"> 더 보기</span>
+                  <button type="button" class="more-btn">
+                    <span id="textMore"> 더 보기</span>
                   </button>
                 </div>
   
                 <!-- 댓글 리스트 -->
-                <div class="all-comment-list">
-                  <a href="#">댓글 12개 모두 보기</a>
-                  <div class="comment-list">
-                    <ul>
+                <div class="comment-container">
+                  <button class="all-comment-btn">댓글 12개 모두 보기</button>
+                  <div class="comment-area">
+                    <ul class="comment-list two-line">
 
                       <!-- 첫번째 댓글(답글 보기 X) -->
                       <li class="comment">
@@ -241,7 +242,7 @@
               </div>
               <div id="comment-input-area">
                 <form name="commentForm" action="#">
-                  <input name="comment" id="commentInput" type="text" placeholder="댓글 달기..." autocomplete="off"/>
+                  <input name="comment" id="commentInput" class="comment-input" type="text" placeholder="댓글 달기..." autocomplete="off"/>
                   <button disabled>게시</button>
                 </form>
               </div>
@@ -296,7 +297,7 @@
               <div class="comment-icon-menu">
                 <div>
                   <button id="likeBtn" class="like-btn"><i class="fa-regular fa-heart"></i></button>
-                  <button id="commentBtn"><i class="fa-regular fa-comment"></i></button>
+                  <button id="commentBtn" class="comment-btn"><i class="fa-regular fa-comment"></i></button>
                   <button id="dmBtn"><i class="fa-regular fa-paper-plane"></i></button>
                 </div>
                 <div>
@@ -463,7 +464,7 @@
               </div>
               <div id="comment-input-area">
                 <form name="commentForm" action="#">
-                  <input name="comment" id="commentInput" type="text" placeholder="댓글 달기..." autocomplete="off"/>
+                  <input name="comment" id="commentInput" class="comment-input" type="text" placeholder="댓글 달기..." autocomplete="off"/>
                   <button disabled>게시</button>
                 </form>
               </div>
