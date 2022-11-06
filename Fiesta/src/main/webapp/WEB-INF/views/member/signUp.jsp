@@ -52,11 +52,10 @@
               <!-- placeholder="이메일 주소"  -->
               <label for="memberEmail" id="memberEmailLabel">이메일</label>
 
-              
               <!-- 중복검사 + 형태 맞는지 확인하는 아이콘 : 체크, X -->
               <span class="icon-id-check">
-                <i class="fa-regular fa-circle-check" id="iCheck"></i>
-                <i class="fa-regular fa-circle-xmark" id="iXmark"></i>
+                <i class="fa-regular fa-circle-check" id="emailCheck"></i>
+                <i class="fa-regular fa-circle-xmark" id="emailXmark"></i>
               </span>
             </div>
   
@@ -69,8 +68,8 @@
              
               <!-- 검사 안함 : 필수작성 확인 /체크-->
               <span class="icon-name-check">
-                <i class="fa-regular fa-circle-check" id="iCheck"></i>
-                <!-- <i class="fa-regular fa-circle-xmark" id="iXmark"></i> -->
+                <i class="fa-regular fa-circle-check" id="nameCheck"></i>
+                <!-- <i class="fa-regular fa-circle-xmark" id="nameXmark"></i> -->
               </span>
             </div>
   
@@ -83,11 +82,11 @@
               
               <!-- 자동생성 / 중복검사 : 새로고침 / 체크 / X-->
               <span class="icon-nickname-refresh">
-                <i class="fa-solid fa-arrow-rotate-right" id="iRefresh"></i>
+                <i class="fa-solid fa-arrow-rotate-right" id="nickRefresh"></i>
               </span>
               <span class="icon-nickname-check">
-                 <i class="fa-regular fa-circle-check" id="iCheck"></i>
-                 <!-- <i class="fa-regular fa-circle-xmark" id="iXmark"></i> -->
+                 <i class="fa-regular fa-circle-check" id="nickCheck"></i>
+                 <i class="fa-regular fa-circle-xmark" id="nickXmark"></i>
               </span>
             </div>
   
@@ -99,8 +98,8 @@
               <!-- 비밀번호 보이기숨기기 -->
               <!-- 비밀번호에 특별한 조건 넣을지 물어보기 -->
               <span class="icon-pw-showHide">
-                <!-- <i class="fa-regular fa-eye" id="iEye"></i> -->
-                <i class="fa-regular fa-eye-slash" id="iEyeSlash"></i>
+                <!-- <i class="fa-regular fa-eye" id="pwEye"></i> -->
+                <i class="fa-regular fa-eye-slash" id="pwEyeSlash"></i>
               </span>
             </div>
               
@@ -112,12 +111,12 @@
               
               <!-- 비밀번호 일치 확인 : 체크 / X -->
               <span class=icon-pwConfirm-check>
-                <!-- <i class="fa-regular fa-circle-check" id="iCheck"></i> -->
-                <i class="fa-regular fa-circle-xmark" id="iXmark"></i>
+                <!-- <i class="fa-regular fa-circle-check" id="pwConfirmCheck"></i> -->
+                <i class="fa-regular fa-circle-xmark" id="pwConfirmXmark"></i>
               </span>
             </div> 
   
-            <button class="signUp-button">가입</button>
+            <button class="signUp-button" id="signUpButton">가입</button>
           </form>
         </section>
   

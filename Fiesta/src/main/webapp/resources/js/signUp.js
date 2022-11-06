@@ -16,35 +16,29 @@
 */
 
 
-// const checkObj = {
-//     "memberEmail"   : false,
-//     "memberName"    : false,
-//     "memberNickname": false,
-//     "memberPw"      : false,
-//     "memberPwConfirm" : false,
-// }
+const checkObj = {
+    "memberEmail"   : false,
+    "memberName"    : false,
+    "memberNickname": false,
+    "memberPw"      : false,
+    "memberPwConfirm" : false,
+}
 
 
-// document.getElementById("signUp-frm").addEventListener("submit", function(){
+// // 아예 눌리지 않게 해야 하는데..
+// document.getElementById("signUp-frm").addEventListener("submit", function(event){
 
+//     const signUpButton = document.getElementById("signUpButton");
 
 // //버튼 비활성화 만들기
 //     for(let key in checkObj){
 
 //         if( !checkObj[key] ){
-            
-//             switch(key){
-//                 case memberEmail : 
- 
-                        
-//             }
-
+//             signUpButton.classList.add("buttonOff");
 //             document.getElementById(key).focus();
 //             event.preventDefault();
 //             return;
-
 //         }
-
 //     }
 
 // });
@@ -53,24 +47,40 @@
 const memberEmail = document.getElementById("memberEmail");
 const memberEmailLabel = document.getElementById("memberEmailLabel");
 
-const iCheck = document.getElementById("iCheck");
-const iXmark = document.getElementById("iXmark");
+const emailCheck = document.getElementById("emailCheck");
+const emailXmark = document.getElementById("emailXmark");
+const signUpButton = document.getElementById("signUpButton");
 
-iCheck.classList.add("gray");
-iXmark.style.display="none";
+
 
 memberEmail.addEventListener("input", function(){
+    
+    // v/x 하지 말고, v 색 변경으로.
+    if(memberEmail.value.trim().length == 0){ //문자가 입력되지 않을 때
+        emailCheck.classList.add("iVisible", "gray");
+        signUpButton.disabled = false;
+        // emailCheck.classList.add("iHidden");
+        // emailXmark.classList.add("iVisible", "red");
+    } 
+    
+    // 유효성 검사
+    const regEx = /^[\w\d\-\_]{4,}@[가-힣\w]+(\.\w+){1,3}$/;
 
-    // 유효성 검사로 바꾸기!
-    if(memberEmail.value.trim().length == 0){
-        memberEmailLabel.innerText = "입력해주세요"
-        memberEmail.value = "";
-
-        iCheck.style.display = "none";
-        iXmark.classList.add("red");
-
+    if(regEx.test(memberEmail.value)){
+        emailCheck.classList.add("iVisible", "green");
+        emailCheck.classList.remove("gray");
+        signUpButton.disabled = true;
+        signUpButton.classList.add("buttonOn");
+        // emailCheck.classList.add("iVisible", "green");
+        // emailCheck.classList.remove("iHidden", "gray");
+        // emailXmark.classList.add("iHidden");
+        
     } else {
-        iXmark.style.display = "none";
-        iCheck.classList.add("green");
+        emailCheck.classList.add("iVisible", "gray");
+        emailCheck.classList.remove("green");
+        signUpButton.disabled = false;
+        // emailCheck.classList.add("iHidden");
+        // emailXmark.classList.add("iVisible", "red");
     }
-})
+});
+

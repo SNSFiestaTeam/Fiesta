@@ -120,12 +120,21 @@ main{
     position: absolute;
 }
 
+
+.fa-circle-check { visibility: hidden; }
+.fa-circle-xmark { visibility: hidden; }
+
+.iVisible { visibility: visible;}
+.iHidden { visibility: hidden;}
+
 /* 아이콘 색상 지정 */
 .gray{ color : lightgray; }
 .green{ color : #00cc66;}
 .red{ color : red;}
 .blue{ color : #0066ff; }
 .black{ color : #111111; }
+.fiesta{ color : var(--fiesta-color);}
+
 
 
 /* #iCheck:hover{ color: #00cc66;}
@@ -187,13 +196,27 @@ main{
     display: block;
     width: 95%;
     height: 36px;
-    background-color: var(--fiesta-color);
     border-radius: 5px;
-    color: white;
-    
     margin: 5% 0 8% 0; 
+
+    /* background-color: var(--fiesta-color);
+    color: white;
+    cursor: pointer; */
+}
+
+.signUp-button{
+    background-color: lightgray;
+    color: white;
+}
+
+
+/* 버튼 색상 변경 */
+.buttonOn{
+    background-color: var(--fiesta-color);
+    color: white;
     cursor: pointer;
 }
+
 
 
 
