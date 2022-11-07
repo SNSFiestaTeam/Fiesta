@@ -21,7 +21,6 @@
       
   </resultMap>
   
-  <!-- 로그인 -->
   <select id = "login" parameterType="string" resultMap="member_rm">
 			SELECT *
 			FROM "MEMBER"
@@ -29,7 +28,6 @@
 			AND SECESSION_FL ='N'
   </select>
   
-  <!-- 회원가입 -->
   <insert id="signUp" parameterType="edu.kh.fiesta.member.model.vo.Member">
 		  	INSERT INTO "MEMBER"
 				VALUES(SEQ_MEMBER_NO.NEXTVAL, #{memberEmail}, #{memberPw}, #{memberName}, #{memberNickname}, NULL, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
