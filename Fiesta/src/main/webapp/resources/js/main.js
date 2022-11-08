@@ -143,6 +143,7 @@ for (let i = 0; i < allCommentBtn.length; i++) {
   });
 }
 
+// 댓글 좋아요 버튼 클릭 시
 const commentLikeBtn = document.getElementsByClassName("comment-like-btn");
 
 for (let i = 0; i < commentLikeBtn.length; i++) {

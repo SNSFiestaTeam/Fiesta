@@ -121,7 +121,7 @@
                                 <span class="comment-content">이 언니 넘모 이뿌당</span>
                               </div>
                               <div>
-                                <a href="#" class="comment-like-btn" ><i class="fa-regular fa-heart"></i></a>
+                                <button class="comment-like-btn" ><i class="fa-regular fa-heart"></i></button>
                               </div>
                             </div>
                             <div class="create-reply">
@@ -153,7 +153,7 @@
                                 <span class="comment-content">사랑해</span>
                               </div>
                               <div>
-                                <a href="#" class="comment-like-btn" ><i class="fa-regular fa-heart"></i></a>
+                                <button class="comment-like-btn" ><i class="fa-regular fa-heart"></i></button>
                               </div>
                             </div>
                             <div class="create-reply">
@@ -186,7 +186,7 @@
                                     <span class="comment-content">나두 사랑해</span>
                                   </div>
                                   <div>
-                                    <a href="#" class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                                    <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
                                   </div>
                                 </div>
                                 <div class="create-reply">
@@ -219,7 +219,7 @@
                                 <span class="comment-content">레전드</span>
                               </div>
                               <div>
-                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                                <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
                               </div>
                             </div>
                             <div class="create-reply">
@@ -236,7 +236,7 @@
                       </li>
                     </ul>
                   </div>
-                  <a href="#" class="create-date">10월 19</a>
+                  <a href="#" class="create-date">10월 19일</a>
                 </div>
               </div>
               <div id="comment-input-area">
@@ -458,7 +458,7 @@
                       </li> 
                     </ul>
                   </div>
-                  <a href="#" class="create-date">10월 19</a>
+                  <a href="#" class="create-date">10월 19일</a>
                 </div>
               </div>
               <div id="comment-input-area">
