@@ -132,5 +132,3 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/java,eclipse,windows
-Fiesta/.settings/org.eclipse.wst.common.component
