@@ -139,6 +139,12 @@ main{
 }
 
 
+.labelUp{
+    position: absolute;
+    transform: translate(1px, -8px);
+}
+
+
 .login-button{
     display: block;
     width: 100%;
