@@ -17,7 +17,6 @@
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" defer src="../resources/js/main.js"></script>
   </head>
   <body>
 
@@ -243,7 +242,7 @@
               <div id="comment-input-area">
                 <form name="commentForm" action="#">
                   <input name="comment" id="commentInput" class="comment-input" type="text" placeholder="댓글 달기..." autocomplete="off"/>
-                  <button disabled>게시</button>
+                  <button class="posting-btn" disabled >게시</button>
                 </form>
               </div>
             </div>
@@ -465,7 +464,7 @@
               <div id="comment-input-area">
                 <form name="commentForm" action="#">
                   <input name="comment" id="commentInput" class="comment-input" type="text" placeholder="댓글 달기..." autocomplete="off"/>
-                  <button disabled>게시</button>
+                  <button disabled class="posting-btn">게시</button>
                 </form>
               </div>
             </div>
@@ -479,6 +478,7 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp"/>
+    <script type="text/javascript" defer src="../resources/js/main.js"></script>
 
   </body>
 </html>
