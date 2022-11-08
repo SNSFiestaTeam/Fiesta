@@ -11,24 +11,24 @@ const memberPw = document.getElementById("memberPw");
 const loginBtn = document.getElementById("loginBtn");
 
 // setTimeout(function(){
-//     memberPw.focus();
-// }, 10);
+//     // memberEmail.setSelectionRange(1,5);
+//     memberEmail.focus();
+// }, 0);
 
-setTimeout(function(){
-    memberEmail.focus();
-}, 0);
-
-
+// if(memberEmail.value.trim().length != 0){
     
-
-// memberEmail.addEventListener("focus", function(){
-//     this.setSelectionRange(1,20);
-// })
-
-    // loginLabel[1].classList.add("labelUp");
-    // loginLabel[0].style.fontSize = "0.5em";
-    // loginLabel[1].style.fontSize = "0.5em";
 // }
 
+
+
+
+// memberEmail.addEventListener("focus", function(e){
+//     memberEmail.value = "";
+//     e.preventDefault();
+//     return;
+// })
+
+
+// this.setSelectionRange(1,20);
 
 // setSelectionRange
