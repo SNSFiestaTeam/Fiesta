@@ -34,12 +34,12 @@
         <nav id="nav-bar">
           <ul>
             <li>
-              <a href="#" id="searchBtn">
+              <button id="searchBtn">
                 <i class="fa-solid fa-magnifying-glass"></i>
-              </a>
+              </button>
             </li>
             <li>
-              <a href="/"> <i class="fa-solid fa-house"></i></a>
+              <a href="#"> <i class="fa-solid fa-house"></i></a>
             </li>
             <li>
               <a href="common/dm(용환재).html">
@@ -47,9 +47,9 @@
               </a>
             </li>
             <li>
-              <a href="#" id="new-post-open">
+              <button id="new-post-open">
                 <i class="fa-regular fa-square-plus"></i>
-              </a>
+              </button>
             </li>
             <li>
               <a href="common/popularfeed(신아민) .html">
@@ -57,9 +57,9 @@
               </a>
             </li>
             <li>
-              <a href="#">
+              <button>
                 <i class="fa-regular fa-bell"></i>
-              </a>
+              </button>
             </li>
             <li>
               <a href="common/myfeed(신아민).html">
