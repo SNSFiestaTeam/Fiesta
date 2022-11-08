@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberMapper">
 
-
 	<!--   <resultMap type="edu.kh.project.member.model.vo.Member" id="member"></resultMap> -->
   	<resultMap type="Member" id="member_rm">
   
