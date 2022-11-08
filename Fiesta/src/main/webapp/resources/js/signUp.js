@@ -93,7 +93,6 @@ memberName.addEventListener("input", function(){
         nameCheck.classList.add("iVisible", "green");
         nameCheck.classList.remove("gray");
 
-
     }
 
 
