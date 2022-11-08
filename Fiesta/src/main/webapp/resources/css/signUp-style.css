@@ -190,8 +190,6 @@ main{
 
 
 
-
-
 .signUp-button{
     display: block;
     width: 95%;
@@ -210,13 +208,14 @@ main{
 }
 
 
+
+
 /* 버튼 색상 변경 */
 .buttonOn{
     background-color: var(--fiesta-color);
     color: white;
     cursor: pointer;
 }
-
 
 
 
