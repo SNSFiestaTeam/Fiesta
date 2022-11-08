@@ -1,0 +1,291 @@
+#commentContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: #8e8e8e70;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#commentListArea {
+  width: 70%;
+  height: 60%;
+  background-color: white;
+
+  border-radius: 10px;
+
+  padding: 10px 20px;
+}
+
+#commentListArea::-webkit-scrollbar {
+  display: none;
+}
+
+#writerInfoArea {
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#writerInfo {
+  display: flex;
+  align-items: center;
+}
+
+.feed-header {
+  height: 56px;
+
+  flex-basis: 10%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-ellipsis {
+  font-size: var(--large-font-size);
+}
+
+.writer-info {
+  display: flex;
+  align-items: center;
+}
+
+.feed-memberId {
+  font-weight: bold;
+}
+
+#profile-photo {
+  display: block;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.writer-info > a {
+  font-size: var(--small-font-size);
+}
+
+#feed-profile-image {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.writer-info a,
+.writer-info span {
+  display: block;
+}
+
+.comment-container {
+  height: 80%;
+  overflow: auto;
+}
+
+.comment-container::-webkit-scrollbar {
+  display: none;
+}
+
+.comment-container > button {
+  display: block;
+  padding-top: 8px;
+  color: var(--main-font-color);
+}
+
+.comment-icon-menu a:hover {
+  color: var(--main-font-color);
+}
+
+.comment-area > ul > li {
+  width: 100%;
+}
+
+.comment {
+  font-size: var(--small-font-size);
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-firstline {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 댓글 상세보기 설정 */
+a#comment-profile {
+  display: none;
+}
+
+.create-reply {
+  display: none;
+}
+/* 댓글 상세보기 설정 여기까지 */
+
+.comment-memberId {
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.like-heart:hover {
+  color: gray;
+}
+
+.mention {
+  color: var(--mention-font-color);
+  margin-right: 5px;
+}
+
+.comment-area li {
+  display: flex;
+  margin: 4px 0;
+}
+
+.create-date {
+  color: var(--main-font-color);
+  font-size: 10px;
+  margin: 10px 0;
+}
+
+.more-reply {
+  display: none;
+}
+
+.comment-input-area {
+  margin: auto;
+  height: 10%;
+  font-size: var(--small-font-size);
+}
+
+.comment-input-area > form {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-input-area input {
+  border: 0;
+  outline: none;
+  flex-basis: 90%;
+}
+
+.comment-input-area button {
+  color: var(--point-font-color);
+  font-weight: bold;
+}
+
+.comment-input-area button:disabled {
+  color: #0095f660;
+  cursor: default;
+}
+
+/* 댓글 상세보기 설정 */
+.comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-area > ul > li {
+  justify-content: center;
+  margin-top: 30px;
+}
+
+a#comment-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+
+  object-fit: fill;
+}
+
+#comment-profile-image {
+  width: 100%;
+}
+
+.comment-firstchild {
+  display: flex;
+}
+
+div.comment-firstline {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reply-firstchild {
+  display: flex;
+}
+
+div.reply-firstline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-reply {
+  margin-top: 5px;
+  display: block;
+}
+
+.create-reply > a {
+  color: #8e8e8e;
+  font-size: 13px;
+  margin-right: 5px;
+}
+
+.hover-btn {
+  margin-left: 10px;
+  color: white;
+}
+
+.create-reply:hover > .hover-btn {
+  color: #8e8e8e;
+}
+
+.more-reply {
+  display: block;
+  margin-top: 10px;
+  margin-left: 42px;
+  font-size: 13px;
+  color: #8e8e8e;
+}
+
+.more-reply::before {
+  content: "";
+}
+
+/* 댓글 상세보기 스타일 end */
+
+/* 답글 스타일 */
+#reply {
+  margin-left: 40px;
+  margin-top: 20px;
+}
+/* 답글 스타일 end */
+
+/* 댓글 입력창 */
+
+.comment-input-area > form {
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.comment-input-area > form > input {
+  height: 100%;
+  font-size: 15px;
+}
+
+.comment-input-area > form > button {
+  font-size: 15px;
+}
