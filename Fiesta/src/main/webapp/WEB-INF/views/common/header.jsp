@@ -47,7 +47,7 @@
               </a>
             </li>
             <li>
-              <a href="common/newpost-file(윤주영).html">
+              <a href="#" id="new-post-open">
                 <i class="fa-regular fa-square-plus"></i>
               </a>
             </li>
