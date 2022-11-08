@@ -43,10 +43,12 @@ public class MemberController {
 			return path;
 			
 		}else {
-			path = referer;
+//			path = referer;
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+			
+			return referer;
 		}
-		return "redirect:" + path;
+//		return "redirect:" + path;
 	}
 	
 	
@@ -63,27 +65,30 @@ public class MemberController {
 		
 		int result = service.signUp(inputMember);
 
-		String path = null;
+//		String path = null;
 		String message = null;
 		
 		if(result > 0) {
-			path = "feed/main";
 			message = "Welcome to Fiesta!";
+			ra.addFlashAttribute("message", message);
+			return "redirect:/";  // 로그인 페이지로.
 			
 		} else {
-			path = referer;
 			message = "Please try again..";
+			ra.addFlashAttribute("message", message);
+			return referer;
 		}
 		
-		ra.addFlashAttribute("message", message);
 		
-		return "redirect:" + path;
+//		return "redirect:" + path;
 		
 	}
 	
 	
-
-	
+	@GetMapping("/member/login")
+	public String login(){
+		return "redirect:/";
+	}
 
 }
 

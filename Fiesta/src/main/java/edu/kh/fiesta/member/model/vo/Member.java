@@ -20,7 +20,6 @@ public class Member {
 	private String memberOpenFl;
 	private String secessionFl;
 	private int authority;
-	
 
 }
 
