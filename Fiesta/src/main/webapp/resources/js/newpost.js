@@ -1,3 +1,6 @@
-const newpostOpen = document.getElementById("new-post-open");
-const newpostClose = document.getElementById("new-post-close");
+const newPostOpen = document.getElementById("newpostopen");
+const modalPostSection = document.getElementById("modal_post_section")
 
+newPostOpen.addEventListener("click", function(){
+    modalPostSection.style.display="block";
+})

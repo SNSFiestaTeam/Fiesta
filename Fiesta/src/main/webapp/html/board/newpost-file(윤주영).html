@@ -44,12 +44,9 @@
             </a>
           </li>
           <li>
-            <button id="new-post-open" onclik="">
-              <i class="fa-regular fa-square-plus"></i>
-            </button>
-            <!-- <a href="#">
-              
-            </a> -->
+            <a href="#">
+                <i class="fa-regular fa-square-plus" id="new-post-open"></i>
+            </a>
           </li>
           <li>
             <a href="#">
@@ -72,21 +69,21 @@
   </header>
 
 
-
-
-
   <!-- 메인 섹션 -->
   <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
   <main>
-      <button onclick="history.back()" name="close" id="new-post-close" class="new-post-close">
+      <!-- <button onclick="history.back()" name="close" id="new-post-close" class="new-post-close">
         <span id="post-x"><i class="fa-solid fa-x"></i></span>
-      </button>
+      </button> -->
 
     <!-- 모달 배경 -->
     <div class="modal_background">
+      <button onclick="history.back()" name="close" id="new-post-close" class="new-post-close">
+        <span id="post-x"><i class="fa-solid fa-x"></i></span>
+      </button>
       <!-- <div class="test">test하는중</div> -->
       <!-- 모달 흰창 -->
-      <section class="modal_post_section">
+      <section class="modal_post_section" id="modal_post_section">
         <div class="new-post-background">
 
           <!-- 게시물 작성 top -->
