@@ -18,16 +18,12 @@
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
+  
+  display: none;
   flex-direction: column;
-  /* justify-content:space-between; */
-  /* justify-content: center; */
   align-items: center;
-  /* display:none; */
   padding: 15px;
   z-index: 5;
-  display: none;
-  
 
 }
 
@@ -50,10 +46,7 @@
 @media screen and (min-width:721px),
 (min-height:571px) {
   .modal_post_section {
-    /* height: 90%; */
-    /* width: 76vh; */
     width: 50%;
-    /* height: 85%; */
     max-width: 855px;
     max-height: 894px;
 
@@ -75,10 +68,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 10px;
-  /* overflow:scroll; */
-
   margin: auto;
   box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
 }
@@ -113,7 +103,6 @@
 
 .new-post-top {
   display: flex;
-  /* justify-content: space-between; */
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -145,19 +134,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* top:0; left:0; bottom:0; right:0; */
-
 }
 
-/* .new-post-file-img > i{ */
-/* transform:scale(4) ; */
-/* margin-bottom: 30px; */
-/* } */
 .input-message {
-  /* width: 300px; */
   height: 52px;
   font-size: 24px;
   text-align: center;
+
+  font-weight: lighter;
 
   padding: 0 7px;
   margin: 20px 0;
