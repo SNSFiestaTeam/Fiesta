@@ -21,7 +21,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
-	@PostMapping("/member/login")
+	@PostMapping("/main")
 	public String login(Member inputMember, Model model, RedirectAttributes ra, 
 						HttpServletResponse resp, @RequestHeader(value="referer")String referer) {
 		
@@ -30,7 +30,7 @@ public class MemberController {
 		String path = null;
 		
 		if(loginMember != null) {
-			path = "feed/main";
+			path = "/main";
 			model.addAttribute("loginMember", loginMember);
 			
 			System.out.println("로그인 성공!");
@@ -40,17 +40,19 @@ public class MemberController {
 			// 쿠키 유지 시간 지정
 			
 			// 1년 동안 쿠키 유지
-			return path;
+			return "redirect:"+ path;
 			
 		}else {
-//			path = referer;
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			
 			return referer;
 		}
-//		return "redirect:" + path;
 	}
 	
+	@GetMapping("/main")
+	public String main() {
+		return "feed/main";
+	} 
 	
 	@GetMapping("/member/signUp")
 	public String signUp(){
@@ -85,10 +87,18 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("/member/login")
+	@GetMapping("/login")
 	public String login(){
 		return "redirect:/";
 	}
+	
+	
+	@GetMapping("/member/findAccount")
+	public String findAccount() {
+		return "member/findAccount";
+	}
+	
+	
 
 }
 
