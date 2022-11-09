@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,109 +8,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>instagram</title>
-    <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="../../resources/css/myfeed.css" />
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    <link rel="stylesheet" href="/resources/css/memberfeed.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
     ></script>
   </head>
   <body>
-    <!-- 헤더 -->
-    <header>
-      <section id="header-section">
-        <!-- 로고 -->
-        <section class="logo-section">
-          <a href="#">Fiesta </a>
-        </section>
-        <!-- 검색창 -->
-        <section class="search-section">
-          <form action="#">
-            <fieldset>
-              <button><i class="fa-solid fa-magnifying-glass"></i></button>
-              <input
-                type="text"
-                name="search"
-                id="searchInput"
-                placeholder="검색"
-                autocapitalize="none"
-                autocomplete="off"
-              />
-            </fieldset>
-          </form>
-        </section>
-        <!-- 메뉴 -->
-        <nav id="nav-bar">
-          <ul>
-            <li>
-              <a href="#"> <i class="fa-solid fa-house"></i></a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-regular fa-paper-plane"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-regular fa-square-plus"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-regular fa-compass"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-regular fa-heart"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fa-regular fa-user"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </section>
-    </header>
-    <!-- 메인 섹션 -->
-    <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
+     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <main>
       <div class="main-container">
         <section class="info-section">
           <div id="profile-photo">
             <a href="#">
-              <img id="self" src="../../resources/images/karina.jpeg" />
+              <img
+                id="self"
+                src="/resources/images/14f5961af72ef1686b2548d7c5c792e6.jpg"
+              />
             </a>
           </div>
 
           <div id="profile-text">
             <div id="nickname">
-              <a href="#">karina_aespas_</a>
+              <a href="#">_97.05.07</a>
 
-              <button id="btn">
-                <a href="#">프로필 편집</a>
+              <button id="btn-dm">
+                <a href="#">메세지 보내기</a>
               </button>
 
-              <a href="#"><i class="fa-solid fa-gear"></i></a>
+              <button id="btn-follow">
+                <a href="#"><i class="fa-solid fa-user-group"></i></a>
+              </button>
+
+              <a href="#">. . .</a>
             </div>
 
             <div id="profile-board">
-              <span class="board-menu-btn1"><button>게시글 9</button></span>
-              <span class="board-menu-btn2"><button id="follow-btn">팔로우 176</button></span>
-              <span class="board-menu-btn3"><button>팔로잉 98</button></span>
+              <a href="#">게시글 9</a>
+              <a href="#">팔로우 382</a>
+              <a href="#">팔로잉 66</a>
             </div>
 
             <p class="introduce-text">자기소개 글</p>
+
+            <div id="profile-follow">
+              <a href="#" class="info">s_am_97, sbk_93</a
+              ><span id="text">님 외 21명이 팔로우 합니다.</span>
+            </div>
           </div>
         </section>
 
         <section class="title-section">
           <p id="text-area">
             <a href="#"><i class="fa-solid fa-chess-board"></i> 게시물</a>
-
-            <a href=""><i class="fa-regular fa-bookmark"></i> 저장됨</a>
 
             <a href=""><i class="fa-solid fa-children"></i> 태그됨</a>
           </p>
@@ -118,7 +72,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/3bfe8e6e6ee1f835a979cd1baad59d06.jpg"
+                src="/resources/images/3bfe8e6e6ee1f835a979cd1baad59d06.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>20</span>
@@ -128,7 +82,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg"
+                src="/resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>159</span>
@@ -138,7 +92,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/14f5961af72ef1686b2548d7c5c792e6.jpg"
+                src="/resources/images/14f5961af72ef1686b2548d7c5c792e6.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>97</span>
@@ -151,7 +105,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/1973ca8ce1b8dc4bac38683bc39d7fbd.jpg"
+                src="/resources/images/1973ca8ce1b8dc4bac38683bc39d7fbd.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>1</span>
@@ -161,7 +115,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/2159c9572a920ef17d26d2d57b76d7a8.jpg"
+                src="/resources/images/2159c9572a920ef17d26d2d57b76d7a8.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>658</span>
@@ -171,7 +125,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/37769e3106c8f99048ba73c124844dec.jpg"
+                src="/resources/images/37769e3106c8f99048ba73c124844dec.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>334</span>
@@ -184,7 +138,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/3a6f19a15fea55a21cf71a7b3e0f2434.jpg"
+                src="/resources/images/3a6f19a15fea55a21cf71a7b3e0f2434.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>784</span>
@@ -194,7 +148,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/7500f8049b8275ee14fd49e0a253a129.jpg"
+                src="/resources/images/7500f8049b8275ee14fd49e0a253a129.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>7654</span>
@@ -204,7 +158,7 @@
             <a href="#">
               <img
                 class="feed-img"
-                src="../../resources/images/8983e3185d5dc741e425f7c06f907f1b.jpg"
+                src="/resources/images/8983e3185d5dc741e425f7c06f907f1b.jpg"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>17906</span>
@@ -215,21 +169,6 @@
         </section>
       </div>
     </main>
-    <!-- 푸터 -->
-    <footer>
-      <p>
-        Copyright &copy; KH Information Educational Institute A-Class SNS Team
-      </p>
-      <article>
-        <a href="#">프로젝트 소개</a>
-        <span>|</span>
-        <a href="#">이용약관</a>
-        <span>|</span>
-        <a href="#">개인정보처리방침</a>
-        <span>|</span>
-        <a href="#">고객센터</a>
-      </article>
-    </footer>
-    <script src="../../resources/js/myfeed.js"></script>
+        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
   </body>
 </html>

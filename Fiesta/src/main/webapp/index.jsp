@@ -32,10 +32,13 @@
         <!-- 로그인 -->
         <form action="/main" method="post" id="login-frm">
           <div class="login-area">
+
+            <input type="text" name="memberEmail"  id="memberEmail" value="" maxlength="50" autocomplete="off" required>
+
             <input type="text" name="memberEmail"  id="memberEmail" value="" 
                 maxlength="50" autocomplete="off" required readonly> 
             <!-- placeholder="이메일"  -->
-            <label for="memberEmail">이메일</label>
+            <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
           <div class="login-area">
@@ -45,7 +48,7 @@
             <label for="memberPw">비밀번호</label>
           </div>
 
-          <button class="login-button">로그인</button>
+          <button class="login-button" id="loginBtn">로그인</button>
         </form>
 
         <!-- 아이디, 비밀번호 찾기 -->
