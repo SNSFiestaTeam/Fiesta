@@ -1,10 +1,13 @@
 package edu.kh.fiesta.member.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fiesta.member.model.service.SettingService;
@@ -40,6 +43,12 @@ public class SettingController {
 		return "setting/settingPw";
 	}
 	
+	@PostMapping("/pw")
+	public String changePw(Member loginMember,
+			RedirectAttributes ra, @RequestParam Map<String, Object> Paramap) {
+		return "redirect:Pw";
+		
+	}
 	
 	
 	

@@ -1,5 +1,5 @@
 package edu.kh.fiesta.member.model.service;
 
-public class SettingServiceImpl {
+public class SettingServiceImpl implements SettingService{
 
 }
