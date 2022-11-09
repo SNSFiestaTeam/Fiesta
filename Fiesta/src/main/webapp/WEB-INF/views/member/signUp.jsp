@@ -91,7 +91,7 @@
             </div>
   
             <div class="signUp-area"> <!-- 비밀번호 -->
-              <input type="password" name="memberPw" id="memberPw" value="" required>
+              <input type="password" name="memberPw" id="memberPw" maxlength="50" value="" required>
               <!-- placeholder="비밀번호"  -->
               <label for="memberPw">비밀번호</label>
               
@@ -105,7 +105,7 @@
               
 
             <div class="signUp-area"> <!-- 비밀번호 확인 -->
-              <input type="password" name="memberPwConfirm" id="memberPwConfirm" value="" required>
+              <input type="password" name="memberPwConfirm" id="memberPwConfirm" value="" maxlength="50" required>
               <!-- placeholder="비밀번호 확인"  -->
               <label for="memberPwConfirm">비밀번호 확인</label>
               

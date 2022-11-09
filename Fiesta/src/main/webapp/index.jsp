@@ -33,13 +33,13 @@
         <!-- 나중에 링크 바꾸기 -->
         <form action="/member/login" method="post" id="login-frm">
           <div class="login-area">
-            <input type="text" name="memberEmail"  id="memberEmail" value="" autocomplete="off" required>
+            <input type="text" name="memberEmail"  id="memberEmail" value="" maxlength="50" autocomplete="off" required>
             <!-- placeholder="이메일"  -->
             <label for="memberEmail">이메일</label>
           </div>
 
           <div class="login-area">
-            <input type="password" name="memberPw" id="memberPw" value="" required>
+            <input type="password" name="memberPw" id="memberPw" value="" maxlength="50" required>
             <!-- placeholder="비밀번호" -->
             <label for="memberPw">비밀번호</label>
           </div>
