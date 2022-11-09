@@ -91,9 +91,11 @@
             </div>
   
             <div class="signUp-area"> <!-- 비밀번호 -->
+
               <input type="password" name="memberPw" id="memberPw" value="" 
                     max-length="30" required>
-              <!-- placeholder="비밀번호"  -->
+
+<!-- placeholder="비밀번호"  -->
               <label for="memberPw">비밀번호</label>
               
               <!-- 비밀번호 보이기숨기기 -->
@@ -106,6 +108,8 @@
               
 
             <div class="signUp-area"> <!-- 비밀번호 확인 -->
+
+
               <input type="password" name="memberPwConfirm" id="memberPwConfirm"
                      max-length="30" value="" required>
               <!-- placeholder="비밀번호 확인"  -->

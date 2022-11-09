@@ -32,13 +32,17 @@
         <!-- 로그인 -->
         <form action="/member/login" method="post" id="login-frm">
           <div class="login-area">
-            <input type="text" name="memberEmail" id="memberEmail" value="" autocomplete="off" required readonly>
+
+            <input type="text" name="memberEmail"  id="memberEmail" value="" maxlength="50" autocomplete="off" required>
+
             <!-- placeholder="이메일"  -->
             <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
           <div class="login-area">
-            <input type="password" name="memberPw" id="memberPw" value=""  required readonly>
+
+            <input type="password" name="memberPw" id="memberPw" value="" maxlength="30" required>
+
             <!-- placeholder="비밀번호" -->
             <label for="memberPw" class="loginLabel">비밀번호</label>
           </div>
