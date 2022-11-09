@@ -17,7 +17,6 @@
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" defer src="../resources/js/main.js"></script>
   </head>
   <body>
 
@@ -122,7 +121,7 @@
                                 <span class="comment-content">이 언니 넘모 이뿌당</span>
                               </div>
                               <div>
-                                <a href="#" class="comment-like-btn" ><i class="fa-regular fa-heart"></i></a>
+                                <button class="comment-like-btn" ><i class="fa-regular fa-heart"></i></button>
                               </div>
                             </div>
                             <div class="create-reply">
@@ -154,7 +153,7 @@
                                 <span class="comment-content">사랑해</span>
                               </div>
                               <div>
-                                <a href="#" class="comment-like-btn" ><i class="fa-regular fa-heart"></i></a>
+                                <button class="comment-like-btn" ><i class="fa-regular fa-heart"></i></button>
                               </div>
                             </div>
                             <div class="create-reply">
@@ -187,7 +186,7 @@
                                     <span class="comment-content">나두 사랑해</span>
                                   </div>
                                   <div>
-                                    <a href="#" class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                                    <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
                                   </div>
                                 </div>
                                 <div class="create-reply">
@@ -220,7 +219,7 @@
                                 <span class="comment-content">레전드</span>
                               </div>
                               <div>
-                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                                <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
                               </div>
                             </div>
                             <div class="create-reply">
@@ -237,13 +236,13 @@
                       </li>
                     </ul>
                   </div>
-                  <a href="#" class="create-date">10월 19</a>
+                  <a href="#" class="create-date">10월 19일</a>
                 </div>
               </div>
               <div id="comment-input-area">
                 <form name="commentForm" action="#">
                   <input name="comment" id="commentInput" class="comment-input" type="text" placeholder="댓글 달기..." autocomplete="off"/>
-                  <button disabled>게시</button>
+                  <button class="posting-btn" disabled >게시</button>
                 </form>
               </div>
             </div>
@@ -459,13 +458,13 @@
                       </li> 
                     </ul>
                   </div>
-                  <a href="#" class="create-date">10월 19</a>
+                  <a href="#" class="create-date">10월 19일</a>
                 </div>
               </div>
               <div id="comment-input-area">
                 <form name="commentForm" action="#">
                   <input name="comment" id="commentInput" class="comment-input" type="text" placeholder="댓글 달기..." autocomplete="off"/>
-                  <button disabled>게시</button>
+                  <button disabled class="posting-btn">게시</button>
                 </form>
               </div>
             </div>
@@ -479,6 +478,7 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp"/>
+    <script type="text/javascript" defer src="../resources/js/main.js"></script>
 
   </body>
 </html>

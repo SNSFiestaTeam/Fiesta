@@ -33,18 +33,18 @@
         <!-- 나중에 링크 바꾸기 -->
         <form action="/member/login" method="post" id="login-frm">
           <div class="login-area">
-            <input type="text" name="memberEmail"  id="memberEmail" value="" autocomplete="off" required>
+            <input type="text" name="memberEmail" id="memberEmail" value="" autocomplete="off" autofocus required>
             <!-- placeholder="이메일"  -->
-            <label for="memberEmail">이메일</label>
+            <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
           <div class="login-area">
-            <input type="password" name="memberPw" id="memberPw" value="" required>
+            <input type="password" name="memberPw" id="memberPw" value=""  required>
             <!-- placeholder="비밀번호" -->
-            <label for="memberPw">비밀번호</label>
+            <label for="memberPw" class="loginLabel">비밀번호</label>
           </div>
 
-          <button class="login-button">로그인</button>
+          <button class="login-button" id="loginBtn">로그인</button>
         </form>
 
         <!-- 아이디, 비밀번호 찾기 -->
@@ -81,5 +81,7 @@
         <a href="#">고객센터</a>
       </article>
     </footer>
+
+     <script src="/resources/js/login.js"></script>
   </body>
 </html>
