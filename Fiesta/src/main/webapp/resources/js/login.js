@@ -10,6 +10,41 @@ const memberEmail = document.getElementById("memberEmail");
 const memberPw = document.getElementById("memberPw");
 const loginBtn = document.getElementById("loginBtn");
 
+
+document.addEventListener("DOMContentLoaded", function(){
+    memberEmail.removeAttribute("readonly");
+    memberEmail.value = "123";
+    memberEmail.value = "";
+    memberEmail.focus();
+
+    memberPw.removeAttribute("readonly");
+    memberPw.value = "123";
+    memberPw.value = "";
+})
+
+// setTimeout(function(){
+//     memberEmail.focus();
+//     memberEmail.value = "";
+//     // document.getElementsByTagName("body").addEventListener("click");
+// }, 100);
+
+// setTimeout(function(){
+//     memberPw.focus();
+//     memberPw.value = "";
+//     // document.getElementsByTagName("body").addEventListener("click");
+// }, 150);
+
+
+// memberPw.value = "";
+
+
+// setTimeout(function(){
+//     memberEmail.focus();
+// }, 0);
+
+
+
+
 // setTimeout(function(){
 //     // memberEmail.setSelectionRange(1,5);
 //     memberEmail.focus();

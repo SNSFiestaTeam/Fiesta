@@ -30,16 +30,15 @@
         </div>
 
         <!-- 로그인 -->
-        <!-- 나중에 링크 바꾸기 -->
         <form action="/member/login" method="post" id="login-frm">
           <div class="login-area">
-            <input type="text" name="memberEmail" id="memberEmail" value="" autocomplete="off" autofocus required>
+            <input type="text" name="memberEmail" id="memberEmail" value="" autocomplete="off" required readonly>
             <!-- placeholder="이메일"  -->
             <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
           <div class="login-area">
-            <input type="password" name="memberPw" id="memberPw" value=""  required>
+            <input type="password" name="memberPw" id="memberPw" value=""  required readonly>
             <!-- placeholder="비밀번호" -->
             <label for="memberPw" class="loginLabel">비밀번호</label>
           </div>
@@ -51,9 +50,7 @@
         <div class="line">또는</div>
 
         <div class="findAccount">
-          <a href="../common/findAccount(이은지).html"
-            >아이디, 비밀번호를 잊으셨나요?</a
-          >
+          <a href="../common/findAccount(이은지).html">아이디, 비밀번호를 잊으셨나요?</a>
         </div>
       </section>
 
