@@ -30,21 +30,22 @@
         </div>
 
         <!-- 로그인 -->
-        <form action="/member/login" method="post" id="login-frm">
+        <form action="/main" method="post" id="login-frm">
           <div class="login-area">
 
             <input type="text" name="memberEmail"  id="memberEmail" value="" maxlength="50" autocomplete="off" required>
 
+            <input type="text" name="memberEmail"  id="memberEmail" value="" 
+                maxlength="50" autocomplete="off" required readonly> 
             <!-- placeholder="이메일"  -->
             <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
           <div class="login-area">
-
-            <input type="password" name="memberPw" id="memberPw" value="" maxlength="30" required>
-
+            <input type="password" name="memberPw" id="memberPw" value="" 
+                maxlength="30" required readonly>
             <!-- placeholder="비밀번호" -->
-            <label for="memberPw" class="loginLabel">비밀번호</label>
+            <label for="memberPw">비밀번호</label>
           </div>
 
           <button class="login-button" id="loginBtn">로그인</button>
@@ -54,7 +55,7 @@
         <div class="line">또는</div>
 
         <div class="findAccount">
-          <a href="../common/findAccount(이은지).html">아이디, 비밀번호를 잊으셨나요?</a>
+          <a href="/member/findAccount">아이디, 비밀번호를 잊으셨나요?</a>
         </div>
       </section>
 
@@ -66,23 +67,10 @@
         </div>
       </section>
     </main>
+    
+     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <!-- 푸터 -->
-    <footer>
-      <p>
-        Copyright &copy; KH Information Educational Institute A-Class SNS Team
-      </p>
-      <article>
-        <a href="#">프로젝트 소개</a>
-        <span>|</span>
-        <a href="#">이용약관</a>
-        <span>|</span>
-        <a href="#">개인정보처리방침</a>
-        <span>|</span>
-        <a href="#">고객센터</a>
-      </article>
-    </footer>
-
-     <script src="/resources/js/login.js"></script>
+    <script src="/resources/js/login.js"></script>
   </body>
 </html>
+

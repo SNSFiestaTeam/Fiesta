@@ -25,24 +25,7 @@ const checkObj = {
 }
 
 
-// // 아예 눌리지 않게 해야 하는데..
-// document.getElementById("signUp-frm").addEventListener("submit", function(event){
-
-//     const signUpButton = document.getElementById("signUpButton");
-
-// //버튼 비활성화 만들기
-//     for(let key in checkObj){
-
-//         if( !checkObj[key] ){
-//             signUpButton.classList.add("buttonOff");
-//             document.getElementById(key).focus();
-//             event.preventDefault();
-//             return;
-//         }
-//     }
-
-// });
-
+const signUpForm = document.getElementById("signUp-frm");
 
 const memberEmail = document.getElementById("memberEmail");
 const memberName = document.getElementById("memberName");
@@ -54,15 +37,34 @@ const signUpButton = document.getElementById("signUpButton");
 
 
 
+// 회원가입 form 제출 이벤트
+document.getElementById("signUp-frm").addEventListener("submit", function(event){
+
+    //버튼 비활성화 만들기
+    for(let key in checkObj){
+        if( !checkObj[key] ){
+            signUpButton.disabled = false;
+            document.getElementById(key).focus();
+            event.preventDefault();
+            return;
+        }
+    }
+
+});
+
+
+emailCheck.classList.add("iVisible", "gray");
+nameCheck.classList.add("iVisible", "gray");
+    
 // 이메일 아이콘 : 필수입력, 유효성 검사
+// v/x 하지 말고, v 색 변경으로.
 memberEmail.addEventListener("input", function(){
     const emailCheck = document.getElementById("emailCheck");
-    // const emailXmark = document.getElementById("emailXmark");
     
-    // v/x 하지 말고, v 색 변경으로.
-    if(memberEmail.value.trim().length == 0){ //문자가 입력되지 않을 때
-        emailCheck.classList.add("iVisible", "gray");
-        signUpButton.disabled = false;
+    // 필수 입력
+    if(memberEmail.value.trim().length == 0){ 
+        checkObj.memberEmail = false;
+        return;
     } 
     
     // 유효성 검사
@@ -71,29 +73,72 @@ memberEmail.addEventListener("input", function(){
     if(regEx.test(memberEmail.value)){
         emailCheck.classList.add("iVisible", "green");
         emailCheck.classList.remove("gray");
-        signUpButton.disabled = true;
-        signUpButton.classList.add("buttonOn");
+        checkObj.memberEmail = true;
+        // signUpButton.disabled = true;
+        // signUpButton.classList.add("buttonOn");
         
     } else {
         emailCheck.classList.add("iVisible", "gray");
         emailCheck.classList.remove("green");
+        checkObj.memberEmail = false;
     }
+
 });
 
 
-// 성명 아이콘 : 필수 입력
+// 성명 아이콘 : 필수 입력 / 유효성 검사(한글, 영문자만 가능, 3글자 이상)
 memberName.addEventListener("input", function(){
     const nameCheck = document.getElementById("nameCheck");
 
     if(this.value.trim().length == 0){
         nameCheck.classList.add("iVisible", "gray");
-        signUpButton.disabled = false;
+        nameCheck.classList.remove("green");
+        checkObj.memberName = false;
+        return;
+    } 
     
-    } else {
+    // 유효성 검사
+    const regEx = /^[\w\d]{3,}$/;
+    
+    if(regEx.test(memberName.value)){
         nameCheck.classList.add("iVisible", "green");
         nameCheck.classList.remove("gray");
-
+        checkObj.memberName = true;
+    } else {
+        nameCheck.classList.add("iVisible", "gray");
+        nameCheck.classList.remove("green");
+        checkObj.memberName = false;
     }
+})    
+
+
+
+// 사용자 이름 : 필수 입력 / 유효성 검사 (비밀번호랑 같되)
+// 자동완성 지우기
+// document.addEventListener("DOMContentLoaded", function(){
+//     memberNickname.removeAttribute("readonly");
+//     memberNickname.value = "123";
+//     memberNickname.value = "";
+// })
+
+
+memberNickname.addEventListener("input", function(){
+    const nickCheck = document.getElementById("nickCheck");
+    const nickRefresh = document.getElementById("nickRefresh");
+
+
+    if(this.value.trim().length == 0){
+        nickCheck.classList.add("iVisible", "gray");
+        nickCheck.classList.remove("green");
+        checkObj.memberNickname = false;
+        return;
+    }
+    
+
+
+
 
 
 })
+
+
