@@ -113,6 +113,7 @@ main{
 .icon-nickname-refresh{
     right: 25px;
     position: absolute;
+    cursor: pointer;
 }
 
 .icon-pw-showHide{

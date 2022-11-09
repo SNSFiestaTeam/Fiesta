@@ -10,7 +10,7 @@
     <title>로그인</title>
     <link rel="stylesheet" href="resources/css/common-style.css" />
                               <!-- /resources/css/common-style.css -->
-    <link rel="stylesheet" href="resources/css/login-style.css" />
+    <link rel="stylesheet" href="resources/css/login-style.css">
                             <!-- /resources/css/login-style.css -->
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -18,7 +18,7 @@
     ></script>
   </head>
 
-  <%-- 로그인 페이지 --%>
+  <!-- 로그인 페이지 -->
   <body>
     <!-- 메인 섹션 -->
     <main>
@@ -31,20 +31,18 @@
 
         <!-- 로그인 -->
         <form action="/main" method="post" id="login-frm">
+         
+          <!-- 이메일 -->
           <div class="login-area">
-
-            <input type="text" name="memberEmail"  id="memberEmail" value="" maxlength="50" autocomplete="off" required>
-
             <input type="text" name="memberEmail"  id="memberEmail" value="" 
                 maxlength="50" autocomplete="off" required readonly> 
-            <!-- placeholder="이메일"  -->
             <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
+          <!-- 패스워드 -->
           <div class="login-area">
             <input type="password" name="memberPw" id="memberPw" value="" 
                 maxlength="30" required readonly>
-            <!-- placeholder="비밀번호" -->
             <label for="memberPw">비밀번호</label>
           </div>
 
@@ -70,7 +68,7 @@
     
      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/resources/js/login.js"></script>
+     <script src="/resources/js/login.js"></script>
   </body>
 </html>
 

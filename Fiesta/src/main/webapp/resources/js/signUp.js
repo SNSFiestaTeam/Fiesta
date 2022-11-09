@@ -53,9 +53,14 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
 });
 
 
-emailCheck.classList.add("iVisible", "gray");
-nameCheck.classList.add("iVisible", "gray");
+// icon 전체에 회색 적용
+const icon = document.getElementsByClassName("icon");
+
+for(let item of icon){
+    item.classList.add("gray");
+}
     
+
 // 이메일 아이콘 : 필수입력, 유효성 검사
 // v/x 하지 말고, v 색 변경으로.
 memberEmail.addEventListener("input", function(){
@@ -63,6 +68,8 @@ memberEmail.addEventListener("input", function(){
     
     // 필수 입력
     if(memberEmail.value.trim().length == 0){ 
+        emailCheck.classList.add("gray");
+        emailCheck.classList.remove("green");
         checkObj.memberEmail = false;
         return;
     } 
@@ -71,14 +78,14 @@ memberEmail.addEventListener("input", function(){
     const regEx = /^[\w\d\-\_]{4,}@[가-힣\w]+(\.\w+){1,3}$/;
 
     if(regEx.test(memberEmail.value)){
-        emailCheck.classList.add("iVisible", "green");
+        emailCheck.classList.add("green");
         emailCheck.classList.remove("gray");
         checkObj.memberEmail = true;
         // signUpButton.disabled = true;
         // signUpButton.classList.add("buttonOn");
         
     } else {
-        emailCheck.classList.add("iVisible", "gray");
+        emailCheck.classList.add("gray");
         emailCheck.classList.remove("green");
         checkObj.memberEmail = false;
     }
@@ -113,7 +120,7 @@ memberName.addEventListener("input", function(){
 
 
 
-// 사용자 이름 : 필수 입력 / 유효성 검사 (비밀번호랑 같되)
+// 사용자 이름 : 필수 입력 / 유효성 검사
 // 자동완성 지우기
 // document.addEventListener("DOMContentLoaded", function(){
 //     memberNickname.removeAttribute("readonly");
@@ -122,23 +129,55 @@ memberName.addEventListener("input", function(){
 // })
 
 
-memberNickname.addEventListener("input", function(){
-    const nickCheck = document.getElementById("nickCheck");
-    const nickRefresh = document.getElementById("nickRefresh");
+const nickCheck = document.getElementById("nickCheck");
+const nickRefresh = document.getElementById("nickRefresh");
 
+memberNickname.addEventListener("input", function(){
 
     if(this.value.trim().length == 0){
-        nickCheck.classList.add("iVisible", "gray");
+        nickCheck.classList.add("gray");
         nickCheck.classList.remove("green");
+        nickRefresh.classList.add("gray");
+        nickCheck.classList.remove("blue")
         checkObj.memberNickname = false;
         return;
-    }
+    } 
     
 
+    // 유효성 검사(== 비밀번호)
+    const regEx = /^[\w\-\_\.]{3,}$/;
 
-
-
-
+    if(regEx.test(memberNickname.value)){
+        nickCheck.classList.add("green");
+        nickCheck.classList.remove("gray");
+        checkObj.memberNickname = true;
+    } else {
+        nickCheck.classList.add("gray");
+        nickCheck.classList.remove("green");
+        checkObj.memberNickname = false;
+    }
 })
+
+if(memberNickname.value != null){
+    // 랜덤 닉네임 생성
+    nickRefresh.addEventListener("click", function(){
+        let inputNickname = document.getElementById("memberNickname");
+        let arr = [];
+       
+        // arr = inputNickname.value.split("");
+
+        // 입력 받은 문자열을 문자 단위로 나누기
+        for(let i=0; i<inputNickname.value.length; i++){
+            let ranNum = inputNickname.value.charAt(Math.floor(Math.random() * inputNickname.value.length));
+            arr[i] = ranNum;
+        }
+        
+        // arr[i] = inputNickname.value.charAt(Math.floor(Math.random() * inputNickname.value.length));
+        let randomNickname = arr.join('');
+        inputNickname.value = randomNickname;
+    })
+}
+
+
 
 
