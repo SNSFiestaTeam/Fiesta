@@ -47,8 +47,15 @@ if(changePwForm != null){
             alert("새 비밀번호가 일치하지 않습니다.");
             newPwConfirm.focus();
             event.preventDefault();
-
+''
             return;
         }
+
+        const regEx = /^[\w\~\!\@\#\$\%\^\&\*\-\_]{6,30}$/;
+        if(!regEx.test(newPw.value)){
+            alert("이 비밀번호는 추측하기 너무 쉽습니다. 비밀번호를 다시 만드세요")
+        }
     })
+
+    
 }
