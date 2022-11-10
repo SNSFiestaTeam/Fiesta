@@ -8,6 +8,7 @@
   --small-font-size: 14px;
   --medium-font-size: 16px;
   --large-icon-size: 24px;
+  --fiesta-color: #dd4132;
 }
 
 .red {
@@ -49,7 +50,7 @@ main > section {
 }
 
 /* 피드 콘테이너 */
-#feed {
+.feed {
   width: 100%;
   margin-bottom: 25px;
   border: 1px solid #ccc;
@@ -80,7 +81,7 @@ main > section {
   font-weight: bold;
 }
 
-#profile-photo {
+.profile-photo {
   display: block;
   border-radius: 50%;
   width: 35px;
@@ -96,7 +97,7 @@ main > section {
   font-size: var(--small-font-size);
 }
 
-#feed-profile-image {
+.feed-profile-image {
   width: 100%;
   border-radius: 50%;
 }
@@ -106,7 +107,7 @@ main > section {
   display: block;
 }
 
-#feed-header-menu {
+.feed-header-menu {
   padding: 10px;
   cursor: pointer;
 }
@@ -130,7 +131,7 @@ main > section {
   width: 100%;
 }
 
-#right-btn {
+.right-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,14 +145,14 @@ main > section {
   opacity: 70%;
 }
 
-#right-btn > i {
+.right-btn > i {
   font-size: 12px;
   color: rgba(red, green, blue, 0);
   opacity: 70%;
 }
 
 /* 본문 및 댓글 창 */
-#main-content-section {
+.main-content-section {
   margin-top: 5px;
   font-size: var(--small-font-size);
   padding: 0 16px;
@@ -182,7 +183,6 @@ main > section {
 }
 
 .feed-main-content {
-  padding-right: 30px;
   margin-top: 5px;
 }
 
@@ -243,7 +243,7 @@ main > section {
 }
 
 /* 댓글 상세보기 설정 */
-a#comment-profile {
+a.comment-profile {
   display: none;
 }
 
@@ -286,32 +286,32 @@ a#comment-profile {
   display: none;
 }
 
-#comment-input-area {
+.comment-input-area {
   margin: 10px 0;
   height: 40px;
   font-size: var(--small-font-size);
 }
 
-#comment-input-area > form {
+.comment-input-area > div {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#comment-input-area input {
+.comment-input-area > div > input {
   border: 0;
   outline: none;
   flex-basis: 90%;
 }
 
-#comment-input-area button {
-  color: var(--point-font-color);
+.comment-input-area button {
+  color: var(--fiesta-color);
   font-weight: bold;
 }
 
-#comment-input-area button:disabled {
-  color: #0095f660;
+.comment-input-area button:disabled {
+  color: #dbbbb8;
   cursor: default;
 }
 
@@ -350,13 +350,13 @@ a#comment-profile {
     height: auto;
   }
 
-  #feed {
+  .feed {
     width: 1000px;
     height: 610px;
     display: flex;
   }
 
-  #feed > .profile-image-area {
+  .feed > .profile-image-area {
     flex-basis: 55%;
     width: 550px;
   }
@@ -372,7 +372,7 @@ a#comment-profile {
     object-fit: cover;
   }
 
-  #main-container {
+  .main-container {
     width: 100%;
     margin-top: 5px;
     height: 480px;
@@ -381,18 +381,18 @@ a#comment-profile {
     -ms-overflow-style: none;
   }
 
-  #main-container::-webkit-scrollbar {
+  .main-container::-webkit-scrollbar {
     display: none;
   }
 
-  #main-content-section {
+  .main-content-section {
     margin-top: 10px;
     margin-right: 10px;
     flex-basis: 45%;
     margin-left: 10px;
   }
 
-  .memberId {
+  .member-id {
     display: none;
   }
 
@@ -439,7 +439,7 @@ a#comment-profile {
     margin-top: 30px;
   }
 
-  a#comment-profile {
+  a.comment-profile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -452,7 +452,7 @@ a#comment-profile {
     object-fit: fill;
   }
 
-  #comment-profile-image {
+  .comment-profile-image {
     width: 100%;
   }
 
@@ -513,7 +513,7 @@ a#comment-profile {
   }
 
   .more-reply::before {
-    content: "";
+    content: '';
   }
 
   /* 댓글 상세보기 스타일 end */
@@ -526,18 +526,19 @@ a#comment-profile {
   /* 답글 스타일 end */
 
   /* 댓글 입력창 */
-  #comment-input-area > form {
+  .comment-input-area > div {
     height: 50px;
     align-items: center;
     margin-bottom: 5px;
   }
 
-  #comment-input-area > form > input {
+  .comment-input-area > div > input {
     font-size: 15px;
     height: 100%;
+    border: none;
   }
 
-  #comment-input-area > form > button {
+  .comment-input-area > div > button {
     font-size: 15px;
   }
 }
@@ -562,7 +563,7 @@ a#comment-profile {
     margin-top: 0;
   }
 
-  #feed {
+  .feed {
     border: none;
   }
 
