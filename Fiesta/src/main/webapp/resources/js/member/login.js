@@ -18,6 +18,13 @@ memberPw.addEventListener("focus", function(){
 
 
 
+// 로그인 실패
+if(${message} == null)
+
+"${message}"
+
+
+
 // setTimeout(function(){
 //     memberEmail.focus();
 //     memberEmail.value = "";

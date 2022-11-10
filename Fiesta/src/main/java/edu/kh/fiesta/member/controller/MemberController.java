@@ -33,7 +33,7 @@ public class MemberController {
 			path = "/main";
 			model.addAttribute("loginMember", loginMember);
 			
-			System.out.println("로그인 성공!");
+//			System.out.println("로그인 성공!");
 			
 			// 쿠키 생성
 			
