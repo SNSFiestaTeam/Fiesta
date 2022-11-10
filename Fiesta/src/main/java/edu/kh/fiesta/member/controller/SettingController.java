@@ -46,7 +46,13 @@ public class SettingController {
 	
 	@PostMapping("/pw")
 	public String changePw(Member loginMember,
-			RedirectAttributes ra, @RequestParam Map<String, Object> Paramap) {
+			RedirectAttributes ra, @RequestParam Map<String, Object> paramMap) {
+		
+		paramMap.put("memberNo", loginMember.getMemberNo());
+		
+		int result = service.changePw(paramMap);
+		
+		
 		return "redirect:Pw";
 		
 	}
