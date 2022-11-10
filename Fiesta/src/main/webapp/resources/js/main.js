@@ -107,53 +107,41 @@ for (let i = 0; i < postingBtn.length; i++) {
     // 댓글 리스트 최상위 부모인 Ul 태그 불러오기
     const commentUl = document.getElementsByClassName('comment-list');
 
-    // ul 태그에 추가할 li 태그 생성
+    // ul 태그에 li.comment 추가
     const commentLi = document.createElement('li');
-
-    // li태그에 comment 클래스 추가
     commentLi.classList.add('comment');
 
-    // ul태그 마지막 자식 요소로 li 태그 추가
     commentUl[i].append(commentLi);
 
-    // li 태그에 추가할 div.comment-firstchild 요소 생성
+    // commentLi에 div.comment-firstchild 추가
     const commentFirstChild = document.createElement('div');
-
-    // commentFirstChild에 클래스 추가
     commentFirstChild.classList.add('comment-firstchild');
 
-    // commentLi에 commentFirstChild 추가
     commentLi.append(commentFirstChild);
 
-    // div.comment-firstchild에 추가할 a 태그 생성
+    // div.comment-firstchild에  a.comment-profile 추가
     const commentProfile = document.createElement('a');
     const commentProfileDiv = document.createElement('div');
-
-    //commentProfile에 comment-profile 클래스 추가
     commentProfile.classList.add('comment-profile');
 
-    // commentFirstChild에 commentProfile, commentProfileDiv 요소 추가
     commentFirstChild.append(commentProfile, commentProfileDiv);
 
-    // commentProfile에 추가할 commentProfileImg 생성
+    // commentProfile에  commentProfileImg 추가
     const commentProfileImg = document.createElement('img');
-
-    // commentProfileImg에 id, src 속성 추가
-    commentProfileImg.setAttribute('id', 'comment-profile-image');
+    commentProfileImg.classList.add('comment-profile-image');
     commentProfileImg.setAttribute('src', '/resources/images/안유진.jpg');
 
     commentProfile.append(commentProfileImg);
 
-    // commentProfileDiv에 추가할 div 요소 생성
+    // commentProfileDiv에 div.comment-firstline, div.create-reply 추가
     const commentFirstLine = document.createElement('div');
     const createReply = document.createElement('div');
-
     commentFirstLine.classList.add('comment-firstline');
     createReply.classList.add('create-reply');
 
-    // commentProfileDiv에 div 두개 추가
     commentProfileDiv.append(commentFirstLine, createReply);
 
+    // commentFirstLine에 div 두 개 추가
     const div1 = document.createElement('div');
     const div2 = document.createElement('div');
 
@@ -175,8 +163,55 @@ for (let i = 0; i < postingBtn.length; i++) {
 
     // div2에 button.comment-like-btn 추가
     const likeBtn = document.createElement('button');
+    likeBtn.classList.add('comment-like-btn');
+    const heart = document.createElement('i');
+    heart.classList.add('fa-regular', 'fa-heart');
+
+    // 새롭게 추가된 likeBtn에 클릭 이벤트 핸들러 추가
+    likeBtn.addEventListener('click', () => {
+      const emptyHeart = '<i class="fa-regular fa-heart"></i>';
+      const solidHeart = '<i class="fa-solid fa-heart"></i>';
+
+      if (!likeBtn.classList.contains('red')) {
+        likeBtn.innerHTML = '';
+        likeBtn.innerHTML = solidHeart;
+        likeBtn.classList.add('red');
+      } else {
+        likeBtn.innerHTML = emptyHeart;
+        likeBtn.classList.remove('red');
+      }
+    });
+
+    likeBtn.append(heart);
+    div2.append(likeBtn);
+
+    // createReply에 span, button, button.hover-btn 추가
+    const span = document.createElement('span');
+    const replyBtn = document.createElement('button');
+    replyBtn.setAttribute('type', 'button');
+    replyBtn.classList.add('reply-btn');
+    const hoverBtn = document.createElement('button');
+    hoverBtn.setAttribute('type', 'button');
+    hoverBtn.classList.add('fa-solid', 'fa-ellipsis', 'hover-btn');
+
+    span.appendChild(document.createTextNode('2주'));
+    replyBtn.appendChild(document.createTextNode('답글 달기'));
+
+    createReply.append(span, replyBtn, hoverBtn);
 
     console.log(commentLi);
+
+    // 댓글 등록버튼 클릭 시 input에 입력된 값 제거
+    commentInput[i].value = '';
+
+    //
+    postingBtn[i].disabled = true;
+
+    // 댓글 등록 시 스크롤 등록된 댓글로 이동
+    const mainContainer = document.getElementsByClassName('main-container');
+    for (let item of mainContainer) {
+      item.scrollTop = item.scrollHeight;
+    }
   });
 }
 
@@ -218,6 +253,8 @@ for (let i = 0; i < allCommentBtn.length; i++) {
     const commentList = document.getElementsByClassName('comment-list');
 
     commentList[i].classList.remove('two-line');
+    commentList[i].classList.add('ten-line');
+
     allCommentBtn[i].classList.add('hide');
   });
 }
@@ -238,5 +275,20 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
       commentLikeBtn[i].innerHTML = emptyHeart;
       commentLikeBtn[i].classList.remove('red');
     }
+  });
+}
+
+// 이미지 슬라이드 쇼 만들기
+const slideShow = document.getElementsByClassName('slide-show');
+// const leftBtn = document.getElementsByClassName('left-btn');
+/* <button type="button" class="left-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button> */
+const rightBtn = document.getElementsByClassName('right-btn');
+for (let i = 0; i < rightBtn.length; i++) {
+  rightBtn[i].addEventListener('click', () => {
+    const slides = document.getElementsByClassName('slides');
+
+    slides[i].style.transform = 'translateX(-468px)';
   });
 }
