@@ -53,7 +53,7 @@
 
               <!-- 중복검사 + 형태 맞는지 확인하는 아이콘 : 체크, X -->
               <span class="icon-id-check">
-                <i class="fa-regular fa-circle-check" id="emailCheck"></i>
+                <i class="fa-regular fa-circle-check icon" id="emailCheck"></i>
               </span>
             </div>
   
@@ -65,7 +65,7 @@
              
               <!-- 검사 안함 : 필수작성 확인 /체크-->
               <span class="icon-name-check">
-                <i class="fa-regular fa-circle-check" id="nameCheck"></i>
+                <i class="fa-regular fa-circle-check icon" id="nameCheck"></i>
               </span>
             </div>
   
@@ -77,10 +77,10 @@
               
               <!-- 자동생성 / 중복검사 : 새로고침 / 체크 / X-->
               <span class="icon-nickname-refresh">
-                <i class="fa-solid fa-arrow-rotate-right" id="nickRefresh"></i>
+                <i class="fa-solid fa-arrow-rotate-right icon" id="nickRefresh"></i>
               </span>
               <span class="icon-nickname-check">
-                 <i class="fa-regular fa-circle-check" id="nickCheck"></i>
+                 <i class="fa-regular fa-circle-check icon" id="nickCheck"></i>
               </span>
             </div>
   
@@ -91,8 +91,8 @@
               <!-- 비밀번호 보이기숨기기 -->
               <!-- 비밀번호 정규표현식 사용 -->
               <span class="icon-pw-showHide">
-                <!-- <i class="fa-regular fa-eye" id="pwEye"></i> -->
-                <i class="fa-regular fa-eye-slash" id="pwEyeSlash"></i>
+                <!-- <i class="fa-regular fa-eye icon" id="pwEye"></i> -->
+                <i class="fa-regular fa-eye-slash icon" id="pwEyeSlash"></i>
               </span>
             </div>
               
@@ -104,7 +104,7 @@
               <!-- 비밀번호 일치 확인 : 체크 / X -->
               <span class=icon-pwConfirm-check>
                 <!-- <i class="fa-regular fa-circle-check" id="pwConfirmCheck"></i> -->
-                <i class="fa-regular fa-circle-xmark" id="pwConfirmXmark"></i>
+                <i class="fa-regular fa-circle-xmark icon" id="pwConfirmXmark"></i>
               </span>
             </div> 
   
@@ -123,7 +123,7 @@
 
  
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    <script src="/resources/js/signUp.js"></script>
+    <script src="/resources/js/member/signUp.js"></script>
 
   </body>
 </html>
