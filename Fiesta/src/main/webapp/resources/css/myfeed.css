@@ -80,17 +80,11 @@ body {
 
 }
 
-#profile-board > a:nth-child(1) {
-    font-size: 16px;
+#profile-board > span:nth-child(1) {
     margin-right: 50px;
 }
-#profile-board > a:nth-child(2) {
-    font-size: 16px;
+#profile-board > span:nth-child(2) {
     margin-right: 50px;
-}
-
-#profile-board > a:nth-child(3) {
-    font-size: 16px;
 }
 
 .introduce-text{

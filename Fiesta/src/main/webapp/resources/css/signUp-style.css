@@ -113,6 +113,7 @@ main{
 .icon-nickname-refresh{
     right: 25px;
     position: absolute;
+    cursor: pointer;
 }
 
 .icon-pw-showHide{
@@ -121,8 +122,7 @@ main{
 }
 
 
-.fa-circle-check { visibility: hidden; }
-.fa-circle-xmark { visibility: hidden; }
+
 
 .iVisible { visibility: visible;}
 .iHidden { visibility: hidden;}

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/resources/css/feed-menu-style.css">
     <link rel="stylesheet" href="/resources/css/share-style.css">
     <link rel="stylesheet" href="/resources/css/report-style.css">
+    <link rel="stylesheet" href="/resources/css/comment-style.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -216,6 +217,37 @@
                             <div class="comment-firstline">
                               <div>
                                 <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">하트 뿅뿅</span>
+                              </div>
+                              <div>
+                                <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li>
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
                                 <span class="comment-content">레전드</span>
                               </div>
                               <div>
@@ -234,6 +266,70 @@
                         </div>
                         <a href="#" class="more-reply">모든 답글 보기(1개)</a>
                       </li>
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">대박이다 진짜 이쁘다</span>
+                              </div>
+                              <div>
+                                <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li>
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">카리나 최고</span>
+                              </div>
+                              <div>
+                                <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li>
+                      <li>
+                      <button>댓글 전체 보기</button></li>
                     </ul>
                   </div>
                   <a href="#" class="create-date">10월 19일</a>
@@ -425,6 +521,161 @@
                         </ul>
                       </li>
 
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">레전드</span>
+                              </div>
+                              <div>
+                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li> 
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">레전드</span>
+                              </div>
+                              <div>
+                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li> 
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">레전드</span>
+                              </div>
+                              <div>
+                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li> 
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">레전드</span>
+                              </div>
+                              <div>
+                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li> 
+                      <!-- 세번째 댓글 -->
+                      <li class="comment">
+                        <div class="comment-firstchild">
+                          <a href="#" id="comment-profile">
+                            <img
+                              id="comment-profile-image"
+                              src="/resources/images/이영지.jpg"
+                            />
+                          </a>
+                          <div>
+                            <div class="comment-firstline">
+                              <div>
+                                <a href="#" class="comment-memberId">youngji_02</a>
+                                <span class="comment-content">레전드</span>
+                              </div>
+                              <div>
+                                <a href="#"  class="comment-like-btn"><i class="fa-regular fa-heart"></i></a>
+                              </div>
+                            </div>
+                            <div class="create-reply">
+                              <a href="#">2주</a>
+                              <a href="#">답글 달기</a>
+                              <button
+                                type="button"
+                                class="fa-solid fa-ellipsis hover-btn"
+                              ></button>
+                            </div>
+                          </div>
+                        </div>
+                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                      </li> 
                       <!-- 세번째 댓글 -->
                       <li class="comment">
                         <div class="comment-firstchild">

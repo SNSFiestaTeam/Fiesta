@@ -10,7 +10,7 @@
     <title>로그인</title>
     <link rel="stylesheet" href="resources/css/common-style.css" />
                               <!-- /resources/css/common-style.css -->
-    <link rel="stylesheet" href="resources/css/login-style.css" />
+    <link rel="stylesheet" href="resources/css/login-style.css">
                             <!-- /resources/css/login-style.css -->
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -18,7 +18,7 @@
     ></script>
   </head>
 
-  <%-- 로그인 페이지 --%>
+  <!-- 로그인 페이지 -->
   <body>
     <!-- 메인 섹션 -->
     <main>
@@ -30,30 +30,30 @@
         </div>
 
         <!-- 로그인 -->
-        <!-- 나중에 링크 바꾸기 -->
-        <form action="/member/login" method="post" id="login-frm">
+        <form action="/main" method="post" id="login-frm">
+         
+          <!-- 이메일 -->
           <div class="login-area">
-            <input type="text" name="memberEmail"  id="memberEmail" value="" autocomplete="off" required>
-            <!-- placeholder="이메일"  -->
-            <label for="memberEmail">이메일</label>
+            <input type="text" name="memberEmail"  id="memberEmail" value="" 
+                maxlength="50" autocomplete="off" required readonly> 
+            <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
+          <!-- 패스워드 -->
           <div class="login-area">
-            <input type="password" name="memberPw" id="memberPw" value="" required>
-            <!-- placeholder="비밀번호" -->
+            <input type="password" name="memberPw" id="memberPw" value="" 
+                maxlength="30" required readonly>
             <label for="memberPw">비밀번호</label>
           </div>
 
-          <button class="login-button">로그인</button>
+          <button class="login-button" id="loginBtn">로그인</button>
         </form>
 
         <!-- 아이디, 비밀번호 찾기 -->
         <div class="line">또는</div>
 
         <div class="findAccount">
-          <a href="../common/findAccount(이은지).html"
-            >아이디, 비밀번호를 잊으셨나요?</a
-          >
+          <a href="/member/findAccount">아이디, 비밀번호를 잊으셨나요?</a>
         </div>
       </section>
 
@@ -65,21 +65,10 @@
         </div>
       </section>
     </main>
+    
+     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <!-- 푸터 -->
-    <footer>
-      <p>
-        Copyright &copy; KH Information Educational Institute A-Class SNS Team
-      </p>
-      <article>
-        <a href="#">프로젝트 소개</a>
-        <span>|</span>
-        <a href="#">이용약관</a>
-        <span>|</span>
-        <a href="#">개인정보처리방침</a>
-        <span>|</span>
-        <a href="#">고객센터</a>
-      </article>
-    </footer>
+     <script src="/resources/js/member/login.js"></script>
   </body>
 </html>
+
