@@ -243,7 +243,7 @@ main > section {
 }
 
 /* 댓글 상세보기 설정 */
-a#comment-profile {
+a.comment-profile {
   display: none;
 }
 
@@ -292,14 +292,14 @@ a#comment-profile {
   font-size: var(--small-font-size);
 }
 
-#comment-input-area > form {
+#comment-input-area > div {
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#comment-input-area input {
+#comment-input-area > div > input {
   border: 0;
   outline: none;
   flex-basis: 90%;
@@ -439,7 +439,7 @@ a#comment-profile {
     margin-top: 30px;
   }
 
-  a#comment-profile {
+  a.comment-profile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -452,7 +452,7 @@ a#comment-profile {
     object-fit: fill;
   }
 
-  #comment-profile-image {
+  .comment-profile-image {
     width: 100%;
   }
 
@@ -526,18 +526,19 @@ a#comment-profile {
   /* 답글 스타일 end */
 
   /* 댓글 입력창 */
-  #comment-input-area > form {
+  #comment-input-area > div {
     height: 50px;
     align-items: center;
     margin-bottom: 5px;
   }
 
-  #comment-input-area > form > input {
+  #comment-input-area > div > input {
     font-size: 15px;
     height: 100%;
+    border: none;
   }
 
-  #comment-input-area > form > button {
+  #comment-input-area > div > button {
     font-size: 15px;
   }
 }

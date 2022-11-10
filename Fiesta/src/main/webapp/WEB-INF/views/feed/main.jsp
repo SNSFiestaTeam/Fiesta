@@ -109,7 +109,7 @@
                       <!-- 첫번째 댓글(답글 보기 X) -->
                       <li class="comment">
                         <div class="comment-firstchild">
-                          <a href="#" id="comment-profile">
+                          <a href="#" class="comment-profile">
                             <img
                               id="comment-profile-image"
                               src="/resources/images/안유진.jpg"
@@ -135,13 +135,13 @@
                             </div>
                           </div>
                         </div>
-                        <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                        <button class="more-reply">모든 답글 보기(1개)</button>
                       </li>
 
                       <!-- 두번째 댓글(답글 보기 O) -->
                       <li class="comment">
                         <div class="comment-firstchild">
-                          <a href="#" id="comment-profile">
+                          <a href="#" class="comment-profile">
                             <img
                               id="comment-profile-image"
                               src="/resources/images/장원영.jpg"
@@ -173,7 +173,7 @@
                           <!-- 두번째 댓글의 답글 -->
                           <li class="comment" id="reply">
                             <div class="reply-firstchild">
-                              <a href="#" id="comment-profile">
+                              <a href="#" class="comment-profile">
                                 <img
                                   id="comment-profile-image"
                                   src="/resources/images/karina.jpeg"
@@ -207,7 +207,7 @@
                       <!-- 세번째 댓글 -->
                       <li class="comment">
                         <div class="comment-firstchild">
-                          <a href="#" id="comment-profile">
+                          <a href="#" class="comment-profile">
                             <img
                               id="comment-profile-image"
                               src="/resources/images/이영지.jpg"
@@ -238,7 +238,7 @@
                       <!-- 세번째 댓글 -->
                       <li class="comment">
                         <div class="comment-firstchild">
-                          <a href="#" id="comment-profile">
+                          <a href="#" class="comment-profile">
                             <img
                               id="comment-profile-image"
                               src="/resources/images/이영지.jpg"
@@ -269,7 +269,7 @@
                       <!-- 세번째 댓글 -->
                       <li class="comment">
                         <div class="comment-firstchild">
-                          <a href="#" id="comment-profile">
+                          <a href="#" class="comment-profile">
                             <img
                               id="comment-profile-image"
                               src="/resources/images/이영지.jpg"
@@ -300,7 +300,7 @@
                       <!-- 세번째 댓글 -->
                       <li class="comment">
                         <div class="comment-firstchild">
-                          <a href="#" id="comment-profile">
+                          <a href="#" class="comment-profile">
                             <img
                               id="comment-profile-image"
                               src="/resources/images/이영지.jpg"
@@ -328,18 +328,16 @@
                         </div>
                         <a href="#" class="more-reply">모든 답글 보기(1개)</a>
                       </li>
-                      <li>
-                      <button>댓글 전체 보기</button></li>
                     </ul>
                   </div>
                   <a href="#" class="create-date">10월 19일</a>
                 </div>
               </div>
               <div id="comment-input-area">
-                <form name="commentForm" action="#">
+                <div>
                   <input name="comment" id="commentInput" class="comment-input" type="text" placeholder="댓글 달기..." autocomplete="off"/>
                   <button class="posting-btn" disabled >게시</button>
-                </form>
+                </div>
               </div>
             </div>
           </div>

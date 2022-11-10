@@ -101,6 +101,62 @@ for (let i = 0; i < commentInput.length; i++) {
   });
 }
 
+// 댓글 등록 버튼 클릭 시
+for (let i = 0; i < postingBtn.length; i++) {
+  postingBtn[i].addEventListener("click", () => {
+    // 댓글 리스트 최상위 부모인 Ul 태그 불러오기
+    const commentUl = document.getElementsByClassName("comment-list");
+
+    // ul 태그에 추가할 li 태그 생성
+    const commentLi = document.createElement("li");
+
+    // li태그에 comment 클래스 추가
+    commentLi.classList.add("comment");
+
+    // ul태그 마지막 자식 요소로 li 태그 추가
+    commentUl[i].append(commentLi);
+
+    // li 태그에 추가할 div.comment-firstchild 요소 생성
+    const commentFirstChild = document.createElement("div");
+
+    // commentFirstChild에 클래스 추가
+    commentFirstChild.classList.add("comment-firstchild");
+
+    // commentLi에 commentFirstChild 추가
+    commentLi.append(commentFirstChild);
+
+    // div.comment-firstchild에 추가할 a 태그 생성
+    const commentProfile = document.createElement("a");
+    const commentProfileDiv = document.createElement("div");
+
+    //commentProfile에 comment-profile 클래스 추가
+    commentProfile.classList.add("comment-profile");
+
+    // commentFirstChild에 commentProfile, commentProfileDiv 요소 추가
+    commentFirstChild.append(commentProfile, commentProfileDiv);
+
+    // commentProfile에 추가할 commentProfileImg 생성
+    const commentProfileImg = document.createElement("img");
+
+    // commentProfileImg에 id, src 속성 추가
+    commentProfileImg.setAttribute("id", "comment-profile-image");
+    commentProfileImg.setAttribute("src", "/resources/images/안유진.jpg");
+
+    commentProfile.append(commentProfileImg);
+
+    // commentProfileDiv에 추가할 div 요소 생성
+    const commentFirstLine = document.createElement("div");
+    const createReply = document.createElement("div");
+
+    commentFirstLine.classList.add("comment-firstline");
+    createReply.classList.add("create-reply");
+
+    commentProfileDiv.append(commentFirstLine, createReply);
+
+    console.log(commentLi);
+  });
+}
+
 // 북마크 버튼 클릭 시
 //  -> 북마크 버튼 색상 검정
 //  -> 북마크에 추가
