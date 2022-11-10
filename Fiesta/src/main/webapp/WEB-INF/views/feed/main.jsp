@@ -53,8 +53,8 @@
               </div>
   
               <!-- 사진 목록 -->
-              <div class="image-list">
-                <ul>
+              <div class="image-list slide-show">
+                <ul class="slides">
                   <li>
                     <img
                       class="uploaded-image"
@@ -62,10 +62,29 @@
                       alt=""
                     />
                   </li>
+                  <li>
+                    <img
+                      class="uploaded-image"
+                      src="/resources/images/안유진.jpg"
+                      alt=""
+                    />
+                  </li>
+                  <li>
+                    <img
+                      class="uploaded-image"
+                      src="/resources/images/장원영.jpg"
+                      alt=""
+                    />
+                  </li>
                 </ul>
-                <button type="button" class="right-btn">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
+                <p class="controller">
+                  <button type="button" class="left-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button type="button" class="right-btn">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                </p>
               </div>
             </div>
 
@@ -101,41 +120,9 @@
   
                 <!-- 댓글 리스트 -->
                 <div class="comment-container">
-                  <button class="all-comment-btn">댓글 12개 모두 보기</button>
+                  <button class="all-comment-btn">댓글 더보기</button>
                   <div class="comment-area">
                     <ul class="comment-list two-line">
-
-                      <!-- 첫번째 댓글(답글 보기 X) -->
-                      <li class="comment">
-                        <div class="comment-firstchild">
-                          <a href="#" class="comment-profile">
-                            <img
-                            class="comment-profile-image"
-                              src="/resources/images/안유진.jpg"
-                            />
-                          </a>
-                          <div>
-                            <div class="comment-firstline">
-                              <div>
-                                <a href="#" class="comment-memberId">_yujin_an</a>
-                                <span class="comment-content">진짜 잘생겼다.. 미쳤다</span>
-                              </div>
-                              <div>
-                                <button class="comment-like-btn" ><i class="fa-regular fa-heart"></i></button>
-                              </div>
-                            </div>
-                            <div class="create-reply">
-                              <button type="button">2주</button>
-                              <button type="button">답글 달기</button>
-                              <button
-                                type="button"
-                                class="fa-solid fa-ellipsis hover-btn"
-                              ></button>
-                            </div>
-                          </div>
-                        </div>
-                        <button class="more-reply">모든 답글 보기(1개)</button>
-                      </li>
 
                       <!-- 두번째 댓글(답글 보기 O) -->
                       <li class="comment">
@@ -157,8 +144,8 @@
                               </div>
                             </div>
                             <div class="create-reply">
-                              <a href="#">2주</a>
-                              <a href="#">답글 달기</a>
+                              <span>2주</span>
+                              <button class="reply-btn">답글 달기</button>
                               <button
                                 type="button"
                                 class="fa-solid fa-ellipsis hover-btn"
@@ -342,8 +329,6 @@
           </div>
 
 
-
-         
         </section>
       </section>
     </main>
