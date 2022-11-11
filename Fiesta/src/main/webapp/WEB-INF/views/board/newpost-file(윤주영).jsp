@@ -43,6 +43,3 @@
         </div>
       </section>
     </div>
-
-
-  <script src="../resources/js/newpost.js"></script>
