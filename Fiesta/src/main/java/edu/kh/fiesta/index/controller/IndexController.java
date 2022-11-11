@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class IndexController {
 
+	
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String loginPage() {
-		return "member/login";
+		return "member/login"; // 로그인 페이지로
 	}
+	
 	
 }
