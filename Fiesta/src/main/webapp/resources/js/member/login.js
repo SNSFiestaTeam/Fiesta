@@ -27,5 +27,4 @@ memberPw.addEventListener("focus", function(){
 // }, 100);
 
 // this.setSelectionRange(1,20);
-
 // setSelectionRange
