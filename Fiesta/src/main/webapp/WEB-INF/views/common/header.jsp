@@ -47,7 +47,7 @@
               </a>
             </li>
             <li>
-              <button id="new-post-open">
+              <button id="newPostOpen">
                 <i class="fa-regular fa-square-plus" ></i>
               </button>
             </li>
