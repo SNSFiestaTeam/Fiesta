@@ -124,14 +124,6 @@ main{
     transition-timing-function: ease-in-out;
 }
 
-.labelUp{
-    position: absolute;
-    transform: translate(1px, -8px);
-    font-size: 0.5em;
-    color: var(--fiesta-color);
-    transition-timing-function: ease-in-out;
-}
-
 
 .login-area input:valid ~ label{
     position: absolute;
