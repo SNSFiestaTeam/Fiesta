@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fiesta.member.model.service.MemberService;
 import edu.kh.fiesta.member.model.vo.Member;
 
-@SessionAttributes({"loginMember", "message"})
+@SessionAttributes({"loginMember"})
 @Controller
 public class MemberController {
 	
@@ -33,9 +33,12 @@ public class MemberController {
 			path = "/main";
 			model.addAttribute("loginMember", loginMember);
 			
+			System.out.println("로그인 성공!");
+			
 			// 쿠키 생성
 			// 쿠키 유지 시간 지정
 			// 1년 동안 쿠키 유지
+			return "redirect:"+ path;
 			
 		}else {
 			path = referer;
@@ -43,7 +46,7 @@ public class MemberController {
 			
 		}
 		
-		return "redirect:" + path;
+		return "redirect:"+ path;
 	}
 	
 	

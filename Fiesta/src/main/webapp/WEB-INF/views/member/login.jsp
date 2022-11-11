@@ -9,20 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <link rel="stylesheet" href="resources/css/common-style.css" />
-                              <!-- /resources/css/common-style.css -->
     <link rel="stylesheet" href="resources/css/login-style.css">
-                            <!-- /resources/css/login-style.css -->
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
     ></script>
   </head>
 
+ <%-- 위치 변경 --%>
   <!-- 로그인 페이지 -->
   <body>
+
     <!-- 메인 섹션 -->
     <main>
-
       <section class="login-section">
         <!-- 로고 -->
         <div class="logo-area">
@@ -65,9 +64,11 @@
         </div>
       </section>
     </main>
-      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-      
-      
+    
+     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+     <script src="/resources/js/member/login.js"></script>
+     
       <!-- <c:if test="${ not empty message }"> 
         <script>
           // alert("${message}");
