@@ -27,9 +27,9 @@
             <section class="left-side">
     
                 <ul class="list-group">
-                    <li><a href="../setting/setting(용환재).html">프로필 편집</a></li>
-                    <li><a href="../setting/settingPw(용환재).html">비밀번호 변경</a></li>
-                    <li><a href="../setting/setting3(용환재).html">개인정보 및 보안</a></li>
+                    <li><a href="/setting/setting">프로필 편집</a></li>
+                    <li><a href="/setting/settingPw">비밀번호 변경</a></li>
+                    <li><a href="/setting/setting3">개인정보 및 보안</a></li>
                 </ul>
                 
             </section>
@@ -39,9 +39,9 @@
                     <aside class="menu-left">
                         <img src="../../resources/images/user.jpg" class="pro-img">
                     </aside> 
-                    <h1 class="loginid">로그인아이디</h1>
+                    <h1 class="loginid">${loginMember.memberNickname}</h1>
                 </div>
-              <form action="changePw" id="changePwForm">
+              <form action="Pw" id="changePwForm" method="POST">
                 <div class="pre-pw">
                     <aside class="menu-left">
                         이전 비밀번호
@@ -64,7 +64,7 @@
                 <div class="ch-btn">
                     <aside class="menu-left">
                     </aside>
-                    <button type="button" class="change-button">비밀번호 변경</button>                    
+                    <button class="change-button">비밀번호 변경</button>                    
                 </div>
                 <div class="forget">
                     <aside class="menu-left">

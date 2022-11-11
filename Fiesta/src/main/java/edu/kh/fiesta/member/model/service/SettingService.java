@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface SettingService {
 
-	int changePw(Map<String, Object> paramMap);
+	int Pw(Map<String, Object> paramMap);
 
 	
 	

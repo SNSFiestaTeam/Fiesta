@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import edu.kh.fiesta.member.model.dao.SettingDAO;
+
 
 @Service
 public class SettingServiceImpl implements SettingService{
@@ -18,10 +20,10 @@ public class SettingServiceImpl implements SettingService{
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
-	
+
 	@Transactional
 	@Override
-	public int changePw(Map<String, Object> paramMap) {
+	public int Pw(Map<String, Object> paramMap) {
 
 		String encPw = dao.selectEncPw( (int)paramMap.get("memberNo"));
 		
@@ -33,12 +35,12 @@ public class SettingServiceImpl implements SettingService{
 			
 		
 		
-			int result = dao.changePw(paramMap);
+			int result = dao.Pw(paramMap);
 			
 			return result;
 			
-		}
-		return 0;
+		} return 0;
+		
 	}
 
 }

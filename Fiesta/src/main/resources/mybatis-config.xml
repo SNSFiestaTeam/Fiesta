@@ -24,6 +24,8 @@
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml"/>
+		<mapper resource="/mappers/setting-mapper.xml"/>
+		
 	</mappers>
 	
 	

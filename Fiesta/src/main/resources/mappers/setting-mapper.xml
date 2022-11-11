@@ -16,6 +16,7 @@
       <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
       <result property="secessionFl" column="SECESSION_FL" />
       <result property="authority" column="AUTHORITY" />
+      </resultMap>
 
 
 <select id="selectEncPw" parameterType="_int" resultType="string">
@@ -25,11 +26,11 @@ WHERE MEMBER_NO = #{memberNo}
 </select>
 
 
- <update id="changePw" parameterType="map">
+ <update id="Pw" parameterType="map">
  	UPDATE "MEMBER" SET
  	MEMBER_PW = #{newPw}
  	WHERE MEMBER_NO = #{memberNo}
  </update>
+ </mapper>
  
  
-</mapper>

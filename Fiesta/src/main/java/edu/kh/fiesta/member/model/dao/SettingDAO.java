@@ -18,10 +18,10 @@ public class SettingDAO {
 		
 	}
 
-	public int changePw(Map<String, Object> paramMap) {
+	public int Pw(Map<String, Object> paramMap) {
 
 		
-		return sqlSession.update("settingMapper.changePw", paramMap);
+		return sqlSession.update("settingMapper.Pw", paramMap);
 	}
 
 }
