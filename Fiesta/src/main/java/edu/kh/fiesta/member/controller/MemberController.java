@@ -33,21 +33,18 @@ public class MemberController {
 			path = "/main";
 			model.addAttribute("loginMember", loginMember);
 			
-//			System.out.println("로그인 성공!");
+			System.out.println("로그인 성공!");
 			
 			// 쿠키 생성
-			
 			// 쿠키 유지 시간 지정
-			
 			// 1년 동안 쿠키 유지
+			return "redirect:"+ path;
 			
 		}else {
-			System.out.println(loginMember);
 			path = referer;
+			ra.addFlashAttribute("message", "로그인 실패");
 			
-			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 		}
-		return "redirect:"+ path;
 	}
 	
 	

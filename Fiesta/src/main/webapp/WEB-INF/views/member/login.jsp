@@ -67,10 +67,20 @@
     
      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    
-
      <script src="/resources/js/member/login.js"></script>
-
+     
+      <!-- <c:if test="${ not empty message }"> 
+        <script>
+          // alert("${message}");
+          console.log("${message}");
+          </script>
+      </c:if>
+       -->
+      <!-- message 1회 출력 후 모든 scope 삭제
+        <c:remove var="message" /> -->
+        
+        
+      <script src="/resources/js/member/login.js"></script>
 
   </body>
 </html>

@@ -52,7 +52,7 @@
               </button>
             </li>
             <li>
-              <a href="common/popularfeed(신아민) .html">
+              <a href="/feed/popularFeed">
                 <i class="fa-regular fa-compass"></i>
               </a>
             </li>
@@ -62,7 +62,7 @@
               </button>
             </li>
             <li>
-              <a href="common/myfeed(신아민).html">
+              <a href="/feed/myFeed">
                 <i class="fa-regular fa-user"></i>
               </a>
             </li>
