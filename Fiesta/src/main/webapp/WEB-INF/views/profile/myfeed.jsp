@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/myfeed.css" />
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -19,6 +21,7 @@
   <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <%-- <jsp:include page="/WEB-INF/views/profile/follow-border.jsp"/> --%>
+    
 
     <main>
       <div class="main-container">
@@ -162,7 +165,13 @@
         </section>
       </div>
     </main>
-        <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+    <jsp:include page="/WEB-INF/views/board/new-post-file(윤주영).jsp"/>
+    
+    <script src="/resources/js/newpost.js"></script>
+
     <script src="/resources/js/myfeed.js"></script>
   </body>
 </html>
