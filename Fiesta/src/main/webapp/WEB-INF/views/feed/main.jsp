@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/resources/css/share-style.css">
     <link rel="stylesheet" href="/resources/css/report-style.css">
     <link rel="stylesheet" href="/resources/css/comment-style.css">
+    <link rel="stylesheet" href="/resources/css/newpost-file-style.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -336,8 +337,10 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp"/>
-    <script type="text/javascript" defer src="../resources/js/main.js"></script>
+    <jsp:include page="/WEB-INF/views/board/newpost-file.jsp"/>
 
+    <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp"/>
+    <script type="text/javascript" defer src="/resources/js/main.js"></script>
+    <script src="/resources/js/newpost.js"></script>
   </body>
 </html>
