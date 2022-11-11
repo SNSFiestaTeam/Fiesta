@@ -9,9 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <link rel="stylesheet" href="resources/css/common-style.css" />
-                              <!-- /resources/css/common-style.css -->
     <link rel="stylesheet" href="resources/css/login-style.css">
-                            <!-- /resources/css/login-style.css -->
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -68,7 +66,11 @@
     
      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    
+
      <script src="/resources/js/member/login.js"></script>
+
+
   </body>
 </html>
 
