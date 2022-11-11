@@ -10,6 +10,7 @@
     <title>instagram</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/myfeed.css" />
+    <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -17,6 +18,8 @@
   </head>
   <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+    <%-- <jsp:include page="/WEB-INF/views/profile/follow-border.jsp"/> --%>
+
     <main>
       <div class="main-container">
         <section class="info-section">
@@ -39,7 +42,7 @@
 
             <div id="profile-board">
               <span class="board-menu-btn1"><button>게시글 9</button></span>
-              <span class="board-menu-btn2"><button>팔로우 176</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로우 176</button></span>
               <span class="board-menu-btn3"><button>팔로잉 98</button></span>
             </div>
 
