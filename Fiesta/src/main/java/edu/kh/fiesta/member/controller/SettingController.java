@@ -57,6 +57,13 @@ public class SettingController {
 		
 	}
 	
+
+	
+	@GetMapping("/3")
+	public String settingec() {
+		return "setting/setting3";
+	}
+	
 	
 	
 	

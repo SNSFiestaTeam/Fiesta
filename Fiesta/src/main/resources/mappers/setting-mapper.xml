@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="settingMapper">
 
+  	<resultMap type="Member" id="member_rm">
+  
+        <!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
+     <id property = "memberNo" column="MEMBER_NO"/>
+     
+     <!-- 나머지 일반 컬럼 -->
+      <result property="memberEmail" column="MEMBER_EMAIL" />
+      <result property="memberPw" column="MEMBER_PW" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
+      <result property="enrollDate" column="ENROLL_DATE" />
+      <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
+      <result property="secessionFl" column="SECESSION_FL" />
+      <result property="authority" column="AUTHORITY" />
+
+
 <select id="selectEncPw" parameterType="_int" resultType="string">
 SELECT MEMBER_PW
 FROM "MEMBER"

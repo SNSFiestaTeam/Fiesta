@@ -18,70 +18,7 @@
   </head>
   <body>
       <!-- 헤더 -->
-      <header>
-        <section id="header-section">
-          <!-- 로고 -->
-          <section class="logo-section">
-            <a href="#"
-              >Fiesta</a>
-          </section>
-          <!-- 검색창 -->
-          <section class="search-section">
-            <form action="#">
-              <fieldset>
-                <button id="search-glass">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <input
-                  type="text"
-                  name="search"
-                  id="searchInput"
-                  placeholder="검색"
-                  autocapitalize="none"
-                  autocomplete="off"
-                />
-                <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
-              </fieldset>
-                
-              </button>
-            </form>
-          </section>
-          <!-- 메뉴 -->
-          <nav id="nav-bar">
-            <ul>
-              <li>
-                <a href="#"> <i class="fa-solid fa-house"></i></a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa-regular fa-paper-plane"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa-regular fa-square-plus"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa-regular fa-compass"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa-regular fa-heart"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa-regular fa-user"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </section>
-      </header>
-
+      <jsp:include page="/WEB-INF/views/common/header.jsp"/>
     <!-- 메인 섹션 -->
     <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
     <main>
@@ -104,7 +41,7 @@
                     </aside> 
                     <h1 class="loginid">로그인아이디</h1>
                 </div>
-              <form action="#" id="changePwForm">
+              <form action="changePw" id="changePwForm">
                 <div class="pre-pw">
                     <aside class="menu-left">
                         이전 비밀번호
@@ -141,20 +78,7 @@
           </section>
     </main>
     <!-- 푸터 -->
-    <footer>
-      <p>
-        Copyright &copy; KH Information Educational Institute A-Class SNS Team
-      </p>
-      <article>
-        <a href="#">프로젝트 소개</a>
-        <span>|</span>
-        <a href="#">이용약관</a>
-        <span>|</span>
-        <a href="#">개인정보처리방침</a>
-        <span>|</span>
-        <a href="#">고객센터</a>
-      </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 
     <script src="/resources/js/settingPw.js"></script>
