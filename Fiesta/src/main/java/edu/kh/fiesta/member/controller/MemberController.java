@@ -45,6 +45,8 @@ public class MemberController {
 			ra.addFlashAttribute("message", "로그인 실패");
 			
 		}
+		
+		return "redirect:"+ path;
 	}
 	
 	
