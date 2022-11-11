@@ -45,7 +45,6 @@ public class MemberController {
 			System.out.println(loginMember);
 			path = referer;
 			
-//			model.addAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
 
 		}

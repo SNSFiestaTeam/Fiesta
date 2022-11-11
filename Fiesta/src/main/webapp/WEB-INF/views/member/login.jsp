@@ -20,7 +20,6 @@
   <body>
     <!-- 메인 섹션 -->
     <main>
-
       <section class="login-section">
         <!-- 로고 -->
         <div class="logo-area">
