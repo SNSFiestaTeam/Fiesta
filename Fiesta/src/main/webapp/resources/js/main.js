@@ -76,6 +76,21 @@ for (let i = 0; i < likeBtn.length; i++) {
   });
 }
 
+// DM(종이비행기) 버튼 클릭 시
+const dmBtn = document.getElementsByClassName("dm-btn");
+const dmContainer = document.getElementById("dmContainer");
+for (let i = 0; i < dmBtn.length; i++) {
+  dmBtn[i].addEventListener("click", () => {
+    dmContainer.style.display = "flex";
+    dmContainer.classList.add("scrollrock");
+  });
+}
+
+document.getElementById("dmCloseBtn").addEventListener("click", () => {
+  dmContainer.style.display = "none";
+  dmContainer.classList.remove("scrollrock");
+});
+
 // 말풍선 버튼 클릭 시
 //  -> 댓글 입력창에 포커스
 const commentBtn = document.getElementsByClassName("comment-btn");
@@ -275,6 +290,22 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
       commentLikeBtn[i].innerHTML = emptyHeart;
       commentLikeBtn[i].classList.remove("red");
     }
+  });
+}
+
+// 댓글 작성자 아이디 클릭 시 인풋 태그에 @작성자 아이디 추가
+const replyBtn = document.getElementsByClassName("reply-btn");
+
+for (let i = 0; i < replyBtn.length; i++) {
+  replyBtn[i].addEventListener("click", () => {
+    const commentId = document.getElementsByClassName("comment-memberId");
+    const input =
+      commentId[i].parentNode.parentNode.parentNode.parentNode.parentNode
+        .parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling
+        .firstChild.nextSibling.firstChild.nextSibling;
+
+    console.log(input);
+    input.value = "@" + commentId[i].innerText;
   });
 }
 

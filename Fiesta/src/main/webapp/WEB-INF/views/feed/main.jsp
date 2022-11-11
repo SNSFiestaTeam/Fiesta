@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/resources/css/report-style.css">
     <link rel="stylesheet" href="/resources/css/comment-style.css">
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css">
+    <link rel="stylesheet" href="/resources/css/dm-message.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -95,7 +96,7 @@
                 <div>
                   <button id="likeBtn" class="like-btn"><i class="fa-regular fa-heart"></i></button>
                   <button id="commentBtn" class="comment-btn"><i class="fa-regular fa-comment"></i></button>
-                  <button id="dmBtn"><i class="fa-regular fa-paper-plane"></i></button>
+                  <button id="dmBtn"><i class="fa-regular fa-paper-plane dm-btn"></i></button>
                 </div>
                 <div>
                   <button id="bookmarkBtn" class="bookmark-btn"><i class="fa-regular fa-bookmark"></i></button>
@@ -169,7 +170,7 @@
                               <div>
                                 <div class="reply-firstline">
                                   <div>
-                                    <a href="#" class="comment-memberId">karina_aespas_</a>
+                                    <a href="#" class="reply-memberId">karina_aespas_</a>
                                     <a href="#" class="mention">@for_everyoung10</a>
                                     <span class="comment-content">나두 사랑해</span>
                                   </div>
@@ -179,7 +180,7 @@
                                 </div>
                                 <div class="create-reply">
                                   <a href="#">2주</a>
-                                  <a href="#">답글 달기</a>
+                                  <a href="#" class="reply-btn2">답글 달기</a>
                                   <button
                                     type="button"
                                     class="fa-solid fa-ellipsis hover-btn"
@@ -212,7 +213,7 @@
                             </div>
                             <div class="create-reply">
                               <a href="#">2주</a>
-                              <a href="#">답글 달기</a>
+                              <a href="#" class="reply-btn">답글 달기</a>
                               <button
                                 type="button"
                                 class="fa-solid fa-ellipsis hover-btn"
@@ -243,7 +244,7 @@
                             </div>
                             <div class="create-reply">
                               <a href="#">2주</a>
-                              <a href="#">답글 달기</a>
+                              <a href="#" class="reply-btn">답글 달기</a>
                               <button
                                 type="button"
                                 class="fa-solid fa-ellipsis hover-btn"
@@ -274,7 +275,7 @@
                             </div>
                             <div class="create-reply">
                               <a href="#">2주</a>
-                              <a href="#">답글 달기</a>
+                              <a href="#" class="reply-btn">답글 달기</a>
                               <button
                                 type="button"
                                 class="fa-solid fa-ellipsis hover-btn"
@@ -305,7 +306,7 @@
                             </div>
                             <div class="create-reply">
                               <a href="#">2주</a>
-                              <a href="#">답글 달기</a>
+                              <a href="#" class="reply-btn">답글 달기</a>
                               <button
                                 type="button"
                                 class="fa-solid fa-ellipsis hover-btn"
@@ -338,8 +339,9 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp"/>
-
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp"/>
+    <jsp:include page="/WEB-INF/views/action/dm-message.jsp"/>
+
     <script type="text/javascript" defer src="/resources/js/main.js"></script>
     <script src="/resources/js/newpost.js"></script>
   </body>

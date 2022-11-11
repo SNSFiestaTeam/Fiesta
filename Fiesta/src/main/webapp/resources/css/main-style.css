@@ -287,7 +287,8 @@ a.comment-profile {
 }
 /* 댓글 상세보기 설정 여기까지 */
 
-.comment-memberId {
+.comment-memberId,
+.reply-memberId {
   font-size: var(--small-font-size);
   font-weight: 500;
   margin-right: 5px;
@@ -601,7 +602,7 @@ a.comment-profile {
   }
 
   .more-reply::before {
-    content: '';
+    content: "";
   }
 
   /* 댓글 상세보기 스타일 end */
