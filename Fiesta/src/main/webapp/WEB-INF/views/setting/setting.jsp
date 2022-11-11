@@ -25,9 +25,9 @@
       <section class="setting-content">
         <section class="left-side">
           <ul class="list-group">
-            <li><a href="../setting/setting(용환재).html">프로필 편집</a></li>
-            <li><a href="../setting/settingPw(용환재).html">비밀번호 변경</a></li>
-            <li><a href="../setting/setting3(용환재).html">개인정보 및 보안</a></li>
+            <li><a href="/setting/setting">프로필 편집</a></li>
+            <li><a href="/setting/settingPw">비밀번호 변경</a></li>
+            <li><a href="/setting/setting3">개인정보 및 보안</a></li>
           </ul>
         </section>
 
