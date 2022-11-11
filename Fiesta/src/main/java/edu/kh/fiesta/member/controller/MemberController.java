@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fiesta.member.model.service.MemberService;
 import edu.kh.fiesta.member.model.vo.Member;
 
-@SessionAttributes("loginMember")
+@SessionAttributes({"loginMember"})
 @Controller
 public class MemberController {
 	
@@ -36,17 +36,17 @@ public class MemberController {
 			System.out.println("로그인 성공!");
 			
 			// 쿠키 생성
-			
 			// 쿠키 유지 시간 지정
-			
 			// 1년 동안 쿠키 유지
 			return "redirect:"+ path;
 			
 		}else {
-			ra.addFlashAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+			path = referer;
+			ra.addFlashAttribute("message", "로그인 실패");
 			
-			return referer;
 		}
+		
+		return "redirect:"+ path;
 	}
 	
 	

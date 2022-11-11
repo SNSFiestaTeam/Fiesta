@@ -1,27 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>instagram</title>
-  <link rel="stylesheet" href="/resources/css/common-style.css" />
-  <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-  <script 
-    src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"
-  ></script>
-</head>
-
-
-<body>
-
-  <!-- 메인 섹션 -->
-  <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
-  <main>
     <!-- 모달 배경 -->
     <div class="modal_background" id="modal_background">
       <button onclick="history.back()" name="close" id="new-post-close" class="new-post-close">
@@ -64,10 +43,6 @@
         </div>
       </section>
     </div>
-  </main>
 
 
   <script src="../resources/js/newpost.js"></script>
-</body>
-
-</html>
