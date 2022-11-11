@@ -18,6 +18,11 @@ memberPw.addEventListener("focus", function(){
 
 
 
+
+
+
+
+
 // setTimeout(function(){
 //     memberEmail.focus();
 //     memberEmail.value = "";
@@ -27,3 +32,5 @@ memberPw.addEventListener("focus", function(){
 // this.setSelectionRange(1,20);
 
 // setSelectionRange
+
+

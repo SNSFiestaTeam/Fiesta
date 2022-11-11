@@ -65,10 +65,22 @@
         </div>
       </section>
     </main>
-    
-     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+      
+      
+      <!-- <c:if test="${ not empty message }"> 
+        <script>
+          // alert("${message}");
+          console.log("${message}");
+          </script>
+      </c:if>
+       -->
+      <!-- message 1회 출력 후 모든 scope 삭제
+        <c:remove var="message" /> -->
+        
+        
+      <script src="/resources/js/member/login.js"></script>
 
-     <script src="/resources/js/member/login.js"></script>
   </body>
 </html>
 
