@@ -157,7 +157,7 @@ main{
 	display: flex;
 	align-items: center;
 	color:#b4b4b4;
-	font-size: 15px;
+	font-size: 14px;
 }
 .line::before{
 	content:"";
@@ -178,9 +178,20 @@ main{
 	line-height: 0px;
 }
 
+.lineFont{
+    color: #EB4536;
+    font-weight: 400;
+    font-size: 0.75em;
+    /* margin: 0 18.4px ; */
+}
+
+.lineColor{
+    background-color: var(--fiesta-color);
+}
+
 
 .findAccount{
-    margin: 6% 0;
+    margin: 8% 0 6%;
     text-align: center;
     font-size: 0.75em;
 }
