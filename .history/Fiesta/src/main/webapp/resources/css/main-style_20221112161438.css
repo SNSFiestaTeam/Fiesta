@@ -261,10 +261,6 @@ main > section {
   justify-content: space-between;
 }
 
-.comment-content {
-  font-weight: 300;
-}
-
 /* 댓글 상세보기 설정 */
 a.comment-profile {
   display: none;

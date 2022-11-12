@@ -212,11 +212,6 @@ main > section {
 
 .feed-content {
   margin-top: 10px;
-  font-weight: 300;
-}
-
-.member-id {
-  font-weight: bold;
 }
 
 #textMore {
@@ -261,10 +256,6 @@ main > section {
   justify-content: space-between;
 }
 
-.comment-content {
-  font-weight: 300;
-}
-
 /* 댓글 상세보기 설정 */
 a.comment-profile {
   display: none;
@@ -272,7 +263,6 @@ a.comment-profile {
 
 .create-reply {
   display: none;
-  font-size: var(--small-font-size);
 }
 /* 댓글 상세보기 설정 여기까지 */
 
@@ -568,7 +558,7 @@ a.comment-profile {
   .create-reply > span,
   .create-reply > button.reply-btn {
     color: #8e8e8e;
-    font-size: var(--small-font-size);
+    font-size: 13px;
     margin-right: 5px;
   }
 
@@ -585,8 +575,12 @@ a.comment-profile {
     display: block;
     margin-top: 10px;
     margin-left: 42px;
-    font-size: var(--small-font-size);
+    font-size: 13px;
     color: #8e8e8e;
+  }
+
+  .more-reply::before {
+    content: "";
   }
 
   /* 댓글 상세보기 스타일 end */
