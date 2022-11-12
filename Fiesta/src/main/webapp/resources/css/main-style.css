@@ -114,16 +114,13 @@ main > section {
 
 /* 피드 이미지 목록 */
 .image-list {
-  height: auto;
-
+  width: 100%;
+  height: 460px;
   position: relative;
 }
 
 /* 이미지 슬라이드 만들기 */
-.slide-show {
-  overflow: hidden;
-  height: 468px;
-}
+
 .slides {
   position: relative;
   display: flex;
@@ -384,6 +381,7 @@ a.comment-profile {
   -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
 }
+
 /* --------------------------------------------------------------------------------------------------- */
 @media screen and (min-width: 1024px) {
   /* Desktop */
@@ -413,6 +411,7 @@ a.comment-profile {
 
   .image-list {
     width: 100%;
+    height: 538px;
     overflow: hidden;
   }
 
@@ -647,6 +646,10 @@ a.comment-profile {
     margin: 0;
   }
 
+  .main-content-section {
+    margin-top: 0;
+  }
+
   .feed-section {
     margin-top: 0;
   }
@@ -657,6 +660,12 @@ a.comment-profile {
 
   .feed-main-content {
     width: 100%;
+  }
+
+  .image-list {
+    width: 100vw;
+    height: 100vw;
+    position: relative;
   }
 
   .image-list li {
