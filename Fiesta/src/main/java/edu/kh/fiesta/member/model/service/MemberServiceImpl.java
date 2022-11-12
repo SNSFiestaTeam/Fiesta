@@ -54,5 +54,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	// 회원가입_이메일 중복 체크
+	@Override
+	public int emailDupCheck(String memberEmail) {
+		return dao.emailDupCheck(memberEmail);
+	}
+
+
 
 }
