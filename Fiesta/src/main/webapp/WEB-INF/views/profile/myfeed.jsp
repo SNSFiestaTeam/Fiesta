@@ -37,7 +37,7 @@
               <a href="#">karina_aespas_</a>
 
               <button id="btn">
-                <a href="#">프로필 편집</a>
+                <a href="/setting/setting">프로필 편집</a>
               </button>
 
               <a href="#"><i class="fa-solid fa-gear"></i></a>

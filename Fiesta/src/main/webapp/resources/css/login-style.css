@@ -141,19 +141,21 @@ main {
 
 /* 아이디, 비밀번호 찾기 */
 .line {
-  display: flex;
-  align-items: center;
-  color: #b4b4b4;
-  font-size: 15px;
+
+	display: flex;
+	align-items: center;
+	color:#b4b4b4;
+	font-size: 14px;
 }
-.line::before {
-  content: "";
-  flex-grow: 1;
-  margin: 0 5% 0 0;
-  background: #b4b4b4;
-  height: 1px;
-  font-size: 0px;
-  line-height: 0px;
+.line::before{
+	content:"";
+	flex-grow:1;
+	margin: 0 5% 0 0;
+	background: #b4b4b4;
+	height:1px;
+	font-size:0px;
+	line-height: 0px;
+
 }
 .line::after {
   content: "";
@@ -165,10 +167,22 @@ main {
   line-height: 0px;
 }
 
-.findAccount {
-  margin: 6% 0;
-  text-align: center;
-  font-size: 0.75em;
+.lineFont{
+    color: #EB4536;
+    font-weight: 400;
+    font-size: 0.75em;
+    /* margin: 0 18.4px ; */
+}
+
+.lineColor{
+    background-color: var(--fiesta-color);
+}
+
+
+.findAccount{
+    margin: 8% 0 6%;
+    text-align: center;
+    font-size: 0.75em;
 }
 
 .findAccount a {

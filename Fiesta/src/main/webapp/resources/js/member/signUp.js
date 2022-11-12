@@ -164,7 +164,7 @@ if(memberNickname.value != null){
         let inputNickname = document.getElementById("memberNickname");
         let arr = [];
        
-        // arr = inputNickname.value.split("");
+        arr = inputNickname.value.split("");
 
         // 입력 받은 문자열을 문자 단위로 나누기
         for(let i=0; i<inputNickname.value.length; i++){

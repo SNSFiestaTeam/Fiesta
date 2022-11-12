@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fiesta.member.model.service.SettingService;
@@ -21,12 +22,12 @@ public class SettingController {
 	@Autowired
 	private SettingService service;
 	
-	@GetMapping("")
+	@GetMapping()
 	public String setting() {
 		return "setting/setting";
 	}
 	
-	@PostMapping("")
+	@PostMapping()
 	public String updateSetting(Member inputMember, Member loginMember,
 				RedirectAttributes ra) {
 		
@@ -40,17 +41,39 @@ public class SettingController {
 	
 	
 	@GetMapping("/Pw")
-	public String changePw() {
+	public String Pw() {
 		return "setting/settingPw";
 	}
 	
-	@PostMapping("/pw")
-	public String changePw(Member loginMember,
-			RedirectAttributes ra, @RequestParam Map<String, Object> Paramap) {
-		return "redirect:Pw";
+	@PostMapping("/Pw")
+	public String Pw(@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra, @RequestParam Map<String, Object> paramMap) {
+		
+		paramMap.put("memberNo", loginMember.getMemberNo());
+		
+		int result = service.Pw(paramMap);
+		
+		String message = null;
+		
+		if(result > 0) {
+			message = "성공";
+		} else {
+			message = "실패";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		
+		return "redirect:settingPw";
 		
 	}
 	
+
+	
+	@GetMapping("/3")
+	public String settingec() {
+		return "setting/setting3";
+	}
 	
 	
 	
