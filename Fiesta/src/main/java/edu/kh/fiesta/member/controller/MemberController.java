@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -60,6 +61,7 @@ public class MemberController {
 	}
 
 
+	
 
 	// 회원가입
 	@PostMapping("/member/signUp")
@@ -92,6 +94,23 @@ public class MemberController {
 	public String findAccount() {
 		return "member/findAccount";
 	}
+	
+	
+	
+	// 이메일 중복 검사
+	@GetMapping("/emailDupCheck")
+	@ResponseBody
+	public int emailDupCheck(String memberEmail){
+		
+		int result = service.emailDupCheck(memberEmail);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	
 	
 

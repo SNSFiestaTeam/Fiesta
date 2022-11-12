@@ -23,10 +23,19 @@ public class MemberDAO {
 	
 	/** 회원가입 DAO
 	 * @param inputMember
-	 * @return reult
+	 * @return result
 	 */
 	public int signUp(Member inputMember) {
 		return sqlSession.insert("memberMapper.signUp", inputMember);
+	}
+
+
+	/** 회원가입_이메일 중복 체크 DAO
+	 * @param memberEmail
+	 * @return result
+	 */
+	public int emailDupCheck(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.emailDupCheck", memberEmail);
 	}
 
 	

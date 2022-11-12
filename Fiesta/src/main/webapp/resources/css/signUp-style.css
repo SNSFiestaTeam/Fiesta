@@ -109,8 +109,11 @@ main {
 }
 
 .icon-pw-showHide {
-  right: -2px;
+  right: 23px;
   position: absolute;
+  cursor: pointer;
+  /* right: -2px;
+  position: absolute; */
 }
 
 .iVisible {
@@ -131,7 +134,7 @@ main {
   color: red;
 }
 .blue {
-  color: #0066ff;
+  color: #01439f;
 }
 .black {
   color: #111111;
