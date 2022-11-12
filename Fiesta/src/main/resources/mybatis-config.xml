@@ -29,7 +29,7 @@
 		<mapper resource="/mappers/member-mapper.xml"/>
 		<mapper resource="/mappers/setting-mapper.xml"/>
 		<mapper resource="/mappers/main-mapper.xml"/>
-		
+	
 	</mappers>
 	
 	
