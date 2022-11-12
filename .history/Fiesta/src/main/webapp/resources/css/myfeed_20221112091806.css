@@ -1,0 +1,208 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.main-container {
+
+    width: 1000px;
+    padding: 0 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.info-section{
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+#profile-photo{
+    width: 30%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 30%;
+}
+
+#self{
+    border-radius: 50%;
+}
+
+.info-section img{
+    width: 150px;
+    height: 150px;
+    flex-basis: 70%;
+    
+}
+
+#profile-text{
+    margin-left: 100px;
+}
+
+#btn{
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    padding: 3px 5px;
+    background-color: whitesmoke;
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+
+#nickname >a:first-child{
+    padding-top: 10px;
+    font-size: 28px;
+    font-weight: 150;
+}
+
+#nickname > a:nth-child(1){
+    
+    margin-right: 20px;
+}
+
+#profile-board {
+    margin-top: 20px;
+
+}
+
+#profile-board > span:nth-child(1) {
+    margin-right: 50px;
+}
+#profile-board > span:nth-child(2) {
+    margin-right: 50px;
+}
+
+.introduce-text{
+    margin-top: 20px;
+    min-width: 550px;
+    min-height: 115.6px;
+    font-size: 16px;
+}
+
+#text-area{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    font-size: 12px;
+}
+
+#text-area a{
+    padding: 0px 30px;
+}
+
+.feed-section{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+
+}
+
+.img-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+
+.img-container2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+   
+}
+
+.img-container3{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.img-container > a {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin: 10px;
+    
+    position: relative;
+}
+
+.img-container2 > a{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin: 10px;
+    
+    position: relative;
+}
+
+.img-container3 > a{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    margin: 10px;
+    
+    position: relative;
+}
+
+.feed-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hover-icon-container {
+    display: none;
+  }
+  
+  .feed-img:hover + .hover-icon-container {
+    width: 100%;
+    height: 100%;
+    background-color: #00000070;
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hover-icon-container > i {
+    color: white;
+    margin-left: 20px;
+    margin-right: 5px;
+  }
+  
+  .hover-icon-container > span {
+    color: white;
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 1000px) {
+    .feed-section {
+      width: 1000px;
+    }
+}
+
+
+
