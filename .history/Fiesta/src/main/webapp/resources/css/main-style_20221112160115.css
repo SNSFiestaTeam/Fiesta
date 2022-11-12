@@ -83,7 +83,7 @@ main > section {
 }
 
 .writer-info > a {
-  font-size: var(--main-font-size);
+  font-size: var(--small-font-size);
 }
 
 .feed-profile-image {
@@ -168,7 +168,7 @@ main > section {
 /* 본문 및 댓글 창 */
 .main-content-section {
   margin-top: 5px;
-  font-size: var(--main-font-size);
+  font-size: var(--small-font-size);
   padding: 0 16px;
 }
 
@@ -212,11 +212,6 @@ main > section {
 
 .feed-content {
   margin-top: 10px;
-  font-weight: 300;
-}
-
-.member-id {
-  font-weight: bold;
 }
 
 #textMore {
@@ -242,7 +237,7 @@ main > section {
 }
 
 .comment {
-  font-size: var(--main-font-size);
+  font-size: var(--small-font-size);
   display: flex;
   flex-direction: column;
 }
@@ -261,10 +256,6 @@ main > section {
   justify-content: space-between;
 }
 
-.comment-content {
-  font-weight: 300;
-}
-
 /* 댓글 상세보기 설정 */
 a.comment-profile {
   display: none;
@@ -272,7 +263,6 @@ a.comment-profile {
 
 .create-reply {
   display: none;
-  font-size: var(--small-font-size);
 }
 /* 댓글 상세보기 설정 여기까지 */
 
@@ -568,7 +558,7 @@ a.comment-profile {
   .create-reply > span,
   .create-reply > button.reply-btn {
     color: #8e8e8e;
-    font-size: var(--small-font-size);
+    font-size: 13px;
     margin-right: 5px;
   }
 
@@ -585,8 +575,12 @@ a.comment-profile {
     display: block;
     margin-top: 10px;
     margin-left: 42px;
-    font-size: var(--small-font-size);
+    font-size: 13px;
     color: #8e8e8e;
+  }
+
+  .more-reply::before {
+    content: "";
   }
 
   /* 댓글 상세보기 스타일 end */
@@ -633,7 +627,6 @@ a.comment-profile {
 
   .main-content-section {
     margin-top: 0;
-    font-size: var(--small-font-size);
   }
 
   .feed-section {
@@ -659,10 +652,6 @@ a.comment-profile {
     padding-bottom: 100%;
     overflow: hidden;
     object-fit: cover;
-  }
-
-  .comment {
-    font-size: var(--small-font-size);
   }
 }
 

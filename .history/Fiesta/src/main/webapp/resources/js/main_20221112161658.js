@@ -363,8 +363,4 @@ $(".flexslider").flexslider({
 });
 
 // TODO: 게시글 상세 조회 후 화면 출력
-function selectBoardList() {
-  // DB에서 게시글 조회 후 리스트로 반환 받기
-}
-
 // TODO: 댓글 상세 조회 후 화면 출력

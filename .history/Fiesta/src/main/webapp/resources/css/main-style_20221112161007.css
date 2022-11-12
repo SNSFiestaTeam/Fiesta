@@ -212,11 +212,6 @@ main > section {
 
 .feed-content {
   margin-top: 10px;
-  font-weight: 300;
-}
-
-.member-id {
-  font-weight: bold;
 }
 
 #textMore {
@@ -259,10 +254,6 @@ main > section {
 .comment-firstline {
   display: flex;
   justify-content: space-between;
-}
-
-.comment-content {
-  font-weight: 300;
 }
 
 /* 댓글 상세보기 설정 */
