@@ -7,6 +7,7 @@ newPostOpen.addEventListener("click", function () {
 
 const newPostClose = document.getElementById("new-post-close");
 
+
 newPostClose.addEventListener("click", function () {
   modalBackground.style.display = "none";
 });

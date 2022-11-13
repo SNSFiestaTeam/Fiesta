@@ -24,7 +24,6 @@
   align-items: center;
   padding: 15px;
   z-index: 5;
-
 }
 /*------------닫기 버튼------------*/
 .new-post-close {
@@ -49,7 +48,6 @@
       min-width: 355px;
       max-width: 655px;
 }
-
 
 /* ----- 게시물작성 top ------ */
 .new-post-top{
