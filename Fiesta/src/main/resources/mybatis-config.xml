@@ -22,6 +22,7 @@
 		<typeAlias type="edu.kh.fiesta.main.model.vo.Board" alias="Board"/>
 		<typeAlias type="edu.kh.fiesta.main.model.vo.Comment" alias="Comment"/>
 		<typeAlias type="edu.kh.fiesta.main.model.vo.BoardImg" alias="BoardImg"/>
+		<typeAlias type="edu.kh.fiesta.main.model.vo.Follow" alias="Follow"/>
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->

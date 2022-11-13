@@ -292,9 +292,10 @@
     <c:if test="${ not empty loginMember }">
       <script>
         var loginMember = "${loginMember}";
-        var memberId = "${loginMember.memberNickname}";
-
-        alert(memberId);
+        var memberNo = "${loginMember.memberNo}";
+        
+        sessionStorage.setItem('memberNo', memberNo);
+        
       </script>
     </c:if>
 

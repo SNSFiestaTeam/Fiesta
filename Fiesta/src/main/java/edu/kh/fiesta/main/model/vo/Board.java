@@ -15,6 +15,7 @@ public class Board {
 	private String boardDeleteFlag;
 	private String boardPubPriFlag;
 	private String commentBlockFlag;
+	private int commentCount;
 	private int memberNo;
 
 
