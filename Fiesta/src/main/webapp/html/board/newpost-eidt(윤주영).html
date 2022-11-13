@@ -92,13 +92,14 @@
           <button>다음</button>
         </div>
         <div class="new-post-bottom">
-          <ul class="file-view">
+          <!-- 파일 슬라이스 -->
+          <ul class="file-view" id="fileView">
             <li> <img id="file" src="../../resources/images/다운로드 (1).jpeg"alt="파일미리보기"></li>
             <li> <img id="file" src="../../resources/images/다운로드 (2).jpeg"alt="파일미리보기"></li>
             <li> <img id="file" src="../../resources/images/다운로드 (3).jpeg"alt="파일미리보기"></li>
           </ul>
         
-          <!-- 파일 슬라이스 -->
+          
           <p class="controller">
       
             <!-- &lang: 왼쪽 방향 화살표
@@ -128,8 +129,10 @@
               </label>
               <div class="add">
                 <div class="add-files">
-                    <div class="first-file"></div>
-                    <div class="first-file"></div>
+                    <div class="file-preview"></div>
+                    <span class="remove">&times;</span>
+                    <div class="file-preview"></div>
+                    <button id="file-add"><i class="fa-solid fa-plus"></i></button>
                 </div>
 
               </div>
