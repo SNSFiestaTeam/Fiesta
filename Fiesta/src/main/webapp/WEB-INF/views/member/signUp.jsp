@@ -76,12 +76,13 @@
                     maxlength="50" autocomplete="off" required>
               <label for="memberNickname">사용자 이름</label>
               
-              <!-- 자동생성 / 중복검사 : 새로고침 / 체크 / X-->
+              <!-- 자동생성(새로고침) / 필수입력(체크) / 중복검사(체크,X) -->
               <span class="icon-nickname-refresh">
                 <i class="fa-solid fa-arrow-rotate-right icon" id="nickRefresh"></i>
               </span>
               <span class="icon-nickname-check">
                  <i class="fa-regular fa-circle-check icon" id="nickCheck"></i>
+                 <i class="fa-regular fa-circle-xmark icon" id="nickXmark"></i>
               </span>
             </div>
   
@@ -105,10 +106,14 @@
               <input type="password" name="memberPwConfirm" id="memberPwConfirm" value="" maxlength="30" autocomplete="off" required>
               <label for="memberPwConfirm">비밀번호 확인</label>
               
-              <!-- 비밀번호 일치 확인 : 체크 / X -->
+              <!-- 비밀번호 일치 확인 : 체크,X / 보이기숨기기-->
               <span class=icon-pwConfirm-check>
                 <i class="fa-regular fa-circle-check icon" id="pwConfirmCheck"></i>
                 <i class="fa-regular fa-circle-xmark icon" id="pwConfirmXmark"></i>
+              </span>
+              <span class="icon-pw-showHide">
+                <i class="fa-regular fa-eye icon" id="pwConfirmEye"></i>
+                <i class="fa-regular fa-eye-slash icon" id="pwConfirmEyeSlash"></i>
               </span>
             </div> 
   
