@@ -35,13 +35,21 @@
   </insert>
   
   <!-- 회원가입_이메일 중복 체크 -->
-  <select id="emailDupCheck" parameterType="String" resultType="_int">
+  <select id="emailDupCheck" parameterType="string" resultType="_int">
   		SELECT COUNT(*)
   		FROM "MEMBER"	
   		WHERE MEMBER_EMAIL = #{memberEmail}
   		AND SECESSION_FL ='N'
   </select>
   
+  
+  <!-- 회원가입_닉네임 중복 체크 -->
+  <select id="nicknameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*)
+  		FROM "MEMBER"	
+  		WHERE MEMBER_NICKNAME = #{memberNickname}
+  		AND SECESSION_FL ='N'
+  </select>
   
   
   

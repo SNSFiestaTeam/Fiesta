@@ -199,17 +199,19 @@ main {
     cursor: pointer; */
 }
 
-.signUp-button {
-  background-color: lightgray;
-  color: white;
-}
 
-/* 버튼 색상 변경 */
+/* 버튼 활성화/비활성화 */
 .buttonOn {
   background-color: var(--fiesta-color);
   color: white;
   cursor: pointer;
 }
+
+.buttonOff {
+  background-color: lightgray;
+  color: white;
+}
+
 
 /* 로그인으로 */
 .toLogin {
