@@ -29,7 +29,7 @@
         <!-- 인스타 피드 -->
         <section class="feed-section">
           <!-- 피드 리스트 -->
-          <p style="font-size: 13px">${sessionScope.loginMember}</p>
+          <p>${sessionScope.loginMember}</p>
           <div class="feed">
             <div class="profile-image-area">
               <!-- 작성자 프로필 -->
@@ -278,7 +278,6 @@
       </section>
     </main>
 
-    <input type="hidden" value="${loginMember}" name="loginUser" />
     <!-- footer include -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
@@ -290,12 +289,9 @@
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
     <c:if test="${ not empty loginMember }">
-      <script>
-        var loginMember = "${loginMember}";
-        var memberId = "${loginMember.memberNickname}";
+      <script src="/resources/js/createBoard.js"></script>
 
-        alert(memberId);
-      </script>
+      <c:remove var="message" />
     </c:if>
 
     <script type="text/javascript" defer src="/resources/js/main.js"></script>

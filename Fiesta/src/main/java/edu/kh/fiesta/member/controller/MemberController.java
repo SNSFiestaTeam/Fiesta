@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fiesta.member.model.service.MemberService;
 import edu.kh.fiesta.member.model.vo.Member;
 
-@SessionAttributes({"loginMember"})
+@SessionAttributes("loginMember")
 @Controller
 public class MemberController {
 	
@@ -32,6 +32,7 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			path = "/main";
+			
 			model.addAttribute("loginMember", loginMember);
 			
 			System.out.println("로그인 성공!");
