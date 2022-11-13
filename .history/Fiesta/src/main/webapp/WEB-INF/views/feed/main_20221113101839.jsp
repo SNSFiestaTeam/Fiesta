@@ -278,7 +278,7 @@
       </section>
     </main>
 
-    <input type="hidden" value="${loginMember}" name="loginUser" />
+    <input type="hidden" />
     <!-- footer include -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
@@ -292,9 +292,7 @@
     <c:if test="${ not empty loginMember }">
       <script>
         var loginMember = "${loginMember}";
-        var memberId = "${loginMember.memberNickname}";
-
-        alert(memberId);
+        sessionStorage.setItem("loginMember", loginMember);
       </script>
     </c:if>
 

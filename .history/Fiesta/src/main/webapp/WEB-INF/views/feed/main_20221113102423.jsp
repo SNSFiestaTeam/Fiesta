@@ -289,12 +289,16 @@
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
+    <c:forEach var="loginMember" items="${loginMember}">
+      <p><c:out value="${loginMember}" /></p>
+    </c:forEach>
+
     <c:if test="${ not empty loginMember }">
       <script>
         var loginMember = "${loginMember}";
-        var memberId = "${loginMember.memberNickname}";
+        sessionStorage.setItem("loginMember", loginMember);
 
-        alert(memberId);
+        alert(document.getElementsByName("loginUser")[0].value);
       </script>
     </c:if>
 

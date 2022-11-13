@@ -292,9 +292,7 @@
     <c:if test="${ not empty loginMember }">
       <script>
         var loginMember = "${loginMember}";
-        var memberId = "${loginMember.memberNickname}";
-
-        alert(memberId);
+        var memberId = "${loginMember.memberNickname";
       </script>
     </c:if>
 
