@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인</title>
+    <title>Fiesta</title>
     <link rel="stylesheet" href="resources/css/common-style.css" />
     <link rel="stylesheet" href="resources/css/login-style.css">
     <script
@@ -68,19 +68,6 @@
      <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
      <script src="/resources/js/member/login.js"></script>
-     
-      <!-- <c:if test="${ not empty message }"> 
-        <script>
-          // alert("${message}");
-          console.log("${message}");
-          </script>
-      </c:if>
-       -->
-      <!-- message 1회 출력 후 모든 scope 삭제
-        <c:remove var="message" /> -->
-        
-        
-      <script src="/resources/js/member/login.js"></script>
 
   </body>
 </html>

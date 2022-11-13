@@ -99,6 +99,22 @@
 		    <scope>provided</scope>
 		</dependency>
 		
+		<!-- path -->
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.9.1</version>
+		</dependency>
+		
+		<!-- jackson bind -->
+		<!-- JAVA -> JSON, 다양한 데이터 형태를 다루는데 사용 -->
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <dependency>
+       <groupId>com.fasterxml.jackson.core</groupId>
+       <artifactId>jackson-databind</artifactId>
+       <version>2.9.8</version>
+    </dependency>
+		
 
 		<!-- Spring -->
 		<dependency>

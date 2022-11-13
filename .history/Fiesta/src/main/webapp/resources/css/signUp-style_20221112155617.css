@@ -1,0 +1,232 @@
+@import "./root-style.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #fafafa;
+}
+
+/* main {flex-basis: 90%;}
+footer {flex-basis: 10%}
+ 값 px로 고정시킴 */
+
+main {
+  flex-basis: 90%;
+  /* height: 40em;
+    width: 20em; */
+  /* 값 px로 고정시킴 */
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+/* 회원가입 */
+.signUp-section {
+  width: 360px;
+  height: 516px;
+
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 7% 10% 0;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.logo-area {
+  text-align: center;
+  margin: 0 0 10%;
+}
+
+.logo-area a {
+  font-family: "Cookie", cursive;
+  color: #dd4132;
+  font-size: 60px;
+  width: 120px;
+  height: auto;
+}
+
+.logo-sentence {
+  font-size: 0.9em;
+}
+
+.signUp-frm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp-area {
+  display: flex;
+  justify-content: space-between;
+
+  width: 95%;
+  height: 45px;
+  margin: 0 0 2% 0;
+  padding: 4% 4% 0;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.signUp-area > input {
+  width: 100%;
+  background-color: #fafafa;
+  border: none;
+  outline: none;
+}
+
+.signUp-area i {
+  /* color: lightgray; */
+  right: 10px;
+  position: absolute;
+}
+
+.icon-nickname-refresh {
+  right: 25px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.icon-pw-showHide {
+  right: -2px;
+  position: absolute;
+}
+
+.iVisible {
+  visibility: visible;
+}
+.iHidden {
+  visibility: hidden;
+}
+
+/* 아이콘 색상 지정 */
+.gray {
+  color: lightgray;
+}
+.green {
+  color: #00cc66;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: #0066ff;
+}
+.black {
+  color: #111111;
+}
+.fiesta {
+  color: var(--fiesta-color);
+}
+
+/* #iCheck:hover{ color: #00cc66;}
+
+#iXmark:hover{ color: red; }
+
+#iRefresh:hover{ color: #0066ff;}
+
+#iEye:hover{color:#111111;}
+#iEyeSlash:hover{ color:#111111;} */
+
+/* 트랜지션  */
+.signUp-area {
+  position: relative;
+}
+
+.signUp-area > label {
+  /* border: 1px solid black; */
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  padding: 0 0 2%;
+  font-size: 0.8em;
+  color: #b4b4b4;
+  transition: 0.3s;
+}
+
+.signUp-area input:focus ~ label {
+  position: absolute;
+  transform: translateY(-8px);
+  font-size: 0.5em;
+  color: var(--fiesta-color);
+  transition-timing-function: ease-in-out;
+}
+
+.signUp-area input:valid ~ label {
+  position: absolute;
+  transform: translateY(-8px);
+  padding: 0;
+  font-size: 0.5em;
+}
+
+.signUp-area:focus-within {
+  border: 1px solid var(--fiesta-color);
+}
+
+.signUp-button {
+  display: block;
+  width: 95%;
+  height: 36px;
+  border-radius: 5px;
+  margin: 5% 0 8% 0;
+
+  /* background-color: var(--fiesta-color);
+    color: white;
+    cursor: pointer; */
+}
+
+.signUp-button {
+  background-color: lightgray;
+  color: white;
+}
+
+/* 버튼 색상 변경 */
+.buttonOn {
+  background-color: var(--fiesta-color);
+  color: white;
+  cursor: pointer;
+}
+
+/* 로그인으로 */
+.toLogin {
+  width: 360px;
+  height: 57px;
+
+  margin: 3% 0;
+  padding: 0 10%;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.8em;
+}
+
+.toLogin a {
+  color: var(--fiesta-color);
+  font-weight: bold;
+  cursor: pointer;
+}

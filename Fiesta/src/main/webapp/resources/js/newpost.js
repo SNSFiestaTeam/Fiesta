@@ -1,13 +1,12 @@
-const newPostOpen = document.getElementById("new-post-open");
-const modalBackground = document.getElementById("modal_background")
+const newPostOpen = document.getElementById("newPostOpen");
+const modalBackground = document.getElementById("modalBackground");
 
+newPostOpen.addEventListener("click", function () {
+  modalBackground.style.display = "flex";
+});
 
-newPostOpen.addEventListener("click", function(){
-    modalBackground.style.display="flex";
-})
+const newPostClose = document.getElementById("new-post-close");
 
-const newPostClose = document.getElementById("new-post-close")
-
-newPostClose.addEventListener("click",function(){
-    modalBackground.style.display="none";
-})
+newPostClose.addEventListener("click", function () {
+  modalBackground.style.display = "none";
+});

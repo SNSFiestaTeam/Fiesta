@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
     <!-- 모달 배경 -->
-    <div class="modal_background" id="modal_background">
-      <button onclick="history.back()" name="close" id="new-post-close" class="new-post-close">
+    <div class="modal_background" id="modalBackground">
+      <button name="close" id="new-post-close" class="new-post-close">
         <span id="post-x"><i class="fa-solid fa-x"></i></span>
       </button>
       <!-- <div class="test">test하는중</div> -->
@@ -43,6 +43,3 @@
         </div>
       </section>
     </div>
-
-
-  <script src="../resources/js/newpost.js"></script>

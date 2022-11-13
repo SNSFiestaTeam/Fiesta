@@ -8,19 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fiesta.member.model.service.MemberService;
 import edu.kh.fiesta.member.model.vo.Member;
 
-@SessionAttributes({"loginMember"})
+@SessionAttributes("loginMember")
 @Controller
 public class MemberController {
 	
 	@Autowired
 	private MemberService service;
 	
+	// 로그인
 	@PostMapping("/main")
 	public String login(Member inputMember, Model model, RedirectAttributes ra, 
 						HttpServletResponse resp, @RequestHeader(value="referer")String referer) {
@@ -31,6 +33,7 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			path = "/main";
+			
 			model.addAttribute("loginMember", loginMember);
 			
 			System.out.println("로그인 성공!");
@@ -38,14 +41,12 @@ public class MemberController {
 			// 쿠키 생성
 			// 쿠키 유지 시간 지정
 			// 1년 동안 쿠키 유지
-			return "redirect:"+ path;
 			
 		}else {
-			path = referer;
-			ra.addFlashAttribute("message", "로그인 실패");
+			path = "/";
+			ra.addFlashAttribute("message", "아이디, 비밀번호가 일치하지 않습니다😢");  
 			
 		}
-		
 		return "redirect:"+ path;
 	}
 	
@@ -62,6 +63,7 @@ public class MemberController {
 	}
 
 
+	
 
 	// 회원가입
 	@PostMapping("/member/signUp")
@@ -69,7 +71,6 @@ public class MemberController {
 		
 		int result = service.signUp(inputMember);
 
-//		String path = null;
 		String message = null;
 		
 		if(result > 0) {
@@ -78,14 +79,10 @@ public class MemberController {
 			return "redirect:/";  // 로그인 페이지로.
 			
 		} else {
-			message = "Please try again..";
+			message = "회원가입에 실패했습니다. 다시 시도해주세요.";
 			ra.addFlashAttribute("message", message);
 			return referer;
 		}
-		
-		
-//		return "redirect:" + path;
-		
 	}
 	
 	
@@ -99,6 +96,29 @@ public class MemberController {
 	public String findAccount() {
 		return "member/findAccount";
 	}
+	
+	
+	
+	// 이메일 중복 검사
+	@GetMapping("/emailDupCheck")
+	@ResponseBody
+	public int emailDupCheck(String memberEmail){
+		int result = service.emailDupCheck(memberEmail);
+		return result;
+	}
+	
+	
+	// 닉네임 중복 검사
+	@GetMapping("/nicknameDupCheck")
+	@ResponseBody
+	public int nicknameDupCheck(String memberNickname) {
+		int result = service.nicknameDupCheck(memberNickname);
+		return result;
+	}
+	
+	
+	
+	
 	
 	
 
