@@ -1,4 +1,4 @@
-package edu.kh.fiesta.member.model.service;
+package edu.kh.fiesta.setting.model.service;
 
 import java.util.Map;
 
@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import edu.kh.fiesta.member.model.dao.SettingDAO;
+import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.setting.model.dao.SettingDAO;
+
 
 
 @Service
@@ -41,6 +43,14 @@ public class SettingServiceImpl implements SettingService{
 			
 		} return 0;
 		
+	}
+
+	@Transactional
+	@Override
+	public int updateSetting(Member inputMember) {
+
+		int result = dao.updateSetting(inputMember);
+		return result;
 	}
 
 }
