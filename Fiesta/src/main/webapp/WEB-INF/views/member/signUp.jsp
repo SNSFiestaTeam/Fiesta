@@ -54,7 +54,6 @@
               <!-- 중복검사 + 형태 맞는지 확인하는 아이콘 : 체크, X -->
               <span class="icon-id-check">
                 <i class="fa-regular fa-circle-check icon" id="emailCheck"></i>
-                <i class="fa-regular fa-circle-xmark icon" id="emailXmark"></i>
               </span>
             </div>
   
@@ -76,13 +75,12 @@
                     maxlength="50" autocomplete="off" required>
               <label for="memberNickname">사용자 이름</label>
               
-              <!-- 자동생성(새로고침) / 필수입력(체크) / 중복검사(체크,X) -->
+              <!-- 자동생성 / 중복검사 : 새로고침 / 체크 / X-->
               <span class="icon-nickname-refresh">
                 <i class="fa-solid fa-arrow-rotate-right icon" id="nickRefresh"></i>
               </span>
               <span class="icon-nickname-check">
                  <i class="fa-regular fa-circle-check icon" id="nickCheck"></i>
-                 <i class="fa-regular fa-circle-xmark icon" id="nickXmark"></i>
               </span>
             </div>
   
@@ -90,13 +88,10 @@
               <input type="password" name="memberPw" id="memberPw" value="" maxlength="30" autocomplete="off" required>
               <label for="memberPw">비밀번호</label>
               
-              <!-- 비밀번호 유효성 검사 / 보이기숨기기 -->
+              <!-- 비밀번호 보이기숨기기 -->
               <!-- 비밀번호 정규표현식 사용 -->
-              <span class="icon-pw-check">
-                <i class="fa-regular fa-circle-check icon" id="pwCheck"></i>
-              </span>
               <span class="icon-pw-showHide">
-                <i class="fa-regular fa-eye icon" id="pwEye"></i>
+                <!-- <i class="fa-regular fa-eye icon" id="pwEye"></i> -->
                 <i class="fa-regular fa-eye-slash icon" id="pwEyeSlash"></i>
               </span>
             </div>
@@ -106,14 +101,10 @@
               <input type="password" name="memberPwConfirm" id="memberPwConfirm" value="" maxlength="30" autocomplete="off" required>
               <label for="memberPwConfirm">비밀번호 확인</label>
               
-              <!-- 비밀번호 일치 확인 : 체크,X / 보이기숨기기-->
+              <!-- 비밀번호 일치 확인 : 체크 / X -->
               <span class=icon-pwConfirm-check>
-                <i class="fa-regular fa-circle-check icon" id="pwConfirmCheck"></i>
+                <!-- <i class="fa-regular fa-circle-check" id="pwConfirmCheck"></i> -->
                 <i class="fa-regular fa-circle-xmark icon" id="pwConfirmXmark"></i>
-              </span>
-              <span class="icon-pw-showHide">
-                <i class="fa-regular fa-eye icon" id="pwConfirmEye"></i>
-                <i class="fa-regular fa-eye-slash icon" id="pwConfirmEyeSlash"></i>
               </span>
             </div> 
   
@@ -129,13 +120,10 @@
         </div>
       </section>
     </main>
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-    
-    <%-- jQuery 라이브러리(.js 파일) 추가 (CDN 방식 (Content Delivery Network)) --%>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    
-    <script src="/resources/js/member/signUp.js"></script>
 
+ 
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <script src="/resources/js/member/signUp.js"></script>
 
   </body>
 </html>

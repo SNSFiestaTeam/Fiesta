@@ -1,179 +1,199 @@
-@import "./root-style.css";
-
-.list-group > li:first-child {
-  border-left: 3px solid black;
+.list-group > li:first-child{
+    border-left: 3px solid black;
 }
 
-.setting-content {
-  display: flex;
-  width: 1000px;
-  min-height: 700px;
-  margin: 100px auto;
+.setting-content{
+    display: flex;
+    width: 1000px;
+    min-height: 700px;
+    margin: 100px auto;
 }
 
-.left-side {
-  width: 25%;
-  border: 1px solid #ddd;
+.left-side{
+    width: 25%;
+    border: 1px solid #ddd;
 }
 
-.list-group {
-  width: 100%;
-  list-style: none;
-  padding-right: 20px;
+.list-group{
+    width: 100%;
+    list-style: none;
+    padding-right: 20px;
+
 }
 
-.list-group > li {
-  height: 100px;
-  font-size: 18px;
+.list-group > li{
+    height: 100px;
+    font-size: 18px;
+
 }
 
-.list-group > li > a {
-  color: black;
-  text-decoration: none;
-  display: flex;
-  height: 100%;
-  font-weight: lighter;
-  justify-content: center;
-  align-items: center;
+.list-group > li > a{
+    color : black;
+    text-decoration: none;   
+    display: flex;
+    height: 100%;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-.list-group li:hover {
-  border-left: 3px solid #ddd;
+
+.list-group li:hover{
+    border-left: 3px solid #ddd;
 }
 
-.setting-main {
-  width: 75%;
-  border: 1px solid #ddd;
-  display: flex;
-  margin-right: auto;
+
+
+.setting-main{
+    width: 75%;
+    border: 1px solid #ddd;
+    display: flex;
+    margin-right: auto;
 }
 
-.main {
-  width: 70%;
+.main{
+    width: 70%;
 }
 
-div > aside {
-  width: 20%;
-  display: inline-block;
-  text-align: right;
-  margin-right: 30px;
+div>aside{
+    width: 20%;
+    display: inline-block;
+    text-align: right;
+    margin-right: 30px;
 }
-div > aside > a > img {
-  width: 38px;
-  text-align: right;
-}
-
-.setting-main > div {
-  height: auto;
-  display: inline-block;
+div > aside > a > img{
+    width: 38px;
+    text-align: right;
 }
 
-.setting-main .di-1 .main {
-  display: inline-block;
+.setting-main>div{
+    height: auto;
+    display: inline-block;
+}
+    
+.setting-main .di-1 .main{
+    display: inline-block;
+    
 }
 
-form > div {
-  margin: 20px;
+
+form > div{
+    margin: 20px;
 }
 
-.di-3 > .main {
-  font-size: 12px;
-  color: #8e8e8e;
+.di-3 > .main{
+    font-size: 12px;
+    color: #8e8e8e;
 }
 
-form > div > div {
-  display: inline-block;
-  width: 60%;
+
+
+form > div > div{
+    display: inline-block;
+    width: 60%;
 }
 
-.di-1 > .main > a {
-  font-size: 14px;
-  color: #0095f6;
+.di-1 > .main > a{
+    font-size: 14px;
+    color: #0095f6;
 }
 
-textarea {
-  width: 100%;
-  height: 60px;
-  padding: 6px 10px;
-  font-size: 16px;
-  resize: vertical;
+textarea{
+    width: 100%;
+    height: 60px;
+    padding: 6px 10px;
+    font-size: 16px;
+    resize: vertical;
 }
 
-.di-6 > .main > h2 {
-  font-size: 14px;
-  color: #8e8e8e;
+.di-6 > .main > h2{
+    font-size: 14px;
+    color: #8e8e8e;
 }
 
-.di-6 > .main > div {
-  font-size: 12px;
-  color: #8e8e8e;
+.di-6 > .main > div{
+    font-size: 12px;
+    color: #8e8e8e;
 }
 
-div.main > input {
-  width: 100%;
-  height: 30px;
-  padding: 0 10px;
-  border-radius: 3px;
-  border: 1px solid #ddd;
+div.main > input{
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+   
 }
 
-.btn {
-  width: 50px;
-  height: 30px;
-  background-color: #0095f6;
-  cursor: pointer;
-  border-radius: 5px;
-  color: white;
+
+.btn{
+    width: 50px;
+    height: 30px;
+    background-color: #0095f6;
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
 }
 
-.di-10 > div {
-  text-align: right;
+.di-10 > div{
+    text-align: right;
 }
 
-.di-6 > div > h2 {
-  margin-bottom: 10px;
+.di-6 > div > h2{
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 470px) {
-  .setting-content {
+.setting-content{
     margin-top: 0;
 
     display: flex;
     flex-direction: column;
-  }
+}
 
-  .setting-main {
+
+.setting-main{
     width: 100vw;
-  }
-  .setting-content .list-group {
+}
+.setting-content .list-group{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-  }
+    
+}
 
-  .setting-content .left-side {
+.setting-content .left-side{
     width: 100vw;
-  }
+}
+
+
+
 }
 
 @media screen and (min-width: 471px) and (max-width: 1023px) {
-  .setting-content {
-    margin-top: 0;
+    .setting-content{
+        margin-top: 0;
+    
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    .setting-main{
+        width: 100vw;
+    }
+    .setting-content .list-group{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
+    
+    .setting-content .left-side{
+        width: 100vw;
+    }
+    
 
-    display: flex;
-    flex-direction: column;
-  }
 
-  .setting-main {
-    width: 100vw;
-  }
-  .setting-content .list-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .setting-content .left-side {
-    width: 100vw;
-  }
 }

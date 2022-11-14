@@ -9,13 +9,6 @@
   </div>
 </div>
 
-<div class="comment-menu-container" id="commentMenu">
-  <div class="comment-menu">
-    <div class="comment-menu-btn btn1"><button id="commentReportBtn">신고</button></div>
-    <div class="comment-menu-btn btn3" ><button id="commentMenuCancel">취소</button></div>
-  </div>
-</div>
-
 <div class="share-container" id="share">
   <div class="share-menu">
     <div class="share-title"><span>공유하기</span></div>

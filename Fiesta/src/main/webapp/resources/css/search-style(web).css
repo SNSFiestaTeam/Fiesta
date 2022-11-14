@@ -1,18 +1,19 @@
 /* 화면 작아질때 footer가 중간에 위치하는 문제 해결하기! */
 /* 화면 작아질때 비율 해결하기 */
-@import "./root-style.css";
 
-body {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+body{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* web */
-@media screen and (min-width: 1024px) {
-  main {
+@media screen and (min-width: 1024px){
+
+main {
     width: 1000px;
     /* width: 702px;   */
     padding: 20px 1% 0;
@@ -23,10 +24,11 @@ body {
     justify-content: center;
     align-content: space-between;
     /* align-items:center; */
-  }
+}
 
-  /* 검색 결과 (맨위)*/
-  .keywordResult-section {
+
+/* 검색 결과 (맨위)*/
+.keywordResult-section{
     /* border: 1px solid black; */
 
     flex-basis: 20%;
@@ -34,19 +36,20 @@ body {
     margin-bottom: 30px;
 
     padding: 20px;
-
+    
     display: flex;
-  }
+}
 
-  .keywordPicture {
+
+.keywordPicture{
     flex-basis: 20%;
 
     /* border: 1px solid black; */
-  }
+}
 
-  .keyword-area {
+.keyword-area{
     flex-basis: 70%;
-    padding-top: 5px;
+    padding-top : 5px;
     margin-left: 50px;
 
     display: flex;
@@ -54,37 +57,40 @@ body {
     justify-content: space-between;
 
     /* border: 1px solid black; */
-  }
+}
 
-  /* 검색결과 이미지 _피드 프로필하고 맞추기*/
-  .keywordPicture img {
+
+/* 검색결과 이미지 _피드 프로필하고 맞추기*/
+.keywordPicture img{
     height: 100%;
     width: 150px;
     border-radius: 50%;
-  }
+}
 
-  .searchKeyword {
+
+.searchKeyword{
     font-size: 1.5em;
     font-weight: bold;
-  }
+}
 
-  .total {
+.total{
     width: 200px;
     display: flex;
-  }
+}
 
-  .total span {
+.total span{
     flex-basis: 80%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
+}
 
-  .total-number {
+.total-number{
     font-weight: bold;
-  }
+}
 
-  .follow-button {
+
+.follow-button{
     width: 40%;
     background-color: var(--fiesta-color);
     border-radius: 5px;
@@ -93,125 +99,136 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .follow-button a {
+.follow-button a{
     color: white;
     font-weight: 500;
     font-size: 0.9em;
-  }
+}
 
-  /* 검색결과 - 관련 있는 계정 */
-  .accountResult-section {
+
+
+/* 검색결과 - 관련 있는 계정 */
+.accountResult-section{
     width: 100%;
     flex-basis: 20%;
     margin-bottom: 30px;
-  }
+}
 
-  .accountTitle {
+
+.accountTitle{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-  }
+}
 
-  .accountTitle span:first-child {
-    /* 관련 있는 계정 */
+
+.accountTitle span:first-child{ /* 관련 있는 계정 */
     margin: 0 20px 10px 0;
     font-weight: bold;
-  }
+}
 
-  .accountTitle span:last-child {
-    /* 모두보기 */
+.accountTitle span:last-child{/* 모두보기 */
     font-size: 0.8em;
     font-weight: 500;
     color: var(--main-font-color);
-  }
+} 
 
-  .account-container {
+
+
+.account-container{
     max-width: 100%;
     padding: 10px;
 
     display: flex;
     justify-content: space-between;
-  }
+    
+}
 
-  .account-Group {
+.account-Group{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .account-Group a {
+.account-Group a{
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .profileImage img {
+.profileImage img{
     width: 80%;
     border-radius: 50%;
     margin-bottom: 8px;
-  }
+}
 
-  .profileNickname {
+.profileNickname{
     font-size: 0.8em;
-  }
+}
 
-  .follow a {
+.follow a{
     font-size: 0.8em;
     font-weight: bold;
     color: var(--fiesta-color);
-  }
+}
 
-  /* 검색결과 - 인기게시글(사진) 섹션 */
-  .boardResult-section {
+
+
+/* 검색결과 - 인기게시글(사진) 섹션 */
+.boardResult-section{
     flex-basis: 60%;
     width: 100%;
     /* border: 1px solid black; */
 
     display: flex;
     flex-direction: column;
-  }
+}
 
-  .boardResult-section > div:first-child {
-    /* 인기 게시글 */
+.boardResult-section > div:first-child{ /* 인기 게시글 */
     flex-basis: 10%;
     height: 10%;
     margin-bottom: 10px;
     font-weight: bold;
-  }
+}
 
-  .boardResult {
+.boardResult{
     width: 100%;
     height: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
+}
 
-  .boardImage {
+
+.boardImage{
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .boardImage a {
+.boardImage a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+}
 
-  .boardImage img {
+
+.boardImage img{
     width: 100%;
     height: 100%;
     padding: 10px;
-  }
+}
 
-  /* 인기 게시글의 사진
+/* 인기 게시글의 사진
     1) 사진만을 감싸는 부분과 a 태그의 부분이
        똑같은 공간을 가지도록.
     2) img에 padding을 줘서 간격을 만들기.
 */
+
 }
+
+

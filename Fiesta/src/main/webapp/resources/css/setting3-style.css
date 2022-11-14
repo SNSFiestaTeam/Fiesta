@@ -1,272 +1,285 @@
-@import "./root-style.css";
-
-.list-group > li:nth-child(3) {
-  border-left: 3px solid black;
+.list-group > li:nth-child(3){
+    border-left: 3px solid black;
 }
-.setting-content {
-  display: flex;
-  width: 1000px;
-  min-height: 700px;
-  margin: 100px auto;
+.setting-content{
+    display: flex;
+    width: 1000px;
+    min-height: 700px;
+    margin: 100px auto;
 }
 
-.left-side {
-  width: 25%;
-  border: 1px solid #ddd;
+.left-side{
+    width: 25%;
+    border: 1px solid #ddd;
 }
 
-.list-group {
-  width: 100%;
-  list-style: none;
-  padding-right: 20px;
+.list-group{
+    width: 100%;
+    list-style: none;
+    padding-right: 20px;
+
 }
 
-.list-group > li {
-  height: 100px;
-  font-size: 18px;
+.list-group > li{
+    height: 100px;
+    font-size: 18px;
+
 }
 
-.list-group > li > a {
-  color: black;
-  text-decoration: none;
-  display: flex;
-  height: 100%;
-  font-weight: lighter;
-  justify-content: center;
-  align-items: center;
+.list-group > li > a{
+    color : black;
+    text-decoration: none;   
+    display: flex;
+    height: 100%;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-.list-group li:hover {
-  border-left: 3px solid #ddd;
+
+.list-group li:hover{
+    border-left: 3px solid #ddd;
 }
 
-.list-group li:focus-within {
-  border-left: 3px solid black;
+.list-group li:focus-within{
+    border-left: 3px solid black;
 }
 
-.setting-main {
-  width: 75%;
-  border: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  padding: 0px 24px;
+.setting-main{
+    width: 75%;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 24px;
 }
 
-.menu-left {
-  width: 200px;
-  display: inline-block;
-  height: 40px;
-  text-align: right;
-  margin-right: 12px;
+.menu-left{
+    width: 200px;
+    display: inline-block;
+    height: 40px;
+    text-align: right;
+    margin-right: 12px;
 }
 
-.setting-main > section {
-  margin: 10px 30px 10px 30px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+.setting-main > section{
+    margin : 10px 30px 10px 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
-.note {
-  color: #8e8e8e;
-  font-size: 14px;
-  margin-bottom: 20px;
+.note{
+    color: #8e8e8e;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-.setting-main section h1 {
-  margin-top: 0;
+.setting-main section h1{
+    margin-top: 0;
 }
 
-.like-1 {
-  font-size: 16px;
-  font-weight: 800;
-  margin-bottom: 15px;
-  display: block;
+
+
+.like-1{
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    display: block;
 }
 
-.like-2 {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 15px;
-  display: block;
+.like-2{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: block;
 }
 
-.like-3 {
-  color: #8e8e8e;
-  font-size: 12px;
-  display: inline;
+.like-3{
+    color: #8e8e8e;
+    font-size: 12px;
+    display: inline;
 }
 
-.post > a {
-  color: #00376b;
-  font-size: 12px;
-  text-decoration: none;
+.post > a{
+    color: #00376b;
+    font-size: 12px;
+    text-decoration: none;
 }
 
-.group-1 {
-  font-size: 16px;
-  color: #262626;
-  display: block;
-  font-weight: bold;
-  margin-bottom: 20px;
+.group-1{
+    font-size: 16px;
+    color : #262626;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-.group-2 {
-  font-size: 16px;
-  color: #262626;
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
+.group-2{
+    font-size: 16px;
+    color: #262626;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.group-com {
-  font-size: 12px;
-  color: #8e8e8e;
+.group-com{
+    font-size: 12px;
+    color:#8e8e8e;
+    
 }
 
-.group-com2 {
-  font-size: 12px;
-  margin: 10px 0;
+.group-com2{
+    font-size: 12px;
+    margin: 10px 0;
+
 }
 
-.post > .like-1 {
-  font-weight: 400;
+.post > .like-1{
+    font-weight: 400;
 }
 
-.post > .post-1 > .like-2 {
-  font-weight: 300;
-  display: inline;
-  margin-right: 30px;
+.post > .post-1 > .like-2{
+    font-weight: 300;
+    display: inline;
+    margin-right: 30px;
 }
 
-h2 {
-  margin-bottom: 10px;
-  font-weight: 400;
+h2{
+    margin-bottom: 10px;
+    font-weight: 400;
+
 }
 
-.post > .like-3 {
-  display: block;
-  margin-top: 10px;
+.post > .like-3{
+    display: block;
+    margin-top: 10px;
 }
 
-.account > input {
-  margin-bottom: 15px;
+.account > input{
+    margin-bottom: 15px;
 }
 
-.group-com2 > a {
-  color: blue;
-  letter-spacing: 1px;
+.group-com2 > a{
+    color: blue;
+    letter-spacing: 1px;
 }
-.group-2 > div {
-  margin-bottom: 10px;
-}
-
-section.group {
-  border-bottom: none;
+.group-2 > div{
+    margin-bottom: 10px;
 }
 
-.setting-main .account input {
-  margin: 10px;
+section.group{
+    border-bottom: none;
 }
 
-.setting-main .account > h2 {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.setting-main .account input{
+    margin: 10px;
 }
 
-.setting-main .account .note {
-  margin-top: 20px;
+.setting-main .account > h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.setting-main .post {
-  border-bottom: none;
+.setting-main .account .note{
+    margin-top: 20px;
 }
 
-section.post > .post-1 > input {
-  position: absolute;
-  left: -1000%;
+.setting-main .post{
+    border-bottom: none;
 }
 
-section.post > .post-1 > label {
-  display: inline-block;
-  position: relative;
-  width: 44px;
-  height: 28px;
-  background-color: gray;
-  border-radius: 60px;
-  transition: background 0.4s;
-  align-items: right;
-}
-section.post > .post-1 > label:after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 50%;
-  width: 22px;
-  height: 22px;
-  border-radius: 100%;
-  background: #fff;
-  transform: translateY(-50%);
-  transition: 0.4s;
-}
-section.post > .post-1 > input:checked + label {
-  background-color: #0095f6;
+
+section.post > .post-1 > input{
+    position: absolute; left:-1000%;
 }
 
-section.post > .post-1 > input:checked + label:after {
-  left: inherit;
-  right: 3px;
+section.post > .post-1 > label{
+    display: inline-block;
+    position: relative;
+    width: 44px;
+    height: 28px;
+    background-color: gray;
+    border-radius: 60px;
+    transition: background .4s;
+    align-items: right;
 }
+section.post > .post-1 > label:after{ 
+    content: ""; position: absolute; left:3px; top:50%; width: 22px;
+    height: 22px; border-radius: 100%; background: #fff; 
+    transform:translateY(-50%); transition:.4s;
+}
+section.post > .post-1> input:checked + label{
+    background-color: #0095f6;
+}
+
+
+section.post > .post-1 > input:checked + label:after{
+    left: inherit; right: 3px;
+}
+
 
 .post-1 {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
+
 
 @media screen and (max-width: 470px) {
-  .setting-content {
-    margin-top: 0;
+    .setting-content{
+        margin-top: 0;
 
-    display: flex;
-    flex-direction: column;
-  }
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+    .setting-main{
+        width: 100vw;
+    }
+    .setting-content .list-group{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
+    
+    .setting-content .left-side{
+        width: 100vw;
+    }
+    
+    
+    
+    }
+    
+    @media screen and (min-width: 471px) and (max-width: 1023px) {
+        .setting-content{
+            margin-top: 0;
+    
+            display: flex;
+            flex-direction: column;
+        }
+        
+        
+        .setting-main{
+            width: 100vw;
+            min-width: 380px;
+         
+        }
+        .setting-content .list-group{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            
+        }
 
-  .setting-main {
-    width: 100vw;
-  }
-  .setting-content .list-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .setting-content .left-side {
-    width: 100vw;
-  }
-}
-
-@media screen and (min-width: 471px) and (max-width: 1023px) {
-  .setting-content {
-    margin-top: 0;
-
-    display: flex;
-    flex-direction: column;
-  }
-
-  .setting-main {
-    width: 100vw;
-    min-width: 380px;
-  }
-  .setting-content .list-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .setting-main > div {
-    justify-content: center;
-  }
-
-  .setting-content .left-side {
-    width: 100vw;
-  }
-}
+        .setting-main > div {
+            justify-content: center;
+        }
+        
+        .setting-content .left-side{
+            width: 100vw;
+        }
+        
+    
+    
+    }

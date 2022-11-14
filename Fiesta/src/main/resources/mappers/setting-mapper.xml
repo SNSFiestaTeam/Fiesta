@@ -31,6 +31,13 @@ WHERE MEMBER_NO = #{memberNo}
  	MEMBER_PW = #{newPw}
  	WHERE MEMBER_NO = #{memberNo}
  </update>
+ <update id="updateSetting" parameterType="Member" >
+ UPDATE ""MEMBER" SET
+ MEMBER_NAME = #{memberName}
+ MEMBER_NICKNAME = #{memberNickname}
+ WHERE MEMBER_NO = #{memberNo}
+ </update>
+ 
  </mapper>
  
  

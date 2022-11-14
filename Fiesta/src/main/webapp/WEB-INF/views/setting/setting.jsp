@@ -32,20 +32,20 @@
         </section>
 
         <section class="setting-main">
-          <form action="#" name="set">
+          <form action="setting" name="set" method="POST">
             <div class="di-1">
                 <aside>
                   <a href="#" class="pro-img"><img src="../../resources/images/user.jpg"></a>
                 </aside>
                 <div class="main">
-                  <h1>로그인 아이디</h1>
+                  <h1>${loginMember.memberNickname}</h1>
                   <a href="#">프로필 사진 바꾸기</a>
                 </div>
             </div>
             <div class="di-2">
                 <aside><label>이름</label></aside>
                 <div class="main">
-                  <input type="text" placeholder="이름" value="로그인한 사람 이름">
+                  <input type="text" placeholder="이름" value="${loginMember.memberName}">
                 </div>
             </div>
             <div class="di-3">
@@ -57,7 +57,7 @@
             </div>
             <div class="di-4">
                 <aside><label>사용자 이름</label></aside>
-                <div class="main"><input type="text" placeholder="사용자 이름" value="로그인 사용자 이름"></div>
+                <div class="main"><input type="text" placeholder="사용자 이름" value="${loginMember.memberNickname}"></div>
             </div>
             <div class="di-5">
                 <aside><label>소개</label></aside>
@@ -73,24 +73,7 @@
                 </div>
 
             </div>
-            <div class="di-7">
-                <aside><label>이메일</label></aside>
-                <div class="main">
-                  <input type="Email" placeholder="이메일" value="로그인 이메일">
-                </div>
-            </div>
            
-            <div class="di-9">
-                <aside><label>성별</label></aside>
-                <div class="main">
-                  <select name="1">
-                    <option value="a">남성</option>
-                    <option value="a">여성</option>
-                    <option value="a">맞춤 성별</option>
-                    <option value="a">밝히고 싶지 않음</option>
-                  </select>
-                </div>
-            </div>
             <div class="di-10">
                 <aside></aside>
                 <button class="btn">제출</button>

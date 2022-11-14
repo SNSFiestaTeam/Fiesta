@@ -1,201 +1,222 @@
-@import "./root-style.css";
-
-.list-group > li:nth-child(2) {
-  border-left: 3px solid black;
+.list-group > li:nth-child(2){
+    border-left: 3px solid black;
 }
-.setting-content {
-  display: flex;
-  width: 1000px;
-  min-height: 700px;
-  margin: 100px auto;
+.setting-content{
+    display: flex;
+    width: 1000px;
+    min-height: 700px;
+    margin: 100px auto;
 }
 
-.left-side {
-  width: 25%;
-  border: 1px solid #ddd;
+.left-side{
+    width: 25%;
+    border: 1px solid #ddd;
 }
 
-.list-group {
-  width: 100%;
-  list-style: none;
-  padding-right: 20px;
+.list-group{
+    width: 100%;
+    list-style: none;
+    padding-right: 20px;
+
 }
 
-.list-group > li {
-  height: 100px;
-  font-size: 18px;
+.list-group > li{
+    height: 100px;
+    font-size: 18px;
+
 }
 
-.list-group > li > a {
-  color: black;
-  text-decoration: none;
-  display: flex;
-  height: 100%;
-  font-weight: lighter;
-  justify-content: center;
-  align-items: center;
+.list-group > li > a{
+    color : black;
+    text-decoration: none;   
+    display: flex;
+    height: 100%;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-.list-group li:hover {
-  border-left: 3px solid #ddd;
+
+.list-group li:hover{
+    border-left: 3px solid #ddd;
 }
 
-.list-group li:focus-within {
-  border-left: 3px solid black;
+.list-group li:focus-within{
+    border-left: 3px solid black;
 }
 
-.setting-main {
-  width: 75%;
-  border: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
+.setting-main{
+    width: 75%;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
 }
 
-.setting-main .menu-left .pro-img {
-  width: 38px;
-  margin-right: 8px;
+.setting-main .menu-left .pro-img{
+    width: 38px;
+    margin-right: 8px;
 }
 
-.menu-left {
-  width: 200px;
-  display: inline-block;
-  height: 40px;
-  text-align: right;
-  margin-right: 12px;
+.menu-left{
+    width: 200px;
+    display: inline-block;
+    height: 40px;
+    text-align: right;
+    margin-right: 12px;
 }
 
-.top {
-  height: 40px;
-  margin-top: 32px;
-  display: inline;
-  padding-bottom: 10px;
+
+
+.top{
+    height: 40px;
+    margin-top: 32px;
+    display: inline;
+    padding-bottom: 10px;
 }
 
-.top .loginid {
-  display: inline;
-  padding-bottom: 10px;
+.top .loginid{
+    display: inline;
+    padding-bottom: 10px;
 }
 
-.pre-pw {
-  margin-top: 20px;
-  height: 40px;
+.pre-pw{
+    margin-top: 20px;
+    height: 40px;
 }
 
-.pre-pw > input {
-  width: 60%;
-  height: 100%;
-  padding: 4px 12px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #ddd;
+.pre-pw > input{
+    width: 60%;
+    height: 100%;
+    padding : 4px 12px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #ddd;
+
 }
 
-.new-pw {
-  margin-top: 20px;
-  height: 40px;
+.new-pw{
+    margin-top: 20px;
+    height: 40px;
+
 }
 
-.new-pw > input {
-  width: 60%;
-  height: 100%;
-  padding: 4px 12px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #ddd;
+.new-pw > input{
+    width: 60%;
+    height: 100%;
+    padding : 4px 12px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #ddd;
 }
 
-.new-pw2 {
-  margin-top: 20px;
-  height: 40px;
+.new-pw2{
+    margin-top : 20px;
+    height: 40px;
+
 }
 
-.new-pw2 > input {
-  width: 60%;
-  height: 100%;
-  padding: 4px 12px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #ddd;
+.new-pw2 > input{
+    width: 60%;
+    height: 100%;
+    padding : 4px 12px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #ddd;
+
 }
 
-.change-button {
-  background-color: #0095f6;
-  color: white;
-  width: 110px;
-  height: 30px;
-  margin-top: 16px;
-  border-radius: 5px;
-  cursor: pointer;
+.change-button{
+    background-color: #0095f6;
+    color:white;
+    width: 110px;
+    height: 30px;
+    margin-top: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+
 }
 
-.forget > a {
-  color: #0095f6;
-  text-decoration: none;
-  font-size: 14px;
+.forget > a{
+    color:#0095f6;
+    text-decoration: none;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 470px) {
-  .setting-content {
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-  }
+    .setting-content{
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .list-group{
+        width: 100vw;
+    }
+    form{
+        width: 90vw;
+    }
+    
+    .setting-content .list-group{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
 
-  .list-group {
-    width: 100vw;
-  }
-  form {
-    width: 90vw;
-  }
+    .setting-main{
+        width: 100vw;
+    }
 
-  .setting-content .list-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
+    form > div{
+        display: flex;
 
-  .setting-main {
-    width: 100vw;
-  }
-
-  form > div {
-    display: flex;
-  }
-
-  .setting-content .left-side {
-    width: 100vw;
-  }
-}
-
-@media screen and (min-width: 471px) and (max-width: 1023px) {
-  .setting-content {
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .list-group {
-    width: 100vw;
-  }
-  form {
-    width: 100vw;
-  }
-
-  .setting-content .list-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .setting-main {
-    width: 100vw;
-  }
-
-  form > div {
-    display: flex;
-  }
-
-  .setting-content .left-side {
-    width: 100vw;
-  }
-}
+    }
+    
+    .setting-content .left-side{
+        width: 100vw;
+    }
+    
+    
+    
+    }
+    
+    @media screen and (min-width: 471px) and (max-width: 1023px) {
+        .setting-content{
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .list-group{
+            width: 100vw;
+        }
+        form{
+            width: 100vw;
+        }
+        
+        .setting-content .list-group{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            
+        }
+    
+        .setting-main{
+            width: 100vw;
+            
+            
+        }
+    
+        form > div{
+            display: flex;
+    
+        }
+        
+        .setting-content .left-side{
+            width: 100vw;
+        }
+        
+        
+    
+    }
