@@ -8,13 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fiesta.member.model.service.MemberService;
 import edu.kh.fiesta.member.model.vo.Member;
 
-@SessionAttributes({"loginMember"})
+@SessionAttributes("loginMember")
 @Controller
 public class MemberController {
 	
@@ -94,6 +95,23 @@ public class MemberController {
 	}
 	
 	
+	
+	// 이메일 중복 검사
+	@GetMapping("/emailDupCheck")
+	@ResponseBody
+	public int emailDupCheck(String memberEmail){
+		int result = service.emailDupCheck(memberEmail);
+		return result;
+	}
+	
+	
+	// 닉네임 중복 검사
+	@GetMapping("/nicknameDupCheck")
+	@ResponseBody
+	public int nicknameDupCheck(String memberNickname) {
+		int result = service.nicknameDupCheck(memberNickname);
+		return result;
+	}
 
 }
 

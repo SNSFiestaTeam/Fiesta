@@ -57,7 +57,6 @@
 
    <!-- SqlSessionTemplate(#최종결과) : 기본 SQL 실행 + 트랜잭션 관리 역할을 하는 SqlSession을 생성할 수 있게 하는 객체(Spring bean으로 등록해야함.) -->
    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-   <!-- ##위에만든것을 매개변수도 실행하겠다 -->
       <constructor-arg ref="sqlSessionFactoryBean" />
    </bean>
 

@@ -40,6 +40,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	
 	// 회원가입
 	@Transactional(rollbackFor = Exception.class)
 	@Override
@@ -53,6 +54,21 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+
+	
+	// 회원가입_이메일 중복 체크
+	@Override
+	public int emailDupCheck(String memberEmail) {
+		return dao.emailDupCheck(memberEmail);
+	}
+
+
+
+	//회원가입_닉네임 중복 체크 서비스
+	@Override
+	public int nicknameDupCheck(String memberNickname) {
+		return dao.nicknameDupCheck(memberNickname);
+	}
 
 
 }

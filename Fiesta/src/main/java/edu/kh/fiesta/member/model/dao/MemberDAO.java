@@ -28,6 +28,27 @@ public class MemberDAO {
 	public int signUp(Member inputMember) {
 		return sqlSession.insert("memberMapper.signUp", inputMember);
 	}
+	
+	
+	
+	/** 회원가입_이메일 중복 체크 DAO
+	 * @param memberEmail
+	 * @return result
+	 */
+	public int emailDupCheck(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.emailDupCheck", memberEmail);
+	}
+
+	
+
+	/** 회원가입_닉네임 중복 체크 서비스 DAO
+	 * @param memberNickname
+	 * @return result
+	 */
+	public int nicknameDupCheck(String memberNickname) {
+		return sqlSession.selectOne("memberMapper.nicknameDupCheck", memberNickname);
+	}
+
 
 	
 }

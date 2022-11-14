@@ -16,5 +16,19 @@ public interface MemberService {
 	 */
 	int signUp(Member inputMember);
 	
+	
+	/** 회원가입_이메일 중복 체크 서비스
+	 * @param memberEmail
+	 * @return result
+	 */
+	int emailDupCheck(String memberEmail);
+
+	
+	/** 회원가입_닉네임 중복 체크 서비스
+	 * @param memberNickname
+	 * @return result
+	 */
+	int nicknameDupCheck(String memberNickname);
+	
 
 }
