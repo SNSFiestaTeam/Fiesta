@@ -45,7 +45,7 @@
             <div class="di-2">
                 <aside><label>이름</label></aside>
                 <div class="main">
-                  <input type="text" placeholder="이름" value="로그인한 사람 이름">
+                  <input type="text" placeholder="이름" value="${loginMember.memberName}">
                 </div>
             </div>
             <div class="di-3">
@@ -57,7 +57,7 @@
             </div>
             <div class="di-4">
                 <aside><label>사용자 이름</label></aside>
-                <div class="main"><input type="text" placeholder="사용자 이름" value="로그인 사용자 이름"></div>
+                <div class="main"><input type="text" placeholder="사용자 이름" value="${loginMember.memberNickname}"></div>
             </div>
             <div class="di-5">
                 <aside><label>소개</label></aside>

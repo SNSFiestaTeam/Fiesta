@@ -23,9 +23,13 @@ function readValue(){
 
         room.scrollTop =  room.scrollHeight;   
     } else {      
+    
     }   
         input.value="";
 
 
 }
+
+
+
 
