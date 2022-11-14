@@ -204,5 +204,11 @@ body {
     }
 }
 
+#follow-btn{
+    cursor: pointer;
+}
 
+#following-btn{
+    cursor: pointer;
+}
 

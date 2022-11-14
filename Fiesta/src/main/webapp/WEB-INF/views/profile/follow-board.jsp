@@ -4,7 +4,15 @@
 
     <div class="follow-container" id="follow-container">
       <div class="follow-menu">
-        <div class="follow-title"><span>팔로워</span></div>
+        <div class="follow-title">
+        <span class="follow-space"></span>
+          <span>팔로워</span>
+         <span>
+           <button id="follow-close" class="follow-close">
+           <i class="fa-solid fa-x"></i>
+          </button>
+        </span>
+        </div>
         <div class="follow-content">
           <div  class="a">
             <div>

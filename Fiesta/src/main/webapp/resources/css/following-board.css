@@ -40,7 +40,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* display: none; */
+    display: none;
+    
+    position: fixed;
   }
   
   .following-menu {
@@ -58,11 +60,12 @@
     width: 100%;
   
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   
     padding: 12px 0;
     border-bottom: 1px solid #ddd;
+
   }
   
   
@@ -85,6 +88,8 @@
   .following-subtitle > a{
     display: flex;
     justify-content: center;
+    font-size: 16px;
+    color: var(--fiesta-color);
   }
   
   
@@ -152,14 +157,16 @@
     align-items: center;
   }
 
+  .following-close{
+    font-size: 16px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+  
+  .following-space{
+    margin-left: 24px;
+  }
 
-.a{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 100px;
-}
   
   
   
