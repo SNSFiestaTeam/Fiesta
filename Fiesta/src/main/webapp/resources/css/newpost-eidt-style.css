@@ -304,6 +304,11 @@ li{
 
     cursor: pointer;
     position:absolute;
+    padding: 10px;
+    /* margin: 0 0 61px 74px; */
+    /* top: 1000px; */
+    /* padding-bottom: 100; */
+
 }
 /* .new-post-files > div{
   display: flex;
