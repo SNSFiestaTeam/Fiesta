@@ -1,5 +1,5 @@
 
-package edu.kh.fiesta.member.controller;
+package edu.kh.fiesta.setting.controller;
 
 import java.util.Map;
 
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import edu.kh.fiesta.member.model.service.SettingService;
 import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.setting.model.service.SettingService;
 
 @RequestMapping("setting/setting")
 @Controller
@@ -28,14 +28,26 @@ public class SettingController {
 	}
 	
 	@PostMapping()
-	public String updateSetting(Member inputMember, Member loginMember,
-				RedirectAttributes ra) {
+	public String updateSetting(Member inputMember, 
+			@SessionAttribute("loginMember") Member loginMember, RedirectAttributes ra) {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
+		inputMember.setMemberName(loginMember.getMemberName());
 		
+		int result = service.updateSetting(inputMember);
 		
+		String message = null;
 		
-		return null;
+		if(result > 0) {
+			message = "회원 정보 수정";
+		
+		loginMember.setMemberNickname(inputMember.getMemberNickname());
+		} else {
+			message = "실패";		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:";
 	}
 	
 	

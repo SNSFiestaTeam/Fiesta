@@ -14,11 +14,13 @@ body {
   margin-top: 100px;
 }
 
+
 .left {
   width: 400px;
   border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
+
 }
 
 .right {
@@ -30,6 +32,26 @@ body {
   justify-content: center;
   align-items: center;
 }
+.right > .up{
+    height: 10%;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 30px;
+    display: flex;
+    justify-content: space-evenly;
+ 
+
+}
+.right > .up > .messageName{
+ margin: auto;   
+}
+
+.right .up #info{
+    margin: auto 0px;
+}
+
+
 
 .left > .up {
   flex-basis: 10%;
@@ -122,6 +144,46 @@ body {
   font-size: 0.9em;
   color: #8e8e8e;
 }
+
+
+#chattingRoom{
+    width: 100%;
+    min-height: 80%;
+    border: none;
+    background-color: white;
+    overflow: auto; 
+}
+
+
+#chattingRoom > p > span{
+    background-color: #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+#chattingRoom > p{
+    margin: 20px 10px;
+    text-align: right;
+}
+
+#input{
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    margin: 10px;
+}
+#chattingInput{
+    width: 80%;
+    height: 70%;
+    padding: 5px 20px;
+    border-radius: 10em;
+    border: 1px solid #ccc;
+    outline: none;
+
+}
+
+
 
 @media screen and (max-width: 470px) {
   .container > .right {
