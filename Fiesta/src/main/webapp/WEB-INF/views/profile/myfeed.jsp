@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/resources/css/myfeed.css" />
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
+
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -19,7 +20,6 @@
   </head>
   <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
 
     <main>
       <div class="main-container">
@@ -35,7 +35,7 @@
               <a href="#">karina_aespas_</a>
 
               <button id="btn">
-                <a href="#">프로필 편집</a>
+                <a href="/setting/setting">프로필 편집</a>
               </button>
 
               <a href="#"><i class="fa-solid fa-gear"></i></a>
@@ -166,6 +166,7 @@
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/follow-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
+
     <script src="/resources/js/myfeed.js"></script>
   </body>
 </html>

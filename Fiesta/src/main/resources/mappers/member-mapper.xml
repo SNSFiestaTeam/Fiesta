@@ -20,6 +20,7 @@
       
   </resultMap>
   
+  <!-- 로그인 -->
   <select id = "login" parameterType="string" resultMap="member_rm">
 			SELECT *
 			FROM "MEMBER"
@@ -27,9 +28,29 @@
 			AND SECESSION_FL ='N'
   </select>
   
+  <!-- 회원가입 -->
   <insert id="signUp" parameterType="edu.kh.fiesta.member.model.vo.Member">
-		  	INSERT INTO "MEMBER"
-				VALUES(SEQ_MEMBER_NO.NEXTVAL, #{memberEmail}, #{memberPw}, #{memberName}, #{memberNickname}, NULL, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+	  	INSERT INTO "MEMBER"
+			VALUES(SEQ_MEMBER_NO.NEXTVAL, #{memberEmail}, #{memberPw}, #{memberName}, #{memberNickname}, NULL, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
   </insert>
+  
+  <!-- 회원가입_이메일 중복 체크 -->
+  <select id="emailDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*)
+  		FROM "MEMBER"	
+  		WHERE MEMBER_EMAIL = #{memberEmail}
+  		AND SECESSION_FL ='N'
+  </select>
+  
+  
+  <!-- 회원가입_닉네임 중복 체크 -->
+  <select id="nicknameDupCheck" parameterType="string" resultType="_int">
+  		SELECT COUNT(*)
+  		FROM "MEMBER"	
+  		WHERE MEMBER_NICKNAME = #{memberNickname}
+  		AND SECESSION_FL ='N'
+  </select>
+  
+  
   
 </mapper>

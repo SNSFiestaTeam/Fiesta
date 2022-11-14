@@ -15,3 +15,20 @@
     <a href="#">고객센터</a>
   </article>
 </footer>
+
+  <c:if test="${ not empty message }"> 
+      <script>
+        // alert("${message}");
+        const line = document.getElementsByClassName("line")[0];
+        
+        line.innerHTML = "${message}";
+        line.classList.add("lineFont");
+
+        line.style.display = "inline";
+        line.style.textAlign = "center";
+
+
+      </script>
+
+    <c:remove var="message" />
+  </c:if>

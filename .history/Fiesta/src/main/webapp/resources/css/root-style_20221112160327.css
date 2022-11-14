@@ -1,0 +1,17 @@
+/* 루트 함수
+공동으로 사용할 스타일을 미리 지정해놓고 사용 가능
+스타일 지정시 지정할 스타일: 루트 함수명 으로 사용 가능
+--만 타이핑 하면 자동완성 리스트가 뜨고 
+선택하면 var()함수까지 자동완성됨 */
+:root {
+  --background-color: white;
+  --main-font-color: #8e8e8e;
+  --icon-button-color: #262626;
+  --point-font-color: #0095f6;
+  --mention-font-color: #00376b;
+  --fiesta-color: #dd4132;
+  --small-font-size: 12px;
+  --main-font-size: 14px;
+  --madium-font-size: 16px;
+  --large-icon-size: 24px;
+}
