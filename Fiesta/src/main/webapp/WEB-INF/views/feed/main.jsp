@@ -27,7 +27,7 @@
     <main>
       <section>
         <!-- 인스타 피드 -->
-        <section class="feed-section">
+        <section class="feed-section" id="feedSection">
           <!-- 피드 리스트 -->
           <p style="font-size: 13px">${sessionScope.loginMember}</p>
           <div class="feed">
@@ -58,14 +58,7 @@
                     <img class="uploaded-image" src="/resources/images/은우3.jpg" alt="" />
                   </li>
                 </ul>
-                <p class="controller">
-                  <button type="button" class="left-btn">
-                    <i class="fa-solid fa-chevron-left"></i>
-                  </button>
-                  <button type="button" class="right-btn">
-                    <i class="fa-solid fa-chevron-right"></i>
-                  </button>
-                </p>
+
               </div>
             </div>
 
@@ -293,8 +286,13 @@
       <script>
         var loginMember = "${loginMember}";
         var memberNo = "${loginMember.memberNo}";
+        var memberNickname = "${loginMember.memberNickname}";
+        var memberProfileImg = "${loginMember.memberProfileImg}";
+
         
-        sessionStorage.setItem('memberNo', memberNo);
+        // sessionStorage.setItem('memberNo', memberNo);
+        // sessionStorage.setItem('memberNickname', memberNickname);
+        // sessionStorage.setItem('memberProfileImg', memberProfileImg);
         
       </script>
     </c:if>

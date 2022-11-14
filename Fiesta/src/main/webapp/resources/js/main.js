@@ -371,7 +371,7 @@ $('.flexslider').flexslider({
 function selectBoardList() {
   // TODO: 로그인 멤버가 팔로우한 회원번호 조회
   $.ajax({
-    url: '/selectFollowing',
+    url: '/main/selectFollowing',
     data: { memberNo: sessionStorage.getItem('memberNo') },
     type: 'GET',
     dataType: 'JSON',
@@ -384,33 +384,35 @@ function selectBoardList() {
         // 팔로우 멤버 번호로 sql문 생성
         if (followingList.length == 1) {
           selectBoardSql = ' = ' + followingList[0].toTargetNo;
-          console.log('selectBoardSql = ' + selectBoardSql);
         } else {
           selectBoardSql =
             ' BETWEEN ' +
             followingList[0].toTargetNo +
             ' AND ' +
             followingList[followingList.length - 1].toTargetNo;
-          console.log('selectBoardSql = ' + selectBoardSql);
         }
-
+        // setInterval(
         // 위에서 생성한 sql문으로 db에서 게시글 가져오기
-        $.ajax({
-          url: '/selectBoardList',
-          type: 'GET',
-          data: { selectBoardSql: selectBoardSql },
-          dataType: 'json',
-          success: (boardList) => {
-            console.log(boardList);
+        $.ajax(
+          {
+            url: '/main/selectBoardList',
+            type: 'GET',
+            data: { selectBoardSql: selectBoardSql },
+            dataType: 'json',
+            success: (boardList) => {
+              console.log(boardList);
 
-            for (let board of boardList) {
-              console.log(board.boardContent);
-            }
-          },
-          error: () => {
-            console.log('게시글 조회 중 오류 발생');
-          },
-        });
+              for (let board of boardList) {
+                createBoard(board);
+              }
+            },
+            error: () => {
+              console.log('게시글 조회 중 오류 발생');
+            },
+          }
+          // ),
+          // 1000
+        );
       }
     },
     error: () => {
@@ -422,3 +424,111 @@ function selectBoardList() {
 
 selectBoardList();
 // TODO: 댓글 상세 조회 후 화면 출력
+
+function createBoard(board) {
+  // 피드 생성
+  // 필요한 요소 생성 및 클래스, 속성 추가
+  const feedDiv = document.createElement('div');
+  feedDiv.classList.add('feed');
+
+  // -------------------------------------------------
+  // 작성자 프로필
+  const profileImageDiv = document.createElement('div');
+  profileImageDiv.classList.add('profile-image-area');
+
+  const feedHeaderDiv = document.createElement('div');
+  feedHeaderDiv.classList.add('feed-header');
+
+  const writerInfoDiv = document.createElement('div');
+  writerInfoDiv.classList.add('writer-info');
+
+  const profilePhotoA = document.createElement('a');
+  profilePhotoA.classList.add('profile-photo');
+  // FIXME: 멤버 프로필 주소로 이동하는 GetMapping 만들기
+  profilePhotoA.setAttribute('href', '#');
+
+  const profileImage = document.createElement('img');
+  profileImage.classList.add('feed-profile-image');
+
+  const memberIdA = document.createElement('a');
+  memberIdA.classList.add('feed-memberId');
+  memberIdA.setAttribute('href', '#');
+
+  // 게시글 작성자 정보가 담긴 객체 가져오기
+  $.ajax({
+    url: '/main/selectWriter',
+    type: 'GET',
+    data: { memberNo: board.memberNo },
+    dataType: 'JSON',
+    success: (writer) => {
+      console.log(writer);
+      // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
+      if (writer.memberProfileImg == '') {
+        profileImage.setAttribute('src', '/resources/images/profile.jpg');
+      } else {
+        profileImage.setAttribute('src', writer.memberProfileImg);
+      }
+
+      memberIdA.innerText = writer.memberNickname;
+    },
+  });
+
+  const div1 = document.createElement('div');
+
+  const feedMenuBtn = document.createElement('button');
+  feedMenuBtn.setAttribute('type', 'button');
+  feedMenuBtn.classList.add('feed-header-menu', 'fa-solid', 'fa-eclipse');
+
+  // 프로필 append
+  profilePhotoA.append(profileImage);
+  writerInfoDiv.append(profilePhotoA, memberIdA);
+
+  div1.append(feedMenuBtn);
+
+  feedHeaderDiv.append(writerInfoDiv, div1);
+  profileImageDiv.append(feedHeaderDiv);
+  feedDiv.append(profileImageDiv);
+
+  // --------------------------------------------------------
+
+  // 사진 목록
+
+  $.ajax({
+    url: '/main/selectImageList',
+    data: { boardNo: board.boardNo },
+    dataType: 'JSON',
+    success: (imageList) => {
+      const imageListDiv = document.createElement('div');
+      imageListDiv.classList.add('image-list', 'flexslider');
+
+      const imageUl = document.createElement('ul');
+      imageUl.classList.add('slides');
+
+      if (imageList.length > 0) {
+        for (let i = 0; i < imageList.length; i++) {
+          const imageLi = document.createElement('li');
+          const uploadedImage = document.createElement('img');
+          // img태그에 src 속성, alt 속성 추가
+          uploadedImage.setAttribute('src', imageList[i].imgAddress);
+          uploadedImage.setAttribute('alt', imageList[i].imgAccessibility);
+          uploadedImage.classList.add('uploaded-image');
+          imageLi.append(uploadedImage);
+          imageUl.append(imageLi);
+        }
+
+        imageListDiv.append(imageUl);
+
+        profileImageDiv.append(imageListDiv);
+      }
+    },
+    error: (error) => {
+      console.log(error);
+    },
+  });
+
+  const feedSection = document.getElementById('feedSection');
+  feedSection.append(feedDiv);
+
+  // ----------------------------------------------
+  // TODO: 본문 요소 생성 및 클래스, 속성 추가
+}
