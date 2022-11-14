@@ -35,7 +35,9 @@ const memberPwConfirm = document.getElementById("memberPwConfirm");
 
 const signUpButton = document.getElementById("signUpButton");
 
-// signUpButton.classList.add("buttonOff");
+
+signUpButton.classList.add("buttonOff");
+
 
 // 회원가입 form 제출 이벤트
 document.getElementById("signUp-frm").addEventListener("submit", function(event){
@@ -379,4 +381,19 @@ memberPwConfirm.addEventListener("input", () => {
 
 
 
+// 버튼 비활성화
+document.getElementById("signUp-frm").addEventListener("input", function(){
+    for(let key in checkObj){
+        if( !checkObj[key] ){
+            signUpButton.classList.add("buttonOff");
+            signUpButton.disabled = true;
+        } else{
+            signUpButton.classList.add("buttonOn");
+            signUpButton.classList.remove("buttonOff");
+            signUpButton.disabled = false;
+        }
+    }
+
+
+});
 

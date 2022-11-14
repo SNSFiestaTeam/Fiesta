@@ -117,7 +117,7 @@
               </span>
             </div> 
   
-            <button class="signUp-button" id="signUpButton">가입</button>
+            <button class="signUp-button" id="signUpButton"disabled>가입</button>
           </form>
         </section>
   

@@ -195,7 +195,6 @@ main {
     cursor: pointer; */
 }
 
-
 /* 버튼 활성화/비활성화 */
 .buttonOn {
   background-color: var(--fiesta-color);
