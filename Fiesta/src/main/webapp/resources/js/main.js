@@ -19,10 +19,10 @@ feedMenuCancel.addEventListener("click", function () {
   body.classList.remove("scrollLock");
 });
 
-// 피드 신고 버튼 클릭시 신고 창 열림
 const feedReportBtn = document.getElementById("feedReportBtn");
 const report = document.getElementById("report");
 
+// 피드 신고 버튼 클릭시 신고 창 열림
 feedReportBtn.addEventListener("click", function () {
   feedMenu.style.display = "none";
   report.style.display = "flex";
@@ -30,7 +30,6 @@ feedReportBtn.addEventListener("click", function () {
   body.classList.add("scrollLock");
 });
 
-// 신고창 취소 버튼 클릭 시 닫힘
 const reportCancle = document.getElementById("reportCancle");
 reportCancle.addEventListener("click", function () {
   report.style.display = "none";
@@ -38,10 +37,10 @@ reportCancle.addEventListener("click", function () {
   body.classList.remove("scrollLock");
 });
 
-// 피드 공유하기 버튼 클릭시 공유하기 창 열림
 const share = document.getElementById("share");
 const feedShareBtn = document.getElementById("feedShareBtn");
 
+// 피드 공유하기 버튼 클릭시 공유하기 창 열림
 feedShareBtn.addEventListener("click", function () {
   feedMenu.style.display = "none";
   share.style.display = "flex";
@@ -56,11 +55,11 @@ shareCancleBtn.addEventListener("click", function () {
   body.classList.remove("scrollLock");
 });
 
-// 좋아요 버튼 클릭 시
-//  -> 버튼 색상 변경
-//  -> TODO: 좋아요 카운트 상승
 const likeBtn = document.getElementsByClassName("like-btn");
 
+// 좋아요 버튼 클릭 시
+//  -> 버튼 색상 변경
+//  -> 좋아요 카운트 상승
 for (let i = 0; i < likeBtn.length; i++) {
   likeBtn[i].addEventListener("click", function () {
     const emptyHeart = '<i class="fa-regular fa-heart"></i>';
@@ -77,25 +76,6 @@ for (let i = 0; i < likeBtn.length; i++) {
   });
 }
 
-// DM(종이비행기) 버튼 클릭 시
-// FIXME: 모달창에서 바로 DM 발송 가능하게
-
-const dmBtn = document.getElementsByClassName("dm-btn");
-const dmContainer = document.getElementById("dmContainer");
-for (let i = 0; i < dmBtn.length; i++) {
-  dmBtn[i].addEventListener("click", () => {
-    dmContainer.style.display = "flex";
-    dmContainer.classList.add("scrollrock");
-  });
-}
-
-// DM 모달창 X버튼 클릭 시 닫힘
-
-document.getElementById("dmCloseBtn").addEventListener("click", () => {
-  dmContainer.style.display = "none";
-  dmContainer.classList.remove("scrollrock");
-});
-
 // 말풍선 버튼 클릭 시
 //  -> 댓글 입력창에 포커스
 const commentBtn = document.getElementsByClassName("comment-btn");
@@ -107,7 +87,7 @@ for (let i = 0; i < commentBtn.length; i++) {
   });
 }
 
-// 댓글 창에 입력 시 게시 버튼 활성화
+// 댓글 창에 입력 시 버튼 활성화
 const postingBtn = document.getElementsByClassName("posting-btn");
 for (let i = 0; i < commentInput.length; i++) {
   commentInput[i].addEventListener("input", function () {
@@ -121,7 +101,6 @@ for (let i = 0; i < commentInput.length; i++) {
   });
 }
 
-// TODO: 댓글 입력 후 ENTER 입력 시도 만들 것
 // 댓글 등록 버튼 클릭 시
 for (let i = 0; i < postingBtn.length; i++) {
   postingBtn[i].addEventListener("click", () => {
@@ -236,11 +215,9 @@ for (let i = 0; i < postingBtn.length; i++) {
   });
 }
 
-// TODO: 답글 입력 시도 만들 것
-
 // 북마크 버튼 클릭 시
 //  -> 북마크 버튼 색상 검정
-//  -> TODO: 북마크에 추가
+//  -> 북마크에 추가
 const bookmarkBtn = document.getElementsByClassName("bookmark-btn");
 for (let i = 0; i < bookmarkBtn.length; i++) {
   bookmarkBtn[i].addEventListener("click", function () {
@@ -269,10 +246,7 @@ for (let i = 0; i < moreBtn.length; i++) {
   });
 }
 
-// FIXME: 댓글이 있을 시
-// 초기 화면에서 최대 2개까지 표시, 3개 이상일 시 댓글 더보기 버튼 생성
-// 댓글 더보기 버튼 클릭 시 댓글 10개 표시 10개 초과일 경우 모두보기 버튼 생성
-// 모두보기 클릭 시 댓글 모달창으로 댓글 전체 표시
+// 댓글 모두보기 버튼 클릭 시
 const allCommentBtn = document.getElementsByClassName("all-comment-btn");
 for (let i = 0; i < allCommentBtn.length; i++) {
   allCommentBtn[i].addEventListener("click", function () {
@@ -286,8 +260,6 @@ for (let i = 0; i < allCommentBtn.length; i++) {
 }
 
 // 댓글 좋아요 버튼 클릭 시
-// TODO: 댓글 좋아요 클릭 시 좋아요 db insert
-// 이미 클릭 한 댓글일 시 좋아요 db 삭제
 const commentLikeBtn = document.getElementsByClassName("comment-like-btn");
 
 for (let i = 0; i < commentLikeBtn.length; i++) {
@@ -306,65 +278,31 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
   });
 }
 
-// 댓글 답글 달기 버튼 클릭 시 인풋 태그에 @작성자 아이디 추가
-const replyBtn = document.getElementsByClassName("reply-btn");
+// 이미지 슬라이드 쇼 만들기
+const slideShow = document.getElementsByClassName("slide-show");
+// const leftBtn = document.getElementsByClassName('left-btn');
+/* <button type="button" class="left-btn">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button> */
+const rightBtn = document.getElementsByClassName("right-btn");
 
-for (let i = 0; i < replyBtn.length; i++) {
-  replyBtn[i].addEventListener("click", () => {
-    const commentId = document.getElementsByClassName("comment-memberId");
-    const input = commentId[i].parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling.firstChild.nextSibling.firstChild.nextSibling;
+for (let i = 0; i < rightBtn.length; i++) {
+  rightBtn[i].addEventListener("click", () => {
+    const slides = document.getElementsByClassName("slides");
 
-    console.log(input);
-    input.value = "@" + commentId[i].innerText;
+    slides[i].style.transform = "translateX(-468px)";
   });
 }
 
-// 피드 헤더 ...아이콘 클릭 시 메뉴창
-const hoverBtn = document.getElementsByClassName("hover-btn");
-const commentMenu = document.getElementById("commentMenu");
-for (let item of hoverBtn) {
-  item.addEventListener("click", function () {
-    commentMenu.style.display = "flex";
+// const newPostOpen = document.getElementById("newPostOpen");
+// const modalBackground = document.getElementById("modalBackground");
 
-    body.classList.add("scrollLock");
-  });
-}
+// newPostOpen.addEventListener("click", function () {
+//   modalBackground.style.display = "flex";
+// });
 
-// 피트 헤더 메뉴창 취소 클릭시 닫힘
+// const newPostClose = document.getElementById("new-post-close");
 
-document.getElementById("commentMenuCancel").addEventListener("click", function () {
-  commentMenu.style.display = "none";
-
-  body.classList.remove("scrollLock");
-});
-
-// 피드 신고 버튼 클릭시 신고 창 열림
-const commentReportBtn = document.getElementById("commentReportBtn");
-
-commentReportBtn.addEventListener("click", function () {
-  commentMenu.style.display = "none";
-  report.style.display = "flex";
-
-  body.classList.add("scrollLock");
-});
-
-// 신고창 취소 버튼 클릭 시 닫힘
-reportCancle.addEventListener("click", function () {
-  report.style.display = "none";
-
-  body.classList.remove("scrollLock");
-});
-
-// 이미지 슬라이더
-// flexslider2 라이브러리 실행용
-// 삭제 X
-$(".flexslider").flexslider({
-  animation: "slide",
-});
-
-// TODO: 게시글 상세 조회 후 화면 출력
-function selectBoardList() {
-  // DB에서 게시글 조회 후 리스트로 반환 받기
-}
-
-// TODO: 댓글 상세 조회 후 화면 출력
+// newPostClose.addEventListener("click", function () {
+//   modalBackground.style.display = "none";
+// });

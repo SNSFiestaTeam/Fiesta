@@ -5,7 +5,6 @@
   text-decoration: none;
   list-style: none;
 }
-@import "./root-style.css";
 
 body {
   width: 100vw;

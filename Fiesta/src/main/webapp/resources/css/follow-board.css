@@ -1,131 +1,152 @@
+:root {
+    --background-color: white;
+    --main-font-color: #8e8e8e;
+    --icon-button-color: #262626;
+    --point-font-color: #0095f6;
+    --mention-font-color: #00376b;
+    --fiesta-color: #dd4132;
+    --small-font-size: 12px;
+    --medium-font-size: 16px;
+    --large-icon-size: 24px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    text-decoration: none;
+    list-style: none;
 
-@import "./root-style.css";
+    /* display: none; */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: 0;
-  text-decoration: none;
-  list-style: none;
+  }
+  
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  
+  a{
+    color:black;
+  }
+  
+  
+  .follow-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000070;
+    position: absolute;
+    top: 0;
+    z-index: 500;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+  }
+  
+  .follow-menu {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+  
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .follow-title {
+    width: 100%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  
+  .follow-title span {
+    color: var(--fiesta-color);
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  
+  .follow-content {
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
 
-  /* display: none; */
-}
+    overflow: auto;
+  }
+  
+  
+  .follow-content div {
+    width: 95%;
+    padding: 4px 8px;
+  
+    display: flex;
+    align-items: center;
+  }
 
-body {
-  width: 100vw;
-  height: 100vh;
-}
+  .follow-content > div > span{
+    display: flex;
+    align-items: center;
+  } 
+  
+  
+  .follow-content div:hover {
+    background-color: rgba(221, 221, 221, 0.3);
+  }
+  
+  
+  .follow-content img{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .follow-content i {
+    margin-right: 10px;
+  }
+  
+  .follow-content a {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 20px;
+  }
 
-a {
-  color: black;
-}
+  .follow-content button{
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 48px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10%;
+    cursor: pointer;
 
-.follow-container {
-  width: 100vw;
-  height: 100vh;
-  background-color: #00000070;
-  position: absolute;
-  top: 0;
-  z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: none;
-}
 
-.follow-menu {
-  width: 400px;
-  height: 400px;
-  background-color: white;
-
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.follow-title {
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 12px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.follow-title span {
-  color: var(--fiesta-color);
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.follow-content {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: auto;
-}
-
-.follow-content div {
-  width: 95%;
-  padding: 4px 8px;
-
-  display: flex;
-  align-items: center;
-}
-
-.follow-content > div > span {
-  display: flex;
-  align-items: center;
-}
-
-.follow-content div:hover {
-  background-color: rgba(221, 221, 221, 0.3);
-}
-
-.follow-content img {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-}
-
-.follow-content i {
-  margin-right: 10px;
-}
-
-.follow-content a {
-  font-size: 14px;
-  font-weight: bold;
-  margin-left: 20px;
-}
-
-.follow-content button {
-  background-color: white;
-  border: 1px solid lightgray;
-  width: 48px;
-  height: 30px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 10%;
-  cursor: pointer;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.a {
+.a{
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   width: 100px;
 }
-
+  
+  
+  

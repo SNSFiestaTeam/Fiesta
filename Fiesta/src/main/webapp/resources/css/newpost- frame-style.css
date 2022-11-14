@@ -1,0 +1,110 @@
+:root {
+    --background-color: white;
+    --main-font-color: #8e8e8e;
+    --icon-button-color: #262626;
+    --point-font-color: #0095f6;
+    --mention-font-color: #00376b;
+    --fiesta-color: #dd4132;
+    --small-font-size: 12px;
+    --madium-font-size: 16px;
+    --large-icon-size: 24px;
+}
+
+/*------------모달 배경------------*/
+.modal_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    z-index: 5;
+
+}
+
+/*------------닫기 버튼------------*/
+.new-post-close {
+    position: fixed;
+    top: 0;
+    left: 100;
+    bottom: 100;
+    right: 0;
+    z-index: 6;
+    margin: 20px;
+    background-color: transparent;
+    transform: scale(1.5);
+    cursor: pointer;
+    color: white;
+}
+
+/*------------작성창------------*/
+.modal_post_section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+}
+
+.new-post-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    background-color: white;
+    box-shadow: 5px 10px 10px 1px rgba(0, 0, 0, .3);
+    /* overflow:auto; */
+}
+
+/* 게시물 작성 top */
+/* .new-post-top-section {
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    font-size: 20px;
+} */
+
+.new-post-top {
+    display: flex;
+    /* justify-content: center;
+        align-items: center; */
+    height: 100%;
+    border-bottom: 2px solid #ececec;
+}
+
+.new-post-top>* {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.new-post-top > p {
+    justify-content: center;
+    font-size: 20px;
+}
+
+/* 게시물 작성 top (button)*/
+.new-post-top > button {
+    cursor: pointer;
+    padding: 15px;
+    width: 100px;
+}
+
+.new-post-top > button:last-of-type {
+    color: var(--fiesta-color);
+    /* box-sizing: content-box; */
+    font-size: 16px;
+    flex-direction: row-reverse;
+}
