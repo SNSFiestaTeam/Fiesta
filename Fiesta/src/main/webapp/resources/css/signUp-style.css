@@ -189,12 +189,11 @@ main {
   height: 36px;
   border-radius: 5px;
   margin: 5% 0 8% 0;
-/* 
-  background-color: var(--fiesta-color);
-  color: white;
-  cursor: pointer; */
-}
 
+  /* background-color: var(--fiesta-color);
+    color: white;
+    cursor: pointer; */
+}
 
 /* 버튼 활성화/비활성화 */
 .buttonOn {

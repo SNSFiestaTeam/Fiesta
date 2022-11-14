@@ -35,7 +35,9 @@ const memberPwConfirm = document.getElementById("memberPwConfirm");
 
 const signUpButton = document.getElementById("signUpButton");
 
+
 signUpButton.classList.add("buttonOff");
+
 
 // 회원가입 form 제출 이벤트
 document.getElementById("signUp-frm").addEventListener("submit", function(event){
@@ -375,6 +377,7 @@ memberPwConfirm.addEventListener("input", () => {
         }
     }   
 })
+
 
 
 
