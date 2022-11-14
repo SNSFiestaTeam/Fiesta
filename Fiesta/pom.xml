@@ -25,52 +25,51 @@
 		</dependency>
 
 	               
-	               
-	      <!-- Spring-Security -->
-	      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
-	      <dependency>
-	          <groupId>org.springframework.security</groupId>
-	          <artifactId>spring-security-core</artifactId>
-	          <version>5.7.1</version>
-	      </dependency>
-	      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
-	      <dependency>
-	          <groupId>org.springframework.security</groupId>
-	          <artifactId>spring-security-web</artifactId>
-	          <version>5.7.1</version>
-	      </dependency>
-	      <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
-	      <dependency>
-	          <groupId>org.springframework.security</groupId>
-	          <artifactId>spring-security-config</artifactId>
-	          <version>5.7.1</version>
-	      </dependency>
-			
-		
-	      <!-- MyBatis 라이브러리 -->
-	      <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
-	      <dependency>
-	          <groupId>org.mybatis</groupId>
-	          <artifactId>mybatis</artifactId>
-	          <version>3.5.11</version>
-	      </dependency>
-	            
-	      <!-- Spring ~ Mybatis 연결 모듈 -->
-	      <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
-	      <dependency>
-	          <groupId>org.mybatis</groupId>
-	          <artifactId>mybatis-spring</artifactId>
-	          <version>2.0.7</version>
-	      </dependency>
-	      
-	      <!-- DBCP(커넥션풀) -->
-	      <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
-	      <dependency>
-	          <groupId>org.apache.commons</groupId>
-	          <artifactId>commons-dbcp2</artifactId>
-	          <version>2.9.0</version>
-	      </dependency>
-		
+     <!-- Spring-Security -->
+     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+     <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-core</artifactId>
+         <version>5.7.1</version>
+     </dependency>
+     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
+     <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-web</artifactId>
+         <version>5.7.1</version>
+     </dependency>
+     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+     <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-config</artifactId>
+         <version>5.7.1</version>
+     </dependency>
+	
+
+     <!-- MyBatis 라이브러리 -->
+     <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+     <dependency>
+         <groupId>org.mybatis</groupId>
+         <artifactId>mybatis</artifactId>
+         <version>3.5.11</version>
+     </dependency>
+           
+     <!-- Spring ~ Mybatis 연결 모듈 -->
+     <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+     <dependency>
+         <groupId>org.mybatis</groupId>
+         <artifactId>mybatis-spring</artifactId>
+         <version>2.0.7</version>
+     </dependency>
+     
+     <!-- DBCP(커넥션풀) -->
+     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+     <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-dbcp2</artifactId>
+         <version>2.9.0</version>
+     </dependency>
+
 	
 		<!-- spring JDBC -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
@@ -108,14 +107,14 @@
 		
 		<!-- jackson bind -->
 		<!-- JAVA -> JSON, 다양한 데이터 형태를 다루는데 사용 -->
-	    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-	    <dependency>
-	       <groupId>com.fasterxml.jackson.core</groupId>
-	       <artifactId>jackson-databind</artifactId>
-	       <version>2.9.8</version>
-	    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+    <dependency>
+       <groupId>com.fasterxml.jackson.core</groupId>
+       <artifactId>jackson-databind</artifactId>
+       <version>2.9.8</version>
+    </dependency>
     
-    	<!-- GSON 라이브러리 -->
+   	<!-- GSON 라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 		    <groupId>com.google.code.gson</groupId>
