@@ -1,24 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/resources/css/following-board.css" />
-    
-    <script
-    src="https://kit.fontawesome.com/591746f9e8.js"
-    crossorigin="anonymous"
-  ></script>
-  </head>
-  <body>
-    <div class="following-container">
+
+    <div class="following-container" id="following-container">
       <div class="following-menu">
-        <div class="following-title"><span>팔로잉</span></div>
+        <div class="following-title">
+        <span class="following-space"></span>
+        <span>팔로잉</span>
+        <span>
+        <button id="following-close" class="following-close">
+           <i class="fa-solid fa-x"></i>
+        </button>
+        </span>
+        </div>
         <div class="following-subtitle">
           <a href="#">사람</a>
           <a href="#">해시태그</a>
@@ -113,5 +107,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+
