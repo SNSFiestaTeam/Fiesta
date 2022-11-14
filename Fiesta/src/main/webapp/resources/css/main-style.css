@@ -1,15 +1,4 @@
-:root {
-  --background-color: white;
-  --main-font-color: #8e8e8e;
-  --light-font-color: #ccc;
-  --icon-button-color: #262626;
-  --point-font-color: #0095f6;
-  --mention-font-color: #00376b;
-  --small-font-size: 14px;
-  --medium-font-size: 16px;
-  --large-icon-size: 24px;
-  --fiesta-color: #dd4132;
-}
+@import './root-style.css';
 
 .red {
   color: red;
@@ -94,7 +83,7 @@ main > section {
 }
 
 .writer-info > a {
-  font-size: var(--small-font-size);
+  font-size: var(--main-font-size);
 }
 
 .feed-profile-image {
@@ -114,16 +103,13 @@ main > section {
 
 /* 피드 이미지 목록 */
 .image-list {
-  height: auto;
-
+  width: 100%;
+  height: 460px;
   position: relative;
 }
 
 /* 이미지 슬라이드 만들기 */
-.slide-show {
-  overflow: hidden;
-  height: 468px;
-}
+
 .slides {
   position: relative;
   display: flex;
@@ -139,13 +125,6 @@ main > section {
 .uploaded-image {
   width: 100%;
 }
-
-/* .image-list li {
-  width: 100%;
-  height: 470px;
-  overflow: hidden;
-  object-fit: cover;
-} */
 
 .right-btn {
   display: flex;
@@ -189,7 +168,7 @@ main > section {
 /* 본문 및 댓글 창 */
 .main-content-section {
   margin-top: 5px;
-  font-size: var(--small-font-size);
+  font-size: var(--main-font-size);
   padding: 0 16px;
 }
 
@@ -233,6 +212,11 @@ main > section {
 
 .feed-content {
   margin-top: 10px;
+  font-weight: 300;
+}
+
+.member-id {
+  font-weight: bold;
 }
 
 #textMore {
@@ -258,7 +242,7 @@ main > section {
 }
 
 .comment {
-  font-size: var(--small-font-size);
+  font-size: var(--main-font-size);
   display: flex;
   flex-direction: column;
 }
@@ -277,6 +261,10 @@ main > section {
   justify-content: space-between;
 }
 
+.comment-content {
+  font-weight: 300;
+}
+
 /* 댓글 상세보기 설정 */
 a.comment-profile {
   display: none;
@@ -284,10 +272,12 @@ a.comment-profile {
 
 .create-reply {
   display: none;
+  font-size: var(--small-font-size);
 }
 /* 댓글 상세보기 설정 여기까지 */
 
-.comment-memberId {
+.comment-memberId,
+.reply-memberId {
   font-size: var(--small-font-size);
   font-weight: 500;
   margin-right: 5px;
@@ -383,6 +373,7 @@ a.comment-profile {
   -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
 }
+
 /* --------------------------------------------------------------------------------------------------- */
 @media screen and (min-width: 1024px) {
   /* Desktop */
@@ -412,6 +403,7 @@ a.comment-profile {
 
   .image-list {
     width: 100%;
+    height: 538px;
     overflow: hidden;
   }
 
@@ -424,9 +416,6 @@ a.comment-profile {
     display: flex;
     width: 300%;
     transition: 0.4s;
-  }
-
-  .slides > li {
   }
 
   .uploaded-image {
@@ -579,7 +568,7 @@ a.comment-profile {
   .create-reply > span,
   .create-reply > button.reply-btn {
     color: #8e8e8e;
-    font-size: 13px;
+    font-size: var(--small-font-size);
     margin-right: 5px;
   }
 
@@ -596,12 +585,8 @@ a.comment-profile {
     display: block;
     margin-top: 10px;
     margin-left: 42px;
-    font-size: 13px;
+    font-size: var(--small-font-size);
     color: #8e8e8e;
-  }
-
-  .more-reply::before {
-    content: '';
   }
 
   /* 댓글 상세보기 스타일 end */
@@ -646,6 +631,11 @@ a.comment-profile {
     margin: 0;
   }
 
+  .main-content-section {
+    margin-top: 0;
+    font-size: var(--small-font-size);
+  }
+
   .feed-section {
     margin-top: 0;
   }
@@ -658,11 +648,21 @@ a.comment-profile {
     width: 100%;
   }
 
+  .image-list {
+    width: 100vw;
+    height: 100vw;
+    position: relative;
+  }
+
   .image-list li {
     width: 100%;
     padding-bottom: 100%;
     overflow: hidden;
     object-fit: cover;
+  }
+
+  .comment {
+    font-size: var(--small-font-size);
   }
 }
 

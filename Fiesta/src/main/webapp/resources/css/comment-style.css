@@ -1,14 +1,4 @@
-:root {
-  --background-color: white;
-  --main-font-color: #8e8e8e;
-  --icon-button-color: #262626;
-  --point-font-color: #0095f6;
-  --mention-font-color: #00376b;
-  --fiesta-color: #dd4132;
-  --small-font-size: 13px;
-  --madium-font-size: 16px;
-  --large-icon-size: 24px;
-}
+@import './root-style.css';
 
 #commentContainerM {
   width: 100vw;
@@ -294,7 +284,7 @@ div.reply-firstline-m {
 }
 
 .more-reply-m::before {
-  content: "";
+  content: '';
 }
 
 /* 댓글 상세보기 스타일 end */
