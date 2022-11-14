@@ -17,11 +17,10 @@
       <result property="authority" column="AUTHORITY" />
   </resultMap>
   
+  <!-- 게시글 객체 저장용 resultMap -->
   <resultMap type="Board" id="board_rm">  
-        <!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
      <id property = "boardNo" column="BOARD_NO"/>
      
-     <!-- 나머지 일반 컬럼 -->
       <result property="boardContent" column="BOARD_CONTENT" />
       <result property="boardCreateDate" column="BOARD_CREATE_DATE" />
       <result property="boardDeleteFlag" column="BOARD_DEL_FL" />
@@ -51,12 +50,32 @@
       <result property="followAcceptFlag" column="FOLLOW_ACCEPT_FL" />
   </resultMap>
   
+ 
+  
+  <resultMap type="BoardImg" id="boardImg_rm">
+        <!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
+     <id property = "imgNo" column="IMG_NO"/>
+     <!-- 나머지 일반 컬럼 -->
+      <result property="imgOrder" column="IMG_ORDER" />
+      <result property="imgAddress" column="IMG_ADDRESS" />
+      <result property="imgAccessibility" column="IMG_ACCESSIBILITY" />
+      <result property="imgOriginalName" column="IMG_ORIGINAL_NAME" />
+      <result property="imgChangeName" column="IMG_CHANGE_NAME" />
+      <result property="boardNo" column="BOARD_NO" />
+  </resultMap>
+  
+  
+  
+  
+  <!-- 팔로잉 멤버 조회 -->
   <select id="selectFollowing" parameterType="_int" resultMap="follow_rm">
   	SELECT F_FROM_MEMBER_NO, F_T0_TARGET_NO 
 	FROM FOLLOW f 
 	WHERE F_FROM_MEMBER_NO = #{memberNo}
   </select>
   
+  
+  <!-- 팔로잉 멤버 게시글 조회 -->
   <select id="selectBoardList" parameterType="string" resultMap="board_rm">
   	SELECT BOARD_NO , BOARD_CONTENT , BOARD_PUB_PRI_FL , COMMENT_BLOCK_FL , MEMBER_NO, COMMENT_COUNT, 
   	<![CDATA[ 
@@ -72,7 +91,26 @@
 	FROM BOARD
 	WHERE BOARD_DEL_FL = 'N']]>
 	AND MEMBER_NO ${selectBoardSql}
-	ORDER BY BOARD_CREATE_DATE DESC 
+	ORDER BY BOARD_NO DESC 
+  </select>
+  
+  
+  <!-- 게시글 이미지 조회 -->
+  <select id="selectImageList" parameterType="_int" resultMap="boardImg_rm">
+  	SELECT *
+	FROM BOARD_IMG
+	WHERE BOARD_NO = #{boardNo}
+	ORDER BY IMG_ORDER
+  </select>
+  
+  
+  <!-- 게시글 작성자 조회 -->
+  <select id="selectWriter" parameterType="_int" resultMap="member_rm">
+  	SELECT *
+	FROM MEMBER
+	WHERE MEMBER_NO = #{memberNo}
+	AND SECESSION_FL = 'N'
+	AND MEMBER_OPEN_FL = 'Y'
   </select>
   
 </mapper>
