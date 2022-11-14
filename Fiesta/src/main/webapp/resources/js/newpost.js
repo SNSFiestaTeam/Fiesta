@@ -1,18 +1,15 @@
-const newPostOpen = document.getElementById("newPostOpen");
-const modalBackground = document.getElementById("modalBackground");
+const newPostOpen = document.getElementById('newPostOpen');
+const modalBackground = document.getElementById('modalBackground');
 
-newPostOpen.addEventListener("click", function () {
-  modalBackground.style.display = "flex";
+newPostOpen.addEventListener('click', function () {
+  modalBackground.style.display = 'flex';
 });
 
+const newPostClose = document.getElementById('new-post-close');
 
-
-const newPostClose = document.getElementById("new-post-close");
-
-newPostClose.addEventListener("click", function () {
-  modalBackground.style.display = "none";
+newPostClose.addEventListener('click', function () {
+  modalBackground.style.display = 'none';
 });
-
 
 // const fileView = document.querySelector("fileView"); //전체 슬라이드 컨테이너
 // const allFile = document.querySelectorAll(file); //모든 슬라이드들
@@ -29,14 +26,14 @@ newPostClose.addEventListener("click", function () {
 //   currentIdx = num;
 // }
 // prev.addEventListener('click', function () {
-  /*첫 번째 슬라이드로 표시 됐을때는 
+/*첫 번째 슬라이드로 표시 됐을때는 
   이전 버튼 눌러도 아무런 반응 없게 하기 위해 
   currentIdx !==0일때만 moveSlide 함수 불러옴 */
 //   if (currentIdx !== 0) moveSlide(currentIdx - 1);
 // });
 
 // next.addEventListener('click', function () {
-  /* 마지막 슬라이드로 표시 됐을때는 
+/* 마지막 슬라이드로 표시 됐을때는 
   다음 버튼 눌러도 아무런 반응 없게 하기 위해
   currentIdx !==slideCount - 1 일때만 
   moveSlide 함수 불러옴 */
@@ -45,12 +42,9 @@ newPostClose.addEventListener("click", function () {
 //   }
 // });
 
-document.getElementById("file-add").addEventListener("click", function(){
+// document.getElementById("file-add").addEventListener("click", function(){
 
-  // 생성
-  const div = document.createElement("div");
+//   // 생성
+//   const div = document.createElement("div");
 
-
-})
-
-
+// })

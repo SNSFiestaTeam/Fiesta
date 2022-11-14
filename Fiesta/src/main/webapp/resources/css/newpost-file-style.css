@@ -24,6 +24,7 @@
   align-items: center;
   padding: 15px;
   z-index: 5;
+  display: none;
 }
 /*------------닫기 버튼------------*/
 .new-post-close {
@@ -41,39 +42,38 @@
 }
 
 /* ************** 게시물 작성 창 ******************* */
-.modal_post_section{
+.modal_post_section {
   background-color: white;
   border-radius: 10px;
-  width:90%;
-      min-width: 355px;
-      max-width: 655px;
+  width: 90%;
+  min-width: 355px;
+  max-width: 655px;
 }
 
 /* ----- 게시물작성 top ------ */
-.new-post-top{
+.new-post-top {
   display: flex;
   justify-content: space-between;
   justify-content: center;
   border-bottom: 2px solid #ececec;
   height: 50px;
-  
 }
 
-.new-post-top>* {
+.new-post-top > * {
   display: flex;
   align-items: center;
   /* margin: 0 10px; */
 }
 /* ----- 게시물작성 bottom ------ */
 
-.new-post-bottom{
+.new-post-bottom {
   width: 100%;
   padding-bottom: 100%;
   background-color: white;
   position: relative;
   border-radius: 10px;
 }
-.new-post-bottom > form{
+.new-post-bottom > form {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -98,15 +98,13 @@
 
   padding: 0 7px;
   margin: 10px 0;
-
-
 }
 
 #file-input {
   display: none;
 }
 
-.file-select-btn>label {
+.file-select-btn > label {
   cursor: pointer;
 }
 
@@ -118,7 +116,6 @@
   border-radius: 4px;
   background-color: var(--fiesta-color);
   margin-top: 12px;
-
 
   color: white;
   font-size: 15px;
