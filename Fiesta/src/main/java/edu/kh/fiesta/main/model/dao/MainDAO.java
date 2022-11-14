@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fiesta.main.model.vo.Board;
+import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
 import edu.kh.fiesta.member.model.vo.Member;
 
@@ -30,6 +31,18 @@ public class MainDAO {
 	 */
 	public List<Board> selectBoardList(String selectBoardSql) {
 		return sqlSession.selectList("mainMapper.selectBoardList", selectBoardSql);
+	}
+
+	/** 게시글 이미지 리스트 조회 DAO
+	 * @param boardNo
+	 * @return imageList
+	 */
+	public List<BoardImg> selectImageList(int boardNo) {
+		return sqlSession.selectList("mainMapper.selectImageList", boardNo);
+	}
+
+	public Member selectWriter(int memberNo) {
+		return sqlSession.selectOne("mainMapper.selectWriter", memberNo);
 	}
 
 }

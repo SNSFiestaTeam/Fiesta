@@ -1,0 +1,141 @@
+<div class="feed">
+  <div class="profile-image-area">
+    <!-- 작성자 프로필 -->
+    <div class="feed-header">
+      <div class="writer-info">
+        <a href="" class="profile-photo">
+          <img class="feed-profile-image" src="/resources/images/은우.jpg" />
+        </a>
+        <a href="#" class="feed-memberId">eunwo.o_c</a>
+      </div>
+      <div>
+        <button
+          type="button"
+          class="fa-solid fa-ellipsis feed-header-menu"
+        ></button>
+      </div>
+    </div>
+
+    <!-- 사진 목록 -->
+    <div class="image-list flexslider">
+      <ul class="slides">
+        <li>
+          <img class="uploaded-image" src="/resources/images/은우.jpg" alt="" />
+        </li>
+        <li>
+          <img
+            class="uploaded-image"
+            src="/resources/images/은우2.jpg"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            class="uploaded-image"
+            src="/resources/images/은우3.jpg"
+            alt=""
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 본문 -->
+  <div class="main-content-section">
+    <div class="comment-icon-menu">
+      <div>
+        <button id="likeBtn" class="like-btn">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button id="commentBtn" class="comment-btn">
+          <i class="fa-regular fa-comment"></i>
+        </button>
+        <button id="dmBtn">
+          <i class="fa-regular fa-paper-plane dm-btn"></i>
+        </button>
+      </div>
+      <div>
+        <button id="bookmarkBtn" class="bookmark-btn">
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <!-- 좋야요 수 표시 -->
+      <div class="like-count">좋아요 27,654개</div>
+
+      <!-- 본문 내용 -->
+      <div class="feed-main-content">
+        <div class="feed-content one-line">
+          <a href="#"><span class="member-id">eunwo.o_c</span></a>
+          본문
+        </div>
+
+        <div class="hashtag">
+          <a href="#">#aespa</a><a href="#">#에스파</a><a href="#">#KARINA</a
+          ><a href="#">#카리나</a>
+        </div>
+        <button type="button" class="more-btn">
+          <span id="textMore"> 더 보기</span>
+        </button>
+      </div>
+
+      <!-- 댓글 리스트 -->
+      <div class="comment-container">
+        <button class="all-comment-btn">댓글 더보기</button>
+        <div class="comment-area">
+          <ul class="comment-list two-line">
+            <!-- 두번째 댓글(답글 보기 O) -->
+            <li class="comment">
+              <div class="comment-firstchild">
+                <a href="#" class="comment-profile">
+                  <img
+                    class="comment-profile-image"
+                    src="/resources/images/장원영.jpg"
+                  />
+                </a>
+                <div>
+                  <div class="comment-firstline">
+                    <div>
+                      <a href="#" class="comment-memberId">for_everyoung10</a>
+                      <span class="comment-content">사랑해</span>
+                    </div>
+                    <div>
+                      <button class="comment-like-btn">
+                        <i class="fa-regular fa-heart"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="create-reply">
+                    <span>2주</span>
+                    <button class="reply-btn">답글 달기</button>
+                    <button
+                      type="button"
+                      class="fa-solid fa-ellipsis hover-btn"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="more-reply">답글 숨기기</a>
+            </li>
+          </ul>
+        </div>
+        <a href="#" class="create-date">10월 19일</a>
+      </div>
+    </div>
+    <div class="comment-input-area">
+      <div>
+        <input
+          name="comment"
+          id="commentInput"
+          class="comment-input"
+          type="text"
+          placeholder="댓글 달기..."
+          autocomplete="off"
+        />
+        <button class="posting-btn" disabled>게시</button>
+      </div>
+    </div>
+  </div>
+</div>

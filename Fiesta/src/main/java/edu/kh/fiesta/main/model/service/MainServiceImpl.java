@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.fiesta.main.model.dao.MainDAO;
 import edu.kh.fiesta.main.model.vo.Board;
+import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
 import edu.kh.fiesta.member.model.vo.Member;
 
@@ -24,6 +25,17 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public List<Board> selectBoardList(String selectBoardSql) {
 		return dao.selectBoardList(selectBoardSql);
+	}
+	
+	@Override
+	public List<BoardImg> selectImageList(int boardNo){
+		return dao.selectImageList(boardNo);
+	}
+	
+	@Override
+	public Member selectWriter(int memberNo) {
+		return dao.selectWriter(memberNo);
+		
 	}
 
 }
