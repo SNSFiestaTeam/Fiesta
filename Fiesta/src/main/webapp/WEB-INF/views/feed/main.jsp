@@ -29,7 +29,6 @@
         <!-- 인스타 피드 -->
         <section class="feed-section" id="feedSection">
           <!-- 피드 리스트 -->
-          <p style="font-size: 13px">${sessionScope.loginMember}</p>
           <div class="feed">
             <div class="profile-image-area">
               <!-- 작성자 프로필 -->
