@@ -26,13 +26,13 @@
         <section class="left-side">
           <ul class="list-group">
             <li><a href="/setting/setting">프로필 편집</a></li>
-            <li><a href="/setting/settingPw">비밀번호 변경</a></li>
-            <li><a href="/setting/setting3">개인정보 및 보안</a></li>
+            <li><a href="/setting/setting/Pw">비밀번호 변경</a></li>
+            <li><a href="/setting/setting/3">개인정보 및 보안</a></li>
           </ul>
         </section>
 
         <section class="setting-main">
-          <form action="setting" name="set" method="POST">
+          <form action="" name="set" method="POST" id="setting-frm">
             <div class="di-1">
                 <aside>
                   <a href="#" class="pro-img"><img src="../../resources/images/user.jpg"></a>
@@ -45,7 +45,7 @@
             <div class="di-2">
                 <aside><label>이름</label></aside>
                 <div class="main">
-                  <input type="text" placeholder="이름" value="${loginMember.memberName}">
+                  <input type="text" placeholder="이름" id="memberName" name="memberName" value="${loginMember.memberName}">
                 </div>
             </div>
             <div class="di-3">
@@ -57,7 +57,7 @@
             </div>
             <div class="di-4">
                 <aside><label>사용자 이름</label></aside>
-                <div class="main"><input type="text" placeholder="사용자 이름" value="${loginMember.memberNickname}"></div>
+                <div class="main"><input type="text" id="memberNickname" name="memberNickname" placeholder="사용자 이름" value="${loginMember.memberNickname}"></div>
             </div>
             <div class="di-5">
                 <aside><label>소개</label></aside>
@@ -65,14 +65,7 @@
                   <textarea></textarea>
                 </div>
             </div>
-            <div class="di-6">
-                <aside></aside>
-                <div class="main">
-                  <h2>개인정보</h2>
-                  <div>비즈니스나 반려동물 등에 사용된 계정인 경우에도 회원님의 개인정보를 입력하세요. 공개 프로필에는 포함되지 않습니다.</div>
-                </div>
 
-            </div>
            
             <div class="di-10">
                 <aside></aside>
@@ -86,5 +79,7 @@
     </main>
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+   <script src="/resources/js/setting.js"></script>
   </body>
 </html>

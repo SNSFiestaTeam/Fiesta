@@ -1,3 +1,4 @@
+@import './root-style.css';
 body {
     width: 100vw;
     height: 100vh;
@@ -39,6 +40,7 @@ body {
     flex-basis: 10%;
     background-color: white;
     border-bottom: 1px solid #ccc;
+    display: none;
 }
 
 .left .down{
@@ -84,7 +86,7 @@ body {
     width: 100px;
     height: 40px;
     font-size: 14px;
-    background-color: #0095f6;
+    background-color: var(--fiesta-color);
     cursor: pointer;
     outline: none;
     border-radius: 5px;
