@@ -41,12 +41,13 @@ public class SettingController {
 			message = "회원 정보 수정";
 		
 		loginMember.setMemberNickname(inputMember.getMemberNickname());
+		loginMember.setMemberName(inputMember.getMemberName());
 		} else {
 			message = "실패";		}
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:";
+		return "redirect:setting";
 	}
 	
 	
