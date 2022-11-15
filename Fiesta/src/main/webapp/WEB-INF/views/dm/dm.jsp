@@ -55,17 +55,17 @@
           </section>
         </div>
         <div class="right" id="right">
-          <!-- <img src="../../resources/images/dm-icon.png" style="width: 96px" />
+          <img src="../../resources/images/dm-icon.png" style="width: 96px" />
           <h1>내 메시지</h1>
           <div class="message-info">
             친구나 그룹에 비공개 사진과 메세지를 보내보세요.
           </div>
           <button class="send" type="button">
             <a href="../dm/dm-message.html"> 메시지 보내기</a>
-          </button> -->
+          </button>
           
           
-           <!-- 클릭되었을때  -->
+           <%-- 클릭되었을때  --%>
           <div class="up">
             <a href="#" id="proImg"><img src="../../resources/images/user.jpg" style="width: 50px;"></a>
             <div class="messageName" id="messageName"> test</div>
@@ -82,6 +82,6 @@
     <!-- 푸터 -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/Fiesta/src/main/webapp/resources/js/dm.js"></script>
+    <script src="/resources/js/dm.js"></script>
   </body>
 </html>

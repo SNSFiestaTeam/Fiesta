@@ -1,6 +1,7 @@
 const down = document.getElementsByClassName("down")[0];
 const chat = document.getElementsById("chat");
 const right = document.getElementById("right")
+const up = document.getElementsByClassName("up")[0];
 
 
 
@@ -33,3 +34,8 @@ function readValue(){
 
 
 
+function open(){
+
+    right.style.display = none;
+    up.style.display = flex;
+}
