@@ -24,23 +24,12 @@ public class MainController {
 	@Autowired
 	private MainService service;
 	
-	@GetMapping("/selectFollowing")
-	@ResponseBody
-	public String selectFollowing(int memberNo) {
-		
-		System.out.println(memberNo);
-		
-		List<Follow> followingList = service.selectFollowing(memberNo); 
-		
-		return new Gson().toJson(followingList);
-	}
-	
 	
 	@GetMapping("/selectBoardList")
 	@ResponseBody
-	public String selectBoardList(String selectBoardSql) {
+	public String selectBoardList(int memberNo) {
 		
-		List<Board> boardList = service.selectBoardList(selectBoardSql);
+		List<Board> boardList = service.selectBoardList(memberNo);
 	
 		return new Gson().toJson(boardList);
 	}

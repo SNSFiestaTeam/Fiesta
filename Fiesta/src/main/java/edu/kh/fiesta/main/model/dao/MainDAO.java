@@ -17,20 +17,13 @@ public class MainDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	/** 팔로잉 멤버 조회 DAO
-	 * @param memberNo
-	 * @return
-	 */
-	public List<Follow> selectFollowing (int memberNo) {
-		return sqlSession.selectList("mainMapper.selectFollowing", memberNo);
-	}
 
 	/** 팔로잉 멤버 게시글 조회 DAO
 	 * @param selectBoardSql
 	 * @return
 	 */
-	public List<Board> selectBoardList(String selectBoardSql) {
-		return sqlSession.selectList("mainMapper.selectBoardList", selectBoardSql);
+	public List<Board> selectBoardList(int memberNo) {
+		return sqlSession.selectList("mainMapper.selectBoardList", memberNo);
 	}
 
 	/** 게시글 이미지 리스트 조회 DAO

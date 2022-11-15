@@ -16,6 +16,7 @@ public class Board {
 	private String boardPubPriFlag;
 	private String commentBlockFlag;
 	private int commentCount;
+	private int likeCount;
 	private int memberNo;
 
 
