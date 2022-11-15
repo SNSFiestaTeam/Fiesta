@@ -379,8 +379,10 @@ memberPwConfirm.addEventListener("input", () => {
 })
 
 
-
-
+// * TODO HIGHLIGHT, HIGHLIGHT, BETTER COMMENT(* ! ?) 다운받기!!!! 
+// TODO: 자동완성 지우기
+// TODO: 뒤로가기 막기
+// FIXME: 포인트 커서 수정하기
 // 버튼 비활성화
 document.getElementById("signUp-frm").addEventListener("input", function(){
     for(let key in checkObj){
