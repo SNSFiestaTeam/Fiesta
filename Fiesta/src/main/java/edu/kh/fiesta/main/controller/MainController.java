@@ -59,14 +59,14 @@ public class MainController {
 	}
 	
 	
-	@GetMapping("selectCommentList")
+	@GetMapping("/selectCommentList")
 	@ResponseBody
 	public String selectCommentList(int boardNo) {
 		
 		List<Comment> commentList = service.selectCommentList(boardNo);
 		
 		
-		return null;
+		return new Gson().toJson(commentList);
 	}
 	
 
