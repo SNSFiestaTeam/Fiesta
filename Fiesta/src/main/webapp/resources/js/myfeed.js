@@ -3,6 +3,9 @@ const followContainer = document.getElementById("follow-container");
 const scrollrock = document.getElementById("scrollrock")
 const followingBtn = document.getElementById("following-btn");
 const followingContainer = document.getElementById("following-container");
+const self = document.getElementById("self");
+const profileContainer = document.getElementById("profile-container");
+const editClose = document.getElementById("edit-close");
 
 followBtn.addEventListener("click", function(){
     followContainer.style.display ="flex";
@@ -23,5 +26,15 @@ followClose.addEventListener("click", function(){
 const followingClose = document.getElementById("following-close")
 followingClose.addEventListener("click", function(){
     followingContainer.style.display ="none";
+    scrollrock.style.overflow = "visible";
+})
+
+self.addEventListener("click", function(){
+    profileContainer.style.display = "flex";
+    scrollrock.style.overflow = "hidden";
+})
+
+editClose.addEventListener("click", function(){
+    profileContainer.style.display = "none"
     scrollrock.style.overflow = "visible";
 })

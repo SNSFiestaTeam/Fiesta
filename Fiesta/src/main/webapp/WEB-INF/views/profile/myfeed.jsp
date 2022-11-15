@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/resources/css/myfeed.css" />
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
+    <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
 
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -25,9 +26,9 @@
       <div class="main-container">
         <section class="info-section">
           <div id="profile-photo">
-            <a href="#">
-              <img id="self" src="/resources/images/karina.jpeg" />
-            </a>
+            <button id="self">
+              <img id="selfImg" src="/resources/images/karina.jpeg" />
+            </button>
           </div>
 
           <div id="profile-text">
@@ -166,6 +167,7 @@
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/follow-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
+        <jsp:include page="/WEB-INF/views/profile/profile-edit-board.jsp"/>
 
     <script src="/resources/js/myfeed.js"></script>
   </body>
