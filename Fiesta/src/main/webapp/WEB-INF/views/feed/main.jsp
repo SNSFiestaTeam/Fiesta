@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="/resources/css/share-style.css" />
     <link rel="stylesheet" href="/resources/css/report-style.css" />
     <link rel="stylesheet" href="/resources/css/comment-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/flexslider.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
   </head>
   <body>

@@ -20,6 +20,7 @@
 
           <!-- 게시물 작성 bottom -->
           <!-- <form action="#"> -->
+          <div class="new-post-bottom">
             <form action="#" method="post" class="new-post-bottom-section">
               <div class="new-post-file-input-box">
                 <div class="new-post-file-img">
@@ -37,6 +38,7 @@
                 <!-- multiple : 2개 이상의 파일 -->
               </div>
             </form>
+            </div>
 
           <!-- </form> -->
           
