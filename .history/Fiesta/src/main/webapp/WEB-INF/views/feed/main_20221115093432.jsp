@@ -291,7 +291,7 @@
         alert(loginMember);
 
         
-        sessionStorage.setItem('memberNo', memberNo);
+        // sessionStorage.setItem('memberNo', memberNo);
         // sessionStorage.setItem('memberNickname', memberNickname);
         // sessionStorage.setItem('memberProfileImg', memberProfileImg);
         

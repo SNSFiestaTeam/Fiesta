@@ -288,10 +288,10 @@
         var memberNickname = "${loginMember.memberNickname}";
         var memberProfileImg = "${loginMember.memberProfileImg}";
 
-        alert(loginMember);
+        alert(loginMember)
 
         
-        sessionStorage.setItem('memberNo', memberNo);
+        // sessionStorage.setItem('memberNo', memberNo);
         // sessionStorage.setItem('memberNickname', memberNickname);
         // sessionStorage.setItem('memberProfileImg', memberProfileImg);
         

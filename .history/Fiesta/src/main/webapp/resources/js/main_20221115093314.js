@@ -372,7 +372,7 @@ function selectBoardList() {
   // TODO: 로그인 멤버가 팔로우한 회원번호 조회
   $.ajax({
     url: "/main/selectFollowing",
-    data: { memberNo: memberNo },
+    data: { memberNo: sessionStorage.getItem("memberNo") },
     type: "GET",
     dataType: "JSON",
     success: (followingList) => {
