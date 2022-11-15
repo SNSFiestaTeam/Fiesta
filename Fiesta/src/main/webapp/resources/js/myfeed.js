@@ -13,12 +13,3 @@ followingBtn.addEventListener("click", function(){
     followingContainer.style.display = "flex";
 })
 
-const followClose = document.getElementById("follow-close")
-followClose.addEventListener("click", function(){
-    followContainer.style.display ="none";
-})
-
-const followingClose = document.getElementById("following-close")
-followingClose.addEventListener("click", function(){
-    followingContainer.style.display ="none";
-})
