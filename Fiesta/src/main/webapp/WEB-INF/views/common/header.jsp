@@ -42,7 +42,7 @@
               <a href="#"> <i class="fa-solid fa-house"></i></a>
             </li>
             <li>
-              <a href="dm/dm">
+              <a href="/dm/dm">
                 <i class="fa-regular fa-paper-plane"></i>
               </a>
             </li>

@@ -1,3 +1,5 @@
+@import './root-style.css';
+
 .list-group > li:first-child{
     border-left: 3px solid black;
 }
@@ -96,7 +98,7 @@ form > div > div{
 
 .di-1 > .main > a{
     font-size: 14px;
-    color: #0095f6;
+    color: var(--fiesta-color);
 }
 
 textarea{
@@ -130,7 +132,7 @@ div.main > input{
 .btn{
     width: 50px;
     height: 30px;
-    background-color: #0095f6;
+    background-color: var(--fiesta-color);
     cursor: pointer;
     border-radius: 5px;
     color: white;
