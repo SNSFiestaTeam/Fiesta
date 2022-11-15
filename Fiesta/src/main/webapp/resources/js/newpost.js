@@ -3,6 +3,7 @@ const modalBackground = document.getElementById('modalBackground');
 
 newPostOpen.addEventListener('click', function () {
   modalBackground.style.display = 'flex';
+  document.getElementsByTagName('body')[0].classList.add('scrollLock');
 });
 
 const newPostClose = document.getElementById('new-post-close');
