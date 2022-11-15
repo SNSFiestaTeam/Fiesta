@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import edu.kh.fiesta.main.model.service.MainService;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
+import edu.kh.fiesta.main.model.vo.Comment;
 import edu.kh.fiesta.main.model.vo.Follow;
 import edu.kh.fiesta.member.model.vo.Member;
 
@@ -57,6 +58,16 @@ public class MainController {
 		return new Gson().toJson(imageList);
 	}
 	
+	
+	@GetMapping("selectCommentList")
+	@ResponseBody
+	public String selectCommentList(int boardNo) {
+		
+		List<Comment> commentList = service.selectCommentList(boardNo);
+		
+		
+		return null;
+	}
 	
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.fiesta.main.model.dao.MainDAO;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
+import edu.kh.fiesta.main.model.vo.Comment;
 import edu.kh.fiesta.main.model.vo.Follow;
 import edu.kh.fiesta.member.model.vo.Member;
 
@@ -33,6 +34,11 @@ public class MainServiceImpl implements MainService {
 	public Member selectWriter(int memberNo) {
 		return dao.selectWriter(memberNo);
 		
+	}
+	
+	@Override
+	public List<Comment> selectCommentList(int boardNo) {
+		return dao.selectCommentList(boardNo);
 	}
 
 }

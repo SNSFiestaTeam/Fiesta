@@ -121,4 +121,9 @@
 	AND MEMBER_OPEN_FL = 'Y'
   </select>
   
+  <!-- 게시글 댓글 리스트 조회 -->
+  <select id="selectCommentList" parameterType="_int" resultMap="comment_rm">
+  	
+  </select>
+  
 </mapper>
