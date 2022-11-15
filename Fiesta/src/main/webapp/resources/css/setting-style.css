@@ -52,6 +52,7 @@
     border: 1px solid #ddd;
     display: flex;
     margin-right: auto;
+    flex-direction: column;
 }
 
 .main{
@@ -146,6 +147,12 @@ div.main > input{
     margin-bottom: 10px;
 }
 
+#pro-img{
+    width: 38px;
+}
+
+#image-input{display: none;}
+
 @media screen and (max-width: 470px) {
 .setting-content{
     margin-top: 0;
@@ -169,9 +176,9 @@ div.main > input{
     width: 100vw;
 }
 
-
-
 }
+
+
 
 @media screen and (min-width: 471px) and (max-width: 1023px) {
     .setting-content{

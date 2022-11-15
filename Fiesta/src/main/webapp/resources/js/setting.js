@@ -21,5 +21,4 @@ document.getElementById("setting-frm").addEventListener("submit", event =>{
     }
 
     
-
 });

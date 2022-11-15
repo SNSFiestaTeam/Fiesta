@@ -32,10 +32,3 @@ function readValue(){
 }
 
 
-
-
-function open(){
-
-    right.style.display = none;
-    up.style.display = flex;
-}

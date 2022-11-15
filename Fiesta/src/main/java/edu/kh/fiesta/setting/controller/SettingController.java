@@ -87,6 +87,6 @@ public class SettingController {
 		return "setting/setting3";
 	}
 	
-	
+
 	
 }
