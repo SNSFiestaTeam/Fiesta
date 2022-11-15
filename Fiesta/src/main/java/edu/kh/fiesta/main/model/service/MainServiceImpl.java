@@ -17,14 +17,11 @@ public class MainServiceImpl implements MainService {
 	@Autowired
 	private MainDAO dao;
 	
-	@Override
-	public List<Follow> selectFollowing(int memberNo) {
-		return dao.selectFollowing(memberNo);
-	}
+
 	
 	@Override
-	public List<Board> selectBoardList(String selectBoardSql) {
-		return dao.selectBoardList(selectBoardSql);
+	public List<Board> selectBoardList(int memberNo) {
+		return dao.selectBoardList(memberNo);
 	}
 	
 	@Override
