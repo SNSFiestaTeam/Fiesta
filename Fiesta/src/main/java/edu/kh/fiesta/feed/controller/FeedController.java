@@ -1,4 +1,4 @@
-package edu.kh.fiesta.member.controller;
+package edu.kh.fiesta.feed.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

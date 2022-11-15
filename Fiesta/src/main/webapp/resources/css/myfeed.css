@@ -77,7 +77,6 @@ body {
 
 #profile-board {
     margin-top: 20px;
-
 }
 
 #profile-board > span:nth-child(1) {
@@ -203,6 +202,12 @@ body {
       width: 1000px;
     }
 }
+
+#follow-btn, #following-btn {
+    cursor: pointer;
+}
+
+
 
 
 
