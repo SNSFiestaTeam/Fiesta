@@ -32,7 +32,6 @@ public class SettingController {
 			@SessionAttribute("loginMember") Member loginMember, RedirectAttributes ra) {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
-		inputMember.setMemberName(loginMember.getMemberName());
 		
 		int result = service.updateSetting(inputMember);
 		
