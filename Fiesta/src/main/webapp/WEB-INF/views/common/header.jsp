@@ -42,7 +42,7 @@
               <a href="#"> <i class="fa-solid fa-house"></i></a>
             </li>
             <li>
-              <a href="common/dm(용환재).html">
+              <a href="dm/dm">
                 <i class="fa-regular fa-paper-plane"></i>
               </a>
             </li>

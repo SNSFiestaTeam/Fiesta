@@ -10,6 +10,7 @@
      <!-- 나머지 일반 컬럼 -->
       <result property="memberEmail" column="MEMBER_EMAIL" />
       <result property="memberPw" column="MEMBER_PW" />
+      <result property="memberName" column="MEMBER_NAME" />
       <result property="memberNickname" column="MEMBER_NICKNAME" />
       <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
       <result property="enrollDate" column="ENROLL_DATE" />
@@ -32,8 +33,8 @@ WHERE MEMBER_NO = #{memberNo}
  	WHERE MEMBER_NO = #{memberNo}
  </update>
  <update id="updateSetting" parameterType="Member" >
- UPDATE ""MEMBER" SET
- MEMBER_NAME = #{memberName}
+ UPDATE "MEMBER" SET
+ MEMBER_NAME = #{memberName},
  MEMBER_NICKNAME = #{memberNickname}
  WHERE MEMBER_NO = #{memberNo}
  </update>
