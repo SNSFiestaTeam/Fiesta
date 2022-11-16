@@ -12,11 +12,11 @@ newPostClose.addEventListener('click', function () {
   modalBackground.style.display = 'none';
   document.getElementsByTagName('body')[0].classList.remove('scrollLock');
 });
-modalBackground.addEventListener('click',()=>{
-  modalBackground.style.display = 'none';
-  document.getElementsByTagName('body')[0].classList.remove('scrollLock');
-  alert("body클릭");
-});
+// modalBackground.addEventListener('click',()=>{
+//   modalBackground.style.display = 'none';
+//   document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+//   alert("body클릭");
+// });
 
 
 
