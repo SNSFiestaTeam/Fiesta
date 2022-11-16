@@ -24,7 +24,7 @@
       <section class="signUp-section">
         <!-- 로고 -->
         <div class="logo-area">
-          <a href="#">Fiesta</a>
+          <a href="/login">Fiesta</a>
           <p id="logo-sentence">
             친구들의 사진과 동영상을 보려면<br>
             가입하세요.
@@ -51,6 +51,7 @@
                     maxlength="50" autocomplete="off" required>
               <label for="memberEmail" id="memberEmailLabel">이메일</label>
 
+
               <!-- 중복검사 + 형태 맞는지 확인하는 아이콘 : 체크, X -->
               <span class="icon-id-check">
                 <i class="fa-regular fa-circle-check icon" id="emailCheck"></i>
@@ -61,7 +62,7 @@
 
             <div class="signUp-area"> <!-- 성명 -->
               <input type="text" name="memberName" id="memberName" value="" 
-                    maxlength="50" autocomplete="off" required>
+                    maxlength="50" autocomplete="off" required readonly>
               <label for="memberName">성명</label>
              
               <!-- 검사 안함 : 필수작성 확인 /체크-->
@@ -73,7 +74,7 @@
 
             <div class="signUp-area"> <!-- 사용자 이름 -->
               <input type="text" name="memberNickname" id="memberNickname" value="" 
-                    maxlength="50" autocomplete="off" required>
+                    maxlength="50" autocomplete="off" required readonly>
               <label for="memberNickname">사용자 이름</label>
               
               <!-- 자동생성(새로고침) / 필수입력(체크) / 중복검사(체크,X) -->
@@ -87,7 +88,8 @@
             </div>
   
             <div class="signUp-area"> <!-- 비밀번호 -->
-              <input type="password" name="memberPw" id="memberPw" value="" maxlength="30" autocomplete="off" required>
+              <input type="password" name="memberPw" id="memberPw" value="" 
+                    maxlength="30" autocomplete="off" required readonly>
               <label for="memberPw">비밀번호</label>
               
               <!-- 비밀번호 유효성 검사 / 보이기숨기기 -->
@@ -103,7 +105,8 @@
               
 
             <div class="signUp-area"> <!-- 비밀번호 확인 -->
-              <input type="password" name="memberPwConfirm" id="memberPwConfirm" value="" maxlength="30" autocomplete="off" required>
+              <input type="password" name="memberPwConfirm" id="memberPwConfirm" value="" 
+                    maxlength="30" autocomplete="off" required readonly>
               <label for="memberPwConfirm">비밀번호 확인</label>
               
               <!-- 비밀번호 일치 확인 : 체크,X / 보이기숨기기-->
@@ -117,15 +120,21 @@
               </span>
             </div> 
   
-            <button class="signUp-button" id="signUpButton"disabled>가입</button>
+            <button class="signUp-button" id="signUpButton" disabled>가입</button>
+            <button class="emailAuth-button" id="emailAuthButton" disabled>이메일 인증하기</button>
           </form>
         </section>
   
       <!-- 로그인으로 -->
-      <section class="toLogin">
-        <div>
+      <section id="toLogin">
+        <div class=toLogin>
           계정이 있으신가요?
           <a href="/login">로그인</a>
+        </div>
+      </section>
+      <section id="toAuth">
+        <div class="toAuth">
+          <input type="text" placeholder="이곳에 인증번호를 입력하세요.">
         </div>
       </section>
     </main>
