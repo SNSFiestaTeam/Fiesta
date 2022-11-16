@@ -116,37 +116,6 @@ main {
   position: absolute; */
 }
 
-.iVisible { visibility: visible; }
-.iHidden { visibility: hidden; }
-
-/* 아이콘 색상 지정 */
-.gray {
-  color: lightgray;
-}
-.green {
-  color: #00cc66;
-}
-.red {
-  color: red;
-}
-.blue {
-  color: #01439f;
-}
-.black {
-  color: #3a3a3a;
-}
-.fiesta {
-  color: var(--fiesta-color);
-}
-
-/* #iCheck:hover{ color: #00cc66;}
-
-#iXmark:hover{ color: red; }
-
-#iRefresh:hover{ color: #0066ff;}
-
-#iEye:hover{color:#111111;}
-#iEyeSlash:hover{ color:#111111;} */
 
 /* 트랜지션  */
 .signUp-area {
@@ -195,15 +164,16 @@ main {
   /* background-color: var(--fiesta-color);
     color: white;
     cursor: pointer; */
+    /* display: none; */
 }
 
 /* 이메일 인증하기 버튼 */
-.emailAuth-button{
+.sendAuthKeyBtn{
   display: block;
   width: 95%;
   height: 36px;
   border-radius: 5px;
-  margin: 5% 0 8% 0;
+  margin: 3% 0 8% 0;
 
   background-color: #00cc66;
   color: white;
@@ -231,6 +201,7 @@ main {
   cursor: pointer;
 }
 
+
 .displayOn{
   display: block;
 }
@@ -239,6 +210,36 @@ main {
   display: none;
 }
 
+
+.iVisible { visibility: visible; }
+.iHidden { visibility: hidden; }
+
+/* 아이콘 색상 지정 */
+.gray {
+  color: lightgray;
+}
+.green {
+  color: #00cc66;
+}
+.red {
+  color: red;
+}
+.blue {
+  color: #01439f;
+}
+.black {
+  color: #3a3a3a;
+}
+.fiestaColor {
+  color: var(--fiesta-color);
+}
+
+.grayLine{
+  border-bottom: 1px solid lightgray;
+}
+.greenLine{
+  border-bottom: 2px solid #00cc66;
+}
 
 
 /* 로그인으로 */
@@ -257,6 +258,7 @@ main {
   align-items: center;
 
   font-size: 0.8em;
+  display: none;
 }
 
 .toLogin a {
@@ -266,11 +268,13 @@ main {
 }
 
 
-.toAuth{
+/* 인증번호 입력창 */
+.inputAuth-area{
   width: 100%;
   height: 57px;
 
   margin: 3% 0;
+  padding: 3%;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -281,12 +285,37 @@ main {
 
   font-size: 0.8em;
   
-  display: none;
+  /* display: none; */
 }
 
-.toAuth input {
-  width: 100%;
+.inputAuth-area input {
+  width: 30%;
+  height: 50%;
+  /* padding-left: 5%;
+  padding-right: 5%; */
   outline : none;
   border:none;
   text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+
+  border-bottom: 1px solid lightgray;
 }
+
+#authTimerArea{
+  width: 20%;
+  height: 50%;
+  /* border: 1px solid black; */
+  /* border-bottom: 1px solid lightgray; */
+}
+
+#checkAuthKeyBtn{
+  width: 20%;
+  /* color: lightgray; */
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+
+}
+
+
