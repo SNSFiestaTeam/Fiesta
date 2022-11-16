@@ -112,8 +112,8 @@ main{
 
 }
 
-/* 이메일 입력 */
-.email-input-area{
+/* 이메일, 인증번호 입력 */
+.findAccount-input-area{
     width: 85%;
     height: 45px;
     margin: 0 0 2% 0;
@@ -127,7 +127,7 @@ main{
 }
 
 
-.email-input-area input{
+.findAccount-input-area input{
     width: 100%;
     background-color: #FAFAFA;
     border: none;
@@ -135,14 +135,31 @@ main{
 }
 
 
+#emailAuth-area{
+    display: none;
+    /* display: flex;
+    border: 1px solid black; */
+}
+
+/* 인증번호 타이머 */
+#emailAuthTimer{
+    width: 30%;
+    height: 100%;
+    /* border: 1px solid black; */
+    /* margin-bottom: 8px; */
+}
+
+
+
+
 
 /* 트랜지션 적용 */
-.email-input-area{
+.findAccount-input-area{
     position: relative;
 }
 
 
-.email-input-area > label{
+.findAccount-input-area > label{
     /* border: 1px solid black; */
     position: absolute;
     top: 10px;
@@ -153,7 +170,7 @@ main{
     transition: 0.3s;
 }
 
-.email-input-area input:focus ~ label{
+.findAccount-input-area input:focus ~ label{
     position: absolute;
     transform: translate(1px, -8px);
     font-size: 0.5em;
@@ -162,7 +179,7 @@ main{
 }
 
 
-.email-input-area input:valid ~ label{
+.findAccount-input-area input:valid ~ label{
     position: absolute;
     transform: translate(1px, -8px);
     padding: 0;
@@ -170,22 +187,14 @@ main{
 }
 
 
-.email-input-area:focus-within{
+.findAccount-input-area:focus-within{
     border: 1px solid var(--fiesta-color);
 }
 
 
 
-
-
-#loginEmail{
-    width: 100%;
-    background-color: #FAFAFA;
-    border: none;
-    outline: none;
-} 
-
-.login-button{
+/* 버튼 */
+.findAccount-button{
     width: 85%;
     height: 36px;
     background-color: var(--fiesta-color);
