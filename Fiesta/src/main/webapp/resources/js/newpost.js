@@ -10,7 +10,26 @@ const newPostClose = document.getElementById('new-post-close');
 
 newPostClose.addEventListener('click', function () {
   modalBackground.style.display = 'none';
+  document.getElementsByTagName('body')[0].classList.remove('scrollLock');
 });
+// modalBackground.addEventListener('click',()=>{
+//   modalBackground.style.display = 'none';
+//   document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+//   alert("body클릭");
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const fileView = document.querySelector("fileView"); //전체 슬라이드 컨테이너
 // const allFile = document.querySelectorAll(file); //모든 슬라이드들

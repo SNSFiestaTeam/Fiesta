@@ -6,7 +6,7 @@
       <section id="header-section">
         <!-- 로고 -->
         <section class="logo-section">
-          <a href="/main"
+          <a href="../../views/main(신보경).html"
             >Fiesta</a>
         </section>
         <!-- 검색창 -->
@@ -39,7 +39,7 @@
               </button>
             </li>
             <li>
-              <a href="/main"> <i class="fa-solid fa-house"></i></a>
+              <a href="#"> <i class="fa-solid fa-house"></i></a>
             </li>
             <li>
               <a href="/dm/dm">

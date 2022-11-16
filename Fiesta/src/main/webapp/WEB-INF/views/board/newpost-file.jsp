@@ -17,6 +17,7 @@
               <div class="new-post-top-title">새 게시물 만들기</div>
             </div>
           </section>
+          jhuhuiui
 
           <!-- 게시물 작성 bottom -->
           <!-- <form action="#"> -->
