@@ -1,70 +1,73 @@
-const newPostOpen = document.getElementById('newPostOpen');
-const modalBackground = document.getElementById('modalBackground');
+// const newPostOpen = document.getElementById('newPostOpen');
+// const modalBackground = document.getElementById('modalBackground');
 
-newPostOpen.addEventListener('click', function () {
-  modalBackground.style.display = 'flex';
-  document.getElementsByTagName('body')[0].classList.add('scrollLock');
-});
+// newPostOpen.addEventListener('click', function () {
+//   modalBackground.style.display = 'flex';
+//   document.getElementsByTagName('body')[0].classList.add('scrollLock');
+// });
 
-const newPostClose = document.getElementById('new-post-close');
+// const newPostClose = document.getElementById('new-post-close');
 
-newPostClose.addEventListener('click', function () {
-  modalBackground.style.display = 'none';
-  document.getElementsByTagName('body')[0].classList.remove('scrollLock');
-});
+// newPostClose.addEventListener('click', function () {
+//   modalBackground.style.display = 'none';
+//   document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+// });
+
+
+
+
 // modalBackground.addEventListener('click',()=>{
 //   modalBackground.style.display = 'none';
 //   document.getElementsByTagName('body')[0].classList.remove('scrollLock');
 //   alert("body클릭");
 // });
 
+// newpost-eidt----------------------------------------------------------------
+// *** 이미지 넘기기 ***
+let fileIndex = 0; // 현재 보여지는 이미지 인덱스 번호
+let position = 0; // 이미지 태그 위치값 지정
+const IMAGE_WIDTH = 640;
 
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const slideImages = document.getElementById('slideImages');
 
+// 다음 파일
+function filenext(){
+  if(fileIndex < 3){ // 파일 갯수 까지만
+    prevBtn.removeAttribute('disabled');
+    position -= IMAGE_WIDTH; // next 니까 빼기 정한 크기만큼
+    slideImages.style.transform = 'translateX(${position}px)';
+    
+    fileIndex += 1;
+  }
+  if(fileIndex == 3){
+    nextBtn.setAttribute('disabled', 'true');
+  }
+}
+// 전 파일
+function fileprev(){
+  if(fileIndex > 0){
+    nextBtn.removeAttribute('disabled');
+    position += IMAGE_WIDTH;
+    slideImages.style.transform = 'translateX(${position}px)';
+    fileIndex -= 1;
+  }
+  if(fileIndex == 0){
+    prevBtn.setAttribute('disabled', 'true');
+  }
+}
+// 첫번째 함수 지정하는 거
+function init(){
+  prevBtn.setAttribute('disabled', 'true');// 첫번째 사진에서 앞으로 안가게 disabled지정(누를수 없는 상태)
+  nextBtn.addEventListener("click", filenext);
+  prevBtn.addEventListener("click", fileprev);
 
-
-
-
-
-
-
-
-
-
-
-// const fileView = document.querySelector("fileView"); //전체 슬라이드 컨테이너
-// const allFile = document.querySelectorAll(file); //모든 슬라이드들
-// let currentIdx = 0; //현재 슬라이드 index
-// const slideCount = allFile.length; // 슬라이드 개수
-// const prev = document.querySelector('.prev'); //이전 버튼
-// const next = document.querySelector('.next'); //다음 버튼
-// const slideWidth = 300; //한개의 슬라이드 넓이
-// const slideMargin = 100; //슬라이드간의 margin 값
-//전체 슬라이드 컨테이너 넓이 설정
-// fileView.style.width = (slideWidth + slideMargin) * slideCount + 'px';
-// function moveSlide(num) {
-//   slides.style.left = -num * 400 + 'px';
-//   currentIdx = num;
-// }
-// prev.addEventListener('click', function () {
-/*첫 번째 슬라이드로 표시 됐을때는 
-  이전 버튼 눌러도 아무런 반응 없게 하기 위해 
-  currentIdx !==0일때만 moveSlide 함수 불러옴 */
-//   if (currentIdx !== 0) moveSlide(currentIdx - 1);
-// });
-
-// next.addEventListener('click', function () {
-/* 마지막 슬라이드로 표시 됐을때는 
-  다음 버튼 눌러도 아무런 반응 없게 하기 위해
-  currentIdx !==slideCount - 1 일때만 
-  moveSlide 함수 불러옴 */
-//   if (currentIdx !== slideCount - 1) {
-//     moveSlide(currentIdx + 1);
-//   }
-// });
+}
+init();
 
 // document.getElementById("file-add").addEventListener("click", function(){
 
-//   // 생성
 //   const div = document.createElement("div");
 
 // })
