@@ -469,14 +469,16 @@ function createBoard(board) {
         dataType: 'JSON',
         success: (imageList) => {
           const imageListDiv = document.createElement('div');
-          imageListDiv.classList.add('image-list', 'flexslider');
+          imageListDiv.classList.add('image-list', 'swiper', 'mySwiper');
 
           const imageUl = document.createElement('ul');
-          imageUl.classList.add('slides');
+          imageUl.classList.add('swiper-wrapper');
 
           if (imageList.length > 0) {
             for (let i = 0; i < imageList.length; i++) {
               const imageLi = document.createElement('li');
+              imageLi.classList.add('swiper-slide');
+
               const uploadedImage = document.createElement('img');
               // img태그에 src 속성, alt 속성 추가
               uploadedImage.setAttribute('src', imageList[i].imgAddress);
@@ -486,9 +488,61 @@ function createBoard(board) {
               imageUl.append(imageLi);
             }
 
-            imageListDiv.append(imageUl);
+            // 스와이퍼 슬라이드 navigation 버튼, pageination 버튼 생성
+
+            const nextBtn = document.createElement('div');
+            nextBtn.classList.add('swiper-button-next', 'swiper-btn');
+
+            const prevBtn = document.createElement('div');
+            prevBtn.classList.add('swiper-button-prev', 'swiper-btn');
+
+            const pagerBtn = document.createElement('div');
+            pagerBtn.classList.add('swiper-pagination', 'swiper-btn');
+
+            imageListDiv.append(imageUl, nextBtn, prevBtn, pagerBtn);
 
             profileImageDiv.append(imageListDiv);
+
+            // ! ----------------------------------------------------------------------------------------------
+            // ! swiper 슬라이드 초기화!!!!
+            var swiper = new Swiper('.mySwiper', {
+              speed: 1000,
+              // cssMode: true,
+
+              // 반복
+              loop: false,
+              // 반복 시 이미지 계속 넘어갈 수 있게
+              // loopAdditionalSlides: 1,
+
+              // 해당 슬라이드 클릭 시 슬라이드 위치로 이동
+              slideToClickedSlide: true,
+
+              // 슬라이드 터치에 대한 저항 여부
+              resistance: false,
+
+              // 슬라이드가 1개일 때 pager, button 숨김 여부
+              watchOverflow: true,
+
+              grabCursor: false,
+
+              spaceBetween: 30,
+              hashNavigation: {
+                watchState: true,
+              },
+
+              navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              },
+              mousewheel: true,
+              keyboard: true,
+            });
+            // ! 스와이퍼 슬라이드 초기화 끝
+            // ! ----------------------------------------------------------------------------------------------
           }
         },
         error: (error) => {
