@@ -23,6 +23,7 @@ public class SettingServiceImpl implements SettingService{
 	private BCryptPasswordEncoder bcrypt;
 	
 
+	@ExceptionHandler
 	@Transactional
 	@Override
 	public int Pw(Map<String, Object> paramMap) {
