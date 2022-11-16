@@ -37,7 +37,7 @@
                 <i class="fa-solid fa-arrow-left"></i>
               </button>
               <div class="new-post-top-title">새 게시물 만들기</div>
-              <button class="new-post-top-next-btn">공유하기</button>
+              <button class="new-post-top-next-btn">게시하기</button>
             </div>
           </section>
 
