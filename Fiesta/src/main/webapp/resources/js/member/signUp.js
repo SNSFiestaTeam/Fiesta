@@ -34,8 +34,9 @@ const memberPw = document.getElementById("memberPw");
 const memberPwConfirm = document.getElementById("memberPwConfirm");
 
 const signUpButton = document.getElementById("signUpButton");
+const emailAuthButton = document.getElementById("emailAuthButton");
 
-
+memberEmail.focus();
 signUpButton.classList.add("buttonOff");
 
 
@@ -378,24 +379,60 @@ memberPwConfirm.addEventListener("input", () => {
     }   
 })
 
+const toLogin = document.getElementById("toLogin");
+const AuthInput = document.getElementById("toAuth");
 
-// * TODO HIGHLIGHT, HIGHLIGHT, BETTER COMMENT(* ! ?) 다운받기!!!! 
-// TODO: 자동완성 지우기
-// TODO: 뒤로가기 막기
-// FIXME: 포인트 커서 수정하기
+// 이메일 인증하기
+memberEmail.addEventListener("input", () => {
+
+    signUpButton.classList.add("displayOff");
+    emailAuthButton.classList.add("displayOn");
+
+    if(checkObj.memberEmail == true){
+        emailAuthButton.classList.add("authButtonOn");
+        emailAuthButton.classList.remove("buttonOff");
+        emailAuthButton.disabled = false;
+    
+    }  else {
+        emailAuthButton.classList.add("buttonOff");
+        emailAuthButton.classList.remove("authButtonOn");
+        emailAuthButton.disabled = true;
+    }
+})
+
+
 // 버튼 비활성화
 document.getElementById("signUp-frm").addEventListener("input", function(){
     for(let key in checkObj){
         if( !checkObj[key] ){
             signUpButton.classList.add("buttonOff");
+            signUpButton.classList.remove("buttonOn");
             signUpButton.disabled = true;
         } else{
             signUpButton.classList.add("buttonOn");
             signUpButton.classList.remove("buttonOff");
             signUpButton.disabled = false;
         }
-    }
-
-
+    }    
 });
+
+// TODO: 자동완성 지우기
+// TODO: 뒤로가기 막기
+
+// 자동완성 지우기
+
+document.addEventListener("DOMContentLoaded", () => {
+    memberEmail.value = "123";
+    memberEmail.value = "";
+});
+
+memberEmail.addEventListener("input", () => {
+    memberName.removeAttribute("readonly");
+    memberNickname.removeAttribute("readonly");
+    memberPw.removeAttribute("readonly");
+    memberPwConfirm.removeAttribute("readonly");
+})
+
+
+
 

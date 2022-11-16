@@ -183,6 +183,8 @@ main {
   border: 1px solid var(--fiesta-color);
 }
 
+
+/* 가입 버튼 */
 .signUp-button {
   display: block;
   width: 95%;
@@ -195,6 +197,22 @@ main {
     cursor: pointer; */
 }
 
+/* 이메일 인증하기 버튼 */
+.emailAuth-button{
+  display: block;
+  width: 95%;
+  height: 36px;
+  border-radius: 5px;
+  margin: 5% 0 8% 0;
+
+  background-color: #00cc66;
+  color: white;
+
+  display: none;
+}
+
+
+
 /* 버튼 활성화/비활성화 */
 .buttonOn {
   background-color: var(--fiesta-color);
@@ -206,6 +224,21 @@ main {
   background-color: lightgray;
   color: white;
 }
+
+.authButtonOn{
+  background-color: #00cc66;
+  color: white;
+  cursor: pointer;
+}
+
+.displayOn{
+  display: block;
+}
+
+.displayOff{
+  display: none;
+}
+
 
 
 /* 로그인으로 */
@@ -230,4 +263,30 @@ main {
   color: var(--fiesta-color);
   font-weight: bold;
   cursor: pointer;
+}
+
+
+.toAuth{
+  width: 100%;
+  height: 57px;
+
+  margin: 3% 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0.8em;
+  
+  display: none;
+}
+
+.toAuth input {
+  width: 100%;
+  outline : none;
+  border:none;
+  text-align: center;
 }

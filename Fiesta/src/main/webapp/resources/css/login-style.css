@@ -141,12 +141,12 @@ main {
 
 /* 아이디, 비밀번호 찾기 */
 .line {
-
 	display: flex;
 	align-items: center;
 	color:#b4b4b4;
 	font-size: 14px;
 }
+
 .line::before{
 	content:"";
 	flex-grow:1;
@@ -169,9 +169,9 @@ main {
 
 .lineFont{
     color: #EB4536;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 0.75em;
-    /* margin: 0 18.4px ; */
+    /* font-family: "Cookie", cursive; */
 }
 
 .lineColor{
