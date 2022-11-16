@@ -41,6 +41,7 @@
       <result property="commentCreateDate" column="COMMENT_CREATE_DATE" />
       <result property="boardNo" column="BOARD_NO" />
       <result property="upperCommentNo" column="UPPER_COMMENT_NO" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
   </resultMap>
   
   <resultMap type="Follow" id="follow_rm">
@@ -119,6 +120,18 @@
 	WHERE MEMBER_NO = #{memberNo}
 	AND SECESSION_FL = 'N'
 	AND MEMBER_OPEN_FL = 'Y'
+  </select>
+  
+  <!-- 게시글 댓글 리스트 조회 -->
+  <select id="selectCommentList" parameterType="_int" resultMap="comment_rm">
+  	SELECT COMMENT_NO , COMMENT_MEMBER_NO , COMMENT_CONTENT ,
+	COMMENT_CREATE_DATE , UPPER_COMMENT_NO , BOARD_NO,
+	(SELECT MEMBER_NICKNAME
+	FROM "MEMBER" m
+	WHERE c.COMMENT_MEMBER_NO = m.MEMBER_NO) MEMBER_NICKNAME
+	FROM "COMMENT" c
+	WHERE BOARD_NO = #{boardNo}
+	ORDER BY COMMENT_NO
   </select>
   
 </mapper>

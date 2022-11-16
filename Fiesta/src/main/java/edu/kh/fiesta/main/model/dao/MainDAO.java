@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
+import edu.kh.fiesta.main.model.vo.Comment;
 import edu.kh.fiesta.main.model.vo.Follow;
 import edu.kh.fiesta.member.model.vo.Member;
 
@@ -36,6 +37,10 @@ public class MainDAO {
 
 	public Member selectWriter(int memberNo) {
 		return sqlSession.selectOne("mainMapper.selectWriter", memberNo);
+	}
+
+	public List<Comment> selectCommentList(int boardNo) {
+		return sqlSession.selectList("mainMapper.selectCommentList", boardNo);
 	}
 
 }

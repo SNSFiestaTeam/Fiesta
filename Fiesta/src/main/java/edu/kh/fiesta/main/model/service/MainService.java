@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
+import edu.kh.fiesta.main.model.vo.Comment;
 import edu.kh.fiesta.main.model.vo.Follow;
 import edu.kh.fiesta.member.model.vo.Member;
 
@@ -31,5 +32,12 @@ public interface MainService {
 	 * @return writer
 	 */
 	public Member selectWriter(int memberNo);
+
+
+	/** 게시글 댓글 조회 서비스
+	 * @param boardNo
+	 * @return commentList
+	 */
+	public List<Comment> selectCommentList(int boardNo);
 
 }
