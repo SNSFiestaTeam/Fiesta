@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="/resources/css/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/flexslider.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
+    // <link
+    //   rel="stylesheet"
+    //   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.css"
+    // />
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -45,19 +52,21 @@
               </div>
 
               <!-- 사진 목록 -->
-              <div class="image-list flexslider">
-                <ul class="slides">
-                  <li>
-                    <img class="uploaded-image" src="/resources/images/은우.jpg" alt="" />
+              <div class="image-list swiper mySwiper">
+                <ul class="swiper-wrapper">
+                  <li class="swiper-slide">
+                    <img class="uploaded-image " src="/resources/images/은우.jpg" alt="" />
                   </li>
-                  <li>
-                    <img class="uploaded-image" src="/resources/images/은우2.jpg" alt="" />
+                  <li class="swiper-slide">
+                    <img class="uploaded-image " src="/resources/images/은우2.jpg" alt="" />
                   </li>
-                  <li>
-                    <img class="uploaded-image" src="/resources/images/은우3.jpg" alt="" />
+                  <li class="swiper-slide">
+                    <img class="uploaded-image " src="/resources/images/은우3.jpg" alt="" />
                   </li>
                 </ul>
-
+                <div class="swiper-button-next swiper-btn"></div>
+                <div class="swiper-button-prev swiper-btn"></div>
+                <div class="swiper-pagination swiper-btn"></div>
               </div>
             </div>
 
@@ -290,16 +299,51 @@
         var memberNickname = "${loginMember.memberNickname}";
         var memberProfileImg = "${loginMember.memberProfileImg}";
 
-        // alert(loginMember);
-        
-        
-        // sessionStorage.setItem('memberNo', memberNo);
-        // sessionStorage.setItem('memberNickname', memberNickname);
-        // sessionStorage.setItem('memberProfileImg', memberProfileImg);
+      
+
         
       </script>
     </c:if>
 
+    <script>
+    var swiper = new Swiper(".mySwiper", {
+      // cssMode: true,
+      
+
+      // 반복
+      loop : true,
+      // 반복 시 이미지 계속 넘어갈 수 있게
+      loopAdditionalSlides : 1,
+
+      // 해당 슬라이드 클릭 시 슬라이드 위치로 이동
+      slideToClickedSlide : true,
+
+      // 슬라이드 터치에 대한 저항 여부
+      resistance : false,
+
+      // 슬라이드가 1개일 때 pager, button 숨김 여부
+      watchOverflow : true,
+
+      grabCursor: true,
+
+      spaceBetween: 30,
+        hashNavigation: {
+          watchState: true,
+        },
+
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      mousewheel: true,
+      keyboard: true,
+    });  
+    </script>
+    
     <script type="text/javascript" defer src="/resources/js/main.js"></script>
     <script src="/resources/js/newpost.js"></script>
     <script src="/resources/js/jquery.flexslider.js"></script>

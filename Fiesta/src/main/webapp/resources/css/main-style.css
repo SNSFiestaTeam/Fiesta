@@ -1,4 +1,36 @@
-@import "./root-style.css";
+@import './root-style.css';
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .red {
   color: red;
@@ -254,6 +286,7 @@ a.hashtag {
 .comment-firstline {
   display: flex;
   justify-content: space-between;
+  padding-right: 5px;
 }
 
 .comment-content {
@@ -295,6 +328,7 @@ a.comment-profile {
 .reply-firstline {
   display: flex;
   justify-content: space-between;
+  padding-right: 5px;
 }
 .create-date {
   color: var(--main-font-color);
@@ -651,7 +685,6 @@ a.comment-profile {
 
   .image-list li {
     width: 100%;
-    padding-bottom: 100%;
     overflow: hidden;
     object-fit: cover;
   }
