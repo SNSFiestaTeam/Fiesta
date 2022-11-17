@@ -16,58 +16,7 @@
 
 
 <body>
-  <!-- 헤더 -->
-  <header>
-    <section id="header-section">
-      <!-- 로고 -->
-      <section class="logo-section">
-        <a href="#"><img id="logo" src="/resources/images/instagram.png" /></a>
-      </section>
-      <!-- 검색창 -->
-      <section class="search-section">
-        <form action="#">
-          <fieldset>
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input type="text" name="search" id="searchInput" placeholder="검색" autocapitalize="none"
-              autocomplete="off" />
-          </fieldset>
-        </form>
-      </section>
-      <!-- 메뉴 -->
-      <nav id="nav-bar">
-        <ul>
-          <li>
-            <a href="#"> <i class="fa-solid fa-house"></i></a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-paper-plane"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-square-plus"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-compass"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-heart"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-user"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </section>
-  </header>
+
 
 
 
@@ -92,21 +41,18 @@
           <button>다음</button>
         </div>
         <div class="new-post-bottom">
-          <!-- 파일 슬라이스 -->
-          <ul class="file-view" id="fileView">
-            <li> <img id="file" src="../../resources/images/다운로드 (1).jpeg"alt="파일미리보기"></li>
-            <li> <img id="file" src="../../resources/images/다운로드 (2).jpeg"alt="파일미리보기"></li>
-            <li> <img id="file" src="../../resources/images/다운로드 (3).jpeg"alt="파일미리보기"></li>
-          </ul>
-        
-          
-          <p class="controller">
-      
-            <!-- &lang: 왼쪽 방향 화살표
-            &rang: 오른쪽 방향 화살표 -->
-            <span class="prev">&lang;</span>  
-            <span class="next">&rang;</span>
-          </p>
+          <div class="album">
+            <div class="images" id="slideImages">
+              <img id="file" src="../../resources/images/다운로드 (1).jpeg"alt="파일미리보기">
+              <img id="file" src="../../resources/images/다운로드 (2).jpeg"alt="파일미리보기">
+              <img id="file" src="../../resources/images/다운로드 (3).jpeg"alt="파일미리보기">
+              <img id="file" src="../../resources/images/다운로드.jpeg"alt="파일미리보기">
+            </div>
+          </div>
+          <div class="slide-controller">
+            <button class="prev" id="prev">&lang;</button>  
+            <button class="next" id="next">&rang;</button>
+          </div>
 
           <div class="img-btn">
             <!-- 이미지 편집 -->
@@ -127,29 +73,58 @@
               <label for="check-btn2">
                 <div class="btn-background"><i class="fa-regular fa-square-plus fa-xs"></i> </div>
               </label>
+              <!-- img 미리보기 -->
               <div class="add">
                 <div class="add-files">
-                  <div>
-                    <div class="file-preview"></div>
-                    <span class="remove">&times;</span>
-                  </div>
-                  <div>
-                    <div class="file-preview"></div>
-                    <span class="remove">&times;</span>
-                  </div>
-                    
-                    
-                    <button id="file-add"><i class="fa-solid fa-plus"></i></button>
-                </div>
+                  <div class="files-preview">
+                    <div>
+                      <div class="file-preview">
+                      <span class="remove">&times;</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="file-preview">
+                        <span class="remove">&times;</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="file-preview">
+                      <span class="remove">&times;</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="file-preview">
+                        <span class="remove">&times;</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="file-preview">
+                      <span class="remove">&times;</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="file-preview">
+                        <span class="remove">&times;</span>
+                      </div>
+                    </div>
 
+                  </div>
+                  <label for="add-file-input"><i class="fa-solid fa-plus"></i></label>
+                    <button><input type="file" name="add-file-input" id="add-file-input"></button>
+                    <p class="preview-controller">
+          
+                      <!-- &lang: 왼쪽 방향 화살표
+                      &rang: 오른쪽 방향 화살표 -->
+                      <span class="preview-prev">&lang;</span>  
+                      <span class="preview-next">&rang;</span>
+                    </p>
+                </div>
               </div>
             </div>
 
           </div>
-
-
-
         </div>
+
       </section>
 
 

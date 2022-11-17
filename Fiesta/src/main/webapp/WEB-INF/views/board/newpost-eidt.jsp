@@ -96,6 +96,15 @@
     </div>
   </main>
 
+<link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+<link rel="stylesheet" href="/resources/css/newpost-post-style.css" />
+<link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
+
+<jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+<jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+<jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
+
+<script src="/resources/js/newpost.js"></script>
 
 </body>
 

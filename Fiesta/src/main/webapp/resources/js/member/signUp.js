@@ -22,6 +22,7 @@ const checkObj = {
     "memberNickname": false,
     "memberPw"      : false,
     "memberPwConfirm" : false,
+    "authKey"       : false
 }
 
 
@@ -34,7 +35,13 @@ const memberPw = document.getElementById("memberPw");
 const memberPwConfirm = document.getElementById("memberPwConfirm");
 
 const signUpButton = document.getElementById("signUpButton");
-const emailAuthButton = document.getElementById("emailAuthButton");
+
+const toLoginSection = document.getElementById("toLogin");
+const inputAuthSection = document.getElementById("inputAuth");
+
+const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
+const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
+
 
 memberEmail.focus();
 signUpButton.classList.add("buttonOff");
@@ -379,48 +386,9 @@ memberPwConfirm.addEventListener("input", () => {
     }   
 })
 
-const toLogin = document.getElementById("toLogin");
-const AuthInput = document.getElementById("toAuth");
 
-// 이메일 인증하기
-memberEmail.addEventListener("input", () => {
-
-    signUpButton.classList.add("displayOff");
-    emailAuthButton.classList.add("displayOn");
-
-    if(checkObj.memberEmail == true){
-        emailAuthButton.classList.add("authButtonOn");
-        emailAuthButton.classList.remove("buttonOff");
-        emailAuthButton.disabled = false;
-    
-    }  else {
-        emailAuthButton.classList.add("buttonOff");
-        emailAuthButton.classList.remove("authButtonOn");
-        emailAuthButton.disabled = true;
-    }
-})
-
-
-// 버튼 비활성화
-document.getElementById("signUp-frm").addEventListener("input", function(){
-    for(let key in checkObj){
-        if( !checkObj[key] ){
-            signUpButton.classList.add("buttonOff");
-            signUpButton.classList.remove("buttonOn");
-            signUpButton.disabled = true;
-        } else{
-            signUpButton.classList.add("buttonOn");
-            signUpButton.classList.remove("buttonOff");
-            signUpButton.disabled = false;
-        }
-    }    
-});
-
-// TODO: 자동완성 지우기
-// TODO: 뒤로가기 막기
 
 // 자동완성 지우기
-
 document.addEventListener("DOMContentLoaded", () => {
     memberEmail.value = "123";
     memberEmail.value = "";
@@ -436,3 +404,204 @@ memberEmail.addEventListener("input", () => {
 
 
 
+checkAuthKeyBtn.classList.add("gray");
+
+// '이메일로 인증번호 보내기' 버튼 활성화
+memberEmail.addEventListener("input", () => {
+
+    signUpButton.classList.add("displayOff");
+    signUpButton.classList.remove("displayOn");
+    sendAuthKeyBtn.classList.add("displayOn", "authButtonOn");
+    sendAuthKeyBtn.classList.remove("displayOff");
+    checkAuthKeyBtn.classList.add("gray");
+    checkAuthKeyBtn.classList.remove("green");
+
+    if(memberEmail.value.trim().length==0){
+        sendAuthKeyBtn.classList.remove("displayOn", "authButtonOn");
+        sendAuthKeyBtn.classList.add("displayOff");
+        signUpButton.classList.add("displayOn");
+        signUpButton.classList.remove("displayOff")
+    }
+
+    if(checkObj.memberEmail == true){
+        sendAuthKeyBtn.classList.add("authButtonOn");
+        sendAuthKeyBtn.classList.remove("buttonOff");
+        sendAuthKeyBtn.disabled = false;
+        checkAuthKeyBtn.classList.add("green");
+        checkAuthKeyBtn.classList.remove("gray");
+    
+    }  else {
+        sendAuthKeyBtn.classList.add("buttonOff");
+        sendAuthKeyBtn.classList.remove("authButtonOn");
+        checkAuthKeyBtn.classList.remove("green");
+        checkAuthKeyBtn.classList.add("gray");
+        sendAuthKeyBtn.disabled = true;
+        
+        
+    }
+})
+
+
+// 인증번호 입력창 보이기
+// sendAuthKeyBtn.addEventListener("click", function(){
+//     toLoginSection.classList.add("displayOff");
+//     toLoginSection.classList.remove("displayOn");
+//     inputAuthSection.classList.add("displayOn");
+//     inputAuthSection.classList.remove("displayOff");
+// });
+
+
+checkAuthKeyBtn.addEventListener("click", () => {
+    
+    for(let key in checkObj){
+    
+        // 가입하기 버튼 비활성화
+        if( !checkObj[key] ){
+            signUpButton.classList.add("buttonOff");
+            signUpButton.classList.remove("buttonOn");
+            signUpButton.disabled = true;
+    
+        } else{
+            // 가입하기 버튼 활성화    
+            signUpButton.classList.add("buttonOn");
+            signUpButton.classList.remove("buttonOff");
+            signUpButton.disabled = false;
+        }  
+    }
+})
+
+
+
+
+// 이메일 인증코드 발송, 확인
+let authTimer;
+let authMin = 4;
+let authSec = 59;
+
+const authTimerArea = document.getElementById("authTimerArea");
+
+sendAuthKeyBtn.addEventListener("click", function(){
+    // 인증번호 입력창 보이기
+    toLoginSection.style.display="none";
+    toLoginSection.classList.remove("displayOn");
+    inputAuthSection.style.display="flex";
+    inputAuthSection.classList.remove("displayOff");
+    
+
+    // 타이머
+    authMin = 4;
+    authSec = 59;
+
+    checkObj.authKey = false;
+
+    if(checkObj.memberEmail){ // 중복이 아닌 이메일인 경우
+        $.ajax({
+            url : "/sendEmail/signUp",
+            data : {"email": memberEmail.value},
+            success : (result) => {
+                if(result > 0){
+                    console.log("인증 번호가 발송되었습니다.")
+                }else{
+                    console.log("인증번호 발송 실패")
+                }
+            }, error : () => {
+                console.log("이메일 발송 중 에러 발생");
+            }
+        })
+
+        //_비동기라서 위 ajax와 동시에 아래 코드 실행됨.
+        alert("인증번호가 발송 되었습니다.");
+
+        
+        authTimerArea.innerText = "05:00";
+        // checkAuthKeyBtn.classList.remove("confirm");
+
+        authTimer = window.setInterval(()=>{
+        //_ 인터벌을 변수에 저장해야 나중에 clearInterval이 가능함.
+
+            authKeyMessage.innerText = "0" + authMin + ":" + (authSec<10 ? "0" + authSec : authSec);
+            
+            // 남은 시간이 0분 0초인 경우
+            if(authMin == 0 && authSec == 0){
+                checkObj.authKey = false;
+                clearInterval(authTimer);
+                return;
+            }
+
+            // 0초인 경우
+            if(authSec == 0){
+                authSec = 60;
+                authMin--;
+            }
+
+            authSec--; // 1초 감소
+
+        }, 1000)
+
+    } else{
+        alert("중복되지 않은 이메일을 작성해주세요.");
+        memberEmail.focus();
+    }
+
+});
+
+
+// 인증 확인
+const authKey = document.getElementById("authKey");
+
+checkAuthKeyBtn.addEventListener("click", function(){
+
+    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
+
+        $.ajax({
+            url : "/sendEmail/checkAuthKey",
+            data : {"inputKey": authKey.value},
+            success : (result) => {
+
+                if(result > 0){
+                    clearInterval(authTimer);
+                    authKeyMessage.innerText = "인증되었습니다.";
+                    authKeyMessage.classList.add("confirm");
+                    checkObj.authKey = true;
+
+                } else{
+                    alert("인증번호가 일치하지 않습니다.")
+                    checkObj.authKey = false;
+                }
+            }, 
+            
+            error : () => {
+                console.log("인증코드 확인 오류");
+            }
+            
+        })
+
+    } else{
+        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
+    }
+
+
+});
+
+
+
+
+
+// 버튼 활성화/비활성화
+// document.getElementById("signUp-frm").addEventListener("input", function(){
+//     for(let key in checkObj){
+
+//         // 가입하기 버튼 비활성화
+//         if( !checkObj[key] ){
+//             signUpButton.classList.add("buttonOff");
+//             signUpButton.classList.remove("buttonOn");
+//             signUpButton.disabled = true;
+
+//         } else{
+//             // 가입하기 버튼 활성화    
+//             signUpButton.classList.add("buttonOn");
+//             signUpButton.classList.remove("buttonOff");
+//             signUpButton.disabled = false;
+//         }  
+//     }
+// });

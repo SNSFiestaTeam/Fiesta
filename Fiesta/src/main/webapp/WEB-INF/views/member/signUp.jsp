@@ -121,20 +121,26 @@
             </div> 
   
             <button class="signUp-button" id="signUpButton" disabled>가입</button>
-            <button class="emailAuth-button" id="emailAuthButton" disabled>이메일 인증하기</button>
+          </form>
+          <form action="/emailAuth" method="POST">
+            <button class="sendAuthKeyBtn" id="sendAuthKeyBtn" type="button" disabled>이메일로 인증번호 보내기</button>
           </form>
         </section>
   
       <!-- 로그인으로 -->
-      <section id="toLogin">
-        <div class=toLogin>
+      <section>
+        <div class="toLogin" id="toLogin">
           계정이 있으신가요?
           <a href="/login">로그인</a>
         </div>
       </section>
-      <section id="toAuth">
-        <div class="toAuth">
-          <input type="text" placeholder="이곳에 인증번호를 입력하세요.">
+      <section>
+        <div class="inputAuth-area" id="inputAuth">
+          <input type="text" name="authKey" id="authKey" autocomplete="off" maslength="6" required/>
+           <!-- placeholder="클릭하여 인증번호 입력" -->
+          <!--onfocus="this.placeholder = ''" onblur="this.placeholder = '클릭하여 인증번호 입력'" -->
+          <span id="authTimerArea"></span>
+          <button id="checkAuthKeyBtn" type="button">인증하기</button>
         </div>
       </section>
     </main>
