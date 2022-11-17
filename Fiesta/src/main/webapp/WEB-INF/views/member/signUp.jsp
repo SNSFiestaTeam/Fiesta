@@ -136,10 +136,10 @@
       </section>
       <section>
         <div class="inputAuth-area" id="inputAuth">
+          <span id="authTimerArea"></span>
           <input type="text" name="authKey" id="authKey" autocomplete="off" maslength="6" required/>
            <!-- placeholder="클릭하여 인증번호 입력" -->
           <!--onfocus="this.placeholder = ''" onblur="this.placeholder = '클릭하여 인증번호 입력'" -->
-          <span id="authTimerArea"></span>
           <button id="checkAuthKeyBtn" type="button">인증하기</button>
         </div>
       </section>
