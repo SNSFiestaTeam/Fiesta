@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.support.SessionStatus;
 
-import edu.kh.fiesta.member.model.service.FindAccountService;
+import edu.kh.fiesta.member.model.service.EmailService;
 
 @Controller
-@RequestMapping("/findAccount")
-public class FindAccountController {
+@RequestMapping("/emailAuth")
+public class EmailController {
 	
 	@Autowired
-	private FindAccountService service;
+	private EmailService service;
 	
 	
 	// 이메일 보내기
-	@GetMapping("/findAccount")
+	@GetMapping("/signUp")
 	@ResponseBody
 	public int findAccount(String memberEmail, Model model) {  
 		
