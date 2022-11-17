@@ -35,11 +35,9 @@ console.log(fileWidth);
 
 let fileIndex = 0; // 현재 보여지는 이미지 번호
 let position = 0; // 이미지 태그 위치값 지정
-// const IMAGE_WIDTH = 640;
 
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-// const slideImages = document.getElementById('slideImages');
 
 // 다음 파일
 function filenext(){
@@ -76,6 +74,19 @@ function init(){
 }
 init();
 
+// ?버튼 이미지 미리보기
+const filesPreview = document.getElementById('filesPreview');
+const filePreviewLis = document.getElementById('filePreview');
+// !넓이 계산
+const filePreviewWidth = filePreviewLis[0].clientWidth; // 파일 미리보기 한개 넓이
+const silderPreviewWidth = filePreviewWidth * filePreviewLis.length; // 파일 미리보기 전체 넓이
+previewSlideImages.style.width = '${silderPreviewWidth}px';
+
+let preFileIndex = 0;
+let prePosition = 0;
+
+const previewPrevBtn = document.getElementById('previewPrev');
+const previewNextBtn = document.getElementById('previewNext');
 // document.getElementById("file-add").addEventListener("click", function(){
 
 //   const div = document.createElement("div");
