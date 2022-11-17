@@ -24,24 +24,33 @@
 
 // newpost-eidt----------------------------------------------------------------
 // *** 이미지 넘기기 ***
-let fileIndex = 0; // 현재 보여지는 이미지 인덱스 번호
+const slideImages = document.getElementById('slideImages');
+const slideLis = slideImages.querySelectorAll('img');
+
+// ?보여기는 이미지 넓이계산
+const fileWidth = slideLis[0].clientWidth;
+const silderWidth = fileWidth * slideLis.length; // 전체 파일 넓이
+slideImages.style.width = '${silderWidth}px';
+console.log(fileWidth);
+
+let fileIndex = 0; // 현재 보여지는 이미지 번호
 let position = 0; // 이미지 태그 위치값 지정
-const IMAGE_WIDTH = 640;
+// const IMAGE_WIDTH = 640;
 
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-const slideImages = document.getElementById('slideImages');
+// const slideImages = document.getElementById('slideImages');
 
 // 다음 파일
 function filenext(){
-  if(fileIndex < 3){ // 파일 갯수 까지만
+  if(fileIndex < slideLis.length -1){ // 파일 갯수 까지만
     prevBtn.removeAttribute('disabled');
-    position -= IMAGE_WIDTH; // next 니까 빼기 정한 크기만큼
-    slideImages.style.transform = 'translateX(${position}px)';
-    
+    console.log(position);
+    position -= fileWidth; // next 니까 빼기 정한 크기만큼
+    slideImages.style.transform = 'translateX("position"px)';
     fileIndex += 1;
   }
-  if(fileIndex == 3){
+  if(fileIndex == slideLis.length -1){
     nextBtn.setAttribute('disabled', 'true');
   }
 }
@@ -49,8 +58,9 @@ function filenext(){
 function fileprev(){
   if(fileIndex > 0){
     nextBtn.removeAttribute('disabled');
-    position += IMAGE_WIDTH;
+    position += fileWidth;
     slideImages.style.transform = 'translateX(${position}px)';
+    console.log(position)
     fileIndex -= 1;
   }
   if(fileIndex == 0){

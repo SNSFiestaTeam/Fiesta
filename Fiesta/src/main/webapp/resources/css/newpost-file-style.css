@@ -42,12 +42,13 @@
 }
 
 /* ************** 게시물 작성 창 ******************* */
+
 .modal_post_section {
   background-color: white;
   border-radius: 10px;
   width: 90%;
-  min-width: 355px;
-  max-width: 655px;
+  min-width: 755px;
+  max-width: 855px;
 }
 
 /* ----- 게시물작성 top ------ */
