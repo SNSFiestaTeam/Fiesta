@@ -18,10 +18,6 @@
     <link rel="stylesheet" href="/resources/css/flexslider.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-    // <link
-    //   rel="stylesheet"
-    //   href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.css"
-    // />
     
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
