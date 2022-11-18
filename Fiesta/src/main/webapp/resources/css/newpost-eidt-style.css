@@ -128,19 +128,20 @@
   /* overflow: hidden; */
   margin: 0 auto;
 }
-.swiper{
+/*
+.album{
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.swiper-wrapper{
+.images{
   position: relative; /* 좌우로 움직이기 위해 지정 */
   display: flex;
   width: 100%;
   height: 100%;
 }
-#swiper-slide{
+#eidtFile{
   /* position: absolute;s */
   width: 100%;
   height:100%;
