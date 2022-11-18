@@ -10,6 +10,8 @@ public interface SettingService {
 
 	int updateSetting(Member inputMember);
 
+	int nickDupCheck(String memberNickname);
+
 	
 	
 }

@@ -153,6 +153,21 @@ div.main > input{
 
 #image-input{display: none;}
 
+#name-message{
+    display: inline-block;
+    width: 60%;
+    margin-top: 5px;
+    font-size: 12px;
+
+}
+
+#nick-message{
+    display: inline-block;
+    width: 60%;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
 @media screen and (max-width: 470px) {
 .setting-content{
     margin-top: 0;
@@ -177,7 +192,6 @@ div.main > input{
 }
 
 }
-
 
 
 @media screen and (min-width: 471px) and (max-width: 1023px) {

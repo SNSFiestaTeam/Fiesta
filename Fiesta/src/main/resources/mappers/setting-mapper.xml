@@ -39,6 +39,11 @@ WHERE MEMBER_NO = #{memberNo}
  WHERE MEMBER_NO = #{memberNo}
  </update>
  
+ <select id="nickDupCheck" parameterType="string" resultType="_int">
+ SELECT COUNT(*) FROM "MEMBER"
+ WHERE MEMBER_NICKNAME = #{memberNickname}
+ AND SECESSION_FL = 'N'
+ </select>
  
  
  </mapper>

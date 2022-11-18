@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>instagram</title>
     <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="../../resources/css/setting-style.css" />
+    <link rel="stylesheet" href="/resources/css/setting-style.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -47,11 +47,13 @@
                 <div class="main">
                   <input type="text" placeholder="이름" id="memberName" name="memberName" value="${loginMember.memberName}">
                 </div>
+                <aside></aside><div id="name-message"></div>
             </div>
             <div class="di-4">
                 <aside><label>사용자 이름</label></aside>
                 <div class="main"><input type="text" id="memberNickname" name="memberNickname" placeholder="사용자 이름" value="${loginMember.memberNickname}"></div>
-            </div>
+                <aside></aside><div id="nick-message"></div>
+              </div>
             <div class="di-3">
                 <aside></aside>
                 <div class="main">
@@ -66,7 +68,7 @@
                 </div>
             </div>
 
-           
+          
             <div class="di-10">
                 <aside></aside>
                 <button class="btn">제출</button>
@@ -80,6 +82,7 @@
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
    <script src="/resources/js/setting.js"></script>
   </body>
 </html>

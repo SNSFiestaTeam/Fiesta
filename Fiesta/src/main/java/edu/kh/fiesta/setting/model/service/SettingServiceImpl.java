@@ -54,4 +54,10 @@ public class SettingServiceImpl implements SettingService{
 		return result;
 	}
 
+	@Override
+	public int nickDupCheck(String memberNickname) {
+
+		return dao.nickDupCheck(memberNickname);
+	}
+
 }
