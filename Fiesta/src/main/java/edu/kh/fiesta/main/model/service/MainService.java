@@ -1,6 +1,7 @@
 package edu.kh.fiesta.main.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
@@ -39,5 +40,9 @@ public interface MainService {
 	 * @return commentList
 	 */
 	public List<Comment> selectCommentList(int boardNo);
+
+	
+
+	public Map<String, Object> selectBoardList(Member loginMember);
 
 }
