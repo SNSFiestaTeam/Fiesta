@@ -30,6 +30,20 @@
       <result property="commentCount" column="COMMENT_COUNT" />
       <result property="likeCount" column="LIKE_COUNT" />
       <result property="memberNo" column="MEMBER_NO" />      
+      <result property="memberNickname" column="MEMBER_NICKNAME" />      
+      <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
+      
+      <collection property="imageList" 
+      			  javaType="java.util.ArrayList" ofType="BoardImg"
+      			  select="selectImageList"
+      			  column = "BOARD_NO"/>
+      			  
+      <collection property="commentList" 
+      			  javaType="java.util.ArrayList" ofType="Comment"
+      			  select="selectCommentList"
+      			  column = "BOARD_NO"/>
+      
+      
   </resultMap>
   
   <resultMap type="Comment" id="comment_rm">
@@ -89,7 +103,7 @@
 		THEN FLOOR( (SYSDATE - BOARD_CREATE_DATE ) * 24 * 60) || '분 전'
 		WHEN SYSDATE - BOARD_CREATE_DATE  < 1
 		THEN FLOOR( (SYSDATE - BOARD_CREATE_DATE ) * 24) || '시간 전'
-		ELSE TO_CHAR(BOARD_CREATE_DATE , 'MM"월" DD"일"')
+		ELSE TO_CHAR(BOARD_CREATE_DATE , 'MM"월" DD"일", YYYY')
 	END BOARD_CREATE_DATE,
 	(SELECT COUNT(BOARD_NO)
 	FROM BOARD_LIKE L
@@ -124,14 +138,28 @@
   
   <!-- 게시글 댓글 리스트 조회 -->
   <select id="selectCommentList" parameterType="_int" resultMap="comment_rm">
-  	SELECT COMMENT_NO , COMMENT_MEMBER_NO , COMMENT_CONTENT ,
-	COMMENT_CREATE_DATE , UPPER_COMMENT_NO , BOARD_NO,
+  	SELECT LEVEL, C.* FROM
+	(SELECT COMMENT_NO , COMMENT_MEMBER_NO , COMMENT_CONTENT,
+	<![CDATA[
+	CASE 
+		WHEN SYSDATE - COMMENT_CREATE_DATE   < 1/24/60
+		THEN FLOOR( (SYSDATE - COMMENT_CREATE_DATE  ) * 24 * 60 * 60 ) || '초 전'
+		WHEN SYSDATE - COMMENT_CREATE_DATE   < 1/24
+		THEN FLOOR( (SYSDATE - COMMENT_CREATE_DATE  ) * 24 * 60) || '분 전'
+		WHEN SYSDATE - COMMENT_CREATE_DATE   < 1
+		THEN FLOOR( (SYSDATE - COMMENT_CREATE_DATE  ) * 24) || '시간 전'
+		ELSE TO_CHAR(COMMENT_CREATE_DATE  , 'MM"월" DD"일", YYYY') 
+	END COMMENT_CREATE_DATE ,]]>
+	 UPPER_COMMENT_NO , BOARD_NO, 
 	(SELECT MEMBER_NICKNAME
 	FROM "MEMBER" m
 	WHERE c.COMMENT_MEMBER_NO = m.MEMBER_NO) MEMBER_NICKNAME
 	FROM "COMMENT" c
-	WHERE BOARD_NO = #{boardNo}
-	ORDER BY COMMENT_NO
+	WHERE BOARD_NO = #{boardNo}) C
+	START WITH UPPER_COMMENT_NO IS NULL
+	CONNECT BY PRIOR COMMENT_NO = UPPER_COMMENT_NO
+	ORDER SIBLINGS BY COMMENT_NO
+
   </select>
   
 </mapper>

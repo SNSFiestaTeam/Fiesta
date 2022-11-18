@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,9 +29,11 @@ public class MainController {
 	
 	@GetMapping("/selectBoardList")
 	@ResponseBody
-	public String selectBoardList(int memberNo) {
+	public String selectBoardList(int memberNo, Model model) {
 		
 		List<Board> boardList = service.selectBoardList(memberNo);
+		
+		model.addAttribute("boardList", boardList);
 	
 		return new Gson().toJson(boardList);
 	}

@@ -29,6 +29,7 @@
   <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+    ${loginMember}
 
     <!-- 메인 섹션 -->
     <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
