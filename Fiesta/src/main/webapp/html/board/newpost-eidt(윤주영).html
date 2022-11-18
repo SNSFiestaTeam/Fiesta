@@ -40,13 +40,13 @@
           <p>자르기</p>
           <button>다음</button>
         </div>
-        <div class="new-post-bottom">
-          <div class="album">
+        <div class="new-post-bottom" >
+          <div class="album" >
             <div class="images" id="slideImages">
-              <img id="file" src="../../resources/images/다운로드 (1).jpeg"alt="파일미리보기">
-              <img id="file" src="../../resources/images/다운로드 (2).jpeg"alt="파일미리보기">
-              <img id="file" src="../../resources/images/다운로드 (3).jpeg"alt="파일미리보기">
-              <img id="file" src="../../resources/images/다운로드.jpeg"alt="파일미리보기">
+              <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg"alt="파일미리보기">
+              <img id="eidtFile" src="../../resources/images/다운로드 (2).jpeg"alt="파일미리보기">
+              <img id="eidtFile" src="../../resources/images/다운로드 (3).jpeg"alt="파일미리보기">
+              <img id="eidtFile" src="../../resources/images/다운로드.jpeg"alt="파일미리보기">
             </div>
           </div>
           <div class="slide-controller">
@@ -76,24 +76,28 @@
               <!-- img 미리보기 -->
               <div class="add">
                 <div class="add-files">
-                  <div class="files-preview">
+                  <div class="files-preview" id="filesPreview">
                     <div>
-                      <div class="file-preview">
-                      <span class="remove">&times;</span>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="file-preview">
+                      <div class="file-preview" id="filePreview">
+                        <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
                         <span class="remove">&times;</span>
                       </div>
                     </div>
                     <div>
                       <div class="file-preview">
-                      <span class="remove">&times;</span>
+                        <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
+                        <span class="remove">&times;</span>
                       </div>
                     </div>
                     <div>
                       <div class="file-preview">
+                        <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
+                        <span class="remove">&times;</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="file-preview">
+                        <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
                         <span class="remove">&times;</span>
                       </div>
                     </div>
@@ -115,8 +119,8 @@
           
                       <!-- &lang: 왼쪽 방향 화살표
                       &rang: 오른쪽 방향 화살표 -->
-                      <span class="preview-prev">&lang;</span>  
-                      <span class="preview-next">&rang;</span>
+                      <span class="preview-prev" id="previewPrev">&lang;</span>  
+                      <span class="preview-next" id="previewNext">&rang;</span>
                     </p>
                 </div>
               </div>
