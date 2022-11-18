@@ -122,9 +122,8 @@
   
             <button class="signUp-button" id="signUpButton" disabled>가입</button>
           </form>
-          <form action="/emailAuth" method="POST">
+          
             <button class="sendAuthKeyBtn" id="sendAuthKeyBtn" type="button" disabled>이메일로 인증번호 보내기</button>
-          </form>
         </section>
   
       <!-- 로그인으로 -->
@@ -136,7 +135,7 @@
       </section>
       <section>
         <div class="inputAuth-area" id="inputAuth">
-          <span id="authTimerArea"></span>
+          <span id="authTimer"></span>
           <input type="text" name="authKey" id="authKey" autocomplete="off" maslength="6" required/>
            <!-- placeholder="클릭하여 인증번호 입력" -->
           <!--onfocus="this.placeholder = ''" onblur="this.placeholder = '클릭하여 인증번호 입력'" -->

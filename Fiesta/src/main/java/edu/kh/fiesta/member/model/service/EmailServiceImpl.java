@@ -61,7 +61,7 @@ public class EmailServiceImpl implements EmailService{
             MimeMessage mail = mailSender.createMimeMessage();
             
             // 제목
-            String subject = "[수업용 Project]회원가입 인증번호";
+            String subject = "[Fiesta] 이메일 인증";
             
             // 문자 인코딩
             String charset = "UTF-8";
@@ -69,7 +69,7 @@ public class EmailServiceImpl implements EmailService{
             // 메일 내용
             String mailContent 
                 = "<p>Fiesta 회원가입 이메일 인증번호.</p>"
-                + "<h3 style='color:blue'>" + authKey + "</h3>";
+                + "<h3 style='color:#dd4132'>" + authKey + "</h3>";
             
             
             // 송신자(보내는 사람) 지정
