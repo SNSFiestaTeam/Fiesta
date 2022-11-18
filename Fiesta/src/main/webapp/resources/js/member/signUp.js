@@ -403,8 +403,8 @@ memberEmail.addEventListener("input", () => {
 
 
 
+toLoginSection.classList.add("displayOn");
 
-checkAuthKeyBtn.classList.add("gray");
 
 // '이메일로 인증번호 보내기' 버튼 활성화
 memberEmail.addEventListener("input", () => {
@@ -427,14 +427,10 @@ memberEmail.addEventListener("input", () => {
         sendAuthKeyBtn.classList.add("authButtonOn");
         sendAuthKeyBtn.classList.remove("buttonOff");
         sendAuthKeyBtn.disabled = false;
-        checkAuthKeyBtn.classList.add("green");
-        checkAuthKeyBtn.classList.remove("gray");
     
     }  else {
         sendAuthKeyBtn.classList.add("buttonOff");
         sendAuthKeyBtn.classList.remove("authButtonOn");
-        checkAuthKeyBtn.classList.remove("green");
-        checkAuthKeyBtn.classList.add("gray");
         sendAuthKeyBtn.disabled = true;
         
         
@@ -442,35 +438,13 @@ memberEmail.addEventListener("input", () => {
 })
 
 
-// 인증번호 입력창 보이기
+// //인증번호 입력창 보이기
 // sendAuthKeyBtn.addEventListener("click", function(){
 //     toLoginSection.classList.add("displayOff");
 //     toLoginSection.classList.remove("displayOn");
 //     inputAuthSection.classList.add("displayOn");
 //     inputAuthSection.classList.remove("displayOff");
 // });
-
-
-checkAuthKeyBtn.addEventListener("click", () => {
-    
-    for(let key in checkObj){
-    
-        // 가입하기 버튼 비활성화
-        if( !checkObj[key] ){
-            signUpButton.classList.add("buttonOff");
-            signUpButton.classList.remove("buttonOn");
-            signUpButton.disabled = true;
-    
-        } else{
-            // 가입하기 버튼 활성화    
-            signUpButton.classList.add("buttonOn");
-            signUpButton.classList.remove("buttonOff");
-            signUpButton.disabled = false;
-        }  
-    }
-})
-
-
 
 
 // 이메일 인증코드 발송, 확인
@@ -510,7 +484,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
         })
 
         //_비동기라서 위 ajax와 동시에 아래 코드 실행됨.
-        alert("인증번호가 발송 되었습니다.");
+        // alert("인증번호가 발송 되었습니다.");
 
         
         authTimerArea.innerText = "05:00";
@@ -584,7 +558,25 @@ checkAuthKeyBtn.addEventListener("click", function(){
 });
 
 
-
+// 가입버튼 활성화/비활성화
+checkAuthKeyBtn.addEventListener("click", () => {
+    
+    for(let key in checkObj){
+    
+        // 가입하기 버튼 비활성화
+        if( !checkObj[key] ){
+            signUpButton.classList.add("buttonOff");
+            signUpButton.classList.remove("buttonOn");
+            signUpButton.disabled = true;
+    
+        } else{
+            // 가입하기 버튼 활성화    
+            signUpButton.classList.add("buttonOn");
+            signUpButton.classList.remove("buttonOff");
+            signUpButton.disabled = false;
+        }  
+    }
+})
 
 
 // 버튼 활성화/비활성화
