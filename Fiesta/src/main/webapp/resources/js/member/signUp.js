@@ -484,7 +484,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
     // 인증번호 입력창 보이기
     toLoginSection.style.display="none";
     toLoginSection.classList.remove("displayOn");
-    inputAuthSection.style.display="block";
+    inputAuthSection.style.display="flex";
     inputAuthSection.classList.remove("displayOff");
     
 
