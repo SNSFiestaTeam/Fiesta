@@ -7,12 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import edu.kh.fiesta.member.model.service.EmailService;
 
 @Controller
-@RequestMapping("/emailAuth")
+@RequestMapping("/sendEmail")
+@SessionAttributes("authKey")
 public class EmailController {
 	
 	@Autowired

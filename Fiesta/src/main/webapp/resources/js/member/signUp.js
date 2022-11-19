@@ -448,11 +448,11 @@ memberEmail.addEventListener("input", () => {
 
 
 // 이메일 인증코드 발송, 확인
+const authTimerArea = document.getElementById("authTimerArea");
 let authTimer;
 let authMin = 4;
 let authSec = 59;
 
-const authTimerArea = document.getElementById("authTimerArea");
 
 sendAuthKeyBtn.addEventListener("click", function(){
     // 인증번호 입력창 보이기
@@ -484,7 +484,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
         })
 
         //_비동기라서 위 ajax와 동시에 아래 코드 실행됨.
-        // alert("인증번호가 발송 되었습니다.");
+        alert("인증번호가 발송 되었습니다.");
 
         
         authTimerArea.innerText = "05:00";
@@ -493,7 +493,7 @@ sendAuthKeyBtn.addEventListener("click", function(){
         authTimer = window.setInterval(()=>{
         //_ 인터벌을 변수에 저장해야 나중에 clearInterval이 가능함.
 
-            authKeyMessage.innerText = "0" + authMin + ":" + (authSec<10 ? "0" + authSec : authSec);
+            authTimerArea.innerText = "0" + authMin + ":" + (authSec<10 ? "0" + authSec : authSec);
             
             // 남은 시간이 0분 0초인 경우
             if(authMin == 0 && authSec == 0){
