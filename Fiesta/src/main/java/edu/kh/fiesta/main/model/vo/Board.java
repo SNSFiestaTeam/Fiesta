@@ -21,7 +21,7 @@ public class Board {
 	private int likeCount;
 	private int memberNo;
 	private String memberNickname;
-	private String profileImage;
+	private String memberProfileImg;
 	
 	private List<BoardImg> imageList;
 	

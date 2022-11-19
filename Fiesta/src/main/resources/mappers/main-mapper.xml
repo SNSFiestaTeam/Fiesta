@@ -56,6 +56,8 @@
       <result property="boardNo" column="BOARD_NO" />
       <result property="upperCommentNo" column="UPPER_COMMENT_NO" />
       <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
+      <result property="replyCount" column="REPLY_COUNT" />
   </resultMap>
   
   <resultMap type="Follow" id="follow_rm">
@@ -91,11 +93,20 @@
 	WHERE F_FROM_MEMBER_NO = #{memberNo}
   </select>
   
+  <!-- 팔로잉 멤버 게시글 수 조회 -->
+  <select id="getListCount" parameterType="_int" resultType="_int">
+  	SELECT COUNT(*)
+	FROM BOARD b
+	WHERE BOARD_DEL_FL = 'N'
+	AND b.MEMBER_NO IN (SELECT F_T0_TARGET_NO FROM FOLLOW WHERE F_FROM_MEMBER_NO = #{memberNo})
+	ORDER BY b.BOARD_NO DESC
+  </select>
   
   <!-- 팔로잉 멤버 게시글 조회 -->
   <select id="selectBoardList" parameterType="_int" resultMap="board_rm">
 	<![CDATA[ 
-	SELECT b.BOARD_NO , BOARD_CONTENT , BOARD_PUB_PRI_FL , COMMENT_BLOCK_FL , b.MEMBER_NO,  
+	SELECT b.BOARD_NO , BOARD_CONTENT , BOARD_PUB_PRI_FL , COMMENT_BLOCK_FL , 
+	b.MEMBER_NO, M.MEMBER_NICKNAME, MEMBER_PROFILE_IMG, 
 	CASE 
 		WHEN SYSDATE - BOARD_CREATE_DATE  < 1/24/60
 		THEN FLOOR( (SYSDATE - BOARD_CREATE_DATE ) * 24 * 60 * 60 ) || '초 전'
@@ -110,8 +121,11 @@
 	WHERE L.BOARD_NO = b.BOARD_NO) LIKE_COUNT,
 	(SELECT COUNT(*) 
 	FROM "COMMENT" C
-	WHERE C.BOARD_NO = b.BOARD_NO) COMMENT_COUNT
+	WHERE C.BOARD_NO = b.BOARD_NO) COMMENT_COUNT,
+	(SELECT COUNT(*) FROM "COMMENT" C WHERE C.BOARD_NO = b.BOARD_NO
+	AND UPPER_COMMENT_NO IS NOT NULL) AS REPLY_COUNT
 	FROM BOARD b
+	JOIN "MEMBER" M ON(b.MEMBER_NO = M.MEMBER_NO)
 	WHERE BOARD_DEL_FL = 'N' ]]>
 	AND b.MEMBER_NO IN (SELECT F_T0_TARGET_NO FROM FOLLOW WHERE F_FROM_MEMBER_NO = #{memberNo})
 	ORDER BY b.BOARD_NO DESC
@@ -127,15 +141,6 @@
   </select>
   
   
-  <!-- 게시글 작성자 조회 -->
-  <select id="selectWriter" parameterType="_int" resultMap="member_rm">
-  	SELECT *
-	FROM MEMBER
-	WHERE MEMBER_NO = #{memberNo}
-	AND SECESSION_FL = 'N'
-	AND MEMBER_OPEN_FL = 'Y'
-  </select>
-  
   <!-- 게시글 댓글 리스트 조회 -->
   <select id="selectCommentList" parameterType="_int" resultMap="comment_rm">
   	SELECT LEVEL, C.* FROM
@@ -150,11 +155,13 @@
 		THEN FLOOR( (SYSDATE - COMMENT_CREATE_DATE  ) * 24) || '시간 전'
 		ELSE TO_CHAR(COMMENT_CREATE_DATE  , 'MM"월" DD"일", YYYY') 
 	END COMMENT_CREATE_DATE ,]]>
-	 UPPER_COMMENT_NO , BOARD_NO, 
-	(SELECT MEMBER_NICKNAME
-	FROM "MEMBER" m
-	WHERE c.COMMENT_MEMBER_NO = m.MEMBER_NO) MEMBER_NICKNAME
+	 UPPER_COMMENT_NO , BOARD_NO, MEMBER_NICKNAME, MEMBER_PROFILE_IMG,
+		(SELECT COUNT(*) 
+		FROM "COMMENT" c2 
+		WHERE c2.UPPER_COMMENT_NO = c.COMMENT_NO  
+		AND c.BOARD_NO = c2.BOARD_NO) REPLY_COUNT
 	FROM "COMMENT" c
+	JOIN "MEMBER" m ON (COMMENT_MEMBER_NO = MEMBER_NO)
 	WHERE BOARD_NO = #{boardNo}) C
 	START WITH UPPER_COMMENT_NO IS NULL
 	CONNECT BY PRIOR COMMENT_NO = UPPER_COMMENT_NO
