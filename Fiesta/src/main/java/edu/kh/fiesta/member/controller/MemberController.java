@@ -51,10 +51,7 @@ public class MemberController {
 	}
 	
 	
-	@GetMapping("/main")
-	public String main() {
-		return "feed/main";
-	} 
+
 	
 	
 	@GetMapping("/member/signUp")
