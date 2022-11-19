@@ -1,5 +1,7 @@
 package edu.kh.fiesta.main.model.vo;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +20,11 @@ public class Board {
 	private int commentCount;
 	private int likeCount;
 	private int memberNo;
-
+	private String memberNickname;
+	private String memberProfileImg;
+	
+	private List<BoardImg> imageList;
+	
+	private List<Comment> commentList;
 
 }

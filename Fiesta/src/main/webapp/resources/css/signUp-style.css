@@ -305,7 +305,7 @@ main {
   border-bottom: 1px solid lightgray;
 }
 
-#authTimerArea{
+#authTimer{
   width: 20%;
   height: 50%;
   color: gray;

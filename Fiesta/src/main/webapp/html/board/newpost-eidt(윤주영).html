@@ -12,11 +12,16 @@
 
 
   <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+  <!-- google material icon 사용 class="material-icons" -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 
 <body>
-
+swiper-bundle
 
 
 
@@ -41,17 +46,21 @@
           <button>다음</button>
         </div>
         <div class="new-post-bottom" >
-          <div class="album" >
-            <div class="images" id="slideImages">
-              <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg"alt="파일미리보기">
-              <img id="eidtFile" src="../../resources/images/다운로드 (2).jpeg"alt="파일미리보기">
-              <img id="eidtFile" src="../../resources/images/다운로드 (3).jpeg"alt="파일미리보기">
-              <img id="eidtFile" src="../../resources/images/다운로드.jpeg"alt="파일미리보기">
+          <div class="swiper" >
+            <div class="swiper-wrapper" id="slideImages">
+              <img class="swiper-slide" id="eidtFile" src="../../resources/images/뷔.jpg"alt="파일미리보기">
+              <img class="swiper-slide" id="eidtFile" src="../../resources/images/다운로드 (2).jpeg"alt="파일미리보기">
+              <img class="swiper-slide" id="eidtFile" src="../../resources/images/다운로드 (3).jpeg"alt="파일미리보기">
+              <img class="swiper-slide" id="eidtFile" src="../../resources/images/다운로드.jpeg"alt="파일미리보기">
             </div>
           </div>
           <div class="slide-controller">
-            <button class="prev" id="prev">&lang;</button>  
-            <button class="next" id="next">&rang;</button>
+            <div class="swiper-button-prev">
+              <div class="material-icons">arrow_back</div>
+            </div>
+            <div class="swiper-button-next">
+              <div class="material-icons">arrow_forward</div>
+            </div>
           </div>
 
           <div class="img-btn">
@@ -59,7 +68,7 @@
             <div class="new-post-btn-menu">
               <input id="check-btn1" type="checkbox" name="btn" />
               <label for="check-btn1">
-                <div class="btn-background"><i class="fa-solid fa-scissors fa-xs"></i> </div>
+                <div class="btn-background"><i class="fa-solid fa-magnifying-glass-plus"></i> </div>
               </label>
               <div class="cut">
                 <div class="cut-1">원본<i class="fa-regular fa-image fa-lg"></i></div>

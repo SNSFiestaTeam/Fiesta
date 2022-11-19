@@ -1,73 +1,52 @@
 package edu.kh.fiesta.main.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
 import edu.kh.fiesta.main.model.service.MainService;
 import edu.kh.fiesta.main.model.vo.Board;
-import edu.kh.fiesta.main.model.vo.BoardImg;
-import edu.kh.fiesta.main.model.vo.Comment;
-import edu.kh.fiesta.main.model.vo.Follow;
 import edu.kh.fiesta.member.model.vo.Member;
 
-@RequestMapping("/main")
+
 @Controller
 public class MainController {
 	
 	@Autowired
 	private MainService service;
 	
+	@GetMapping("/main")
+	public String main(@SessionAttribute("loginMember") Member loginMember, Model model) {
+		
+		int memberNo= loginMember.getMemberNo();
+		
+		Map<String, Object> map = service.selectBoardList(memberNo);
+				
+		model.addAttribute("map", map);
+		
+		return "feed/main";
+	} 
+	
 	
 	@GetMapping("/selectBoardList")
 	@ResponseBody
-	public String selectBoardList(int memberNo) {
+	public String selectBoardList(int memberNo, Model model, int cp) {
 		
-		List<Board> boardList = service.selectBoardList(memberNo);
+		List<Board> boardList = service.selectBoardList(memberNo, cp);
+		
+		
 	
 		return new Gson().toJson(boardList);
 	}
-	
-	@GetMapping("/selectWriter")
-	@ResponseBody
-	public String selectWriter(int memberNo) {
-		
-		Member writer = service.selectWriter(memberNo);
-		
-		if(writer.getMemberProfileImg() == null) {
-			writer.setMemberProfileImg("");
-		}
-		
-		return new Gson().toJson(writer);
-	}
-	
-	@GetMapping("/selectImageList")
-	@ResponseBody
-	public String selectImageList(int boardNo) {
-		
-		List<BoardImg> imageList = service.selectImageList(boardNo); 
-		
-		
-		return new Gson().toJson(imageList);
-	}
-	
-	
-	@GetMapping("/selectCommentList")
-	@ResponseBody
-	public String selectCommentList(int boardNo) {
-		
-		List<Comment> commentList = service.selectCommentList(boardNo);
-		
-		
-		return new Gson().toJson(commentList);
-	}
-	
+
 
 }

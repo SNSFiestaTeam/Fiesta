@@ -16,5 +16,6 @@ public class Comment {
 	private int boardNo;
 	private int upperCommentNo;
 	private String memberNickname;
-	
+	private String memberProfileImg;
+	private int replyCount;
 }

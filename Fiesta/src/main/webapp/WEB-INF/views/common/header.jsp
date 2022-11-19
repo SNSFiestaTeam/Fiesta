@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 헤더 -->
-     <header>
+    <header>
       <section id="header-section">
         <!-- 로고 -->
         <section class="logo-section">
