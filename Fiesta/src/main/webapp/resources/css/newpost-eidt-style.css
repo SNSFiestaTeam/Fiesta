@@ -128,6 +128,7 @@
   /* overflow: hidden; */
   margin: 0 auto;
 }
+/*
 .album{
   position: absolute;
   width: 100%;
@@ -140,13 +141,14 @@
   width: 100%;
   height: 100%;
 }
-#file{
-  position: absolute;
+#eidtFile{
+  /* position: absolute;s */
   width: 100%;
   height:100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  list-style: none;
+  /* list-style: none; */
+  object-fit: none;
 }
 .slide-controller{
   width: 100%;
