@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/resources/css/comment-style.css" />
     <link rel="stylesheet" href="/resources/css/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/flexslider.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+    <%-- <link rel="stylesheet" href="/resources/css/newpost-file-style.css" /> --%>
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
     
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -342,7 +342,7 @@
     </script>
     
     <script type="text/javascript" defer src="/resources/js/main.js"></script>
-    <script src="/resources/js/newpost.js"></script>
+    <%-- <script src="/resources/js/newpost.js"></script> --%>
     <script src="/resources/js/jquery.flexslider.js"></script>
   </body>
 </html>
