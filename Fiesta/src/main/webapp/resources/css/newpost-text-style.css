@@ -109,11 +109,12 @@
 
 .new-post-bottom-set, .new-post-bottom-textsize{
   border-bottom: 2px solid #ececec;
+  /* width: 90%; */
 }
 
 .new-post-bottom-information{
  height: 480px;
- width:322px;
+ /* width:322px; */
  display: flex;
  flex-direction: column;
 }
@@ -216,4 +217,56 @@
   border-radius: 5px;
   border: 1px solid rgb(197, 197, 197);
   padding: 10px;
+}
+
+.setting-on-off{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 16px;
+  color: rgb(157, 157, 157);
+}
+/* .on-off-btn> i{
+  font-size: 30px;
+  cursor: pointer;
+  transform: scaleX(-1);
+  margin-left: 10px;
+  
+} */
+.toggleSwitch {
+  width: 50px;
+  margin: 5px;
+  height: 30px;
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  background-color: #fff;
+  /* box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%); */
+  border: 1px solid rgb(179, 179, 179);
+  cursor: pointer;
+}
+
+.toggleSwitch .toggleButton {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--fiesta-color);
+}
+
+.toggleSwitch.active {
+  background: var(--fiesta-color);
+}
+
+.toggleSwitch.active .toggleButton {
+  left: calc(100% - 25px);
+  background: #fff;
+}
+
+.toggleSwitch, .toggleButton {
+  transition: all 0.2s ease-in;
 }
