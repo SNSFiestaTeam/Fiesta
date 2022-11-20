@@ -44,7 +44,7 @@ main{
     align-items: center;
     /* align-content: space-between; */
 
-}   
+}    
 
 
 
@@ -69,8 +69,6 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* border: 1px solid red; */
 }
 
 .i-lock-area i{
@@ -109,8 +107,16 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
+
+/* 
+.formSection{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
 
 /* 이메일, 인증번호 입력 */
 .findAccount-input-area{
@@ -123,6 +129,7 @@ main{
     border-radius: 5px;
 
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -132,23 +139,73 @@ main{
     background-color: #FAFAFA;
     border: none;
     outline: none;
-}
-
-
-#emailAuth-area{
-    display: none;
+ 
     /* display: flex;
-    border: 1px solid black; */
+    align-items: center; */
 }
+
+
+/* .icon-email-check{
+    display: flex;
+}
+
+.icon{
+    color: lightgray;
+    right: 10px;
+
+  } */
+
 
 /* 인증번호 타이머 */
-#emailAuthTimer{
-    width: 30%;
-    height: 100%;
-    /* border: 1px solid black; */
-    /* margin-bottom: 8px; */
+#authTimerArea{
+    width: 20%;
+    font-size: 0.7em;
+    margin-bottom: 4%;
+    margin-right: 2%;
+    color: var(--fiesta-color);
 }
 
+
+/* 버튼 */
+.findAccount-button{
+    width: 85%;
+    height: 36px;
+    background-color: var(--fiesta-color);
+    border-radius: 5px;
+    color: white;
+    
+    margin: 2% 0 0 0; 
+    cursor: pointer;
+}
+
+
+
+
+/* 인증번호 인증하기 버튼 */
+#checkAuthKeyBtn{
+    width: 35%;
+    background-color: #FAFAFA;
+    margin-bottom: 6.5%;
+    font-weight: bold;
+
+    /* color: #3a3a3a; */
+}
+
+/* 비밀번호 재설정 버튼 */
+#changPwBtn{
+    width: 85%;
+    height: 36px;
+    background-color: #00cc66;
+    border-radius: 5px;
+    color: white;
+    
+    margin-top : 5px; 
+    cursor: pointer;
+
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
 
 
 
@@ -193,21 +250,8 @@ main{
 
 
 
-/* 버튼 */
-.findAccount-button{
-    width: 85%;
-    height: 36px;
-    background-color: var(--fiesta-color);
-    border-radius: 5px;
-    color: white;
-    
-    margin: 2% 0 0 0; 
-    cursor: pointer;
-}
-
-
 /* 비밀번호를 재설정할 수 없나요? */
-.notFoundAccount a{
+.toAdmin a{
     font-size: 0.7em;
     color: var(--main-font-color);
     margin: 10% 0;
@@ -285,6 +329,38 @@ main{
 
 
 
+/* 버튼 활성화/비활성화 */
+.buttonOn {
+    background-color: var(--fiesta-color);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .buttonOff {
+    background-color: lightgray;
+    color: white;
+  }
+  
+  .authButtonOn{
+    color: white;
+    cursor: pointer;
+  }
+  
+  .displayBlock{ display: block; }
+  .displayFlex{ display: flex; }
+  .displayOff{ display: none; }
+  
+  .iVisible { visibility: visible; }
+  .iHidden { visibility: hidden; }
+
+
+  /* 아이콘 색상 지정 */
+  .gray { color: lightgray; }
+  .green { color: #00cc66; }
+  .red { color: red; }
+  .blue { color: #01439f; } 
+  .black { color: #3a3a3a; }
+  .fiestaColor { color: var(--fiesta-color); }
 
 
 

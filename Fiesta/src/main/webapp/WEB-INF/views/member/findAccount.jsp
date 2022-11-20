@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>비밀번호를 잊으셨나요?</title>
-    <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="../../resources/css/findAccount-style.css" />
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    <link rel="stylesheet" href="/resources/css/member/findAccount-style.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -44,22 +44,27 @@
           </div>
         </div>
 
-        <form action="/findAccount" method="post" id="findAccount-frm">
+        <form action="/findAccount/changePw" method="get" id="findAccount-frm">
             <div class="findAccount-input-area">
-              <input type="text" name="memberEmail" id="memberEmail" value="" required />
+              <input type="text" name="memberEmail" id="memberEmail" value=""  maxlength="50" autocomplete="off" required />
               <label for="memberEmail">이메일</label>
-            </div>
-            <div class="findAccount-input-area" id="emailAuth-area">
-              <input type="text" name="emailAuth" id="emailAuth" value="" required />
-              <label for="emailAuth">인증번호</label>
-              <span id="emailAuthTimer"></span>
-            </div>
 
-          <button class="findAccount-button" id="findAccountBtn">이메일로 인증하기</button>
-        </form>
+            </div>
+            <div class="findAccount-input-area" id="inputAuthArea">
+              <input type="text" name="authKey" id="authKey" autocomplete="off" maslength="6" required/>
+              <label for="authKey">인증번호</label>
+              <span id="authTimerArea"></span>
+              <button class="findAccount-button" id="checkAuthKeyBtn" type="button">인증하기</button>
+            </div>
+            
+            <button class="findAccount-button" id="sendAuthKeyBtn" type="button">이메일로 인증하기</button>
+            <button class="findAccount-button" id="changPwBtn" type="submit">비밀번호 재설정하기</button>
+          </form>
+            
 
-        <div class="notFoundAccount">
-          <a href="#"> 비밀번호를 재설정할 수 없나요? </a>
+        <div class="toAdmin">
+          <!-- FIXME: 관리자페이지로 수정 -->
+          <a href="/member/changePw"> 비밀번호를 재설정할 수 없나요? </a>
         </div>
 
         <div class="line">또는</div>

@@ -24,6 +24,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	// 로그인
 	@PostMapping("/main")
 	public String login(Member inputMember, Model model, RedirectAttributes ra, @RequestHeader(value="referer")String referer,
 						HttpServletResponse resp) {
@@ -91,6 +92,15 @@ public class MemberController {
 	@GetMapping("/member/findAccount")
 	public String findAccount() {
 		return "member/findAccount";
+	}
+	
+	
+	
+	
+	// 계정찾기_비밀번호 재설정 페이지
+	@GetMapping("/member/changePw")
+	public String findAccount(String email) {
+		return "member/changePw";
 	}
 	
 	
