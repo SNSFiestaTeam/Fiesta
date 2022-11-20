@@ -12,6 +12,7 @@
   align-items: center;
   padding: 15px;
   z-index: 5;
+  /* height: 100%; */
 }
 
 /*------------닫기 버튼------------*/
@@ -79,108 +80,124 @@
 
 
 
-.modal_post_section{
+.modal_post_section {
   background-color: white;
   border-radius: 10px;
-  width:90%;
-      min-width: 355px;
-      max-width: 655px;
+  width: 90%;
+  min-width: 355px;
+  max-width: 655px;
 }
 
 
 /* ----- 게시물작성 top ------ */
-.new-post-top{
+.new-post-top {
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
   /* justify-content: center; */
   border-bottom: 2px solid #ececec;
-  
+
 }
+
 .new-post-top>* {
   display: flex;
   align-items: center;
   /* margin: 0 10px; */
 }
+
 /* top-버튼 스타일 */
-.new-post-top > button {
-  background-color:transparent;   
+.new-post-top>button {
+  background-color: transparent;
   cursor: pointer;
   padding: 15px;
   width: 100px;
 }
 
-
-.new-post-top > button:last-of-type {
+.new-post-top>button:last-of-type {
   color: var(--fiesta-color);
   /* box-sizing: content-box; */
   font-size: 16px;
   flex-direction: row-reverse;
 }
-/* ----- 게시물작성 bottom ------ */
-.new-post-bottom{
-  width: 100%;
-  padding-bottom: 100%;
-  background-color: white;
 
+/* ----- 게시물작성 bottom ------ */
+
+.new-post-bottom {
+  width: 100%;
+  height: 100%;
+  background-color: white;
   position: relative;
   border-radius: 10px;
   /* overflow: hidden; */
   margin: 0 auto;
 }
-/*
-.album{
-  position: absolute;
+
+.new-post-bottom::after {
+  display: block;
+  /* position: absolute; */
+  content: "";
+  padding-bottom: 100%;
+}
+
+.album {
+  /* position: absolute; */
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  /* top:0; */
+  /* bottom:0; */
+  /* overflow: hidden; */
 }
-.images{
-  position: relative; /* 좌우로 움직이기 위해 지정 */
+
+/* .images{
   display: flex;
   width: 100%;
   height: 100%;
-}
-#eidtFile{
-  /* position: absolute;s */
+} */
+.eidt-file {
+  position: absolute;
   width: 100%;
-  height:100%;
+  height: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   /* list-style: none; */
   object-fit: none;
 }
-.slide-controller{
+
+#eidtFile {
+  position: absolute;
   width: 100%;
   height: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* height: 100px; */
+}
+
+.siltde-btn-area>div {
+  /* margin: 13px; */
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  color: rgba(0, 0, 0, 0.6);
+  /* border-radius: 100%; */
+
+  /* width: 32px; */
+  /* height: 32px; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* box-sizing: border-box; */
+  /* padding-bottom: 6px; */
+
+  /* font-size: 15px; */
+  /* cursor: pointer; */
+  z-index: 6000;
   position: absolute;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
-.slide-controller > button{
-  margin: 13px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border-radius: 100%;
 
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  padding-bottom: 6px;
-
-  font-size: 15px;
-  cursor: pointer;
-  z-index: 1000;
-}
-.slide-controller > button:hover {
+.slide-controller>button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 /* 버튼 누를수 없는 상태일때 */
-.slide-controller > button:disabled{
+.slide-controller>button:disabled {
   background-color: transparent;
   color: transparent;
   /* background-color: salmon; */
@@ -191,13 +208,17 @@
 /* 버튼 위치 */
 .img-btn {
   position: absolute;
+  top: 0px;
+  bottom: 0px;
   display: flex;
   width: 100%;
   height: 100%;
   justify-content: space-between;
   /* 양쪽 정렬 */
   padding: 0 20px 20px;
+  z-index: 500;
 }
+
 /* 버튼 스타일지정 */
 .btn-background {
   background-color: rgba(0, 0, 0, 0.6);
@@ -213,6 +234,7 @@
 
   z-index: 100000;
 }
+
 /* 버튼 마우스 올렸을때 스타일 */
 .btn-background:hover {
   background-color: rgba(0, 0, 0, 0.5);
@@ -225,10 +247,14 @@
 /* 버튼 클릭시 */
 
 /* 비율조정 선택 */
-.new-post-btn-menu > input{ display: none;}
+.new-post-btn-menu>input {
+  display: none;
+}
+
 #check-btn1:checked~.cut {
   display: block;
 }
+
 #check-btn2:checked~.add {
   display: block;
   /* position: fixed; */
@@ -237,22 +263,35 @@
   /* flex-direction: row-reverse; */
   /* margin: 0 0 30px; */
 }
-#check-btn2:checked~ label{
+
+#check-btn2:checked~label {
   display: flex;
   flex-direction: row-reverse;
 }
-.cut, .add {
+
+.cut,
+.add {
   display: none;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-
+.cut{
+  width: 150px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.cut > input{
+  margin: 10px;
+}
 .new-post-btn-menu {
   display: flex;
   flex-direction: column-reverse;
 }
-.cut > div{
+
+.cut>div {
   color: white;
   padding-left: 10px;
 
@@ -266,110 +305,134 @@
 
   cursor: pointer;
 }
-.cut-1 > i, .cut-2 > i{
+
+.cut-1>i,
+.cut-2>i {
   padding: 12px;
 }
-.cut-2{
-  border-top: 1px solid white ;
+
+.cut-2 {
+  border-top: 1px solid white;
 }
 
-/* 사진추가 */
-.add{
-  /* width: 388px; */
-  overflow: hidden;
-  /* margin-left:100px ; */
-}
-/* 이미지 추가 모든요소 */
-.add > *{
+/* 이미지 추가 모든요소 감싸는 영역 */
+/* .add{ */
+/* width: ; */
+/* overflow: hidden; */
+/* margin-left:100px ; */
+/* } */
+.add>* {
   cursor: pointer;
 }
-.add-files{
-  width: 96%;
-  height: 118px;
+
+/* 미리보기 + 파일추가 버튼 */
+.add-files {
+  /* width: 90%; */
+  height: auto;
   display: flex;
   /* justify-content: center; */
   align-items: center;
   overflow: hidden;
   /* flex-direction: column; */
-}
-/* 파일 추가 "컴퓨터에서 선택' */
-.add-files > label{
   
+}
+
+/* 파일 추가 "컴퓨터에서 선택' */
+.add-files>label {
+
   width: 50px;
   height: 50px;
-  background-color:transparent;
+  background-color: transparent;
   color: rgb(192, 192, 192);
   border: 1px solid white;
   cursor: pointer;
   border-radius: 50;
+  margin:0 10px;
 }
+
 /*파일 추가 "컴퓨터에서 선택' + 아이콘  */
-.add-files > label>i{
+.add-files>label>i {
   justify-content: center;
   align-items: center;
   padding: 15px;
 }
-.add-files > button{
-  
- display: none;
+
+.add-files>button {
+  display: none;
+}
+
+/* 파일미리보기 영역 */
+.file-preview-and-remove{
+  display: flex;
+  width: 200px;
+  height: 90px;
+  max-width: 300px;
+  overflow: hidden;
+}
+.file-preview{
+  display: flex;
+  position: relative;
+  width: 70px;
+  height: 90px;
+  margin: 10px;
 
 }
-/* .add-files{
-  width: 90%;
-  height: 118px;
-} */
-.files-preview{
-  display: flex;
-  /* width: 88%; */
-  max-width: 355px;
-  height: 118px;
-  overflow: hidden;
-  margin: 11px;
+.preview-file>img{
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  padding: 5px;
 }
-/* 파일 미리보기 박스 */
-.file-preview{
-  /* position:absolute; */
-  margin: 10px;
-  width: 94px;
-  height: 94px;
-  background-color: white;
-}
-.file-preview > img{
-  width: 100%;
-  height: 100%;
-}
+
 /* 파일 미리보기 삭제버튼 */
-.remove{
+.remove {
   border: 1px solid white;
   border-radius: 50%;
   width: 23px;
   height: 23px;
-  display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    padding-bottom: 2px;
-    cursor: pointer;
-    position:absolute;
-    margin: 5px 0 0px 65px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    font-size: 13px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 13px;
 
-    display: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 2px;
+  cursor: pointer;
+  position: absolute;
+  top: auto;
+  margin-left: 50px;
+  /* margin: 5px 65px 65px 65px; */
+
+
+  /* display: none; */
 }
-.remove:hover{
+
+.remove:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
+
 /* 파일미리보기 옆으로 넘기는 영역 */
-.preview-controller{
+.preview-controller {
+
+  /* position: sticky; */
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 320px;
-  padding-left: 10px;
+  /* width: 30px; */
+  /* padding-left: 10px; */
+  width: 50%;
 }
-.preview-controller > span{
+.preview-btn{
+  width: 30px;
+  height: 30px;
+  color:white;
+  z-index: 90000;
+}
+/* .remove{
+
   margin: 13px;
   background-color: rgba(0, 0, 0, 0.6);
   color: white;
@@ -381,9 +444,9 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding-bottom: 6px;
+  
 
   font-size: 15px;
 
  
-}
+} */
