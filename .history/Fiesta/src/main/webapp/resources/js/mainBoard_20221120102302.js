@@ -3,14 +3,12 @@ const listEnd = document.getElementById("endList");
 const option = {
   root: null,
   rootMargin: "0px 0px 0px 0px",
-  threshold: 1.0,
+  threshold: 0,
 };
 
 // * 무한 스크롤
-setTimeout(() => {
-  const observer = new IntersectionObserver(selectBoardList, option);
-  observer.observe(listEnd);
-}, 5000);
+const observer = new IntersectionObserver(selectBoardList, option);
+observer.observe(listEnd);
 
 // * 현재 페이지 번호 변수 선언
 let cp = 2;
@@ -23,10 +21,7 @@ function selectBoardList() {
     type: "GET",
     data: { memberNo: memberNo, cp: cp },
     dataType: "json",
-    success: (map) => {
-      const boardList = map.boardList;
-      const pagination = map.pagination;
-      cp++;
+    success: (boardList) => {
       for (let board of boardList) {
         createBoard(board);
       }
@@ -68,8 +63,8 @@ function createBoard(board) {
   memberIdA.setAttribute("href", "#");
 
   // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
-  if (board.memberProfileImg == undefined) {
-    profileImage.setAttribute("src", "/resources/images/profile/profile.jpg");
+  if (board.memberProfileImg == "") {
+    profileImage.setAttribute("src", "/resources/images/board/profile.jpg");
   } else {
     profileImage.setAttribute("src", board.memberProfileImg);
   }

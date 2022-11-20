@@ -211,7 +211,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           </c:if>
         </section>
       </section>
-      <div id="endList"></div>
     </main>
 
     <input type="hidden" value="${loginMember}" name="loginUser" />

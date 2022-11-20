@@ -197,7 +197,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                         </div>
                       </div>
                     </c:if>
-                    <span class="create-date">${board.boardCreateDate}</span>
+                    <a href="#" class="create-date">${board.boardCreateDate}</a>
                   </div>
                   <div class="comment-input-area">
                     <div>
@@ -211,7 +211,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           </c:if>
         </section>
       </section>
-      <div id="endList"></div>
     </main>
 
     <input type="hidden" value="${loginMember}" name="loginUser" />

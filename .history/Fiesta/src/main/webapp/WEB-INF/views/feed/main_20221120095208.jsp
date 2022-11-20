@@ -209,9 +209,9 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
               </div>
             </c:forEach>
           </c:if>
+          <div id="endList"></div>
         </section>
       </section>
-      <div id="endList"></div>
     </main>
 
     <input type="hidden" value="${loginMember}" name="loginUser" />

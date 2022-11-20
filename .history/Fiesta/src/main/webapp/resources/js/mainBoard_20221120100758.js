@@ -3,14 +3,8 @@ const listEnd = document.getElementById("endList");
 const option = {
   root: null,
   rootMargin: "0px 0px 0px 0px",
-  threshold: 1.0,
+  thredhold: 0,
 };
-
-// * 무한 스크롤
-setTimeout(() => {
-  const observer = new IntersectionObserver(selectBoardList, option);
-  observer.observe(listEnd);
-}, 5000);
 
 // * 현재 페이지 번호 변수 선언
 let cp = 2;
@@ -18,23 +12,25 @@ let cp = 2;
 // TODO: 게시글 상세 조회 후 화면 출력
 function selectBoardList() {
   // TODO: 로그인 멤버가 팔로우한 회원의 게시글 목록 조회
-  $.ajax({
-    url: "/selectBoardList",
-    type: "GET",
-    data: { memberNo: memberNo, cp: cp },
-    dataType: "json",
-    success: (map) => {
-      const boardList = map.boardList;
-      const pagination = map.pagination;
-      cp++;
-      for (let board of boardList) {
-        createBoard(board);
-      }
-    },
-    error: () => {
-      console.log("게시글 조회 중 오류 발생");
-    },
-  });
+  $.ajax(
+    {
+      url: "/selectBoardList",
+      type: "GET",
+      data: { memberNo: memberNo, cp: cp },
+      dataType: "json",
+      success: (boardList) => {
+        console.log(boardList);
+        for (let board of boardList) {
+          createBoard(board);
+        }
+      },
+      error: () => {
+        console.log("게시글 조회 중 오류 발생");
+      },
+    }
+    // ),
+    // 1000
+  );
 }
 
 function createBoard(board) {
@@ -68,8 +64,8 @@ function createBoard(board) {
   memberIdA.setAttribute("href", "#");
 
   // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
-  if (board.memberProfileImg == undefined) {
-    profileImage.setAttribute("src", "/resources/images/profile/profile.jpg");
+  if (writer.memberProfileImg == "") {
+    profileImage.setAttribute("src", "/resources/images/board/profile.jpg");
   } else {
     profileImage.setAttribute("src", board.memberProfileImg);
   }
@@ -103,15 +99,15 @@ function createBoard(board) {
   const imageUl = document.createElement("ul");
   imageUl.classList.add("swiper-wrapper");
 
-  if (board.imageList.length > 0) {
-    for (let i = 0; i < board.imageList.length; i++) {
+  if (board.imageLst.length > 0) {
+    for (let i = 0; i < imageList.length; i++) {
       const imageLi = document.createElement("li");
       imageLi.classList.add("swiper-slide");
 
       const uploadedImage = document.createElement("img");
       // img태그에 src 속성, alt 속성 추가
-      uploadedImage.setAttribute("src", board.imageList[i].imgAddress);
-      uploadedImage.setAttribute("alt", board.imageList[i].imgAccessibility);
+      uploadedImage.setAttribute("src", imageList[i].imgAddress);
+      uploadedImage.setAttribute("alt", imageList[i].imgAccessibility);
       uploadedImage.classList.add("uploaded-image");
       imageLi.append(uploadedImage);
       imageUl.append(imageLi);
@@ -250,7 +246,7 @@ function createBoard(board) {
 
   const memberIdSpan = document.createElement("span");
   memberIdSpan.classList.add("member-id");
-  memberIdSpan.innerText = board.memberNickname;
+  memberIdSpan.innerText = writer.memberNickname;
 
   // 해시태그 및 더보기 버튼
   // 해시태그
@@ -311,7 +307,7 @@ function createBoard(board) {
 
   let commentNoflag = 0;
 
-  for (let comment of board.commentList) {
+  for (let comment of commentList) {
   }
 
   mainContainerDiv.append(feedMainContentDiv);
@@ -326,3 +322,7 @@ function createBoard(board) {
 
   // ---------------------------------------------------
 }
+
+// * 무한 스크롤
+const observer = new IntersectionObserver(selectBoardList, option);
+observer.observe(listEnd);

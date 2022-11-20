@@ -68,7 +68,7 @@ function createBoard(board) {
   memberIdA.setAttribute("href", "#");
 
   // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
-  if (board.memberProfileImg == undefined) {
+  if (board.memberProfileImg == "") {
     profileImage.setAttribute("src", "/resources/images/profile/profile.jpg");
   } else {
     profileImage.setAttribute("src", board.memberProfileImg);

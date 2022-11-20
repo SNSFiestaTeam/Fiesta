@@ -1,4 +1,4 @@
-@import "./root-style.css";
+@import './root-style.css';
 
 .swiper {
   width: 100%;
@@ -333,7 +333,7 @@ a.comment-profile {
   color: var(--main-font-color);
   font-size: 10px;
   display: block;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .more-reply {
@@ -383,6 +383,7 @@ a.comment-profile {
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: 1.6;
+  height: 3.8em;
   text-align: left;
   word-wrap: break-word;
   display: -webkit-box;
