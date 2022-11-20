@@ -1,8 +1,19 @@
 const down = document.getElementsByClassName("down")[0];
 const chat = document.getElementsById("chat");
 const right = document.getElementById("right")
-const up = document.getElementsByClassName("up")[0];
+const up = document.getElementById("up");
+const noClick = document.getElementById("no-click");
+const click = document.getElementById("click");
 
+
+document.getElementById("click").style.display = "none";
+noClick.style.display = "flex";
+
+function send(){
+
+    click.style.display = "flex";
+    noClick.style.display = "none";
+}
 
 
 function inputEnter(){
@@ -10,8 +21,8 @@ function inputEnter(){
     if( window.event.key == "Enter"){
 
         readValue();   
-    }
-}
+    }    
+}    
 
 function readValue(){
 
@@ -25,10 +36,9 @@ function readValue(){
         room.scrollTop =  room.scrollHeight;   
     } else {      
     
-    }   
+    }       
         input.value="";
 
 
-}
-
+}        
 

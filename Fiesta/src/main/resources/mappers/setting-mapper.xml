@@ -39,12 +39,18 @@ WHERE MEMBER_NO = #{memberNo}
  WHERE MEMBER_NO = #{memberNo}
  </update>
  
- <select id="nickDupCheck" parameterType="string" resultType="_int">
+ <select id="nicknameDupCheck" parameterType="string" resultType="_int">
  SELECT COUNT(*) FROM "MEMBER"
  WHERE MEMBER_NICKNAME = #{memberNickname}
  AND SECESSION_FL = 'N'
  </select>
  
+ <!-- 프로필 이미지 수정 --> 
+ <update id="updateImg" parameterType="Member">
+ 	UPDATE "MEMBER" SET
+ 	MEMBER_PROFILE_IMG = #{memberProfileImg}
+ 	WHERE MEMBER_NO = #{memberNo}
+ </update>
  
  </mapper>
  

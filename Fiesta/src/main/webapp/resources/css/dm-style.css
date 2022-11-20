@@ -31,9 +31,13 @@ body {
     border-left: 1px solid #ccc;
     display: flex;
     flex-direction: column;
+}
+
+.right > #no-click{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .left > .up{
@@ -64,24 +68,24 @@ body {
 
 }
 
-.right > img{
+.right> #no-click > img{
     position: relative;
     display: block;
     margin-bottom: 10px;
 }
 
-.right > h1{
+.right > #no-click> h1{
    font-weight: lighter;
 }
 
-.right > .message-info{
+.right > #no-click > .message-info{
     font-size: 14px;
     color : #aaa;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
-.right > .send {
+.right > #no-click>.send {
     box-sizing: border-box;
     width: 100px;
     height: 40px;

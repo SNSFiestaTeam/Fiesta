@@ -42,7 +42,7 @@
             </a>
           </section>
           <section class="down">
-            <div class="chat" id="chat">
+            <div class="chat" id="chat" onclick="return send()">
               <a href="#"><img src="../../resources/images/user.jpg" class="pro-img"></a>
               <div class="chat-content">
                 <div class="chat-content-right">
@@ -55,26 +55,29 @@
           </section>
         </div>
         <div class="right" id="right">
-          <img src="../../resources/images/dm-icon.png" style="width: 96px" />
-          <h1>내 메시지</h1>
-          <div class="message-info">
-            친구나 그룹에 비공개 사진과 메세지를 보내보세요.
-          </div>
-          <button class="send" type="button">
-            <a href="../dm/dm-message.html"> 메시지 보내기</a>
-          </button>
-          
+          <div id="no-click">
+            <img src="../../resources/images/dm-icon.png" style="width: 96px" />
+            <h1>내 메시지</h1>
+            <div class="message-info">
+              친구나 그룹에 비공개 사진과 메세지를 보내보세요.
+            </div>
+            <button class="send" type="button">
+              <a href="../dm/dm-message.html"> 메시지 보내기</a>
+            </button>
+          </div>  
           
            <%-- 클릭되었을때  --%>
-          <div class="up">
-            <a href="#" id="proImg"><img src="../../resources/images/user.jpg" style="width: 50px;"></a>
-            <div class="messageName" id="messageName"> test</div>
-            <a href="" id="info"><img src="../../resources/images/info.png" style="width:24px;"></a>
-          </div>
-          <div id="chattingRoom">
-          </div>
-          <div id="input">
-          <input type="text" size="50" id="chattingInput" onkeyup="inputEnter()">
+          <div id="click">
+            <div class="up" id="up">
+              <a href="#" id="proImg"><img src="../../resources/images/user.jpg" style="width: 50px;"></a>
+              <div class="messageName" id="messageName"> test</div>
+              <a href="" id="info"><img src="../../resources/images/info.png" style="width:24px;"></a>
+            </div>
+            <div id="chattingRoom">
+            </div>
+            <div id="input">
+            <input type="text" size="50" id="chattingInput" onkeyup="inputEnter()">
+            </div>
           </div>
         </div>
       </section>

@@ -65,7 +65,7 @@ div>aside{
     text-align: right;
     margin-right: 30px;
 }
-div > aside > a > img{
+div > aside > button > img{
     width: 38px;
     text-align: right;
 }
@@ -80,6 +80,10 @@ div > aside > a > img{
     
 }
 
+.setting-main .di-1 #profile-image{
+    height: 100%;
+    text-align: right;
+}
 
 form > div{
     margin: 20px;
@@ -97,9 +101,10 @@ form > div > div{
     width: 60%;
 }
 
-.di-1 > .main > a{
+#change-img{
     font-size: 14px;
     color: var(--fiesta-color);
+    cursor: pointer;
 }
 
 textarea{
