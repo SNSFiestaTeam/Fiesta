@@ -7,8 +7,9 @@ const option = {
 };
 
 // * 무한 스크롤
-const observer = new IntersectionObserver(selectBoardList, option);
-observer.observe(listEnd);
+setTimeout(() => {
+  const observer = new IntersectionObserver(selectBoardList, option);
+}, 3000);
 
 // * 현재 페이지 번호 변수 선언
 let cp = 2;
@@ -66,8 +67,8 @@ function createBoard(board) {
   memberIdA.setAttribute("href", "#");
 
   // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
-  if (board.memberProfileImg == undefined) {
-    profileImage.setAttribute("src", "/resources/images/profile/profile.jpg");
+  if (board.memberProfileImg == "") {
+    profileImage.setAttribute("src", "/resources/images/board/profile.jpg");
   } else {
     profileImage.setAttribute("src", board.memberProfileImg);
   }
@@ -114,19 +115,6 @@ function createBoard(board) {
       imageLi.append(uploadedImage);
       imageUl.append(imageLi);
     }
-  } else {
-    const imageLi = document.createElement("li");
-    imageLi.classList.add("swiper-slide");
-
-    const uploadedImage = document.createElement("img");
-    // img태그에 src 속성, alt 속성 추가
-    uploadedImage.setAttribute(
-      "src",
-      "/resources/images/board/202211190013.jpg"
-    );
-    uploadedImage.classList.add("uploaded-image");
-    imageLi.append(uploadedImage);
-    imageUl.append(imageLi);
   }
 
   // 스와이퍼 슬라이드 navigation 버튼, pageination 버튼 생성
@@ -296,30 +284,18 @@ function createBoard(board) {
   feedMainContentDiv.append(feedContentDiv, moreBtn);
 
   // 댓글 리스트
-  const commentList = board.commentList;
-
   // 댓글 컨테이너 생성
-
   const commentContainer = document.createElement("div");
   commentContainer.classList.add("comment-container");
 
   // FIXME: 댓글 2개 초과일 시 댓글 더보기 출력
-  if (board.commentList.length > 2) {
-    const allCommentBtn = document.createElement("button");
-    allCommentBtn.classList.add("all-comment-btn");
-    allCommentBtn.innerText = "댓글 모두 보기";
-    commentContainer.append(allCommentBtn);
-  }
+  const allCommentBtn = document.createElement("button");
+  allCommentBtn.classList.add("all-comment-btn");
 
   const commentArea = document.createElement("div");
   commentArea.classList.add("comment-area");
 
-  commentContainer.append(commentArea);
-
   const commentUl = document.createElement("ul");
-  commentUl.classList.add("comment-list", "two-line");
-
-  commentArea.append(commentUl);
 
   // TODO: 댓글 출력
   // TODO: 댓글 2개 이하일 시 2개만 출럭 더보기 버튼X
@@ -327,96 +303,14 @@ function createBoard(board) {
   // TODO: 더보기 버튼 클릭 시 모든 댓글 조회하는 모달창 출력
 
   // ! 댓글, 대댓글 나눠서 출력하기
+  // ? 댓글 대댓글 어떻게 나누지?
 
   // TODO: 대댓글 Default 숨기기
   // TODO: 대댓글 모두보기 버튼 클릭하면 모두 보기
 
+  let commentNoflag = 0;
+
   for (let comment of board.commentList) {
-    if (comment.upperCommentNo != undefined) {
-      const commentLi = document.createElement("li");
-      commentLi.classList.add("comment");
-      commentUl.append(commentLi);
-
-      // commentLi의 자식요소 commentFirstChild, moreReply
-      const commentFirstChild = document.createElement("div");
-      commentFirstChild.classList.add("comment-firstChild");
-
-      commentLi.append(commentFirstChild);
-
-      const commentProfileA = document.createElement("a");
-      commentProfileA.classList.add("comment-profile");
-
-      const commentProfileImg = document.createElement("img");
-      commentProfileImg.classList.add("comment-profile-image");
-
-      commentProfileA.append(commentProfileImg);
-
-      if (comment.memberProfileImg != undefined) {
-        commentProfileImg.setAttribute("src", comment.memberProfileImg);
-      } else {
-        commentProfileImg.setAttribute(
-          "src",
-          "/resources/images/profile/profile.jpg"
-        );
-      }
-
-      const commentFirstLine = document.createElement("div");
-      commentFirstLine.classList.add("comment-firstLine");
-
-      commentFirstChild.append(commentProfileA, commentFirstLine);
-
-      const commentDiv1 = document.createElement("div");
-
-      const commentMemberIdA = document.createElement("a");
-      commentMemberIdA.classList.add("comment-memberId");
-      commentMemberIdA.innerText = comment.commentMemberId;
-
-      const commentSpan = document.createElement("span");
-      commentSpan.classList.add("comment-content");
-      commentSpan.innerText = comment.commentContent;
-
-      commentDiv1.append(commentMemberIdA, commentSpan);
-
-      const commentDiv4 = document.createElement("div");
-
-      const commentLikeBtn = document.createElement("button");
-      commentLikeBtn.classList.add("comment-like-btn");
-
-      const commentHeartIcon = document.createElement("i");
-      commentHeartIcon.classList.add("fa-regular", "fa-heart");
-
-      commentLikeBtn.append(commentHeartIcon);
-
-      commentDiv4.append(commentLikeBtn);
-      commentFirstLine.append(commentDiv3, commentDiv4);
-
-      const commentDiv5 = document.createElement("div");
-      commentDiv5.classList.add("create-reply");
-
-      const commentCreateDate = document.createElement("span");
-      commentCreateDate.innerText = comment.commentCreateDate;
-
-      const replyBtn = document.createElement("button");
-      replyBtn.setAttribute("type", "button");
-      replyBtn.classList.add("reply-btn");
-      replyBtn.innerText = "답글 달기";
-
-      const hoverBtn = document.createElement("button");
-      hoverBtn.setAttribute("type", "button");
-      hoverBtn.classList.add("fa-solid", "fa-ellipsis", "hover-btn");
-
-      commentDiv5.append(commentCreateDate, replyBtn, hoverBtn);
-      commentFirstChild.append(commentFirstLine, commentDiv5);
-
-      // 답글이 있으면 버튼 생성
-      if (comment.replyCount > 0) {
-        const moreReply = document.createElement("a");
-        moreReply.classList.add("more-reply");
-        // FIXME: 경로 설정하기
-        moreReply.href = "";
-        commentLi.append(moreReply);
-      }
-    }
   }
 
   mainContainerDiv.append(feedMainContentDiv);

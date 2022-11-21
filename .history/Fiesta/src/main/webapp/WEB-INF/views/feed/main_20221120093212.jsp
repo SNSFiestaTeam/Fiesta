@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib prefix="fn"
-uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="boardList" value="${map.boardList}" />
 <c:set var="pagination" value="${map.pagination}" />
@@ -120,8 +119,8 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                     <c:if test="${not empty board.commentList}">
                       <!-- 댓글 리스트 -->
                       <div class="comment-container">
-                        <c:if test="${fn:length(board.commentList) > 2}">
-                        <button class="all-comment-btn">댓글 모두 보기(${fn:length(board.commentList)})</button>
+                        <c:if test="${commentList.length > 2}">
+                          <button class="all-comment-btn">댓글 더보기(${commentList.length})</button>
                         </c:if>
 
                         <div class="comment-area">
@@ -156,7 +155,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                                     </div>
                                   </div>
                                   <c:if test="${comment.replyCount > 0}">
-                                  <a href="#" class="more-reply">모든 답글 보기(${comment.replyCount})</a>
+                                    <a href="#" class="more-reply">모든 답글 보기(${comment.replyCount})</a>
                                   </c:if>
 
                                   <!-- 답글 리스트 -->
@@ -197,7 +196,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                         </div>
                       </div>
                     </c:if>
-                    <span class="create-date">${board.boardCreateDate}</span>
+                    <a href="#" class="create-date">${board.boardCreateDate}</a>
                   </div>
                   <div class="comment-input-area">
                     <div>
@@ -211,7 +210,6 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
           </c:if>
         </section>
       </section>
-      <div id="endList"></div>
     </main>
 
     <input type="hidden" value="${loginMember}" name="loginUser" />

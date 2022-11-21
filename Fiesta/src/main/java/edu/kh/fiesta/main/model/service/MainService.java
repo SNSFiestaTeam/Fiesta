@@ -13,7 +13,7 @@ public interface MainService {
 	 * @param selectBoardSql
 	 * @return
 	 */
-	public List<Board> selectBoardList(int memberNo, int cp);
+	public Map<String, Object> selectBoardList(int memberNo, int cp);
 
 	
 	

@@ -121,7 +121,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                       <!-- 댓글 리스트 -->
                       <div class="comment-container">
                         <c:if test="${fn:length(board.commentList) > 2}">
-                        <button class="all-comment-btn">댓글 모두 보기(${fn:length(board.commentList)})</button>
+                          <button class="all-comment-btn">댓글 모두 보기(${fn:length(board.commentList)})</button>
                         </c:if>
 
                         <div class="comment-area">
@@ -156,7 +156,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                                     </div>
                                   </div>
                                   <c:if test="${comment.replyCount > 0}">
-                                  <a href="#" class="more-reply">모든 답글 보기(${comment.replyCount})</a>
+                                    <a href="#" class="more-reply">모든 답글 보기(${comment.replyCount})</a>
                                   </c:if>
 
                                   <!-- 답글 리스트 -->
