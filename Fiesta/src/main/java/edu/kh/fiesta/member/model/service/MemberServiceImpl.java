@@ -19,9 +19,6 @@ public class MemberServiceImpl implements MemberService{
 	private BCryptPasswordEncoder bcrypt;
 	
 	
-
-	
-	
 	// 로그인
 	@Override
 	public Member login(Member inputMember) {
