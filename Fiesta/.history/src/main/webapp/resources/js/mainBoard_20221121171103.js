@@ -314,12 +314,7 @@ function createBoard(board) {
   const commentArea = document.createElement("div");
   commentArea.classList.add("comment-area");
 
-  commentContainer.append(commentArea);
-
   const commentUl = document.createElement("ul");
-  commentUl.classList.add("comment-list", "two-line");
-
-  commentArea.append(commentUl);
 
   // TODO: 댓글 출력
   // TODO: 댓글 2개 이하일 시 2개만 출럭 더보기 버튼X
@@ -335,21 +330,15 @@ function createBoard(board) {
     if (comment.upperCommentNo != undefined) {
       const commentLi = document.createElement("li");
       commentLi.classList.add("comment");
-      commentUl.append(commentLi);
 
-      // commentLi의 자식요소 commentFirstChild, moreReply
-      const commentFirstChild = document.createElement("div");
-      commentFirstChild.classList.add("comment-firstChild");
-
-      commentLi.append(commentFirstChild);
+      const commentDiv = document.createElement("div");
+      commentDiv.classList.add("comment-firstChild");
 
       const commentProfileA = document.createElement("a");
       commentProfileA.classList.add("comment-profile");
 
       const commentProfileImg = document.createElement("img");
       commentProfileImg.classList.add("comment-profile-image");
-
-      commentProfileA.append(commentProfileImg);
 
       if (comment.memberProfileImg != undefined) {
         commentProfileImg.setAttribute("src", comment.memberProfileImg);
@@ -360,12 +349,10 @@ function createBoard(board) {
         );
       }
 
-      const commentFirstLine = document.createElement("div");
-      commentFirstLine.classList.add("comment-firstLine");
+      const commentDiv2 = document.createElement("div");
+      commentDiv.classList.add("comment-firstLine");
 
-      commentFirstChild.append(commentProfileA, commentFirstLine);
-
-      const commentDiv1 = document.createElement("div");
+      const commentDiv3 = document.createElement("div");
 
       const commentMemberIdA = document.createElement("a");
       commentMemberIdA.classList.add("comment-memberId");
@@ -375,8 +362,6 @@ function createBoard(board) {
       commentSpan.classList.add("comment-content");
       commentSpan.innerText = comment.commentContent;
 
-      commentDiv1.append(commentMemberIdA, commentSpan);
-
       const commentDiv4 = document.createElement("div");
 
       const commentLikeBtn = document.createElement("button");
@@ -384,11 +369,6 @@ function createBoard(board) {
 
       const commentHeartIcon = document.createElement("i");
       commentHeartIcon.classList.add("fa-regular", "fa-heart");
-
-      commentLikeBtn.append(commentHeartIcon);
-
-      commentDiv4.append(commentLikeBtn);
-      commentFirstLine.append(commentDiv3, commentDiv4);
 
       const commentDiv5 = document.createElement("div");
       commentDiv5.classList.add("create-reply");
@@ -404,18 +384,6 @@ function createBoard(board) {
       const hoverBtn = document.createElement("button");
       hoverBtn.setAttribute("type", "button");
       hoverBtn.classList.add("fa-solid", "fa-ellipsis", "hover-btn");
-
-      commentDiv5.append(commentCreateDate, replyBtn, hoverBtn);
-      commentFirstChild.append(commentFirstLine, commentDiv5);
-
-      // 답글이 있으면 버튼 생성
-      if (comment.replyCount > 0) {
-        const moreReply = document.createElement("a");
-        moreReply.classList.add("more-reply");
-        // FIXME: 경로 설정하기
-        moreReply.href = "";
-        commentLi.append(moreReply);
-      }
     }
   }
 

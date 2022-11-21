@@ -375,7 +375,7 @@ function createBoard(board) {
       commentSpan.classList.add("comment-content");
       commentSpan.innerText = comment.commentContent;
 
-      commentDiv1.append(commentMemberIdA, commentSpan);
+      commentDiv3.append(commentMemberIdA, commentSpan);
 
       const commentDiv4 = document.createElement("div");
 

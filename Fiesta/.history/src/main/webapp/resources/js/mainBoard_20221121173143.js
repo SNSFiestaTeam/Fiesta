@@ -335,6 +335,7 @@ function createBoard(board) {
     if (comment.upperCommentNo != undefined) {
       const commentLi = document.createElement("li");
       commentLi.classList.add("comment");
+
       commentUl.append(commentLi);
 
       // commentLi의 자식요소 commentFirstChild, moreReply
@@ -375,7 +376,7 @@ function createBoard(board) {
       commentSpan.classList.add("comment-content");
       commentSpan.innerText = comment.commentContent;
 
-      commentDiv1.append(commentMemberIdA, commentSpan);
+      commentDiv3.append(commentMemberIdA, commentSpan);
 
       const commentDiv4 = document.createElement("div");
 
@@ -407,16 +408,9 @@ function createBoard(board) {
 
       commentDiv5.append(commentCreateDate, replyBtn, hoverBtn);
       commentFirstChild.append(commentFirstLine, commentDiv5);
-
-      // 답글이 있으면 버튼 생성
-      if (comment.replyCount > 0) {
-        const moreReply = document.createElement("a");
-        moreReply.classList.add("more-reply");
-        // FIXME: 경로 설정하기
-        moreReply.href = "";
-        commentLi.append(moreReply);
-      }
     }
+
+    // 답글이 있으면 버튼 생성
   }
 
   mainContainerDiv.append(feedMainContentDiv);
