@@ -40,4 +40,8 @@ public class SettingDAO {
 		return sqlSession.update("settingMapper.updateImg", loginMember);
 	}
 
+	public int memberDelete(int memberNo) {
+		return sqlSession.update("settingMapper.memberDelete", memberNo);
+	}
+
 }

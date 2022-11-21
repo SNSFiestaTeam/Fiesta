@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -89,6 +90,22 @@ public class SettingController {
 	@GetMapping("/3")
 	public String setting3() {
 		return "setting/setting3";
+	}
+	
+	@PostMapping("3")
+	public String memberDelete(
+			@SessionAttribute("loginMember") Member loginMember,
+			SessionStatus status, RedirectAttributes ra) {
+		
+		int result = service.memberDelete(loginMember.getMemberNo());
+		
+		
+		if(result > 0 ) {
+			return "redirect:/";
+		} else {
+			return "redirect:/3";
+		}
+		
 	}
 	
 

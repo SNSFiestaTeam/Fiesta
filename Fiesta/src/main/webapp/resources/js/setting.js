@@ -77,14 +77,14 @@ memberNickname.addEventListener("input", function(){
         return;
     }
 
-    const regEx = /^[\w-_.]{3,30}$/;
+    const regEx = /^[\w\-\_\.]{3,30}$/;
 
     if(regEx.test(memberNickname.value)){ 
 
         const param = { "memberNickname" : memberNickname.value };
         
         $.ajax({
-            url : '/nicknameDupCheck',
+            url : "/nicknameDupCheck",
             data : param,
             success : (result) => { 
 
@@ -102,9 +102,11 @@ memberNickname.addEventListener("input", function(){
                 }
             }, 
             error: () => {
-                
+                console.log("실패");
             },
-            complete: tempFn
+            complete: ()=>{
+                console.log("완료");
+            }
         });
 
     } else { // 유효하지 않을 경우

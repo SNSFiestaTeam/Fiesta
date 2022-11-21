@@ -18,5 +18,7 @@ public interface SettingService {
 
 	int updateImg(String webPath, String filePath, MultipartFile memberProfileImg, Member loginMember) throws Exception;
 
+	int memberDelete(int memberNo);
+
 	
 }

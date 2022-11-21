@@ -52,6 +52,13 @@ WHERE MEMBER_NO = #{memberNo}
  	WHERE MEMBER_NO = #{memberNo}
  </update>
  
+ <!-- 탈퇴 -->
+ <update id="memberDelete">
+ UPDATE "MEMBER" SET
+ SECESSION_FL = 'Y'
+ WHERE MEMBER_NO = #{memberNo}
+ </update>
+ 
  </mapper>
  
  
