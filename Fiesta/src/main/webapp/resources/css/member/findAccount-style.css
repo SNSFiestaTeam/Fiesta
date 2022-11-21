@@ -192,7 +192,7 @@ main{
 }
 
 /* 비밀번호 재설정 버튼 */
-#changPwBtn{
+#changePwBtn{
     width: 85%;
     height: 36px;
     background-color: #00cc66;

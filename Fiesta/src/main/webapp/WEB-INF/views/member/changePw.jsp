@@ -44,7 +44,7 @@
         </div>
 
         <section class="formSection">
-          <form action="/member/changePw" method="get" id="changePw-frm">
+          <form action="/findAccount/changePw/updatePw" method="POST" id="changePw-frm">
               <div class="changePw-input-area">
                 <input type="password" name="memberPw" id="memberPw" value="" 
                      maxlength="30" autocomplete="off" required >

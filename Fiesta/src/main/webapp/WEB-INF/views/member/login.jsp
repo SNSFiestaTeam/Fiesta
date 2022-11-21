@@ -52,7 +52,7 @@
         <div class="line">또는</div>
 
         <div class="findAccount">
-          <a href="/member/findAccount">아이디, 비밀번호를 잊으셨나요?</a>
+          <a href="/findAccount">아이디, 비밀번호를 잊으셨나요?</a>
         </div>
       </section>
 

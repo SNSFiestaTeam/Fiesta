@@ -23,7 +23,7 @@ const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
 const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
 
 const inputAuthArea = document.getElementById("inputAuthArea");
-const changPwBtn = document.getElementById("changPwBtn");
+const changePwBtn = document.getElementById("changePwBtn");
 
 // 이메일로 인증하기 버튼 비활성화
 sendAuthKeyBtn.classList.add("buttonOff");
@@ -35,7 +35,7 @@ inputAuthArea.classList.add("displayOff");
 checkAuthKeyBtn.classList.add("gray");
 
 // 비밀번호 재설정 버튼 숨기기
-changPwBtn.classList.add("displayOff");
+changePwBtn.classList.add("displayOff");
 
 
 // 이메일 유효성 검사
@@ -167,7 +167,7 @@ sendAuthKeyBtn.addEventListener("click",() => {
 });
 
 
-// 인증하기 버튼
+// 인증하기 버튼 보이게
 inputAuthArea.addEventListener("click", () => {
     checkAuthKeyBtn.innerHTML = "인증하기"
     checkAuthKeyBtn.classList.add("gray");
@@ -200,17 +200,19 @@ checkAuthKeyBtn.addEventListener("click", function(){
                 if(result > 0){
                     clearInterval(authTimer);
                     checkObj.authKey = true;
-                    changPwBtn.classList.add("displayFlex");
-                    changPwBtn.classList.remove("displayOff");
+
+                    // 비밀번호 재설정 버튼
+                    changePwBtn.classList.add("displayFlex");
+                    changePwBtn.classList.remove("displayOff");
 
                 } else{
                     // alert("인증번호가 일치하지 않습니다.")
                     checkObj.authKey = false;
                     checkAuthKeyBtn.innerHTML = "불일치";
-                    checkAuthKeyBtn.disabled = true;
                     checkAuthKeyBtn.classList.add("red");
                     checkAuthKeyBtn.classList.remove("black");
 
+                    // 불일치일 경우, 빈칸으로 
                     if(authKey.value.trim().length > 1){
                         authKey.value = "";
                     }

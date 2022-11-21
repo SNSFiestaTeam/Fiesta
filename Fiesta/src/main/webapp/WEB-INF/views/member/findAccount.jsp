@@ -44,7 +44,7 @@
           </div>
         </div>
 
-        <form action="/findAccount/changePw" method="get" id="findAccount-frm">
+        <form action="/findAccount/changePw" method="POST" id="findAccount-frm">
             <div class="findAccount-input-area">
               <input type="text" name="memberEmail" id="memberEmail" value=""  maxlength="50" autocomplete="off" required />
               <label for="memberEmail">이메일</label>
@@ -58,13 +58,13 @@
             </div>
             
             <button class="findAccount-button" id="sendAuthKeyBtn" type="button">이메일로 인증하기</button>
-            <button class="findAccount-button" id="changPwBtn" type="submit">비밀번호 재설정하기</button>
+            <button class="findAccount-button" id="changePwBtn" type="submit">비밀번호 재설정하기</button>
           </form>
             
 
         <div class="toAdmin">
           <!-- FIXME: 관리자페이지로 수정 -->
-          <a href="/member/changePw"> 비밀번호를 재설정할 수 없나요? </a>
+          <a href="#"> 비밀번호를 재설정할 수 없나요? </a>
         </div>
 
         <div class="line">또는</div>

@@ -50,5 +50,15 @@ public class MemberDAO {
 	}
 
 
+	/** 계정찾기_ 비밀번호 재설정 DAO
+	 * @param memberEmail
+	 * @param memberPw
+	 * @return result
+	 */
+	public int updatePw(String memberEmail, String memberPw) {
+		return sqlSession.update("memberMapper.updatePw", memberEmail);
+	}
+
+
 	
 }
