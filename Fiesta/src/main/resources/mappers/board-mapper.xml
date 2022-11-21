@@ -66,6 +66,5 @@
       <result property="boardNo" column="BOARD_NO" />
   </resultMap>
   
- 
-  
+
 </mapper>
