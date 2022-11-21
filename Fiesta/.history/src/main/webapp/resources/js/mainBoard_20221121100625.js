@@ -311,6 +311,8 @@ function createBoard(board) {
   // TODO: 대댓글 Default 숨기기
   // TODO: 대댓글 모두보기 버튼 클릭하면 모두 보기
 
+  let commentNoflag = 0;
+
   for (let i = 0; i <= 2; i++) {
     if (commentList[i].upperCommentNo != undefined) {
       const commentLi = document.createElement("li");
@@ -336,14 +338,6 @@ function createBoard(board) {
 
       const commentDiv2 = document.createElement("div");
       commentDiv.classList.add("comment-firstLine");
-
-      const commentDiv3 = document.createElement("div");
-
-      const commentMemberIdA = document.createElement("a");
-      commentMemberIdA.classList.add("comment-memberId");
-
-      const commentSpan = document.createElement("span");
-      commentSpan.classList.add("comment-content");
     }
   }
 

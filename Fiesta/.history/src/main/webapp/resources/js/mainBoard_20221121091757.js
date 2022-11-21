@@ -285,10 +285,7 @@ function createBoard(board) {
   feedMainContentDiv.append(feedContentDiv, moreBtn);
 
   // 댓글 리스트
-  const commentList = board.commentList;
-
   // 댓글 컨테이너 생성
-
   const commentContainer = document.createElement("div");
   commentContainer.classList.add("comment-container");
 
@@ -307,44 +304,14 @@ function createBoard(board) {
   // TODO: 더보기 버튼 클릭 시 모든 댓글 조회하는 모달창 출력
 
   // ! 댓글, 대댓글 나눠서 출력하기
+  // ? 댓글 대댓글 어떻게 나누지?
 
   // TODO: 대댓글 Default 숨기기
   // TODO: 대댓글 모두보기 버튼 클릭하면 모두 보기
 
-  for (let i = 0; i <= 2; i++) {
-    if (commentList[i].upperCommentNo != undefined) {
-      const commentLi = document.createElement("li");
-      commentLi.classList.add("comment");
+  let commentNoflag = 0;
 
-      const commentDiv = document.createElement("div");
-      commentDiv.classList.add("comment-firstChild");
-
-      const commentProfileA = document.createElement("a");
-      commentProfileA.classList.add("comment-profile");
-
-      const commentProfileImg = document.createElement("img");
-      commentProfileImg.classList.add("comment-profile-image");
-
-      if (commentList[i].memberProfileImg != undefined) {
-        commentProfileImg.setAttribute("src", commentList[i].memberProfileImg);
-      } else {
-        commentProfileImg.setAttribute(
-          "src",
-          "/resources/images/profile/profile.jpg"
-        );
-      }
-
-      const commentDiv2 = document.createElement("div");
-      commentDiv.classList.add("comment-firstLine");
-
-      const commentDiv3 = document.createElement("div");
-
-      const commentMemberIdA = document.createElement("a");
-      commentMemberIdA.classList.add("comment-memberId");
-
-      const commentSpan = document.createElement("span");
-      commentSpan.classList.add("comment-content");
-    }
+  for (let comment of board.commentList) {
   }
 
   mainContainerDiv.append(feedMainContentDiv);
