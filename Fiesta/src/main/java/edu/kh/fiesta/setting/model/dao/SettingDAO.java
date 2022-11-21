@@ -30,4 +30,18 @@ public class SettingDAO {
 		return sqlSession.update("settingMapper.updateSetting", inputMember);
 	}
 
+	
+	public int nicknameDupCheck(String memberNickname) {
+
+		return sqlSession.selectOne("settingMapper.nicknameDupCheck", memberNickname);
+	}
+
+	public int updateImg(Member loginMember) {
+		return sqlSession.update("settingMapper.updateImg", loginMember);
+	}
+
+	public int memberDelete(int memberNo) {
+		return sqlSession.update("settingMapper.memberDelete", memberNo);
+	}
+
 }
