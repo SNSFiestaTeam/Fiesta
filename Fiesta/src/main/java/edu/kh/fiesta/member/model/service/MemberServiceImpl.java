@@ -19,8 +19,7 @@ public class MemberServiceImpl implements MemberService{
 	private BCryptPasswordEncoder bcrypt;
 	
 	
-	@Autowired
-	private Member member;
+
 	
 	
 	// 로그인
