@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import edu.kh.fiesta.member.model.service.EmailService;
+import edu.kh.fiesta.member.model.service.SignUpEmailService;
 
 @Controller
 @RequestMapping("/sendEmail")
 @SessionAttributes("authKey")
-public class EmailController {
+public class SignUpEmailController {
 	
 	@Autowired
-	private EmailService service;
+	private SignUpEmailService service;
 	
 	
 	// 이메일 보내기
 	@GetMapping("/signUp")
 	@ResponseBody
-	public int findAccount(String memberEmail, Model model) {  
+	public int signUp(String email, Model model) {  
 		
-		String authKey = service.findAccount(memberEmail);
+		String authKey = service.signUp(email);
 		
 		if(authKey != null) {
 			model.addAttribute("authKey", authKey);
@@ -39,8 +39,8 @@ public class EmailController {
 	
 
 	
-	// 인증번호 생성하기
-	@GetMapping("/ckeckAuthKey")
+	// 인증번호 일치 확인
+	@GetMapping("/checkAuthKey")
 	@ResponseBody
 	public int checkAuthKey(String inputKey, @SessionAttribute("authKey") String authKey, 
 					SessionStatus status) {

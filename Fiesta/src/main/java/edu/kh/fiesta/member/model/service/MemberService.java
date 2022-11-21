@@ -30,5 +30,13 @@ public interface MemberService {
 	 */
 	int nicknameDupCheck(String memberNickname);
 	
+	
+
+	/** 계정찾기_비밀번호 재설정
+	 * @param memberEmail
+	 * @return result
+	 */
+	int updatePw(String memberEmail, String memberPw);
+	
 
 }
