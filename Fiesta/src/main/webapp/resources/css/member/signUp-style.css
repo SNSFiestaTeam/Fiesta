@@ -1,4 +1,4 @@
-@import "./root-style.css";
+@import "../root-style.css";
 
 * {
   margin: 0;
@@ -74,6 +74,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .signUp-area {
@@ -112,8 +113,6 @@ main {
   right: 23px;
   position: absolute;
   cursor: pointer;
-  /* right: -2px;
-  position: absolute; */
 }
 
 
@@ -155,7 +154,7 @@ main {
 
 /* 가입 버튼 */
 .signUp-button {
-  display: block;
+  /* display: block; */
   width: 95%;
   height: 36px;
   border-radius: 5px;
@@ -183,72 +182,10 @@ main {
 
 
 
-/* 버튼 활성화/비활성화 */
-.buttonOn {
-  background-color: var(--fiesta-color);
-  color: white;
-  cursor: pointer;
-}
-
-.buttonOff {
-  background-color: lightgray;
-  color: white;
-}
-
-.authButtonOn{
-  /* background-color: #00cc66; */
-  color: white;
-  cursor: pointer;
-}
-
-
-.displayOn{
-  display: block;
-}
-
-.displayOnFelx{
-  display: flex;
-}
-
-.displayOff{
-  display: none;
-}
-
-
-.iVisible { visibility: visible; }
-.iHidden { visibility: hidden; }
-
-/* 아이콘 색상 지정 */
-.gray {
-  color: lightgray;
-}
-.green {
-  color: #00cc66;
-}
-.red {
-  color: red;
-}
-.blue {
-  color: #01439f;
-}
-.black {
-  color: #3a3a3a;
-}
-.fiestaColor {
-  color: var(--fiesta-color);
-}
-
-.grayLine{
-  border-bottom: 1px solid lightgray;
-}
-.greenLine{
-  border-bottom: 2px solid #00cc66;
-}
-
 
 /* 로그인으로 */
 .toLogin {
-  width: 360px;
+  width: 100%;
   height: 57px;
 
   margin: 3% 0;
@@ -265,6 +202,7 @@ main {
   /* display: none; */
 }
 
+
 .toLogin a {
   color: var(--fiesta-color);
   font-weight: bold;
@@ -273,7 +211,8 @@ main {
 }
 
 
-/* 인증번호 입력창 */
+
+/* 인증번호 입력 */
 .inputAuth-area{
   width: 100%;
   height: 57px;
@@ -293,19 +232,22 @@ main {
   display: none;
 }
 
+/* 인증번호 입력창 */
 .inputAuth-area input {
-  width: 30%;
-  height: 50%;
+  width: 20%;
+  height: 70%;
+  margin: 0 12px;
   outline : none;
   border:none;
   text-align: center;
   font-size: 1em;
   font-weight: bold;
-
   border-bottom: 1px solid lightgray;
 }
 
-#authTimer{
+
+/* 인증번호 타이머 */
+#authTimer-area{
   width: 20%;
   height: 50%;
   color: gray;
@@ -316,11 +258,66 @@ main {
   
 }
 
+/* 인증하기 버튼 */
 #checkAuthKeyBtn{
   width: 20%;
   font-weight: bold;
   font-size: 1em;
+  /* color: lightgray; */
   cursor: pointer;
 }
 
+/* #checkAuthKeyBtn:hover{
+  color: lightgray;
+  transition-duration: 0.1s;
+} */
 
+
+
+
+/* 인증 완료 메시지창 */
+#completeMessage {
+  color: #00cc66;
+  font-weight: bold;
+  /* display: none; */
+}
+
+
+
+
+
+/* ----- 클래스 ----- */
+
+/* 버튼 활성화/비활성화 */
+.buttonOn {
+  background-color: var(--fiesta-color);
+  color: white;
+  cursor: pointer;
+}
+
+.buttonOff {
+  background-color: lightgray;
+  color: white;
+}
+
+.authButtonOn{
+  /* background-color: #00cc66; */
+  color: white;
+  cursor: pointer;
+}
+
+.displayBlock{ display: block; }
+.displayFlex{ display: flex; }
+.displayOff{ display: none; }
+
+
+.iVisible { visibility: visible; }
+.iHidden { visibility: hidden; }
+
+/* 아이콘 색상 지정 */
+.gray { color: lightgray; }
+.green { color: #00cc66; }
+.red { color: red; }
+.blue { color: #01439f; } 
+.black { color: #3a3a3a; }
+.fiestaColor { color: var(--fiesta-color); }

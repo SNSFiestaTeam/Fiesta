@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
-    <link rel="stylesheet" href="/resources/css/signUp-style.css" />
+    <link rel="stylesheet" href="/resources/css/member/signUp-style.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -75,7 +75,7 @@
             <div class="signUp-area"> <!-- 사용자 이름 -->
               <input type="text" name="memberNickname" id="memberNickname" value="" 
                     maxlength="50" autocomplete="off" required readonly>
-              <label for="memberNickname">사용자 이름</label>
+              <label for="memberNickname">사용자 이름(한글 제외)</label>
               
               <!-- 자동생성(새로고침) / 필수입력(체크) / 중복검사(체크,X) -->
               <span class="icon-nickname-refresh">
@@ -123,6 +123,7 @@
             <button class="signUp-button" id="signUpButton" disabled>가입</button>
           </form>
           
+          <!-- 이메일 인증하기 -->
             <button class="sendAuthKeyBtn" id="sendAuthKeyBtn" type="button" disabled>이메일로 인증번호 보내기</button>
         </section>
   
@@ -135,11 +136,12 @@
       </section>
       <section>
         <div class="inputAuth-area" id="inputAuth">
-          <span id="authTimer"></span>
+          <span id="authTimer-area"></span>
           <input type="text" name="authKey" id="authKey" autocomplete="off" maslength="6" required/>
-           <!-- placeholder="클릭하여 인증번호 입력" -->
-          <!--onfocus="this.placeholder = ''" onblur="this.placeholder = '클릭하여 인증번호 입력'" -->
           <button id="checkAuthKeyBtn" type="button">인증하기</button>
+        </div>
+        <div class="inputAuth-area" id="completeMessage">
+          <span">이메일 인증 완료!</span>
         </div>
       </section>
     </main>

@@ -55,6 +55,12 @@
   </select>
   
   
+  <!-- 계정찾기_비밀번호 재설정 -->
+  <update id="updatePw">
+  	UPDATE MEMBER
+  	SET MEMBER_PW = #{memberPw}
+  	WHERE MEMBER_EMAIL = #{memberEmail}
+  </update>
   
   
 </mapper>

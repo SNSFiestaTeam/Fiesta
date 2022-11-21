@@ -24,6 +24,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	// 로그인
 	@PostMapping("/main")
 	public String login(Member inputMember, Model model, RedirectAttributes ra, @RequestHeader(value="referer")String referer,
 						HttpServletResponse resp) {
@@ -75,7 +76,7 @@ public class MemberController {
 			return "redirect:/";  // 로그인 페이지로.
 			
 		} else {
-			message = "Please try again..";
+			message = "다시 시도해 주세요..";
 			ra.addFlashAttribute("message", message);
 			return referer;
 		}
@@ -86,13 +87,6 @@ public class MemberController {
 	public String login(){
 		return "redirect:/";
 	}
-	
-	
-	@GetMapping("/member/findAccount")
-	public String findAccount() {
-		return "member/findAccount";
-	}
-	
 	
 	
 	// 이메일 중복 검사
@@ -111,6 +105,45 @@ public class MemberController {
 		int result = service.nicknameDupCheck(memberNickname);
 		return result;
 	}
+	
+	
+	
+	// 계정찾기 페이지로 이동
+	@GetMapping("/findAccount")
+	public String findAccount() {
+		return "member/findAccount";
+	}
+	
+	
+	// 계정찾기_비밀번호 재설정 페이지로 이동
+	@PostMapping("/findAccount/changePw")
+	public String findAccount(String memberEmail) {
+		return "member/changePw";
+	}
+	
+	
+	
+	// 계정찾기_비밀번호 재설정하기
+	@PostMapping("/findAccount/changePw/updatePw")
+	public String updatePw(String memberEmail, String memberPw) {
+		
+		int result = service.updatePw(memberEmail, memberPw);
+		
+		if(result > 0) {}
+		
+		
+		
+		
+		return null ;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
 

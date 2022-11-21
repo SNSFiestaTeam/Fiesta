@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class EmailServiceImpl implements EmailService{
+public class SignUpEmailServiceImpl implements SignUpEmailService{
 	
 	@Autowired
 	private JavaMailSender mailSender; // emailAuth-context.xml에서 생성한 bean
@@ -52,7 +52,7 @@ public class EmailServiceImpl implements EmailService{
 	
 	@Transactional
 	@Override
-	public String findAccount(String memberEmail) {
+	public String signUp(String email) {
 		//6자리 난수 인증번호 생성
         String authKey = createAuthKey();
         try {
@@ -68,7 +68,7 @@ public class EmailServiceImpl implements EmailService{
             
             // 메일 내용
             String mailContent 
-                = "<p>Fiesta 회원가입 이메일 인증번호.</p>"
+                = "<p>[Fiesta] 회원가입 이메일 인증번호</p>"
                 + "<h3 style='color:#dd4132'>" + authKey + "</h3>";
             
             
@@ -76,7 +76,7 @@ public class EmailServiceImpl implements EmailService{
             mail.setFrom(new InternetAddress(fromEmail, fromUsername));
 
             // 수신자(받는사람) 지정
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             
             
             // 이메일 제목 세팅

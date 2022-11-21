@@ -19,6 +19,10 @@ public class MemberServiceImpl implements MemberService{
 	private BCryptPasswordEncoder bcrypt;
 	
 	
+	@Autowired
+	private Member member;
+	
+	
 	// 로그인
 	@Override
 	public Member login(Member inputMember) {
@@ -64,10 +68,21 @@ public class MemberServiceImpl implements MemberService{
 
 
 
-	//회원가입_닉네임 중복 체크 서비스
+	// 회원가입_닉네임 중복 체크 서비스
 	@Override
 	public int nicknameDupCheck(String memberNickname) {
 		return dao.nicknameDupCheck(memberNickname);
+	}
+
+
+	// 계정찾기_비밀번호 재설정
+	@Override
+	public int updatePw(String memberEmail, String memberPw) {
+		
+		String encPw = bcrypt.encode(memberPw);
+		memberPw = encPw;
+		
+		return dao.updatePw(memberEmail, memberPw);
 	}
 
 
