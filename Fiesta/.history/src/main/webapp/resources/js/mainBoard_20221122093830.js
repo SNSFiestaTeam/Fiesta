@@ -81,16 +81,6 @@ function createBoard(board) {
   feedMenuBtn.setAttribute("type", "button");
   feedMenuBtn.classList.add("fa-solid", "fa-ellipsis", "feed-header-menu");
 
-  // * feedMenuBtn 클릭 시 이벤트 추가
-  feedMenuBtn.addEventListener("click", () => {
-    const feedMenu = document.getElementById("feedMenu");
-    const body = document.getElementsByTagName("body")[0];
-
-    feedMenu.style.display = "flex";
-
-    body.classList.add("scrollLock");
-  });
-
   // 프로필 append
   profilePhotoA.append(profileImage);
   writerInfoDiv.append(profilePhotoA, memberIdA);
@@ -207,50 +197,17 @@ function createBoard(board) {
 
   const div2 = document.createElement("div");
 
-  // 좋아요 버튼
   const likeBtn = document.createElement("button");
   likeBtn.id = "likeBtn";
   likeBtn.classList.add("like-btn");
 
-  likeBtn.addEventListener("click", function () {
-    const emptyHeart = '<i class="fa-regular fa-heart"></i>';
-    const solidHeart = '<i class="fa-solid fa-heart"></i>';
-
-    if (!likeBtn.classList.contains("red")) {
-      likeBtn.innerHTML = "";
-      likeBtn.innerHTML = solidHeart;
-      likeBtn.classList.add("red");
-
-      likeCount.innerText = "좋아요 " + (Number(board.likeCount) + 1) + "개";
-    } else {
-      likeBtn.innerHTML = emptyHeart;
-      likeBtn.classList.remove("red");
-
-      likeCount.innerText = "좋아요 " + board.likeCount + "개";
-    }
-  });
-
-  // 댓글 버튼
   const commentBtn = document.createElement("button");
   commentBtn.id = "commentBtn";
   commentBtn.classList.add("comment-btn");
 
-  // 댓글 버튼 클릭 시 댓글 입력창 포커스
-  commentBtn.addEventListener("click", () => {
-    commentInput.focus();
-  });
-
-  // DM 버튼
   const dmBtn = document.createElement("button");
   dmBtn.id = "dmBtn";
   dmBtn.classList.add("dm-btn");
-
-  // DM 버튼 클릭 시 DM 모달창 열림
-  dmBtn.addEventListener("click", () => {
-    const dmContainer = document.getElementById("dmContainer");
-    dmContainer.style.display = "flex";
-    dmContainer.classList.add("scrollrock");
-  });
 
   const heartIcon = document.createElement("i");
   heartIcon.classList.add("fa-regular", "fa-heart");
@@ -265,18 +222,6 @@ function createBoard(board) {
   const bookmarkBtn = document.createElement("button");
   bookmarkBtn.id = "bookmarkBtn";
   bookmarkBtn.classList.add("bookmark-btn");
-
-  // 북마크 버튼 클릭 시 이벤트 추가
-  bookmarkBtn.addEventListener("click", () => {
-    const emptyIcon = '<i class="fa-regular fa-bookmark"></i>';
-    const solidIcon = '<i class="fa-solid fa-bookmark"></i>';
-
-    if (bookmarkBtn.innerHTML == emptyIcon) {
-      bookmarkBtn.innerHTML = solidIcon;
-    } else {
-      bookmarkBtn.innerHTML = emptyIcon;
-    }
-  });
 
   const bookmarkIcon = document.createElement("i");
   bookmarkIcon.classList.add("fa-regular", "fa-bookmark");
@@ -300,13 +245,13 @@ function createBoard(board) {
   // TODO: 좋아요 수 표시
   const likeCount = document.createElement("div");
   likeCount.classList.add("like-count");
-  likeCount.innerText = "좋아요 " + board.likeCount + "개";
+  likeCount.innerText = "좋아요" + board.likeCount + "개";
+
+  mainContainerDiv.append(likeCount);
 
   // * 본문 내용
   const feedMainContentDiv = document.createElement("div");
   feedMainContentDiv.classList.add("feed-main-content");
-
-  mainContainerDiv.append(likeCount, feedMainContentDiv);
 
   const feedContentDiv = document.createElement("div");
   feedContentDiv.classList.add("feed-content", "one-line");
@@ -395,7 +340,7 @@ function createBoard(board) {
 
       // commentLi의 자식요소 commentFirstChild, moreReply
       const commentFirstChild = document.createElement("div");
-      commentFirstChild.classList.add("comment-firstchild");
+      commentFirstChild.classList.add("comment-firstChild");
 
       commentLi.append(commentFirstChild);
 
@@ -424,18 +369,16 @@ function createBoard(board) {
 
       // commentDiv1의 자식 요소 commentFirstLine
       const commentFirstLine = document.createElement("div");
-      commentFirstLine.classList.add("comment-firstline");
+      commentFirstLine.classList.add("comment-firstLine");
 
       // commentFirstLine의 자식 요소 commentDiv2, commentDiv3
       const commentDiv2 = document.createElement("div");
       const commentDiv3 = document.createElement("div");
 
-      commentFirstLine.append(commentDiv2, commentDiv3);
-
       // commentDiv2의 자식 요소 commentMemberIdA, commentSpan
       const commentMemberIdA = document.createElement("a");
       commentMemberIdA.classList.add("comment-memberId");
-      commentMemberIdA.innerText = comment.memberNickname;
+      commentMemberIdA.innerText = comment.commentMemberId;
 
       const commentSpan = document.createElement("span");
       commentSpan.classList.add("comment-content");
@@ -447,21 +390,6 @@ function createBoard(board) {
       const commentLikeBtn = document.createElement("button");
       commentLikeBtn.classList.add("comment-like-btn");
 
-      // 새롭게 추가된 likeBtn에 클릭 이벤트 핸들러 추가
-      likeBtn.addEventListener("click", () => {
-        const emptyHeart = '<i class="fa-regular fa-heart"></i>';
-        const solidHeart = '<i class="fa-solid fa-heart"></i>';
-
-        if (!likeBtn.classList.contains("red")) {
-          likeBtn.innerHTML = "";
-          likeBtn.innerHTML = solidHeart;
-          likeBtn.classList.add("red");
-        } else {
-          likeBtn.innerHTML = emptyHeart;
-          likeBtn.classList.remove("red");
-        }
-      });
-
       // commentLikeBtn의 자식 요소 commentHeartIcon
       const commentHeartIcon = document.createElement("i");
       commentHeartIcon.classList.add("fa-regular", "fa-heart");
@@ -469,14 +397,11 @@ function createBoard(board) {
       commentLikeBtn.append(commentHeartIcon);
 
       commentDiv3.append(commentLikeBtn);
+      // commentFirstLine.append(commentDiv3, commentDiv4);
 
-      // commentDiv1의 자식 요소 createReply
-      const createReply = document.createElement("div");
-      createReply.classList.add("create-reply");
+      const commentDiv5 = document.createElement("div");
+      commentDiv5.classList.add("create-reply");
 
-      commentDiv1.append(commentFirstLine, createReply);
-
-      // createReply의 자식 요소 commentCreateDate, replyBtn, hoverBtn
       const commentCreateDate = document.createElement("span");
       commentCreateDate.innerText = comment.commentCreateDate;
 
@@ -489,7 +414,8 @@ function createBoard(board) {
       hoverBtn.setAttribute("type", "button");
       hoverBtn.classList.add("fa-solid", "fa-ellipsis", "hover-btn");
 
-      createReply.append(commentCreateDate, replyBtn, hoverBtn);
+      commentDiv5.append(commentCreateDate, replyBtn, hoverBtn);
+      commentFirstChild.append(commentFirstLine, commentDiv5);
 
       // 답글이 있으면 버튼 생성
       if (comment.replyCount > 0) {
@@ -497,37 +423,15 @@ function createBoard(board) {
         moreReply.classList.add("more-reply");
         // FIXME: 경로 설정하기
         moreReply.href = "";
-        moreReply.innerText = "모든 답글 보기(" + comment.replyCount + ")";
         commentLi.append(moreReply);
       }
     }
   }
-  // 댓글 입력창 추가
-  const commentInputArea = document.createElement("div");
-  commentInputArea.classList.add("comment-input-area");
-
-  const div4 = document.createElement("div");
-
-  commentInputArea.append(div4);
-
-  const commentInput = document.createElement("input");
-  commentInput.setAttribute("type", "text");
-  commentInput.setAttribute("name", "comment");
-  commentInput.setAttribute("placeholder", "댓글 달기...");
-  commentInput.id = "commentInput";
-  commentInput.classList.add("comment-input");
-
-  const postingBtn = document.createElement("button");
-  postingBtn.classList.add("posting-btn");
-  postingBtn.disabled = true;
-  postingBtn.innerText = "게시";
-
-  div4.append(commentInput, postingBtn);
 
   mainContainerDiv.append(feedMainContentDiv);
   mainContainerDiv.append(commentContainer);
 
-  mainContentDiv.append(mainContainerDiv, commentInputArea);
+  mainContentDiv.append(mainContainerDiv);
 
   feedDiv.append(mainContentDiv);
 
