@@ -225,8 +225,6 @@ function createBoard(board) {
     } else {
       likeBtn.innerHTML = emptyHeart;
       likeBtn.classList.remove("red");
-
-      likeCount.innerText = "좋아요 " + board.likeCount + "개";
     }
   });
 

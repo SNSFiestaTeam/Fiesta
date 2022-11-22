@@ -220,13 +220,9 @@ function createBoard(board) {
       likeBtn.innerHTML = "";
       likeBtn.innerHTML = solidHeart;
       likeBtn.classList.add("red");
-
-      likeCount.innerText = "좋아요 " + (Number(board.likeCount) + 1) + "개";
     } else {
       likeBtn.innerHTML = emptyHeart;
       likeBtn.classList.remove("red");
-
-      likeCount.innerText = "좋아요 " + board.likeCount + "개";
     }
   });
 
