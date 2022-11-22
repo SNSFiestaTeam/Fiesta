@@ -58,6 +58,7 @@
       <result property="memberNickname" column="MEMBER_NICKNAME" />
       <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
       <result property="replyCount" column="REPLY_COUNT" />
+      <result property="mentionNickname" column="MENTION_NICKNAME" />
   </resultMap>
   
   <resultMap type="Follow" id="follow_rm">
@@ -159,7 +160,12 @@
 		(SELECT COUNT(*) 
 		FROM "COMMENT" c2 
 		WHERE c2.UPPER_COMMENT_NO = c.COMMENT_NO  
-		AND c.BOARD_NO = c2.BOARD_NO) REPLY_COUNT
+		AND c.BOARD_NO = c2.BOARD_NO) REPLY_COUNT,
+		(SELECT MEMBER_NICKNAME
+		FROM "COMMENT" c2 
+		JOIN "MEMBER" m2 ON (COMMENT_MEMBER_NO = MEMBER_NO)
+		WHERE c.UPPER_COMMENT_NO = c2.COMMENT_NO  
+		AND c.BOARD_NO = c2.BOARD_NO) MENTION_NICKNAME
 	FROM "COMMENT" c
 	JOIN "MEMBER" m ON (COMMENT_MEMBER_NO = MEMBER_NO)
 	WHERE BOARD_NO = #{boardNo}) C
