@@ -44,7 +44,7 @@
           </div>
         </div>
 
-        <form action="/findAccount/changePw" method="POST" id="findAccount-frm">
+        <form action="/findAccount/changePw" method="GET" id="findAccount-frm">
             <div class="findAccount-input-area">
               <input type="text" name="memberEmail" id="memberEmail" value=""  maxlength="50" autocomplete="off" required />
               <label for="memberEmail">이메일</label>
