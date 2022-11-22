@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>instagram</title>
     <!-- 링크 주소 상대주소로 변경한거니까 다시 바꾸지 말아주세요 -->
-    <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="../../resources/css/dm-style.css" />
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    <link rel="stylesheet" href="/resources/css/dm/dm-style.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -85,6 +85,6 @@
     <!-- 푸터 -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-    <script src="/resources/js/dm.js"></script>
+    <script src="/resources/js/dm/dm.js"></script>
   </body>
 </html>

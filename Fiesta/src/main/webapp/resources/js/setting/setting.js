@@ -43,7 +43,7 @@ memberName.addEventListener("keyup", function(){
     }
 
 
-    const regEx =  /^[가-힣a-zA-Z]{3,30}$/;
+    const regEx =   /^[가-힣a-zA-Z]{2,30}$/;
     
     if(regEx.test(memberName.value)){ // 유효한 경우
     
