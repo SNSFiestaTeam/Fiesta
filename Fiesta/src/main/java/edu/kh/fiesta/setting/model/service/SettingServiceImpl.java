@@ -112,6 +112,7 @@ public class SettingServiceImpl implements SettingService{
 		return dao.memberDelete(memberNo);
 	}
 
+
 	}
 
 

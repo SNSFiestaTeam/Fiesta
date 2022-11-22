@@ -20,5 +20,6 @@ public interface SettingService {
 
 	int memberDelete(int memberNo);
 
+
 	
 }

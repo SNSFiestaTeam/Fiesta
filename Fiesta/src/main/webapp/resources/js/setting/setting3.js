@@ -16,3 +16,6 @@ if(memberDeleteForm != null){
     })
 
 }
+
+const accountFrm = document.getElementById("account-frm");
+const idOpen = document.getElementById("idOpen");

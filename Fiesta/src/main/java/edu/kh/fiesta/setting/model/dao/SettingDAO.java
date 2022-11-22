@@ -44,4 +44,6 @@ public class SettingDAO {
 		return sqlSession.update("settingMapper.memberDelete", memberNo);
 	}
 
+	
+
 }

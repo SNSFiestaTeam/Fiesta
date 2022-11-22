@@ -144,4 +144,6 @@ public class SettingController {
 	
 		return "redirect:";
 	}
+	
+
 }
