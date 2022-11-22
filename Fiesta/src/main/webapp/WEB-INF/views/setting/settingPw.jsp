@@ -46,20 +46,20 @@
                     <aside class="menu-left">
                         이전 비밀번호
                     </aside>
-                    <input type="password" id="currentPw">
+                    <input type="password" id="currentPw" name="currnetPw">
                 </div>
                 <div class="new-pw">
                     <aside class="menu-left">
                         새 비밀번호
                     </aside>
-                     <input type="password" id="newPw">
+                     <input type="password" id="newPw" name="newPw">
                 </div>
 
                 <div class="new-pw2">
                     <aside class="menu-left">
                         새 비밀번호 확인
                     </aside>
-                    <input type="password" id="newPwConfirm">
+                    <input type="password" id="newPwConfirm" name="newPwConfirm">
                 </div>
                 <div class="ch-btn">
                     <aside class="menu-left">

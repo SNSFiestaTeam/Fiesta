@@ -64,7 +64,8 @@ public class SettingController {
 	
 	@PostMapping("/Pw")
 	public String Pw(@SessionAttribute("loginMember") Member loginMember,
-			RedirectAttributes ra, @RequestParam Map<String, Object> paramMap) {
+			@RequestParam Map<String, Object> paramMap, 
+			RedirectAttributes ra) { 
 		
 		paramMap.put("memberNo", loginMember.getMemberNo());
 		
