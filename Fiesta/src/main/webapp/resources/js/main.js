@@ -308,16 +308,15 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
 
 // 댓글 답글 달기 버튼 클릭 시 인풋 태그에 @작성자 아이디 추가
 const replyBtn = document.getElementsByClassName('reply-btn');
+const commentId = document.getElementsByClassName('comment-memberId');
 
 for (let i = 0; i < replyBtn.length; i++) {
   replyBtn[i].addEventListener('click', () => {
-    const commentId = document.getElementsByClassName('comment-memberId');
     const input =
-      commentId[i].parentNode.parentNode.parentNode.parentNode.parentNode
-        .parentNode.parentNode.parentNode.parentNode.nextSibling.nextSibling
-        .firstChild.nextSibling.firstChild.nextSibling;
+      replyBtn[i].parentElement.parentElement.parentElement.parentElement
+        .parentElement.parentElement.parentElement.parentElement
+        .nextElementSibling.firstElementChild.firstElementChild;
 
-    console.log(input);
     input.value = '@' + commentId[i].innerText;
   });
 }
@@ -359,4 +358,3 @@ reportCancle.addEventListener('click', function () {
 
   body.classList.remove('scrollLock');
 });
-
