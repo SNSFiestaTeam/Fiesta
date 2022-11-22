@@ -1,8 +1,8 @@
 package edu.kh.fiesta.member.model.service;
 
-public interface EmailService {
+public interface SignUpEmailService {
 
 	String createAuthKey();
-	String findAccount(String memberEmail);
+	String signUp(String email);
 
 }

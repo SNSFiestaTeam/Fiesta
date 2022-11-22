@@ -23,8 +23,18 @@ followClose.addEventListener("click", function(){
     scrollrock.style.overflow = "visible";
 })
 
+followContainer.addEventListener("click", function(){
+    followContainer.style.display ="none";
+    scrollrock.style.overflow = "visible";
+})
+
 const followingClose = document.getElementById("following-close")
 followingClose.addEventListener("click", function(){
+    followingContainer.style.display ="none";
+    scrollrock.style.overflow = "visible";
+})
+
+followingContainer.addEventListener("click", function(){
     followingContainer.style.display ="none";
     scrollrock.style.overflow = "visible";
 })
@@ -38,3 +48,4 @@ editClose.addEventListener("click", function(){
     profileContainer.style.display = "none"
     scrollrock.style.overflow = "visible";
 })
+

@@ -40,13 +40,20 @@ public class MainServiceImpl implements MainService {
 	
 
 	@Override
-	public List<Board> selectBoardList(int memberNo, int cp) {
+	public Map<String, Object> selectBoardList(int memberNo, int cp) {
 		
 		int listCount = dao.getListCount(memberNo);		
 		
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		return dao.selectBoardList(pagination, memberNo);
+		List<Board> boardList = dao.selectBoardList(pagination, memberNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+		return map;
 	}
 	
 

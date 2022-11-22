@@ -24,7 +24,6 @@ body {
 }
 
 .info-section{
-    border-bottom: 1px solid #ddd;
     display: flex;
     flex-direction: row;
     margin-top: 40px;
@@ -110,6 +109,10 @@ body {
     font-size: 16px;
 }
 
+.title-section{
+    border-top: 1px solid #ddd;
+}
+
 #profile-follow{
     margin: 20px 0;
 }
@@ -128,6 +131,7 @@ body {
     justify-content: center;
     margin: 10px;
     font-size: 12px;
+    width: 960px;
 }
 
 #text-area a{

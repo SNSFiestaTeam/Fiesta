@@ -41,11 +41,11 @@ public class MainController {
 	@ResponseBody
 	public String selectBoardList(int memberNo, Model model, int cp) {
 		
-		List<Board> boardList = service.selectBoardList(memberNo, cp);
+		Map<String, Object> map = service.selectBoardList(memberNo, cp);
 		
 		
 	
-		return new Gson().toJson(boardList);
+		return new Gson().toJson(map);
 	}
 
 

@@ -36,11 +36,15 @@ const memberPwConfirm = document.getElementById("memberPwConfirm");
 
 const signUpButton = document.getElementById("signUpButton");
 
-const toLoginSection = document.getElementById("toLogin");
-const inputAuthSection = document.getElementById("inputAuth");
+const toLoginArea = document.getElementById("toLogin");
+const inputAuthArea = document.getElementById("inputAuth");
+const completeMessage = document.getElementById("completeMessage");
 
 const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
 const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
+
+const authKey = document.getElementById("authKey");
+
 
 
 memberEmail.focus();
@@ -129,7 +133,7 @@ memberEmail.addEventListener("input", function(){
 });
 
 
-// 성명 아이콘 : 필수 입력, 유효성 검사(한글, 영문자만 가능, 3글자 이상)
+// 성명 아이콘 : 필수 입력, 유효성 검사(한글, 영문자만 가능, 2글자 이상)
 const nameCheck = document.getElementById("nameCheck");
 
 memberName.addEventListener("input", function(){
@@ -141,7 +145,7 @@ memberName.addEventListener("input", function(){
     } 
     
     // 유효성 검사
-    const regEx = /^[가-힣a-zA-Z]{3,30}$/;
+    const regEx = /^[가-힣a-zA-Z]{2,30}$/;
     
     if(regEx.test(memberName.value)){
         nameCheck.classList.add("iVisible", "green");
@@ -158,14 +162,6 @@ memberName.addEventListener("input", function(){
 
 
 // 사용자 이름 : 필수 입력, 유효성 검사 + 중복검사
-// 자동완성 지우기
-// document.addEventListener("DOMContentLoaded", function(){
-//     memberNickname.removeAttribute("readonly");
-//     memberNickname.value = "123";
-//     memberNickname.value = "";
-// })
-
-
 const nickCheck = document.getElementById("nickCheck");
 const nickXmark = document.getElementById("nickXmark");
 const nickRefresh = document.getElementById("nickRefresh");
@@ -290,7 +286,7 @@ memberPw.addEventListener("input", () => {
     } 
     
     // 유효성 검사
-    const regEx = /^[\w~!@#$%^&*-_]{6,30}$/;
+    const regEx = /^[\w~!@#$%^&*-_]{8,30}$/;
 
     // 유효o
     if(regEx.test(memberPw.value)){
@@ -403,23 +399,24 @@ memberEmail.addEventListener("input", () => {
 
 
 
-toLoginSection.classList.add("displayOn");
+toLoginArea.classList.add("displayFlex");
 
 
 // '이메일로 인증번호 보내기' 버튼 활성화
 memberEmail.addEventListener("input", () => {
 
     signUpButton.classList.add("displayOff");
-    signUpButton.classList.remove("displayOn");
-    sendAuthKeyBtn.classList.add("displayOn", "authButtonOn");
+    signUpButton.classList.remove("displayBlock");
+    sendAuthKeyBtn.classList.add("displayBlock", "authButtonOn");
     sendAuthKeyBtn.classList.remove("displayOff");
     checkAuthKeyBtn.classList.add("gray");
     checkAuthKeyBtn.classList.remove("green");
+    
 
     if(memberEmail.value.trim().length==0){
-        sendAuthKeyBtn.classList.remove("displayOn", "authButtonOn");
+        sendAuthKeyBtn.classList.remove("displayBlock", "authButtonOn");
         sendAuthKeyBtn.classList.add("displayOff");
-        signUpButton.classList.add("displayOn");
+        signUpButton.classList.add("displayBlock");
         signUpButton.classList.remove("displayOff")
     }
 
@@ -432,23 +429,12 @@ memberEmail.addEventListener("input", () => {
         sendAuthKeyBtn.classList.add("buttonOff");
         sendAuthKeyBtn.classList.remove("authButtonOn");
         sendAuthKeyBtn.disabled = true;
-        
-        
     }
 })
 
 
-// //인증번호 입력창 보이기
-// sendAuthKeyBtn.addEventListener("click", function(){
-//     toLoginSection.classList.add("displayOff");
-//     toLoginSection.classList.remove("displayOn");
-//     inputAuthSection.classList.add("displayOn");
-//     inputAuthSection.classList.remove("displayOff");
-// });
-
-
 // 이메일 인증코드 발송, 확인
-const authTimerArea = document.getElementById("authTimerArea");
+let authTimerArea = document.getElementById("authTimer-area");
 let authTimer;
 let authMin = 4;
 let authSec = 59;
@@ -456,11 +442,17 @@ let authSec = 59;
 
 sendAuthKeyBtn.addEventListener("click", function(){
     // 인증번호 입력창 보이기
-    toLoginSection.style.display="none";
-    toLoginSection.classList.remove("displayOn");
-    inputAuthSection.style.display="flex";
-    inputAuthSection.classList.remove("displayOff");
+    toLoginArea.classList.add("displayOff");
+    toLoginArea.classList.remove("displayFlex");
+    inputAuthArea.classList.add("displayFlex");
+    inputAuthArea.classList.remove("displayOff");
+    checkAuthKeyBtn.innerHTML = "인증하기";
     
+    // 이메일 인증 완료 후 이메일 수정할 경우, 이메일 인증완료 메시지가 남아있는 문제 해결
+    completeMessage.classList.add("displayOff")
+    completeMessage.classList.remove("displayFlex")
+
+    authKey.value = "";
 
     // 타이머
     authMin = 4;
@@ -488,7 +480,6 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
         
         authTimerArea.innerText = "05:00";
-        // checkAuthKeyBtn.classList.remove("confirm");
 
         authTimer = window.setInterval(()=>{
         //_ 인터벌을 변수에 저장해야 나중에 clearInterval이 가능함.
@@ -520,9 +511,29 @@ sendAuthKeyBtn.addEventListener("click", function(){
 });
 
 
-// 인증 확인
-const authKey = document.getElementById("authKey");
+checkAuthKeyBtn.classList.add("gray");
 
+
+// 인증하기 버튼 
+inputAuthArea.addEventListener("click", () => {
+    checkAuthKeyBtn.innerHTML = "인증하기"
+    checkAuthKeyBtn.classList.add("gray");
+    checkAuthKeyBtn.classList.remove("red", "black");
+
+    // 인증번호 입력하면 인증하기버튼 초록색으로
+    inputAuthArea.addEventListener("input", ()=> {
+        checkAuthKeyBtn.classList.add("black");
+        checkAuthKeyBtn.classList.remove("gray", "red");
+        
+        if(authKey.value.trim().length ==  0) {
+            checkAuthKeyBtn.classList.add("gray");
+            checkAuthKeyBtn.classList.remove("red", "black");
+        } 
+    })
+})
+
+
+// 인증 확인
 checkAuthKeyBtn.addEventListener("click", function(){
 
     if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
@@ -534,13 +545,34 @@ checkAuthKeyBtn.addEventListener("click", function(){
 
                 if(result > 0){
                     clearInterval(authTimer);
-                    authKeyMessage.innerText = "인증되었습니다.";
-                    authKeyMessage.classList.add("confirm");
                     checkObj.authKey = true;
 
+                    // 인증 완료 표시
+                    completeMessage.classList.add("displayFlex");
+                    completeMessage.classList.remove("displayOff");
+                    inputAuthArea.classList.add("displayOff");
+                    inputAuthArea.classList.remove("displayFlex");
+
+                    
+                    // 가입 버튼 다시 보이게
+                    signUpButton.classList.add("displayBlock", "buttonOn");
+                    signUpButton.classList.remove("displayOff", "buttonOff");
+                    signUpButton.disabled = false;
+                    sendAuthKeyBtn.classList.add("displayOff");
+                    sendAuthKeyBtn.classList.remove("displayBlock", "authButtonOn");
+
+                    
+
                 } else{
-                    alert("인증번호가 일치하지 않습니다.")
+                    // alert("인증번호가 일치하지 않습니다.")
                     checkObj.authKey = false;
+                    checkAuthKeyBtn.innerHTML = "불일치";
+                    checkAuthKeyBtn.classList.add("red");
+                    checkAuthKeyBtn.classList.remove("black");
+                    
+                    if(authKey.value.trim().length > 1){
+                        authKey.value = "";
+                    }
                 }
             }, 
             
@@ -553,22 +585,20 @@ checkAuthKeyBtn.addEventListener("click", function(){
     } else{
         alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
     }
-
-
 });
 
 
-// 가입버튼 활성화/비활성화
-checkAuthKeyBtn.addEventListener("click", () => {
-    
+
+// 버튼 활성화/비활성화
+document.getElementById("signUp-frm").addEventListener("input", function(){
     for(let key in checkObj){
-    
+
         // 가입하기 버튼 비활성화
         if( !checkObj[key] ){
             signUpButton.classList.add("buttonOff");
             signUpButton.classList.remove("buttonOn");
             signUpButton.disabled = true;
-    
+
         } else{
             // 가입하기 버튼 활성화    
             signUpButton.classList.add("buttonOn");
@@ -576,24 +606,4 @@ checkAuthKeyBtn.addEventListener("click", () => {
             signUpButton.disabled = false;
         }  
     }
-})
-
-
-// 버튼 활성화/비활성화
-// document.getElementById("signUp-frm").addEventListener("input", function(){
-//     for(let key in checkObj){
-
-//         // 가입하기 버튼 비활성화
-//         if( !checkObj[key] ){
-//             signUpButton.classList.add("buttonOff");
-//             signUpButton.classList.remove("buttonOn");
-//             signUpButton.disabled = true;
-
-//         } else{
-//             // 가입하기 버튼 활성화    
-//             signUpButton.classList.add("buttonOn");
-//             signUpButton.classList.remove("buttonOff");
-//             signUpButton.disabled = false;
-//         }  
-//     }
-// });
+});
