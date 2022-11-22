@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>instagram</title>
-  <link rel="stylesheet" href="/resources/css/common-style.css" />
-  <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
-
-
-  <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
-</head>
-
-
-<body>
-  
-  <!-- 메인 섹션 -->
-  <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
-  <main>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <form action="#">
       <button name="close" id="close-post">
         <span id="post-x"><i class="fa-solid fa-x"></i></span>
@@ -92,8 +73,3 @@
 
 
     </div>
-  </main>
- 
-</body>
-
-</html>

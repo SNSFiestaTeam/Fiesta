@@ -22,9 +22,11 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
     <link rel="stylesheet" href="/resources/css/comment-style.css" />
     <link rel="stylesheet" href="/resources/css/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/flexslider.css" />
-    <%--
+
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-    --%>
+    <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -163,30 +165,30 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
 
                                   <ul>
                                     <!-- 두번째 댓글의 답글 -->
-                                    <!-- <li class="comment" id="reply">
-                              <div class="reply-firstchild">
-                                <a href="#" class="comment-profile">
-                                  <img class="comment-profile-image" src="/resources/images/karina.jpeg" />
-                                </a>
-                                <div>
-                                  <div class="reply-firstline">
-                                    <div>
-                                      <a href="#" class="reply-memberId">karina_aespas_</a>
-                                      <a href="#" class="mention">@for_everyoung10</a>
-                                      <span class="comment-content">나두 사랑해</span>
-                                    </div>
-                                    <div>
-                                      <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
-                                    </div>
-                                  </div>
-                                  <div class="create-reply">
-                                    <a href="#">${comment.commentCreateDate}</a>
-                                    <a href="#" class="reply-btn2">답글 달기</a>
-                                    <button type="button" class="fa-solid fa-ellipsis hover-btn"></button>
-                                  </div>
-                                </div>
-                              </div>
-                            </li> -->
+                                    <!--<li class="comment" id="reply">
+                                      <div class="reply-firstchild">
+                                        <a href="#" class="comment-profile">
+                                          <img class="comment-profile-image" src="/resources/images/karina.jpeg" />
+                                        </a>
+                                        <div>
+                                          <div class="reply-firstline">
+                                            <div>
+                                              <a href="#" class="reply-memberId">karina_aespas_</a>
+                                              <a href="#" class="mention">@for_everyoung10</a>
+                                              <span class="comment-content">나두 사랑해</span>
+                                            </div>
+                                            <div>
+                                              <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
+                                            </div>
+                                          </div>
+                                          <div class="create-reply">
+                                            <span>${comment.commentCreateDate}<span>
+                                            <button class="reply-btn">답글 달기</button>
+                                            <button type="button" class="fa-solid fa-ellipsis hover-btn"></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li> -->
                                     <!-- 답글 li 종료 -->
                                   </ul>
                                 </li>
@@ -220,6 +222,9 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
 
     <!-- 모달창 include -->
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
+
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
 
