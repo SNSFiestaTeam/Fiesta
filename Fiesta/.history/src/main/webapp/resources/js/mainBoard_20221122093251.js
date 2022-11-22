@@ -344,15 +344,9 @@ function createBoard(board) {
 
       commentLi.append(commentFirstChild);
 
-      // commentFirstChild의 자식 요소 commentProfileA, commentDiv1
       const commentProfileA = document.createElement("a");
       commentProfileA.classList.add("comment-profile");
 
-      const commentDiv1 = document.createElement("div");
-
-      commentFirstChild.append(commentProfileA, commentDiv1);
-
-      // commentProfileA의 자식 요소 commentProfileImg
       const commentProfileImg = document.createElement("img");
       commentProfileImg.classList.add("comment-profile-image");
 
@@ -367,17 +361,13 @@ function createBoard(board) {
         );
       }
 
-      // commentDiv1의 자식 요소 commentFirstLine
       const commentFirstLine = document.createElement("div");
       commentFirstLine.classList.add("comment-firstLine");
 
-      // commentFirstLine의 자식 요소 commentDiv2, commentDiv3
-      const commentDiv2 = document.createElement("div");
-      const commentDiv3 = document.createElement("div");
+      commentFirstChild.append(commentProfileA, commentFirstLine);
 
-      commentFirstLine.append(commentDiv2, commentDiv3);
+      const commentDiv1 = document.createElement("div");
 
-      // commentDiv2의 자식 요소 commentMemberIdA, commentSpan
       const commentMemberIdA = document.createElement("a");
       commentMemberIdA.classList.add("comment-memberId");
       commentMemberIdA.innerText = comment.commentMemberId;
@@ -386,27 +376,24 @@ function createBoard(board) {
       commentSpan.classList.add("comment-content");
       commentSpan.innerText = comment.commentContent;
 
-      commentDiv2.append(commentMemberIdA, commentSpan);
+      commentDiv1.append(commentMemberIdA, commentSpan);
 
-      // commentDiv3의 자식 요소 commentLikeBtn
+      const commentDiv4 = document.createElement("div");
+
       const commentLikeBtn = document.createElement("button");
       commentLikeBtn.classList.add("comment-like-btn");
 
-      // commentLikeBtn의 자식 요소 commentHeartIcon
       const commentHeartIcon = document.createElement("i");
       commentHeartIcon.classList.add("fa-regular", "fa-heart");
 
       commentLikeBtn.append(commentHeartIcon);
 
-      commentDiv3.append(commentLikeBtn);
+      commentDiv4.append(commentLikeBtn);
+      // commentFirstLine.append(commentDiv3, commentDiv4);
 
-      // commentDiv1의 자식 요소 createReply
-      const createReply = document.createElement("div");
-      createReply.classList.add("create-reply");
+      const commentDiv5 = document.createElement("div");
+      commentDiv5.classList.add("create-reply");
 
-      commentDiv1.append(createReply);
-
-      // createReply의 자식 요소 commentCreateDate, replyBtn, hoverBtn
       const commentCreateDate = document.createElement("span");
       commentCreateDate.innerText = comment.commentCreateDate;
 
@@ -419,7 +406,8 @@ function createBoard(board) {
       hoverBtn.setAttribute("type", "button");
       hoverBtn.classList.add("fa-solid", "fa-ellipsis", "hover-btn");
 
-      createReply.append(commentCreateDate, replyBtn, hoverBtn);
+      commentDiv5.append(commentCreateDate, replyBtn, hoverBtn);
+      commentFirstChild.append(commentFirstLine, commentDiv5);
 
       // 답글이 있으면 버튼 생성
       if (comment.replyCount > 0) {
@@ -429,8 +417,6 @@ function createBoard(board) {
         moreReply.href = "";
         commentLi.append(moreReply);
       }
-
-      console.log(commentLi);
     }
   }
 

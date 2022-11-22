@@ -400,13 +400,9 @@ function createBoard(board) {
 
       commentDiv3.append(commentLikeBtn);
 
-      // commentDiv1의 자식 요소 createReply
       const createReply = document.createElement("div");
       createReply.classList.add("create-reply");
 
-      commentDiv1.append(createReply);
-
-      // createReply의 자식 요소 commentCreateDate, replyBtn, hoverBtn
       const commentCreateDate = document.createElement("span");
       commentCreateDate.innerText = comment.commentCreateDate;
 
@@ -419,7 +415,8 @@ function createBoard(board) {
       hoverBtn.setAttribute("type", "button");
       hoverBtn.classList.add("fa-solid", "fa-ellipsis", "hover-btn");
 
-      createReply.append(commentCreateDate, replyBtn, hoverBtn);
+      commentDiv5.append(commentCreateDate, replyBtn, hoverBtn);
+      commentFirstChild.append(commentFirstLine, commentDiv5);
 
       // 답글이 있으면 버튼 생성
       if (comment.replyCount > 0) {
@@ -429,8 +426,6 @@ function createBoard(board) {
         moreReply.href = "";
         commentLi.append(moreReply);
       }
-
-      console.log(commentLi);
     }
   }
 
