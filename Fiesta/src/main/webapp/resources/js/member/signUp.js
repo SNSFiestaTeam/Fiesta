@@ -133,7 +133,7 @@ memberEmail.addEventListener("input", function(){
 });
 
 
-// 성명 아이콘 : 필수 입력, 유효성 검사(한글, 영문자만 가능, 3글자 이상)
+// 성명 아이콘 : 필수 입력, 유효성 검사(한글, 영문자만 가능, 2글자 이상)
 const nameCheck = document.getElementById("nameCheck");
 
 memberName.addEventListener("input", function(){
@@ -145,7 +145,7 @@ memberName.addEventListener("input", function(){
     } 
     
     // 유효성 검사
-    const regEx = /^[가-힣a-zA-Z]{3,30}$/;
+    const regEx = /^[가-힣a-zA-Z]{2,30}$/;
     
     if(regEx.test(memberName.value)){
         nameCheck.classList.add("iVisible", "green");
@@ -286,7 +286,7 @@ memberPw.addEventListener("input", () => {
     } 
     
     // 유효성 검사
-    const regEx = /^[\w~!@#$%^&*-_]{6,30}$/;
+    const regEx = /^[\w~!@#$%^&*-_]{8,30}$/;
 
     // 유효o
     if(regEx.test(memberPw.value)){

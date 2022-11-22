@@ -92,7 +92,7 @@ memberPw.addEventListener("input", () => {
     } 
     
     // 유효성 검사
-    const regEx = /^[\w~!@#$%^&*-_]{6,30}$/;
+    const regEx = /^[\w~!@#$%^&*-_]{8,30}$/;
 
     // 유효o
     if(regEx.test(memberPw.value)){
