@@ -220,13 +220,9 @@ function createBoard(board) {
       likeBtn.innerHTML = "";
       likeBtn.innerHTML = solidHeart;
       likeBtn.classList.add("red");
-
-      likeCount.innerText = "좋아요 " + (Number(board.likeCount) + 1) + "개";
     } else {
       likeBtn.innerHTML = emptyHeart;
       likeBtn.classList.remove("red");
-
-      likeCount.innerText = "좋아요 " + board.likeCount + "개";
     }
   });
 
@@ -267,16 +263,7 @@ function createBoard(board) {
   bookmarkBtn.classList.add("bookmark-btn");
 
   // 북마크 버튼 클릭 시 이벤트 추가
-  bookmarkBtn.addEventListener("click", () => {
-    const emptyIcon = '<i class="fa-regular fa-bookmark"></i>';
-    const solidIcon = '<i class="fa-solid fa-bookmark"></i>';
-
-    if (bookmarkBtn.innerHTML == emptyIcon) {
-      bookmarkBtn.innerHTML = solidIcon;
-    } else {
-      bookmarkBtn.innerHTML = emptyIcon;
-    }
-  });
+  bookmarkBtn.addEventListener("click", () => {});
 
   const bookmarkIcon = document.createElement("i");
   bookmarkIcon.classList.add("fa-regular", "fa-bookmark");
@@ -300,7 +287,7 @@ function createBoard(board) {
   // TODO: 좋아요 수 표시
   const likeCount = document.createElement("div");
   likeCount.classList.add("like-count");
-  likeCount.innerText = "좋아요 " + board.likeCount + "개";
+  likeCount.innerText = "좋아요" + board.likeCount + "개";
 
   // * 본문 내용
   const feedMainContentDiv = document.createElement("div");
