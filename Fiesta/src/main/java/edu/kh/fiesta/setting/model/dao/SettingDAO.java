@@ -20,10 +20,10 @@ public class SettingDAO {
 		
 	}
 
-	public int Pw(Map<String, Object> paramMap) {
+	public int changePw(Map<String, Object> paramMap) {
 
 		
-		return sqlSession.update("settingMapper.Pw", paramMap);
+		return sqlSession.update("settingMapper.changePw", paramMap);
 	}
 
 	public int updateSetting(Member inputMember) {
@@ -36,8 +36,8 @@ public class SettingDAO {
 		return sqlSession.selectOne("settingMapper.nicknameDupCheck", memberNickname);
 	}
 
-	public int updateImg(Member loginMember) {
-		return sqlSession.update("settingMapper.updateImg", loginMember);
+	public int updateImage(Member loginMember) {
+		return sqlSession.update("settingMapper.updateImage", loginMember);
 	}
 
 	public int memberDelete(int memberNo) {

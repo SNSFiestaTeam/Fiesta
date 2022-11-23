@@ -28,8 +28,8 @@
 
             <ul class="list-group">
                 <li><a href="/setting/setting">프로필 편집</a></li>
-                <li><a href="/setting/setting/Pw">비밀번호 변경</a></li>
-                <li><a href="/setting/setting/3">개인정보 및 보안</a></li>
+                <li><a href="/setting/setting/changePw">비밀번호 변경</a></li>
+                <li><a href="/setting/setting/changeEtc">개인정보 및 보안</a></li>
             </ul>
             
         </section>
@@ -59,10 +59,10 @@
           </form>
 
           <section class="secession">
-            <form action="3" method="POST" id="memberDeleteForm">
+            <form action="delete" method="POST" id="memberDeleteForm" onsubmit="return memberDeleteValidate()">
               <h2>계정 탈퇴</h2>
               <span class="like-2">계정을 탈퇴할 수 있습니다.</span>
-              <button type="button" id="secession-btn">계정 탈퇴하기</button>
+              <button id="secession-btn">계정 탈퇴하기</button>
             </form>
 
           </section>
