@@ -49,3 +49,8 @@ editClose.addEventListener("click", function(){
     scrollrock.style.overflow = "visible";
 })
 
+const a = document.getElementById("a");
+a.addEventListener("click", function(){
+    a.style.borderTop = "1px solid red";
+});
+

@@ -65,7 +65,7 @@
         <!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
      <id property = "fromMemberNo" column="F_FROM_MEMBER_NO"/>
      <!-- 나머지 일반 컬럼 -->
-      <result property="toTargetNo" column="F_T0_TARGET_NO" />
+      <result property="toTargetNo" column="F_TO_TARGET_NO" />
       <result property="followType" column="FOLLOW_TYPE" />
       <result property="followAcceptFlag" column="FOLLOW_ACCEPT_FL" />
   </resultMap>
@@ -89,7 +89,7 @@
   
   <!-- 팔로잉 멤버 조회 -->
   <select id="selectFollowing" parameterType="_int" resultMap="follow_rm">
-  	SELECT F_FROM_MEMBER_NO, F_T0_TARGET_NO 
+  	SELECT F_FROM_MEMBER_NO, F_TO_TARGET_NO 
 	FROM FOLLOW f 
 	WHERE F_FROM_MEMBER_NO = #{memberNo}
   </select>
@@ -99,7 +99,7 @@
   	SELECT COUNT(*)
 	FROM BOARD b
 	WHERE BOARD_DEL_FL = 'N'
-	AND b.MEMBER_NO IN (SELECT F_T0_TARGET_NO FROM FOLLOW WHERE F_FROM_MEMBER_NO = #{memberNo})
+	AND b.MEMBER_NO IN (SELECT F_TO_TARGET_NO FROM FOLLOW WHERE F_FROM_MEMBER_NO = #{memberNo})
 	ORDER BY b.BOARD_NO DESC
   </select>
   
@@ -128,7 +128,7 @@
 	FROM BOARD b
 	JOIN "MEMBER" M ON(b.MEMBER_NO = M.MEMBER_NO)
 	WHERE BOARD_DEL_FL = 'N' ]]>
-	AND b.MEMBER_NO IN (SELECT F_T0_TARGET_NO FROM FOLLOW WHERE F_FROM_MEMBER_NO = #{memberNo})
+	AND b.MEMBER_NO IN (SELECT F_TO_TARGET_NO FROM FOLLOW WHERE F_FROM_MEMBER_NO = #{memberNo})
 	ORDER BY b.BOARD_NO DESC
   </select>
   
