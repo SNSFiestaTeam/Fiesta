@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
+<link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+<%-- <link rel="stylesheet" href="/resources/css/newpost-post-style.css" /> --%>
+<%-- <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" /> --%>
+
+
+
 
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -174,7 +180,12 @@
         <jsp:include page="/WEB-INF/views/profile/follow-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/profile-edit-board.jsp"/>
+        <%-- 새게시물작성 모달jsp --%>
+        <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+      <%-- <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" /> --%>
+      <%-- <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" /> --%>
 
     <script src="/resources/js/myfeed.js"></script>
+    <script src="/resources/js/newpost.js"></script>
   </body>
 </html>

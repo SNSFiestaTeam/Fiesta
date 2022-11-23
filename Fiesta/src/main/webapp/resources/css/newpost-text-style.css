@@ -6,12 +6,13 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 15px;
   z-index: 5;
+  display: none;
 }
 
 /*------------닫기 버튼------------*/

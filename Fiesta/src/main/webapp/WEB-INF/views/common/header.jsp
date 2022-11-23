@@ -46,11 +46,13 @@
                 <i class="fa-regular fa-paper-plane"></i>
               </a>
             </li>
+            <%-- new-post버튼 --%>
             <li>
               <button id="newPostOpen">
                 <i class="fa-regular fa-square-plus" ></i>
               </button>
             </li>
+           
             <li>
               <a href="/feed/popularFeed">
                 <i class="fa-regular fa-compass"></i>
