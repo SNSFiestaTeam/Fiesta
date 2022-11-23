@@ -64,7 +64,7 @@
               </button>
             </li>
             <li>
-              <a href="/feed/myFeed">
+              <a href="/feed/${loginMember.memberNickname}">
                 <i class="fa-regular fa-user"></i>
               </a>
             </li>

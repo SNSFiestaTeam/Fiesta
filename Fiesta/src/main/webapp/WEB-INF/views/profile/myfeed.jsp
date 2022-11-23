@@ -184,7 +184,7 @@
         <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
       <%-- <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" /> --%>
       <%-- <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" /> --%>
-
+     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="/resources/js/myfeed.js"></script>
     <script src="/resources/js/newpost.js"></script>
   </body>
