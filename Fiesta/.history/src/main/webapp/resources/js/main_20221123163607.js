@@ -68,30 +68,28 @@ for (let i = 0; i < likeBtn.length; i++) {
     const boardLikeCount = document.getElementsByClassName("board-like-count");
     const boardNo = document.getElementsByClassName("board-no");
 
-
-    if (!likeBtn[i].classList.contains("fa-regular")) {
+    if (!e.target.classList.contains("red")) {
       $.ajax({
         url: "/boardLikeUp",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
+        data: { boardNo: boardNo, memberNo: memberNo },
         success: (result) => {
           if (result > 0) {
-            likeBtn[i].innerHTML = "";
-            likeBtn[i].innerHTML = solidHeart;
-            likeBtn[i].classList.add("red");
+            e.target.innerHTML = "";
+            e.target.innerHTML = solidHeart;
+            e.target.classList.add("red");
 
             boardLikeCount[i].innerText =
               Number(boardLikeCount[i].innerText) + 1;
           } else {
             console.log("증가 실패");
           }
-        }
+        },
       });
     } else {
       $.ajax({
         url: "/boardLikeDown",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
+        data: { boardNo: boardNo, memberNo: memberNo },
         success: (result) => {
-          console.log(result);
           if (result > 0) {
             likeBtn[i].innerHTML = emptyHeart;
             likeBtn[i].classList.remove("red");
@@ -99,7 +97,7 @@ for (let i = 0; i < likeBtn.length; i++) {
             boardLikeCount[i].innerText =
               Number(boardLikeCount[i].innerText) - 1;
           }
-        }
+        },
       });
     }
   });

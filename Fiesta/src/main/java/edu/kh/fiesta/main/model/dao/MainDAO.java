@@ -1,6 +1,8 @@
 package edu.kh.fiesta.main.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -42,6 +44,24 @@ public class MainDAO {
 
 		
 		return sqlSession.selectList("mainMapper.selectBoardList", memberNo, rowBounds);
+	}
+
+
+	public int boardLikeUp(int boardNo, int memberNo) {
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("boardNo", boardNo);
+		map.put("memberNo", memberNo);
+		
+		return sqlSession.insert("mainMapper.boardLikeUp", map);
+	}
+
+
+	public int boardLikeDown(int boardNo, int memberNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("boardNo", boardNo);
+		map.put("memberNo", memberNo);
+		return sqlSession.delete("mainMapper.boardLikeDown", map);
 	}
 
 }
