@@ -64,14 +64,10 @@ body {
 }
 
 
-#nickname >a:first-child{
+#nickname >span:first-child{
     padding-top: 10px;
     font-size: 28px;
     font-weight: 150;
-}
-
-#nickname > a:nth-child(1){
-    
     margin-right: 20px;
 }
 
@@ -101,13 +97,12 @@ body {
 #text-area{
     display: flex;
     justify-content: center;
-    margin: 10px;
     font-size: 12px;
-    width: 960px;
+    width: 980px;
 }
 
-#text-area a{
-    padding: 0px 30px;
+#text-area span{
+    padding:15px 30px 5px;
 }
 
 .feed-section{

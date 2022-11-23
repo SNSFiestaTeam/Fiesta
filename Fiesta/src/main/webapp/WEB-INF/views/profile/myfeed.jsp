@@ -45,7 +45,7 @@
 
           <div id="profile-text">
             <div id="nickname">
-              <a href="#">karina_aespas_</a>
+              <span>${loginMember.memberNickname}</span>
 
               <button id="btn">
                 <a href="/setting/setting">프로필 편집</a>
@@ -65,13 +65,13 @@
         </section>
 
         <section class="title-section">
-          <p id="text-area">
-            <a href="#"><i class="fa-solid fa-chess-board"></i> 게시물</a>
+          <div id="text-area">
+            <span id="a"><i class="fa-solid fa-chess-board"></i> 게시물</span>
 
-            <a href=""><i class="fa-regular fa-bookmark"></i> 저장됨</a>
+            <span class=""><i class="fa-regular fa-bookmark"></i> 저장됨</span>
 
-            <a href=""><i class="fa-solid fa-children"></i> 태그됨</a>
-          </p>
+            <span class=""><i class="fa-solid fa-children"></i> 태그됨</span>
+          </div>
         </section>
 
         <section class="feed-section">
