@@ -69,7 +69,7 @@ for (let i = 0; i < likeBtn.length; i++) {
     const boardNo = document.getElementsByClassName("board-no");
 
 
-    if (!likeBtn[i].classList.contains("fa-regular")) {
+    if (!likeBtn[i].classList.contains("red")) {
       $.ajax({
         url: "/boardLikeUp",
         data: { "boardNo": boardNo[i].value, "memberNo": memberNo },

@@ -92,10 +92,8 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                   <div class="comment-icon-menu">
                     <div>
                     <c:if test="${board.likeCheck == 1}">
-                      <button id="likeBtn" class="like-btn"><i class="fa-solid fa-heart red"></i></button>
-                    </c:if>
-                    <c:if test="${board.likeCheck == 0}">
                       <button id="likeBtn" class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                    
                     </c:if>
                       <button id="commentBtn" class="comment-btn"><i class="fa-regular fa-comment"></i></button>
                       <button id="dmBtn" class="dm-btn"><i class="fa-regular fa-paper-plane"></i></button>

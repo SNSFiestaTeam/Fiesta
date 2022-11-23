@@ -68,11 +68,10 @@ for (let i = 0; i < likeBtn.length; i++) {
     const boardLikeCount = document.getElementsByClassName("board-like-count");
     const boardNo = document.getElementsByClassName("board-no");
 
-
-    if (!likeBtn[i].classList.contains("fa-regular")) {
+    if (likeBtn[i].classList.contains("red")) {
       $.ajax({
         url: "/boardLikeUp",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
+        data: { "boardNo": boardNo, "memberNo": memberNo },
         success: (result) => {
           if (result > 0) {
             likeBtn[i].innerHTML = "";
@@ -89,9 +88,8 @@ for (let i = 0; i < likeBtn.length; i++) {
     } else {
       $.ajax({
         url: "/boardLikeDown",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
+        data: { "boardNo": boardNo, "memberNo": memberNo },
         success: (result) => {
-          console.log(result);
           if (result > 0) {
             likeBtn[i].innerHTML = emptyHeart;
             likeBtn[i].classList.remove("red");

@@ -68,12 +68,14 @@ for (let i = 0; i < likeBtn.length; i++) {
     const boardLikeCount = document.getElementsByClassName("board-like-count");
     const boardNo = document.getElementsByClassName("board-no");
 
+    console.log(likeBtn[i].classList.contains("red"));
 
-    if (!likeBtn[i].classList.contains("fa-regular")) {
+    if (likeBtn[i].classList.contains("red")) {
       $.ajax({
         url: "/boardLikeUp",
         data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
         success: (result) => {
+          console.log(result);
           if (result > 0) {
             likeBtn[i].innerHTML = "";
             likeBtn[i].innerHTML = solidHeart;

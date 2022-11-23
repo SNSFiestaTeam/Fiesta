@@ -494,7 +494,7 @@ function createBoard(board) {
       // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
       replyBtn.addEventListener("click", () => {
         commentInput.value = "";
-        commentInput.value = "@" + commentMemberIdA.innerText + " ";
+        commentInput.value += "@" + commentMemberIdA.innerText + " ";
       });
 
       const hoverBtn = document.createElement("button");
@@ -643,7 +643,7 @@ function createBoard(board) {
               // 만약 이미 언급된 닉네임일 시 추가 안됨
               replyBtn.addEventListener("click", () => {
                 commentInput.value = "";
-                commentInput.value = "@" + replyMemberIdA.innerText + " ";
+                commentInput.value += "@" + replyMemberIdA.innerText + " ";
               });
 
               const hoverBtn = document.createElement("button");
@@ -688,11 +688,11 @@ function createBoard(board) {
 
   // 댓글 입력창에 입력 이벤트 추가
   commentInput.addEventListener("input", () => {
-    if (commentInput.value.trim().length == 0) {
-      postingBtn.setAttribute("disabled", true);
+    if (commentInput[i].value.trim().length == 0) {
+      postingBtn[i].setAttribute("disabled", true);
       return;
     } else {
-      postingBtn.removeAttribute("disabled");
+      postingBtn[i].removeAttribute("disabled");
       return;
     }
   });
