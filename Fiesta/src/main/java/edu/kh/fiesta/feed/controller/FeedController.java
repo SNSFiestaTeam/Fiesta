@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FeedController {
 	
-	@GetMapping("/feed/myFeed")
+	@GetMapping("/feed/{memberNickname}")
 	public String myfeed(){
+				
 		return "profile/myfeed";
 	}
 	

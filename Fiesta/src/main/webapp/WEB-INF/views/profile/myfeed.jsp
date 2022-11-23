@@ -33,13 +33,19 @@
         <section class="info-section">
           <div id="profile-photo">
             <button id="self">
-              <img id="selfImg" src="/resources/images/karina.jpeg" />
+              <c:if test="${ empty loginMember.memberProfileImg}">
+                <img id="selfImg" src="/resources/images/profile.jpg" />
+              </c:if>
+
+              <c:if test="${ !empty loginMember.memberProfileImg}">
+                <img id="selfImg" src="${loginMember.memberProfileImg}" />
+              </c:if>
             </button>
           </div>
 
           <div id="profile-text">
             <div id="nickname">
-              <a href="#">karina_aespas_</a>
+              <span>${loginMember.memberNickname}</span>
 
               <button id="btn">
                 <a href="/setting/setting">프로필 편집</a>
@@ -59,13 +65,13 @@
         </section>
 
         <section class="title-section">
-          <p id="text-area">
-            <a href="#"><i class="fa-solid fa-chess-board"></i> 게시물</a>
+          <div id="text-area">
+            <span id="a"><i class="fa-solid fa-chess-board"></i> 게시물</span>
 
-            <a href=""><i class="fa-regular fa-bookmark"></i> 저장됨</a>
+            <span class=""><i class="fa-regular fa-bookmark"></i> 저장됨</span>
 
-            <a href=""><i class="fa-solid fa-children"></i> 태그됨</a>
-          </p>
+            <span class=""><i class="fa-solid fa-children"></i> 태그됨</span>
+          </div>
         </section>
 
         <section class="feed-section">
@@ -178,7 +184,7 @@
         <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
       <%-- <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" /> --%>
       <%-- <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" /> --%>
-
+     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="/resources/js/myfeed.js"></script>
     <script src="/resources/js/newpost.js"></script>
   </body>
