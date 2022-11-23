@@ -13,7 +13,7 @@
   padding: 15px;
   z-index: 5;
   /* height: 100%; */
-  display: none;
+  /* display: none; */
 }
 
 /*------------닫기 버튼------------*/
@@ -163,8 +163,7 @@
   /* list-style: none; */
   object-fit: none;
 }
-
-#eidtFile {
+.eidt-file >img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -339,7 +338,7 @@
 }
 
 /* 파일 추가 "컴퓨터에서 선택' */
-.add-files>label {
+.edit-add-file-input {
 
   width: 50px;
   height: 50px;
@@ -347,20 +346,20 @@
   color: rgb(192, 192, 192);
   border: 1px solid white;
   cursor: pointer;
-  border-radius: 50;
+  border-radius: 50px;
   margin:0 10px;
+  /* z-index: 10000; */
+  /* cursor: pointer; */
 }
 
 /*파일 추가 "컴퓨터에서 선택' + 아이콘  */
-.add-files>label>i {
+
+.edit-add-file-input > label > i {
   justify-content: center;
   align-items: center;
   padding: 15px;
 }
 
-.add-files>button {
-  display: none;
-}
 
 /* 파일미리보기 영역 */
 .file-preview-and-remove{

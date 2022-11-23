@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 모달 배경 -->
-    <div class="modal_background" id="modalBackgroundText">
+    <div class="modal_background" id="modalBackground">
       <!-- 닫기 버튼 -->
       <button id="new-post-close" class="new-post-close">
         <i class="fa-solid fa-x"></i>
@@ -13,7 +13,7 @@
         <!-- <div class="new-post-background"> -->
 
         <!-- 게시물 작성 top -->
-        <div class="new-post-top">
+        <div class="new-post-top-file">
           <p>새 게시물 만들기</p>
         </div>
 
@@ -29,7 +29,7 @@
                 
               </div>
               <div class="file-select-btn">
-                <label id="basicImage">기본 이미지</label>
+                <button><input id="basicImage">기본 이미지</button>
                 
               </div>
               

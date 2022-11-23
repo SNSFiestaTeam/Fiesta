@@ -33,7 +33,11 @@ basicImage.addEventListener('click', ()=>{
   modalBackground.style.display = 'none';
   modalBackgroundEidt.style.display = 'flex';
 });
-
+// edit에서 뒤로가지 Btn(+ 데이터 지우면서 뒤로 가야함)
+document.getElementById("backBtnedit").addEventListener('click',()=>{
+  modalBackgroundEidt.style.display = 'none';
+  modalBackground.style.display = 'flex';
+});
 //! 좌우슬라이드
 new Swiper('.swiper', {
   // autoplay: {
@@ -78,7 +82,11 @@ editNextBtn.addEventListener('click', () => {
 
 });
 
-
+// text에서 뒤로가지 Btn(+ 데이터 지우면서 뒤로 가야함)
+document.getElementById("backBtnText").addEventListener('click',()=>{
+  modalBackgroundText.style.display = 'none';
+  modalBackgroundEidt.style.display = 'flex';
+});
 
 
 

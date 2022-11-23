@@ -29,7 +29,7 @@
   cursor: pointer;
   color: white;
 }
-@media all and (min-width:1024px) {
+/* @media all and (min-width:1024px) {
   .new-post-background{
     width: 388px;
   }
@@ -38,8 +38,8 @@
   .new-post-background{
     width: 1055px;
   }
-}
-.modal_post_section{
+} */
+.modal_post_section-text{
   background-color: white;
   border-radius: 10px;
   width:90%;
