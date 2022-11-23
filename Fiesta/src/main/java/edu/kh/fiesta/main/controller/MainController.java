@@ -47,6 +47,26 @@ public class MainController {
 	
 		return new Gson().toJson(map);
 	}
+	
+	
+	@GetMapping("/boardLikeUp")
+	@ResponseBody
+	public int boardLikeUp(int boardNo, int memberNo) {
+		
+		int result = service.boardLikeUp(boardNo, memberNo);
+		
+		return result;
+	}
+	
+	@GetMapping("/boardLikeDown")
+	@ResponseBody
+	public int boardLikeDown(int boardNo, int memberNo) {
+		
+		int result = service.boardLikeDown(boardNo, memberNo);
+		
+		return result;
+	}
+	
 
 
 }

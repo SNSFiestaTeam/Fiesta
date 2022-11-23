@@ -1,4 +1,4 @@
-@import "./root-style.css";
+@import './root-style.css';
 
 #endList {
   height: 1px;
@@ -304,6 +304,7 @@ a.comment-profile {
 .create-reply {
   display: none;
   font-size: var(--small-font-size);
+  color: #8e8e8e;
 }
 /* 댓글 상세보기 설정 여기까지 */
 
@@ -619,6 +620,7 @@ a.comment-profile {
     margin-left: 50px;
     font-size: var(--small-font-size);
     color: #8e8e8e;
+    cursor: pointer;
   }
 
   /* 댓글 상세보기 스타일 end */

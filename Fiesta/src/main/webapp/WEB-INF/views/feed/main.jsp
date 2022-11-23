@@ -91,7 +91,12 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                 <div class="main-content-section">
                   <div class="comment-icon-menu">
                     <div>
+                    <c:if test="${board.likeCheck == 1}">
+                      <button id="likeBtn" class="like-btn"><i class="fa-solid fa-heart red"></i></button>
+                    </c:if>
+                    <c:if test="${board.likeCheck == 0}">
                       <button id="likeBtn" class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                    </c:if>
                       <button id="commentBtn" class="comment-btn"><i class="fa-regular fa-comment"></i></button>
                       <button id="dmBtn" class="dm-btn"><i class="fa-regular fa-paper-plane"></i></button>
                     </div>
@@ -102,7 +107,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
 
                   <div class="main-container">
                     <!-- 좋야요 수 표시 -->
-                    <div class="like-count">좋아요 ${board.likeCount}개</div>
+                    <div class="like-count">좋아요 <span class="board-like-count">${board.likeCount}</span>개</div>
 
                     <!-- 본문 내용 -->
                     <div class="feed-main-content">
@@ -165,30 +170,30 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
 
                                   <ul>
                                     <!-- 두번째 댓글의 답글 -->
-                                    <!-- <li class="comment" id="reply">
-                              <div class="reply-firstchild">
-                                <a href="#" class="comment-profile">
-                                  <img class="comment-profile-image" src="/resources/images/karina.jpeg" />
-                                </a>
-                                <div>
-                                  <div class="reply-firstline">
-                                    <div>
-                                      <a href="#" class="reply-memberId">karina_aespas_</a>
-                                      <a href="#" class="mention">@for_everyoung10</a>
-                                      <span class="comment-content">나두 사랑해</span>
-                                    </div>
-                                    <div>
-                                      <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
-                                    </div>
-                                  </div>
-                                  <div class="create-reply">
-                                    <a href="#">${comment.commentCreateDate}</a>
-                                    <a href="#" class="reply-btn2">답글 달기</a>
-                                    <button type="button" class="fa-solid fa-ellipsis hover-btn"></button>
-                                  </div>
-                                </div>
-                              </div>
-                            </li> -->
+                                    <!--<li class="comment" id="reply">
+                                      <div class="reply-firstchild">
+                                        <a href="#" class="comment-profile">
+                                          <img class="comment-profile-image" src="/resources/images/karina.jpeg" />
+                                        </a>
+                                        <div>
+                                          <div class="reply-firstline">
+                                            <div>
+                                              <a href="#" class="reply-memberId">karina_aespas_</a>
+                                              <a href="#" class="mention">@for_everyoung10</a>
+                                              <span class="comment-content">나두 사랑해</span>
+                                            </div>
+                                            <div>
+                                              <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
+                                            </div>
+                                          </div>
+                                          <div class="create-reply">
+                                            <span>${comment.commentCreateDate}<span>
+                                            <button class="reply-btn">답글 달기</button>
+                                            <button type="button" class="fa-solid fa-ellipsis hover-btn"></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li> -->
                                     <!-- 답글 li 종료 -->
                                   </ul>
                                 </li>
@@ -209,6 +214,7 @@ uri="http://java.sun.com/jsp/jstl/functions"%>
                   </div>
                 </div>
               </div>
+              <input type="hidden" class="board-no" value="${board.boardNo}">
             </c:forEach>
           </c:if>
         </section>
