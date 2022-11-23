@@ -62,44 +62,31 @@ shareCancleBtn.addEventListener("click", function () {
 const likeBtn = document.getElementsByClassName("like-btn");
 
 for (let i = 0; i < likeBtn.length; i++) {
-  likeBtn[i].addEventListener("click", (e) => {
+  likeBtn[i].addEventListener("click", function () {
     const emptyHeart = '<i class="fa-regular fa-heart"></i>';
     const solidHeart = '<i class="fa-solid fa-heart"></i>';
-    const boardLikeCount = document.getElementsByClassName("board-like-count");
     const boardNo = document.getElementsByClassName("board-no");
 
-
-    if (!likeBtn[i].classList.contains("fa-regular")) {
+    if (!likeBtn[i].classList.contains("red")) {
       $.ajax({
         url: "/boardLikeUp",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
+        data: { boardNo: boardNo },
         success: (result) => {
           if (result > 0) {
             likeBtn[i].innerHTML = "";
             likeBtn[i].innerHTML = solidHeart;
             likeBtn[i].classList.add("red");
-
-            boardLikeCount[i].innerText =
-              Number(boardLikeCount[i].innerText) + 1;
-          } else {
-            console.log("증가 실패");
           }
-        }
+        },
       });
     } else {
       $.ajax({
         url: "/boardLikeDown",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
+        data: { boardNo: boardNo },
         success: (result) => {
-          console.log(result);
-          if (result > 0) {
-            likeBtn[i].innerHTML = emptyHeart;
-            likeBtn[i].classList.remove("red");
-
-            boardLikeCount[i].innerText =
-              Number(boardLikeCount[i].innerText) - 1;
-          }
-        }
+          likeBtn[i].innerHTML = emptyHeart;
+          likeBtn[i].classList.remove("red");
+        },
       });
     }
   });

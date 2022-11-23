@@ -494,7 +494,7 @@ function createBoard(board) {
       // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
       replyBtn.addEventListener("click", () => {
         commentInput.value = "";
-        commentInput.value = "@" + commentMemberIdA.innerText + " ";
+        commentInput.value += "@" + commentMemberIdA.innerText + " ";
       });
 
       const hoverBtn = document.createElement("button");
@@ -642,8 +642,12 @@ function createBoard(board) {
               // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
               // 만약 이미 언급된 닉네임일 시 추가 안됨
               replyBtn.addEventListener("click", () => {
-                commentInput.value = "";
-                commentInput.value = "@" + replyMemberIdA.innerText + " ";
+                if (
+                  commentInput.value.trim() !=
+                  "@" + replyMemberIdA.innerText
+                ) {
+                  commentInput.value += "@" + replyMemberIdA.innerText + " ";
+                }
               });
 
               const hoverBtn = document.createElement("button");
@@ -685,17 +689,6 @@ function createBoard(board) {
   postingBtn.classList.add("posting-btn");
   postingBtn.disabled = true;
   postingBtn.innerText = "게시";
-
-  // 댓글 입력창에 입력 이벤트 추가
-  commentInput.addEventListener("input", () => {
-    if (commentInput.value.trim().length == 0) {
-      postingBtn.setAttribute("disabled", true);
-      return;
-    } else {
-      postingBtn.removeAttribute("disabled");
-      return;
-    }
-  });
 
   div4.append(commentInput, postingBtn);
 

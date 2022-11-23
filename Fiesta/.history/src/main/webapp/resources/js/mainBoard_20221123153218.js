@@ -643,7 +643,7 @@ function createBoard(board) {
               // 만약 이미 언급된 닉네임일 시 추가 안됨
               replyBtn.addEventListener("click", () => {
                 commentInput.value = "";
-                commentInput.value = "@" + replyMemberIdA.innerText + " ";
+                commentInput.value += "@" + replyMemberIdA.innerText + " ";
               });
 
               const hoverBtn = document.createElement("button");
