@@ -51,6 +51,15 @@ public class MemberServiceImpl implements MemberService{
 		
 		int result = dao.signUp(inputMember);
 		
+		// 회원가입되면 자기자신 팔로우
+		if(result > 0) {
+			
+			// 회원번호 조회
+			int memberNo = dao.selectMemberNo(inputMember.getMemberEmail());
+			
+			// 자기자신 팔로우
+			result = dao.followMyself(memberNo);
+		}
 		return result;
 	}
 
@@ -73,12 +82,16 @@ public class MemberServiceImpl implements MemberService{
 
 	// 계정찾기_비밀번호 재설정
 	@Override
-	public int updatePw(String memberEmail, String memberPw) {
+	public int updatePw(String inputEmail, String memberPw) {
 		
 		String encPw = bcrypt.encode(memberPw);
 		memberPw = encPw;
 		
-		return dao.updatePw(memberEmail, memberPw);
+		Member member = new Member();
+		member.setMemberEmail(inputEmail);
+		member.setMemberPw(memberPw);
+		
+		return dao.updatePw(member);
 	}
 
 

@@ -49,21 +49,8 @@ const authKey = document.getElementById("authKey");
 
 memberEmail.focus();
 signUpButton.classList.add("buttonOff");
-
-
-// 회원가입 form 제출 이벤트
-document.getElementById("signUp-frm").addEventListener("submit", function(event){
-
-    // 하나라도 false면 제출 못하게!
-    for(let key in checkObj){
-        if( !checkObj[key] ){
-            document.getElementById(key).focus();
-            event.preventDefault();
-            return;
-        }
-    }
-});
-
+signUpButton.classList.remove("buttonOn");
+// signUpButton.disabled = true;
 
 
 // icon 전체에 회색 적용
@@ -74,7 +61,9 @@ for(let item of icon){
 }
     
 
-// 이메일 아이콘 : 필수입력, 유효성 검사 + 중복검사
+
+// 이메일 
+// 아이콘 : 필수입력, 유효성 검사 + 중복검사
 const emailCheck = document.getElementById("emailCheck");
 const emailXmark = document.getElementById("emailXmark");
 
@@ -112,6 +101,9 @@ memberEmail.addEventListener("input", function(){
                     emailCheck.classList.remove("iVisible","green");
                     emailXmark.classList.remove("iHidden");
                     emailXmark.classList.add("iVisible", "red");
+                    
+                    sendAuthKeyBtn.classList.add("buttonOff");
+                    sendAuthKeyBtn.classList.remove("authButtonOn");
                     checkObj.memberEmail = false;
                 }
             },
@@ -253,6 +245,8 @@ pwEye.classList.add("iHidden");
 pwConfirmEye.classList.add("iHidden");
 pwConfirmCheck.classList.add("iHidden");
 
+
+
 memberPw.addEventListener("input", () => {
     
     // 비밀번호 보이기, 숨기기
@@ -279,6 +273,8 @@ memberPw.addEventListener("input", () => {
         pwEye.classList.remove("black");
         pwEyeSlash.classList.add("gray");
         pwEyeSlash.classList.remove("black");
+        pwConfirmCheck.classList.add("iHidden", "gray");
+        pwConfirmCheck.classList.remove("iVisible", "green");
         pwConfirmXmark.classList.add("iVisible", "gray");
         pwConfirmXmark.classList.remove("iHidden","red");
         checkObj.memberPw = false;
@@ -325,8 +321,6 @@ memberPw.addEventListener("input", () => {
 
 
 // 비밀번호 미입력 + 비밀번호 확인 먼저 입력할 경우
-memberPwConfirm.readOnly = true;
-
 memberPwConfirm.addEventListener("input", () => {
     // 비밀번호 보이기, 숨기기
     pwConfirmEye.classList.add("black");
@@ -350,6 +344,8 @@ memberPwConfirm.addEventListener("input", () => {
 
     // 필수입력
     if(memberPwConfirm.value.trim().length == 0){
+        pwConfirmCheck.classList.add("iHidden", "gray");
+        pwConfirmCheck.classList.remove("iVisible", "green");
         pwConfirmXmark.classList.add("iVisible", "gray");
         pwConfirmXmark.classList.remove("iHidden","red");
         pwConfirmEye.classList.add("gray");
@@ -390,7 +386,7 @@ document.addEventListener("DOMContentLoaded", () => {
     memberEmail.value = "";
 });
 
-memberEmail.addEventListener("input", () => {
+checkAuthKeyBtn.addEventListener("click", () => {
     memberName.removeAttribute("readonly");
     memberNickname.removeAttribute("readonly");
     memberPw.removeAttribute("readonly");
@@ -405,8 +401,8 @@ toLoginArea.classList.add("displayFlex");
 // '이메일로 인증번호 보내기' 버튼 활성화
 memberEmail.addEventListener("input", () => {
 
-    signUpButton.classList.add("displayOff");
-    signUpButton.classList.remove("displayBlock");
+    signUpButton.classList.add("displayOff", "buttonOff");
+    signUpButton.classList.remove("displayBlock", "buttonOn");
     sendAuthKeyBtn.classList.add("displayBlock", "authButtonOn");
     sendAuthKeyBtn.classList.remove("displayOff");
     checkAuthKeyBtn.classList.add("gray");
@@ -414,8 +410,8 @@ memberEmail.addEventListener("input", () => {
     
 
     if(memberEmail.value.trim().length==0){
-        sendAuthKeyBtn.classList.remove("displayBlock", "authButtonOn");
         sendAuthKeyBtn.classList.add("displayOff");
+        sendAuthKeyBtn.classList.remove("displayBlock", "authButtonOn");
         signUpButton.classList.add("displayBlock");
         signUpButton.classList.remove("displayOff")
     }
@@ -555,9 +551,8 @@ checkAuthKeyBtn.addEventListener("click", function(){
 
                     
                     // 가입 버튼 다시 보이게
-                    signUpButton.classList.add("displayBlock", "buttonOn");
-                    signUpButton.classList.remove("displayOff", "buttonOff");
-                    signUpButton.disabled = false;
+                    signUpButton.classList.add("displayBlock", "buttonOff");
+                    signUpButton.classList.remove("displayOff", "buttonOn");
                     sendAuthKeyBtn.classList.add("displayOff");
                     sendAuthKeyBtn.classList.remove("displayBlock", "authButtonOn");
 
@@ -588,7 +583,6 @@ checkAuthKeyBtn.addEventListener("click", function(){
 });
 
 
-
 // 버튼 활성화/비활성화
 document.getElementById("signUp-frm").addEventListener("input", function(){
     for(let key in checkObj){
@@ -599,11 +593,30 @@ document.getElementById("signUp-frm").addEventListener("input", function(){
             signUpButton.classList.remove("buttonOn");
             signUpButton.disabled = true;
 
-        } else{
-            // 가입하기 버튼 활성화    
-            signUpButton.classList.add("buttonOn");
-            signUpButton.classList.remove("buttonOff");
-            signUpButton.disabled = false;
-        }  
+        } 
+    }
+
+    // 가입하기 버튼 활성화
+    if(checkObj.memberEmail && checkObj.memberPw && checkObj.memberPwConfirm &&
+        checkObj.memberNickname && checkObj.memberName && checkObj.authKey) {
+        signUpButton.classList.add("buttonOn");
+        signUpButton.classList.remove("buttonOff");
+        signUpButton.disabled = false;
+    }
+
+
+});
+
+
+// 회원가입 form 제출 이벤트
+document.getElementById("signUp-frm").addEventListener("submit", function(event){
+
+    // 하나라도 false면 제출 못하게!
+    for(let key in checkObj){
+        if( !checkObj[key] ){
+            document.getElementById(key).focus();
+            event.preventDefault();
+            return;
+        }
     }
 });

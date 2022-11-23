@@ -63,4 +63,18 @@
   </update>
   
   
+  
+  <select id="selectMemberNo" resultType="_int">
+  	SELECT MEMBER_NO
+  	FROM MEMBER
+  	WHERE MEMBER_EMAIL = #{memberEmail}
+  </select>
+  
+  
+  <insert id="followMyself">
+  	INSERT INTO FOLLOW
+  	VALUES(#{memberNo}, #{memberNo}, 'M', 'Y')
+  </insert>
+  
+  
 </mapper>

@@ -339,6 +339,7 @@ main{
   .buttonOff {
     background-color: lightgray;
     color: white;
+    cursor: default;
   }
   
   .authButtonOn{

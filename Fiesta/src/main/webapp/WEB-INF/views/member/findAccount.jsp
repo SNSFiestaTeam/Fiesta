@@ -44,10 +44,10 @@
           </div>
         </div>
 
-        <form action="/findAccount/changePw" method="GET" id="findAccount-frm">
+        <form action="/findAccount/changePwPage" method="POST" id="findAccount-frm">
             <div class="findAccount-input-area">
-              <input type="text" name="memberEmail" id="memberEmail" value=""  maxlength="50" autocomplete="off" required />
-              <label for="memberEmail">이메일</label>
+              <input type="text" name="inputEmail" id="inputEmail" value=""  maxlength="50" autocomplete="off" required />
+              <label for="inputEmail">이메일</label>
 
             </div>
             <div class="findAccount-input-area" id="inputAuthArea">
@@ -91,3 +91,5 @@
     <script src="/resources/js/member/findAccount.js"></script>
   </body>
 </html>
+
+
