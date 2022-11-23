@@ -24,4 +24,22 @@ public interface MainService {
 	 */
 	public Map<String, Object> selectBoardList(int memberNo);
 
+
+
+ 	/** 게시글 좋아요 증가
+	 * @param boardNo
+	 * @param memberNo
+	 * @return result
+	 */
+	public int boardLikeUp(int boardNo, int memberNo);
+
+
+
+	/** 게시글 좋아요 감소
+	 * @param boardNo
+	 * @param memberNo
+	 * @return
+	 */
+	public int boardLikeDown(int boardNo, int memberNo);
+
 }

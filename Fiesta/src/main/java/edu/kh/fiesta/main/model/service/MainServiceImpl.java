@@ -56,7 +56,16 @@ public class MainServiceImpl implements MainService {
 		return map;
 	}
 	
+	
+	@Override
+	public int boardLikeUp(int boardNo, int memberNo) {
+		return dao.boardLikeUp(boardNo, memberNo);
+	}
 
+	@Override
+	public int boardLikeDown(int boardNo, int memberNo) {
+		return dao.boardLikeDown(boardNo, memberNo);
+	}
 	
 	
 

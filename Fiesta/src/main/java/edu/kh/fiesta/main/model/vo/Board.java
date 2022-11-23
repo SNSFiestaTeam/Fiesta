@@ -22,6 +22,7 @@ public class Board {
 	private int memberNo;
 	private String memberNickname;
 	private String memberProfileImg;
+	private int likeCheck;
 	
 	private List<BoardImg> imageList;
 	
