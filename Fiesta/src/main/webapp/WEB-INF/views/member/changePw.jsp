@@ -44,7 +44,7 @@
         </div>
 
         <section class="formSection">
-          <form action="/findAccount/changePwPage/updatePw" method="POST" id="changePw-frm">
+          <form action="/findAccount/changePw/updatePw" method="POST" id="changePw-frm">
               <div class="changePw-input-area">
                 <input type="password" name="memberPw" id="memberPw" value="" 
                      maxlength="30" autocomplete="off" required >
@@ -61,7 +61,7 @@
                 </span>
               </div>
                 
-            
+
               <div class="changePw-input-area"> <!-- 비밀번호 확인 -->
                 <input type="password" name="memberPwConfirm" id="memberPwConfirm" value="" 
                       maxlength="30" autocomplete="off" required >
@@ -78,9 +78,6 @@
                 </span>
               </div>
               <button class="changePw-button" id="changePwBtn">비밀번호 변경하기</button>
-
-              <%-- 이전 페이지에서 inputEmail 받아오기 위해서 --%>
-              <input type="hidden" name="inputEmail" value="${inputEmail}">
             </form>
         </section>
 
