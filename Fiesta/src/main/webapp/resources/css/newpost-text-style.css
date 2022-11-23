@@ -6,12 +6,13 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 15px;
   z-index: 5;
+  display: none;
 }
 
 /*------------닫기 버튼------------*/
@@ -28,7 +29,7 @@
   cursor: pointer;
   color: white;
 }
-@media all and (min-width:1024px) {
+/* @media all and (min-width:1024px) {
   .new-post-background{
     width: 388px;
   }
@@ -37,8 +38,8 @@
   .new-post-background{
     width: 1055px;
   }
-}
-.modal_post_section{
+} */
+.modal_post_section-text{
   background-color: white;
   border-radius: 10px;
   width:90%;

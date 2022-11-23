@@ -1,5 +1,5 @@
-package edu.kh.fiesta.board.model.service;
-
-public interface BoardService {
-
-}
+//package edu.kh.fiesta.board.model.service;
+//
+//public interface BoardService {
+//
+//}

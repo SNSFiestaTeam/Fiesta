@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>instagram</title>
     <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="../../resources/css/setting-style.css" />
+    <link rel="stylesheet" href="/resources/css/setting-style.css" />
+    <link rel="stylesheet" href="../../../resources/css/profile-edit-board.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -32,32 +33,46 @@
         </section>
 
         <section class="setting-main">
-          <form action="" name="set" method="POST" id="setting-frm">
+          <form action="updateImg" method="POST" name="profile-img" enctype="multipart/form-data"
+          onsubmit="return profileVaildate()">
             <div class="di-1">
-                <aside>
-                  <a href="#" class="pro-img"><img src="../../resources/images/user.jpg"></a>
-                </aside>
-                <div class="main">
-                  <h1>${loginMember.memberNickname}</h1>
-                  <a href="#">프로필 사진 바꾸기</a>
-                </div>
+              <aside>
+                <button type="button" id="chg-img">
+                  <c:if test="${empty loginMember.memberProfileImg}">   
+                  <img id="profile-image" src="/resources/images/user.jpg">
+                  </c:if> 
+                  <c:if test="${!empty loginMember.memberProfileImg}">   
+                  <img id="profile-image" src="${loginMember.memberProfileImg}">
+                  </c:if>
+                </button>
+              </aside>
+              <div class="main">
+                <h1>${loginMember.memberNickname}</h1>
+                <button type="button" id="change-img">프로필 사진 바꾸기</button>
+              </div>
+            </div>
+          </form>
+
+          <form action="" name="set" method="POST" id="setting-frm">
             </div>
             <div class="di-2">
                 <aside><label>이름</label></aside>
                 <div class="main">
                   <input type="text" placeholder="이름" id="memberName" name="memberName" value="${loginMember.memberName}">
                 </div>
-            </div>
-            <div class="di-3">
-                <aside></aside>
-                <div class="main">
-                  사람들이 이름, 별명 또는 비즈니스 이름 등 회원님의 알려진 이름을 사용하여 회원님의 계정을 찾을 수 있도록 도와주세요.
-                  <br><br>이름은 14일 안에 두 번만 변경할 수 있습니다.
-                </div>
+                <aside></aside><span id="name-message"></span>
             </div>
             <div class="di-4">
                 <aside><label>사용자 이름</label></aside>
                 <div class="main"><input type="text" id="memberNickname" name="memberNickname" placeholder="사용자 이름" value="${loginMember.memberNickname}"></div>
+                <aside></aside><span id="nick-message"></span>
+              </div>
+            <div class="di-3">
+                <aside></aside>
+                <div class="main">
+                  사람들이 이름, 별명 또는 비즈니스 이름 등 회원님의 알려진 이름을 사용하여 회원님의 계정을 찾을 수 있도록 도와주세요.
+                  <br><br>
+                </div>
             </div>
             <div class="di-5">
                 <aside><label>소개</label></aside>
@@ -66,7 +81,7 @@
                 </div>
             </div>
 
-           
+          
             <div class="di-10">
                 <aside></aside>
                 <button class="btn">제출</button>
@@ -79,7 +94,8 @@
     </main>
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
+   <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>
+   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
    <script src="/resources/js/setting.js"></script>
   </body>
 </html>

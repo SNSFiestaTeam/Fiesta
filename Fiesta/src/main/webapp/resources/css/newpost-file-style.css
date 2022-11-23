@@ -16,7 +16,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
 
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
   align-items: center;
   padding: 15px;
   z-index: 500;
-  display: none;
+  /* display: none; */
 }
 /*------------닫기 버튼------------*/
 .new-post-close {
@@ -42,20 +42,37 @@
 }
 
 /* ************** 게시물 작성 창 ******************* */
+/* @media (max-width: 1024px) {
+  .modal_post_section{
+    background-color: white;
+    width: 90%;
+    
+  }
+}
+@media (max-width: 768px) {    
+  
+  .modal_post_section{
+    
 
+  }
+}
+@media (max-width: 480px) {
+  ...
+} */
 .modal_post_section {
   background-color: white;
   border-radius: 10px;
   width: 90%;
-  min-width: 755px;
-  max-width: 855px;
+  min-width: 655px;
+  max-width: 755px;
+  
 }
 
 /* ----- 게시물작성 top ------ */
-.new-post-top {
+.new-post-top-file{
   display: flex;
-  justify-content: space-between;
   justify-content: center;
+  align-items: center;
   border-bottom: 2px solid #ececec;
   height: 50px;
 }
@@ -101,7 +118,7 @@
   margin: 10px 0;
 }
 
-#file-input {
+.file-select-btn > input {
   display: none;
 }
 
@@ -121,4 +138,5 @@
   color: white;
   font-size: 15px;
   text-align: center;
+
 }

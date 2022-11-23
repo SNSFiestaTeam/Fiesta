@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
     <link rel="stylesheet" href="resources/css/common-style.css" />
-    <link rel="stylesheet" href="resources/css/login-style.css">
+    <link rel="stylesheet" href="resources/css/member/login-style.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -33,14 +33,14 @@
          
           <!-- 이메일 -->
           <div class="login-area">
-            <input type="text" name="memberEmail"  id="memberEmail" value="" 
+            <input type="text" name="memberEmail"  id="memberEmail" value="user01@naver.com" 
                 maxlength="50" autocomplete="off" required readonly> 
             <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
           <!-- 패스워드 -->
           <div class="login-area">
-            <input type="password" name="memberPw" id="memberPw" value="" 
+            <input type="password" name="memberPw" id="memberPw" value="pass01!" 
                 maxlength="30" required readonly>
             <label for="memberPw">비밀번호</label>
           </div>
@@ -52,7 +52,7 @@
         <div class="line">또는</div>
 
         <div class="findAccount">
-          <a href="/member/findAccount">아이디, 비밀번호를 잊으셨나요?</a>
+          <a href="/findAccount">아이디, 비밀번호를 잊으셨나요?</a>
         </div>
       </section>
 

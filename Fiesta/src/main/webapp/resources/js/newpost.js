@@ -1,94 +1,100 @@
-// const newPostOpen = document.getElementById('newPostOpen');
-// const modalBackground = document.getElementById('modalBackground');
+const newPostOpen = document.getElementById('newPostOpen');
+const modalBackground = document.getElementById('modalBackground');
 
-// newPostOpen.addEventListener('click', function () {
+newPostOpen.addEventListener('click', function () {
+  modalBackground.style.display = 'flex';
+  document.getElementsByTagName('body')[0].classList.add('scrollLock');
+});
+
+const newPostClose = document.getElementById('new-post-close');
+
+newPostClose.addEventListener('click', function () {
+  modalBackground.style.display = 'none';
+  document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+});
+
+
+// document.getElementById('newPostBottom').addEventListener('click',()=>{
 //   modalBackground.style.display = 'flex';
-//   document.getElementsByTagName('body')[0].classList.add('scrollLock');
 // });
-
-// const newPostClose = document.getElementById('new-post-close');
-
-// newPostClose.addEventListener('click', function () {
-//   modalBackground.style.display = 'none';
-//   document.getElementsByTagName('body')[0].classList.remove('scrollLock');
-// });
-
-
-
 
 // modalBackground.addEventListener('click',()=>{
 //   modalBackground.style.display = 'none';
 //   document.getElementsByTagName('body')[0].classList.remove('scrollLock');
-//   alert("body클릭");
+
+
 // });
 
 // newpost-eidt----------------------------------------------------------------
-// *** 이미지 넘기기 ***
-const slideImages = document.getElementById('slideImages');
-const slideLis = slideImages.querySelectorAll('img');
+const basicImage = document.getElementById('basicImage');
 
-// ?보여기는 이미지 넓이계산
-const fileWidth = slideLis[0].clientWidth;
-const silderWidth = fileWidth * slideLis.length; // 전체 파일 넓이
-slideImages.style.width = '${silderWidth}px';
-console.log(fileWidth);
-
-let fileIndex = 0; // 현재 보여지는 이미지 번호
-let position = 0; // 이미지 태그 위치값 지정
-
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-
-// 다음 파일
-function filenext(){
-  if(fileIndex < slideLis.length -1){ // 파일 갯수 까지만
-    prevBtn.removeAttribute('disabled');
-    console.log(position);
-    position -= fileWidth; // next 니까 빼기 정한 크기만큼
-    slideImages.style.transform = 'translateX("position"px)';
-    fileIndex += 1;
+const modalBackgroundEidt = document.getElementById('modalBackgroundEidt');
+basicImage.addEventListener('click', ()=>{
+  modalBackground.style.display = 'none';
+  modalBackgroundEidt.style.display = 'flex';
+});
+// edit에서 뒤로가지 Btn(+ 데이터 지우면서 뒤로 가야함)
+document.getElementById("backBtnedit").addEventListener('click',()=>{
+  modalBackgroundEidt.style.display = 'none';
+  modalBackground.style.display = 'flex';
+});
+//! 좌우슬라이드
+new Swiper('.swiper', {
+  // autoplay: {
+  //   delay: 5000
+  // },
+  loop: false, // 무한반복 x
+  slidesPerView: 1, // 슬라이드 몇개 보여줄지
+  spaceBetween: 0, // 슬라이드간 간격
+  centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
+  pagination: { // 페이징 클릭시 해당영역 이동
+    el: '.swiper-pagination',
+    clickable: true
+  },
+  navigation: { // 다음 화상표 버튼
+    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next'
   }
-  if(fileIndex == slideLis.length -1){
-    nextBtn.setAttribute('disabled', 'true');
+})
+//!미리보기 슬라이드
+new Swiper('.preview-swiper', {
+  // autoplay: {
+  //   delay: 5000
+  // },
+  loop: false, // 무한반복 x
+  slidesPerView: 3, // 슬라이드 몇개 보여줄지
+  spaceBetween: 0, // 슬라이드간 간격
+  centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
+  navigation: { // 다음 화상표 버튼
+    prevEl: '.preview-swiper-button-prev',
+    nextEl: '.preview-swiper-button-next'
   }
-}
-// 전 파일
-function fileprev(){
-  if(fileIndex > 0){
-    nextBtn.removeAttribute('disabled');
-    position += fileWidth;
-    slideImages.style.transform = 'translateX(${position}px)';
-    console.log(position)
-    fileIndex -= 1;
-  }
-  if(fileIndex == 0){
-    prevBtn.setAttribute('disabled', 'true');
-  }
-}
-// 첫번째 함수 지정하는 거
-function init(){
-  prevBtn.setAttribute('disabled', 'true');// 첫번째 사진에서 앞으로 안가게 disabled지정(누를수 없는 상태)
-  nextBtn.addEventListener("click", filenext);
-  prevBtn.addEventListener("click", fileprev);
+})
 
-}
-init();
 
-// ?버튼 이미지 미리보기
-const filesPreview = document.getElementById('filesPreview');
-const filePreviewLis = document.getElementById('filePreview');
-// !넓이 계산
-const filePreviewWidth = filePreviewLis[0].clientWidth; // 파일 미리보기 한개 넓이
-const silderPreviewWidth = filePreviewWidth * filePreviewLis.length; // 파일 미리보기 전체 넓이
-previewSlideImages.style.width = '${silderPreviewWidth}px';
+//?텍스트 작성 부분
+const modalBackgroundText = document.getElementById('modalBackgroundText');
 
-let preFileIndex = 0;
-let prePosition = 0;
+const editNextBtn = document.getElementById('editNextBtn');
+editNextBtn.addEventListener('click', () => {
+  modalBackgroundEidt.style.display = 'none';
+  modalBackgroundText.style.display = 'flex';
 
-const previewPrevBtn = document.getElementById('previewPrev');
-const previewNextBtn = document.getElementById('previewNext');
-// document.getElementById("file-add").addEventListener("click", function(){
+});
 
-//   const div = document.createElement("div");
+// text에서 뒤로가지 Btn(+ 데이터 지우면서 뒤로 가야함)
+document.getElementById("backBtnText").addEventListener('click',()=>{
+  modalBackgroundText.style.display = 'none';
+  modalBackgroundEidt.style.display = 'flex';
+});
 
-// })
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,317 @@
+
+
+
+
+body{
+    height: 100vh;
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #FAFAFA;
+}
+
+
+
+main{
+    flex-basis: 90%;
+    margin: 3% 0;  /* 다시 확인 footer부분 */
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+
+/* 영역 크기 구분 */
+/* 전체 */
+.changePw-section{
+    width: 360px;
+    height: 470px;
+
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 7% 10% 2%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}    
+
+
+
+/*  비밀번호 찾기 */
+/* 상단 아이콘, 안내문 */
+.changePw-logo-area{
+    /* flex-basis: 50%; */
+    width: 360px;
+    height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 상단-아이콘 */
+.i-lock-area{
+    flex-basis: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.i-lock-area i{
+    transform: scale(4);
+    color: var(--icon-button-color);
+}
+
+/* 상단-로그인에 문제가 있나요?*/
+.logo-sentence-area{
+    flex-basis: 30%;
+    padding-top: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo-sentence1{
+    font-size: 0.9em;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+#logo-sentence2{
+    text-align: center;
+    font-size: 0.75em;
+}
+
+
+
+/* 하단 (비밀번호 ~ 재설정링크)*/
+#changePw-frm{
+    width: 400px;
+    padding: 0 10%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* 비밀번호, 비밀번호 확인 입력 */
+.changePw-input-area{
+    width: 85%;
+    height: 45px;
+    margin: 0 0 2% 0;
+    padding: 4% 4% 0;
+    background-color: #FAFAFA;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.changePw-input-area input{
+    width: 100%;
+    background-color: #FAFAFA;
+    border: none;
+    outline: none;
+}
+
+
+.icon{
+    right: 10px;
+    position: absolute;
+}
+
+
+.icon-pw-check, .icon-pwConfirm-check{
+    padding-bottom: 12%;
+}
+
+.icon-pw-showHide {
+right: 23px;
+padding-bottom: 11%;
+position: absolute;
+cursor: pointer;
+}
+
+
+/* 버튼 */
+.changePw-button{
+    width: 85%;
+    height: 36px;
+    background-color: var(--fiesta-color);
+    border-radius: 5px;
+    color: white;
+    
+    margin: 2% 0 0 0; 
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* 트랜지션 적용 */
+.changePw-input-area{
+    position: relative;
+}
+
+
+.changePw-input-area > label{
+    /* border: 1px solid black; */
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    padding: 0 0 2%;
+    font-size: 0.8em;
+    color: #b4b4b4;
+    transition: 0.3s;
+}
+
+.changePw-input-area input:focus ~ label{
+    position: absolute;
+    transform: translate(1px, -8px);
+    font-size: 0.5em;
+    color: var(--fiesta-color);
+    transition-timing-function: ease-in-out;
+}
+
+
+.changePw-input-area input:valid ~ label{
+    position: absolute;
+    transform: translate(1px, -8px);
+    padding: 0;
+    font-size: 0.5em;
+}
+
+
+.changePw-input-area:focus-within{
+    border: 1px solid var(--fiesta-color);
+}
+
+
+
+/* 비밀번호를 재설정할 수 없나요? */
+.toAdmin a{
+    font-size: 0.7em;
+    color: var(--main-font-color);
+    margin: 10% 0;
+
+    /* border: 1px solid black; */
+
+}
+
+
+/* 또는 */
+.line {
+    width: 100%;
+
+	display: flex;
+    flex-direction: row;
+	align-items: center;
+	color:#b4b4b4;
+	font-size: 0.7em;
+
+    /* border: 1px solid black; */
+}
+.line::before{
+	content:"";
+	flex-grow: 1;
+	margin: 0 3% 0 0;
+	background: #b4b4b4;
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+}
+.line::after {
+	content:"";
+	flex-grow:1;
+	margin: 0 0 0 3%;
+	background:#b4b4b4;
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+}
+
+
+
+
+/* 로그인으로 */
+.toLogin{
+    width: 360px;
+    height: 57px;
+
+    margin: 3% 0;
+    padding: 0 10%;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 0.8em;
+}
+
+.toLogin a{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* 버튼 활성화/비활성화 */
+.buttonOn {
+    background-color: var(--fiesta-color);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .buttonOff {
+    background-color: lightgray;
+    color: white;
+  }
+  
+  .authButtonOn{
+    color: white;
+    cursor: pointer;
+  }
+  
+  .displayBlock{ display: block; }
+  .displayFlex{ display: flex; }
+  .displayOff{ display: none; }
+  
+  .iVisible { visibility: visible; }
+  .iHidden { visibility: hidden; }
+
+
+  /* 아이콘 색상 지정 */
+  .gray { color: lightgray; }
+  .green { color: #00cc66; }
+  .red { color: red; }
+  .blue { color: #01439f; } 
+  .black { color: #3a3a3a; }
+  .fiestaColor { color: var(--fiesta-color); }
+
+
+
+/* text-align : justify  양쪽정렬 */
