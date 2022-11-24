@@ -122,7 +122,7 @@ memberEmail.addEventListener("input", function(){
         checkObj.memberEmail = false;
     }
 
-});
+})
 
 
 // 성명 아이콘 : 필수 입력, 유효성 검사(한글, 영문자만 가능, 2글자 이상)
