@@ -6,14 +6,14 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 15px;
   z-index: 5;
   /* height: 100%; */
-  /* display: none; */
+  display: none;
 }
 
 /*------------닫기 버튼------------*/
@@ -30,7 +30,6 @@
   cursor: pointer;
   color: white;
 }
-
 
 /* ************** 게시물 작성 창 ******************* */
 /* 점점커지는 사이즈 */
@@ -79,8 +78,6 @@
   }
 }  */
 
-
-
 .modal_post_section_edit {
   background-color: white;
   border-radius: 10px;
@@ -89,32 +86,30 @@
   max-width: 655px;
 }
 
-
 /* ----- 게시물작성 top ------ */
-.new-post-top-edit{
+.new-post-top-edit {
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
   /* justify-content: center; */
   border-bottom: 2px solid #ececec;
-
 }
 
-.new-post-top-edit>* {
+.new-post-top-edit > * {
   display: flex;
   align-items: center;
   /* margin: 0 10px; */
 }
 
 /* top-버튼 스타일 */
-.new-post-top-edit>button {
+.new-post-top-edit > button {
   background-color: transparent;
   cursor: pointer;
   padding: 15px;
   width: 100px;
 }
 
-.new-post-top-edit>button:last-of-type {
+.new-post-top-edit > button:last-of-type {
   color: var(--fiesta-color);
   /* box-sizing: content-box; */
   font-size: 16px;
@@ -163,7 +158,7 @@
   /* list-style: none; */
   object-fit: none;
 }
-.eidt-file >img {
+.eidt-file > img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -172,7 +167,7 @@
   /* height: 100px; */
 }
 
-.siltde-btn-area>div {
+.siltde-btn-area > div {
   /* margin: 13px; */
   /* background-color: rgba(0, 0, 0, 0.6); */
   color: rgba(0, 0, 0, 0.6);
@@ -192,12 +187,12 @@
   position: absolute;
 }
 
-.slide-controller>button:hover {
+.slide-controller > button:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* 버튼 누를수 없는 상태일때 */
-.slide-controller>button:disabled {
+.slide-controller > button:disabled {
   background-color: transparent;
   color: transparent;
   /* background-color: salmon; */
@@ -240,22 +235,22 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.btn-background>i {
+.btn-background > i {
   color: white;
 }
 
 /* 버튼 클릭시 */
 
 /* 비율조정 선택 */
-.new-post-btn-menu>input {
+.new-post-btn-menu > input {
   display: none;
 }
 
-#check-btn1:checked~.cut {
+#check-btn1:checked ~ .cut {
   display: block;
 }
 
-#check-btn2:checked~.add {
+#check-btn2:checked ~ .add {
   display: block;
   /* position: fixed; */
   /* display: fiex; */
@@ -264,7 +259,7 @@
   /* margin: 0 0 30px; */
 }
 
-#check-btn2:checked~label {
+#check-btn2:checked ~ label {
   display: flex;
   flex-direction: row-reverse;
 }
@@ -277,13 +272,13 @@
   margin-bottom: 10px;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.cut{
+.cut {
   width: 150px;
   height: 40px;
   align-items: center;
   justify-content: center;
 }
-.cut > input{
+.cut > input {
   margin: 10px;
 }
 .new-post-btn-menu {
@@ -291,7 +286,7 @@
   flex-direction: column-reverse;
 }
 
-.cut>div {
+.cut > div {
   color: white;
   padding-left: 10px;
 
@@ -306,8 +301,8 @@
   cursor: pointer;
 }
 
-.cut-1>i,
-.cut-2>i {
+.cut-1 > i,
+.cut-2 > i {
   padding: 12px;
 }
 
@@ -321,7 +316,7 @@
 /* overflow: hidden; */
 /* margin-left:100px ; */
 /* } */
-.add>* {
+.add > * {
   cursor: pointer;
 }
 
@@ -334,12 +329,10 @@
   align-items: center;
   overflow: hidden;
   /* flex-direction: column; */
-  
 }
 
 /* 파일 추가 "컴퓨터에서 선택' */
 .edit-add-file-input {
-
   width: 50px;
   height: 50px;
   background-color: transparent;
@@ -347,7 +340,7 @@
   border: 1px solid white;
   cursor: pointer;
   border-radius: 50px;
-  margin:0 10px;
+  margin: 0 10px;
   /* z-index: 10000; */
   /* cursor: pointer; */
 }
@@ -360,24 +353,22 @@
   padding: 15px;
 }
 
-
 /* 파일미리보기 영역 */
-.file-preview-and-remove{
+.file-preview-and-remove {
   display: flex;
   width: 200px;
   height: 90px;
   max-width: 300px;
   overflow: hidden;
 }
-.file-preview{
+.file-preview {
   display: flex;
   position: relative;
   width: 70px;
   height: 90px;
   margin: 10px;
-
 }
-.preview-file>img{
+.preview-file > img {
   position: absolute;
   width: 70px;
   height: 70px;
@@ -394,7 +385,6 @@
   color: white;
   font-size: 13px;
 
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -406,7 +396,6 @@
   margin-left: 50px;
   /* margin: 5px 65px 65px 65px; */
 
-
   /* display: none; */
 }
 
@@ -416,7 +405,6 @@
 
 /* 파일미리보기 옆으로 넘기는 영역 */
 .preview-controller {
-
   /* position: sticky; */
   position: absolute;
   display: flex;
@@ -425,10 +413,10 @@
   /* padding-left: 10px; */
   width: 50%;
 }
-.preview-btn{
+.preview-btn {
   width: 30px;
   height: 30px;
-  color:white;
+  color: white;
   z-index: 90000;
 }
 /* .remove{
