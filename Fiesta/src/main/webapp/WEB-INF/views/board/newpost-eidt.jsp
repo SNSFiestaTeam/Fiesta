@@ -10,15 +10,15 @@
       <section class="modal_post_section_edit">
         <!-- post top -->
         <div class="new-post-top-edit">
-          <button onclick="history.back()">
+          <div id="backBtnedit">
             <i class="fa-solid fa-arrow-left"></i>
-          </button>
-          <p>자르기</p>
+          </div>
+          <p>자르기</p>  
           <button id="editNextBtn">다음</button>
         </div>
         <div class="new-post-bottom-edit">
           <div class="album swiper">
-            <div class="images swiper-wrapper" id="slideImages">
+            <div class="images swiper-wrapper" id="slideImages">  
               <div class="eidt-file swiper-slide"><img id="eidtFile" src="../../resources/images/박보검.gif" alt="파일미리보기">
               </div>
               <div class="eidt-file swiper-slide"><img id="eidtFile"

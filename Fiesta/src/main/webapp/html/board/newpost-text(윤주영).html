@@ -16,60 +16,6 @@
 
 
 <body>
-  <!-- 헤더 -->
-  <header>
-    <section id="header-section">
-      <!-- 로고 -->
-      <section class="logo-section">
-        <a href="#"><img id="logo" src="/resources/images/instagram.png" /></a>
-      </section>
-      <!-- 검색창 -->
-      <section class="search-section">
-        <form action="#">
-          <fieldset>
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input type="text" name="search" id="searchInput" placeholder="검색" autocapitalize="none"
-              autocomplete="off" />
-          </fieldset>
-        </form>
-      </section>
-      <!-- 메뉴 -->
-      <nav id="nav-bar">
-        <ul>
-          <li>
-            <a href="#"> <i class="fa-solid fa-house"></i></a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-paper-plane"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-square-plus"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-compass"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-heart"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa-regular fa-user"></i>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </section>
-  </header>
-
-
 
 
 
@@ -148,7 +94,31 @@
 
               <input type="checkbox" id="set-btn2">
               <label for="set-btn2">고급설정<i class="fa-solid fa-angle-down"></i></label>
-              <div class="content">이 게시물의 좋아요 수 및 조회수 숨기기</div>
+              <div class="like-views-setting">
+
+                <div class="setting-on-off" >
+                  <p>이 게시물의 좋아요 수 및 조회수 숨기기</p>
+                  <!-- <div class="on-off-btn"id="likeViewsBtn"><i class="fa-solid fa-toggle-on" id="likeViewsBtnStyle"></i></div> -->
+                  <label for="toggle" class="toggleSwitch">
+                    <span class="toggleButton"></span>
+                  </label>
+                </div>
+
+                <p>이 게시물의 총 좋아요 및 조회수는 회원님만 볼 수 있습니다. 나중에 게시물 상단에 있는 ··· 메뉴에서 이 설정을 변경할 수 있습니다. 다른 사람의 게시물에서 좋아요 수를 숨기려면 계정 설정으로 이동하세요. </p>
+              </div>
+              <div class="comment-block-setting">
+
+                <div class="setting-on-off">
+                  <p>댓글 기능 해제</p>
+                  <!-- <div class="on-off-btn" id="commentBlockBtn"><i class="fa-solid fa-toggle-on"></i></div> -->
+                  <label for="toggle" class="toggleSwitch">
+                    <span class="toggleButton"></span>
+                  </label>
+                </div>
+
+
+                <p>나중에 게시물 상단의 메뉴(···)에서 이 설정을 변경할 수 있습니다.</p>
+              </div>
             </div>
 
 
@@ -183,6 +153,7 @@
       <a href="#">고객센터</a>
     </article>
   </footer>
+  <script src="../../resources/js/posttext.js"></script>
 </body>
 
 </html>

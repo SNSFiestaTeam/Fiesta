@@ -16,15 +16,15 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
 
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 15px;
   z-index: 500;
-  display: none;
+  /* display: none; */
 }
 /*------------닫기 버튼------------*/
 .new-post-close {
@@ -69,10 +69,10 @@
 }
 
 /* ----- 게시물작성 top ------ */
-.new-post-top {
+.new-post-top-file{
   display: flex;
-  justify-content: space-between;
   justify-content: center;
+  align-items: center;
   border-bottom: 2px solid #ececec;
   height: 50px;
 }
@@ -118,7 +118,7 @@
   margin: 10px 0;
 }
 
-#file-input {
+.file-select-btn > input {
   display: none;
 }
 

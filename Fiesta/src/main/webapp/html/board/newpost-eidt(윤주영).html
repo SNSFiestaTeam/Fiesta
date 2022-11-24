@@ -25,24 +25,22 @@
   <!-- 메인 섹션 -->
   <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
   <main>
-    <section class="modal_background">
+    <section class="modal_background" id="modalBackgroundEidt">
       <!-- 작성 닫기 버튼 -->
-      <button id="new-post-close" class="new-post-close">
-        <i class="fa-solid fa-x"></i>
-      </button>
+      <div class="new-post-close" id="newPostClose">&times;</div>
       <!-- post 배경 -->
-      <section class="modal_post_section">
+      <section class="modal_post_section_edit">
         <!-- post top -->
-        <div class="new-post-top">
-          <button onclick="history.back()">
+        <div class="new-post-top-edit">
+          <div id="backBtnedit">
             <i class="fa-solid fa-arrow-left"></i>
-          </button>
-          <p>자르기</p>
-          <button>다음</button>
+          </div>
+          <p>자르기</p>  
+          <button id="editNextBtn">다음</button>
         </div>
-        <div class="new-post-bottom">
+        <div class="new-post-bottom-edit">
           <div class="album swiper">
-            <div class="images swiper-wrapper" id="slideImages">
+            <div class="images swiper-wrapper" id="slideImages">  
               <div class="eidt-file swiper-slide"><img id="eidtFile" src="../../resources/images/박보검.gif" alt="파일미리보기">
               </div>
               <div class="eidt-file swiper-slide"><img id="eidtFile"
@@ -156,8 +154,12 @@
                     
 
                   </div>
-                  <label for="add-file-input"><i class="fa-solid fa-plus"></i></label>
-                  <button><input type="file" name="add-file-input" id="add-file-input"></button>
+                  <div class="edit-add-file-input">
+                    <label for="addFileInput"><i class="fa-solid fa-plus"></i></label>
+                    <input type="file" name="addFileInput" id="addFileInput" hidden>
+                  </div>
+                  <!-- <label for="add-file-input"><i class="fa-solid fa-plus"></i></label>
+                  <input type="file" name="add-file-input" id="add-file-input"> -->
                   <!-- <p class="preview-controller">
                       <span class="preview-prev" id="previewPrev">&lang;</span>  
                       <span class="preview-next" id="previewNext">&rang;</span>
