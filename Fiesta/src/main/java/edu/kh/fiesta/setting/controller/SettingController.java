@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,55 +59,68 @@ public class SettingController {
 	
 	
 	
-	@GetMapping("/Pw")
-	public String Pw() {
+	@GetMapping("/changePw")
+	public String changePw() {
 		return "setting/settingPw";
 	}
 	
-	@PostMapping("/Pw")
-	public String Pw(@SessionAttribute("loginMember") Member loginMember,
-			RedirectAttributes ra, @RequestParam Map<String, Object> paramMap) {
+	@PostMapping("/changePw")
+	public String changePw(@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam Map<String, Object> paramMap, RedirectAttributes ra) { 
 		
 		paramMap.put("memberNo", loginMember.getMemberNo());
 		
-		int result = service.Pw(paramMap);
+		
+		
+		int result = service.changePw(paramMap);
 		
 		String message = null;
 		
 		if(result > 0) {
 			message = "성공";
 		} else {
-			message = "실패";
+			message = "이전 비밀번호가 일치하지 않습니다.";
 		}
 		
 		ra.addFlashAttribute("message", message);
 		
 		
-		return "redirect:Pw";
+		return "redirect:changePw";
 		
 	}
 	
 
 	
-	@GetMapping("/3")
+	@GetMapping("/changeEtc")
 	public String setting3() {
 		return "setting/setting3";
 	}
 	
-	@PostMapping("3")
+	@PostMapping("/delete")
 	public String memberDelete(
 			@SessionAttribute("loginMember") Member loginMember,
-			SessionStatus status, RedirectAttributes ra) {
+			SessionStatus status, RedirectAttributes ra,
+			@RequestHeader("referer") String referer
+			) {
 		
 		int result = service.memberDelete(loginMember.getMemberNo());
 		
+		String message = null;
+		String path = null;
 		
 		if(result > 0 ) {
-			return "redirect:/";
+			message = "성공";
+			path = "/";
+			status.setComplete();
+
 		} else {
-			return "redirect:/3";
+			message = "실패";
+			path = referer;
 		}
 		
+		ra.addFlashAttribute("message", message);
+	
+		return "redirect:" + path;
 	}
 	
 
@@ -119,8 +134,8 @@ public class SettingController {
 	}
 	
 		
-	@PostMapping("/updateImg")
-	public String updateImg(
+	@PostMapping("/updateImage")
+	public String updateImage(
 			@RequestParam(value="memberProfileImg") MultipartFile memberProfileImg,
 			@SessionAttribute("loginMember") Member loginMember,
 			RedirectAttributes ra, 
@@ -133,7 +148,7 @@ public class SettingController {
 		String filePath = req.getSession().getServletContext().getRealPath(webPath);
 		//req.getSession().getServletContext() -> application scope 객체 얻어옴
 		
-		int result = service.updateImg(webPath, filePath, memberProfileImg, loginMember);
+		int result = service.updateImage(webPath, filePath, memberProfileImg, loginMember);
 		
 		String message = null;
 		if(result > 0) message = "프로필 이미지가 변경되었습니다.";
@@ -143,4 +158,6 @@ public class SettingController {
 	
 		return "redirect:";
 	}
+	
+
 }

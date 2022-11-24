@@ -36,7 +36,7 @@ public interface MemberService {
 	 * @param memberEmail
 	 * @return result
 	 */
-	int updatePw(String memberEmail, String memberPw);
+	int updatePw(String inputEmail, String memberPw);
 	
 
 }

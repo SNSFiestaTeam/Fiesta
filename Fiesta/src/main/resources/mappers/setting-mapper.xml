@@ -27,7 +27,7 @@ WHERE MEMBER_NO = #{memberNo}
 </select>
 
 
- <update id="Pw" parameterType="map">
+ <update id="changePw" parameterType="map">
  	UPDATE "MEMBER" SET
  	MEMBER_PW = #{newPw}
  	WHERE MEMBER_NO = #{memberNo}
@@ -46,7 +46,7 @@ WHERE MEMBER_NO = #{memberNo}
  </select>
  
  <!-- 프로필 이미지 수정 --> 
- <update id="updateImg" parameterType="Member">
+ <update id="updateImage" parameterType="Member">
  	UPDATE "MEMBER" SET
  	MEMBER_PROFILE_IMG = #{memberProfileImg}
  	WHERE MEMBER_NO = #{memberNo}
