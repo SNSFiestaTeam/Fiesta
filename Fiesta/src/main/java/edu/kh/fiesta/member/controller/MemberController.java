@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.fiesta.member.model.service.MemberService;
 import edu.kh.fiesta.member.model.vo.Member;
 
-@SessionAttributes("loginMember")
+@SessionAttributes({"loginMember"})
 @Controller
 public class MemberController {
 	
@@ -69,17 +70,19 @@ public class MemberController {
 		int result = service.signUp(inputMember);
 
 		String message = null;
+		String path = null;
 		
 		if(result > 0) {
 			message = "Welcome to Fiesta!";
-			ra.addFlashAttribute("message", message);
-			return "redirect:/";  // 로그인 페이지로.
+			path = "/"; // 로그인 페이지로.
 			
 		} else {
 			message = "다시 시도해 주세요..";
-			ra.addFlashAttribute("message", message);
-			return referer;
+			path = referer;
 		}
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
 	}
 	
 	
@@ -115,34 +118,48 @@ public class MemberController {
 	}
 	
 	
-	// 계정찾기_비밀번호 재설정 페이지로 이동
-	@PostMapping("/findAccount/changePw")
-	public String findAccount(String memberEmail) {
+	// 계정찾기_이메일 인증 후 비밀번호 재설정 페이지로 이동 전에  => inputEmail을 ra에 저장하는 용도
+	@PostMapping("/findAccount/changePwPage")
+	public String findAccount(String inputEmail, RedirectAttributes ra) {
+	
+		ra.addFlashAttribute("inputEmail", inputEmail);
+		
+		return "redirect:/findAccount/changePwPage";
+	}
+	
+	
+	
+	@GetMapping("/findAccount/changePwPage")
+	public String changePw() {
 		return "member/changePw";
 	}
 	
 	
 	
-	// 계정찾기_비밀번호 재설정하기
-	@PostMapping("/findAccount/changePw/updatePw")
-	public String updatePw(String memberEmail, String memberPw) {
-		
-		int result = service.updatePw(memberEmail, memberPw);
-		
-		if(result > 0) {}
+	// 계정찾기_비밀번호 재설정하기 
+	@PostMapping("/findAccount/changePwPage/updatePw")
+	public String updatePw(String memberPw, String inputEmail,
+//						   @RequestHeader("referer") String referer,
+						   RedirectAttributes ra, Model model) {
 		
 		
+		int result = service.updatePw(inputEmail, memberPw);
 		
+		String message = null;
+		String path = null;
 		
-		return null ;
+		if(result > 0) {
+			message = "비밀번호가 재설정되었습니다.😊";
+			path = "/";
+		
+		} else {
+			message = "비밀번호가 변경되지 않았습니다..";
+			path = "/";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		return "redirect:" + path ;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 
 }
