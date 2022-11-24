@@ -1,28 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <form action="#">
-      <button name="close" id="close-post">
-        <span id="post-x"><i class="fa-solid fa-x"></i></span>
-      </button>
-    </form>
+
 
      <div class="modal_background" id="modalBackgroundText">
     <!-- 닫기버튼 -->
-    <button id="new-post-close" class="new-post-close">
-      <i class="fa-solid fa-x"></i>
-    </button>
+    <div class="new-post-close" id="newPostClosePostText">&times;</div>
     <!-- post 배경 -->
-    <section class="modal_post_section-text">
+    <section class="modal_post_section-text" >
       <!-- post top -->
-      <div class="new-post-top">
-        <button onclick="" id="backBtnText">
+      <div class="new-post-top-text">
+        <div id="backBtnText">
           <i class="fa-solid fa-arrow-left"></i>
-        </button>
+        </div>
         <p>새 게시물 만들기</p>
-        <button>공유하기</button>
+        <button name="newpostText" id="">공유하기</button>
       </div>
       <!-- post-bottom -->
-      <div class="new-post-bottom">
+      <div class="new-post-bottom-text">
         <div class="bottom-left-box">
           <img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기">
 
@@ -78,7 +72,31 @@
 
               <input type="checkbox" id="set-btn2">
               <label for="set-btn2">고급설정<i class="fa-solid fa-angle-down"></i></label>
-              <div class="content">이 게시물의 좋아요 수 및 조회수 숨기기</div>
+              <div class="like-views-setting">
+
+                <div class="setting-on-off" >
+                  <p>이 게시물의 좋아요 수 및 조회수 숨기기</p>
+                  <!-- <div class="on-off-btn"id="likeViewsBtn"><i class="fa-solid fa-toggle-on" id="likeViewsBtnStyle"></i></div> -->
+                  <label for="toggle" class="toggleSwitch">
+                    <span class="toggleButton"></span>
+                  </label>
+                </div>
+
+                <p>이 게시물의 총 좋아요 및 조회수는 회원님만 볼 수 있습니다. 나중에 게시물 상단에 있는 ··· 메뉴에서 이 설정을 변경할 수 있습니다. 다른 사람의 게시물에서 좋아요 수를 숨기려면 계정 설정으로 이동하세요. </p>
+              </div>
+              <div class="comment-block-setting">
+
+                <div class="setting-on-off">
+                  <p>댓글 기능 해제</p>
+                  <!-- <div class="on-off-btn" id="commentBlockBtn"><i class="fa-solid fa-toggle-on"></i></div> -->
+                  <label for="toggle" class="toggleSwitch">
+                    <span class="toggleButton"></span>
+                  </label>
+                </div>
+
+
+                <p>나중에 게시물 상단의 메뉴(···)에서 이 설정을 변경할 수 있습니다.</p>
+              </div>
             </div>
 
 

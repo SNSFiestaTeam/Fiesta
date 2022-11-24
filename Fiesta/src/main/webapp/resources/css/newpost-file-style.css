@@ -18,13 +18,13 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.4);
 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 15px;
   z-index: 500;
-  /* display: none; */
+  display: none;
 }
 /*------------닫기 버튼------------*/
 .new-post-close {
@@ -65,11 +65,10 @@
   width: 90%;
   min-width: 655px;
   max-width: 755px;
-  
 }
 
 /* ----- 게시물작성 top ------ */
-.new-post-top-file{
+.new-post-top-file {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,5 +137,4 @@
   color: white;
   font-size: 15px;
   text-align: center;
-
 }

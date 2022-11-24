@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <section class="modal_background" id="modalBackgroundEidt">
       <!-- 작성 닫기 버튼 -->
-      <button id="new-post-close" class="new-post-close">
-        <i class="fa-solid fa-x"></i>
-      </button>
+      <div class="new-post-close" id="newPostClosePostEdit">&times;</div>
       <!-- post 배경 -->
       <section class="modal_post_section_edit">
         <!-- post top -->
@@ -132,8 +129,12 @@
                     
 
                   </div>
-                  <label for="add-file-input"><i class="fa-solid fa-plus"></i></label>
-                  <button><input type="file" name="add-file-input" id="add-file-input"></button>
+                  <div class="edit-add-file-input">
+                    <label for="addFileInput"><i class="fa-solid fa-plus"></i></label>
+                    <input type="file" name="addFileInput" id="addFileInput" hidden>
+                  </div>
+                  <!-- <label for="add-file-input"><i class="fa-solid fa-plus"></i></label>
+                  <input type="file" name="add-file-input" id="add-file-input"> -->
                   <!-- <p class="preview-controller">
                       <span class="preview-prev" id="previewPrev">&lang;</span>  
                       <span class="preview-next" id="previewNext">&rang;</span>
