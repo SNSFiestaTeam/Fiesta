@@ -65,10 +65,22 @@
     margin-right: 12px;
 }
 
-.setting-main > section{
+.account{
     margin : 10px 30px 10px 30px;
     padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
+}
+
+.post{
+    margin : 10px 30px 10px 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.setting-main > section:last-child{
+    margin : 10px 30px 10px 30px;
+    padding-bottom: 10px;
+    border-bottom: none;
 }
 
 .note{
@@ -205,13 +217,13 @@ section.post > .post-1 > label{
     height: 28px;
     background-color: gray;
     border-radius: 60px;
-    transition: background .4s;
+    /* transition: background .4s; */
     align-items: right;
 }
 section.post > .post-1 > label:after{ 
     content: ""; position: absolute; left:3px; top:50%; width: 22px;
     height: 22px; border-radius: 100%; background: #fff; 
-    transform:translateY(-50%); transition:.4s;
+    transform:translateY(-50%); /*transition:.4s;*/
 }
 section.post > .post-1> input:checked + label{
     background-color: var(--fiesta-color);
@@ -252,8 +264,7 @@ section.post > .post-1 > input:checked + label:after{
         width: 100vw;
     }
     
-    
-    
+
     }
     
     @media screen and (min-width: 471px) and (max-width: 1023px) {

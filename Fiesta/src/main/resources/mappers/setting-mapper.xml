@@ -59,6 +59,17 @@ WHERE MEMBER_NO = #{memberNo}
  WHERE MEMBER_NO = #{memberNo}
  </update>
  
+ <update id="updateLike">
+UPDATE BOARD SET
+BOARD_PUB_PRI_FL = 'N'
+WHERE MEMBER_NO = #{memberNo}
+ </update>
+ 
+<update id="updateLike2">
+UPDATE BOARD SET
+BOARD_PUB_PRI_FL = 'Y'
+WHERE MEMBER_NO = #{memberNo}
+ </update>
  </mapper>
  
  

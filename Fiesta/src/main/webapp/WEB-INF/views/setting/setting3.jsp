@@ -27,15 +27,15 @@
         <section class="left-side">
 
             <ul class="list-group">
-                <li><a href="/setting/setting">프로필 편집</a></li>
-                <li><a href="/setting/setting/changePw">비밀번호 변경</a></li>
-                <li><a href="/setting/setting/changeEtc">개인정보 및 보안</a></li>
+                <li><a href="/setting">프로필 편집</a></li>
+                <li><a href="/setting/changePw">비밀번호 변경</a></li>
+                <li><a href="/setting/changeEtc">개인정보 및 보안</a></li>
             </ul>
             
         </section>
 
-        <form action="3" method="POST" id="account-frm">
         <section class="setting-main">
+          <form action="open" method="POST" id="account-frm">
             <section class= account>
               <h2>계정 공개 범위</h2>
               <label for="account" id="idOpen">
@@ -45,26 +45,26 @@
               </label>
               <p class="note"> 계정이 비공개 상태인 경우 회원님이 승인한 사람만 Instagram에서 회원님의 사진과 동영상을 볼 수 있습니다. 기존 팔로워는 영향을 받지 않습니다. </p>
             </section>
+          </form>    
 
-          
+          <form action="/setting/changeEtc" method="POST" id="like-frm">
             <section class="post">
               <h2>게시물</h2>
               <span class="like-1">좋아요 및 조회수</span>
               <div class="post-1"> 
                 <span class="like-2">좋아요, 재생 및 조회수 숨기기</span>
-                <input type="checkbox" id="chk1"><label for="chk1"><span></span></label>
+                <input type="checkbox" name="chk1" id="chk1"><label for="chk1"><span></span></label>
               </div>
                 <span class="like-3">다른 계정에서 올린 게시물의 좋아요, 재생 및 조회수가 숨겨집니다. 공유하기 전에 고급 설정으로 이동하여 회원님 게시물의 좋아요, 재생 및 조회수를 숨길 수 있습니다.</span>
             </section>
           </form>
 
-          <section class="secession">
+          <section class="secession" id="secession">
             <form action="delete" method="POST" id="memberDeleteForm" onsubmit="return memberDeleteValidate()">
               <h2>계정 탈퇴</h2>
               <span class="like-2">계정을 탈퇴할 수 있습니다.</span>
               <button id="secession-btn">계정 탈퇴하기</button>
             </form>
-
           </section>
 
         </section>

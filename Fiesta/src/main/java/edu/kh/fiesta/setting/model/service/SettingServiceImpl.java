@@ -112,6 +112,16 @@ public class SettingServiceImpl implements SettingService{
 		return dao.memberDelete(memberNo);
 	}
 
+	@Override
+	public int updateLike(int memberNo) {
+		return dao.updateLike(memberNo);
+	}
+
+	@Override
+	public int updateLike2(int memberNo) {
+		return dao.updateLike2(memberNo);
+	}
+
 
 	}
 

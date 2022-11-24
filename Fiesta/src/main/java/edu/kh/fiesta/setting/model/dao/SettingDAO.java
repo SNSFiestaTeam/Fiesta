@@ -44,6 +44,14 @@ public class SettingDAO {
 		return sqlSession.update("settingMapper.memberDelete", memberNo);
 	}
 
+	public int updateLike(int memberNo) {
+		return sqlSession.update("settingMapper.updateLike", memberNo);
+	}
+
+	public int updateLike2(int memberNo) {
+		return sqlSession.update("settingMapper.updateLike2", memberNo);
+	}
+
 	
 
 }
