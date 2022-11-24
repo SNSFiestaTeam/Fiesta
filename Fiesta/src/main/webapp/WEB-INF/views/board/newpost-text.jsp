@@ -26,7 +26,7 @@
           <div class="new-post-bottom-information">
             <div class="new-post-bottom-member">
               <img id="file" src="../../resources/images/user.jpg" alt="작성자 프로필">
-              <div class="member-nikname">juyeong7063</div>
+              <div class="member-nikname">${loginMember.memberNickname}</div>
             </div>
 
             <div class="new-post-bottom-inputtext">

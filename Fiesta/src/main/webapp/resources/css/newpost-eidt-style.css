@@ -149,7 +149,7 @@
   width: 100%;
   height: 100%;
 } */
-.eidt-file {
+.edit-file {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -158,7 +158,7 @@
   /* list-style: none; */
   object-fit: none;
 }
-.eidt-file > img {
+.edit-file > img {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -403,21 +403,27 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* 파일미리보기 옆으로 넘기는 영역 */
+/* 파일미리보기 옆으로 넘기는 버튼 영역 */
 .preview-controller {
   /* position: sticky; */
   position: absolute;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   /* width: 30px; */
   /* padding-left: 10px; */
-  width: 50%;
+  width: 200px;
+  height: 90px;
 }
 .preview-btn {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50px;
   z-index: 90000;
+  /* box-sizing: border-box; */
+  padding-bottom: 20px;
 }
 /* .remove{
 
