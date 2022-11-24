@@ -67,6 +67,45 @@ public class MainServiceImpl implements MainService {
 		return dao.boardLikeDown(boardNo, memberNo);
 	}
 	
+	/** 게시글 북마크 추가
+	 *
+	 */
+	@Override
+	public int boardBookmarkOn(int boardNo, int memberNo) {
+		return dao.boardBookmarkOn(boardNo, memberNo);
+	}
+	
+	/** 게시글 북마크 해제
+	 *
+	 */
+	@Override
+	public int boardBookmarkOff(int boardNo, int memberNo) {
+		return dao.boardBookmarkOn(boardNo, memberNo);
+	}
+
+	/** 댓글 좋아요 증가
+	 *
+	 */
+	@Override
+	public int commentLikeUp(int commentNo, int memberNo) {
+		return dao.commentLikeUp(commentNo, memberNo);
+	}
+
+	/** 댓글 좋아요 취소
+	 *
+	 */
+	@Override
+	public int commentLikeDown(int commentNo, int memberNo) {
+		return dao.commentLikeDown(commentNo, memberNo);
+	}
+	
+	/** 댓글 등록
+	 *
+	 */
+	@Override
+	public int commentInsert(Map<String, Object> map) {
+		return dao.commentInsert(map);
+	}
 	
 
 }

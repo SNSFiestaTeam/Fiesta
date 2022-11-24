@@ -33,6 +33,8 @@
       <result property="memberNickname" column="MEMBER_NICKNAME" />      
       <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
       <result property="likeCheck" column="LIKE_CHECK" />
+      <result property="bookmarkCheck" column="BOOKMARK_CHECK" />
+      <result property="myNo" column="MY_NO" />
       
       <collection property="imageList" 
       			  javaType="java.util.ArrayList" ofType="BoardImg"
@@ -42,7 +44,7 @@
       <collection property="commentList" 
       			  javaType="java.util.ArrayList" ofType="Comment"
       			  select="selectCommentList"
-      			  column = "BOARD_NO"/>
+      			  column = "{boardNo=BOARD_NO, myNo=MY_NO"/>
       
       
   </resultMap>
@@ -60,6 +62,7 @@
       <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
       <result property="replyCount" column="REPLY_COUNT" />
       <result property="mentionNickname" column="MENTION_NICKNAME" />
+      <result property="commentLikeCheck" column="COMMENT_LIKE_CHECK" />
   </resultMap>
   
   <resultMap type="Follow" id="follow_rm">
@@ -108,7 +111,7 @@
   <select id="selectBoardList" parameterType="_int" resultMap="board_rm">
 	<![CDATA[ 
 	SELECT b.BOARD_NO , BOARD_CONTENT , BOARD_PUB_PRI_FL , COMMENT_BLOCK_FL , 
-	b.MEMBER_NO, M.MEMBER_NICKNAME, MEMBER_PROFILE_IMG, 
+	b.MEMBER_NO, M.MEMBER_NICKNAME, MEMBER_PROFILE_IMG, #{memberNo} MY_NO,
 	CASE 
 		WHEN SYSDATE - BOARD_CREATE_DATE  < 1/24/60
 		THEN FLOOR( (SYSDATE - BOARD_CREATE_DATE ) * 24 * 60 * 60 ) || '초 전'
@@ -127,7 +130,9 @@
 	(SELECT COUNT(*) FROM "COMMENT" C WHERE C.BOARD_NO = b.BOARD_NO
 	AND UPPER_COMMENT_NO IS NOT NULL) AS REPLY_COUNT,
 	(SELECT COUNT(*) FROM BOARD_LIKE bl
-	WHERE MEMBER_NO = 1 AND bl.BOARD_NO = b.BOARD_NO) LIKE_CHECK
+	WHERE MEMBER_NO = #{memberNo} AND bl.BOARD_NO = b.BOARD_NO) LIKE_CHECK,
+	(SELECT COUNT(*) FROM BOOKMARK bm
+	WHERE MEMBER_NO = #{memberNo} AND bm.BOARD_NO = b.BOARD_NO) BOOKMARK_CHECK
 	FROM BOARD b
 	JOIN "MEMBER" M ON(b.MEMBER_NO = M.MEMBER_NO)
 	WHERE BOARD_DEL_FL = 'N'
@@ -146,7 +151,7 @@
   
   
   <!-- 게시글 댓글 리스트 조회 -->
-  <select id="selectCommentList" parameterType="_int" resultMap="comment_rm">
+  <select id="selectCommentList" resultMap="comment_rm">
   	SELECT LEVEL, C.* FROM
 	(SELECT COMMENT_NO , COMMENT_MEMBER_NO , COMMENT_CONTENT,
 	<![CDATA[
@@ -168,7 +173,10 @@
 		FROM "COMMENT" c2 
 		JOIN "MEMBER" m2 ON (COMMENT_MEMBER_NO = MEMBER_NO)
 		WHERE c.UPPER_COMMENT_NO = c2.COMMENT_NO  
-		AND c.BOARD_NO = c2.BOARD_NO) MENTION_NICKNAME
+		AND c.BOARD_NO = c2.BOARD_NO) MENTION_NICKNAME,
+		(SELECT COUNT(*) FROM COMMENT_LIKE cl 
+		WHERE cl.LIKE_COMMENT_NO = c.COMMENT_NO 
+		AND MEMBER_NO = #{myNo}) COMMENT_LIKE_CHECK
 	FROM "COMMENT" c
 	JOIN "MEMBER" m ON (COMMENT_MEMBER_NO = MEMBER_NO)
 	WHERE BOARD_NO = #{boardNo}) C
@@ -178,15 +186,48 @@
 
   </select>
   
+  <!-- 게시글 좋아요 증가 -->
   <insert id="boardLikeUp">
   	INSERT INTO BOARD_LIKE 
 	VALUES(#{boardNo}, #{memberNo})
   </insert>
   
+  <!-- 게시글 좋아요 감소 -->
   <delete id="boardLikeDown">
   	DELETE FROM BOARD_LIKE
   	WHERE BOARD_NO = #{boardNo}
   	AND MEMBER_NO = #{memberNo}
   </delete>
+  
+  <!-- 게시글 북마크 추가 -->
+  <insert id="boardBookmarkOn">
+  	INSERT INTO BOOKMARK
+  	VALUES(#{boardNo}, #{memberNo})
+  </insert>
+  
+  <!-- 게시글 북마크 취소 -->
+  <delete id="boardBookmarkOff">
+  	DELETE FROM BOOKMARK
+  	WHERE BOARD_NO = #{boardNo}
+  	AND MEMBER_NO = #{memberNo}
+  </delete>
+  
+  <!-- 댓글 좋아요 증가 -->
+  <insert id="commentLikeUp">
+  	INSERT INTO COMMENT_LIKE
+  	VALUES(#{commentNo}, #{memberNo})
+  </insert>
+  
+  <delete id="commentLikeDown">
+  	DELETE FROM COMMENT_LIKE
+  	WHERE LIKE_COMMENT_NO = #{commentNo}
+  	AND MEMBER_NO = #{memberNo}
+  </delete>
+  
+  <insert id="commentInsert">
+  	INSERT INTO "COMMENT"
+  	VALUES(SEQ_COMMENT_NO.NEXTVAL, #{memberNo}, #{boardContent}, DEFAULT,
+  	#{boardNo}, DEFAULT)
+  </insert>
   
 </mapper>

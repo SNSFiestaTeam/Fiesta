@@ -1,5 +1,6 @@
 package edu.kh.fiesta.main.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +68,55 @@ public class MainController {
 		return result;
 	}
 	
+	
+	@GetMapping("/boardBookmarkOn")
+	@ResponseBody
+	public int boardBookmarkOn(int boardNo, int memberNo) {
+		
+		int result = service.boardBookmarkOn(boardNo, memberNo);
+		
+		return result;
+	}
+	
+	@GetMapping("/boardBookmarkOff")
+	@ResponseBody
+	public int boardBookmarkOff(int boardNo, int memberNo) {
+		
+		int result = service.boardBookmarkOff(boardNo, memberNo);
+		
+		return result;
+	}
+	
+	@GetMapping("/commentLikeUp")
+	@ResponseBody
+	public int commentLikeUp(int commentNo, int memberNo) {
+		
+		int result = service.commentLikeUp(commentNo, memberNo);
+		
+		return result;
+	}
+	
+	@GetMapping("/commentLikeDown")
+	@ResponseBody
+	public int commentLikeDown(int commentNo, int memberNo) {
+		
+		int result = service.commentLikeDown(commentNo, memberNo);
+		
+		return result;
+	}
 
+	@GetMapping("/commentInsert")
+	public int commentInsert(int boardNo, int memberNo, String commentInput, int upperCommentNo) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardNo", boardNo);
+		map.put("memberNo", memberNo);
+		map.put("commentInput", commentInput);
+	
+		
+		int commentNo = service.commentInsert(map);
+		
+		return commentNo;
+	}
 
 }
