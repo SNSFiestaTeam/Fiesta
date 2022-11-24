@@ -29,7 +29,7 @@ public class SettingServiceImpl implements SettingService{
 	@ExceptionHandler
 	@Transactional
 	@Override
-	public int Pw(Map<String, Object> paramMap) {
+	public int changePw(Map<String, Object> paramMap) {
 
 		String encPw = dao.selectEncPw( (int)paramMap.get("memberNo"));
 		
@@ -41,7 +41,7 @@ public class SettingServiceImpl implements SettingService{
 			
 		
 		
-			int result = dao.Pw(paramMap);
+			int result = dao.changePw(paramMap);
 			
 			return result;
 			
@@ -66,7 +66,7 @@ public class SettingServiceImpl implements SettingService{
 	// 프로필 이미지 수정
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int updateImg(String webPath, String filePath, MultipartFile memberProfileImg, Member loginMember) 
+	public int updateImage(String webPath, String filePath, MultipartFile memberProfileImg, Member loginMember) 
 			throws Exception {
 		
 		// 실패를 대비해서 이전 이미지 경로 저장
@@ -87,7 +87,7 @@ public class SettingServiceImpl implements SettingService{
 		}
 
 		
-		int result = dao.updateImg(loginMember); // 0 또는 1
+		int result = dao.updateImage(loginMember); // 0 또는 1
 		
 		
 		if( result > 0) { // DB 수정 성공 시 -> 실제로 서버에 파일 저장
@@ -111,6 +111,7 @@ public class SettingServiceImpl implements SettingService{
 	public int memberDelete(int memberNo) {
 		return dao.memberDelete(memberNo);
 	}
+
 
 	}
 
