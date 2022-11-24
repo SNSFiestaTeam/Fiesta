@@ -6,13 +6,12 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
 
-  /* display: flex; */
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 15px;
   z-index: 5;
-  display: none;
 }
 
 /*------------닫기 버튼------------*/
@@ -29,7 +28,7 @@
   cursor: pointer;
   color: white;
 }
-/* @media all and (min-width:1024px) {
+@media all and (min-width:1024px) {
   .new-post-background{
     width: 388px;
   }
@@ -38,7 +37,7 @@
   .new-post-background{
     width: 1055px;
   }
-} */
+}
 .modal_post_section-text{
   background-color: white;
   border-radius: 10px;
@@ -48,7 +47,7 @@
   /* overflow: auto; */
 }
 /* ----- 게시물작성 top ------ */
-.new-post-top{
+.new-post-top-text{
   display: flex;
   justify-content: space-between;
   /* border-radius: 10px; */
@@ -56,28 +55,26 @@
   border-bottom: 2px solid #ececec;
   
 }
-.new-post-top>* {
+
+/* top-버튼 스타일 */
+.new-post-top-text > * {
   display: flex;
   align-items: center;
-  /* margin: 0 10px; */
-}
-/* top-버튼 스타일 */
-.new-post-top > button {
   background-color:transparent;   
   cursor: pointer;
   padding: 15px;
-  width: 100px;
+  width: 160px;
 }
 
 
-.new-post-top > button:last-of-type {
+.new-post-top-text > button:last-of-type {
   color: var(--fiesta-color);
   /* box-sizing: content-box; */
   font-size: 16px;
   flex-direction: row-reverse;
 }
 /* bottom */
-.new-post-bottom{
+.new-post-bottom-text{
   width: 100%;
   height: 90%;
   background-color: white;

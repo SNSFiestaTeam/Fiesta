@@ -24,21 +24,19 @@
   <!-- 모달 배경 -->
   <div class="modal_background">
     <!-- 닫기버튼 -->
-    <button id="new-post-close" class="new-post-close">
-      <i class="fa-solid fa-x"></i>
-    </button>
+    <div class="new-post-close" id="newPostClose">&times;</div>
     <!-- post 배경 -->
-    <section class="modal_post_section">
+    <section class="modal_post_section-text" id="modalBackgroundText">
       <!-- post top -->
-      <div class="new-post-top">
-        <button onclick="history.back()">
+      <div class="new-post-top-text">
+        <div id="backBtnText">
           <i class="fa-solid fa-arrow-left"></i>
-        </button>
+        </div>
         <p>새 게시물 만들기</p>
-        <button>공유하기</button>
+        <button name="newpostText">공유하기</button>
       </div>
       <!-- post-bottom -->
-      <div class="new-post-bottom">
+      <div class="new-post-bottom-text">
         <div class="bottom-left-box">
           <img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기">
 
