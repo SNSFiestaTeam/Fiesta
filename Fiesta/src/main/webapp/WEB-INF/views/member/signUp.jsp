@@ -141,7 +141,7 @@
           <button id="checkAuthKeyBtn" type="button">인증하기</button>
         </div>
         <div class="inputAuth-area" id="completeMessage">
-          <span">이메일 인증 완료!</span>
+          <span>이메일 인증 완료!</span>
         </div>
       </section>
     </main>

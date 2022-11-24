@@ -15,8 +15,8 @@ const checkObj = {
 
 
 
-
-const memberEmail = document.getElementById("memberEmail");
+// fixme : memberEmail로 수정함
+const memberEmail = document.getElementById("inputEmail");
 
 const authKey = document.getElementById("authKey");
 const sendAuthKeyBtn = document.getElementById("sendAuthKeyBtn");
@@ -24,6 +24,8 @@ const checkAuthKeyBtn = document.getElementById("checkAuthKeyBtn");
 
 const inputAuthArea = document.getElementById("inputAuthArea");
 const changePwBtn = document.getElementById("changePwBtn");
+
+const toLoginArea = document.getElementById("toLogin");
 
 // 이메일로 인증하기 버튼 비활성화
 sendAuthKeyBtn.classList.add("buttonOff");
@@ -133,7 +135,9 @@ sendAuthKeyBtn.addEventListener("click",() => {
         })
 
         //_비동기라서 위 ajax와 동시에 아래 코드 실행됨.
-        alert("인증번호가 발송 되었습니다.");
+        // alert("인증번호가 발송 되었습니다.");
+        toLoginArea.innerHTML = "인증번호가 발송되었습니다!"
+        toLoginArea.classList.add("green");
 
         
         authTimerArea.innerText = "05:00";

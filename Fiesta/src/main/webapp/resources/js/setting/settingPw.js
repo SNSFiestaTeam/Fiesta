@@ -51,7 +51,7 @@ if(changePwForm != null){
             return;
         }
 
-        const regEx = /^[\w\~\!\@\#\$\%\^\&\*\-\_]{6,30}$/;
+        const regEx = /^[\w~!@#$%^&*-_]{8,30}$/;
         if(!regEx.test(newPw.value)){
             alert("이 비밀번호는 추측하기 너무 쉽습니다. 비밀번호를 다시 만드세요")
             event.preventDefault();

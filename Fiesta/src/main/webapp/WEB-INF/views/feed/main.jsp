@@ -243,8 +243,8 @@
 
     <!-- 모달창 include -->
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
-    <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />

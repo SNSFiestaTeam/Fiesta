@@ -16,7 +16,7 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
 
   /* display: flex; */
   flex-direction: column;
@@ -65,14 +65,13 @@
   width: 90%;
   min-width: 655px;
   max-width: 755px;
-  
 }
 
 /* ----- 게시물작성 top ------ */
-.new-post-top {
+.new-post-top-file {
   display: flex;
-  justify-content: space-between;
   justify-content: center;
+  align-items: center;
   border-bottom: 2px solid #ececec;
   height: 50px;
 }
@@ -118,7 +117,7 @@
   margin: 10px 0;
 }
 
-#file-input {
+.file-select-btn > input {
   display: none;
 }
 
@@ -138,5 +137,4 @@
   color: white;
   font-size: 15px;
   text-align: center;
-
 }

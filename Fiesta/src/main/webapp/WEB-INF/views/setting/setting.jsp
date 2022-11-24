@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>instagram</title>
-    <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="/resources/css/setting-style.css" />
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    <link rel="stylesheet" href="/resources/css/setting/setting-style.css" />
     <link rel="stylesheet" href="../../../resources/css/profile-edit-board.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -27,13 +27,13 @@
         <section class="left-side">
           <ul class="list-group">
             <li><a href="/setting/setting">프로필 편집</a></li>
-            <li><a href="/setting/setting/Pw">비밀번호 변경</a></li>
-            <li><a href="/setting/setting/3">개인정보 및 보안</a></li>
+            <li><a href="/setting/setting/changePw">비밀번호 변경</a></li>
+            <li><a href="/setting/setting/changeEtc">개인정보 및 보안</a></li>
           </ul>
         </section>
 
         <section class="setting-main">
-          <form action="updateImg" method="POST" name="profile-img" enctype="multipart/form-data"
+          <form action="updateImage" method="POST" id="profile-frm" name="profile-img" enctype="multipart/form-data"
           onsubmit="return profileVaildate()">
             <div class="di-1">
               <aside>
@@ -96,6 +96,6 @@
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>
    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-   <script src="/resources/js/setting.js"></script>
+   <script src="/resources/js/setting/setting.js"></script>
   </body>
 </html>

@@ -55,8 +55,18 @@ public class MemberDAO {
 	 * @param memberPw
 	 * @return result
 	 */
-	public int updatePw(String memberEmail, String memberPw) {
-		return sqlSession.update("memberMapper.updatePw", memberEmail);
+	public int updatePw(Member member) {
+		return sqlSession.update("memberMapper.updatePw", member);
+	}
+
+
+	public int selectMemberNo(String memberEmail) {
+		return sqlSession.selectOne("memberMapper.selectMemberNo", memberEmail);
+	}
+
+
+	public int followMyself(int memberNo) {
+		return sqlSession.insert("memberMapper.followMyself", memberNo);
 	}
 
 
