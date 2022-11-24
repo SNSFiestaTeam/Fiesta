@@ -31,6 +31,7 @@
 		<mapper resource="/mappers/setting-mapper.xml"/>
 		<mapper resource="/mappers/main-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/feed-mapper.xml"/>
 		
 	
 	</mappers>
