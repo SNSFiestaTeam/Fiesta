@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.support.SessionStatus;
@@ -22,7 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.fiesta.member.model.vo.Member;
 import edu.kh.fiesta.setting.model.service.SettingService;
 
-@RequestMapping("setting/setting")
+@RequestMapping("/setting")
 @Controller
 public class SettingController {
 
@@ -43,10 +44,8 @@ public class SettingController {
 		int result = service.updateSetting(inputMember);
 		
 		String message = null;
-		
 		if(result > 0) {
 			message = "회원 정보 수정";
-		
 		loginMember.setMemberNickname(inputMember.getMemberNickname());
 		loginMember.setMemberName(inputMember.getMemberName());
 		} else {
@@ -54,8 +53,9 @@ public class SettingController {
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:setting";
+		return "redirect:/setting";
 	}
+	
 	
 	
 	
@@ -85,10 +85,10 @@ public class SettingController {
 		ra.addFlashAttribute("message", message);
 		
 		
-		return "redirect:changePw";
+		return "redirect:setting/changePw";
 		
 	}
-	
+
 
 	
 	@GetMapping("/changeEtc")
@@ -109,6 +109,7 @@ public class SettingController {
 		String path = null;
 		
 		if(result > 0 ) {
+	
 			message = "성공";
 			path = "/";
 			status.setComplete();
@@ -136,8 +137,8 @@ public class SettingController {
 		
 	@PostMapping("/updateImage")
 	public String updateImage(
-			@RequestParam(value="memberProfileImg") MultipartFile memberProfileImg,
-			@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam(value="memberProfileImg", required=false) MultipartFile memberProfileImg,
+			@SessionAttribute("loginMember") Member loginMember,  
 			RedirectAttributes ra, 
 			HttpServletRequest req) throws Exception{
 		
@@ -158,6 +159,44 @@ public class SettingController {
 	
 		return "redirect:";
 	}
+	
+	@PostMapping("/changeEtc")
+	public String updateLike(
+			@RequestParam(value="chk1", required=false) String chk1,
+			@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra,
+			@RequestHeader("referer") String referer) {
+		
+		String message = null;
+		int memberNo = loginMember.getMemberNo();
+		
+		System.out.println(chk1);
+		
+		if(chk1 != null) {
+			
+			int result = service.updateLike(memberNo);
+		
+			if(result > 0) {
+				message = "성공";
+			}
+		
+		} else {
+			
+			int result = service.updateLike2(memberNo);
+			
+			if(result > 0) {
+				message = "성공";
+			}
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + referer;
+		
+	}
+	
+	
+	
 	
 
 }

@@ -48,7 +48,7 @@
               <span>${loginMember.memberNickname}</span>
 
               <button id="btn">
-                <a href="/setting/setting">프로필 편집</a>
+                <a href="/setting">프로필 편집</a>
               </button>
 
               <a href="#"><i class="fa-solid fa-gear"></i></a>

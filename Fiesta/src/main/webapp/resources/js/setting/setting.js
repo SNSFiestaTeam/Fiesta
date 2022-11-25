@@ -191,7 +191,9 @@ if(profileFrm != null){
             reader.onload = event =>{
                 profileImg.setAttribute("src", event.target.result);
                 deleteCheck=1;
-                profileVaildate();
+                
+                profileContainer.style.display = "none";
+                profileFrm.submit();
             }
             
         } 
