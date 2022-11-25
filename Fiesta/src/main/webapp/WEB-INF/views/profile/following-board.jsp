@@ -4,6 +4,7 @@
 
     <div class="following-container" id="following-container">
       <div class="following-menu">
+
         <div class="following-title">
         <span class="following-space"></span>
         <span>팔로잉</span>
@@ -13,27 +14,24 @@
         </button>
         </span>
         </div>
+
         <div class="following-subtitle">
           <a href="#">사람</a>
           <a href="#">해시태그</a>
-      </div>
-      <div class="list-container" id="followingList">
-      
-        <%-- <div class="following-content">
-          <div>
+        </div>
+
+        <div class="list-container" id="followingList">
+          <%-- <div class="following-content">
             <div>
-              <span><img src="/resources/images/안유진.jpg"></span>
-              <span><a href="">안유진</a></span>
+              <div>
+                <span><img src="/resources/images/안유진.jpg"></span>
+                <span><a href="">안유진</a></span>
+              </div>
+              <button>팔로잉</button>
             </div>
-            <button>팔로잉</button>
-          </div>
-        </div> --%>
-      </div>
-
-
-
-
+          </div> --%>
+        </div>
 
       </div>
     </div>
-
+   

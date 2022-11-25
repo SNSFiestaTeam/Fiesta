@@ -19,4 +19,6 @@ public class Comment {
 	private String memberProfileImg;
 	private int replyCount;
 	private String mentionNickname;
+	private int commentLikeCheck;
+
 }

@@ -13,15 +13,19 @@
           </button>
         </span>
         </div>
-        <div class="follow-content">
-          <div  class="a">
+
+        <div class="list-container" id="followList">
+          <%-- <div class="follow-content">
             <div>
-            <span><img src="../../resources/images/안유진.jpg"></span>
-            <span><a href="">안유진</a></span>
-          </div>
+              <div>
+                <span><img src="../../resources/images/안유진.jpg"></span>
+                <span><a href="">안유진</a></span>
+              </div>
+            </div>
             <button>삭제</button>
-          </div>
+          </div> --%>
         </div>
+
       </div>
     </div>
 

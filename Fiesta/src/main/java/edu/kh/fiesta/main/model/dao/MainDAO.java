@@ -47,6 +47,11 @@ public class MainDAO {
 	}
 
 
+	/** 게시글 좋아요 증가
+	 * @param boardNo
+	 * @param memberNo
+	 * @return result
+	 */
 	public int boardLikeUp(int boardNo, int memberNo) {
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -57,11 +62,45 @@ public class MainDAO {
 	}
 
 
+	/** 게시글 좋아요 감소
+	 * @param boardNo
+	 * @param memberNo
+	 * @return result
+	 */
 	public int boardLikeDown(int boardNo, int memberNo) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("boardNo", boardNo);
 		map.put("memberNo", memberNo);
 		return sqlSession.delete("mainMapper.boardLikeDown", map);
 	}
+
+
+	/** 게시글 북마크 추가
+	 * @param boardNo
+	 * @param memberNo
+	 * @return result
+	 */
+	public int boardBookmarkOn(int boardNo, int memberNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("boardNo", boardNo);
+		map.put("memberNo", memberNo);
+		
+		return sqlSession.insert("mainMapper.boardBookmarkOn", map);
+	}
+	
+	/** 게시글 북마크 해제
+	 * @param boardNo
+	 * @param memberNo
+	 * @return result
+	 */
+	public int boardBookmarkOff(int boardNo, int memberNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("boardNo", boardNo);
+		map.put("memberNo", memberNo);
+		
+		return sqlSession.insert("mainMapper.boardBookmarkOff", map);
+	}
+
+
 
 }

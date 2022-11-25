@@ -20,5 +20,10 @@ public class FeedDAO {
 		return sqlSession.selectList("feedMapper.selectFollowingList", memberNo);
 	}
 
+	public List<Member> selectFollowList(int memberNo) {
+		
+		return sqlSession.selectList("feedMapper.selectFollowList", memberNo);
+	}
+
 
 }

@@ -92,4 +92,13 @@
 		AND FOLLOW_TYPE = 'M'
   </select>
   
+  <!-- 팔로우 멤버 조회 -->
+  <select id="selectFollowList" resultMap="member_rm">
+		SELECT F_FROM_MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE_IMG
+		FROM FOLLOW
+		JOIN MEMBER ON (MEMBER_NO = F_FROM_MEMBER_NO)
+		WHERE F_TO_TARGET_NO = #{memberNo}
+		AND FOLLOW_TYPE = 'M'
+  </select>
+  
   </mapper>

@@ -27,9 +27,9 @@
             <section class="left-side">
     
                 <ul class="list-group">
-                    <li><a href="/setting/setting">프로필 편집</a></li>
-                    <li><a href="/setting/setting/changePw">비밀번호 변경</a></li>
-                    <li><a href="/setting/setting/changeEtc">개인정보 및 보안</a></li>
+                    <li><a href="/setting">프로필 편집</a></li>
+                    <li><a href="/setting/changePw">비밀번호 변경</a></li>
+                    <li><a href="/setting/changeEtc">개인정보 및 보안</a></li>
                 </ul>
                 
             </section>
@@ -52,7 +52,7 @@
                     <aside class="menu-left">
                         새 비밀번호
                     </aside>
-                     <input type="password" id="newPw" name="newPw">
+                    <input type="password" id="newPw" name="newPw">
                 </div>
 
                 <div class="new-pw2">

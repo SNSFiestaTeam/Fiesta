@@ -42,4 +42,24 @@ public interface MainService {
 	 */
 	public int boardLikeDown(int boardNo, int memberNo);
 
+
+
+	/** 게시글 북마크 추가
+	 * @param boardNo
+	 * @param memberNo
+	 * @return result
+	 */
+	public int boardBookmarkOn(int boardNo, int memberNo);
+
+	
+	/** 게시글 북마크 해제
+	 * @param boardNo
+	 * @param memberNo
+	 * @return result
+	 */
+	public int boardBookmarkOff(int boardNo, int memberNo);
+
+
+
+
 }

@@ -1,5 +1,6 @@
 package edu.kh.fiesta.main.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,25 @@ public class MainController {
 	public int boardLikeDown(int boardNo, int memberNo) {
 		
 		int result = service.boardLikeDown(boardNo, memberNo);
+		
+		return result;
+	}
+	
+	
+	@GetMapping("/boardBookmarkOn")
+	@ResponseBody
+	public int boardBookmarkOn(int boardNo, int memberNo) {
+		
+		int result = service.boardBookmarkOn(boardNo, memberNo);
+		
+		return result;
+	}
+	
+	@GetMapping("/boardBookmarkOff")
+	@ResponseBody
+	public int boardBookmarkOff(int boardNo, int memberNo) {
+		
+		int result = service.boardBookmarkOff(boardNo, memberNo);
 		
 		return result;
 	}
