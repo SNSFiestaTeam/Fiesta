@@ -102,43 +102,5 @@ public class MainDAO {
 	}
 
 
-	/** 댓글 좋아요 증가
-	 * @param commentNo
-	 * @param memberNo
-	 * @return result
-	 */
-	public int commentLikeUp(int commentNo, int memberNo) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("commentNo", commentNo);
-		map.put("memberNo", memberNo);
-		
-		return sqlSession.insert("mainMapper.commentLikeUp", map);
-	}
-
-
-	/** 댓글 좋아요 취소
-	 * @param commentNo
-	 * @param memberNo
-	 * @return result
-	 */
-	public int commentLikeDown(int commentNo, int memberNo) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("commentNo", commentNo);
-		map.put("memberNo", memberNo);
-		
-		return sqlSession.delete("mainMapper.commentLikeDown", map);
-	}
-
-
-	/** 댓글 등록
-	 * @param boardNo
-	 * @param memberNo
-	 * @return commentNo
-	 */
-	public int commentInsert(Map<String, Object> map) {
-		
-		
-		return sqlSession.insert("mainMapper.commentInsert", map);
-	}
 
 }

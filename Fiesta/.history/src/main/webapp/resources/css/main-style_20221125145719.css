@@ -236,9 +236,6 @@ main > section {
   margin-bottom: 10px;
 }
 
-.board-content {
-  margin-left: 5px;
-}
 
 a.hashtag {
   color: #00376b;
@@ -313,11 +310,22 @@ a.comment-profile {
 }
 /* 댓글 상세보기 설정 여기까지 */
 
+.comment-id-content {
+  overflow: hidden;
+  line-height: 1.6;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 .comment-memberId,
 .reply-memberId {
   font-size: var(--small-font-size);
   font-weight: 500;
   margin-right: 5px;
+  display: inline-flex;
 }
 
 .like-heart:hover {
@@ -503,6 +511,7 @@ a.comment-profile {
     display: block;
     height: auto;
     line-height: 1.5;
+    margin-left: 5px;
   }
 
   #textMore {
@@ -546,6 +555,7 @@ a.comment-profile {
     overflow: hidden;
 
     object-fit: fill;
+    margin-top: 5px;
   }
 
   .comment-profile-image {
@@ -564,7 +574,7 @@ a.comment-profile {
   .comment-firstchild {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .comment-firstchild > div {
@@ -578,7 +588,8 @@ a.comment-profile {
   }
 
   .comment-firstline > div {
-    display: flex;
+    display: block;
+    margin-left: 5px;
   }
 
   .reply-firstchild {
@@ -643,7 +654,7 @@ a.comment-profile {
     margin-bottom: 5px;
   }
 
-  .comment-input-area > div > input {
+  .comment-input-area > div > textarea {
     font-size: 15px;
     height: 100%;
     border: none;

@@ -61,30 +61,5 @@ public interface MainService {
 
 
 
-	/** 댓글 좋아요 증가
-	 * @param commentNo
-	 * @param memberNo
-	 * @return result
-	 */
-	public int commentLikeUp(int commentNo, int memberNo);
-	
-	/** 댓글 좋아요 취소
-	 * @param commentNo
-	 * @param memberNo
-	 * @return result
-	 */
-	public int commentLikeDown(int commentNo, int memberNo);
-
-
-
-	/** 댓글 등록
-	 * @param boardNo
-	 * @param memberNo
-	 * @return commentNo
-	 */
-	public int commentInsert(Map<String, Object> map);
-	
-
-
 
 }

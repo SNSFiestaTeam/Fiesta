@@ -20,4 +20,5 @@ public class Comment {
 	private int replyCount;
 	private String mentionNickname;
 	private int commentLikeCheck;
+
 }

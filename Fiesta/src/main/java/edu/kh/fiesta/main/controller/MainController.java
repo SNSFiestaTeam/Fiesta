@@ -87,36 +87,6 @@ public class MainController {
 		return result;
 	}
 	
-	@GetMapping("/commentLikeUp")
-	@ResponseBody
-	public int commentLikeUp(int commentNo, int memberNo) {
-		
-		int result = service.commentLikeUp(commentNo, memberNo);
-		
-		return result;
-	}
-	
-	@GetMapping("/commentLikeDown")
-	@ResponseBody
-	public int commentLikeDown(int commentNo, int memberNo) {
-		
-		int result = service.commentLikeDown(commentNo, memberNo);
-		
-		return result;
-	}
 
-	@GetMapping("/commentInsert")
-	public int commentInsert(int boardNo, int memberNo, String commentInput, int upperCommentNo) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("boardNo", boardNo);
-		map.put("memberNo", memberNo);
-		map.put("commentInput", commentInput);
-	
-		
-		int commentNo = service.commentInsert(map);
-		
-		return commentNo;
-	}
 
 }

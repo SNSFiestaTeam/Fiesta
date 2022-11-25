@@ -180,7 +180,7 @@
 	FROM "COMMENT" c
 	JOIN "MEMBER" m ON (COMMENT_MEMBER_NO = MEMBER_NO)
 	WHERE BOARD_NO = #{boardNo}) C
-	START WITH UPPER_COMMENT_NO IS NULL
+	START WITH UPPER_COMMENT_NO = 0
 	CONNECT BY PRIOR COMMENT_NO = UPPER_COMMENT_NO
 	ORDER SIBLINGS BY COMMENT_NO
 
@@ -224,10 +224,14 @@
   	AND MEMBER_NO = #{memberNo}
   </delete>
   
-  <insert id="commentInsert">
+  <insert id="commentInsert" parameterType="map" useGeneratedKeys="true">
+  	<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">
+  		SELECT SEQ_COMMENT_NO.NEXTVAL FROM DUAL
+  	</selectKey>
+  	
   	INSERT INTO "COMMENT"
-  	VALUES(SEQ_COMMENT_NO.NEXTVAL, #{memberNo}, #{boardContent}, DEFAULT,
-  	#{boardNo}, DEFAULT)
+  	VALUES(#{commentNo}, #{memberNo}, #{commentContent}, DEFAULT,
+  	#{boardNo}, #{upperCommentNo})
   </insert>
   
 </mapper>

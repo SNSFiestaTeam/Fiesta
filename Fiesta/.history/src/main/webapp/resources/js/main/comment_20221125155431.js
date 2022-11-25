@@ -1,140 +1,3 @@
-const feedMenu = document.getElementById("feedMenu");
-const feedHeaderMenu = document.getElementsByClassName("feed-header-menu");
-const body = document.getElementsByTagName("body")[0];
-const feedMenuCancel = document.getElementById("feedMenuCancel");
-
-// 피드 헤더 ...아이콘 클릭 시 메뉴창
-for (let i = 0; i < feedHeaderMenu.length; i++) {
-  feedHeaderMenu[i].addEventListener("click", function () {
-    feedMenu.style.display = "flex";
-
-    body.classList.add("scrollLock");
-  });
-}
-
-// 피트 헤더 메뉴창 취소 클릭시 닫힘
-feedMenuCancel.addEventListener("click", function () {
-  feedMenu.style.display = "none";
-
-  body.classList.remove("scrollLock");
-});
-
-// 피드 신고 버튼 클릭시 신고 창 열림
-const feedReportBtn = document.getElementById("feedReportBtn");
-const report = document.getElementById("report");
-
-feedReportBtn.addEventListener("click", function () {
-  feedMenu.style.display = "none";
-  report.style.display = "flex";
-
-  body.classList.add("scrollLock");
-});
-
-// 신고창 취소 버튼 클릭 시 닫힘
-const reportCancle = document.getElementById("reportCancle");
-reportCancle.addEventListener("click", function () {
-  report.style.display = "none";
-
-  body.classList.remove("scrollLock");
-});
-
-// 피드 공유하기 버튼 클릭시 공유하기 창 열림
-const share = document.getElementById("share");
-const feedShareBtn = document.getElementById("feedShareBtn");
-
-feedShareBtn.addEventListener("click", function () {
-  feedMenu.style.display = "none";
-  share.style.display = "flex";
-
-  body.classList.add("scrollLock");
-});
-
-// 공유하기 모달창에서 클릭버튼 클릭 시
-const shareCancleBtn = document.getElementById("shareCancleBtn");
-shareCancleBtn.addEventListener("click", function () {
-  share.style.display = "none";
-  body.classList.remove("scrollLock");
-});
-
-// 좋아요 버튼 클릭 시
-//  -> 버튼 색상 변경
-//  -> TODO: 좋아요 카운트 상승
-const likeBtn = document.getElementsByClassName("like-btn");
-
-for (let i = 0; i < likeBtn.length; i++) {
-  likeBtn[i].addEventListener("click", (e) => {
-    const emptyHeart = '<i class="fa-regular fa-heart"></i>';
-    const solidHeart = '<i class="fa-solid fa-heart"></i>';
-    const boardLikeCount = document.getElementsByClassName("board-like-count");
-    const boardNo = document.getElementsByClassName("board-no");
-
-
-    if (!likeBtn[i].classList.contains("red")) {
-      $.ajax({
-        url: "/boardLikeUp",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
-        success: (result) => {
-          if (result > 0) {
-            likeBtn[i].innerHTML = "";
-            likeBtn[i].innerHTML = solidHeart;
-            likeBtn[i].classList.add("red");
-
-            boardLikeCount[i].innerText =
-              Number(boardLikeCount[i].innerText) + 1;
-          } else {
-            console.log("증가 실패");
-          }
-        }
-      });
-    } else {
-      $.ajax({
-        url: "/boardLikeDown",
-        data: { "boardNo": boardNo[i].value, "memberNo": memberNo },
-        success: (result) => {
-          console.log(result);
-          if (result > 0) {
-            likeBtn[i].innerHTML = emptyHeart;
-            likeBtn[i].classList.remove("red");
-
-            boardLikeCount[i].innerText =
-              Number(boardLikeCount[i].innerText) - 1;
-          }
-        }
-      });
-    }
-  });
-}
-
-// DM(종이비행기) 버튼 클릭 시
-// FIXME: 모달창에서 바로 DM 발송 가능하게
-
-const dmBtn = document.getElementsByClassName("dm-btn");
-const dmContainer = document.getElementById("dmContainer");
-for (let i = 0; i < dmBtn.length; i++) {
-  dmBtn[i].addEventListener("click", () => {
-    dmContainer.style.display = "flex";
-    dmContainer.classList.add("scrollrock");
-  });
-}
-
-// DM 모달창 X버튼 클릭 시 닫힘
-
-document.getElementById("dmCloseBtn").addEventListener("click", () => {
-  dmContainer.style.display = "none";
-  dmContainer.classList.remove("scrollrock");
-});
-
-// 말풍선 버튼 클릭 시
-//  -> 댓글 입력창에 포커스
-const commentBtn = document.getElementsByClassName("comment-btn");
-const commentInput = document.getElementsByClassName("comment-input");
-
-for (let i = 0; i < commentBtn.length; i++) {
-  commentBtn[i].addEventListener("click", function () {
-    commentInput[i].focus();
-  });
-}
-
 // 댓글 창에 입력 시 게시 버튼 활성화
 const postingBtn = document.getElementsByClassName("posting-btn");
 for (let i = 0; i < commentInput.length; i++) {
@@ -149,74 +12,6 @@ for (let i = 0; i < commentInput.length; i++) {
   });
 }
 
-
-
-// TODO: 답글 입력 시도 만들 것
-
-// 북마크 버튼 클릭 시
-//  -> 북마크 버튼 색상 검정
-//  -> TODO: 북마크에 추가
-const bookmarkBtn = document.getElementsByClassName("bookmark-btn");
-for (let i = 0; i < bookmarkBtn.length; i++) {
-  const boardNo = document.getElementsByClassName("board-no");
-
-  bookmarkBtn[i].addEventListener("click", () => {
-    const emptyIcon = '<i class="fa-regular fa-bookmark"></i>';
-    const solidIcon = '<i class="fa-solid fa-bookmark"></i>';
-
-    if (bookmarkBtn[i].innerHTML == emptyIcon) {
-
-      $.ajax({
-        url: "/boardBookmarkOn",
-        data: {"boardNo":boardNo[i].value, "memberNo":memberNo},
-        success: (result) => {
-
-          if(result > 0) {
-            bookmarkBtn[i].innerHTML = solidIcon;
-          } else {
-            console.log("북마크 실패");
-          }
-        },
-        error: () => {
-          console.log("북마크 추가 중 오류 발생");
-        }
-
-      })
-
-    } else {
-      $.ajax({
-        url: "/boardBookmarkOff",
-        data: {"boardNo":boardNo[i].value, "memberNo":memberNo},
-        success: (result) => {
-
-          if(result > 0) {
-            bookmarkBtn[i].innerHTML = emptyIcon;
-          } else {
-            console.log("북마크 취소 실패");
-          }
-        },
-        error: () => {
-          console.log("북마크 취소 중 오류 발생");
-        }
-
-      })
-    }
-  });
-}
-
-// 본문 더보기 버튼 클릭 시
-//  -> 본문 전체 보이고 더보기 버튼 사라짐
-const moreBtn = document.getElementsByClassName("more-btn");
-for (let i = 0; i < moreBtn.length; i++) {
-  moreBtn[i].addEventListener("click", function () {
-    const feedContent = document.getElementsByClassName("feed-content");
-
-    if (feedContent[i].classList.contains("one-line")) {
-      feedContent[i].classList.remove("one-line");
-      moreBtn[i].classList.add("hide");
-    }
-  });
-}
 
 // FIXME: 댓글이 있을 시
 // 초기 화면에서 최대 2개까지 표시, 3개 이상일 시 댓글 더보기 버튼 생성
@@ -233,6 +28,8 @@ for (let i = 0; i < allCommentBtn.length; i++) {
     allCommentBtn[i].classList.add("hide");
   });
 }
+
+
 
 // 댓글 좋아요 버튼 클릭 시
 // TODO: 댓글 좋아요 클릭 시 좋아요 db insert
@@ -252,7 +49,7 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
       console.log(commentNo[i].value);
       // 좋아요 DB에 추가
       $.ajax({
-        url: "/commentLikeUp",
+        url: "/comment/likeUp",
         data: { "commentNo": commentNo[i].value, "memberNo": memberNo },
         success: (result) => {
           if(result > 0) {
@@ -274,7 +71,7 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
 
       // 댓글 좋아요 DB에서 삭제
       $.ajax({
-        url: "/commentLikeDown",
+        url: "/comment/likeDown",
         data: { "commentNo": commentNo[i].value, "memberNo": memberNo },
         success: (result) => {
           if(result > 0) {
@@ -295,9 +92,11 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
 
 
 
+
 // 댓글 답글 달기 버튼 클릭 시 인풋 태그에 @작성자 아이디 추가
 const replyBtn = document.getElementsByClassName("reply-btn");
 const commentId = document.getElementsByClassName("comment-memberId");
+
 
 for (let i = 0; i < replyBtn.length; i++) {
   replyBtn[i].addEventListener("click", () => {
@@ -314,6 +113,21 @@ for (let i = 0; i < replyBtn.length; i++) {
 
 
 
+// 댓글 목록 조회 후 출력
+selectCommentList(commentListUl, commentList) {
+
+  console.log(commentList);
+
+  commentListUl.innerHTML = "";
+
+
+}
+
+
+
+
+
+
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
 
 // TODO: 댓글 입력 후 ENTER 입력 시도 만들 것
@@ -321,19 +135,18 @@ for (let i = 0; i < replyBtn.length; i++) {
 for (let i = 0; i < postingBtn.length; i++) {
   postingBtn[i].addEventListener("click", () => {
     const boardNo = document.getElementsByClassName("board-no");
+    const commentInput = document.getElementsByClassName("comment-input");
 
-    if(upperCommentNo == null) {
-      upperCommentNo == 0;
-    }
+    console.log(commentInput[i].value);
 
     if(commentInput[i].value != "") {
       console.log(upperCommentNo);
       $.ajax({
-        url: "/commentInsert",
+        url: "/comment/insert",
         data: {"memberNo":memberNo,"boardNo": boardNo[i].value,
-        "boardContent":commentInput.value, "upperCommentNo": upperCommentNo },
-        success: (result)=> {
-          createComment();
+        "commentContent":commentInput[i].value, "upperCommentNo": upperCommentNo },
+        success: (commentList)=> {
+
         },
         error: ()=> {
           console.log("댓글 등록 오류");
@@ -344,7 +157,8 @@ for (let i = 0; i < postingBtn.length; i++) {
   });
 }
 
-function createComment() {
+
+function createComment(commentNo, i) {
 
   // 댓글 리스트 최상위 부모인 Ul 태그 불러오기
   const commentUl = document.getElementsByClassName("comment-list");
@@ -355,11 +169,19 @@ function createComment() {
 
   commentUl[i].append(commentLi);
 
+  // commentLi에 commentNo input hidden 태그 추가
+  // <input type="hidden" value="${comment.commentNo}" class="comment-no">
+
+  const commentNoInput = document.createElement('input')
+  commentNoInput.value = commentNo;
+  commentNoInput.setAttribute("type", "hidden");
+  commentNoInput.classList.add("comment-no");
+
   // commentLi에 div.comment-firstchild 추가
   const commentFirstChild = document.createElement("div");
   commentFirstChild.classList.add("comment-firstchild");
 
-  commentLi.append(commentFirstChild);
+  commentLi.append(commentNoInput, commentFirstChild);
 
   // div.comment-firstchild에  a.comment-profile 추가
   const commentProfile = document.createElement("a");
@@ -426,7 +248,7 @@ function createComment() {
 
       // 좋아요 DB에 추가
       $.ajax({
-        url: "/commentLikeUp",
+        url: "/comment/likeUp",
         data: { "commentNo": comment.commentNo, "memberNo": memberNo },
         success: (result) => {
           if(result > 0) {
@@ -446,7 +268,7 @@ function createComment() {
 
       // 댓글 좋아요 DB에서 삭제
       $.ajax({
-        url: "/commentLikeDown",
+        url: "/comment/likeDown",
         data: { "commentNo": comment.commentNo, "memberNo": memberNo },
         success: (result) => {
           if(result > 0) {
@@ -502,44 +324,3 @@ function createComment() {
 // ! ---------------------------------------댓글 등록 끝 -------------------------------------
 
 
-
-
-
-
-// 피드 헤더 ...아이콘 클릭 시 메뉴창
-const hoverBtn = document.getElementsByClassName("hover-btn");
-const commentMenu = document.getElementById("commentMenu");
-for (let item of hoverBtn) {
-  item.addEventListener("click", function () {
-    commentMenu.style.display = "flex";
-
-    body.classList.add("scrollLock");
-  });
-}
-
-// 피트 헤더 메뉴창 취소 클릭시 닫힘
-
-document
-  .getElementById("commentMenuCancel")
-  .addEventListener("click", function () {
-    commentMenu.style.display = "none";
-
-    body.classList.remove("scrollLock");
-  });
-
-// 피드 신고 버튼 클릭시 신고 창 열림
-const commentReportBtn = document.getElementById("commentReportBtn");
-
-commentReportBtn.addEventListener("click", function () {
-  commentMenu.style.display = "none";
-  report.style.display = "flex";
-
-  body.classList.add("scrollLock");
-});
-
-// 신고창 취소 버튼 클릭 시 닫힘
-reportCancle.addEventListener("click", function () {
-  report.style.display = "none";
-
-  body.classList.remove("scrollLock");
-});
