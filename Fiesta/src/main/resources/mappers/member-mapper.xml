@@ -51,8 +51,8 @@
   		SELECT COUNT(*)
   		FROM "MEMBER"	
   		WHERE MEMBER_NICKNAME = #{memberNickname}
-  		AND SECESSION_FL ='N'
   </select>
+	<!-- AND SECESSION_FL ='N' -->
   
   
   <!-- 계정찾기_비밀번호 재설정 -->

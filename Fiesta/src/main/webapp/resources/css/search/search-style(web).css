@@ -129,13 +129,14 @@ main {
     font-weight: bold;
 }
 
-.accountTitle span:last-child{/* 모두보기 */
+
+/* 모두보기 */
+/*
+.accountTitle span:last-child{
     font-size: 0.8em;
     font-weight: 500;
     color: var(--main-font-color);
-} 
-
-
+} */
 
 .account-container{
     max-width: 100%;
@@ -190,7 +191,7 @@ main {
 .boardResult-section > div:first-child{ /* 인기 게시글 */
     flex-basis: 10%;
     height: 10%;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
     font-weight: bold;
 }
 
@@ -229,6 +230,17 @@ main {
     2) img에 padding을 줘서 간격을 만들기.
 */
 
+
+/* 최근 게시글 */
+
+.recentBoardResult-section > div:first-child{ /* 최근 게시글 */
+    flex-basis: 10%;
+    height: 10%;
+    margin-top: 30px;
+    margin-bottom: 7px;
+    font-weight: bold;
 }
+
+}/* 미디어쿼리 끝나는 지점 */
 
 
