@@ -67,6 +67,22 @@ public class MainServiceImpl implements MainService {
 		return dao.boardLikeDown(boardNo, memberNo);
 	}
 	
+	/** 게시글 북마크 추가
+	 *
+	 */
+	@Override
+	public int boardBookmarkOn(int boardNo, int memberNo) {
+		return dao.boardBookmarkOn(boardNo, memberNo);
+	}
 	
+	/** 게시글 북마크 해제
+	 *
+	 */
+	@Override
+	public int boardBookmarkOff(int boardNo, int memberNo) {
+		return dao.boardBookmarkOn(boardNo, memberNo);
+	}
+
+
 
 }
