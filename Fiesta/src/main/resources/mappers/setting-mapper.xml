@@ -59,6 +59,14 @@ WHERE MEMBER_NO = #{memberNo}
  WHERE MEMBER_NO = #{memberNo}
  </update>
  
+ <!-- 조회수 x -->
+ <update id="boardDelete">
+ UPDATE "BOARD" SET
+ BOARD_PUB_PRI_FL = 'N'
+ WHERE MEMBER_NO = #{memberNo}
+ </update>
+ 
+ 
  <update id="updateLike">
 UPDATE BOARD SET
 BOARD_PUB_PRI_FL = 'N'

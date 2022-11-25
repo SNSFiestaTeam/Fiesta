@@ -53,7 +53,7 @@ public class SettingController {
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:setting/setting";
+		return "redirect:/setting";
 	}
 	
 	
@@ -109,6 +109,7 @@ public class SettingController {
 		String path = null;
 		
 		if(result > 0 ) {
+	
 			message = "성공";
 			path = "/";
 			status.setComplete();

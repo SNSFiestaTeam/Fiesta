@@ -41,7 +41,16 @@ public class SettingDAO {
 	}
 
 	public int memberDelete(int memberNo) {
-		return sqlSession.update("settingMapper.memberDelete", memberNo);
+		int result = sqlSession.update("settingMapper.memberDelete", memberNo);
+		
+		if(result > 0) {
+			
+			result = sqlSession.update("settingMapper.boardDelete", memberNo);
+			
+		}
+		
+		return result;
+		
 	}
 
 	public int updateLike(int memberNo) {
