@@ -22,4 +22,10 @@ public class FeedServiceImpl implements FeedService{
 		return dao.selectFollowingList(memberNo);
 	}
 
+	@Override
+	public List<Member> selectFollowList(int memberNo) {
+		
+		return dao.selectFollowList(memberNo);
+	}
+
 }

@@ -8,16 +8,69 @@ const profileContainer = document.getElementById("profile-container");
 const editClose = document.getElementById("edit-close");
 
 followBtn.addEventListener("click", function(){
-    followContainer.style.display ="flex";
-    scrollrock.style.overflow = "hidden";
+
+    $.ajax({
+        url :"/feed/" + memberNickname + "/followList",
+        type : "post",
+        data : {"memberNo" : memberNo},
+        dataType : "json",
+        success : (followList) => {
+            console.log(followList);
+
+            for(let follow of followList) {
+                const followArea = document.getElementById("followList");
+
+                const followContent = document.createElement("div");
+                followContent.classList.add("follow-content");
+
+                followArea.append(followContent);
+
+                const div1 = document.createElement("div");
+                const div2 = document.createElement("div");
+
+                followContent.append(div1);
+                div1.append(div2);
+
+                const profileImgSpan = document.createElement("span");
+                const profileImg = document.createElement("img");
+                if(follow.memberProfileImg == undefined) {
+                    profileImg.setAttribute("src","/resources/images/profile/profile.jpg" )
+                
+                } else {
+                    profileImg.setAttribute("src",follow.memberProfileImg);
+
+                }
+
+                const profileNickname = document.createElement("span");
+                const nicknameA = document.createElement("a");
+
+                nicknameA.href = "/feed/"+ follow.memberNickname;
+                nicknameA.innerText = follow.memberNickname;
+
+                div2.append(profileImgSpan, profileNickname);
+
+                profileImgSpan.append(profileImg);
+                profileNickname.append(nicknameA);
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.innerText = "삭제";
+
+                div1.append(deleteBtn);
+
+            }
+
+            followContainer.style.display ="flex";
+            scrollrock.style.overflow = "hidden";
+        }
+        
+    })
+
 });
-
-
 
 followingBtn.addEventListener("click", function(){
     
     $.ajax({
-        url : "/feed/" + memberNickname,
+        url : "/feed/" + memberNickname + "/followingList",
         type : "post",
         data : {"memberNo" : memberNo},
         dataType : "json",
@@ -33,6 +86,7 @@ followingBtn.addEventListener("click", function(){
                 const followingContent = document.createElement("div");
                 followingContent.classList.add("following-content");
 
+                // followingArea안에 followingContent를 조립
                 followingArea.append(followingContent)
 
                 const div1 = document.createElement("div");
@@ -70,10 +124,7 @@ followingBtn.addEventListener("click", function(){
                 followingBtn.innerText = "팔로잉";
 
                 div1.append(followingBtn);
-                
-            
             }
-
 
             followingContainer.style.display = "flex";
             scrollrock.style.overflow = "hidden";
@@ -85,16 +136,17 @@ followingBtn.addEventListener("click", function(){
 
 })
 
-
 const followClose = document.getElementById("follow-close")
 followClose.addEventListener("click", function(){
     followContainer.style.display ="none";
     scrollrock.style.overflow = "visible";
+    document.getElementById("followList").innerHTML ="";
 })
 
 followContainer.addEventListener("click", function(){
     followContainer.style.display ="none";
     scrollrock.style.overflow = "visible";
+    document.getElementById("followList").innerHTML ="";
 })
 
 const followingClose = document.getElementById("following-close")
