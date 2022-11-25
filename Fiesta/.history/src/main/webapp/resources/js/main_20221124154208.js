@@ -271,14 +271,48 @@ for (let i = 0; i < postingBtn.length; i++) {
 //  -> TODO: 북마크에 추가
 const bookmarkBtn = document.getElementsByClassName("bookmark-btn");
 for (let i = 0; i < bookmarkBtn.length; i++) {
-  bookmarkBtn[i].addEventListener("click", function () {
+  const boardNo = document.getElementsByClassName("board-no");
+
+  bookmarkBtn[i].addEventListener("click", () => {
     const emptyIcon = '<i class="fa-regular fa-bookmark"></i>';
     const solidIcon = '<i class="fa-solid fa-bookmark"></i>';
 
     if (bookmarkBtn[i].innerHTML == emptyIcon) {
-      bookmarkBtn[i].innerHTML = solidIcon;
+
+      $.ajax({
+        url: "/boardBookmarkOn",
+        data: {"boardNo":boardNo[i].value, "memberNo":memberNo},
+        success: (result) => {
+
+          if(result > 0) {
+            bookmarkBtn[i].innerHTML = solidIcon;
+          } else {
+            console.log("북마크 실패");
+          }
+        },
+        error: () => {
+          console.log("북마크 추가 중 오류 발생");
+        }
+
+      })
+
     } else {
-      bookmarkBtn[i].innerHTML = emptyIcon;
+      $.ajax({
+        url: "/boardBookmarkOff",
+        data: {"boardNo":boardNo[i].value, "memberNo":memberNo},
+        success: (result) => {
+
+          if(result > 0) {
+            bookmarkBtn[i].innerHTML = emptyIcon;
+          } else {
+            console.log("북마크 취소 실패");
+          }
+        },
+        error: () => {
+          console.log("북마크 취소 중 오류 발생");
+        }
+
+      })
     }
   });
 }
@@ -319,15 +353,29 @@ for (let i = 0; i < allCommentBtn.length; i++) {
 const commentLikeBtn = document.getElementsByClassName("comment-like-btn");
 
 for (let i = 0; i < commentLikeBtn.length; i++) {
+  const commentNo = document.getElementsByClassName("comment-no");
+
   commentLikeBtn[i].addEventListener("click", function () {
     const emptyHeart = '<i class="fa-regular fa-heart"></i>';
     const solidHeart = '<i class="fa-solid fa-heart"></i>';
 
+    // 댓글 좋아요 안한 상태일 때
     if (!commentLikeBtn[i].classList.contains("red")) {
+
+      // 좋아요 DB에 추가
+      $.ajax({
+        url: "/commentLikeUp",
+        data: { "commentNo": commentNo[i].value, "memberNo": memberNo },
+
+
+      })
+
       commentLikeBtn[i].innerHTML = "";
       commentLikeBtn[i].innerHTML = solidHeart;
       commentLikeBtn[i].classList.add("red");
-    } else {
+
+
+    } else { // 댓글에 좋아요 돼있을 때
       commentLikeBtn[i].innerHTML = emptyHeart;
       commentLikeBtn[i].classList.remove("red");
     }
