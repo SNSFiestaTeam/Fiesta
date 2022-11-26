@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -27,7 +26,9 @@ public class MemberController {
 	
 	// 로그인
 	@PostMapping("/main")
-	public String login(Member inputMember, Model model, RedirectAttributes ra, @RequestHeader(value="referer")String referer,
+	public String login(Member inputMember, Model model, 
+						RedirectAttributes ra, 
+						@RequestHeader(value="referer")String referer,
 						HttpServletResponse resp) {
 		
 		Member loginMember = service.login(inputMember);
@@ -128,7 +129,7 @@ public class MemberController {
 	}
 	
 	
-	
+	// 계정찾기_ 이메일 인증 후 비밀번호 재설정 페이지로 이동
 	@GetMapping("/findAccount/changePwPage")
 	public String changePw() {
 		return "member/changePw";
@@ -139,7 +140,6 @@ public class MemberController {
 	// 계정찾기_비밀번호 재설정하기 
 	@PostMapping("/findAccount/changePwPage/updatePw")
 	public String updatePw(String memberPw, String inputEmail,
-//						   @RequestHeader("referer") String referer,
 						   RedirectAttributes ra, Model model) {
 		
 		

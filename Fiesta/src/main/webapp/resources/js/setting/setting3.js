@@ -17,3 +17,17 @@ function memberDeleteValidate(){
     return true;
 }
 
+
+const likeFrm = document.getElementById("like-frm");
+const chk1 = document.getElementById("chk1");
+
+chk1.addEventListener("change", ()=>{
+
+    likeFrm.submit();
+
+    if(likeFrm.submit()){
+    chk1.checked = true;
+}
+
+});
+

@@ -11,7 +11,7 @@
         </section>
         <!-- 검색창 -->
         <section class="search-section">
-          <form action="#">
+          <form action="/main/search">
             <fieldset>
               <button id="search-glass">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -27,7 +27,7 @@
               <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
             </fieldset>
               
-            </button>
+            <%-- </button> --%>
           </form>
         </section>
         <!-- 메뉴 -->
@@ -73,7 +73,7 @@
       </section>
     </header>
     <section class="toggle-search-section">
-      <form action="#">
+      <form action="/main/search">
         <fieldset>
           <input
           type="text"
@@ -88,6 +88,6 @@
           </button>
         </fieldset>
           
-        </button>
+        <%-- </button> --%>
       </form>
     </section>

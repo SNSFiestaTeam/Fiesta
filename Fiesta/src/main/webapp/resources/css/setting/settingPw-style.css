@@ -74,8 +74,9 @@
 .top{
     height: 40px;
     margin-top: 32px;
-    display: inline;
+    display: flex;
     padding-bottom: 10px;
+    justify-items: center;
 }
 
 .top .loginid{

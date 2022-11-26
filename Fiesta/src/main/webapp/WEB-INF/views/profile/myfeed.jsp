@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>instagram</title>
+    <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/myfeed.css" />
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
@@ -34,7 +34,7 @@
           <div id="profile-photo">
             <button id="self">
               <c:if test="${ empty loginMember.memberProfileImg}">
-                <img id="selfImg" src="/resources/images/profile.jpg" />
+                <img id="selfImg" src="/resources/images/profile/profile.jpg" />
               </c:if>
 
               <c:if test="${ !empty loginMember.memberProfileImg}">
@@ -48,7 +48,7 @@
               <span>${loginMember.memberNickname}</span>
 
               <button id="btn">
-                <a href="/setting/setting">프로필 편집</a>
+                <a href="/setting">프로필 편집</a>
               </button>
 
               <a href="#"><i class="fa-solid fa-gear"></i></a>
@@ -181,11 +181,17 @@
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/profile-edit-board.jsp"/>
         <%-- 새게시물작성 모달jsp --%>
-        <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+        <%-- <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" /> --%>
       <%-- <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" /> --%>
       <%-- <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" /> --%>
+
+      <script>
+        var memberNickname = "${loginMember.memberNickname}";
+        var memberNo = "${loginMember.memberNo}";
+      </script>
+
      <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="/resources/js/myfeed.js"></script>
-    <script src="/resources/js/newpost.js"></script>
+    <%-- <script src="/resources/js/newpost.js"></script> --%>
   </body>
 </html>
