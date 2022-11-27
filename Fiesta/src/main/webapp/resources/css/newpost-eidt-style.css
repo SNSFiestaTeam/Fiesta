@@ -311,8 +311,8 @@
 }
 
 /* 이미지 추가 모든요소 감싸는 영역 */
-/* .add{ */
-/* width: ; */
+/* .add { */
+/* width: auto; */
 /* overflow: hidden; */
 /* margin-left:100px ; */
 /* } */
@@ -356,27 +356,33 @@
 /* 파일미리보기 영역 */
 .file-preview-and-remove {
   display: flex;
-  width: 200px;
+  width: auto;
   height: 90px;
-  max-width: 300px;
+  max-width: 200px;
   overflow: hidden;
 }
 .file-preview {
   display: flex;
   position: relative;
-  width: 70px;
-  height: 90px;
+  left: 0;
+  /* width: 70px; */
+  height: 80px;
   margin: 10px;
+  /* max-width: 250px; */
+}
+.preview-file {
+  width: 70px;
+  height: 70px;
 }
 .preview-file > img {
   position: absolute;
-  width: 70px;
-  height: 70px;
-  padding: 5px;
+  width: 100%;
+  height: 100%;
+  /* padding: 5px; */
 }
 
 /* 파일 미리보기 삭제버튼 */
-.remove {
+.preview-remove {
   border: 1px solid white;
   border-radius: 50%;
   width: 23px;
@@ -393,35 +399,34 @@
   cursor: pointer;
   position: absolute;
   top: auto;
-  margin-left: 50px;
-  /* margin: 5px 65px 65px 65px; */
+  z-index: 10000;
+  /* margin-left: 50px; */
+  /* margin: 0 20px 20px 0; */
 
   /* display: none; */
 }
 
-.remove:hover {
+.preview-remove:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* 파일미리보기 옆으로 넘기는 버튼 영역 */
 .preview-controller {
-  /* position: sticky; */
   position: absolute;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* width: 30px; */
-  /* padding-left: 10px; */
-  width: 200px;
+  width: 20%;
   height: 90px;
+  z-index: 90000;
 }
 .preview-btn {
   width: 20px;
   height: 20px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgb(0, 0, 0);
   border-radius: 50px;
-  z-index: 90000;
+  z-index: 9000;
   /* box-sizing: border-box; */
   padding-bottom: 20px;
 }

@@ -61,65 +61,36 @@
                     <div class="file-preview-and-remove preview-swiper">
                       <div class="file-preview swiper-wrapper" id="filePreview">
                         <div class="preview-file swiper-slide">
-
                           <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-
-                          <div class="remove">&times;</div>
+                          <div class="preview-remove">&times;</div>
                         </div>
                         <div class="preview-file swiper-slide">
-
                           <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-
-                          <div class="remove">&times;</div>
+                          <div class="preview-remove">&times;</div>
                         </div>
                         <div class="preview-file swiper-slide">
-
                           <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-
-                          <div class="remove">&times;</div>
+                          <div class="preview-remove">&times;</div>
                         </div>
                         <div class="preview-file swiper-slide">
-
                           <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-
-                          <div class="remove">&times;</div>
+                          <div class="preview-remove">&times;</div>
                         </div>
                         <div class="preview-file swiper-slide">
-
                           <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-
-                          <div class="remove">&times;</div>
+                          <div class="preview-remove">&times;</div>
                         </div>
-                        <div class="preview-file swiper-slide">
-
-                          <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-
-                          <div class="remove">&times;</div>
-                        </div>
-                        <div class="preview-file swiper-slide">
-
-                          <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-
-                          <div class="remove">&times;</div>
-                        </div>
-
+                        
 
                       </div>
-                      
-                      
-                      
-                      
-                      
-                      
-                      
+
                       <div class="preview-controller">
                         <div class="preview-btn preview-swiper-button-prev">&lsaquo;</div>
                         <div class="preview-btn preview-swiper-button-next">&rsaquo;</div>
                       </div>
                     </div>
-                    
-
                   </div>
+
                   <div class="edit-add-file-input">
                     <label for="addFileInput"><i class="fa-solid fa-plus"></i></label>
                     <input type="file" name="addFileInput" id="addFileInput" hidden>
