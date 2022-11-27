@@ -32,6 +32,7 @@
 		<mapper resource="/mappers/main-mapper.xml"/>
 		<mapper resource="/mappers/board-mapper.xml"/>
 		<mapper resource="/mappers/feed-mapper.xml"/>
+		<mapper resource="/mappers/comment-mapper.xml"/>
 		
 	
 	</mappers>

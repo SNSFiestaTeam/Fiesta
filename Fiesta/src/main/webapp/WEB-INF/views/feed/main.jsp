@@ -182,22 +182,27 @@
                                   <c:if test="${comment.replyCount > 0}">
                                   <a href="#" class="more-reply">모든 답글 보기(${comment.replyCount})</a>
                                   </c:if>
+                              </c:if>
 
                                   <!-- 답글 리스트 -->
-
-                                  <ul>
-                                    <!-- 두번째 댓글의 답글 -->
-                                    <!--<li class="comment" id="reply">
+                                  <c:if test="${comment.upperCommentNo > 0}">
+              
+                                    <li class="comment" id="reply">
                                       <div class="reply-firstchild">
                                         <a href="#" class="comment-profile">
-                                          <img class="comment-profile-image" src="/resources/images/karina.jpeg" />
+                                          <c:if test="${empty comment.memberProfileImg}">
+                                          <img class="comment-profile-image" src="/resources/images/profile/profile.jpg" />
+                                          </c:if>
+                                          <c:if test="${not empty comment.memberProfileImg}">
+                                            <img class="comment-profile-image" src="${comment.memberProfileImg}" />
+                                          </c:if>
                                         </a>
                                         <div>
                                           <div class="reply-firstline">
                                             <div>
-                                              <a href="#" class="reply-memberId">karina_aespas_</a>
-                                              <a href="#" class="mention">@for_everyoung10</a>
-                                              <span class="comment-content">나두 사랑해</span>
+                                              <a href="#" class="comment-memberId">${comment.memberNickname}</a>
+                                              <a href="#" class="mention">@${comment.mentionNickname}</a>
+                                              <span class="comment-content">${comment.commentContent}</span>
                                             </div>
                                             <div>
                                               <button class="comment-like-btn"><i class="fa-regular fa-heart"></i></button>
@@ -210,11 +215,10 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </li> -->
+                                    </li>
                                     <!-- 답글 li 종료 -->
-                                  </ul>
+                                  </c:if>
                                 </li>
-                              </c:if>
                               <!-- 댓글 li 종료 -->
                             </c:forEach>
                           </c:if>
