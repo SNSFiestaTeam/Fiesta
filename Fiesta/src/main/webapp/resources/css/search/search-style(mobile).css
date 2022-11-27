@@ -152,7 +152,7 @@
         align-items: center;
     }
     
-    .profileImage img{
+    .profileImages img{
         width: 80%;
         border-radius: 50%;
         margin-bottom: 8px;
@@ -162,7 +162,7 @@
         font-size: 0.7em;
     }
     
-    .follow a{
+    .follow-button-small a{
         font-size: 0.7em;
         font-weight: bold;
         color: var(--fiesta-color);

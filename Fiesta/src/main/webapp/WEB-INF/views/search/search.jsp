@@ -40,7 +40,7 @@
             <div class="keyword-area">
                 <div>
                     <div class="searchKeyword">
-                        #반려동물
+                        <script>searchInput.value</script>
                     </div>
                 </div>    
                 <div class="total">
@@ -49,13 +49,13 @@
                         <span>게시글</span> 
                     </span>
                     <span class="total-number">
-                        <span>143</span>  <!--계정 결과값 -->
-                        <span>814,301</span>  <!-- 게시글 결과값 -->
+                        <span>${accountTotal}</span> <!--계정 결과값 -->
+                        <span>${boardTotal}</span> <!-- 게시글 결과값 -->
                     </span>
                 </div>
 
                 <div class="follow-button">
-                    <a href="">팔로우</a>
+                    <a href="/main/search/followHashtag">팔로우</a>
                 </div>
             </div>
         </section>
@@ -67,81 +67,84 @@
         <section class="accountResult-section">
             <span class="accountTitle">
                 <span>관련 있는 계정</span>
-                <%-- <span>모두 보기</span> --%>
+                <!-- <span>모두 보기</span> -->
             </span>
             
             <article class="account-container">
-                <div class="account-Group">
-                    <a href="#" class="profileImage">
-                      <img src="../../resources/images/14f5961af72ef1686b2548d7c5c792e6.jpg">
-                    </a>
-                    <a href="" class="profileNickname">
-                      고양이집사1
-                    </a>
-                    <span class="follow">
-                        <a href="">팔로우</a>
-                    </span>
-                </div>
 
+              <c:forEach var="i" begin="1" end="6">
                 <div class="account-Group">
-                  <a href="#" class="profileImage">
+                  <a href="/feed/{loginMember.memberNickname}" class="profileImages">
+                    <img src="/resources/images/profile/profile.jpg">
+                  </a>
+                  <a href="/feed/${loginMember.memberNickname}" class="profileNickname">
+                    ${accountList.memberNickname}
+                  </a>
+                  <span class="follow-button-small">
+                    <a href="">팔로우</a>
+                  </span>
+                </div>
+              </c:forEach>
+                
+                <!-- <div class="account-Group">
+                  <a href="#" class="profileImages">
                     <img src="../../resources/images/1973ca8ce1b8dc4bac38683bc39d7fbd.jpg">
                   </a>
                   <a href="#" class="profileNickname">
                     고양이집사2
                   </a>
-                  <span class="follow">
+                  <span class="follow-button-small">
                     <a href="">팔로우</a>
                   </span>
                 </div>
 
                 <div class="account-Group">
-                  <a href="#" class="profileImage">
+                  <a href="#" class="profileImages">
                     <img src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg">
                   </a>
                   <a href="#" class="profileNickname">
                     고양이집사3
                   </a>
-                  <span class="follow">
+                  <span class="follow-button-small">
                     <a href="">팔로우</a>
                   </span>
                 </div>
 
                 <div class="account-Group">
-                  <a href="#" class="profileImage">
+                  <a href="#" class="profileImages">
                     <img src="../../resources/images/2159c9572a920ef17d26d2d57b76d7a8.jpg">
                   </a>
                   <a href="#" class="profileNickname">
                     강아지엄마
                   </a>
-                  <span class="follow">
+                  <span class="follow-button-small">
                     <a href="">팔로우</a>
                   </span>
                 </div>
 
                 <div class="account-Group">
-                  <a href="#" class="profileImage">
+                  <a href="#" class="profileImages">
                     <img src="../../resources/images/3a6f19a15fea55a21cf71a7b3e0f2434.jpg">
                   </a>
                   <a href="#" class="profileNickname">
                     강아지아빠
                   </a>
-                  <span class="follow">
+                  <span class="follow-button-small">
                     <a href="">팔로우</a>
                   </span>
                 </div>
 
                 <div class="account-Group">
-                  <a href="#" class="profileImage">
+                  <a href="#" class="profileImages">
                     <img src="../../resources/images/8983e3185d5dc741e425f7c06f907f1b.jpg">
                   </a>
                   <a href="#" class="profileNickname">
                     강아지이모
                   </a>
-                  <span class="follow">
+                  <span class="follow-button-small">
                     <a href="">팔로우</a>
                   </span>
-                </div>
+                </div> -->
 
                 <!-- <div id="more">
                     <a href="#">...</a>

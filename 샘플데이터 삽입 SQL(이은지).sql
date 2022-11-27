@@ -427,12 +427,12 @@ WHERE MEMBER_EMAIL = #{loginMember.getMemberNo}
 -- 은지) 검색창
 
 -- 사진 조회(인기게시글 첫 번째)
-SELECT 
+SELECT * FROM "MEMBER"; 
 
 -- 관련 계정 수
 SELECT COUNT(*)
 FROM "MEMBER" 
-WHERE MEMBER_NAME LIKE '%SAMPLE%'
+WHERE MEMBER_NAME LIKE '%유저%'
 AND SECESSION_FL = 'N';
 
 
@@ -446,11 +446,34 @@ AND SECESSION_FL = 'N';
 
 
 
--- 관련 있는 계정
+-- 관련 있는 계정 조회(정확도 순)
 SELECT MEMBER_PROFILE_IMG, MEMBER_NICKNAME
 FROM "MEMBER" 
-WHERE MEMBER_NAME LIKE '%SAMPLE%'
-AND SECESSION_FL = 'N';
+WHERE MEMBER_NAME LIKE '%피에스타%'
+AND SECESSION_FL = 'N'
+AND ROWNUM <= 6;
+
+SELECT*FROM MEMBER;
+
+
+SELECT* FROM FOLLOW;
+
+
+-- 관련 해시태그 팔로우
+INSERT INTO FOLLOW VALUES
+(로그인한회원번호, 관련 해시태그, H, DEFAULT);
+
+
+-- 관련 있는 계정 팔로우
+INSERT INTO FOLLOW VALUES
+(로그인한 회원번호, 관련계정 회원번호, M, DEFAULT);
+
+
+
+
+
+
+SELECT* FROM BOARD;  
 
 
 -- 인기 게시글 (좋아요 많은 순) - (모달)좋아요 개수, 댓글 수 + 게시글 사진
@@ -466,8 +489,14 @@ SELECT * FROM (SELECT B.BOARD_NO, BOARD_CREATE_DATE,
 FROM BOARD B
 -- SYSDATE - 1 = 1일 전  (일주일 전)
 WHERE BOARD_CREATE_DATE > (SYSDATE - 30)
+AND BOARD_CONTENT LIKE '%#피에스타%'
 ORDER BY LIKE_COUNT DESC) 
-WHERE ROWNUM <= 10;
+WHERE ROWNUM <= 9;
+
+-- 11 13 14 17 2 19 18 10 8
+SELECT * FROM BOARD;
+
+
 
 --최신게시글
 SELECT B.BOARD_NO, BOARD_CREATE_DATE,
@@ -477,6 +506,7 @@ SELECT B.BOARD_NO, BOARD_CREATE_DATE,
 	FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
 	AND IMG_ORDER = 1) IMG_PATH
 FROM BOARD B
+WHERE BOARD_CONTENT LIKE '%#피에스타%'
 ORDER BY BOARD_CREATE_DATE DESC;
 
 
@@ -485,21 +515,6 @@ SELECT (SYSDATE - TO_DATE('20221101','YYYYMMDD')) FROM DUAL;
 
 
 SELECT * FROM BOARD_IMG;
-
--- 좋아요가 많은 게시글
-SELECT * 
-FROM BOARD_LIKE
-LEFT JOIN BOARD_IMG USING(BOARD_NO);
-
-
-SELECT *
-FROM BOARD 
-LEFT JOIN BOARD_IMG USING(BOARD_NO)
-WHERE BOARD_NO IN(8,10,2);
-
-
-SELECT * FROM BOARD_IMG;
-
 
 
 -- ***** (모달) 좋아요 개수, 댓글 개수
@@ -551,12 +566,45 @@ COMMIT;
 SELECT * FROM "COMMENT"; 
 
 
-UPDATE "MEMBER" SET
-SECESSION_FL = 'N'
 
 UPDATE BOARD SET
 BOARD_DEL_FL = 'Y'
 WHERE MEMBER_NO = 1;
 
 
+SELECT COUNT(*), BOARD_NO 
+FROM BOARD_LIKE 
+GROUP BY BOARD_NO
+ORDER BY COUNT(*) DESC;
 
+WHERE MEMBER_PROFILE_IMG IS NOT NULL;
+
+
+-- 11,13,14,17,8,10,19,2,18,3  --/resources/images/profile/profile.jpg
+
+ROLLBACK;
+
+
+-- 검색어 '피에스타'로 검색될 계정 생성 샘플
+INSERT INTO "MEMBER"
+VALUES (SEQ_MEMBER_NO.NEXTVAL, 'fiest02@naver.com', 'pass02!','피에스타fiesta02', 'fiesta02', '/resources/images/profile/profile.jpg', DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO "MEMBER"
+VALUES (SEQ_MEMBER_NO.NEXTVAL, 'fiest03@naver.com', 'pass03!','피에스타fiesta03', 'fiesta03', '/resources/images/profile/profile.jpg', DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO "MEMBER"
+VALUES (SEQ_MEMBER_NO.NEXTVAL, 'fiest04@naver.com', 'pass04!','피에스타fiesta04', 'fiesta04', '/resources/images/profile/profile.jpg', DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO "MEMBER"
+VALUES (SEQ_MEMBER_NO.NEXTVAL, 'fiest05@naver.com', 'pass05!','피에스타fiesta05', 'fiesta05', '/resources/images/profile/profile.jpg', DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO "MEMBER"
+VALUES (SEQ_MEMBER_NO.NEXTVAL, 'fiest06@naver.com', 'pass06!','피에스타fiesta06', 'fiesta06', '/resources/images/profile/profile.jpg', DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+
+UPDATE "MEMBER" SET
+MEMBER_NICKNAME='fiesta06',
+MEMBER_NAME='피에스타fiesta06'
+WHERE MEMBER_NO = 43
+
+
+SELECT * FROM MEMBER
+WHERE MEMBER_NAME LIKE '%fiesta%'
+
+COMMIT;

@@ -73,7 +73,7 @@
       </section>
     </header>
     <section class="toggle-search-section">
-      <form action="/main/search">
+      <form action="">
         <fieldset>
           <input
           type="text"
@@ -91,3 +91,5 @@
         <%-- </button> --%>
       </form>
     </section>
+
+    <script src="/resources/js/search/search.js"></script>
