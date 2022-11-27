@@ -137,7 +137,7 @@ public class SettingController {
 		
 	@PostMapping("/updateImage")
 	public String updateImage(
-			@RequestParam(value="memberProfileImg", required=false) MultipartFile memberProfileImg,
+			@RequestParam(value="memberProfileImg") MultipartFile memberProfileImg,
 			@SessionAttribute("loginMember") Member loginMember,  
 			RedirectAttributes ra, 
 			HttpServletRequest req) throws Exception{
@@ -160,40 +160,33 @@ public class SettingController {
 		return "redirect:";
 	}
 	
-	@PostMapping("/changeEtc")
-	public String updateLike(
-			@RequestParam(value="chk1", required=false) String chk1,
-			@SessionAttribute("loginMember") Member loginMember,
-			RedirectAttributes ra,
-			@RequestHeader("referer") String referer) {
+
+	// 계정 공개
+	@PostMapping("/open")
+	public String open(@RequestParam(value="account") String account,
+			@SessionAttribute("loginMember") Member loginMember, 
+			RedirectAttributes ra) {
+		
+			loginMember.setMemberOpenFl(account);
+		
+		int result = service.changeOpen(loginMember);
 		
 		String message = null;
-		int memberNo = loginMember.getMemberNo();
 		
-		System.out.println(chk1);
-		
-		if(chk1 != null) {
+		if(result > 0) {
 			
-			int result = service.updateLike(memberNo);
-		
-			if(result > 0) {
-				message = "성공";
-			}
-		
+			message = "변경 성공";
 		} else {
-			
-			int result = service.updateLike2(memberNo);
-			
-			if(result > 0) {
-				message = "성공";
-			}
+		 
+			message = "실패";	
 		}
+		
 		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:" + referer;
-		
+		return "redirect:changeEtc";
 	}
+	
 	
 	
 	

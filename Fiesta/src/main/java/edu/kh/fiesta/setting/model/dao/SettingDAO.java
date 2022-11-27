@@ -53,12 +53,10 @@ public class SettingDAO {
 		
 	}
 
-	public int updateLike(int memberNo) {
-		return sqlSession.update("settingMapper.updateLike", memberNo);
-	}
 
-	public int updateLike2(int memberNo) {
-		return sqlSession.update("settingMapper.updateLike2", memberNo);
+	public int changeOpen(Member loginMember) {
+
+		return sqlSession.update("settingMapper.changeOpen", loginMember);
 	}
 
 	

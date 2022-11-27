@@ -33,8 +33,7 @@
         </section>
 
         <section class="setting-main">
-          <form action="/setting/updateImage" method="POST" id="profile-frm" name="profile-img" enctype="multipart/form-data"
-          onsubmit="return profileVaildate()">
+          <form action="/setting/updateImage" method="POST" id="profile-frm" name="profile-img" enctype="multipart/form-data">
             <div class="di-1">
               <aside>
                 <button type="button" id="chg-img">

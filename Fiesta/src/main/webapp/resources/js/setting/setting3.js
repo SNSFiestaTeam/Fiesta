@@ -23,11 +23,11 @@ const chk1 = document.getElementById("chk1");
 
 chk1.addEventListener("change", ()=>{
 
-    likeFrm.submit();
-
-    if(likeFrm.submit()){
-    chk1.checked = true;
-}
-
+ 
 });
+
+// 계정 공개
+function getAccount(event){
+    accountFrm.submit();
+}
 

@@ -67,17 +67,13 @@ WHERE MEMBER_NO = #{memberNo}
  </update>
  
  
- <update id="updateLike">
-UPDATE BOARD SET
-BOARD_PUB_PRI_FL = 'N'
+<update id="changeOpen">
+UPDATE "MEMBER" SET
+MEMBER_OPEN_FL = #{memberOpenFl}
 WHERE MEMBER_NO = #{memberNo}
- </update>
- 
-<update id="updateLike2">
-UPDATE BOARD SET
-BOARD_PUB_PRI_FL = 'Y'
-WHERE MEMBER_NO = #{memberNo}
- </update>
- </mapper>
+</update>
+
+
+</mapper>
  
  

@@ -20,9 +20,8 @@ public interface SettingService {
 
 	int memberDelete(int memberNo);
 
-	int updateLike(int memberNo);
 
-	int updateLike2(int memberNo);
+	int changeOpen(Member loginMember);
 
 
 	

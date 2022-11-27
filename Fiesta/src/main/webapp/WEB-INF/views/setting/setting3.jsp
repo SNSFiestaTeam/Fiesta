@@ -35,13 +35,13 @@
         </section>
 
         <section class="setting-main">
-          <form action="open" method="POST" id="account-frm">
+          <form action="/setting/open" method="POST" id="account-frm">
             <section class= account>
               <h2>계정 공개 범위</h2>
               <label for="account" id="idOpen">
-                <input type="radio" name="account" value="Y"> 모두 공개
-                <input type="radio" name="account" value="F"> 팔로워 공개
-                <input type="radio" name="account" value="N"> 비공개
+                <input type="radio" name="account" value="Y" onclick="getAccount(event)"> 모두 공개
+                <input type="radio" name="account" value="F" onclick="getAccount(event)"> 팔로워 공개
+                <input type="radio" name="account" value="N" onclick="getAccount(event)"> 비공개
               </label>
               <p class="note"> 계정이 비공개 상태인 경우 회원님이 승인한 사람만 Instagram에서 회원님의 사진과 동영상을 볼 수 있습니다. 기존 팔로워는 영향을 받지 않습니다. </p>
             </section>
@@ -53,7 +53,7 @@
               <span class="like-1">좋아요 및 조회수</span>
               <div class="post-1"> 
                 <span class="like-2">좋아요, 재생 및 조회수 숨기기</span>
-                <input type="checkbox" name="chk1" id="chk1"><label for="chk1"><span></span></label>
+                <input type="checkbox" name="chk1" id="chk1" value="${loginMember.memberOpenFl}"><label for="chk1"><span></span></label>
               </div>
                 <span class="like-3">다른 계정에서 올린 게시물의 좋아요, 재생 및 조회수가 숨겨집니다. 공유하기 전에 고급 설정으로 이동하여 회원님 게시물의 좋아요, 재생 및 조회수를 숨길 수 있습니다.</span>
             </section>
