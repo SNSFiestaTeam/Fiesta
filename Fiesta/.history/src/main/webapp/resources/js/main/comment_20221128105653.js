@@ -554,9 +554,3 @@ function selectCommentList(boardNo, commentListUl) {
     },
   });
 }
-
-
-// 댓글 삭제 함수
-function deleteComment(commentNo) {
-
-}

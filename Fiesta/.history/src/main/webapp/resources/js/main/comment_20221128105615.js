@@ -139,13 +139,6 @@ document.getElementById("commentMenuCancel").addEventListener("click", () => {
     body.classList.remove("scrollLock");
   });
 
-// (로그인)댓글 메뉴 닫기 버튼 클릭 시
-document.getElementById("commentMenuCancelL").addEventListener("click", () => {
-  loginCommentMenu.style.display = "none";
-
-    body.classList.remove("scrollLock");
-  });
-
 
 
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
@@ -553,10 +546,4 @@ function selectCommentList(boardNo, commentListUl) {
       console.log('댓글 목록 조회 에러');
     },
   });
-}
-
-
-// 댓글 삭제 함수
-function deleteComment(commentNo) {
-
 }
