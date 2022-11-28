@@ -111,42 +111,23 @@ for (let i = 0; i < replyBtn.length; i++) {
 }
 
 
-// 댓글 ...아이콘 클릭 시 메뉴창
+// 댓글 ... 버튼 클릭 시 메뉴 열림
 const hoverBtn = document.getElementsByClassName("hover-btn");
-const commentMenu = document.getElementById("commentMenu");
-const loginCommentMenu = document.getElementById('commentMenuL');
+const commentMemberId = document.getElementsByClassName("comment-memberId");
 
-for (let item of hoverBtn) {
-  item.addEventListener("click", function () {
-    const commentMemberId = item.parentElement.previousElementSibling.firstElementChild.firstElementChild.innerText;
-    console.log(commentMemberId);
+hoverBtn.addEventListener('click', function () {
+  const commentMenu = document.getElementById('commentMenu');
+  const loginCommentMenu = document.getElementById('commentMenuL');
 
-    if(commentMemberId == memberNickname) {
-      // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
-      loginCommentMenu.style.display = "flex";
-    } else {
-      commentMenu.style.display = 'flex';
-    }
-  
-    body.classList.add("scrollLock");
-  });
-}
+  if(commentMemberIdA.innerText == memberNickname) {
+    // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
+    loginCommentMenu.style.display = "flex";
+  } else {
+    commentMenu.style.display = 'flex';
+  }
 
-// 댓글 메뉴 닫기 버튼 클릭 시
-document.getElementById("commentMenuCancel").addEventListener("click", () => {
-    commentMenu.style.display = "none";
-
-    body.classList.remove("scrollLock");
-  });
-
-// (로그인)댓글 메뉴 닫기 버튼 클릭 시
-document.getElementById("commentMenuCancelL").addEventListener("click", () => {
-  loginCommentMenu.style.display = "none";
-
-    body.classList.remove("scrollLock");
-  });
-
-
+  body.classList.add('scrollLock');
+});
 
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
 
@@ -553,10 +534,4 @@ function selectCommentList(boardNo, commentListUl) {
       console.log('댓글 목록 조회 에러');
     },
   });
-}
-
-
-// 댓글 삭제 함수
-function deleteComment(commentNo) {
-
 }
