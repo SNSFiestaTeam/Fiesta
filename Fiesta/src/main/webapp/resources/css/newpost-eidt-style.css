@@ -32,81 +32,59 @@
 }
 
 /* ************** 게시물 작성 창 ******************* */
-/* 점점커지는 사이즈 */
-/* @media all and (min-width:1024px) {
-  .new-post-background{
-    width: 388px;
+@media (max-width: 600px) {
+  /* 600px이하 핸드폰 */
+  .modal_post_section_edit {
+    width: 348px;
   }
 }
-@media all and (max-width:767px),(max-height:570px) {
-  .new-post-background{
-    width: 855px;
-  }
-} */
-
-/* @media screen and (min-width:721px),
-(min-height:571px) {
-  .new-post-background{
-    width: 50%;
-    max-width: 855px;
-    max-height: 894px;
-
+@media (min-width: 600px) {
+  /* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
+  .modal_post_section_edit {
+    width: 459px;
   }
 }
-
-@media screen and (max-width:720px),
-(max-height:570px) {
-  .new-post-background{
-    width: 402px;
+@media (min-width: 768px) {
+  /* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
+  .modal_post_section_edit {
+    width: 459px;
   }
-} */
-/* @media all and (max-width:2600px) {
-  .new-post-background{
-      width: 655px;
+}
+@media (min-width: 992px) {
+  /* 992px 이상 노트북, 작은 데스크톱 */
+  .modal_post_section_edit {
+    width: 655px;
   }
-}  */
-/* @media all and (max-width:768px) {
-  .new-post-background{
-      width:90%;
-      min-width: 355px;
-      max-width: 655px;
+}
+@media (min-width: 1200px) {
+  /* 1200px 이상  큰 노트북, 데스크톱 */
+  .modal_post_section_edit {
+    width: 755px;
   }
-}  */
-/* @media all and (max-width:480px) {
-  .new-post-background{
-      width: 375px;
-  }
-}  */
+}
 
 .modal_post_section_edit {
   background-color: white;
   border-radius: 10px;
-  width: 90%;
-  min-width: 355px;
-  max-width: 655px;
 }
 
 /* ----- 게시물작성 top ------ */
 .new-post-top-edit {
   display: flex;
   justify-content: space-between;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* justify-content: center; */
   border-bottom: 2px solid #ececec;
 }
 
+/* top-버튼 스타일 */
 .new-post-top-edit > * {
   display: flex;
   align-items: center;
-  /* margin: 0 10px; */
-}
-
-/* top-버튼 스타일 */
-.new-post-top-edit > button {
   background-color: transparent;
   cursor: pointer;
   padding: 15px;
-  width: 100px;
+  width: 160px;
 }
 
 .new-post-top-edit > button:last-of-type {
@@ -132,7 +110,7 @@
   display: block;
   /* position: absolute; */
   content: "";
-  padding-bottom: 100%;
+  padding-bottom: 85%;
 }
 
 .album {
@@ -144,11 +122,6 @@
   /* overflow: hidden; */
 }
 
-/* .images{
-  display: flex;
-  width: 100%;
-  height: 100%;
-} */
 .edit-file {
   position: absolute;
   width: 100%;
@@ -164,25 +137,11 @@
   height: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  /* height: 100px; */
 }
 
 .siltde-btn-area > div {
-  /* margin: 13px; */
-  /* background-color: rgba(0, 0, 0, 0.6); */
   color: rgba(0, 0, 0, 0.6);
-  /* border-radius: 100%; */
 
-  /* width: 32px; */
-  /* height: 32px; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* box-sizing: border-box; */
-  /* padding-bottom: 6px; */
-
-  /* font-size: 15px; */
-  /* cursor: pointer; */
   z-index: 6000;
   position: absolute;
 }
@@ -311,11 +270,9 @@
 }
 
 /* 이미지 추가 모든요소 감싸는 영역 */
-/* .add { */
-/* width: auto; */
-/* overflow: hidden; */
-/* margin-left:100px ; */
-/* } */
+.add {
+  padding: 10px;
+}
 .add > * {
   cursor: pointer;
 }
@@ -343,6 +300,7 @@
   margin: 0 10px;
   /* z-index: 10000; */
   /* cursor: pointer; */
+  z-index: 70000;
 }
 
 /*파일 추가 "컴퓨터에서 선택' + 아이콘  */
@@ -376,6 +334,10 @@
 }
 .preview-file > img {
   position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   /* padding: 5px; */
@@ -400,8 +362,9 @@
   position: absolute;
   top: auto;
   z-index: 10000;
-  /* margin-left: 50px; */
-  /* margin: 0 20px 20px 0; */
+  margin-right: 40px;
+  margin-bottom: 60px;
+  /* margin: 0 60px 0 80px; */
 
   /* display: none; */
 }
@@ -416,36 +379,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 20%;
+  width: 190px;
   height: 90px;
-  z-index: 90000;
+  z-index: 10000;
 }
 .preview-btn {
   width: 20px;
   height: 20px;
   color: white;
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 50px;
   z-index: 9000;
   /* box-sizing: border-box; */
   padding-bottom: 20px;
 }
-/* .remove{
-
-  margin: 13px;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  border-radius: 100%;
-
-  width: 26px;
-  height: 26px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  
-
-  font-size: 15px;
-
- 
-} */

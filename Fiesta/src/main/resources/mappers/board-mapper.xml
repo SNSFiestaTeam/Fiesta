@@ -66,5 +66,13 @@
       <result property="boardNo" column="BOARD_NO" />
   </resultMap>
   
+  
+  <insert id="boardWrite" parameterType="Board" useGeneratedKeys="true">
+  <selectKey keyProperty="boardNo" resultType="_int" order="BEFORE">
+  SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+  </selectKey>
+  INSERT INTO BOARD
+  VALUES(#{boardNo}, #{boardContent}, DEFAULT, DEFAULT,DEFAULT,DEFAULT, #{memberNo})
+  </insert>
 
 </mapper>

@@ -24,10 +24,10 @@
           <div class="swiper-pagination"></div>
 
           <div class="siltde-btn-area slide-controller">
-            <div class="swiper-button-prev">
+            <div class="sild-file-btn swiper-button-prev">
               <!-- <div class="material-icons">arrow_back</div> -->
             </div>
-            <div class="swiper-button-next">
+            <div class="sild-file-btn swiper-button-next">
               <!-- <div class="material-icons">arrow_forward</div> -->
             </div>
           </div>
@@ -60,26 +60,11 @@
 
                     <div class="file-preview-and-remove preview-swiper">
                       <div class="file-preview swiper-wrapper" id="filePreview">
-                        <div class="preview-file swiper-slide">
+                      
+                        <%-- <div class="preview-file swiper-slide">
                           <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
                           <div class="preview-remove">&times;</div>
-                        </div>
-                        <div class="preview-file swiper-slide">
-                          <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-                          <div class="preview-remove">&times;</div>
-                        </div>
-                        <div class="preview-file swiper-slide">
-                          <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-                          <div class="preview-remove">&times;</div>
-                        </div>
-                        <div class="preview-file swiper-slide">
-                          <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-                          <div class="preview-remove">&times;</div>
-                        </div>
-                        <div class="preview-file swiper-slide">
-                          <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-                          <div class="preview-remove">&times;</div>
-                        </div>
+                        </div> --%>
                         
 
                       </div>
@@ -93,14 +78,9 @@
 
                   <div class="edit-add-file-input">
                     <label for="addFileInput"><i class="fa-solid fa-plus"></i></label>
-                    <input type="file" name="addFileInput" id="addFileInput" hidden>
+                    <input type="file" name="addFileInput" id="addFileInput" hidden none accept="image/*" multiple >
                   </div>
-                  <!-- <label for="add-file-input"><i class="fa-solid fa-plus"></i></label>
-                  <input type="file" name="add-file-input" id="add-file-input"> -->
-                  <!-- <p class="preview-controller">
-                      <span class="preview-prev" id="previewPrev">&lang;</span>  
-                      <span class="preview-next" id="previewNext">&rang;</span>
-                    </p> -->
+
                 </div>
               </div>
             </div>

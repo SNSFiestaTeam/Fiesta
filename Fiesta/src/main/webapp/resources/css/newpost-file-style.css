@@ -42,29 +42,40 @@
 }
 
 /* ************** 게시물 작성 창 ******************* */
-/* @media (max-width: 1024px) {
-  .modal_post_section{
-    background-color: white;
-    width: 90%;
-    
+@media (max-width: 600px) {
+  /* 600px이하 핸드폰 */
+  .modal_post_section {
+    width: 348px;
   }
 }
-@media (max-width: 768px) {    
-  
-  .modal_post_section{
-    
+@media (min-width: 600px) {
+  /* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
+  .modal_post_section {
+    width: 459px;
+  }
+}
+@media (min-width: 768px) {
+  /* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
+  .modal_post_section {
+    width: 459px;
+  }
+}
+@media (min-width: 992px) {
+  /* 992px 이상 노트북, 작은 데스크톱 */
+  .modal_post_section {
+    width: 655px;
+  }
+}
+@media (min-width: 1200px) {
+  /* 1200px 이상  큰 노트북, 데스크톱 */
+  .modal_post_section {
+    width: 755px;
+  }
+}
 
-  }
-}
-@media (max-width: 480px) {
-  ...
-} */
 .modal_post_section {
   background-color: white;
   border-radius: 10px;
-  width: 90%;
-  min-width: 655px;
-  max-width: 755px;
 }
 
 /* ----- 게시물작성 top ------ */
