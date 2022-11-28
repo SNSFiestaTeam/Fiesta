@@ -209,7 +209,15 @@ for (let i = 0; i < moreBtn.length; i++) {
 
 
 
+// 피트 헤더 메뉴창 취소 클릭시 닫힘
 
+document
+  .getElementById("commentMenuCancel")
+  .addEventListener("click", function () {
+    commentMenu.style.display = "none";
+
+    body.classList.remove("scrollLock");
+  });
 
 // 피드 신고 버튼 클릭시 신고 창 열림
 const commentReportBtn = document.getElementById("commentReportBtn");
