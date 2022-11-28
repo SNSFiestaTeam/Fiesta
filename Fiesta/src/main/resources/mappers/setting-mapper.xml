@@ -17,6 +17,7 @@
       <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
       <result property="secessionFl" column="SECESSION_FL" />
       <result property="authority" column="AUTHORITY" />
+      <result property="introContent" column="INTRO_CONTENT"/>
       </resultMap>
       
      <resultMap type="Introduce" id="intro_rm">
@@ -87,6 +88,18 @@ WHERE MEMBER_NO = #{memberNo}
 <update id="changeOpen">
 UPDATE "MEMBER" SET
 MEMBER_OPEN_FL = #{memberOpenFl}
+WHERE MEMBER_NO = #{memberNo}
+</update>
+
+<update id="updateLikeProtected">
+UPDATE "BOARD" SET
+BOARD_PUB_PRI_FL = 'N'
+WHERE MEMBER_NO = #{memberNo}
+</update>
+
+<update id="updateLikePublic">
+UPDATE "BOARD" SET
+BOARD_PUB_PRI_FL = 'Y'
 WHERE MEMBER_NO = #{memberNo}
 </update>
 

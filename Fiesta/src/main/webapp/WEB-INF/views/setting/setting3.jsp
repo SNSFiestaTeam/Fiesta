@@ -47,7 +47,7 @@
             </section>
           </form>    
 
-          <form action="/setting/changeEtc" method="get" id="like-frm">
+          <form action="/setting/like" method="POST" id="like-frm">
             <section class="post">
               <h2>게시물</h2>
               <span class="like-1">좋아요 및 조회수</span>
@@ -66,13 +66,13 @@
               <button id="secession-btn">계정 탈퇴하기</button>
             </form>
           </section>
-          ${boardMemberNo}
 
         </section>
       </section>
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/setting/setting3.js"></script>    
     
   </body>

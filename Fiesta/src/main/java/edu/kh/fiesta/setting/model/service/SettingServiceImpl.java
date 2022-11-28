@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartFile;
 
-import edu.kh.fiesta.common.Util;
 import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.setting.Util;
 import edu.kh.fiesta.setting.model.dao.SettingDAO;
 
 
@@ -121,10 +121,26 @@ public class SettingServiceImpl implements SettingService{
 	}
 
 
+	@Transactional
 	@Override
 	public int changeOpen(Member loginMember) {
 		
 		return dao.changeOpen(loginMember);
+	}
+
+	
+
+	@Transactional
+	@Override
+	public int updateLikePublic(Member loginMember) {
+		return dao.updateLikePublic(loginMember);
+	}
+
+
+	@Transactional
+	@Override
+	public int updateLikeProtected(Member loginMember) {
+		return dao.updateLikeProtected(loginMember);
 	}
 
 

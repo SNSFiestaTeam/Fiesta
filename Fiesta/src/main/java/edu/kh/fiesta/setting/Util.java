@@ -1,4 +1,4 @@
-package edu.kh.fiesta.common;
+package edu.kh.fiesta.setting;
 
 import java.text.SimpleDateFormat;
 

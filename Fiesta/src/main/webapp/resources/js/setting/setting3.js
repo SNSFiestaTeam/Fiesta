@@ -21,22 +21,54 @@ function memberDeleteValidate(){
 const likeFrm = document.getElementById("like-frm");
 const chk1 = document.getElementById("chk1");
 
-chk1.addEventListener("change", ()=>{
 
-    if(chk1.checked){
-        boardPubPriFlag = 'N'
-        chk1.checked = true;
 
-    } else {
-        boardPubPriFlag = 'Y'
-        chk1.checked = false
-    }
-    likeFrm.submit();
 
-});
+chk1.addEventListener("click", ()=>{
+
+likeFrm.submit();
+
+})
+
+
 
 // 계정 공개
 function getAccount(event){
     accountFrm.submit();
 }
 
+function start(){
+
+    $.ajax({
+        url : "setting/update",
+        data : {"memberNo" : memberNo},
+        type : "POST",
+        dataType : "JSON",
+        success : selectList=>{
+
+            console.log(selectList);
+
+        },
+
+        error : ()=>{
+            console.log("실패");
+        }
+
+    });
+
+/*
+SELECT MEMBER_OPEN_FL, BOARD_PUB_PRI_FL  
+FROM "MEMBER"
+JOIN BOARD USING(MEMBER_NO)
+WHERE MEMBER_NO = 10
+
+
+SELECT INTRO_CONTENT
+FROM "INTRODUCE"
+WHERE MEMBER_NO = 10;
+
+
+*/
+
+
+}

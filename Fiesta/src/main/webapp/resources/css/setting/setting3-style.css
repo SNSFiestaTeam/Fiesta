@@ -1,5 +1,4 @@
-@import './root-style.css';
-
+@import '../root-style.css';
 
 .list-group > li:nth-child(3){
     border-left: 3px solid black;

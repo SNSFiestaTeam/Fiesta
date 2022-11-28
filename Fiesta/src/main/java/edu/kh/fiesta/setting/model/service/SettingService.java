@@ -23,6 +23,11 @@ public interface SettingService {
 
 	int changeOpen(Member loginMember);
 
+	int updateLikeProtected(Member loginMember);
+
+	int updateLikePublic(Member loginMember);
+
+
 
 	
 }

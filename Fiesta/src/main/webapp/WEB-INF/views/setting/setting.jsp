@@ -76,7 +76,7 @@
             <div class="di-5">
                 <aside><label>소개</label></aside>
                 <div class="main">
-                  <textarea name="set">${loginMember.introContent}</textarea>
+                  <textarea name="set">${introContent}</textarea>
                 </div>
             </div>
 
@@ -91,6 +91,7 @@
         </section>
       </section>
     </main>
+
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>

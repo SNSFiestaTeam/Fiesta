@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -31,6 +32,7 @@ public class SettingController {
 	
 	@GetMapping()
 	public String setting() {
+	
 		return "setting/setting";
 	}
 	
@@ -90,7 +92,6 @@ public class SettingController {
 		return "redirect:setting/changePw";
 		
 	}
-
 
 	
 	@GetMapping("/changeEtc")
@@ -189,20 +190,41 @@ public class SettingController {
 		return "redirect:changeEtc";
 	}
 	
-	@GetMapping("/updateLike")
-	public String updateLike(@RequestParam(value="chk1", required=false) String chk1, 
-			@SessionAttribute("loginMember") Member loginMember,
-			RedirectAttributes ra, 
-			Board board) {
-		
-		board.setBoardPubPriFlag(chk1);
+	@PostMapping("/like")
+	public String like(@RequestParam(value="chk1", required=false) String chk1,
+			@SessionAttribute("loginMember") Member loginMember, Board board,
+			RedirectAttributes ra) {
 		
 		
+		String message = null;
 		
+		
+		if(chk1 != null) {
+			
+			 int result = service.updateLikeProtected(loginMember);
+			 
+			 if(result > 0) {
+				 message = "성공";
+			 }
+			
+			
+			
+		} else { 
+			
+			int result = service.updateLikePublic(loginMember);
+			
+			if(result > 0) {
+				message = "성공";
+			}
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
 		
 		return "redirect:changeEtc";
-		
 	}
+		
+	
 	
 	
 	

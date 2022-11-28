@@ -65,6 +65,14 @@ public class SettingDAO {
 		return sqlSession.update("settingMapper.changeOpen", loginMember);
 	}
 
-	
+	public int updateLikeProtected(Member loginMember) {
+		return sqlSession.update("settingMapper.updateLikeProtected", loginMember);
+	}
+
+	public int updateLikePublic(Member loginMember) {
+		return sqlSession.update("settingMapper.updateLikePublic", loginMember);
+	}
+
+
 
 }
