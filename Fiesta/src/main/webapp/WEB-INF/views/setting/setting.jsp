@@ -76,7 +76,7 @@
             <div class="di-5">
                 <aside><label>소개</label></aside>
                 <div class="main">
-                  <textarea></textarea>
+                  <textarea name="set">${loginMember.introContent}</textarea>
                 </div>
             </div>
 

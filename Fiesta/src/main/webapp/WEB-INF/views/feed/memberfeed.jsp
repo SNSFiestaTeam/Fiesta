@@ -50,7 +50,7 @@
               <a href="#">팔로잉 66</a>
             </div>
 
-            <p class="introduce-text">자기소개 글</p>
+            <p class="introduce-text">${loginMember.introContent}</p>
 
             <div id="profile-follow">
               <a href="#" class="info">s_am_97, sbk_93</a

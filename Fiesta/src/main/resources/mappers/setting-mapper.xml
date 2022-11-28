@@ -18,6 +18,15 @@
       <result property="secessionFl" column="SECESSION_FL" />
       <result property="authority" column="AUTHORITY" />
       </resultMap>
+      
+     <resultMap type="Introduce" id="intro_rm">
+     	<id property="memberNo" column="MEMBER_NO"/>
+     	
+     	<result property="introContent" column="INTRO_CONTENT"/>
+     
+     </resultMap>
+      
+ 
 
 
 <select id="selectEncPw" parameterType="_int" resultType="string">
@@ -32,12 +41,20 @@ WHERE MEMBER_NO = #{memberNo}
  	MEMBER_PW = #{newPw}
  	WHERE MEMBER_NO = #{memberNo}
  </update>
+ 
  <update id="updateSetting" parameterType="Member" >
  UPDATE "MEMBER" SET
  MEMBER_NAME = #{memberName},
  MEMBER_NICKNAME = #{memberNickname}
  WHERE MEMBER_NO = #{memberNo}
  </update>
+ 
+ <update id="updateIntro">
+ UPDATE "INTRODUCE" SET
+ INTRO_CONTENT = #{introContent}
+ WHERE MEMBER_NO = #{memberNo}
+ </update>
+ 
  
  <select id="nicknameDupCheck" parameterType="string" resultType="_int">
  SELECT COUNT(*) FROM "MEMBER"

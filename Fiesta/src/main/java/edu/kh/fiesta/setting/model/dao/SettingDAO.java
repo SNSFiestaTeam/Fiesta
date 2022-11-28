@@ -27,7 +27,13 @@ public class SettingDAO {
 	}
 
 	public int updateSetting(Member inputMember) {
-		return sqlSession.update("settingMapper.updateSetting", inputMember);
+		int result = sqlSession.update("settingMapper.updateSetting", inputMember);
+		
+		if(result > 0) {
+			result = sqlSession.update("settingMapper.updateIntro", inputMember);
+			
+		}
+		return result;
 	}
 
 	

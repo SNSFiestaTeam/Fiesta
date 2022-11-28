@@ -23,7 +23,16 @@ const chk1 = document.getElementById("chk1");
 
 chk1.addEventListener("change", ()=>{
 
- 
+    if(chk1.checked){
+        boardPubPriFlag = 'N'
+        chk1.checked = true;
+
+    } else {
+        boardPubPriFlag = 'Y'
+        chk1.checked = false
+    }
+    likeFrm.submit();
+
 });
 
 // 계정 공개

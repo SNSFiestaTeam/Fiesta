@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.fiesta.common.Util;
 import edu.kh.fiesta.member.model.vo.Member;
 import edu.kh.fiesta.setting.model.dao.SettingDAO;
-import edu.kh.fiesta.setting.Util;
 
 
 
@@ -53,7 +53,14 @@ public class SettingServiceImpl implements SettingService{
 	@Override
 	public int updateSetting(Member inputMember) {
 
+		inputMember.setIntroContent(Util.XSSHandling(inputMember.getIntroContent()));
+		inputMember.setIntroContent(Util.newLineHandling(inputMember.getIntroContent()));
+		
 		int result = dao.updateSetting(inputMember);
+		
+		
+		
+		
 		return result;
 	}
 

@@ -220,7 +220,7 @@ if(imageInput != null){
 
     // x버튼이 클릭됐을 경우 => 기본 이미지로 변경
     profileDelete.addEventListener("click", () => {
-        profileImg.setAttribute("src", "/resources/images/user.png");
+        profileImg.setAttribute("src", "/resources/images/user.jpg");
         imageInput.value='';
         deleteCheck = 0;
         profileContainer.style.display = "none";
@@ -250,3 +250,4 @@ function profileVaildate(){
     alert("이미지 변경 후 클릭하세요.")
     return false;
 }
+

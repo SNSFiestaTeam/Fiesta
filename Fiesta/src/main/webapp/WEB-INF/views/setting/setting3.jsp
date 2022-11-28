@@ -47,13 +47,13 @@
             </section>
           </form>    
 
-          <form action="/setting/changeEtc" method="POST" id="like-frm">
+          <form action="/setting/changeEtc" method="get" id="like-frm">
             <section class="post">
               <h2>게시물</h2>
               <span class="like-1">좋아요 및 조회수</span>
               <div class="post-1"> 
                 <span class="like-2">좋아요, 재생 및 조회수 숨기기</span>
-                <input type="checkbox" name="chk1" id="chk1" value="${loginMember.memberOpenFl}"><label for="chk1"><span></span></label>
+                <input type="checkbox" name="chk1" id="chk1"><label for="chk1"><span></span></label>
               </div>
                 <span class="like-3">다른 계정에서 올린 게시물의 좋아요, 재생 및 조회수가 숨겨집니다. 공유하기 전에 고급 설정으로 이동하여 회원님 게시물의 좋아요, 재생 및 조회수를 숨길 수 있습니다.</span>
             </section>
@@ -66,6 +66,7 @@
               <button id="secession-btn">계정 탈퇴하기</button>
             </form>
           </section>
+          ${boardMemberNo}
 
         </section>
       </section>
