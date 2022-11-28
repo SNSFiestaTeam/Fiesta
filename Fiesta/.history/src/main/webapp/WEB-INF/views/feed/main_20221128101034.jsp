@@ -16,9 +16,8 @@
     <!-- CSS 링크 -->
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
-    <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
+    <link rel="stylesheet" href="/resources/css/feed-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
-    <link rel="stylesheet" href="/resources/css/action/login-comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/share-style.css" />
     <link rel="stylesheet" href="/resources/css/action/report-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />

@@ -786,7 +786,7 @@ function createBoard(board) {
           commentUl.parentElement.parentElement.parentElement
             .nextElementSibling.firstElementChild.firstElementChild;
         commentInput.value = '';
-        commentInput.value = '@' + replyMemberIdA.innerText + ' ';
+        commentInput.value = '@' + commentMemberIdA.innerText + ' ';
 
         upperCommentNo = commentNoInput.value;
         console.log("upperCommentNo: " + upperCommentNo);

@@ -110,14 +110,6 @@ for (let i = 0; i < replyBtn.length; i++) {
   });
 }
 
-
-// 댓글 ... 버튼 클릭 시 메뉴 열림
-const commentMenu = document.getElementsByClassName("hover-btn");
-
-for(let i = 0; i < commentMenu; i++) {
-  commentMenu.addEventListener('click', () => {})
-}
-
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
 
 // TODO: 댓글 입력 후 ENTER 입력 시도 만들 것
@@ -356,7 +348,6 @@ function selectCommentList(boardNo, commentListUl) {
             // 모든 답글 보기 버튼에 클릭 이벤트 추가
             moreReply.addEventListener('click', () => {
               moreReply.style.display = 'none';
-              moreReply.parentElement.nextSibling.style.display = "flex";
             });
           }
         } else if(comment.upperCommentNo > 0){ 
@@ -367,7 +358,7 @@ function selectCommentList(boardNo, commentListUl) {
           replyLi.classList.add('comment');
           replyLi.id = 'reply';
     
-          commentListUl.append(replyLi);
+          commentUl.append(replyLi);
     
           // replyLi의 자식요소 replyFirstChild, moreReply
           const replyFirstChild = document.createElement('div');
@@ -473,19 +464,11 @@ function selectCommentList(boardNo, commentListUl) {
           replyBtn.classList.add('reply-btn');
           replyBtn.innerText = '답글 달기';
     
-           // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
+          // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
           // 만약 이미 언급된 닉네임일 시 추가 안됨
-          // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
           replyBtn.addEventListener('click', () => {
-            const commentInput =
-              commentListUl.parentElement.parentElement.parentElement
-                .nextElementSibling.firstElementChild.firstElementChild;
             commentInput.value = '';
             commentInput.value = '@' + replyMemberIdA.innerText + ' ';
-
-            upperCommentNo = commentNoInput.value;
-            console.log("upperCommentNo: " + upperCommentNo);
-
           });
     
           const hoverBtn = document.createElement('button');

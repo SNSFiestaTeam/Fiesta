@@ -110,14 +110,6 @@ for (let i = 0; i < replyBtn.length; i++) {
   });
 }
 
-
-// 댓글 ... 버튼 클릭 시 메뉴 열림
-const commentMenu = document.getElementsByClassName("hover-btn");
-
-for(let i = 0; i < commentMenu; i++) {
-  commentMenu.addEventListener('click', () => {})
-}
-
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
 
 // TODO: 댓글 입력 후 ENTER 입력 시도 만들 것
@@ -356,7 +348,6 @@ function selectCommentList(boardNo, commentListUl) {
             // 모든 답글 보기 버튼에 클릭 이벤트 추가
             moreReply.addEventListener('click', () => {
               moreReply.style.display = 'none';
-              moreReply.parentElement.nextSibling.style.display = "flex";
             });
           }
         } else if(comment.upperCommentNo > 0){ 
@@ -481,7 +472,7 @@ function selectCommentList(boardNo, commentListUl) {
               commentListUl.parentElement.parentElement.parentElement
                 .nextElementSibling.firstElementChild.firstElementChild;
             commentInput.value = '';
-            commentInput.value = '@' + replyMemberIdA.innerText + ' ';
+            commentInput.value = '@' + commentMemberIdA.innerText + ' ';
 
             upperCommentNo = commentNoInput.value;
             console.log("upperCommentNo: " + upperCommentNo);

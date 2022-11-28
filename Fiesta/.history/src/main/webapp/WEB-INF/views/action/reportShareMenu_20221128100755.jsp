@@ -4,7 +4,7 @@
 <div class="feed-menu-container" id="feedMenu">
   <div class="feed-menu">
     <div class="feed-menu-btn btn1"><button id="feedReportBtn">신고</button></div>
-    <div class="feed-menu-btn btn2"><button id="feedShareBtn">링크 복사</button></div>
+    <div class="feed-menu-btn btn2"><button id="feedShareBtn">공유하기</button></div>
     <div class="feed-menu-btn btn3" ><button id="feedMenuCancel">취소</button></div>
   </div>
 </div>
@@ -16,11 +16,11 @@
   </div>
 </div>
 
-<div class="comment-menu-container-l" id="commentMenuL">
-  <div class="comment-menu-l">
-    <div class="comment-menu-btn-l btn1-l"><button id="commentReportBtnL">신고</button></div>
-    <div class="comment-menu-btn-l btn2-l"><button id="commentReportBtnL">삭제</button></div>
-    <div class="comment-menu-btn-l btn3-l" ><button id="commentMenuCancelL">취소</button></div>
+<div class="comment-menu-container" id="commentMenu">
+  <div class="comment-menu">
+    <div class="comment-menu-btn btn1"><button id="commentReportBtn">신고</button></div>
+    <div class="comment-menu-btn btn2"><button id="commentReportBtn">삭제</button></div>
+    <div class="comment-menu-btn btn3" ><button id="commentMenuCancel">취소</button></div>
   </div>
 </div>
 

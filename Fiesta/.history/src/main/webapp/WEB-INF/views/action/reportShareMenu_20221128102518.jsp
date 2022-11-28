@@ -4,7 +4,7 @@
 <div class="feed-menu-container" id="feedMenu">
   <div class="feed-menu">
     <div class="feed-menu-btn btn1"><button id="feedReportBtn">신고</button></div>
-    <div class="feed-menu-btn btn2"><button id="feedShareBtn">링크 복사</button></div>
+    <div class="feed-menu-btn btn2"><button id="feedShareBtn">링크복사</button></div>
     <div class="feed-menu-btn btn3" ><button id="feedMenuCancel">취소</button></div>
   </div>
 </div>

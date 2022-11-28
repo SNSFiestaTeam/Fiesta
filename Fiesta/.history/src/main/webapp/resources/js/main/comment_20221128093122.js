@@ -82,7 +82,6 @@ for (let i = 0; i < commentLikeBtn.length; i++) {
   });
 }
 
-// 모든 답글보기 버튼 클릭 시 답글 보이게
 const moreReply = document.getElementsByClassName('more-reply');
 
 for (let item of moreReply) {
@@ -108,14 +107,6 @@ for (let i = 0; i < replyBtn.length; i++) {
     upperCommentNo = document.getElementsByClassName('comment-no')[i].value;
     console.log('upperCommentNo: ' + upperCommentNo);
   });
-}
-
-
-// 댓글 ... 버튼 클릭 시 메뉴 열림
-const commentMenu = document.getElementsByClassName("hover-btn");
-
-for(let i = 0; i < commentMenu; i++) {
-  commentMenu.addEventListener('click', () => {})
 }
 
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
@@ -315,7 +306,6 @@ function selectCommentList(boardNo, commentListUl) {
           replyBtn.classList.add('reply-btn');
           replyBtn.innerText = '답글 달기';
 
-
           // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
           // 만약 이미 언급된 닉네임일 시 추가 안됨
           // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
@@ -325,10 +315,6 @@ function selectCommentList(boardNo, commentListUl) {
                 .nextElementSibling.firstElementChild.firstElementChild;
             commentInput.value = '';
             commentInput.value = '@' + commentMemberIdA.innerText + ' ';
-
-            upperCommentNo = commentNoInput.value;
-            console.log("upperCommentNo: " + upperCommentNo);
-
           });
 
           const hoverBtn = document.createElement('button');
@@ -356,151 +342,157 @@ function selectCommentList(boardNo, commentListUl) {
             // 모든 답글 보기 버튼에 클릭 이벤트 추가
             moreReply.addEventListener('click', () => {
               moreReply.style.display = 'none';
-              moreReply.parentElement.nextSibling.style.display = "flex";
+
+              // 답글 모양 출력
+
+              const replyUl = document.createElement('ul');
+
+              commentLi.append(replyUl);
+
+                if (comment.upperCommentNo > 0 ) {
+                  // replyUl의 자식 요소 replyLi
+                  const replyLi = document.createElement('li');
+                  replyLi.classList.add('comment');
+                  replyLi.id = 'reply';
+                  replyUl.append(replyLi);
+
+                  // commentNo input hidden 태그 생성
+                  const commentNoInput = document.createElement("input");
+                  commentNoInput.setAttribute("type", 'hidden');
+                  commentNoInput.value=comment.commentNo;
+                  commentNoInput.classList.add("comment-no");
+
+                  // replyLi의 자식요소 replyFirstChild, moreReply
+                  const replyFirstChild = document.createElement('div');
+                  replyFirstChild.classList.add('reply-firstchild');
+
+                  replyLi.append(commentNoInput, replyFirstChild);
+
+                  // replyFirstChild의 자식 요소 replyProfileA, replyDiv1
+                  const replyProfileA = document.createElement('a');
+                  replyProfileA.classList.add('comment-profile');
+
+                  const replyDiv1 = document.createElement('div');
+
+                  replyFirstChild.append(replyProfileA, replyDiv1);
+
+                  // replyProfileA의 자식 요소 replyProfileImg
+                  const replyProfileImg = document.createElement('img');
+                  replyProfileImg.classList.add('comment-profile-image');
+
+                  replyProfileA.append(replyProfileImg);
+
+                  if (comment.memberProfileImg != undefined) {
+                    replyProfileImg.setAttribute(
+                      'src',
+                      comment.memberProfileImg
+                    );
+                  } else {
+                    replyProfileImg.setAttribute(
+                      'src',
+                      '/resources/images/profile/profile.jpg'
+                    );
+                  }
+
+                  // replyDiv1의 자식 요소 replyFirstLine
+                  const replyFirstLine = document.createElement('div');
+                  replyFirstLine.classList.add('reply-firstline');
+
+                  // replyFirstLine의 자식 요소 replyDiv2, replyDiv3
+                  const replyDiv2 = document.createElement('div');
+                  const replyDiv3 = document.createElement('div');
+
+                  replyFirstLine.append(replyDiv2, replyDiv3);
+
+                  // replyDiv2의 자식 요소 replyMemberIdA, mention, replySpan
+                  const replyMemberIdA = document.createElement('a');
+                  replyMemberIdA.classList.add('reply-memberId');
+                  replyMemberIdA.innerText = comment.memberNickname;
+
+                  // 답글 멘션 부분
+                  const mention = document.createElement('a');
+                  mention.href = '';
+                  mention.classList.add('mention');
+                  mention.innerText = '@' + comment.mentionNickname;
+
+                  const replySpan = document.createElement('span');
+                  replySpan.classList.add('comment-content');
+                  replySpan.innerText = comment.commentContent;
+
+                  replyDiv2.append(replyMemberIdA, mention, replySpan);
+
+                  // commentDiv3의 자식 요소 commentLikeBtn
+                  const replyLikeBtn = document.createElement('button');
+                  replyLikeBtn.classList.add('comment-like-btn');
+
+                  // 새롭게 추가된 likeBtn에 클릭 이벤트 핸들러 추가
+                  replyLikeBtn.addEventListener('click', () => {
+                    const emptyHeart = '<i class="fa-regular fa-heart"></i>';
+                    const solidHeart = '<i class="fa-solid fa-heart"></i>';
+
+                    if (!replyLikeBtn.classList.contains('red')) {
+                      replyLikeBtn.innerHTML = '';
+                      replyLikeBtn.innerHTML = solidHeart;
+                      replyLikeBtn.classList.add('red');
+                    } else {
+                      replyLikeBtn.innerHTML = emptyHeart;
+                      replyLikeBtn.classList.remove('red');
+                    }
+                  });
+
+                  // replyLikeBtn의 자식 요소 replyHeartIcon
+                  const replyHeartIcon = document.createElement('i');
+                  replyHeartIcon.classList.add('fa-regular', 'fa-heart');
+
+                  replyLikeBtn.append(replyHeartIcon);
+
+                  replyDiv3.append(replyLikeBtn);
+
+                  // replyDiv1의 자식 요소 createReply
+                  const createReply = document.createElement('div');
+                  createReply.classList.add('create-reply');
+
+                  replyDiv1.append(replyFirstLine, createReply);
+
+                  // createReply의 자식 요소 replyCreateDate, replyBtn, hoverBtn
+                  const replyCreateDate = document.createElement('span');
+                  replyCreateDate.innerText = comment.commentCreateDate;
+
+                  const replyBtn = document.createElement('button');
+                  replyBtn.setAttribute('type', 'button');
+                  replyBtn.classList.add('reply-btn');
+                  replyBtn.innerText = '답글 달기';
+
+                  // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
+                  // 만약 이미 언급된 닉네임일 시 추가 안됨
+                  replyBtn.addEventListener('click', () => {
+                    const commentInput =
+                      commentListUl.parentElement.parentElement.parentElement
+                        .nextElementSibling.firstElementChild.firstElementChild;
+                    commentInput.value = '';
+                    commentInput.value = '@' + commentMemberIdA.innerText + ' ';
+                  });
+
+                  const hoverBtn = document.createElement('button');
+                  hoverBtn.setAttribute('type', 'button');
+                  hoverBtn.classList.add(
+                    'fa-solid',
+                    'fa-ellipsis',
+                    'hover-btn'
+                  );
+
+                  // 답글 ... 버튼에 클릭 이벤트 추가
+                  hoverBtn.addEventListener('click', function () {
+                    const commentMenu = document.getElementById('commentMenu');
+                    commentMenu.style.display = 'flex';
+
+                    body.classList.add('scrollLock');
+                  });
+
+                  createReply.append(replyCreateDate, replyBtn, hoverBtn);
+                }
             });
           }
-        } else if(comment.upperCommentNo > 0){ 
-      
-      
-          // replyUl의 자식 요소 replyLi
-          const replyLi = document.createElement('li');
-          replyLi.classList.add('comment');
-          replyLi.id = 'reply';
-    
-          commentListUl.append(replyLi);
-    
-          // replyLi의 자식요소 replyFirstChild, moreReply
-          const replyFirstChild = document.createElement('div');
-          replyFirstChild.classList.add('reply-firstchild');
-    
-          // commentNo input hidden 태그 생성
-          const commentNoInput = document.createElement("input");
-          commentNoInput.setAttribute("type", 'hidden');
-          commentNoInput.value=comment.commentNo;
-          commentNoInput.classList.add("comment-no");
-    
-          replyLi.append(commentNoInput, replyFirstChild);
-    
-          // replyFirstChild의 자식 요소 replyProfileA, replyDiv1
-          const replyProfileA = document.createElement('a');
-          replyProfileA.classList.add('comment-profile');
-    
-          const replyDiv1 = document.createElement('div');
-    
-          replyFirstChild.append(replyProfileA, replyDiv1);
-    
-          // replyProfileA의 자식 요소 replyProfileImg
-          const replyProfileImg = document.createElement('img');
-          replyProfileImg.classList.add('comment-profile-image');
-    
-          replyProfileA.append(replyProfileImg);
-    
-          if (comment.memberProfileImg != undefined) {
-            replyProfileImg.setAttribute('src', comment.memberProfileImg);
-          } else {
-            replyProfileImg.setAttribute(
-              'src',
-              '/resources/images/profile/profile.jpg'
-            );
-          }
-    
-          // replyDiv1의 자식 요소 replyFirstLine
-          const replyFirstLine = document.createElement('div');
-          replyFirstLine.classList.add('reply-firstline');
-    
-          // replyFirstLine의 자식 요소 replyDiv2, replyDiv3
-          const replyDiv2 = document.createElement('div');
-          const replyDiv3 = document.createElement('div');
-    
-          replyFirstLine.append(replyDiv2, replyDiv3);
-    
-          // replyDiv2의 자식 요소 replyMemberIdA, mention, replySpan
-          const replyMemberIdA = document.createElement('a');
-          replyMemberIdA.classList.add('reply-memberId');
-          replyMemberIdA.innerText = comment.memberNickname;
-    
-          // 답글 멘션 부분
-          const mention = document.createElement('a');
-          mention.href = '';
-          mention.classList.add('mention');
-          mention.innerText = '@' + comment.mentionNickname;
-    
-          const replySpan = document.createElement('span');
-          replySpan.classList.add('comment-content');
-          replySpan.innerText = comment.commentContent;
-    
-          replyDiv2.append(replyMemberIdA, mention, replySpan);
-    
-          // commentDiv3의 자식 요소 commentLikeBtn
-          const replyLikeBtn = document.createElement('button');
-          replyLikeBtn.classList.add('comment-like-btn');
-    
-          // 새롭게 추가된 likeBtn에 클릭 이벤트 핸들러 추가
-          replyLikeBtn.addEventListener('click', () => {
-            const emptyHeart = '<i class="fa-regular fa-heart"></i>';
-            const solidHeart = '<i class="fa-solid fa-heart"></i>';
-    
-            if (!replyLikeBtn.classList.contains('red')) {
-              replyLikeBtn.innerHTML = '';
-              replyLikeBtn.innerHTML = solidHeart;
-              replyLikeBtn.classList.add('red');
-            } else {
-              replyLikeBtn.innerHTML = emptyHeart;
-              replyLikeBtn.classList.remove('red');
-            }
-          });
-    
-          // replyLikeBtn의 자식 요소 replyHeartIcon
-          const replyHeartIcon = document.createElement('i');
-          replyHeartIcon.classList.add('fa-regular', 'fa-heart');
-    
-          replyLikeBtn.append(replyHeartIcon);
-    
-          replyDiv3.append(replyLikeBtn);
-    
-          // replyDiv1의 자식 요소 createReply
-          const createReply = document.createElement('div');
-          createReply.classList.add('create-reply');
-    
-          replyDiv1.append(replyFirstLine, createReply);
-    
-          // createReply의 자식 요소 replyCreateDate, replyBtn, hoverBtn
-          const replyCreateDate = document.createElement('span');
-          replyCreateDate.innerText = comment.commentCreateDate;
-    
-          const replyBtn = document.createElement('button');
-          replyBtn.setAttribute('type', 'button');
-          replyBtn.classList.add('reply-btn');
-          replyBtn.innerText = '답글 달기';
-    
-           // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
-          // 만약 이미 언급된 닉네임일 시 추가 안됨
-          // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
-          replyBtn.addEventListener('click', () => {
-            const commentInput =
-              commentListUl.parentElement.parentElement.parentElement
-                .nextElementSibling.firstElementChild.firstElementChild;
-            commentInput.value = '';
-            commentInput.value = '@' + replyMemberIdA.innerText + ' ';
-
-            upperCommentNo = commentNoInput.value;
-            console.log("upperCommentNo: " + upperCommentNo);
-
-          });
-    
-          const hoverBtn = document.createElement('button');
-          hoverBtn.setAttribute('type', 'button');
-          hoverBtn.classList.add('fa-solid', 'fa-ellipsis', 'hover-btn');
-    
-          // 답글 ... 버튼에 클릭 이벤트 추가
-          hoverBtn.addEventListener('click', function () {
-            const commentMenu = document.getElementById('commentMenu');
-            commentMenu.style.display = 'flex';
-    
-            body.classList.add('scrollLock');
-          });
-    
-          createReply.append(replyCreateDate, replyBtn, hoverBtn)
         }
       }
     },
