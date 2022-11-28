@@ -1,6 +1,7 @@
 
 package edu.kh.fiesta.setting.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -225,6 +226,14 @@ public class SettingController {
 	}
 		
 	
+	@PostMapping("/update")
+	@ResponseBody
+	public String settingUpdate() {
+		
+		List<>
+		
+		return null;
+	}
 	
 	
 	
