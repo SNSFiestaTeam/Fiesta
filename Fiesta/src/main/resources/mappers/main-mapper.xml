@@ -212,26 +212,6 @@
   	AND MEMBER_NO = #{memberNo}
   </delete>
   
-  <!-- 댓글 좋아요 증가 -->
-  <insert id="commentLikeUp">
-  	INSERT INTO COMMENT_LIKE
-  	VALUES(#{commentNo}, #{memberNo})
-  </insert>
-  
-  <delete id="commentLikeDown">
-  	DELETE FROM COMMENT_LIKE
-  	WHERE LIKE_COMMENT_NO = #{commentNo}
-  	AND MEMBER_NO = #{memberNo}
-  </delete>
-  
-  <insert id="commentInsert" parameterType="map" useGeneratedKeys="true">
-  	<selectKey keyProperty="commentNo" resultType="int" order="BEFORE">
-  		SELECT SEQ_COMMENT_NO.NEXTVAL FROM DUAL
-  	</selectKey>
-  	
-  	INSERT INTO "COMMENT"
-  	VALUES(#{commentNo}, #{memberNo}, #{commentContent}, DEFAULT,
-  	#{boardNo}, #{upperCommentNo})
-  </insert>
+
   
 </mapper>
