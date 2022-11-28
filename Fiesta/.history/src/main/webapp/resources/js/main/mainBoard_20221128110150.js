@@ -637,14 +637,7 @@ function createBoard(board) {
 
       hoverBtn.addEventListener('click', function () {
         const commentMenu = document.getElementById('commentMenu');
-        const loginCommentMenu = document.getElementById('commentMenuL');
-
-        if(commentMemberIdA.innerText == memberNickname) {
-          // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
-          loginCommentMenu.style.display = "flex";
-        } else {
-          commentMenu.style.display = 'flex';
-        }
+        commentMenu.style.display = 'flex';
 
         body.classList.add('scrollLock');
       });
@@ -805,14 +798,7 @@ function createBoard(board) {
       // 답글 ... 버튼에 클릭 이벤트 추가
       hoverBtn.addEventListener('click', function () {
         const commentMenu = document.getElementById('commentMenu');
-        const loginCommentMenu = document.getElementById('commentMenuL');
-
-        if(commentMemberIdA.innerText == memberNickname) {
-          // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
-          loginCommentMenu.style.display = "flex";
-        } else {
-          commentMenu.style.display = 'flex';
-        }
+        commentMenu.style.display = 'flex';
 
         body.classList.add('scrollLock');
       });
@@ -1077,14 +1063,7 @@ function selectCommentList(boardNo, commentListUl) {
 
           hoverBtn.addEventListener('click', function () {
             const commentMenu = document.getElementById('commentMenu');
-            const loginCommentMenu = document.getElementById('commentMenuL');
-
-            if(commentMemberIdA.innerText == memberNickname) {
-              // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
-              loginCommentMenu.style.display = "flex";
-            } else {
-              commentMenu.style.display = 'flex';
-            }
+            commentMenu.style.display = 'flex';
 
             body.classList.add('scrollLock');
           });

@@ -54,7 +54,7 @@
                     <div class="writer-info">
                       <a href="" class="profile-photo">
                         <c:if test="${empty board.memberProfileImg}">
-                          <img class="feed-profile-image" src="/resources/images/profile/profile.jpg" />
+                          <img class="feed-profile-image" src="/resources/images/profile.jpg" />
                         </c:if>
                         <c:if test="${not empty board.memberProfileImg}">
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
