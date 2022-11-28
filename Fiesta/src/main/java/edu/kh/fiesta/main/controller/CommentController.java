@@ -68,6 +68,13 @@ public class CommentController {
 		return commentNo;
 	}
 	
+	@PostMapping("/select/reply")
+	public String selectReplyList(int commentNo) {
+		
+		List<Comment> replyList = service.selectReplyList(commentNo);
+	
+		return new Gson().toJson(replyList);
+	}
 	
 
 }

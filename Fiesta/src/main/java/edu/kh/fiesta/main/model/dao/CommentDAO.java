@@ -72,4 +72,13 @@ public class CommentDAO {
 		return sqlSession.selectList("mainMapper.selectCommentList", comment);
 	}
 
+
+	/** 답글 목록 조회
+	 * @param commentNo
+	 * @return replyList
+	 */
+	public List<Comment> selectReplyList(int commentNo) {
+		return sqlSession.selectList("mainMapper.selectReplyList", commentNo);
+	}
+
 }
