@@ -120,6 +120,7 @@
         margin: 0 20px 10px 0;
         font-weight: bold;
     }
+
     
     /* 모두보기 */
     /*
@@ -135,7 +136,7 @@
         padding: 10px;
     
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         
     }
     
@@ -151,6 +152,7 @@
         justify-content: center;
         align-items: center;
     }
+    
     
     .profileImages img{
         width: 80%;
@@ -198,12 +200,15 @@
     
     
     .boardImage{
+        width: 99vw;
+        height: 33vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
     
     .boardImage a{
+        flex-basis: 33%;
         display: flex;
         justify-content: space-between;
         align-items: center;

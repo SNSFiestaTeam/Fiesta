@@ -1,6 +1,7 @@
 package edu.kh.fiesta.search;
 
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.fiesta.member.model.vo.Member;
 
@@ -17,12 +18,21 @@ public interface SearchService {
 	 * @return boardTotal
 	 */
 	int selectBoardTotal(String searchInput);
-
 	
+	
+
 	/** 검색_관련 계정 조회
 	 * @param searchInput
 	 * @return accountList
 	 */
-	List<Member> selectAccount(String searchInput);
+//	List<Map<String, Object>> selectAccount(String searchInput);
+
+
+
+	/** 검색 결과 조회
+	 * @param searchInput
+	 * @return searchResultMap
+	 */
+	Map<String, Object> selectSearchResult(String searchInput);
 
 }

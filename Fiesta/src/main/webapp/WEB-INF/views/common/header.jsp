@@ -9,7 +9,7 @@
           <a href="/main"
             >Fiesta</a>
         </section>
-        <!-- 검색창 -->
+        <!-- 검색창  -->
         <section class="search-section">
           <form action="/main/search">
             <fieldset>
@@ -18,7 +18,7 @@
               </button>
               <input
                 type="text"
-                name="search"
+                name="searchInput"
                 id="searchInput"
                 placeholder="검색"
                 autocapitalize="none"
@@ -73,11 +73,11 @@
       </section>
     </header>
     <section class="toggle-search-section">
-      <form action="">
+      <form action="/main/search">
         <fieldset>
           <input
           type="text"
-          name="search"
+          name="searchInput"
           id="searchInput"
           placeholder="검색"
           autocapitalize="none"
@@ -91,5 +91,3 @@
         <%-- </button> --%>
       </form>
     </section>
-
-    <script src="/resources/js/search/search.js"></script>

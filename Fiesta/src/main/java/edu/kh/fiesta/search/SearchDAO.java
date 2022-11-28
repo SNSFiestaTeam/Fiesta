@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.member.model.vo.Member;
 
 @Repository
@@ -37,8 +38,26 @@ public class SearchDAO {
 	 * @param searchInput
 	 * @return accountList
 	 */
-	public List<Member> selectAccount(String searchInput) {
-		return sqlSession.selectList("searchMapper.selectAccount", searchInput);
+	public List<Member> selectAccountList(String searchInput) {
+		return sqlSession.selectList("searchMapper.selectAccountList", searchInput);
+	}
+
+
+	/** 인기게시글 조회
+	 * @param searchInput
+	 * @return hotBoardList
+	 */
+	public List<Board> selectHotBoardList(String searchInput) {
+		return sqlSession.selectList("searchMapper.selectHotBoardList", searchInput);
+	}
+
+
+	/** 최근 게시글 조회
+	 * @param searchInput
+	 * @return recentBoardList
+	 */
+	public List<Board> selectRecentBoardList(String searchInput) {
+		return sqlSession.selectList("searchMapper.selectRecentBoardList", searchInput);
 	}
 
 }

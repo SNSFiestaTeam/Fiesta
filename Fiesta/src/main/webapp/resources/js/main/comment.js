@@ -367,8 +367,6 @@ function selectCommentList(boardNo, commentListUl) {
           hoverBtn.classList.add('fa-solid', 'fa-ellipsis', 'hover-btn');
 
           hoverBtn.addEventListener('click', function () {
-            const commentMenu = document.getElementById('commentMenu');
-            const loginCommentMenu = document.getElementById('commentMenuL');
 
             if(commentMemberIdA.innerText == memberNickname) {
               // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
@@ -532,8 +530,7 @@ function selectCommentList(boardNo, commentListUl) {
     
           // 답글 ... 버튼에 클릭 이벤트 추가
           hoverBtn.addEventListener('click', function () {
-            const commentMenu = document.getElementById('commentMenu');
-            const loginCommentMenu = document.getElementById('commentMenuL');
+
 
             if(commentMemberIdA.innerText == memberNickname) {
               // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기

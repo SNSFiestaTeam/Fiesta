@@ -12,53 +12,80 @@
 
                 
 // (()=>{
-    const searchInput = document.getElementById("searchInput");
+    // const searchInput = document.getElementById("searchInput");
 
-    // ajax쓰기
-    $.ajax({
-        url: "/main/search",
-        data: {"searchInput" : searchInput.value},
-        type: "GET",
-        success: (accountTotal) => { 
-            console.log(accountTotal);
-
-            // // 관련 계정, 게시글 수
-            // const totalNumber = document.getElementsByClassName("total-number")[0];
-            // // totalNumber.innerText = "안녕하세요";
-        
-            // const spanSearchAccountTotal = document.createElement("span");
-            // const spanSearchBoardTotal = document.createElement("span");
+//     // ajax쓰기
+//     $.ajax({
+//         url: "/main/search/accountList",
+//         data: {"searchInput" : searchInput.value},
+//         type: "GET",
+//         success: accountList => {
+//             console.log(accountList); 
             
-            // totalNumber.append(spanSearchAccountTotal, spanSearchBoardTotal);
-        
-            // // spanSearchAccountTotal.innerText = "${result}";
-            // spanSearchBoardTotal.innerText = "게시글 수";
-        },
-        error: () => {console.log("검색 실패");}
-    });
-    
-    
-    
+
+// /*
+//             // 관련 있는 계정 (프로필이미지, 닉네임)
+//             const accountContainer = document.getElementsByClassName("account-container")[0];
+//             const divAccountGroup = document.getElementsByClassName("account-Group");
+//             const aProfileImage = document.getElementsByClassName("profileImages");
+//             const spanFollowButton = document.getElementsByClassName("follow-button-small");
+//             const aFollow = document.getElementById("aFollow");
+//                 <div class="account-Group">
+//                   <a href="/feed/${loginMember.memberNickname}" class="profileImages">
+//                     <img src="/resources/images/profile/profile.jpg">
+//                   </a>
+//                   <a href="/feed/${loginMember.memberNickname}" class="profileNickname">
+//                     ${accountList.memberNickname}
+//                   </a>
+//                   <span class="follow-button-small">
+//                     <a href="">팔로우</a>
+//                   </span>
+//                 </div>
+// */
 
 
-    // // 관련 있는 계정 (프로필이미지, 닉네임)
-    // const divAccountGroup = document.getElementsByClassName("account-Group");
-    // const aProfileImage = document.getElementsByClassName("profileImages");
-    // const spanFollowButton - document.getElementsByClassName("follow-button-small");
-    
-    // for(let i=0; i<6 ; i++) {   //for(let member of memberList)
-        
-    //     const imgProfileImage = document.createElement("img");
-    //     imgProfileImage.innerText = "member.imagePath";
+//             for(let member of accountList) {   //for(let member of memberList)
+                
+//                 // 프로필이미지
+//                 const imgProfileImage = document.createElement("img");
+//                 imgProfileImage.src = member.imgPath;
 
-        
-    //     const aProfileNickname = document.createElement("a");
-    //     aProfileNickname.innerText = "프로필닉네임";
-        
-    
+                
+//                 // 닉네임(a태그)
+//                 const aProfileNickname = document.createElement("a");
+//                 aProfileNickname.innerText = member.memberNickname;
+                
+                
 
-    //     divAccountGroup[i].append(aProfileImage[i], aProfileNickname, spanFollowButton[i])
-    //     aProfileImage[i].append(imgProfileImage);
+//                 accountContainer.append(divAccountGroup);
+//                 divAccountGroup.append(aProfileImage, aProfileNickname, spanFollowButton)
+//                 aProfileImage.after(aProfileNickname);
+//                 aProfileImage.append(imgProfileImage);
+//             }
+
+//         },
+//         error: () => {console.log("검색 실패");}
+//     })
+  
+// })();  
+    
+    
+/*
+
+            // 관련 계정, 게시글 수
+            const totalNumber = document.getElementsByClassName("total-number")[0];
+            // totalNumber.innerText = "안녕하세요";
+        
+            const spanSearchAccountTotal = document.createElement("span");
+            const spanSearchBoardTotal = document.createElement("span");
+            
+            totalNumber.append(spanSearchAccountTotal, spanSearchBoardTotal);
+        
+            // spanSearchAccountTotal.innerText = "${result}";
+            spanSearchBoardTotal.innerText = "게시글 수";
+
+
+*/
 
     // }
         
@@ -73,4 +100,3 @@
 
 
 
-// })();

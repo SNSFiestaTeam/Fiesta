@@ -37,16 +37,8 @@
       <result property="likeCheck" column="LIKE_CHECK" />
       <result property="bookmarkCheck" column="BOOKMARK_CHECK" />
       <result property="myNo" column="MY_NO" />
+      <result property="imgPath" column="IMG_PATH" />
       
-      <collection property="imageList" 
-      			  javaType="java.util.ArrayList" ofType="BoardImg"
-      			  select="selectImageList"
-      			  column = "BOARD_NO"/>
-      			  
-      <collection property="commentList" 
-      			  javaType="java.util.ArrayList" ofType="Comment"
-      			  select="selectCommentList"
-      			  column = "{boardNo=BOARD_NO, myNo=MY_NO"/>
   	</resultMap>
 	
 	
@@ -62,7 +54,6 @@
       <result property="imgOriginalName" column="IMG_ORIGINAL_NAME" />
       <result property="imgChangeName" column="IMG_CHANGE_NAME" />
       <result property="boardNo" column="BOARD_NO" />
-      <result property="imgPath" column="IMG_PATH" />
   	</resultMap>
 	
 	
@@ -72,17 +63,18 @@
 		<select id="selectAccountTotal" parameterType="string" resultType="_int">
 			SELECT COUNT(*)
 			FROM "MEMBER" 
-			WHERE MEMBER_NAME LIKE '%'||#{searchInput}||'%'
+			WHERE (MEMBER_NICKNAME LIKE '%${searchInput}%'
+			OR MEMBER_NAME LIKE '%${searchInput}%')
 			AND SECESSION_FL = 'N'
 		</select>
-		
+		<!-- '&${searchInput}% -->
 		
 		<!-- 검색_게시글 수 -->
 		<select id="selectBoardTotal" parameterType="string" resultType="_int">
 			SELECT COUNT(*)
 			FROM "BOARD" 
 			JOIN "MEMBER" USING(MEMBER_NO)
-			WHERE BOARD_CONTENT LIKE '%#'||#{searchInput}||'%'
+			WHERE BOARD_CONTENT LIKE '%#${searchInput}%'
 			AND BOARD_DEL_FL = 'N'
 			AND SECESSION_FL = 'N'	
 		</select>
@@ -90,12 +82,46 @@
 	
 	
 		<!-- 검색_관련 계정 조회 -->
-		<select id="selectAccount" resultMap="member_rm">
+		<select id="selectAccountList" resultMap="member_rm">
 			SELECT MEMBER_PROFILE_IMG, MEMBER_NICKNAME
 			FROM "MEMBER" 
-			WHERE MEMBER_NAME LIKE '%'||#{searchInput}||'%'
-			AND SECESSION_FL = 'N'
+			WHERE SECESSION_FL = 'N'
+			AND (MEMBER_NICKNAME LIKE '%${searchInput}%'
+			OR MEMBER_NAME LIKE '%${searchInput}%')
 			<![CDATA[AND ROWNUM <= 6 ]]>	
 		</select>
+		
+		<!-- 인기게시글 조회 -->
+		<select id="selectHotBoardList" resultMap="board_rm">
+			SELECT * 
+			FROM (SELECT B.BOARD_NO, BOARD_CREATE_DATE,
+						(SELECT COUNT(*) FROM BOARD_LIKE BL 
+						WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+						(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
+						FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
+						AND IMG_ORDER = 1) IMG_PATH
+					FROM BOARD B
+					WHERE BOARD_CREATE_DATE > (SYSDATE - 30)
+					AND BOARD_CONTENT LIKE '%#${searchInput}%'
+					ORDER BY LIKE_COUNT DESC) 
+			<![CDATA[WHERE ROWNUM <= 9 ]]>
+		</select>
+  
+  	<!-- 최근 게시글 조회 -->
+	  <select id="selectRecentBoardList" resultMap="board_rm">
+			SELECT B.BOARD_NO, BOARD_CREATE_DATE,
+						(SELECT COUNT(*) FROM BOARD_LIKE BL 
+						WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+						(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
+						FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
+						AND IMG_ORDER = 1) IMG_PATH
+			FROM BOARD B
+			WHERE BOARD_CONTENT LIKE '%#${searchInput}%'
+			ORDER BY BOARD_CREATE_DATE DESC  
+	  </select>
+  
+  
+  
+  
   
 </mapper>
