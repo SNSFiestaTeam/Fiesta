@@ -27,7 +27,7 @@ public class CommentDAO {
 		map.put("commentNo", commentNo);
 		map.put("memberNo", memberNo);
 		
-		return sqlSession.insert("mainMapper.commentLikeUp", map);
+		return sqlSession.insert("commentMapper.commentLikeUp", map);
 	}
 
 
@@ -41,7 +41,7 @@ public class CommentDAO {
 		map.put("commentNo", commentNo);
 		map.put("memberNo", memberNo);
 		
-		return sqlSession.delete("mainMapper.commentLikeDown", map);
+		return sqlSession.delete("commentMapper.commentLikeDown", map);
 	}
 
 
@@ -53,7 +53,7 @@ public class CommentDAO {
 	public int commentInsert(Map<String, Object> map) {
 		
 		
-		int result =  sqlSession.insert("mainMapper.commentInsert", map);
+		int result =  sqlSession.insert("commentMapper.commentInsert", map);
 		
 
 		if(result > 0) {

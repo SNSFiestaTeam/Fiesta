@@ -236,7 +236,6 @@ main > section {
   margin-bottom: 10px;
 }
 
-
 a.hashtag {
   color: #00376b;
   margin-right: 5px;
@@ -282,6 +281,10 @@ a.hashtag {
 .comment > ul {
   width: 100%;
   padding-left: 30px;
+}
+
+#reply {
+  display: none;
 }
 
 .reply-firstchild > div {
@@ -669,13 +672,11 @@ a.comment-profile {
     line-height: 15px;
     padding-top: 20px;
     overflow: hidden;
-
   }
 
   .comment-input-area > div > textarea:focus {
     outline: none;
   }
-
 
   .comment-input-area > div > button {
     font-size: 15px;
