@@ -117,6 +117,7 @@
 						AND IMG_ORDER = 1) IMG_PATH
 			FROM BOARD B
 			WHERE BOARD_CONTENT LIKE '%#${searchInput}%'
+			<![CDATA[AND ROWNUM <= 9 ]]>
 			ORDER BY BOARD_CREATE_DATE DESC  
 	  </select>
   
