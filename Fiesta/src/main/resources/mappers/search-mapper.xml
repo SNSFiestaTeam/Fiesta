@@ -83,7 +83,7 @@
 	
 		<!-- 검색_관련 계정 조회 -->
 		<select id="selectAccountList" resultMap="member_rm">
-			SELECT MEMBER_PROFILE_IMG, SUBSTR(MEMBER_NICKNAME, 1, 6) MEMBER_NICKNAME		
+			SELECT MEMBER_PROFILE_IMG, SUBSTR(MEMBER_NICKNAME, 1, 8) MEMBER_NICKNAME		
 			FROM "MEMBER" 
 			WHERE SECESSION_FL = 'N'
 			AND (MEMBER_NICKNAME LIKE '%${searchInput}%'

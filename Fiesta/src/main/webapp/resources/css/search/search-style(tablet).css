@@ -81,8 +81,7 @@
         font-weight: bold;
     }
     
-    
-    .follow-button{
+    .follow-button a{
         min-width: 160px;
         width: 40%;
         background-color: var(--fiesta-color);
@@ -92,9 +91,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    
-    .follow-button a{
+
         color: white;
         font-weight: 500;
         font-size: 0.9em;

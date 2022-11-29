@@ -21,12 +21,6 @@ public class SearchController {
 	@Autowired
 	private SearchService service;
 	
-	// 검색 결과 페이지로 이동
-//	@GetMapping("/main/search")
-//	public String search(String searchInput) {
-//		return "search/search";
-//	}
-	
 	
 	// 검색
 	@GetMapping("/search")
@@ -53,14 +47,13 @@ public class SearchController {
 	
 	// 검색_해시태그 팔로우  -> 데이터베이스 다시 확인 (F_TO_TARGET_NO)
 	@GetMapping("/followHashtag")
+	@ResponseBody
 	public int followHashtag(@SessionAttribute("loginMember") Member loginMember, String searchInput) {
 		
 		int memberNo = loginMember.getMemberNo();
-		
 		int result = service.followHashtag(memberNo, searchInput);
 		
-		
-		return 0;
+		return result;
 	}
 	
 	

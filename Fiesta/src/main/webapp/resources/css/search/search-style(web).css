@@ -96,7 +96,7 @@ main {
 
 .follow-button a{
     width: 40%;
-    background-color: var(--fiesta-color);
+    /* background-color: var(--fiesta-color); */
     border-radius: 5px;
     padding: 4px 0;
 
@@ -107,9 +107,24 @@ main {
     align-items: center;
 
 
-    color: white;
+    /* color: white; */
     font-weight: 500;
     font-size: 0.9em;
+}
+
+
+.followBtn{
+    background-color: var(--fiesta-color);
+    color: white;
+    border: none;
+}
+
+
+
+.btnClicked{
+    background-color: lightgray;
+    color: gray;
+    border: 1px solid gray;
 }
 
 
@@ -149,8 +164,6 @@ main {
 
     display: flex;
     justify-content: flex-start;
-    
-    
 }
 
 .account-Group{

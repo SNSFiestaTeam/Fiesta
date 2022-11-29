@@ -58,12 +58,16 @@
 	
 		<!-- 검색결과_팔로우할 해시태그 insert -->
 		<insert id="insertHashtag">
-			INSERT INTO HASHTAG VALULES(SEQ_HASHTAG_NO, ${searchInput})
+			INSERT INTO HASHTAG VALUES(SEQ_HASHTAG_NO.NEXTVAL, ${searchInput})
 		</insert>
 		
 		<!-- 검색결과_해시태그 팔로우하기 -->	
 		<insert id="followHashtag">
-			INSERT INTO FOLLOW VALUES(#{memberNo}, 해시태그 번호, 'H', DEFAULT)
+			<selectKey keyProperty="HashtagNo" resultType="_int" order="BEFORE">
+				SELECT SEQ_HASHTAG_NO.NEXTVAL FROM DUAL
+			</selectKey>
+		
+			INSERT INTO FOLLOW VALUES(#{memberNo}, #{HashtagNo}, 'H', DEFAULT)
 		</insert>
   
   

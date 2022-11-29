@@ -37,6 +37,7 @@
 		<mapper resource="/mappers/feed-mapper.xml"/>
 		<mapper resource="/mappers/search-mapper.xml"/>
 		<mapper resource="/mappers/comment-mapper.xml"/>
+		<mapper resource="/mappers/follow-mapper.xml"/>
 
 		
 	

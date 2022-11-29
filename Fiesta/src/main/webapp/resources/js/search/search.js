@@ -10,6 +10,38 @@
                 // 요소.removeAttribute("속성명")
     
 
+
+// 해시태그 팔로우 버튼
+const followHashtagBtn = document.getElementById("followHashtagBtn");
+
+// 바뀐 상태가 고정되어 있어야 함.
+// 팔로우 버튼을 누른 상태라면 btnClicked
+// 팔로우 버튼을 안 누른 상태라면 followBtn
+followHashtagBtn.classList.add("followBtn");
+followHashtagBtn.classList.remove("btnClicked");
+
+
+
+followHashtagBtn.addEventListener("click", () => {
+
+    $.ajax({
+        url: "/followHashtag",
+        data:{"searchInput" : searchInput.value},
+        type: "GET",
+        success: (result) => {
+            if(result > 0){
+                followHashtagBtn.classList.add("btnClicked");
+                followHashtagBtn.classList.remove("followBtn");
+            }
+        },
+        error: (result) => {
+            console.log("해시태그 팔로우 오류");
+        }
+
+    })
+});
+
+
                 
 // (()=>{
     // const searchInput = document.getElementById("searchInput");
@@ -91,7 +123,6 @@
         
 
 
-    
 
 
 

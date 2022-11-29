@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="follow-button">
-                    <a href="/search/followHashtag">팔로우</a>
+                    <a href="/search/followHashtag" id="followHashtagBtn">팔로우</a>
                 </div>
             </div>
         </section>
