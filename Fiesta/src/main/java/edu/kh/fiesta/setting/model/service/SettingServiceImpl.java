@@ -144,6 +144,20 @@ public class SettingServiceImpl implements SettingService{
 	}
 
 
+
+	
+	@Override
+	public Member selectSetting(int memberNo) {
+		return dao.selectSetting(memberNo);
+	}
+
+	@Override
+	public Member selectIntro(int memberNo) {
+		return dao.selectIntro(memberNo);
+	}
+
+	
+
 	}
 
 

@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>instagram</title>
+    <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/setting/setting3-style.css">
     <script
@@ -39,9 +39,9 @@
             <section class= account>
               <h2>계정 공개 범위</h2>
               <label for="account" id="idOpen">
-                <input type="radio" name="account" value="Y" onclick="getAccount(event)"> 모두 공개
-                <input type="radio" name="account" value="F" onclick="getAccount(event)"> 팔로워 공개
-                <input type="radio" name="account" value="N" onclick="getAccount(event)"> 비공개
+                <input type="radio" name="account" value="Y" id="idOpen1" onclick="getAccount(event)"> 모두 공개
+                <input type="radio" name="account" value="F" id="idOpen2" onclick="getAccount(event)"> 팔로워 공개
+                <input type="radio" name="account" value="N" id="idOpen3" onclick="getAccount(event)"> 비공개
               </label>
               <p class="note"> 계정이 비공개 상태인 경우 회원님이 승인한 사람만 Instagram에서 회원님의 사진과 동영상을 볼 수 있습니다. 기존 팔로워는 영향을 받지 않습니다. </p>
             </section>
@@ -72,6 +72,10 @@
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     
+    <script>
+      const memberNo = "${loginMember.memberNo}";
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/resources/js/setting/setting3.js"></script>    
     

@@ -27,6 +27,12 @@ public interface SettingService {
 
 	int updateLikePublic(Member loginMember);
 
+	Member selectSetting(int memberNo);
+
+	Member selectIntro(int memberNo);
+
+	
+
 
 
 	

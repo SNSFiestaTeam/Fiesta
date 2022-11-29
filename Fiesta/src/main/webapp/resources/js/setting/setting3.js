@@ -37,16 +37,34 @@ function getAccount(event){
     accountFrm.submit();
 }
 
-function start(){
+const idOpen1 = document.getElementById("idOpen1")
+const idOpen2 = document.getElementById("idOpen2")
+const idOpen3 = document.getElementById("idOpen3")
 
+ function start(){
     $.ajax({
-        url : "setting/update",
+        url : "/setting/changeEtc",
         data : {"memberNo" : memberNo},
         type : "POST",
-        dataType : "JSON",
-        success : selectList=>{
+        dataType:"JSON",
+        success : (member)=>{
 
-            console.log(selectList);
+            if(member.memberOpenFl == "Y"){
+                idOpen1.checked = true;
+            }
+            if(member.memberOpenFl == "F"){
+                idOpen2.checked = true;
+            }
+            if(member.memberOpenFl == "N"){
+                idOpen3.checked = true;
+            }
+
+            if(member.userPubPriFl == "Y"){
+                chk1.checked = false;
+            }
+            if(member.userPubPriFl == "N"){
+                chk1.checked = true;
+            }
 
         },
 
@@ -57,9 +75,9 @@ function start(){
     });
 
 /*
-SELECT MEMBER_OPEN_FL, BOARD_PUB_PRI_FL  
+SELECT MEMBER_OPEN_FL, USER_PUB_PRI_FL  
 FROM "MEMBER"
-JOIN BOARD USING(MEMBER_NO)
+JOIN SETTING USING(MEMBERNO)
 WHERE MEMBER_NO = 10
 
 
@@ -71,4 +89,9 @@ WHERE MEMBER_NO = 10;
 */
 
 
-}
+};
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    start();
+});

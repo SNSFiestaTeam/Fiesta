@@ -74,5 +74,15 @@ public class SettingDAO {
 	}
 
 
+	public Member selectSetting(int memberNo) {
+		return sqlSession.selectOne("settingMapper.selectSetting", memberNo);
+	}
+
+	public Member selectIntro(int memberNo) {
+		return sqlSession.selectOne("settingMapper.selectIntro", memberNo);
+	}
+
+
+
 
 }

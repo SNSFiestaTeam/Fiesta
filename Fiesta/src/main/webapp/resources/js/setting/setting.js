@@ -148,6 +148,51 @@ changeImg.addEventListener("click", ()=>{
     profileContainer.style.display = "flex";
 })
 
+const text = document.getElementById("text");
+
+function start(){
+    $.ajax({
+        url : "/setting",
+        data : {"memberNo" : memberNo},
+        type : "POST",
+        dataType:"JSON",
+        success : (member)=>{
+
+        "${introContent}" = member.introContent;
+
+        },
+
+        error : ()=>{
+            console.log("실패");
+        }
+
+    });
+
+/*
+SELECT INTRO_CONTENT
+FROM "INTRODUCE"
+WHERE MEMBER_NO = 10;
+
+
+*/
+
+
+};
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    start();
+});
+
+
+
+
+
+
+
+
+
+
 
 let initCheck;
 

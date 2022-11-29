@@ -239,6 +239,17 @@ section.post > .post-1 > input:checked + label:after{
     justify-content: space-between;
 }
 
+#secession-btn{
+    color : #dd4132;
+}
+
+:root {
+	accent-color:  #dd4132;
+}
+
+input[type=radio] {
+    accent-color:#dd4132;
+}
 
 @media screen and (max-width: 470px) {
     .setting-content{
@@ -261,6 +272,14 @@ section.post > .post-1 > input:checked + label:after{
     
     .setting-content .left-side{
         width: 100vw;
+    }
+
+    :root {
+        accent-color:  #dd4132;
+    }
+    
+    input[type=radio] {
+        accent-color:#dd4132;
     }
     
 
@@ -293,6 +312,14 @@ section.post > .post-1 > input:checked + label:after{
         
         .setting-content .left-side{
             width: 100vw;
+        }
+
+        :root {
+            accent-color:  #dd4132;
+        }
+        
+        input[type=radio] {
+            accent-color:#dd4132;
         }
         
     

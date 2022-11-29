@@ -18,6 +18,7 @@
       <result property="secessionFl" column="SECESSION_FL" />
       <result property="authority" column="AUTHORITY" />
       <result property="introContent" column="INTRO_CONTENT"/>
+      <result property="userPubPriFl" column="USER_PUB_PRI_FL"/>
       </resultMap>
       
      <resultMap type="Introduce" id="intro_rm">
@@ -92,16 +93,29 @@ WHERE MEMBER_NO = #{memberNo}
 </update>
 
 <update id="updateLikeProtected">
-UPDATE "BOARD" SET
-BOARD_PUB_PRI_FL = 'N'
+UPDATE "SETTING" SET
+USER_PUB_PRI_FL = 'N'
 WHERE MEMBER_NO = #{memberNo}
 </update>
 
 <update id="updateLikePublic">
-UPDATE "BOARD" SET
-BOARD_PUB_PRI_FL = 'Y'
+UPDATE "SETTING" SET
+USER_PUB_PRI_FL = 'Y'
 WHERE MEMBER_NO = #{memberNo}
 </update>
+
+<select id="selectSetting" parameterType="_int" resultMap="member_rm">
+SELECT MEMBER_OPEN_FL, USER_PUB_PRI_FL  
+FROM "MEMBER"
+JOIN SETTING USING(MEMBER_NO)
+WHERE MEMBER_NO = #{memberNo}
+</select>
+
+<select id="selectIntro" parameterType="_int" resultMap="member_rm">
+SELECT INTRO_CONTENT
+FROM "INTRODUCE"
+WHERE MEMBER_NO = #{memberNo}
+</select>
 
 
 </mapper>

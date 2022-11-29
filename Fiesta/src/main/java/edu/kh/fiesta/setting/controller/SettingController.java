@@ -1,14 +1,12 @@
 
 package edu.kh.fiesta.setting.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -19,6 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.member.model.vo.Member;
@@ -37,7 +37,7 @@ public class SettingController {
 		return "setting/setting";
 	}
 	
-	@PostMapping()
+	@PostMapping("/setting")
 	public String updateSetting(Member inputMember,
 			@RequestParam(value="set", required=false) String introContent,
 			@SessionAttribute("loginMember") Member loginMember, RedirectAttributes ra) {
@@ -226,14 +226,24 @@ public class SettingController {
 	}
 		
 	
-	@PostMapping("/update")
+	@PostMapping("/changeEtc")
 	@ResponseBody
-	public String settingUpdate() {
+	public String settingUpdate(int memberNo) {
 		
-		List<>
+		Member member = service.selectSetting(memberNo);
 		
-		return null;
+		return new Gson().toJson(member);
 	}
+	
+	@PostMapping()
+	@ResponseBody
+	public String settingIntro(int memberNo) {
+		
+		Member member = service.selectIntro(memberNo);
+		
+		return new Gson().toJson(member);
+	}
+	
 	
 	
 	

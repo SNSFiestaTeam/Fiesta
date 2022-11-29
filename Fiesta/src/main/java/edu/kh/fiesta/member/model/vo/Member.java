@@ -22,6 +22,6 @@ public class Member {
 	private int authority;
 	
 	private String introContent;
-
+	private char userPubPriFl;
 }
 
