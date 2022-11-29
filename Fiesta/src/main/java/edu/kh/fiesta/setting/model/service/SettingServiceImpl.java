@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fiesta.member.model.vo.Member;
-import edu.kh.fiesta.setting.model.dao.SettingDAO;
 import edu.kh.fiesta.setting.Util;
+import edu.kh.fiesta.setting.model.dao.SettingDAO;
 
 
 
@@ -53,7 +53,14 @@ public class SettingServiceImpl implements SettingService{
 	@Override
 	public int updateSetting(Member inputMember) {
 
+		inputMember.setIntroContent(Util.XSSHandling(inputMember.getIntroContent()));
+		inputMember.setIntroContent(Util.newLineHandling(inputMember.getIntroContent()));
+		
 		int result = dao.updateSetting(inputMember);
+		
+		
+		
+		
 		return result;
 	}
 
@@ -113,16 +120,43 @@ public class SettingServiceImpl implements SettingService{
 		return dao.memberDelete(memberNo);
 	}
 
+
+	@Transactional
 	@Override
-	public int updateLike(int memberNo) {
-		return dao.updateLike(memberNo);
+	public int changeOpen(Member loginMember) {
+		
+		return dao.changeOpen(loginMember);
+	}
+
+	
+
+	@Transactional
+	@Override
+	public int updateLikePublic(Member loginMember) {
+		return dao.updateLikePublic(loginMember);
+	}
+
+
+	@Transactional
+	@Override
+	public int updateLikeProtected(Member loginMember) {
+		return dao.updateLikeProtected(loginMember);
+	}
+
+
+
+	
+	@Override
+	public Member selectSetting(int memberNo) {
+		return dao.selectSetting(memberNo);
 	}
 
 	@Override
-	public int updateLike2(int memberNo) {
-		return dao.updateLike2(memberNo);
+	public Member selectIntro(int memberNo) {
+		return dao.selectIntro(memberNo);
 	}
 
+	
 
 	}
 

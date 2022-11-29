@@ -17,7 +17,18 @@
       <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
       <result property="secessionFl" column="SECESSION_FL" />
       <result property="authority" column="AUTHORITY" />
+      <result property="introContent" column="INTRO_CONTENT"/>
+      <result property="userPubPriFl" column="USER_PUB_PRI_FL"/>
       </resultMap>
+      
+     <resultMap type="Introduce" id="intro_rm">
+     	<id property="memberNo" column="MEMBER_NO"/>
+     	
+     	<result property="introContent" column="INTRO_CONTENT"/>
+     
+     </resultMap>
+      
+ 
 
 
 <select id="selectEncPw" parameterType="_int" resultType="string">
@@ -32,12 +43,20 @@ WHERE MEMBER_NO = #{memberNo}
  	MEMBER_PW = #{newPw}
  	WHERE MEMBER_NO = #{memberNo}
  </update>
+ 
  <update id="updateSetting" parameterType="Member" >
  UPDATE "MEMBER" SET
  MEMBER_NAME = #{memberName},
  MEMBER_NICKNAME = #{memberNickname}
  WHERE MEMBER_NO = #{memberNo}
  </update>
+ 
+ <update id="updateIntro">
+ UPDATE "INTRODUCE" SET
+ INTRO_CONTENT = #{introContent}
+ WHERE MEMBER_NO = #{memberNo}
+ </update>
+ 
  
  <select id="nicknameDupCheck" parameterType="string" resultType="_int">
  SELECT COUNT(*) FROM "MEMBER"
@@ -67,17 +86,38 @@ WHERE MEMBER_NO = #{memberNo}
  </update>
  
  
- <update id="updateLike">
-UPDATE BOARD SET
-BOARD_PUB_PRI_FL = 'N'
+<update id="changeOpen">
+UPDATE "MEMBER" SET
+MEMBER_OPEN_FL = #{memberOpenFl}
 WHERE MEMBER_NO = #{memberNo}
- </update>
- 
-<update id="updateLike2">
-UPDATE BOARD SET
-BOARD_PUB_PRI_FL = 'Y'
+</update>
+
+<update id="updateLikeProtected">
+UPDATE "SETTING" SET
+USER_PUB_PRI_FL = 'N'
 WHERE MEMBER_NO = #{memberNo}
- </update>
- </mapper>
+</update>
+
+<update id="updateLikePublic">
+UPDATE "SETTING" SET
+USER_PUB_PRI_FL = 'Y'
+WHERE MEMBER_NO = #{memberNo}
+</update>
+
+<select id="selectSetting" parameterType="_int" resultMap="member_rm">
+SELECT MEMBER_OPEN_FL, USER_PUB_PRI_FL  
+FROM "MEMBER"
+JOIN SETTING USING(MEMBER_NO)
+WHERE MEMBER_NO = #{memberNo}
+</select>
+
+<select id="selectIntro" parameterType="_int" resultMap="member_rm">
+SELECT INTRO_CONTENT
+FROM "INTRODUCE"
+WHERE MEMBER_NO = #{memberNo}
+</select>
+
+
+</mapper>
  
  
