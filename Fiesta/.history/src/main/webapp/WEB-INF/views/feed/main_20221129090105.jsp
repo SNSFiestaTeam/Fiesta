@@ -181,7 +181,7 @@
                                     </div>
                                   </div>
                                   <c:if test="${comment.replyCount > 0}">
-                                  <button class="more-reply">모든 답글 보기(<span class ="reply-count">${comment.replyCount}</span>)</button>
+                                  <button class="more-reply">모든 답글 보기(<span class ="reply-count">${comment.replyCount}</span>)</ㅠㅕ>
                                   </c:if>
                                 </li>
                               </c:if>

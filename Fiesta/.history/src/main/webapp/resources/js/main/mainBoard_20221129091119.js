@@ -1411,7 +1411,7 @@ function selectReplyList(commentNo, commentLi) {
           commentInput.value = '';
           commentInput.value = '@' + replyMemberIdA.innerText + ' ';
 
-          upperCommentNo = commentNo;
+          upperCommentNo = commentNoInput.value;
           console.log("upperCommentNo: " + upperCommentNo);
         });
 

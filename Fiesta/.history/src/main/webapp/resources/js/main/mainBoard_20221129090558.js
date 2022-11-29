@@ -1402,18 +1402,18 @@ function selectReplyList(commentNo, commentLi) {
         replyBtn.innerText = '답글 달기';
 
         // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
-        // 만약 이미 언급된 닉네임일 시 추가 안됨
-        // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
-        replyBtn.addEventListener('click', () => {
-          const commentInput =
-            replyUl.parentElement.parentElement.parentElement.parentElement.parentElement
-              .nextElementSibling.firstElementChild.firstElementChild;
-          commentInput.value = '';
-          commentInput.value = '@' + replyMemberIdA.innerText + ' ';
+      // 만약 이미 언급된 닉네임일 시 추가 안됨
+      // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
+      replyBtn.addEventListener('click', () => {
+        const commentInput =
+          replyUl.parentElement.parentElement.parentElement
+            .nextElementSibling.firstElementChild.firstElementChild;
+        commentInput.value = '';
+        commentInput.value = '@' + commentMemberIdA.innerText + ' ';
 
-          upperCommentNo = commentNo;
-          console.log("upperCommentNo: " + upperCommentNo);
-        });
+        upperCommentNo = commentNoInput.value;
+        console.log("upperCommentNo: " + upperCommentNo);
+      });
 
         const hoverBtn = document.createElement('button');
         hoverBtn.setAttribute('type', 'button');
