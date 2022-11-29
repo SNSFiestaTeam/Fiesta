@@ -26,7 +26,13 @@ public class MemberDAO {
 	 * @return reult
 	 */
 	public int signUp(Member inputMember) {
-		return sqlSession.insert("memberMapper.signUp", inputMember);
+		int result = sqlSession.insert("memberMapper.signUp", inputMember);
+		
+		if(result > 0) {
+			result = sqlSession.insert("memberMapper.userPubPriFl", inputMember);
+		}
+		
+		return result; 
 	}
 	
 	

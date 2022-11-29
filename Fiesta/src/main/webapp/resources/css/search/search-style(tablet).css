@@ -10,7 +10,7 @@
         min-width: 80%;
         /* width: 702px;   */
         padding: 20px 1% 0;
-        margin: 0 20%;
+        margin: 0 20% 20%;
     
         display: flex;
         flex-direction: column;
@@ -131,8 +131,6 @@
         padding: 10px;
     
         display: flex;
-        justify-content: center;
-        
     }
     
     .account-Group{
@@ -148,7 +146,7 @@
         align-items: center;
     }
     
-    .profileImage img{
+    .profileImages img{
         width: 80%;
         border-radius: 50%;
         margin-bottom: 8px;
@@ -158,7 +156,7 @@
         font-size: 0.7em;
     }
     
-    .follow a{
+    .follow-button-small a{
         font-size: 0.7em;
         font-weight: bold;
         color: var(--fiesta-color);
@@ -192,14 +190,18 @@
         justify-content: center;
     }
     
-    
     .boardImage{
+        width: 84vw;
+        height: 28vw;
+        overflow: hidden;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 5px;
     }
     
     .boardImage a{
+        width: 33%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -209,7 +211,6 @@
     .boardImage img{
         width: 100%;
         height: 100%;
-        padding: 1%;
     }
 
 
@@ -220,6 +221,13 @@
         margin-bottom: 7px;
         font-weight: bold;
     }
+
+
+    .emptyResultMessage{
+        font-size: 0.9em;
+        color: gray;
+    }
+    
 }
 
 
@@ -239,6 +247,8 @@
         flex-direction: column;
         justify-content: center;
         align-content: center;
+
+        margin-bottom: 20%;
     }
     
     
@@ -376,7 +386,7 @@
         align-items: center;
     }
     
-    .profileImage img{
+    .profileImages img{
         width: 80%;
         border-radius: 50%;
         margin-bottom: 8px;
@@ -419,15 +429,19 @@
         flex-direction: column;
         justify-content: center;
     }
-    
-    
+
     .boardImage{
+        width: 84vw;
+        height: 28vw;
+        overflow: hidden;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 5px;
     }
     
     .boardImage a{
+        width: 33%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -440,7 +454,6 @@
         padding: 1%;
     }
 
-
     .recentBoardResult-section > div:first-child{ /* 최근 게시글 */
         flex-basis: 10%;
         height: 10%;
@@ -448,6 +461,13 @@
         margin-bottom: 7px;
         font-weight: bold;
     }
+
+
+    .emptyResultMessage{
+        font-size: 0.9em;
+        color: gray;
+    }
+    
 
 }
 
