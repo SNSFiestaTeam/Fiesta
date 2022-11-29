@@ -45,4 +45,8 @@ public class CommentServiceImpl implements CommentService{
 		return dao.selectCommentList(comment);
 	}
 
+	@Override
+	public List<Comment> selectReplyList(int commentNo) {
+		return dao.selectReplyList(commentNo);
+	}
 }
