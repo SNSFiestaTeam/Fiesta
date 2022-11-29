@@ -77,8 +77,8 @@ public class CommentDAO {
 	 * @param commentNo
 	 * @return replyList
 	 */
-	public List<Comment> selectReplyList(int commentNo) {
-		return sqlSession.selectList("mainMapper.selectReplyList", commentNo);
+	public List<Comment> selectReplyList(Map<String, Integer> map) {
+		return sqlSession.selectList("mainMapper.selectReplyList", map);
 	}
 
 }

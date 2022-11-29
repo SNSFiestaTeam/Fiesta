@@ -70,9 +70,14 @@ public class CommentController {
 	
 	
 	@PostMapping("/select/reply")
-	public String selectReplyList(int commentNo) {
+	public String selectReplyList(int commentNo, int myNo) {
 		
-		List<Comment> replyList = service.selectReplyList(commentNo);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("commentNo", commentNo);
+		map.put("myNo", myNo);
+		
+		List<Comment> replyList = service.selectReplyList(map);
 	
 		return new Gson().toJson(replyList);
 	}
