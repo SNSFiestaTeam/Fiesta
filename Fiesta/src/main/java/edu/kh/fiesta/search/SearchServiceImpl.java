@@ -28,14 +28,9 @@ public class SearchServiceImpl implements SearchService{
 		return dao.selectBoardTotal(searchInput);
 	}
 
-	// 검색_관련 계정 조회
-//	@Override
-//	public List<Map<String, Object>> selectAccount(String searchInput) {
-//		return dao.selectAccount(searchInput);
-//	}
 
 	
-	
+	// 검색 결과 조회 Map
 	@Override
 	public Map<String, Object> selectSearchResult(String searchInput) {
 		
@@ -55,8 +50,14 @@ public class SearchServiceImpl implements SearchService{
 		searchResultMap.put("hotBoardList", hotBoardList);
 		searchResultMap.put("recentBoardList", recentBoardList);
 		
-		
 		return searchResultMap;
+	}
+
+	
+	// 해시태그 팔로우
+	@Override
+	public int followHashtag(int memberNo, String searchInput) {
+		return dao.followHashtag(memberNo, searchInput);
 	}
 
 }

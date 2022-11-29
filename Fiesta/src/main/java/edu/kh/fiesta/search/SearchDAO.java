@@ -60,4 +60,41 @@ public class SearchDAO {
 		return sqlSession.selectList("searchMapper.selectRecentBoardList", searchInput);
 	}
 
+
+	/** 검색 결과 해시태그 팔로우하기
+	 * @param loginMember
+	 * @param searchInput
+	 * @return result
+	 */
+	public int insertHashtag(Member loginMember, String searchInput) {
+		
+		int result = sqlSession.insert("followMapper.insertHashtag", searchInput);
+		
+		if(result > 0) {
+			result = sqlSession.insert("followMapper.followHashtag", searchInput);
+		}
+		
+		
+		
+		return 0;
+	}
+
+
+	/** 검색 결과 해시태그 팔로우하기
+	 * @param memberNo
+	 * @param searchInput
+	 * @return result
+	 */
+	public int followHashtag(int memberNo, String searchInput) {
+		
+		int insertResult = sqlSession.insert("followMapper.insertHashtag", searchInput);
+		int result = 0;
+		
+		if(insertResult > 0) {
+			result = sqlSession.insert("followMapper.followHashtag", searchInput);
+		}
+		
+		return result;
+	}
+
 }

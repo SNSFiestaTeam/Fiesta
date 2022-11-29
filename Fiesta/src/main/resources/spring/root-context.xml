@@ -38,7 +38,7 @@
    
       
    <!-- JDBC 수행 내용을 로그로 출력하는 객체를 bean 등록 -->
-   <bean id="logDataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+	<bean id="logDataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
       <constructor-arg ref="dataSource"/>
       <property name="logFormatter">
          <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">

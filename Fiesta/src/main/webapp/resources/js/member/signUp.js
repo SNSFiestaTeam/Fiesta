@@ -172,7 +172,7 @@ memberNickname.addEventListener("input", () => {
     } 
     
     // 유효성 검사
-    const regEx = /^[\w\-\_\.]{3,30}$/;
+    const regEx = /^[\w\-\_\.]{3,20}$/;
 
     if(regEx.test(memberNickname.value)){
 
@@ -229,10 +229,6 @@ memberNickname.addEventListener("input", () => {
 
 })
 
-(()=>{
-
-    
-})()
 
 // 비밀번호, 비밀번호 확인 : 필수입력, 유효성 검사, 일치
 const pwEye = document.getElementById("pwEye");

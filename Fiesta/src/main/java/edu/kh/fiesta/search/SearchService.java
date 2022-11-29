@@ -26,4 +26,13 @@ public interface SearchService {
 	 */
 	Map<String, Object> selectSearchResult(String searchInput);
 
+	
+
+	/** 해시태그 팔로우
+	 * @param memberNo
+	 * @param searchInput
+	 * @return result
+	 */
+	int followHashtag(int memberNo, String searchInput);
+
 }

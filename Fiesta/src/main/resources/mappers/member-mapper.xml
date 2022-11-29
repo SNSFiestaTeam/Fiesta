@@ -51,15 +51,24 @@
   		SELECT COUNT(*)
   		FROM "MEMBER"	
   		WHERE MEMBER_NICKNAME = #{memberNickname}
+  		AND SECESSION_FL ='N'
   </select>
 	<!-- AND SECESSION_FL ='N' -->
   
   
-  <!-- 회원가입 후 좋아요, 조회수 공개 여부 -->
-  <insert id="userPubPriFl">
+  <!-- 회원가입 후 좋아요, 조회수 공개 여부에 회원번호 삽입 -->
+  <insert id="insertUserPubPriFl">
   	INSERT INTO "SETTING"
   	VALUES(#{memberNo}, DEFAULT)
   </insert>
+  
+  
+  <!-- 회원가입 후 소개글에 회원번호 삽입 -->
+  <insert id="insertIntroContent">
+  	INSERT INTO "INTRODUCE"
+  	VALUES(#{memberNo}, DEFAULT)
+  </insert>
+  
   
   
   
@@ -68,17 +77,20 @@
   	UPDATE MEMBER
   	SET MEMBER_PW = #{memberPw}
   	WHERE MEMBER_EMAIL = #{memberEmail}
+  	AND SECESSION_FL ='N'
   </update>
   
   
-  
+  <!-- 자기자신 팔로우 위한 회원번호 조회 -->
   <select id="selectMemberNo" resultType="_int">
   	SELECT MEMBER_NO
   	FROM MEMBER
   	WHERE MEMBER_EMAIL = #{memberEmail}
+  	AND SECESSION_FL ='N'
   </select>
   
   
+  <!-- 가입 시 자기 자신 팔로우 -->
   <insert id="followMyself">
   	INSERT INTO FOLLOW
   	VALUES(#{memberNo}, #{memberNo}, 'M', 'Y')

@@ -44,37 +44,25 @@ public class SearchController {
 	
 	
 		model.addAttribute("searchResultMap", searchResultMap);
+		model.addAttribute("searchInput", searchInput);
 		
 		return "search/search";
 	}
 	
 	
-//	@GetMapping("")
-	
-	
-	
-	
-//	
-//	@GetMapping("/main/search/accountList")
-//	@ResponseBody
-//	public String selectAccountList(String searchInput, Model model) {
-//		// 검색_관련 계정 조회
-//		List<Member> accountList = service.selectAccount(searchInput);
-//		
-//		accountList = new ArrayList<Member>();
-//		
-//		model.addAttribute(accountList);
-//		
-//		return new Gson().toJson(accountList);
-//	}
-//			
 	
 	// 검색_해시태그 팔로우  -> 데이터베이스 다시 확인 (F_TO_TARGET_NO)
-//	@GetMapping("/main/search/followHashtag")
-//	public int followHashtag(@SessionAttribute("loginMember") Member loginMember) {
-//		
-//	}
-//	
+	@GetMapping("/followHashtag")
+	public int followHashtag(@SessionAttribute("loginMember") Member loginMember, String searchInput) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		int result = service.followHashtag(memberNo, searchInput);
+		
+		
+		return 0;
+	}
+	
 	
 	
 	
