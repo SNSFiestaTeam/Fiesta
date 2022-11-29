@@ -169,6 +169,7 @@ fileInput.addEventListener("change", (e) => {
 
         swiperSildeDiv.classList.add("swiper-slide");
         fileImg.id = "file";
+        fileImg.name = "files";
         fileImg.setAttribute("src", e.target.result);
 
         //합치기
@@ -279,14 +280,19 @@ const boardContent = document.getElementById("boardContent");
 
 newPostAll.addEventListener("click", () => {
   $.ajax({
-    url: "/main/write",
-    data: { boardContent: boardContent.innerText },
+    url: "/write",
+    data: { "boardContent": boardContent.value},
     type: "Post",
     success: (result) => {
       if (result > 0) {
-        console.log(result);
+        console.log("게시물 작성 성공");
+        modalBackgroundEidt.style.display = "none";
       } else {
+        console.log("게시물 작성 실패");
       }
+    },
+    error: () => {
+      console.log("게시물 작성 에러");
     },
   });
 });
