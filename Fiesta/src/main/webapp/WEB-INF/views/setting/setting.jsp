@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>instagram</title>
+    <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/setting/setting-style.css" />
     <link rel="stylesheet" href="../../../resources/css/profile-edit-board.css">
@@ -33,8 +33,7 @@
         </section>
 
         <section class="setting-main">
-          <form action="/setting/updateImage" method="POST" id="profile-frm" name="profile-img" enctype="multipart/form-data"
-          onsubmit="return profileVaildate()">
+          <form action="/setting/updateImage" method="POST" id="profile-frm" name="profile-img" enctype="multipart/form-data">
             <div class="di-1">
               <aside>
                 <button type="button" id="chg-img">
@@ -53,7 +52,7 @@
             </div>
           </form>
 
-          <form action="" name="set" method="POST" id="setting-frm">
+          <form action="/setting/setting" name="set" method="POST" id="setting-frm">
             </div>
             <div class="di-2">
                 <aside><label>이름</label></aside>
@@ -77,7 +76,7 @@
             <div class="di-5">
                 <aside><label>소개</label></aside>
                 <div class="main">
-                  <textarea></textarea>
+                  <textarea id="text" name="set">${introContent}</textarea>
                 </div>
             </div>
 
@@ -93,8 +92,14 @@
       </section>
     </main>
 
+
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>
+   
+   <script>
+    const memberNo = "${loginMember.memberNo}";
+   </script>
+   
    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
    <script src="/resources/js/setting/setting.js"></script>
   </body>
