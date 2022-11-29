@@ -60,23 +60,14 @@
                 </div>
                 <button class="more-reply-m">모든 답글 보기(1개)</button>
               </li>
-           
-  
             </ul>
           </div>
         </div>
         <div class="comment-input-area-m">
-          <form name="commentForm" action="#">
-            <input
-              name="comment"
-              id="commentInputM"
-              class="comment-input-m"
-              type="text"
-              placeholder="댓글 달기..."
-              autocomplete="off"
-            />
-            <button class="posting-btn" disabled>게시</button>
-          </form>
+          <div>
+            <textarea id="commentInputM" class="comment-input-m" placeholder="댓글 달기..."></textarea>
+            <button class="posting-btn" id="postingBtnM" disabled>게시</button>
+          </div>
         </div>
       </section>
     </section>
