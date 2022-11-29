@@ -25,6 +25,7 @@ public class Board {
 	private int likeCheck;
 	private int bookmarkCheck;
 	private int myNo;
+	private String imgPath;
 	
 	private List<BoardImg> imageList;
 	
