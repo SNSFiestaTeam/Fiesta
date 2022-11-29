@@ -78,32 +78,32 @@
             </span>
             
             <c:if test="${not empty accountList}">
-            <article class="account-container">
-              <c:forEach var="account" items="${accountList}">
-                <div class="account-Group">
-                  <a href="/feed/${account.memberNickname}" class="profileImages">
-                    <c:if test="${not empty acoount.memberProfileImg}">
-                      <img src="${account.memberProfileImg}">
-                    </c:if>
-                    <c:if test="${empty acoount.memberProfileImg}">
-                      <img src="/resources/images/profile/profile.jpg">
-                    </c:if>
-                  </a>
-                  <a href="/feed/${account.memberNickname}" class="profileNickname">
-                    ${account.memberNickname}
-                  </a>
-                  <span class="follow-button-small">
-                    <a href="" id="aFollow">팔로우</a>
-                  </span>
-                </div>
-              </c:forEach>
-            </article>
+              <article class="account-container">
+                <c:forEach var="account" items="${accountList}">
+                  <div class="account-Group">
+                    <a href="/feed/${account.memberNickname}" class="profileImages">
+                      <c:if test="${not empty acoount.memberProfileImg}">
+                        <img src="${account.memberProfileImg}">
+                      </c:if>
+                      <c:if test="${empty acoount.memberProfileImg}">
+                        <img src="/resources/images/profile/profile.jpg">
+                      </c:if>
+                    </a>
+                    <a href="/feed/${account.memberNickname}" class="profileNickname">
+                      ${account.memberNickname}
+                    </a>
+                    <span class="follow-button-small">
+                      <a href="" id="aFollow">팔로우</a>
+                    </span>
+                  </div>
+                </c:forEach>
+              </article>
             </c:if>
 
             <c:if test="${empty accountList}">
-            <article class="emptyResultMessage">
-              검색 결과가 없습니다.
-            </article>
+              <article class="emptyResultMessage">
+                검색 결과가 없습니다.
+              </article>
             </c:if>
         </section>
 
@@ -113,30 +113,31 @@
             인기 게시글
           </div>
 
-          <c:if test="${fn:length(hotBoardList) >= 0}"> 
+          <c:if test="${not empty hotBoardList}"> 
             <div class="boardResult">
-            <c:if test="${fn:length(hotBoardList) > 0}">
-              <div class="boardImage">
-                <c:forEach var="hotItem" items="${hotBoardList}" begin="0" end="2">
-                <a href="#"><img src="${hotItem.imgPath}" alt=""></a> 
-                </c:forEach>
-              </div>
-            </c:if>
-            <c:if test="${fn:length(hotBoardList) > 3}">
-              <div class="boardImage">
-                <c:forEach var="hotItem" items="${hotBoardList}" begin="3" end="5">
-                <a href="#"><img src="${hotItem.imgPath}" alt=""></a> 
-                </c:forEach>
-              </div>
-            </c:if>
-            <c:if test="${fn:length(hotBoardList) > 6}">
-              <div class="boardImage">
-                <c:forEach var="hotItem" items="${hotBoardList}" begin="6" end="8">
-                <a href="#"><img src="${hotItem.imgPath}" alt=""></a> 
-                </c:forEach>
-              </div>
-            </c:if>
-              
+              <c:if test="${fn:length(hotBoardList) > 0}">
+                <div class="boardImage">
+                  <c:forEach var="hotItem" items="${hotBoardList}" begin="0" end="2">
+                    <a href="#"><img src="${hotItem.imgPath}" alt=""></a> 
+                  </c:forEach>
+                </div>
+              </c:if>
+
+              <c:if test="${fn:length(hotBoardList) > 3}">
+                <div class="boardImage">
+                  <c:forEach var="hotItem" items="${hotBoardList}" begin="3" end="5">
+                    <a href="#"><img src="${hotItem.imgPath}" alt=""></a> 
+                  </c:forEach>
+                </div>
+              </c:if> 
+
+              <c:if test="${fn:length(hotBoardList) > 6}">
+                <div class="boardImage">
+                  <c:forEach var="hotItem" items="${hotBoardList}" begin="6" end="8">
+                   <a href="#"><img src="${hotItem.imgPath}" alt=""></a> 
+                  </c:forEach>
+                </div>              
+              </c:if>
             </div>
           </c:if>
       
@@ -153,8 +154,7 @@
               최근 게시글
           </div>
 
-          <%-- <c:if test="${not empty recentBoardList}}"> --%>
-            <c:if test="${fn:length(recentBoardList) >= 3}">
+          <c:if test="${not empty recentBoardList}}">
               <div class="boardResult">
                 <c:if test="${fn:length(recentBoardList) > 0}">
                   <div class="boardImage">
@@ -180,8 +180,7 @@
                   </div>
                 </c:if>
               </div>
-            </c:if>
-          <%-- </c:if> --%>
+          </c:if>
 
           <c:if test="${empty recentBoardList}">
             <div class="emptyResultMessage">

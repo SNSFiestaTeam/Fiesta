@@ -18,15 +18,6 @@ public interface SearchService {
 	 * @return boardTotal
 	 */
 	int selectBoardTotal(String searchInput);
-	
-	
-
-	/** 검색_관련 계정 조회
-	 * @param searchInput
-	 * @return accountList
-	 */
-//	List<Map<String, Object>> selectAccount(String searchInput);
-
 
 
 	/** 검색 결과 조회

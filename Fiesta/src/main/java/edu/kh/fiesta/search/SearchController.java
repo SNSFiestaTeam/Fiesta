@@ -29,7 +29,7 @@ public class SearchController {
 	
 	
 	// 검색
-	@GetMapping("/main/search")
+	@GetMapping("/search")
 	public String selectSearchResult(String searchInput, Model model) {
 		
 		// 검색_관련 계정 수(accountTotal) / 게시글 수(boardTotal)

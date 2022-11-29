@@ -74,6 +74,9 @@ public class MemberController {
 		String path = null;
 		
 		if(result > 0) {
+			
+			// 좋아요, 조회수 공개여부 넣기
+			
 			message = "Welcome to Fiesta!";
 			path = "/"; // 로그인 페이지로.
 			

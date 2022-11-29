@@ -10,7 +10,7 @@
         min-width: 80%;
         /* width: 702px;   */
         padding: 20px 1% 0;
-        margin: 0 20%;
+        margin: 0 20% 20%;
     
         display: flex;
         flex-direction: column;
@@ -221,6 +221,13 @@
         margin-bottom: 7px;
         font-weight: bold;
     }
+
+
+    .emptyResultMessage{
+        font-size: 0.9em;
+        color: gray;
+    }
+    
 }
 
 
@@ -240,6 +247,8 @@
         flex-direction: column;
         justify-content: center;
         align-content: center;
+
+        margin-bottom: 20%;
     }
     
     
@@ -452,6 +461,13 @@
         margin-bottom: 7px;
         font-weight: bold;
     }
+
+
+    .emptyResultMessage{
+        font-size: 0.9em;
+        color: gray;
+    }
+    
 
 }
 
