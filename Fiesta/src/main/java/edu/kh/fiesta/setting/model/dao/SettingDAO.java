@@ -27,7 +27,13 @@ public class SettingDAO {
 	}
 
 	public int updateSetting(Member inputMember) {
-		return sqlSession.update("settingMapper.updateSetting", inputMember);
+		int result = sqlSession.update("settingMapper.updateSetting", inputMember);
+		
+		if(result > 0) {
+			result = sqlSession.update("settingMapper.updateIntro", inputMember);
+			
+		}
+		return result;
 	}
 
 	
@@ -53,14 +59,30 @@ public class SettingDAO {
 		
 	}
 
-	public int updateLike(int memberNo) {
-		return sqlSession.update("settingMapper.updateLike", memberNo);
+
+	public int changeOpen(Member loginMember) {
+
+		return sqlSession.update("settingMapper.changeOpen", loginMember);
 	}
 
-	public int updateLike2(int memberNo) {
-		return sqlSession.update("settingMapper.updateLike2", memberNo);
+	public int updateLikeProtected(Member loginMember) {
+		return sqlSession.update("settingMapper.updateLikeProtected", loginMember);
 	}
 
-	
+	public int updateLikePublic(Member loginMember) {
+		return sqlSession.update("settingMapper.updateLikePublic", loginMember);
+	}
+
+
+	public Member selectSetting(int memberNo) {
+		return sqlSession.selectOne("settingMapper.selectSetting", memberNo);
+	}
+
+	public Member selectIntro(int memberNo) {
+		return sqlSession.selectOne("settingMapper.selectIntro", memberNo);
+	}
+
+
+
 
 }

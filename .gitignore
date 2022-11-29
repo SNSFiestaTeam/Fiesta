@@ -132,3 +132,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+Fiesta/src/main/resources/log4j.xml

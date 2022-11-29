@@ -38,9 +38,5 @@
 //			resp.sendRedirect("/main");
 //			chain.doFilter(request, response);
 //		} 
-//		else {
-//			resp.sendRedirect("/");
-//			
-//		}
 //	}
 //}

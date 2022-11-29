@@ -36,6 +36,12 @@ public interface CommentService {
 	 * @return commentList
 	 */
 	public List<Comment> selectCommentList(Map<String , Object> comment);
+
+	/** 답글 목록 조회
+	 * @param commentNo
+	 * @return replyList
+	 */
+	public List<Comment> selectReplyList(Map<String, Integer> map);
 	
 
 

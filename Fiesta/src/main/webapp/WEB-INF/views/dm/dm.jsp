@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>instagram</title>
+    <title>Fiesta</title>
     <!-- 링크 주소 상대주소로 변경한거니까 다시 바꾸지 말아주세요 -->
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/dm/dm-style.css" />

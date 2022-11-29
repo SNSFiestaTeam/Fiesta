@@ -55,6 +55,14 @@
 	<!-- AND SECESSION_FL ='N' -->
   
   
+  <!-- 회원가입 후 좋아요, 조회수 공개 여부 -->
+  <insert id="userPubPriFl">
+  	INSERT INTO "SETTING"
+  	VALUES(#{memberNo}, DEFAULT)
+  </insert>
+  
+  
+  
   <!-- 계정찾기_비밀번호 재설정 -->
   <update id="updatePw">
   	UPDATE MEMBER

@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import './root-style.css';
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500&display=swap');
+
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NanumBarunGothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+ }
+
+ @font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HallymGothic-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* 전체 적용 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  /* font-family: 'Noto Sans KR', sans-serif; */
+  /* font-family: 'Nanum Gothic', sans-serif; */
+  /* font-family: 'IBM Plex Sans KR', sans-serif; */
+  /* font-family: 'NanumSquareNeo-Variable'; */
+  /* font-family: 'NanumBarunGothic'; */
+  font-family: 'HallymGothic-Regular';
+  letter-spacing: 0.1px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  width: vw;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  background-color: white;
+}
+
+footer {
+  width: 100%;
+  height: 134px;
+  color: gray;
+  font-size: var(--small-font-size);
+  padding-bottom: 40px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer a {
+  color: gray;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #ccc;
+
+  position: sticky;
+  top: 0;
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+header > section {
+  width: 1000px;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section a {
+  font-family: 'Cookie', cursive;
+  /* font-family: 'Chewy', cursive; */
+  color: #dd4132;
+  font-size: 50px;
+  width: 120px;
+  height: auto;
+}
+
+#logo {
+  width: 120px;
+  height: auto;
+}
+
+.search-section {
+  width: 50%;
+
+  display: flex;
+  justify-content: center;
+}
+
+.search-section fieldset {
+  height: 36px;
+  width: 90%;
+  background-color: --main-font-color;
+  border: none;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-section fieldset input {
+  width: 200px;
+}
+
+#searchX {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+
+  display: none;
+}
+
+#searchX > i {
+  background-color: #ccc;
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.search-section fieldset:focus-within > #search-glass {
+  display: none;
+}
+
+.search-section fieldset:focus-within > #searchX {
+  display: inline;
+}
+
+.search-section fieldset > input {
+  height: 25px;
+  border: none;
+  outline: none;
+  font-size: var(--madium-font-size);
+
+  flex-basis: 80%;
+}
+
+.search-section fieldset > button {
+  height: 25px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: var(--main-font-color);
+
+  flex-basis: 10%;
+}
+
+nav {
+  flex-shrink: 0;
+}
+
+nav > ul {
+  font-size: var(--large-icon-size);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li {
+  margin-left: 10px;
+  flex-shrink: 0;
+
+  text-align: center;
+}
+
+nav li > button {
+  width: 100%;
+  height: 100%;
+  font-size: var(--large-icon-size);
+}
+
+nav li > button:active {
+  color: var(--main-font-color);
+}
+
+nav li > a:active {
+  color: var(--main-font-color);
+}
+
+nav i {
+  flex-shrink: 0;
+}
+
+#searchBtn {
+  display: none;
+}
+
+.toggle-search-section {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  /* Desktop */
+}
+
+@media screen and (min-width: 471px) and (max-width: 1023px) {
+  /* Tablet */
+}
+
+@media screen and (max-width: 780px) {
+  .search-section > form {
+    display: none;
+  }
+
+  #searchBtn {
+    display: inline;
+  }
+
+  .toggle-search-section {
+    width: 100vw;
+    height: 80px;
+
+    position: sticky;
+    top: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 40;
+    display: none;
+  }
+
+  .toggle-search-section fieldset {
+    height: 38px;
+    width: 100%;
+    background-color: #ffffff90;
+    border: 1px solid #8e8e8e;
+    border-radius: 5px;
+    padding-left: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toggle-search-section fieldset > input {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: var(--madium-font-size);
+    background-color: #ffffff00;
+
+    flex-basis: 80%;
+  }
+
+  .toggle-search-section fieldset > button {
+    height: 30px;
+    margin-right: 10px;
+    font-size: 16px;
+    color: var(--fiesta-color);
+    background-color: #ffffff00;
+
+    flex-basis: 10%;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  /* mobile */
+
+  html {
+    width: 100%;
+  }
+
+  body {
+    width: vw;
+  }
+
+  footer {
+    display: none;
+  }
+
+  #header-section {
+    width: vw;
+  }
+
+  #newPost {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #8e8e8e;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+  }
+}

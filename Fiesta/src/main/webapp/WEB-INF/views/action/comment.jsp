@@ -1,67 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/resources/css/comment-style.css" />
-    <link rel="stylesheet" href="/resources/css/common-style.css" />
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-    <script
-      src="https://kit.fontawesome.com/591746f9e8.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <section id="commentContainer">
-      <section id="commentListArea">
-        <div id="writerInfoArea">
-          <div id="writerInfo">
-            <a href="html/profile/memberfeed(신아민) .html" id="profile-photo">
+    <section id="commentContainerM">
+      <section id="commentListAreaM">
+        <div id="writerInfoAreaM">
+          <div id="writerInfoM">
+            <a href="html/profile/memberfeed(신아민) .html" id="profilePhotoM">
               <img
-                id="feed-profile-image"
+                id="feedProfileImageM"
                 src="../../resources/images/karina.jpeg"
               />
             </a>
-            <a href="#" class="feed-memberId">karina_aespas_</a>
+            <a href="#" class="feed-memberId-m">karina_aespas_</a>
           </div>
           <div>
             <button
               type="button"
-              id="feed-header-menu"
-              class="fa-solid fa-ellipsis feed-header-menu"
-            ></button>
+              id="commentListXBtn"
+              class="comment-list-x-btn"
+            >&times;</button>
           </div>
         </div>
 
-        <div class="comment-container">
-          <div class="comment-area">
-            <ul class="comment-list two-line">
+        <div class="comment-container-m">
+          <div class="comment-area-m">
+            <ul class="comment-list-m" id = "commentListUl">
               <!-- 첫번째 댓글(답글 보기 X) -->
-              <li class="comment">
-                <div class="comment-firstchild">
-                  <a href="#" id="comment-profile">
+              <li class="comment-m">
+                <div class="comment-firstchild-m">
+                  <a href="#" id="commentProfileM">
                     <img
-                      id="comment-profile-image"
-                      src="/resources/images/안유진.jpg"
+                      id="commentProfileImageM"
+                      src="../../resources/images/안유진.jpg"
                     />
                   </a>
                   <div>
-                    <div class="comment-firstline">
+                    <div class="comment-firstline-m">
                       <div>
-                        <a href="#" class="comment-memberId">_yujin_an</a>
-                        <span class="comment-content">이 언니 넘모 이뿌당</span>
+                        <a href="#" class="comment-memberId-m">_yujin_an</a>
+                        <span class="comment-content-m"
+                          >이 언니 넘모 이뿌당</span
+                        >
                       </div>
                       <div>
-                        <button class="comment-like-btn">
+                        <button class="comment-like-btn-m">
                           <i class="fa-regular fa-heart"></i>
                         </button>
                       </div>
                     </div>
-                    <div class="create-reply">
-                      <a href="#">2주</a>
-                      <a href="#">답글 달기</a>
+                    <div class="create-reply-m">
+                      <span>2주</span>
+                      <button>답글 달기</button>
                       <button
                         type="button"
                         class="fa-solid fa-ellipsis hover-btn"
@@ -69,165 +58,16 @@
                     </div>
                   </div>
                 </div>
-                <a href="#" class="more-reply">모든 답글 보기(1개)</a>
-              </li>
-
-              <!-- 두번째 댓글(답글 보기 O) -->
-              <li class="comment">
-                <div class="comment-firstchild">
-                  <a href="#" id="comment-profile">
-                    <img
-                      id="comment-profile-image"
-                      src="/resources/images/장원영.jpg"
-                    />
-                  </a>
-                  <div>
-                    <div class="comment-firstline">
-                      <div>
-                        <a href="#" class="comment-memberId">for_everyoung10</a>
-                        <span class="comment-content">사랑해</span>
-                      </div>
-                      <div>
-                        <button class="comment-like-btn">
-                          <i class="fa-regular fa-heart"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="create-reply">
-                      <a href="#">2주</a>
-                      <a href="#">답글 달기</a>
-                      <button
-                        type="button"
-                        class="fa-solid fa-ellipsis hover-btn"
-                      ></button>
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="more-reply">답글 숨기기</a>
-                <!-- 답글 리스트 -->
-                <ul>
-                  <!-- 두번째 댓글의 답글 -->
-                  <li class="comment" id="reply">
-                    <div class="reply-firstchild">
-                      <a href="#" id="comment-profile">
-                        <img
-                          id="comment-profile-image"
-                          src="/resources/images/karina.jpeg"
-                        />
-                      </a>
-                      <div>
-                        <div class="reply-firstline">
-                          <div>
-                            <a href="#" class="comment-memberId"
-                              >karina_aespas_</a
-                            >
-                            <a href="#" class="mention">@for_everyoung10</a>
-                            <span class="comment-content">나두 사랑해</span>
-                          </div>
-                          <div>
-                            <button class="comment-like-btn">
-                              <i class="fa-regular fa-heart"></i>
-                            </button>
-                          </div>
-                        </div>
-                        <div class="create-reply">
-                          <a href="#">2주</a>
-                          <a href="#">답글 달기</a>
-                          <button
-                            type="button"
-                            class="fa-solid fa-ellipsis hover-btn"
-                          ></button>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </li>
-
-              <!-- 세번째 댓글 -->
-              <li class="comment">
-                <div class="comment-firstchild">
-                  <a href="#" id="comment-profile">
-                    <img
-                      id="comment-profile-image"
-                      src="/resources/images/이영지.jpg"
-                    />
-                  </a>
-                  <div>
-                    <div class="comment-firstline">
-                      <div>
-                        <a href="#" class="comment-memberId">youngji_02</a>
-                        <span class="comment-content">레전드</span>
-                      </div>
-                      <div>
-                        <button class="comment-like-btn">
-                          <i class="fa-regular fa-heart"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="create-reply">
-                      <a href="#">2주</a>
-                      <a href="#">답글 달기</a>
-                      <button
-                        type="button"
-                        class="fa-solid fa-ellipsis hover-btn"
-                      ></button>
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="more-reply">모든 답글 보기(1개)</a>
-              </li>
-
-              <!-- 네번째 댓글 -->
-              <li class="comment">
-                <div class="comment-firstchild">
-                  <a href="#" id="comment-profile">
-                    <img
-                      id="comment-profile-image"
-                      src="/resources/images/이영지.jpg"
-                    />
-                  </a>
-                  <div>
-                    <div class="comment-firstline">
-                      <div>
-                        <a href="#" class="comment-memberId">youngji_02</a>
-                        <span class="comment-content">레전드</span>
-                      </div>
-                      <div>
-                        <button class="comment-like-btn">
-                          <i class="fa-regular fa-heart"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="create-reply">
-                      <a href="#">2주</a>
-                      <a href="#">답글 달기</a>
-                      <button
-                        type="button"
-                        class="fa-solid fa-ellipsis hover-btn"
-                      ></button>
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="more-reply">모든 답글 보기(1개)</a>
+                <button class="more-reply-m">모든 답글 보기(1개)</button>
               </li>
             </ul>
           </div>
         </div>
-        <div class="comment-input-area">
-          <form name="commentForm" action="#">
-            <input
-              name="comment"
-              id="commentInput"
-              class="comment-input"
-              type="text"
-              placeholder="댓글 달기..."
-              autocomplete="off"
-            />
-            <button class="posting-btn" disabled>게시</button>
-          </form>
+        <div class="comment-input-area-m">
+          <div>
+            <textarea id="commentInputM" class="comment-input-m" placeholder="댓글 달기..."></textarea>
+            <button class="posting-btn" id="postingBtnM" disabled>게시</button>
+          </div>
         </div>
       </section>
     </section>
-  </body>
-</html>

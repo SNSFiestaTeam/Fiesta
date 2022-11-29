@@ -1,4 +1,4 @@
-@import './root-style.css';
+@import '../root-style.css';
 
 #commentContainerM {
   width: 100vw;
@@ -8,16 +8,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 5;
+
+  display: none;
 }
 
 #commentListAreaM {
   width: 70%;
-  height: 60%;
   background-color: white;
 
   border-radius: 10px;
 
   padding: 10px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #commentListAreaM::-webkit-scrollbar {
@@ -46,8 +57,8 @@
   align-items: center;
 }
 
-.fa-ellipsis {
-  font-size: var(--large-font-size);
+.comment-list-x-btn {
+  font-size: 25px;
 }
 
 #writerInfoM {
@@ -56,29 +67,28 @@
 }
 
 .feed-memberId-m {
-  font-size: 16px;
+  font-size: var(--main-font-size);
   font-weight: bold;
 }
 
 #profilePhotoM {
-  display: block;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  overflow: hidden;
-  margin: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-#writerInfoM > a {
-  font-size: var(--small-font-size);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+
+  overflow: hidden;
+  object-fit: fill;
+  margin-top: 5px;
+  margin-right: 10px;
 }
 
 #feedProfileImageM {
   width: 100%;
-  border-radius: 50%;
+  height: 100%;
 }
 
 #writerInfoM a,
@@ -86,7 +96,7 @@
   display: block;
 }
 
-#feedHeaderMenuM {
+#commentListXBtn {
   cursor: pointer;
 }
 
@@ -110,12 +120,26 @@
   color: var(--main-font-color);
 }
 
+.comment-area-m {
+  min-height: 200px;
+  max-height: 400px;
+
+  overflow: scroll;
+}
+.comment-area-m::-webkit-scrollbar {
+  display: none;
+}
+
+.comment-list-m {
+  padding: 0 10px;
+}
+
 .comment-area-m > ul > li {
   width: 100%;
 }
 
 .comment-m {
-  font-size: var(--small-font-size);
+  font-size: var(--main-font-size);
   display: flex;
   flex-direction: column;
 }
@@ -127,7 +151,15 @@
 
 /* 댓글 상세보기 설정 */
 a#commentProfileM {
-  display: none;
+  /* display: none; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: fill;
 }
 
 .create-reply-m {
@@ -137,7 +169,7 @@ a#commentProfileM {
 
 .comment-memberId-m {
   font-size: var(--small-font-size);
-  font-weight: 500;
+  font-weight: bold;
   margin-right: 5px;
 }
 
@@ -161,21 +193,17 @@ a#commentProfileM {
   margin: 10px 0;
 }
 
-.more-reply-m {
-  display: none;
-}
 
 .comment-input-area-m {
-  margin: auto;
-  height: 10%;
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+
   font-size: var(--small-font-size);
 }
 
 .comment-input-area-m > form {
   height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .comment-input-area-m input {
@@ -185,12 +213,12 @@ a#commentProfileM {
 }
 
 .comment-input-area-m button {
-  color: var(--point-font-color);
+  color: var(--fiesta-color);
   font-weight: bold;
 }
 
 .comment-input-area-m button:disabled {
-  color: #0095f660;
+  color: #dbbbb8;
   cursor: default;
 }
 
@@ -205,19 +233,6 @@ a#commentProfileM {
   margin-top: 30px;
 }
 
-a#commentProfileM {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 10px;
-
-  object-fit: fill;
-}
-
 #commentProfileImageM {
   width: 100%;
 }
@@ -225,10 +240,13 @@ a#commentProfileM {
 .comment-firstchild-m {
   width: 100%;
   display: flex;
+
+  align-items: flex-start;
 }
 
 .comment-firstchild-m > div {
   width: 100%;
+  padding-left: 10px;
 }
 
 div.comment-firstline-m {
@@ -259,28 +277,35 @@ div.reply-firstline-m {
   display: block;
 }
 
-.create-reply-m > a {
+.create-reply-m,
+.create-reply-m > button:first-of-type {
   color: #8e8e8e;
-  font-size: 13px;
+  font-size: var(--small-font-size);
   margin-right: 5px;
 }
 
-.hover-btn-m {
+.create-reply-m > span {
+  margin-right: 2px;
+}
+
+.hover-btn {
   margin-left: 10px;
   color: white;
   cursor: pointer;
 }
 
-.create-reply-m:hover > .hover-btn-m {
+.create-reply-m:hover > .hover-btn {
   color: #8e8e8e;
 }
 
 .more-reply-m {
-  display: block;
+  display: flex;
   margin-top: 10px;
-  margin-left: 42px;
-  font-size: 13px;
+  margin-left: 50px;
+  font-size: var(--small-font-size);
   color: #8e8e8e;
+
+  cursor: pointer;
 }
 
 .more-reply-m::before {
@@ -294,28 +319,60 @@ div.reply-firstline-m {
   margin-left: 40px;
   margin-top: 20px;
 }
+
+.comment-profile-m {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+
+  overflow: hidden;
+}
+
+.comment-profile-image-m {
+  width: 100%;
+  height: 100%;
+}
+
+.reply-memberId-m {
+  font-weight: bold;
+}
+
 /* 답글 스타일 end */
 
 /* 댓글 입력창 */
 
-.comment-input-area-m > form {
+.comment-input-area-m > div{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+
+  font-size: var(--main-font-size);
 }
 
-.comment-input-area-m > form > input {
+.comment-input-m {
   height: 100%;
+  width: 90%;
   font-size: 15px;
+  border: none;
+  resize: none;
+
+  padding-top: 14px;
+  padding-left: 5px;
+
 }
 
-.comment-input-area-m > form > button {
-  font-size: 15px;
+.comment-input-m:focus {
+  outline: none;
+}
+
+.posting-btn {
+  font-size: 15px
 }
 
 @media screen and (min-width: 1024px) {
   #commentListAreaM {
     width: 720px;
-    height: 60%;
+    min-height: 40%;
     background-color: white;
 
     border-radius: 10px;

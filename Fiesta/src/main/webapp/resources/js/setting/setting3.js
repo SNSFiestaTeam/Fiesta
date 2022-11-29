@@ -21,13 +21,77 @@ function memberDeleteValidate(){
 const likeFrm = document.getElementById("like-frm");
 const chk1 = document.getElementById("chk1");
 
-chk1.addEventListener("change", ()=>{
 
-    likeFrm.submit();
 
-    if(likeFrm.submit()){
-    chk1.checked = true;
+
+chk1.addEventListener("click", ()=>{
+
+likeFrm.submit();
+
+})
+
+
+
+// 계정 공개
+function getAccount(event){
+    accountFrm.submit();
 }
 
-});
+const idOpen1 = document.getElementById("idOpen1")
+const idOpen2 = document.getElementById("idOpen2")
+const idOpen3 = document.getElementById("idOpen3")
 
+ function start(){
+    $.ajax({
+        url : "/setting/changeEtc",
+        data : {"memberNo" : memberNo},
+        type : "POST",
+        dataType:"JSON",
+        success : (member)=>{
+
+            if(member.memberOpenFl == "Y"){
+                idOpen1.checked = true;
+            }
+            if(member.memberOpenFl == "F"){
+                idOpen2.checked = true;
+            }
+            if(member.memberOpenFl == "N"){
+                idOpen3.checked = true;
+            }
+
+            if(member.userPubPriFl == "Y"){
+                chk1.checked = false;
+            }
+            if(member.userPubPriFl == "N"){
+                chk1.checked = true;
+            }
+
+        },
+
+        error : ()=>{
+            console.log("실패");
+        }
+
+    });
+
+/*
+SELECT MEMBER_OPEN_FL, USER_PUB_PRI_FL  
+FROM "MEMBER"
+JOIN SETTING USING(MEMBERNO)
+WHERE MEMBER_NO = 10
+
+
+SELECT INTRO_CONTENT
+FROM "INTRODUCE"
+WHERE MEMBER_NO = 10;
+
+
+*/
+
+
+};
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    start();
+});

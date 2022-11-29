@@ -9,16 +9,16 @@
           <a href="/main"
             >Fiesta</a>
         </section>
-        <!-- 검색창 -->
+        <!-- 검색창  -->
         <section class="search-section">
-          <form action="/main/search">
+          <form action="/search">
             <fieldset>
               <button id="search-glass">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
               <input
                 type="text"
-                name="search"
+                name="searchInput"
                 id="searchInput"
                 placeholder="검색"
                 autocapitalize="none"
@@ -73,11 +73,11 @@
       </section>
     </header>
     <section class="toggle-search-section">
-      <form action="/main/search">
+      <form action="/search">
         <fieldset>
           <input
           type="text"
-          name="search"
+          name="searchInput"
           id="searchInput"
           placeholder="검색"
           autocapitalize="none"
