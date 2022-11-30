@@ -462,11 +462,85 @@ function createBoard(board) {
   commentContainer.classList.add('comment-container');
 
   // 댓글 2개 초과일 시 댓글 더보기 출력
-  if (board.commentList.length > 2) {
+  if(board.commentList.length > 2) {
     const allCommentBtn = document.createElement('button');
     allCommentBtn.classList.add('all-comment-btn');
-    allCommentBtn.innerText = '댓글 모두 보기';
+    allCommentBtn.innerHTML = '댓글 모두 보기(' + board.commentCount + ')';
+    
     commentContainer.append(allCommentBtn);
+
+
+
+    // allCommentBtn에 클릭 이벤트 추가
+    allCommentBtn.addEventListener('click', () => {
+      const commentList = document.getElementById('commentContainerM');
+  
+      console.log('댓글 모두 보기 실행');
+  
+      allCommentBtn.classList.add('hide');
+  
+      // 게시글 번호 얻어오기
+      const boardNo =
+        allCommentBtn.parentElement.parentElement.parentElement
+          .nextElementSibling.value;
+  
+      const commentListUlM = document.getElementById('commentListUl');
+  
+      // 댓글 리스트 불러오기
+      selectCommentListM(boardNo, commentListUlM);
+  
+      commentList.style.display = 'flex';
+      document.getElementsByTagName('body')[0].classList.add('scrollLock');
+  
+      // 댓글 모달창 입력 이벤트 추가
+      const commentInputM = document.getElementById('commentInputM');
+      const postingBtnM = document.getElementById('postingBtnM');
+      commentInputM.addEventListener('input', () => {
+        if (commentInputM.value.trim().length == 0) {
+          postingBtnM.setAttribute('disabled', true);
+          return;
+        } else {
+          postingBtnM.removeAttribute('disabled');
+          return;
+        }
+      });
+  
+      // 댓글 모달창 게시 클릭 이벤트 추가
+      postingBtnM.addEventListener('click', () => {
+  
+        if (commentInputM.value != '') {
+          $.ajax({
+            url: '/comment/insert',
+            type: 'Post',
+            data: {
+              memberNo: memberNo,
+              boardNo: boardNo,
+              commentContent: commentInputM.value,
+              upperCommentNo: upperCommentNo,
+            },
+            success: (result) => {
+              if (result > 0) {
+                selectCommentListM(boardNo, commentListUlM);
+                commentInputM.value = '';
+              }
+            },
+            error: () => {
+              console.log('댓글 등록 오류');
+            },
+          });
+        }
+      });
+  
+      // 댓글 더보기 리스트 X 버튼 클릭 시
+      document.getElementById('commentListXBtn').addEventListener('click', () => {
+        commentList.style.display = 'none';
+        allCommentBtn.classList.remove('hide');
+        document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+        document.getElementById('commentInputM').value = "";
+      });
+    });
+
+
   }
 
   // commentContainer의 자식 요소 commentArea
@@ -943,7 +1017,7 @@ function selectCommentList(boardNo, commentListUl) {
             commentInput.value = '';
             commentInput.value = '@' + commentMemberIdA.innerText + ' ';
 
-            upperCommentNo = commentNoInput.value;
+            upperCommentNo = comment.commentNo;
             console.log("upperCommentNo: " + upperCommentNo);
 
           });
@@ -984,156 +1058,6 @@ function selectCommentList(boardNo, commentListUl) {
             });
           }
         } 
-        // else if(comment.upperCommentNo > 0){ 
-      
-      
-        //   // replyUl의 자식 요소 replyLi
-        //   const replyLi = document.createElement('li');
-        //   replyLi.classList.add('comment');
-        //   replyLi.id = 'reply';
-    
-        //   commentListUl.append(replyLi);
-    
-        //   // replyLi의 자식요소 replyFirstChild, moreReply
-        //   const replyFirstChild = document.createElement('div');
-        //   replyFirstChild.classList.add('reply-firstchild');
-    
-        //   // commentNo input hidden 태그 생성
-        //   const commentNoInput = document.createElement("input");
-        //   commentNoInput.setAttribute("type", 'hidden');
-        //   commentNoInput.value=comment.commentNo;
-        //   commentNoInput.classList.add("comment-no");
-    
-        //   replyLi.append(commentNoInput, replyFirstChild);
-    
-        //   // replyFirstChild의 자식 요소 replyProfileA, replyDiv1
-        //   const replyProfileA = document.createElement('a');
-        //   replyProfileA.classList.add('comment-profile');
-    
-        //   const replyDiv1 = document.createElement('div');
-    
-        //   replyFirstChild.append(replyProfileA, replyDiv1);
-    
-        //   // replyProfileA의 자식 요소 replyProfileImg
-        //   const replyProfileImg = document.createElement('img');
-        //   replyProfileImg.classList.add('comment-profile-image');
-    
-        //   replyProfileA.append(replyProfileImg);
-    
-        //   if (comment.memberProfileImg != undefined) {
-        //     replyProfileImg.setAttribute('src', comment.memberProfileImg);
-        //   } else {
-        //     replyProfileImg.setAttribute(
-        //       'src',
-        //       '/resources/images/profile/profile.jpg'
-        //     );
-        //   }
-    
-        //   // replyDiv1의 자식 요소 replyFirstLine
-        //   const replyFirstLine = document.createElement('div');
-        //   replyFirstLine.classList.add('reply-firstline');
-    
-        //   // replyFirstLine의 자식 요소 replyDiv2, replyDiv3
-        //   const replyDiv2 = document.createElement('div');
-        //   const replyDiv3 = document.createElement('div');
-    
-        //   replyFirstLine.append(replyDiv2, replyDiv3);
-    
-        //   // replyDiv2의 자식 요소 replyMemberIdA, mention, replySpan
-        //   const replyMemberIdA = document.createElement('a');
-        //   replyMemberIdA.classList.add('reply-memberId');
-        //   replyMemberIdA.innerText = comment.memberNickname;
-    
-        //   // 답글 멘션 부분
-        //   const mention = document.createElement('a');
-        //   mention.href = '';
-        //   mention.classList.add('mention');
-        //   mention.innerText = '@' + comment.mentionNickname;
-    
-        //   const replySpan = document.createElement('span');
-        //   replySpan.classList.add('comment-content');
-        //   replySpan.innerText = comment.commentContent;
-    
-        //   replyDiv2.append(replyMemberIdA, mention, replySpan);
-    
-        //   // commentDiv3의 자식 요소 commentLikeBtn
-        //   const replyLikeBtn = document.createElement('button');
-        //   replyLikeBtn.classList.add('comment-like-btn');
-    
-        //   // 새롭게 추가된 likeBtn에 클릭 이벤트 핸들러 추가
-        //   replyLikeBtn.addEventListener('click', () => {
-        //     const emptyHeart = '<i class="fa-regular fa-heart"></i>';
-        //     const solidHeart = '<i class="fa-solid fa-heart"></i>';
-    
-        //     if (!replyLikeBtn.classList.contains('red')) {
-        //       replyLikeBtn.innerHTML = '';
-        //       replyLikeBtn.innerHTML = solidHeart;
-        //       replyLikeBtn.classList.add('red');
-        //     } else {
-        //       replyLikeBtn.innerHTML = emptyHeart;
-        //       replyLikeBtn.classList.remove('red');
-        //     }
-        //   });
-    
-        //   // replyLikeBtn의 자식 요소 replyHeartIcon
-        //   const replyHeartIcon = document.createElement('i');
-        //   replyHeartIcon.classList.add('fa-regular', 'fa-heart');
-    
-        //   replyLikeBtn.append(replyHeartIcon);
-    
-        //   replyDiv3.append(replyLikeBtn);
-    
-        //   // replyDiv1의 자식 요소 createReply
-        //   const createReply = document.createElement('div');
-        //   createReply.classList.add('create-reply');
-    
-        //   replyDiv1.append(replyFirstLine, createReply);
-    
-        //   // createReply의 자식 요소 replyCreateDate, replyBtn, hoverBtn
-        //   const replyCreateDate = document.createElement('span');
-        //   replyCreateDate.innerText = comment.commentCreateDate;
-    
-        //   const replyBtn = document.createElement('button');
-        //   replyBtn.setAttribute('type', 'button');
-        //   replyBtn.classList.add('reply-btn');
-        //   replyBtn.innerText = '답글 달기';
-    
-        //    // 답글 달기 버튼 클릭 시 언급 태그 댓글 입력창에 추가
-        //   // 만약 이미 언급된 닉네임일 시 추가 안됨
-        //   // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
-        //   replyBtn.addEventListener('click', () => {
-        //     const commentInput =
-        //       commentListUl.parentElement.parentElement.parentElement
-        //         .nextElementSibling.firstElementChild.firstElementChild;
-        //     commentInput.value = '';
-        //     commentInput.value = '@' + replyMemberIdA.innerText + ' ';
-
-        //     upperCommentNo = commentNoInput.value;
-        //     console.log("upperCommentNo: " + upperCommentNo);
-
-        //   });
-    
-        //   const hoverBtn = document.createElement('button');
-        //   hoverBtn.setAttribute('type', 'button');
-        //   hoverBtn.classList.add('fa-solid', 'fa-ellipsis', 'hover-btn');
-    
-        //   // 답글 ... 버튼에 클릭 이벤트 추가
-        //   hoverBtn.addEventListener('click', function () {
-        //     const commentMenu = document.getElementById('commentMenu');
-        //     const loginCommentMenu = document.getElementById('commentMenuL');
-
-        //     if(commentMemberIdA.innerText == memberNickname) {
-        //       // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
-        //       loginCommentMenu.style.display = "flex";
-        //     } else {
-        //       commentMenu.style.display = 'flex';
-        //     }
-
-        //     body.classList.add('scrollLock');
-        //   });
-    
-        //   createReply.append(replyCreateDate, replyBtn, hoverBtn)
-        // }
       }
     },
     error: () => {
@@ -1152,12 +1076,14 @@ function selectReplyList(commentNo, commentLi) {
     type: "POST",
     success: (replyList)=>{
       console.log(replyList);
+
+      const replyUl = document.createElement('ul');
+      replyUl.classList.add("reply-list");
+      replyUl.style.display = "flex";
+
       for(let comment of replyList) {
          // 답글 모양 출력
 
-        const replyUl = document.createElement('ul');
-        replyUl.classList.add("reply-list");
-        replyUl.style.display = "flex";
 
         commentLi.append(replyUl);
 
@@ -1315,13 +1241,14 @@ function selectReplyList(commentNo, commentLi) {
         // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
         replyBtn.addEventListener('click', () => {
           const commentInput =
-            replyUl.parentElement.parentElement.parentElement.parentElement.parentElement
-              .nextElementSibling.firstElementChild.firstElementChild;
+            replyUl.parentElement.parentElement.parentElement.parentElement.parentElement.
+              nextElementSibling.firstElementChild.firstElementChild;
           commentInput.value = '';
           commentInput.value = '@' + replyMemberIdA.innerText + ' ';
 
           upperCommentNo = commentNo;
           console.log("upperCommentNo: " + upperCommentNo);
+
         });
 
         const hoverBtn = document.createElement('button');

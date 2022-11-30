@@ -631,12 +631,14 @@ function selectReplyList(commentNo, commentLi) {
     type: 'POST',
     success: (replyList) => {
       console.log(replyList);
+
+      const replyUl = document.createElement('ul');
+      replyUl.classList.add('reply-list');
+      replyUl.style.display = 'flex';
+      
       for (let comment of replyList) {
         // 답글 모양 출력
 
-        const replyUl = document.createElement('ul');
-        replyUl.classList.add('reply-list');
-        replyUl.style.display = 'flex';
 
         commentLi.append(replyUl);
 
@@ -792,14 +794,14 @@ function selectReplyList(commentNo, commentLi) {
         // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
         replyBtn.addEventListener('click', () => {
           const commentInput =
-            replyUl.parentElement.parentElement.parentElement.parentElement
-              .parentElement.nextElementSibling.firstElementChild
-              .firstElementChild;
+            replyUl.parentElement.parentElement.parentElement.parentElement.parentElement.
+              nextElementSibling.firstElementChild.firstElementChild;
           commentInput.value = '';
           commentInput.value = '@' + replyMemberIdA.innerText + ' ';
 
           upperCommentNo = commentNo;
-          console.log('upperCommentNo: ' + upperCommentNo);
+          console.log("upperCommentNo: " + upperCommentNo);
+
         });
 
         const hoverBtn = document.createElement('button');
@@ -808,8 +810,12 @@ function selectReplyList(commentNo, commentLi) {
 
         // 답글 ... 버튼에 클릭 이벤트 추가
         hoverBtn.addEventListener('click', function () {
-          const commentMenu = document.getElementById('commentMenu');
-          commentMenu.style.display = 'flex';
+          if (replyMemberIdA.innerText == memberNickname) {
+            // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
+            loginCommentMenu.style.display = 'flex';
+          } else {
+            commentMenu.style.display = 'flex';
+          }
 
           body.classList.add('scrollLock');
         });
@@ -991,12 +997,15 @@ function selectReplyListM(commentNo, commentLi) {
         // 만약 이미 언급된 닉네임일 시 추가 안됨
         // FIXME: 언급된 닉네임일 시 추가 안되게 만들기
         replyBtn.addEventListener('click', () => {
-          const commentInput = document.getElementById('commentInputM');
+          const commentInput =
+            replyUl.parentElement.parentElement.parentElement.parentElement.parentElement.
+              nextElementSibling.firstElementChild.firstElementChild;
           commentInput.value = '';
           commentInput.value = '@' + replyMemberIdA.innerText + ' ';
 
           upperCommentNo = commentNo;
-          console.log('upperCommentNo: ' + upperCommentNo);
+          console.log("upperCommentNo: " + upperCommentNo);
+
         });
 
         const hoverBtn = document.createElement('button');

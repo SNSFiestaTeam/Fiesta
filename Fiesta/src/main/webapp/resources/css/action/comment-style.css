@@ -31,6 +31,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  line-height: 15px;
 }
 
 #commentListAreaM::-webkit-scrollbar {
@@ -152,9 +154,7 @@
   justify-content: space-between;
 }
 
-.comment-firstline-m > div {
-  margin-right: 10px;
-}
+
 
 /* 댓글 상세보기 설정 */
 a#commentProfileM {
@@ -251,8 +251,8 @@ a#commentProfileM {
   justify-content: center;
   align-items: center;
 
-  width: 35px;
-  height: 35px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   overflow: hidden;
   margin-right: 10px;
@@ -269,11 +269,11 @@ a#commentProfileM {
   width: 100%;
   display: flex;
 
-  align-items: center;
+  align-items: flex-start;
 }
 
 .comment-firstchild-m > div {
-  width: 100%;
+  width: 90%;
 }
 
 div.comment-firstline-m {
@@ -328,7 +328,7 @@ div.reply-firstline-m {
 .more-reply-m {
   display: flex;
   margin-top: 10px;
-  margin-left: 42px;
+  margin-left: 50px;
   font-size: var(--small-font-size);
   color: #8e8e8e;
   cursor: pointer;
