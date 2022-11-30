@@ -1,18 +1,49 @@
 const newPostOpen = document.getElementById("newPostOpen"); // 헤더 개시물 작성 버튼
 const modalBackground = document.getElementById("modalBackground"); // file 모달창
 const newPostClose = document.getElementById("newPostClose"); // 닫기 버튼
+const modalBackgroundEidt = document.getElementById("modalBackgroundEidt"); // 파일 편집창
+const modalBackgroundText = document.getElementById("modalBackgroundText"); // 텍스트 작성창
 
+const slideImages = document.getElementById("slideImages"); // edit화면 파일 리스트
+const filePreview = document.getElementById("filePreview"); // edit화면 파일 추가의 미리보기
+const textFileSwiper = document.getElementById("textFileSwiper"); // text화면 파일 리스트(합치기,지우기사용)
+const postFileTextArea = document.getElementById("postFileTextArea"); // text 접근성 리스트
 // 게시물 작성 버튼 누르면
 newPostOpen.addEventListener("click", function () {
   modalBackground.style.display = "flex";
   document.getElementsByTagName("body")[0].classList.add("scrollLock");
 });
+//! 닫기 버튼
 // 닫기 버튼 누르면
 newPostClose.addEventListener("click", function () {
   modalBackground.style.display = "none";
   document.getElementsByTagName("body")[0].classList.remove("scrollLock");
-  document.getElementById("slideImages").innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+  slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+    filePreview.innerHTML="";
+    textFileSwiper.innerHTML="";
+    postFileTextArea.innerHTML="";
 });
+// 작성 중 x버튼
+document.getElementById("newPostClosePostEdit").addEventListener("click", function () {
+    modalBackground.style.display = "flex";
+    modalBackgroundEidt.style.display = "none";
+    modalBackgroundText.style.display = "none";
+    slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+    filePreview.innerHTML="";
+    textFileSwiper.innerHTML="";
+    postFileTextArea.innerHTML="";
+  });
+// text작성중 x버튼
+document.getElementById("newPostClosePostText").addEventListener("click", function () {
+    modalBackground.style.display = "flex";
+    modalBackgroundEidt.style.display = "none";
+    modalBackgroundText.style.display = "none";
+    slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+    filePreview.innerHTML="";
+    textFileSwiper.innerHTML="";
+    postFileTextArea.innerHTML="";
+  });
+
 
 // document.getElementById('newPostBottom').addEventListener('click',()=>{
 //   modalBackground.style.display = 'flex';
@@ -24,91 +55,47 @@ newPostClose.addEventListener("click", function () {
 
 // });
 
-// newpost-eidt----------------------------------------------------------------
-
-const modalBackgroundEidt = document.getElementById("modalBackgroundEidt"); // 파일 편집창
-
-// 파일 추가 버튼 누르면
-// document.getElementById("fileSelect").addEventListener("click", () => {
-//   modalBackground.style.display = "none";
-//   modalBackgroundEidt.style.display = "flex";
-// });
-// 기본파일 추가 버튼 누르면
-document.getElementById("fileSelectBasic").addEventListener("click", () => {
-  modalBackground.style.display = "none";
-  modalBackgroundEidt.style.display = "flex";
-});
-// edit에서 뒤로가지 Btn(+ 데이터 지우면서 뒤로 가야함)
+// ! 뒤로가기 버튼
+// edit에서 뒤로가기
 document.getElementById("backBtnedit").addEventListener("click", () => {
   modalBackgroundEidt.style.display = "none";
   modalBackground.style.display = "flex";
   document.getElementById("slideImages").innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
-  document.getElementById("filePreview").innerHTML = "";
+  document.getElementById("filePreview").innerHTML = ""; 
+  slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+    filePreview.innerHTML="";
+    textFileSwiper.innerHTML="";
+    postFileTextArea.innerHTML="";
 });
-
-//!미리보기 슬라이드
-new Swiper(".preview-swiper", {
-  // autoplay: {
-  //   delay: 5000
-  // },
-  loop: false, // 무한반복 x
-  slidesPerView: 2.5, // 슬라이드 몇개 보여줄지
-  spaceBetween: 10, // 슬라이드간 간격
-  //centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
-  // breakpoints: slidesPerView,
-  navigation: {
-    // 다음 화상표 버튼
-    prevEl: ".preview-swiper-button-prev",
-    nextEl: ".preview-swiper-button-next",
-  },
+// text에서 뒤로가기
+const backBtnText = document.getElementById("backBtnText");
+backBtnText.addEventListener("click", () => {
+  modalBackgroundText.style.display = "none";
+  modalBackgroundEidt.style.display = "flex";
+    textFileSwiper.innerHTML="";
+    postFileTextArea.innerHTML="";
 });
-
-//?텍스트 작성 부분
-const modalBackgroundText = document.getElementById("modalBackgroundText");
-
-const editNextBtn = document.getElementById("editNextBtn");
-editNextBtn.addEventListener("click", () => {
+//! 다음 버튼
+// edit 다음 버튼
+document.getElementById("editNextBtn").addEventListener("click", () => {
   modalBackgroundEidt.style.display = "none";
   modalBackgroundText.style.display = "flex";
 });
 
-// text에서 뒤로가지 Btn(+ 데이터 지우면서 뒤로 가야함)
-document.getElementById("backBtnText").addEventListener("click", () => {
-  modalBackgroundText.style.display = "none";
-  modalBackgroundEidt.style.display = "flex";
-  // document.getElementById("textFileSwiper").innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
-});
+//! 접근성 토클
 const $toggle = document.querySelector(".toggleSwitch");
 
 $toggle.onclick = () => {
   $toggle.classList.toggle("active");
 };
-// 작성 중 x버튼
-document
-  .getElementById("newPostClosePostEdit")
-  .addEventListener("click", function () {
-    modalBackground.style.display = "flex";
-    modalBackgroundEidt.style.display = "none";
-    modalBackgroundText.style.display = "none";
-    // document.getElementsByTagName("body")[0].classList.remove("scrollLock");
-    document.getElementById("slideImages").innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
-  });
-document
-  .getElementById("newPostClosePostText")
-  .addEventListener("click", function () {
-    modalBackground.style.display = "flex";
-    modalBackgroundEidt.style.display = "none";
-    modalBackgroundText.style.display = "none";
-    // document.getElementsByTagName("body")[0].classList.remove("scrollLock");
-  });
 
-
-
+var form = new FormData(); // 파일 리스트 보내기 위해 form 선언
+const reader = new FileReader(); // 파일 읽는 객체
+const postFileText = document.getElementById("postFileText"); // 접근성박스
 // ! 기본 이미지 선택
 //? 1. 바로 텍스트 작성 부분으로 가기
 //? 2. 기본 이미지 넣어주기
 //? 3. 접근성 부분 안보이게 하기
-//? 4. 뒤로 가기 버튼 안보이게 -> x누르면 다시 파일 선택으로 가기 때문
 document.getElementById("basicImage").addEventListener("click", ()=>{
 
   modalBackground.style.display = "none";
@@ -119,42 +106,44 @@ document.getElementById("basicImage").addEventListener("click", ()=>{
   const swiperSildeDiv = document.createElement("div");
   const fileImg = document.createElement("img");
 
+  swiperSildeDiv.classList.add("swiper-slide");
   fileImg.id = "files";
+  fileImg.src = "../../resources/images/default/defaultImg.png";
 
-  fileImg.setAttribute("src", e.target.result);
+  form.append("files", files); // form에 files추가
+  reader.readAsDataURL(files); //URL형태로 저장
+
+  swiperSildeDiv.append(fileImg);
+  textFileSwiper.append(swiperSildeDiv);
+
+  postFileText.style.display = "none";
+  backBtnText.addEventListener("click",()=>{
+    modalBackground.style.display = "flex";
+    modalBackgroundEidt.style.display = "none";
+    modalBackgroundText.style.display = "none";
+  });
+
+  
 });
 
-const fileInput = document.getElementById("fileInput");
-// 부모요소 안에 생성하기 위해 부모요소 아이디로 불러옴.
-const slideImages = document.getElementById("slideImages");
-const filePreview = document.getElementById("filePreview");
-const textFileSwiper = document.getElementById("textFileSwiper");
-const postFileTextArea = document.getElementById("postFileTextArea");
-
-var form = new FormData();
+//! 컴퓨터에서 선택
 
 
-//fileInput값이 변했을때
-fileInput.addEventListener("change", (e) => {
+document.getElementById("fileInput").addEventListener("change", (e) => {
   if (e.target.files[0] != undefined) {
     // 이벤트 발생한 요소에 선택된 파일이 있을 경우
     for (let i = 0; i < e.target.files.length; i++) {
       // 이벤트 발생 파일 길이 만큼 반복문 돌림
 
       form.append("files", e.target.files[i]);
-
-      const reader = new FileReader(); // 파일 읽는 객체
-
-
-      reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
-
       
+      reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
 
       reader.onload = (e) => {
         // 파일 읽은 후
-        // <div class="eidt-file swiper-slide"><img id="eidtFile" src=""></div>
-
-        // *edit부분 파일*
+        
+        // *edit부분 파일*-----------------------------------------
+        // *<div class="eidt-file swiper-slide"><img id="eidtFile" src=""></div>
         // 나타날 div, img 생성
         const editFileDiv = document.createElement("div");
         const editFileImg = document.createElement("img");
@@ -190,20 +179,16 @@ fileInput.addEventListener("change", (e) => {
 
         filePreview.append(previewFileDiv);
 
-        // !text 부분 파일
+        // *text 부분 파일-------------------------------------------------------------
         // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
         const swiperSildeDiv = document.createElement("div");
         const fileImg = document.createElement("img");
 
         swiperSildeDiv.classList.add("swiper-slide");
         fileImg.id = "files";
-        // fileImg.name = files;
-        // fileImg.setAttribute("name", "files");
         fileImg.setAttribute("src", e.target.result);
 
-        //합치기
         swiperSildeDiv.append(fileImg);
-
         textFileSwiper.append(swiperSildeDiv);
 
         // 사진넘기게 하기 위해 swiper 작성구문
@@ -227,6 +212,7 @@ fileInput.addEventListener("change", (e) => {
           },
         });
         // *text 접근성 부분 파일*
+        // postFileText.style.display = "block";
         // <div class="postFileText">
         //   <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
         //   <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
@@ -251,6 +237,22 @@ fileInput.addEventListener("change", (e) => {
     modalBackgroundEidt.style.display = "flex";
   }
 });
+//! edit 미리보기 슬라이드
+new Swiper(".preview-swiper", {
+  // autoplay: {
+  //   delay: 5000
+  // },
+  loop: false, // 무한반복 x
+  slidesPerView: 2.5, // 슬라이드 몇개 보여줄지
+  spaceBetween: 10, // 슬라이드간 간격
+  //centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
+  // breakpoints: slidesPerView,
+  navigation: {
+    // 다음 화상표 버튼
+    prevEl: ".preview-swiper-button-prev",
+    nextEl: ".preview-swiper-button-next",
+  },
+});
 
 // 확대 축소
 const zoomInOut = document.getElementById("zoomInOut");
@@ -267,7 +269,9 @@ zoomInOut.addEventListener("input", (e) => {
   // editFileImg.style.zIndex = 1;
   editFileImg.style.transition = "all 0.5s"; // 속도
 });
-// ? edit에서 파일 추가 버튼
+
+
+// ! edit에서 파일 추가 버튼
 const addFileInput = document.getElementById("addFileInput");
 
 addFileInput.addEventListener("change", (e) => {
@@ -305,16 +309,14 @@ addFileInput.addEventListener("change", (e) => {
 });
 
 
+//! 최종 제출(게시하기 버튼 클릭)
 const newPostAll = document.getElementById("newPostAll");
-
 newPostAll.addEventListener("click", () => {
   
   const boardContent = document.getElementById("boardContent");
   const files = document.getElementById("file");
 
-
   form.append("boardContent", boardContent.value);
-
 
   $.ajax({
     url: "/write",
@@ -325,13 +327,14 @@ newPostAll.addEventListener("click", () => {
     success: (result) => {
       if (result > 0) {
         console.log("게시물 작성 성공");
-        modalBackgroundEidt.style.display = "none";
+        modalBackgroundText.style.display = "none";
       } else {
         console.log("게시물 작성 실패");
       }
     },
     error: () => {
       console.log("게시물 작성 에러");
+      console.log(form);
     },
   });
 });

@@ -21,7 +21,7 @@
         <div class="bottom-left-box swiper">
         <div class="swiper-wrapper" id="textFileSwiper">
         <%-- 이미지 리스트 --%>
-          <%-- <div class="swiper-slide"><img name="fils" id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div> --%>
+          <%-- <div class=" swiper-slide"><img name="fils" id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div> --%>
           
         </div>
       <div class="swiper-pagination"></div>
@@ -53,9 +53,9 @@
               <span>3000</span>
             </div>
 
-            <div class="new-post-bottom-set">
+            <div class="new-post-bottom-set" id="postFileText">
               <input type="checkbox" id="set-btn1">
-              <label for="set-btn1">
+              <label for="set-btn1" >
                 접근성<i class="fa-solid fa-angle-down"></i></label>
               <div>
                 대체 텍스트는 시각적으로 사진을 보기 어려운 사람들에게 사진 내용을 설명하는 텍스트입니다. 대체 텍스트는 회원님의 사진에 대해 자동으로 생성되며, 직접 입력할 수도 있습니다.
