@@ -285,7 +285,7 @@ function createBoard(board) {
     if (bookmarkBtn.innerHTML == emptyIcon) {
       $.ajax({
         url: '/boardBookmarkOn',
-        data: { boardNo: board.boardNo, memberNo: memberNo },
+        data: { "boardNo": board.boardNo, "memberNo": memberNo },
         success: (result) => {
           if (result > 0) {
             bookmarkBtn.innerHTML = solidIcon;
@@ -300,7 +300,7 @@ function createBoard(board) {
     } else {
       $.ajax({
         url: '/boardBookmarkOff',
-        data: { boardNo: board.boardNo, memberNo: memberNo },
+        data: { "boardNo": board.boardNo, memberNo: memberNo },
         success: (result) => {
           if (result > 0) {
             bookmarkBtn.innerHTML = emptyIcon;
@@ -360,7 +360,7 @@ function createBoard(board) {
     if (!likeBtn.classList.contains('red')) {
       $.ajax({
         url: '/boardLikeUp',
-        data: { boardNo: board.boardNo, memberNo: memberNo },
+        data: { "boardNo": board.boardNo, "memberNo": memberNo },
         success: (result) => {
           if (result > 0) {
             likeBtn.innerHTML = '';
@@ -378,7 +378,7 @@ function createBoard(board) {
     } else {
       $.ajax({
         url: '/boardLikeDown',
-        data: { boardNo: board.boardNo, memberNo: memberNo },
+        data: { "boardNo": board.boardNo, "memberNo": memberNo },
         success: (result) => {
           if (result > 0) {
             likeBtn.innerHTML = emptyHeart;
@@ -435,10 +435,9 @@ function createBoard(board) {
   moreBtn.classList.add('more-btn');
 
   moreBtn.addEventListener('click', function () {
-    const feedContent = document.getElementsByClassName('feed-content');
 
-    if (feedContent.classList.contains('one-line')) {
-      feedContent.classList.remove('one-line');
+    if (feedContentDiv.classList.contains('one-line')) {
+      feedContentDiv.classList.remove('one-line');
       moreBtn.classList.add('hide');
     }
   });
@@ -451,7 +450,7 @@ function createBoard(board) {
 
   feedMainContentDiv.append(feedContentDiv);
 
-  if (board.boardContent.length > 40) {
+  if (board.boardContent.trim().length > 50) {
     feedMainContentDiv.append(moreBtn);
   }
 
@@ -480,65 +479,34 @@ function createBoard(board) {
       allCommentBtn.classList.add('hide');
   
       // 게시글 번호 얻어오기
-      const boardNo =
-        allCommentBtn.parentElement.parentElement.parentElement
-          .nextElementSibling.value;
-  
+      boardNo = board.boardNo;
+      console.log("boardNo: " + boardNo) ;
+
       const commentListUlM = document.getElementById('commentListUl');
+
   
       // 댓글 리스트 불러오기
       selectCommentListM(boardNo, commentListUlM);
   
       commentList.style.display = 'flex';
       document.getElementsByTagName('body')[0].classList.add('scrollLock');
-  
-      // 댓글 모달창 입력 이벤트 추가
-      const commentInputM = document.getElementById('commentInputM');
-      const postingBtnM = document.getElementById('postingBtnM');
-      commentInputM.addEventListener('input', () => {
-        if (commentInputM.value.trim().length == 0) {
-          postingBtnM.setAttribute('disabled', true);
-          return;
-        } else {
-          postingBtnM.removeAttribute('disabled');
-          return;
-        }
-      });
-  
-      // 댓글 모달창 게시 클릭 이벤트 추가
-      postingBtnM.addEventListener('click', () => {
-  
-        if (commentInputM.value != '') {
-          $.ajax({
-            url: '/comment/insert',
-            type: 'Post',
-            data: {
-              memberNo: memberNo,
-              boardNo: boardNo,
-              commentContent: commentInputM.value,
-              upperCommentNo: upperCommentNo,
-            },
-            success: (result) => {
-              if (result > 0) {
-                selectCommentListM(boardNo, commentListUlM);
-                commentInputM.value = '';
-              }
-            },
-            error: () => {
-              console.log('댓글 등록 오류');
-            },
-          });
-        }
-      });
-  
+
+
+
+
+      
+
       // 댓글 더보기 리스트 X 버튼 클릭 시
       document.getElementById('commentListXBtn').addEventListener('click', () => {
         commentList.style.display = 'none';
         allCommentBtn.classList.remove('hide');
         document.getElementsByTagName('body')[0].classList.remove('scrollLock');
         document.getElementById('commentInputM').value = "";
+  
       });
+  
     });
+
 
 
   }
@@ -803,10 +771,10 @@ function createBoard(board) {
         url: '/comment/insert',
         type: 'Post',
         data: {
-          memberNo: memberNo,
-          boardNo: board.boardNo,
-          commentContent: commentInput.value,
-          upperCommentNo: upperCommentNo,
+          'memberNo': memberNo,
+          'boardNo': board.boardNo,
+          'commentContent': commentInput.value,
+          'upperCommentNo': upperCommentNo,
         },
         success: (result) => {
           if (result > 0) {
@@ -846,17 +814,63 @@ function createBoard(board) {
 
 
 
-
 // 댓글 목록 조회 후 출력
 function selectCommentList(boardNo, commentListUl) {
   console.log(boardNo, memberNo);
 
   $.ajax({
     url: '/comment/list',
-    data: { boardNo: boardNo, myNo: memberNo },
+    data: { 'boardNo': boardNo, 'myNo': memberNo },
     dataType: 'JSON',
     success: (commentList) => {
       console.log(commentList);
+
+      if (commentList.length > 3) {
+        // 댓글이 3개보다 크다면 댓글 모두보기 버튼 내용 수정
+        commentListUl.parentElement.parentElement.firstElementChild.innerText =
+          '댓글 모두 보기(' + commentList.length + ')';
+
+      } else if (commentList.length == 3) { 
+        // 댓글이 추가해서 3개가 됐다면 댓글 모두보기 버튼 추가
+        const allCommentBtn = document.createElement('button');
+        allCommentBtn.innerText = '댓글 모두 보기(' + commentList.length + ')';
+        commentListUl.parentElement.parentElement.prepend(allCommentBtn);
+
+        allCommentBtn.addEventListener('click', () => {
+          const commentList = document.getElementById('commentContainerM');
+      
+          console.log('댓글 모두 보기 실행');
+      
+          allCommentBtn.classList.add('hide');
+      
+          // 게시글 번호 얻어오기
+          boardNo = commentListUl.parentElement.parentElement.parentElement
+            .parentElement.nextElementSibling.value;
+          
+          console.log("boardNo: " + boardNo) ;
+    
+          const commentListUlM = document.getElementById('commentListUl');
+    
+      
+          // 댓글 리스트 불러오기
+          selectCommentListM(boardNo, commentListUlM);
+      
+          commentList.style.display = 'flex';
+          document.getElementsByTagName('body')[0].classList.add('scrollLock');
+    
+    
+          // 댓글 더보기 리스트 X 버튼 클릭 시
+          document.getElementById('commentListXBtn').addEventListener('click', () => {
+            commentList.style.display = 'none';
+            allCommentBtn.classList.remove('hide');
+            document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+            document.getElementById('commentInputM').value = "";
+      
+          });
+      
+        });
+
+      }
 
       // 댓글 목록 최상위 태그의 내용 삭제
       commentListUl.innerHTML = '';
@@ -984,7 +998,7 @@ function selectCommentList(boardNo, commentListUl) {
           }
           if (comment.commentLikeCheck == 1) {
             commentHeartIcon.classList.add('fa-solid', 'fa-heart');
-            likeBtn.classList.add("red");
+            commentLikeBtn.classList.add("red");
           }
 
           commentLikeBtn.append(commentHeartIcon);
@@ -1080,6 +1094,7 @@ function selectReplyList(commentNo, commentLi) {
       const replyUl = document.createElement('ul');
       replyUl.classList.add("reply-list");
       replyUl.style.display = "flex";
+      replyUl.style.flexDirection = "column";
 
       for(let comment of replyList) {
          // 답글 모양 출력
@@ -1270,4 +1285,6 @@ function selectReplyList(commentNo, commentLi) {
     error: ()=>{}
   })
 }
+
+
 

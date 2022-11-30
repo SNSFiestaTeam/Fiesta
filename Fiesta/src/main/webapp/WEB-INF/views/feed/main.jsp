@@ -264,6 +264,7 @@
         var memberNickname = "${loginMember.memberNickname}";
         var memberProfileImg = "${loginMember.memberProfileImg}";
         var upperCommentNo = 0;
+        var boardNo;
       </script>
     </c:if>
 

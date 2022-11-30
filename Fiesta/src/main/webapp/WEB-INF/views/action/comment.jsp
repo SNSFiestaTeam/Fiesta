@@ -66,7 +66,7 @@
         <div class="comment-input-area-m">
           <div>
             <textarea id="commentInputM" class="comment-input-m" placeholder="댓글 달기..."></textarea>
-            <button class="posting-btn" id="postingBtnM" disabled>게시</button>
+            <button class="posting-btn-m" id="postingBtnM" disabled>게시</button>
           </div>
         </div>
       </section>

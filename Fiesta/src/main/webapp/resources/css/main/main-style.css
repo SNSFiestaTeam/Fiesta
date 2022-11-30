@@ -380,7 +380,7 @@ a.comment-profile {
   outline: none;
   flex-basis: 90%;
   resize: none;
-  font-size: var(--medium-font-size);
+  font-size: var(--main-font-size);
   padding-top: 20px;
   overflow: hidden;
 }
@@ -592,10 +592,6 @@ a.comment-profile {
     margin-right: 5px;
   }
 
-  .reply-list {
-    display: flex;
-    flex-direction: column;
-  }
 
   .reply-firstchild {
     padding-left: 30px;
@@ -666,7 +662,7 @@ a.comment-profile {
   }
 
   .comment-input-area > div > textarea {
-    font-size: 15px;
+    font-size: var(--main-font-size);
     height: auto;
     border: none;
     resize: none;
