@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dmMapper">
+
+	<!-- 채팅방 resultMap -->
+	<resultMap type="ChattingRoom" id="chattingRoom_rm">
+      <id property="chattingNo" column="CHATTING_NO" />
+
+      <result property="lastMessage" column="LAST_MESSAGE" />
+      <result property="sendTime" column="SEND_TIME" />
+      <result property="targetNo" column="TARGET_NO" />
+      <result property="targetNickName" column="TARGET_NICKNAME" />
+      <result property="targetProfile" column="TARGET_PROFILE" />
+      <result property="notReadCount" column="NOT_READ_COUNT" />
+   </resultMap>
+
+	<!-- 채팅 메시지 resultMap -->
+   <resultMap type="Message" id="message_rm">
+      <id property="messageNo" column="MESSAGE_NO" />
+
+      <result property="messageContent" column="MESSAGE_CONTENT" />
+      <result property="readFlag" column="READ_FL" />
+      <result property="senderNo" column="SENDER_NO" />
+      <result property="chattingNo" column="CHATTING_NO" />
+      <result property="sendTime" column="SEND_TIME" />
+   </resultMap>
+
+
+
+</mapper>

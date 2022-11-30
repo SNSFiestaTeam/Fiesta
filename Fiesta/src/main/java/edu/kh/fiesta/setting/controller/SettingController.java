@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.setting.Util;
 import edu.kh.fiesta.setting.model.service.SettingService;
 
 @RequestMapping("/setting")
@@ -90,7 +91,7 @@ public class SettingController {
 		ra.addFlashAttribute("message", message);
 		
 		
-		return "redirect:setting/changePw";
+		return "redirect:/changePw";
 		
 	}
 
@@ -240,6 +241,9 @@ public class SettingController {
 	public String settingIntro(int memberNo) {
 		
 		Member member = service.selectIntro(memberNo);
+
+		member.setIntroContent(Util.newLineClear(member.getIntroContent()));
+	
 		
 		return new Gson().toJson(member);
 	}

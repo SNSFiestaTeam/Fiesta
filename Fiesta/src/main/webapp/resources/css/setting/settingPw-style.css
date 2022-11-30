@@ -1,8 +1,8 @@
-@import './root-style.css';
+@import '../root-style.css';
 
 
 .list-group > li:nth-child(2){
-    border-left: 3px solid black;
+    border-left: 3px solid #dd4132;
 }
 .setting-content{
     display: flex;
@@ -46,7 +46,7 @@
 }
 
 .list-group li:focus-within{
-    border-left: 3px solid black;
+    border-left: 3px solid #dd4132;
 }
 
 .setting-main{
@@ -146,6 +146,8 @@
     text-decoration: none;
     font-size: 14px;
 }
+
+
 
 @media screen and (max-width: 470px) {
     .setting-content{

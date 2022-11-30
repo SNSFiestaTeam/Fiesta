@@ -76,7 +76,7 @@
             <div class="di-5">
                 <aside><label>소개</label></aside>
                 <div class="main">
-                  <textarea id="text" name="set">${introContent}</textarea>
+                  <textarea id="text" name="set"></textarea>
                 </div>
             </div>
 
