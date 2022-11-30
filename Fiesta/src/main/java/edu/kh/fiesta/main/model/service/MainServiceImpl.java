@@ -80,7 +80,7 @@ public class MainServiceImpl implements MainService {
 	 */
 	@Override
 	public int boardBookmarkOff(int boardNo, int memberNo) {
-		return dao.boardBookmarkOn(boardNo, memberNo);
+		return dao.boardBookmarkOff(boardNo, memberNo);
 	}
 
 

@@ -98,7 +98,7 @@ public class MainDAO {
 		map.put("boardNo", boardNo);
 		map.put("memberNo", memberNo);
 		
-		return sqlSession.insert("mainMapper.boardBookmarkOff", map);
+		return sqlSession.delete("mainMapper.boardBookmarkOff", map);
 	}
 
 

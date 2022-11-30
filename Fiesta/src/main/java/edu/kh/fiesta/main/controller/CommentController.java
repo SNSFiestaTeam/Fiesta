@@ -82,5 +82,16 @@ public class CommentController {
 		return new Gson().toJson(replyList);
 	}
 	
+	
+	@GetMapping("/deleteContent")
+	public int deleteCommentContent(int CommentNo) {
+		return service.deleteCommentContent(CommentNo);
+	}
+	
+	@GetMapping("/delete")
+	public int deleteComment(int CommentNo) {
+		return service.deleteComment(CommentNo);
+	}
+	
 
 }

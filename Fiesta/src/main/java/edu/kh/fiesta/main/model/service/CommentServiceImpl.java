@@ -39,14 +39,38 @@ public class CommentServiceImpl implements CommentService{
 		return dao.commentInsert(map);
 	}
 	
-	
+	 
+	/** 댓글목록 조회
+	 *
+	 */
 	@Override
 	public List<Comment> selectCommentList(Map<String , Object> comment) {
 		return dao.selectCommentList(comment);
 	}
 
+	
+	/** 답글 목록 조회
+	 *
+	 */
 	@Override
 	public List<Comment> selectReplyList(Map<String, Integer> map) {
 		return dao.selectReplyList(map);
 	}
+	
+	/** 댓글 내용 삭제
+	 *
+	 */
+	@Override
+	public int deleteCommentContent(int commentNo) {
+		return dao.deleteCommentContent(commentNo);
+	}
+	
+	/** 댓글 삭제
+	 *
+	 */
+	@Override
+	public int deleteComment(int commentNo) {
+		return dao.deleteComment(commentNo);
+	}
+	
 }
