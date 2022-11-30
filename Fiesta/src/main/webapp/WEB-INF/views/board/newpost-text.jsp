@@ -17,9 +17,11 @@
       </div>
       <!-- post-bottom -->
       <div class="new-post-bottom-text">
+      
         <div class="bottom-left-box swiper">
         <div class="swiper-wrapper" id="textFileSwiper">
-          <%-- <div class="swiper-slide"><img name="" id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div> --%>
+        <%-- 이미지 리스트 --%>
+          <%-- <div class="swiper-slide"><img name="fils" id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div> --%>
           
         </div>
       <div class="swiper-pagination"></div>

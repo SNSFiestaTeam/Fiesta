@@ -83,13 +83,13 @@
 		INSERT INTO BOARD_IMG
 		SELECT SEQ_IMG_NO.NEXTVAL IMG_NO, A.* FROM
 
-		<foreach collection="list" item="img" open="(" close=") A" separator="UNINO ALL">
-			SELECT 	#{img.imgOrder} IMG_ORDER,
-						 #{img.imgAddress} IMG_ADDRESS,
-						 #{img.imgAccessibility} IMG_ACCESSIBILITY,
-						 	#{img.imgOriginalName} IMG_ORIGINAL_NAME,
-						 	#{img.imgChangeName} IMG_CHANGE_NAME,
-						 	#{img.boardNo} BOARD_NO
+		<foreach collection="list" item="img" open="(" close=") A" separator="UNION ALL">
+			SELECT #{img.imgOrder} IMG_ORDER,
+			#{img.imgAddress} IMG_ADDRESS,
+			#{img.imgAccessibility} IMG_ACCESSIBILITY,
+			#{img.imgOriginalName} IMG_ORIGINAL_NAME,
+			#{img.imgChangeName} IMG_CHANGE_NAME,
+			#{img.boardNo} BOARD_NO
 			FROM DUAL
 		</foreach>
 	</insert>

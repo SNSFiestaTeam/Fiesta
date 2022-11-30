@@ -102,15 +102,37 @@ document
     // document.getElementsByTagName("body")[0].classList.remove("scrollLock");
   });
 
+
+
+// ! 기본 이미지 선택
+//? 1. 바로 텍스트 작성 부분으로 가기
+//? 2. 기본 이미지 넣어주기
+//? 3. 접근성 부분 안보이게 하기
+//? 4. 뒤로 가기 버튼 안보이게 -> x누르면 다시 파일 선택으로 가기 때문
+document.getElementById("basicImage").addEventListener("click", ()=>{
+
+  modalBackground.style.display = "none";
+  modalBackgroundText.style.display = "flex";
+
+  //*기본이미지 생성 부분*
+  // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
+  const swiperSildeDiv = document.createElement("div");
+  const fileImg = document.createElement("img");
+
+  fileImg.id = "files";
+
+  fileImg.setAttribute("src", e.target.result);
+});
+
 const fileInput = document.getElementById("fileInput");
 // 부모요소 안에 생성하기 위해 부모요소 아이디로 불러옴.
 const slideImages = document.getElementById("slideImages");
-
 const filePreview = document.getElementById("filePreview");
-
 const textFileSwiper = document.getElementById("textFileSwiper");
-
 const postFileTextArea = document.getElementById("postFileTextArea");
+
+var form = new FormData();
+
 
 //fileInput값이 변했을때
 fileInput.addEventListener("change", (e) => {
@@ -118,9 +140,15 @@ fileInput.addEventListener("change", (e) => {
     // 이벤트 발생한 요소에 선택된 파일이 있을 경우
     for (let i = 0; i < e.target.files.length; i++) {
       // 이벤트 발생 파일 길이 만큼 반복문 돌림
+
+      form.append("files", e.target.files[i]);
+
       const reader = new FileReader(); // 파일 읽는 객체
 
+
       reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
+
+      
 
       reader.onload = (e) => {
         // 파일 읽은 후
@@ -162,14 +190,15 @@ fileInput.addEventListener("change", (e) => {
 
         filePreview.append(previewFileDiv);
 
-        // *text 부분 파일*
+        // !text 부분 파일
         // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
         const swiperSildeDiv = document.createElement("div");
         const fileImg = document.createElement("img");
 
         swiperSildeDiv.classList.add("swiper-slide");
-        fileImg.id = "file";
-        fileImg.name = "files";
+        fileImg.id = "files";
+        // fileImg.name = files;
+        // fileImg.setAttribute("name", "files");
         fileImg.setAttribute("src", e.target.result);
 
         //합치기
@@ -275,14 +304,24 @@ addFileInput.addEventListener("change", (e) => {
   }
 });
 
+
 const newPostAll = document.getElementById("newPostAll");
-const boardContent = document.getElementById("boardContent");
 
 newPostAll.addEventListener("click", () => {
+  
+  const boardContent = document.getElementById("boardContent");
+  const files = document.getElementById("file");
+
+
+  form.append("boardContent", boardContent.value);
+
+
   $.ajax({
     url: "/write",
-    data: { "boardContent": boardContent.value},
     type: "Post",
+    processData : false,
+    contentType : false,
+    data: form,
     success: (result) => {
       if (result > 0) {
         console.log("게시물 작성 성공");

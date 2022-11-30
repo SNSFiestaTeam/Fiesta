@@ -38,11 +38,12 @@ public class BoardServicepImple implements BoardService{
 			List<BoardImg> boardImgList = new ArrayList<BoardImg>();
 			List<String> imgChangeNameList = new ArrayList<String>();
 			// 업로드된 파일 분류 작업
-			for(int i =0; i < fileList.size(); i++) {
+			for(int i=0; i < fileList.size(); i++) {
 				if(fileList.get(i).getSize() > 0) { // 파일이 있는지 확인
 					BoardImg img = new BoardImg(); // boardImg 객체 생성
 					img.setImgAddress(webPath);
 					
+//					 String reName = Util.fileRename(원본파일명);
 					String reName = Util.fileRename(fileList.get(i).getOriginalFilename());
 					img.setImgChangeName(reName);
 					imgChangeNameList.add(reName); // 변경 파일명 리스트 추가

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,15 +25,18 @@ public class BoardController {
 	private BoardService service;
 	
 	@PostMapping("/write")
+	@ResponseBody //http 요청 본문에 담기 값들 자바 객체로 변환해 저장
 	public int boardWrite(
-			Board board, // 내용 받아 올거
 			@SessionAttribute("loginMember") Member loginMember, // 로그인 멤버 번호 받아올거
 			RedirectAttributes ra,
 			HttpSession session, // 파일 어느위치 저장할지 경로 지정때 필요
-			@RequestParam(value="files", required=false) List<MultipartFile> fileList // 이미지 n개 받아오기
-			
-			
+			@RequestParam(value="files") List<MultipartFile> fileList,// 이미지 n개 받아오기
+			Board board// 이미지 n개 받아오기
 			) throws IOException {
+			
+		System.out.println(board.getBoardContent());
+		System.out.println(fileList);
+		
 		// 로그인한 회원 번호 board 객체에 세팅
 		board.setMemberNo(loginMember.getMemberNo());
 		// 업로드된 파일 웹접근경로, 서버내부 경로

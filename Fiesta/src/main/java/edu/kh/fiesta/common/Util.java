@@ -6,16 +6,21 @@ import java.text.SimpleDateFormat;
 public class Util {
 	// 파일명 변경 메소드
 	public static String fileRename(String originFileName) {
-		SimpleDateFormat sdf = new SimpleDateFormat("Fiesta_yyyyMMdd_HHmmss");
-		String date = sdf.format(new java.util.Date(System.currentTimeMillis()));
+		SimpleDateFormat sdfd = new SimpleDateFormat("yyyyMMdd");
+		String date = sdfd.format(new java.util.Date(System.currentTimeMillis()));
+		
+		SimpleDateFormat sdft = new SimpleDateFormat("HHmmss");
+		String time = "_" + sdft.format(new java.util.Date(System.currentTimeMillis()));
 
-		int ranNum = (int) (Math.random() * 100000); // 5자리 랜덤 숫자 생성
+		int ranNum = (int) (Math.random() * 100000); // 3자리 랜덤 숫자 생성
 
-		String str = "_" + String.format("%05d", ranNum);
+		String str = String.format("%02d", ranNum);
 
 		String ext = originFileName.substring(originFileName.lastIndexOf("."));
-
-		return date + str + ext;
+		
+		String teamName = "Fiesta_";
+			// Fiesta_20221130_171257985
+		return teamName + date + time + str + ext;
 	}
 //	Util.fileRename()으로 사용
 
