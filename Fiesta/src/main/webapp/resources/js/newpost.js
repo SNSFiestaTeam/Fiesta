@@ -62,10 +62,7 @@ document.getElementById("backBtnedit").addEventListener("click", () => {
   modalBackground.style.display = "flex";
   document.getElementById("slideImages").innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
   document.getElementById("filePreview").innerHTML = ""; 
-  slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
-    filePreview.innerHTML="";
-    textFileSwiper.innerHTML="";
-    postFileTextArea.innerHTML="";
+  
 });
 // text에서 뒤로가기
 const backBtnText = document.getElementById("backBtnText");
@@ -89,8 +86,7 @@ $toggle.onclick = () => {
   $toggle.classList.toggle("active");
 };
 
-var form = new FormData(); // 파일 리스트 보내기 위해 form 선언
-const reader = new FileReader(); // 파일 읽는 객체
+
 const postFileText = document.getElementById("postFileText"); // 접근성박스
 // ! 기본 이미지 선택
 //? 1. 바로 텍스트 작성 부분으로 가기
@@ -110,9 +106,6 @@ document.getElementById("basicImage").addEventListener("click", ()=>{
   fileImg.id = "files";
   fileImg.src = "../../resources/images/default/defaultImg.png";
 
-  form.append("files", files); // form에 files추가
-  reader.readAsDataURL(files); //URL형태로 저장
-
   swiperSildeDiv.append(fileImg);
   textFileSwiper.append(swiperSildeDiv);
 
@@ -122,21 +115,20 @@ document.getElementById("basicImage").addEventListener("click", ()=>{
     modalBackgroundEidt.style.display = "none";
     modalBackgroundText.style.display = "none";
   });
-
-  
 });
 
 //! 컴퓨터에서 선택
 
-
+   var form = new FormData(); // 파일 리스트 보내기 위해 form 선언
 document.getElementById("fileInput").addEventListener("change", (e) => {
   if (e.target.files[0] != undefined) {
     // 이벤트 발생한 요소에 선택된 파일이 있을 경우
     for (let i = 0; i < e.target.files.length; i++) {
       // 이벤트 발생 파일 길이 만큼 반복문 돌림
 
+   
       form.append("files", e.target.files[i]);
-      
+      const reader = new FileReader(); // 파일 읽는 객체
       reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
 
       reader.onload = (e) => {
@@ -212,7 +204,6 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
           },
         });
         // *text 접근성 부분 파일*
-        // postFileText.style.display = "block";
         // <div class="postFileText">
         //   <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
         //   <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
@@ -334,7 +325,6 @@ newPostAll.addEventListener("click", () => {
     },
     error: () => {
       console.log("게시물 작성 에러");
-      console.log(form);
     },
   });
 });
