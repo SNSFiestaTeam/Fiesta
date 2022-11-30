@@ -1,4 +1,4 @@
-package edu.kh.fiesta.search;
+package edu.kh.fiesta.search.model.dao;
 
 import java.util.List;
 

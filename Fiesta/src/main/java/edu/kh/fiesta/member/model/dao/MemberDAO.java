@@ -26,16 +26,14 @@ public class MemberDAO {
 	 * @return result
 	 */
 	public int signUp(Member inputMember) {
+		// 회원가입
 		int result = sqlSession.insert("memberMapper.signUp", inputMember);
 		
-		int memberNo = inputMember.getMemberNo();
+		System.out.println(inputMember);
 		
 		if(result > 0) {
-			result = sqlSession.insert("memberMapper.insertUserPubPriFl", memberNo);
-		}
-		
-		if(result > 0) {
-			result = sqlSession.insert("memberMapper.insertIntroContent", memberNo);
+			// 공개여부 설정에 회원번호 삽입
+			result = sqlSession.insert("memberMapper.insertUserPubPriFl", inputMember);
 		}
 		
 		return result; 
@@ -90,7 +88,5 @@ public class MemberDAO {
 	public int followMyself(int memberNo) {
 		return sqlSession.insert("memberMapper.followMyself", memberNo);
 	}
-
-
 	
 }

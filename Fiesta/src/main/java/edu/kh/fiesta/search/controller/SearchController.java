@@ -1,4 +1,4 @@
-package edu.kh.fiesta.search;
+package edu.kh.fiesta.search.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.google.gson.Gson;
 
 import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.search.model.service.SearchService;
 
 @Controller
 public class SearchController {

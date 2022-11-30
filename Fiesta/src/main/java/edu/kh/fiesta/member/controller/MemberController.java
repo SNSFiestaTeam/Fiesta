@@ -74,7 +74,6 @@ public class MemberController {
 		String path = null;
 		
 		if(result > 0) {
-			
 			message = "Welcome to Fiesta!";
 			path = "/"; // 로그인 페이지로.
 			

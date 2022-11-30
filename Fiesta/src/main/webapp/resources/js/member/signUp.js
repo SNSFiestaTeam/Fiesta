@@ -401,8 +401,10 @@ memberEmail.addEventListener("input", () => {
 
     signUpButton.classList.add("displayOff", "buttonOff");
     signUpButton.classList.remove("displayBlock", "buttonOn");
+
     sendAuthKeyBtn.classList.add("displayBlock", "authButtonOn");
     sendAuthKeyBtn.classList.remove("displayOff");
+
     checkAuthKeyBtn.classList.add("gray");
     checkAuthKeyBtn.classList.remove("green");
     
@@ -435,6 +437,7 @@ let authSec = 59;
 
 
 sendAuthKeyBtn.addEventListener("click", function(){
+    
     // 인증번호 입력창 보이기
     toLoginArea.classList.add("displayOff");
     toLoginArea.classList.remove("displayFlex");
@@ -572,7 +575,6 @@ checkAuthKeyBtn.addEventListener("click", function(){
             error : () => {
                 console.log("인증코드 확인 오류");
             }
-            
         })
 
     } else{
