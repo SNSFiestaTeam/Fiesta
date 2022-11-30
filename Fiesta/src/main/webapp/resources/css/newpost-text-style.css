@@ -120,6 +120,7 @@
 .bottom-left-box > img {
   position: absolute;
   width: 100%;
+  height: 100%;
 }
 
 .bottom-right-box {
@@ -295,3 +296,4 @@
 .toggleButton {
   transition: all 0.2s ease-in;
 }
+

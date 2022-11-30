@@ -21,9 +21,9 @@
               <label for="fileInput" > 컴퓨터에서 선택</label>
               <input type="file" name="new-post-file" id="fileInput" none accept="image/*" multiple>
             </div>
-            <div class="file-select-btn" id="fileSelectBasic">
+            <div class="file-select-btn" id="basicImage">
               <label for="baceImage" > 기본 이미지</label>
-              <input name="new-post-file" id="basicImage" none>
+              <input name="new-post-file"  none>
             </div>
             
           </div>
