@@ -27,13 +27,14 @@ public class SettingDAO {
 	}
 
 	public int updateSetting(Member inputMember) {
-		int result = sqlSession.update("settingMapper.updateSetting", inputMember);
-		
-		if(result > 0) {
-			result = sqlSession.update("settingMapper.updateIntro", inputMember);
-			
-		}
-		return result;
+		return sqlSession.update("settingMapper.updateSetting", inputMember);
+	
+	}
+	
+	public int updateIntro(Member inputMember) {
+	
+		return sqlSession.update("settingMapper.updateIntro", inputMember);
+	
 	}
 
 	
@@ -78,8 +79,28 @@ public class SettingDAO {
 		return sqlSession.selectOne("settingMapper.selectSetting", memberNo);
 	}
 
+	/** 소개테이블 조회
+	 * @param memberNo
+	 * @return member
+	 */
 	public Member selectIntro(int memberNo) {
 		return sqlSession.selectOne("settingMapper.selectIntro", memberNo);
+	}
+
+	/** 소개 테이블에 있는지 조회
+	 * @param inputMember
+	 * @return result
+	 */
+	public int introCheck(Member inputMember) {
+		return sqlSession.selectOne("settingMapper.introCheck", inputMember);
+	}
+
+	/** 소개 테이블에 없을시 소개 작성
+	 * @param inputMember
+	 * @return result
+	 */
+	public int insertIntro(Member inputMember) {
+		return sqlSession.insert("settingMapper.insertIntro", inputMember);
 	}
 
 

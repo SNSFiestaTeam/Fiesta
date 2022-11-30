@@ -81,46 +81,46 @@ memberNickname.addEventListener("input", function(){
     }
 
     const regEx = /^[\w\-\_\.]{3,20}$/;
-if(memberNickname.value != this.value){
-    if(regEx.test(memberNickname.value)){ 
+    if(memberNickname.value != this.value){
+        if(regEx.test(memberNickname.value)){ 
 
-        const param = { "memberNickname" : memberNickname.value };
-        
-        $.ajax({
-            url : "/nicknameDupCheck",
-            data : param,
-            success : (result) => { 
+            const param = { "memberNickname" : memberNickname.value };
+            
+            $.ajax({
+                url : "/nicknameDupCheck",
+                data : param,
+                success : (result) => { 
 
-                if(result == 0) {
-                    
-                    nickMessage.innerText = "사용 가능한 사용자 이름입니다.";
-                    nickMessage.style.color="green";
-                    checkObj.memberNickname = true; 
-                    
-                } else{
-                    
-                    nickMessage.innerText = "이미 사용중인 사용자 이름입니다.";
-                    nickMessage.style.color="red";
-                    checkObj.memberNickname = false;
+                    if(result == 0) {
+                        
+                        nickMessage.innerText = "사용 가능한 사용자 이름입니다.";
+                        nickMessage.style.color="green";
+                        checkObj.memberNickname = true; 
+                        
+                    } else{
+                        
+                        nickMessage.innerText = "이미 사용중인 사용자 이름입니다.";
+                        nickMessage.style.color="red";
+                        checkObj.memberNickname = false;
+                    }
+                }, 
+                error: () => {
+                    console.log("실패");
+                },
+                complete: ()=>{
+                    console.log("완료");
                 }
-            }, 
-            error: () => {
-                console.log("실패");
-            },
-            complete: ()=>{
-                console.log("완료");
-            }
-        });
+            });
     
-    } else { // 유효하지 않을 경우
-        nickMessage.innerText = "유효하지 않은 사용자 이름 형식입니다.";
-        nickMessage.style.color="red";
-        checkObj.memberNickname = false;
+        } else { // 유효하지 않을 경우
+            nickMessage.innerText = "유효하지 않은 사용자 이름 형식입니다.";
+            nickMessage.style.color="red";
+            checkObj.memberNickname = false;
+        }
     }
-    }
-    else {
-        checkObj.memberNickname = true;
-    }
+        else {
+            checkObj.memberNickname = true;
+        }
 });
 
 function tempFn(){
@@ -204,7 +204,7 @@ const originalImage = profileImg.getAttribute("src");
 
 if(imageInput != null){
 
-    if(profileImg.getAttribute("src") == "/resources/images/user.png"){
+    if(profileImg.getAttribute("src") == "/resources/images/user.jpg"){
 
         // 기본이미지인 경우
         initCheck = false;
@@ -267,10 +267,11 @@ if(imageInput != null){
 
     // x버튼이 클릭됐을 경우 => 기본 이미지로 변경
     profileDelete.addEventListener("click", () => {
-        profileImg.setAttribute("src", "/resources/images/user.jpg");
+        profileImg.setAttribute("src", "/resources/images/user.png");
         imageInput.value='';
         deleteCheck = 0;
         profileContainer.style.display = "none";
+        profileVaildate();
 
     });
 

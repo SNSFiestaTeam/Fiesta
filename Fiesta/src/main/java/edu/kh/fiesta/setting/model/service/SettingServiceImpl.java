@@ -53,13 +53,25 @@ public class SettingServiceImpl implements SettingService{
 	@Override
 	public int updateSetting(Member inputMember) {
 
-		inputMember.setIntroContent(Util.XSSHandling(inputMember.getIntroContent()));
-		inputMember.setIntroContent(Util.newLineHandling(inputMember.getIntroContent()));
+		int result = dao.introCheck(inputMember);
 		
-		int result = dao.updateSetting(inputMember);
+		if(inputMember.getIntroContent() != null) {
+			inputMember.setIntroContent(Util.XSSHandling(inputMember.getIntroContent()));
+			inputMember.setIntroContent(Util.newLineHandling(inputMember.getIntroContent()));			
+		}
 		
-		
-		
+		if(result > 0) {
+			result = dao.updateSetting(inputMember);
+			if(result > 0) {
+				result = dao.updateIntro(inputMember);
+			}
+			
+		} else {
+			result = dao.insertIntro(inputMember);
+			if(result > 0) {
+				result = dao.updateSetting(inputMember);
+			}
+		}
 		
 		return result;
 	}

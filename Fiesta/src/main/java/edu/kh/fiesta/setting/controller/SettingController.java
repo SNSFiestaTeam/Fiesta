@@ -139,6 +139,7 @@ public class SettingController {
 		return result;
 	}
 	
+	
 		
 	@PostMapping("/updateImage")
 	public String updateImage(
@@ -240,10 +241,7 @@ public class SettingController {
 	@ResponseBody
 	public String settingIntro(int memberNo) {
 		
-		Member member = service.selectIntro(memberNo);
-
-		member.setIntroContent(Util.newLineClear(member.getIntroContent()));
-	
+		Member member = service.selectIntro(memberNo);	
 		
 		return new Gson().toJson(member);
 	}
