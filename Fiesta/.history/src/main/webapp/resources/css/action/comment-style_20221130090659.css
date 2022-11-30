@@ -205,33 +205,31 @@ a#commentProfileM {
   font-size: var(--small-font-size);
 }
 
-.comment-input-area-m > div {
+.comment-input-area-m > form {
   height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 15px;
+  
+
 }
 
 .comment-input-area-m textarea {
   border: 0;
   outline: none;
-  resize: none;
-  width: 90%;
-  padding-top: 10px;
+  flex-basis: 90%;
 }
 
 .comment-input-area-m textarea:focus {
   border: 0;
   outline: none;
+  flex-basis: 90%;
 }
 
 .comment-input-area-m button {
-  color: var(--fiesta-color);
+  color: var(--point-font-color);
   font-weight: bold;
 }
 
 .comment-input-area-m button:disabled {
-  color: #dbbbb8;
+  color: #0095f660;
   cursor: default;
 }
 
@@ -331,7 +329,6 @@ div.reply-firstline-m {
   margin-left: 42px;
   font-size: var(--small-font-size);
   color: #8e8e8e;
-  cursor: pointer;
 }
 
 .more-reply-m::before {

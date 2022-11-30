@@ -586,8 +586,7 @@ a.comment-profile {
 
   .comment-firstline > div {
     display: block;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px 5px 0;
   }
 
   .reply-firstchild {
@@ -652,10 +651,6 @@ a.comment-profile {
     height: 50px;
     align-items: center;
     margin-bottom: 5px;
-  }
-
-  .comment-like-btn {
-    padding-top: 5px;
   }
 
   .comment-input-area > div > textarea {
