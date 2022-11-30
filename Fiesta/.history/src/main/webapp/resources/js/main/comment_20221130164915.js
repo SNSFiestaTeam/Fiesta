@@ -1104,7 +1104,7 @@ commentDeleteBtn.addEventListener('click', () => {
 
   console.log("deleteBoardNo: "+ deleteBoardNo);
   console.log("deleteCommentNo: " + deleteCommentNo);
-  console.log(deleteCommentUl);
+  console.log("deleteCommentUl: "+deleteCommentUl);
 
 
   if (deleteReplyCount > 0) {
