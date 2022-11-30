@@ -81,4 +81,22 @@ public class CommentDAO {
 		return sqlSession.selectList("mainMapper.selectReplyList", map);
 	}
 
+
+	/** 댓글 내용 삭제
+	 * @param commentNo
+	 * @return result
+	 */
+	public int deleteCommentContent(int commentNo) {
+		return sqlSession.update("commentMapper.deleteCommentContent", commentNo);
+	}
+
+
+	/** 댓글 삭제
+	 * @param commentNo
+	 * @return
+	 */
+	public int deleteComment(int commentNo) {
+		return sqlSession.delete("commentMapper.deleteComment", commentNo);
+	}
+
 }
