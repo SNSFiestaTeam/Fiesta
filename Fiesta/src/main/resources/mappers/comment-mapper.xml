@@ -25,6 +25,17 @@
   	VALUES(#{commentNo}, #{memberNo}, #{commentContent}, DEFAULT,
   	#{boardNo}, #{upperCommentNo})
   </insert>
+  
+  <update id="deleteCommentContent">
+  	UPDATE "COMMENT" SET
+  	COMMENT_CONTENT = '삭제된 내용입니다.'
+  	WHERE COMMENT_NO = #{commentNo}
+  </update>
+  
+  <delete id="deleteComment">
+  	DELETE FROM "COMMENT"
+  	WHERE COMMENT_NO = #{commentNo}
+  </delete>
 
   
 </mapper>

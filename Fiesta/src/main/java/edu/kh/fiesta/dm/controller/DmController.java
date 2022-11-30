@@ -14,8 +14,5 @@ public class DmController {
 	@Autowired
 	private DmService service;
 
-	@GetMapping()
-	public String dm() {
-		return "dm/dm";
-	}
+	
 }

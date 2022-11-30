@@ -1102,10 +1102,8 @@ document.getElementById('commentMenuCancelL').addEventListener('click', () => {
 const commentDeleteBtn = document.getElementById('commentDeleteBtnL');
 commentDeleteBtn.addEventListener('click', () => {
 
-  console.log("deleteBoardNo: "+ deleteBoardNo);
-  console.log("deleteCommentNo: " + deleteCommentNo);
-  console.log(deleteCommentUl);
-
+  console.log(deleteBoardNo);
+  console.log(deleteCommentNo);
 
   if (deleteReplyCount > 0) {
     // 답글 1개 이상이면

@@ -146,6 +146,7 @@
        <version>${org.springframework-version}</version>
     </dependency>
     
+    <!-- 웹소켓 -->
 	<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
 	<dependency>
 	    <groupId>org.springframework</groupId>

@@ -1102,8 +1102,8 @@ document.getElementById('commentMenuCancelL').addEventListener('click', () => {
 const commentDeleteBtn = document.getElementById('commentDeleteBtnL');
 commentDeleteBtn.addEventListener('click', () => {
 
-  console.log("deleteBoardNo: "+ deleteBoardNo);
-  console.log("deleteCommentNo: " + deleteCommentNo);
+  console.log("deleteBoardNo"+ deleteBoardNo);
+  console.log(deleteCommentNo);
   console.log(deleteCommentUl);
 
 

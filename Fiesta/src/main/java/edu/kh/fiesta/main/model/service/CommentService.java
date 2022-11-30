@@ -42,6 +42,18 @@ public interface CommentService {
 	 * @return replyList
 	 */
 	public List<Comment> selectReplyList(Map<String, Integer> map);
+
+	/** 댓글 내용 삭제 
+	 * @param commentNo
+	 * @return result
+	 */
+	public int deleteCommentContent(int commentNo);
+
+	/** 댓글 삭제
+	 * @param commentNo
+	 * @return
+	 */
+	public int deleteComment(int commentNo);
 	
 
 
