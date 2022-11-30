@@ -13,29 +13,51 @@
 
 // 해시태그 팔로우 버튼
 const followHashtagBtn = document.getElementById("followHashtagBtn");
+const searchInput = document.getElementById("searchInput");
 
-const searchInput = document.getElementById("searchInput").value;
+
+// 해시태그 팔로우 여부에 따라 화면 전환
+(()=>{
+    $.ajax({
+        url: "/followHashtagCheck",
+        data: {"searchInput" : searchInput.value},
+        type: "GET",
+        success: (result) => {
+
+            if(result > 0) {  // 팔로우한 상태
+                followHashtagBtn.innerHTML = "팔로잉";
+                followHashtagBtn.classList.add("unfollowButton");
+                followHashtagBtn.classList.remove("followButton");
+                console.log("팔로우한 상태");
+            } 
+
+            else if(result == 0 ){ // 팔로우 안 한 상태
+                followHashtagBtn.innerHTML = "팔로우";
+                followHashtagBtn.classList.add("followButton");
+                followHashtagBtn.classList.remove("unfollowButton");
+                console.log("팔로우 안 한 상태");
+            } 
+        },
+        error: (result) => {console.log("팔로우 여부 조회 오류");}
+    })
+})();
+
 
 followHashtagBtn.addEventListener("click", e => {
-
-    // // 로그아웃 상태
-    // if(memberNo == ""){
-    //     alert("로그인 후 이용할 수 있습니다.");
-    //     return;
-    // }
 
     if(e.target.classList.contains('followButton')){ // 팔로우 안 한 상태
         
         $.ajax({
             url: "/followHashtag",
-            data:{"searchInput" : searchInput, "memberNo" : memberNo},  /* memberNo는 header에 전역변수로 선언 */
+            data:{"searchInput" : searchInput},  /* memberNo는 header에 전역변수로 선언 */
             type: "GET",
             success: (result) => {
                 if(result > 0){ 
+                    e.target.innerHTML = "팔로우";
                     e.target.classList.add("unfollowButton");
                     e.target.classList.remove("followButton");
                 } else {
-                    console.log("팔로우 실패");
+                    console.log("팔로잉 실패");
                 }
             },
             error: () => {
@@ -47,13 +69,16 @@ followHashtagBtn.addEventListener("click", e => {
     } else { // 팔로우한 상태
 
         $.ajax({
-            url: "/unfollowHastag",
-            data:{"searchInput" : searchInput, "memberNo" : memberNo},
+            url: "/search",
+            data:{"searchInput" : searchInput},
             type: "GET",
             success: (result) => {
                 if(result > 0) { 
+                    e.target.classList.innerHTML = "팔로잉";
                     e.target.classList.add("followButton");
                     e.target.classList.remove("unfollowButton");
+                } else {
+                    console.log("팔로우 실패");
                 }
             },
             error : () => {console.log("해시태그 언팔로우 오류");}

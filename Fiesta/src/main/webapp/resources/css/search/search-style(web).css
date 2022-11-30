@@ -123,8 +123,8 @@ main {
 
 
 .unfollowButton{
-    background-color: lightgray;
-    color: gray;
+    background-color: gray;
+    color: white;
     border: 1px solid gray;
 }
 /* --------------------------------------------------- */

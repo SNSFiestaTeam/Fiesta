@@ -87,7 +87,7 @@
 			FROM "MEMBER" 
 			WHERE SECESSION_FL = 'N'
 			AND (MEMBER_NICKNAME LIKE '%${searchInput}%'
-			OR MEMBER_NAME LIKE '%${searchInput}%')
+			OR MEMBER_NAME = '${searchInput}')
 			<![CDATA[AND ROWNUM <= 6 ]]>	
 		</select>
 		

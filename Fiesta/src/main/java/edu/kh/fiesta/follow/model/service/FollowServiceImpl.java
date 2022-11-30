@@ -16,23 +16,23 @@ public class FollowServiceImpl implements FollowService{
 
 	// 해시태그 팔로우 여부 조회
 	@Override
-	public int selectFollowHashtag(Map<String, Integer> paramMap) {
-		return dao.selectFollowHashtag(paramMap);
+	public int followHashtagCheck(Map<String, Object> map) {
+		return dao.followHashtagCheck(map);
 	}
-
 	
 	// 해시태그 팔로우
 	@Override
-	public int followHashtag(Map<String, Integer> paramMap) {
-		return dao.followHashtag(paramMap);
+	public int followHashtag(Map<String, Object> map) {
+		return dao.followHashtag(map);
 	}
-
 
 	// 해시태그 언팔로우
 	@Override
-	public int unfollowHashtag(Map<String, Integer> paramMap) {
-		return dao.unfollowHashtag(paramMap);
+	public int unfollowHashtag(Map<String, Object> map) {
+		return dao.unfollowHashtag(map);
 	}
+
 	
+
 
 }

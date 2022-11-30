@@ -56,35 +56,34 @@
   	</resultMap>
 	
 
-
-
-		<!-- 해시태그 팔로우되어 있는지 조회 -->	
-		<insert id="selectFollowHashtag">
+		<!-- 해시태그 팔로우 여부 조회 -->
+		<select id="followHashtagCheck" parameterType="hashMap" resultType="_int">
 			SELECT COUNT(*)
 			FROM FOLLOW
 			WHERE F_FROM_MEMBER_NO = #{memberNo}
 			AND FOLLOW_TYPE = 'H'
 			AND F_TO_TARGET_NO = (SELECT HASHTAG_NO
-														FROM HASHTAG 
-														WHERE HASHTAG_CONTENT = '#{searchInput}')
-		</insert>
-  
-  	
-		<!-- 해시태그 팔로우 -->
-		<insert id="followHashtag">
-			INSERT INTO HASHTAG VALUES(SEQ_HASHTAG_NO.NEXTVAL, '#{searchInput}')
-		</insert>
-		
-		
-		<!-- 해시태그 언팔로우  -->
-  	<delete id="unfollowHashtag">
-			DELETE FROM FOLLOW 
-			WHERE F_FROM_MEMBER_NO = #{memberNo}
-			AND F_TO_TARGET_NO = (SELECT HASHTAG_NO
 									FROM HASHTAG 
-									WHERE HASHTAG_CONTENT = '#{searchInput}')
-  	</delete>
-  
-  
+									WHERE HASHTAG_CONTENT LIKE '%${searchInput}%')			
+		</select>
+
+
+		<!-- HASHTAG 테이블에 삽입 -->
+		<insert id="insertHashtag" useGeneratedKeys="true">
+			<selectKey keyProperty="hashtagNo" resultType="_int" order="BEFORE">
+			 	SELECT SEQ_HASHTAG_NO FROM DUAL
+			</selectKey>
+			INSERT INTO HASHTAG
+			VALUES(#{hashtagNo},#{searchInput}) 		
+		</insert>
+
+		<!-- 해시태그 팔로우 -->
+  	<insert id="followHashtag">
+			INSERT INTO FOLLOW
+			VALUES (#{memberNo}, #{hashtagNo}, 'H', DEFAULT)
+  	</insert>
+  	
+  	
+  	
   
 </mapper>
