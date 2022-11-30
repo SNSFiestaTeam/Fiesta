@@ -45,17 +45,7 @@ public class SearchController {
 	}
 	
 	
-	
-	// 검색_해시태그 팔로우  -> 데이터베이스 다시 확인 (F_TO_TARGET_NO)
-	@GetMapping("/followHashtag")
-	@ResponseBody
-	public int followHashtag(@SessionAttribute("loginMember") Member loginMember, String searchInput) {
-		
-		int memberNo = loginMember.getMemberNo();
-		int result = service.followHashtag(memberNo, searchInput);
-		
-		return result;
-	}
+
 	
 	
 	

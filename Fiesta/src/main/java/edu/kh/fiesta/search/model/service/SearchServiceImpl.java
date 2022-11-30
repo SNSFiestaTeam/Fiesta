@@ -55,10 +55,6 @@ public class SearchServiceImpl implements SearchService{
 	}
 
 	
-	// 해시태그 팔로우
-	@Override
-	public int followHashtag(int memberNo, String searchInput) {
-		return dao.followHashtag(memberNo, searchInput);
-	}
+
 
 }

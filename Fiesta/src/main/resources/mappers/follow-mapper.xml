@@ -55,22 +55,35 @@
       <result property="boardNo" column="BOARD_NO" />
   	</resultMap>
 	
-	
-		<!-- 검색결과_팔로우할 해시태그 insert -->
-		<insert id="insertHashtag">
-			INSERT INTO HASHTAG VALUES(SEQ_HASHTAG_NO.NEXTVAL, ${searchInput})
+
+
+
+		<!-- 해시태그 팔로우되어 있는지 조회 -->	
+		<insert id="selectFollowHashtag">
+			SELECT COUNT(*)
+			FROM FOLLOW
+			WHERE F_FROM_MEMBER_NO = #{memberNo}
+			AND FOLLOW_TYPE = 'H'
+			AND F_TO_TARGET_NO = (SELECT HASHTAG_NO
+														FROM HASHTAG 
+														WHERE HASHTAG_CONTENT = '#{searchInput}')
 		</insert>
-		
-		<!-- 검색결과_해시태그 팔로우하기 -->	
+  
+  	
+		<!-- 해시태그 팔로우 -->
 		<insert id="followHashtag">
-			<selectKey keyProperty="HashtagNo" resultType="_int" order="BEFORE">
-				SELECT SEQ_HASHTAG_NO.NEXTVAL FROM DUAL
-			</selectKey>
-		
-			INSERT INTO FOLLOW VALUES(#{memberNo}, #{HashtagNo}, 'H', DEFAULT)
+			INSERT INTO HASHTAG VALUES(SEQ_HASHTAG_NO.NEXTVAL, '#{searchInput}')
 		</insert>
-  
-  
+		
+		
+		<!-- 해시태그 언팔로우  -->
+  	<delete id="unfollowHashtag">
+			DELETE FROM FOLLOW 
+			WHERE F_FROM_MEMBER_NO = #{memberNo}
+			AND F_TO_TARGET_NO = (SELECT HASHTAG_NO
+									FROM HASHTAG 
+									WHERE HASHTAG_CONTENT = '#{searchInput}')
+  	</delete>
   
   
   

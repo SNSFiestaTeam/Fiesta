@@ -14,31 +14,51 @@
 // 해시태그 팔로우 버튼
 const followHashtagBtn = document.getElementById("followHashtagBtn");
 
-// 바뀐 상태가 고정되어 있어야 함.
-// 팔로우 버튼을 누른 상태라면 btnClicked
-// 팔로우 버튼을 안 누른 상태라면 followBtn
-followHashtagBtn.classList.add("followBtn");
-followHashtagBtn.classList.remove("btnClicked");
+const searchInput = document.getElementById("searchInput").value;
 
+followHashtagBtn.addEventListener("click", e => {
 
+    // // 로그아웃 상태
+    // if(memberNo == ""){
+    //     alert("로그인 후 이용할 수 있습니다.");
+    //     return;
+    // }
 
-followHashtagBtn.addEventListener("click", () => {
-
-    $.ajax({
-        url: "/followHashtag",
-        data:{"searchInput" : searchInput.value},
-        type: "GET",
-        success: (result) => {
-            if(result > 0){
-                followHashtagBtn.classList.add("btnClicked");
-                followHashtagBtn.classList.remove("followBtn");
+    if(e.target.classList.contains('followButton')){ // 팔로우 안 한 상태
+        
+        $.ajax({
+            url: "/followHashtag",
+            data:{"searchInput" : searchInput, "memberNo" : memberNo},  /* memberNo는 header에 전역변수로 선언 */
+            type: "GET",
+            success: (result) => {
+                if(result > 0){ 
+                    e.target.classList.add("unfollowButton");
+                    e.target.classList.remove("followButton");
+                } else {
+                    console.log("팔로우 실패");
+                }
+            },
+            error: () => {
+                console.log("해시태그 팔로우 오류");
             }
-        },
-        error: (result) => {
-            console.log("해시태그 팔로우 오류");
-        }
+    
+        });
+    
+    } else { // 팔로우한 상태
 
-    })
+        $.ajax({
+            url: "/unfollowHastag",
+            data:{"searchInput" : searchInput, "memberNo" : memberNo},
+            type: "GET",
+            success: (result) => {
+                if(result > 0) { 
+                    e.target.classList.add("followButton");
+                    e.target.classList.remove("unfollowButton");
+                }
+            },
+            error : () => {console.log("해시태그 언팔로우 오류");}
+        });
+    }
 });
 
 

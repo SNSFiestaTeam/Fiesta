@@ -28,11 +28,5 @@ public interface SearchService {
 
 	
 
-	/** 해시태그 팔로우
-	 * @param memberNo
-	 * @param searchInput
-	 * @return result
-	 */
-	int followHashtag(int memberNo, String searchInput);
 
 }

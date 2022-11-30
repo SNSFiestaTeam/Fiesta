@@ -90,7 +90,6 @@
     
     .follow-button a{
         min-width: 160px;
-        background-color: var(--fiesta-color);
         border-radius: 5px;
         padding: 4px 0;
     
@@ -98,12 +97,34 @@
         justify-content: center;
         align-items: center;
 
-        color: white;
-        font-weight: 500;
         font-size: 0.9em;
+        font-weight: 500;
+
+        /* background-color: var(--fiesta-color);
+        color: white;
+        border: none; */
     }
     
-    
+    /* --------------------------------------------------- */
+    .followButton{
+        background-color: var(--fiesta-color);
+        color: white;
+        border: none;
+    }
+
+
+
+    .unfollowButton{
+        background-color: lightgray;
+        color: gray;
+        border: 1px solid gray;
+    }
+    /* --------------------------------------------------- */
+
+
+
+
+
     
     /* 검색결과 - 관련 있는 계정 */
     .accountResult-section{

@@ -91,3 +91,8 @@
         <%-- </button> --%>
       </form>
     </section>
+
+    <%-- 검색 결과 팔로우에 사용하는 전역변수 --%>
+    <script>
+      const memberNo = "${loginMember.memberNo}";
+    </script>
