@@ -29,16 +29,41 @@
   cursor: pointer;
   color: white;
 }
-@media all and (min-width: 1024px) {
-  .new-post-background {
-    width: 388px;
+
+/* @media (max-width: 600px) { */
+/* 600px이하 핸드폰 */
+/* .modal_post_section-text {
+    width: 348px;
   }
 }
-@media all and (max-width: 767px), (max-height: 570px) {
-  .new-post-background {
-    width: 1055px;
+@media (min-width: 600px) { */
+/* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
+/* .modal_post_section-text {
+    width: 459px;
   }
 }
+@media (min-width: 768px) { */
+/* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
+/* .modal_post_section-text {
+    width: 459px;
+  }
+}
+@media (min-width: 992px) { */
+/* 992px 이상 노트북, 작은 데스크톱 */
+/* .modal_post_section-text {
+    width: 855px;
+  }
+}
+@media (min-width: 1200px) { */
+/* 1200px 이상  큰 노트북, 데스크톱 */
+/* .modal_post_section-text {
+    width: 855px;
+  }
+  .new-post-bottom-text {
+    display: flex;
+  }
+} */
+
 .modal_post_section-text {
   background-color: white;
   border-radius: 10px;
