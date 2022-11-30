@@ -1,7 +1,7 @@
 @import './root-style.css';
 
 .list-group > li:first-child{
-    border-left: 3px solid black;
+    border-left: 3px solid #dd4132;
 }
 
 .setting-content{

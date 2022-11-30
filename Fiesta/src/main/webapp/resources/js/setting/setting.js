@@ -33,6 +33,9 @@ const nameMessage = document.getElementById("name-message"); // span
 
 memberName.addEventListener("keyup", function(){
 
+    
+
+
     if(memberName.value.trim().length==0){
         nameMessage.innerText = "이름을 입력해주세요.";
         memberName.value="";
@@ -77,8 +80,8 @@ memberNickname.addEventListener("input", function(){
         return;
     }
 
-    const regEx = /^[\w\-\_\.]{3,30}$/;
-
+    const regEx = /^[\w\-\_\.]{3,20}$/;
+if(memberNickname.value != this.value){
     if(regEx.test(memberNickname.value)){ 
 
         const param = { "memberNickname" : memberNickname.value };
@@ -108,11 +111,15 @@ memberNickname.addEventListener("input", function(){
                 console.log("완료");
             }
         });
-
+    
     } else { // 유효하지 않을 경우
         nickMessage.innerText = "유효하지 않은 사용자 이름 형식입니다.";
         nickMessage.style.color="red";
         checkObj.memberNickname = false;
+    }
+    }
+    else {
+        checkObj.memberNickname = true;
     }
 });
 
@@ -151,31 +158,26 @@ changeImg.addEventListener("click", ()=>{
 const text = document.getElementById("text");
 
 function start(){
-    $.ajax({
-        url : "/setting",
-        data : {"memberNo" : memberNo},
-        type : "POST",
-        dataType:"JSON",
-        success : (member)=>{
 
-        "${introContent}" = member.introContent;
+    if(text.value != null){
+        $.ajax({
+            url : "/setting",
+            data : {"memberNo" : memberNo},
+            type : "POST",
+            dataType:"JSON",
+            success : (member)=>{
 
-        },
+            text.innerText = member.introContent;
 
-        error : ()=>{
-            console.log("실패");
-        }
+            },
 
-    });
+            error : ()=>{
+                console.log("실패");
+            }
 
-/*
-SELECT INTRO_CONTENT
-FROM "INTRODUCE"
-WHERE MEMBER_NO = 10;
+        });
 
-
-*/
-
+    }
 
 };
 

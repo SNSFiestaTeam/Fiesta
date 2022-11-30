@@ -1,7 +1,7 @@
 @import '../root-style.css';
 
 .list-group > li:nth-child(3){
-    border-left: 3px solid black;
+    border-left: 3px solid #dd4132;
 }
 .setting-content{
     display: flex;
@@ -45,7 +45,7 @@
 }
 
 .list-group li:focus-within{
-    border-left: 3px solid black;
+    border-left: 3px solid #dd4132;
 }
 
 .setting-main{
@@ -241,6 +241,7 @@ section.post > .post-1 > input:checked + label:after{
 
 #secession-btn{
     color : #dd4132;
+    cursor: pointer;
 }
 
 :root {

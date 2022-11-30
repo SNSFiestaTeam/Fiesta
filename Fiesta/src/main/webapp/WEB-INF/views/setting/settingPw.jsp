@@ -69,7 +69,7 @@
                 <div class="forget">
                     <aside class="menu-left">
                     </aside>
-                    <a href="#">비밀번호를 잊으셨나요?</a>
+                    <a href="/findAccount/changePwPage">비밀번호를 잊으셨나요?</a>
                 </div>
               </form>
                 
@@ -77,13 +77,14 @@
             </section>
           </section>
 
-          <c:if test="${!empty message}">
-    <script>
-        alert("${message}");
-    </script>
-    <c:remove var="message" />
-    </c:if>
     </main>
+    
+    <c:if test="${!empty message}">
+        <script>
+            alert("${message}");
+        </script>
+        <c:remove var="message" />
+    </c:if>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
     <script src="/resources/js/setting/settingPw.js"></script>
