@@ -1,4 +1,4 @@
-package edu.kh.fiesta.search;
+package edu.kh.fiesta.search.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +14,13 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.google.gson.Gson;
 
 import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.search.model.service.SearchService;
 
 @Controller
 public class SearchController {
 	
 	@Autowired
 	private SearchService service;
-	
-	// 검색 결과 페이지로 이동
-//	@GetMapping("/main/search")
-//	public String search(String searchInput) {
-//		return "search/search";
-//	}
 	
 	
 	// 검색
@@ -44,37 +39,14 @@ public class SearchController {
 	
 	
 		model.addAttribute("searchResultMap", searchResultMap);
+		model.addAttribute("searchInput", searchInput);
 		
 		return "search/search";
 	}
 	
 	
-//	@GetMapping("")
+
 	
-	
-	
-	
-//	
-//	@GetMapping("/main/search/accountList")
-//	@ResponseBody
-//	public String selectAccountList(String searchInput, Model model) {
-//		// 검색_관련 계정 조회
-//		List<Member> accountList = service.selectAccount(searchInput);
-//		
-//		accountList = new ArrayList<Member>();
-//		
-//		model.addAttribute(accountList);
-//		
-//		return new Gson().toJson(accountList);
-//	}
-//			
-	
-	// 검색_해시태그 팔로우  -> 데이터베이스 다시 확인 (F_TO_TARGET_NO)
-//	@GetMapping("/main/search/followHashtag")
-//	public int followHashtag(@SessionAttribute("loginMember") Member loginMember) {
-//		
-//	}
-//	
 	
 	
 	

@@ -23,13 +23,17 @@ public class MemberDAO {
 	
 	/** 회원가입 DAO
 	 * @param inputMember
-	 * @return reult
+	 * @return result
 	 */
 	public int signUp(Member inputMember) {
+		// 회원가입
 		int result = sqlSession.insert("memberMapper.signUp", inputMember);
 		
+		System.out.println(inputMember);
+		
 		if(result > 0) {
-			result = sqlSession.insert("memberMapper.userPubPriFl", inputMember);
+			// 공개여부 설정에 회원번호 삽입
+			result = sqlSession.insert("memberMapper.insertUserPubPriFl", inputMember);
 		}
 		
 		return result; 
@@ -66,15 +70,23 @@ public class MemberDAO {
 	}
 
 
+	/** 자기자신 팔로우_ 회원번호 조회
+	 * @param memberEmail
+	 * @return memberNo
+	 */
 	public int selectMemberNo(String memberEmail) {
 		return sqlSession.selectOne("memberMapper.selectMemberNo", memberEmail);
 	}
 
 
+	
+	
+	/** 자기자신 팔로우_가입 시 자기 자신 팔로우 DAO
+	 * @param memberNo
+	 * @return result
+	 */
 	public int followMyself(int memberNo) {
 		return sqlSession.insert("memberMapper.followMyself", memberNo);
 	}
-
-
 	
 }

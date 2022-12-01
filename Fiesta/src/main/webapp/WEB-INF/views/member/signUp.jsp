@@ -74,7 +74,7 @@
 
             <div class="signUp-area"> <!-- 사용자 이름 -->
               <input type="text" name="memberNickname" id="memberNickname" value="" 
-                    maxlength="50" autocomplete="off" required readonly>
+                    maxlength="20" autocomplete="off" required readonly>
               <label for="memberNickname">사용자 이름(한글 제외)</label>
               
               <!-- 자동생성(새로고침) / 필수입력(체크) / 중복검사(체크,X) -->
