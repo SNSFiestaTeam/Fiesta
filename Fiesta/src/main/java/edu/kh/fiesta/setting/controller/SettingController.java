@@ -147,7 +147,8 @@ public class SettingController {
 			@SessionAttribute("loginMember") Member loginMember,  
 			RedirectAttributes ra, 
 			HttpServletRequest req) throws Exception{
-		
+				
+		System.out.println(memberProfileImg);
 		// 인터넷 주소로 접근할 수 있는 경로
 		String webPath = "/resources/images/profile/";
 		
@@ -156,6 +157,8 @@ public class SettingController {
 		//req.getSession().getServletContext() -> application scope 객체 얻어옴
 		
 		int result = service.updateImage(webPath, filePath, memberProfileImg, loginMember);
+		
+		System.out.println(memberProfileImg);
 		
 		String message = null;
 		if(result > 0) message = "프로필 이미지가 변경되었습니다.";

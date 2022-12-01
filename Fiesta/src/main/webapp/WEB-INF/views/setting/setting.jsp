@@ -33,7 +33,7 @@
         </section>
 
         <section class="setting-main">
-          <form action="/setting/updateImage" method="POST" id="profile-frm" name="profile-img" enctype="multipart/form-data">
+          <form action="/setting/updateImage" method="POST" id="profilefrm" name="memberProfileImg" enctype="multipart/form-data">
             <div class="di-1">
               <aside>
                 <button type="button" id="chg-img">
@@ -43,7 +43,7 @@
                   <c:if test="${!empty loginMember.memberProfileImg}">   
                   <img id="profile-image" src="${loginMember.memberProfileImg}">
                   </c:if>
-                </button>
+                </button><button id=prosubmit></button>
               </aside>
               <div class="main">
                 <h1>${loginMember.memberNickname}</h1>

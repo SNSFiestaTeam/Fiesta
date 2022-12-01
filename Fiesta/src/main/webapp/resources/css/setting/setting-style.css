@@ -1,4 +1,4 @@
-@import './root-style.css';
+@import '../root-style.css';
 
 .list-group > li:first-child{
     border-left: 3px solid #dd4132;
@@ -83,6 +83,7 @@ div > aside > button > img{
 .setting-main .di-1 #profile-image{
     height: 100%;
     text-align: right;
+    overflow: hidden;
 }
 
 form > div{

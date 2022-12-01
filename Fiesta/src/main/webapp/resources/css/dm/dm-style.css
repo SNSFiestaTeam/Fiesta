@@ -1,4 +1,4 @@
-@import './root-style.css';
+@import '../root-style.css';
 body {
     width: 100vw;
     height: 100vh;
@@ -44,7 +44,7 @@ body {
     flex-basis: 10%;
     background-color: white;
     border-bottom: 1px solid #ccc;
-    display: none;
+   
 }
 
 .left .down{
