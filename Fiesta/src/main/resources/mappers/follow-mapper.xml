@@ -54,8 +54,6 @@
       <result property="imgChangeName" column="IMG_CHANGE_NAME" />
       <result property="boardNo" column="BOARD_NO" />
   	</resultMap>
-	
-
 
 
 
@@ -82,12 +80,12 @@
 
 
 		<!-- HASHTAG 테이블에 삽입 -->
-		<insert id="insertHashtag" useGeneratedKeys="true">
-			<selectKey keyProperty="hashtagNo" resultType="_int" order="BEFORE">
-			 	SELECT SEQ_HASHTAG_NO FROM DUAL
-			</selectKey>
+		<insert id="insertHashtag" parameterType="hashMap" useGeneratedKeys="true">
+	   	<selectKey keyProperty="hashtagNo" resultType="_int" order="BEFORE" >
+	  		SELECT SEQ_HASHTAG_NO.NEXTVAL FROM DUAL
+	  	</selectKey>
 			INSERT INTO HASHTAG
-			VALUES(#{hashtagNo},#{searchInput}) 		
+			VALUES(#{hashtagNo}, #{keyword}) 		
 		</insert>
 
 		<!-- 해시태그 팔로우 -->

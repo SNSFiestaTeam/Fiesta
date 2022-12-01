@@ -22,8 +22,7 @@ public class FollowServiceImpl implements FollowService{
 	}
 	
 	// 해시태그 팔로우
-	@Transactional
-	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int followHashtag(Map<String, Object> map) {
 		return dao.followHashtag(map);
 	}

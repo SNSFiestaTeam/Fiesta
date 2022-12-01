@@ -39,7 +39,7 @@ public class FollowController {
 	@ResponseBody
 	public int followHashtagCheck(@SessionAttribute(value = "loginMember") Member loginMember, 
 								   String keyword, Model model ) {
-		System.out.println(keyword + "");
+		System.out.println(keyword + "출력");
 		
 		int result = 0;
 		
@@ -65,10 +65,7 @@ public class FollowController {
 	// 해시태그 팔로우
 	@GetMapping("/followHashtag")
 	@ResponseBody
-	public int followHashtag(@SessionAttribute(value = "loginMember") Member loginMember, 
-								String keyword,
-								@RequestHeader(value="referer") String referer,
-								Model model) {
+	public int followHashtag(@SessionAttribute(value = "loginMember") Member loginMember, String keyword) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", keyword);
@@ -77,14 +74,6 @@ public class FollowController {
 		// 성공하면 1 반환 / 실패하면 -1 반환   -> js에서 구분하기
 		return service.followHashtag(map);
 				
-		
-//		int result = service.followHashtag(map);
-//
-//		model.addAttribute("result", result);
-//		
-//		String path = "/search/?searchInput=" + keyword;
-//		
-//		return path;
 	}
 
 	
@@ -98,25 +87,9 @@ public class FollowController {
 		map.put("keyword", keyword);
 		map.put("memberNo", loginMember.getMemberNo());
 		
-		int result = service.unfollowHashtag(map);
-		
-		return result;
+		// 언팔로우 성공하면 1 반환 / 실패하면 -1
+		return service.unfollowHashtag(map);
 	}
-	
-	
-	
-	
-	// 계정 팔로우
-	@GetMapping("/followAccount")
-	public int followAcoount(@SessionAttribute(value = "loginMember") Member loginMember) {
-		
-		
-		
-		
-		
-		return 0;
-	}
-	
 	
 	
 	

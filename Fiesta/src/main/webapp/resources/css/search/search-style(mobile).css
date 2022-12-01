@@ -88,8 +88,8 @@
     }
     
     
-    .follow-button a{
-        min-width: 160px;
+    .follow-button{
+        min-width: 130px;
         border-radius: 5px;
         padding: 4px 0;
     
@@ -232,7 +232,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* align-items: center; */
     }
 
     .boardImage{
@@ -240,7 +239,7 @@
         height: 28vw;
         overflow: hidden;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         margin-bottom: 5px;
     }
@@ -248,8 +247,7 @@
     .boardImage a{
         width: 33%;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        margin: 5px;
     }
     
     

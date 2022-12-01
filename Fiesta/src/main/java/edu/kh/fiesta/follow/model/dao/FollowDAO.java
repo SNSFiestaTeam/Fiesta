@@ -41,10 +41,8 @@ public class FollowDAO {
 			
 		} else { // 해시태그 테이블에 존재하지 않음 -> 해시태그 테이블에 삽입 o -> 팔로우 테이블에 삽입 o
 			
-			
 			// 해시태그 테이블에 삽입
 			result = sqlSession.insert("followMapper.insertHashtag", map);
-			
 			
 			if(result > 0) { //해시태그 테이블에 삽입 성공 시, 팔로우 테이블에 삽입
 				

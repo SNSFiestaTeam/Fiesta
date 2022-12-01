@@ -94,7 +94,7 @@ main {
 }
 
 
-.follow-button a{
+.follow-button{
     width: 40%;
     border-radius: 5px;
     padding: 4px 0;
@@ -228,16 +228,14 @@ main {
     height: 320px;
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 5px;
 }
 
 .boardImage a{
-    flex-basis: 33%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 33%;
+    margin: 5px;
 }
 
 
