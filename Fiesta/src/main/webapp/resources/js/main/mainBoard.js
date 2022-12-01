@@ -687,6 +687,7 @@ function createBoard(board) {
             .nextElementSibling.firstElementChild.firstElementChild;
         commentInput.value = '';
         commentInput.value = '@' + commentMemberIdA.innerText + ' ';
+        commentInput.focus();
 
         upperCommentNo = commentNoInput.value;
         console.log("upperCommentNo: " + upperCommentNo);
@@ -1030,6 +1031,7 @@ function selectCommentList(boardNo, commentListUl) {
                 .nextElementSibling.firstElementChild.firstElementChild;
             commentInput.value = '';
             commentInput.value = '@' + commentMemberIdA.innerText + ' ';
+            commentInput.focus();
 
             upperCommentNo = comment.commentNo;
             console.log("upperCommentNo: " + upperCommentNo);
@@ -1040,19 +1042,33 @@ function selectCommentList(boardNo, commentListUl) {
           hoverBtn.setAttribute('type', 'button');
           hoverBtn.classList.add('fa-solid', 'fa-ellipsis', 'hover-btn');
 
+          // 댓글 ... 버튼에 클릭 이벤트 추가
           hoverBtn.addEventListener('click', function () {
             const commentMenu = document.getElementById('commentMenu');
             const loginCommentMenu = document.getElementById('commentMenuL');
+            const body = document.getElementsByTagName('body')[0];
 
-            if(commentMemberIdA.innerText == memberNickname) {
+            console.log(commentMemberIdA.innerText);
+            console.log(memberNickname);
+
+            deleteCommentNo = comment.commentNo;
+            deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
+              .parentElement.nextElementSibling.value;
+            deleteCommentUl = commentListUl;
+
+            console.log("deleteCommentNo: " + deleteCommentNo);
+            console.log("deleteBoardNo: " + deleteBoardNo);
+            console.log("deleteCommentUl: " + deleteCommentUl);
+
+            if (commentMemberIdA.innerText == memberNickname) {
               // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
-              loginCommentMenu.style.display = "flex";
+              loginCommentMenu.style.display = 'flex';
             } else {
               commentMenu.style.display = 'flex';
             }
 
             body.classList.add('scrollLock');
-          });
+        });
 
           createReply.append(commentCreateDate, replyBtn, hoverBtn);
 
@@ -1260,6 +1276,7 @@ function selectReplyList(commentNo, commentLi) {
               nextElementSibling.firstElementChild.firstElementChild;
           commentInput.value = '';
           commentInput.value = '@' + replyMemberIdA.innerText + ' ';
+          commentInput.focus();
 
           upperCommentNo = commentNo;
           console.log("upperCommentNo: " + upperCommentNo);
@@ -1272,8 +1289,22 @@ function selectReplyList(commentNo, commentLi) {
 
         // 답글 ... 버튼에 클릭 이벤트 추가
         hoverBtn.addEventListener('click', function () {
-          const commentMenu = document.getElementById('commentMenu');
-          commentMenu.style.display = 'flex';
+          console.log(replyMemberIdA.innerText);
+          console.log(memberNickname);
+
+          deleteCommentNo = comment.commentNo;
+          deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
+            .parentElement.nextElementSibling.value;
+          
+          console.log(deleteCommentNo);
+          console.log(deleteBoardNo);
+
+          if (replyMemberIdA.innerText == memberNickname) {
+            // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
+            loginCommentMenu.style.display = 'flex';
+          } else {
+            commentMenu.style.display = 'flex';
+          }
 
           body.classList.add('scrollLock');
         });

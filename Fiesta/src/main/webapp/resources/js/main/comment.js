@@ -116,6 +116,7 @@ for (let i = 0; i < replyBtn.length; i++) {
         .nextElementSibling.firstElementChild.firstElementChild;
 
     input.value = '@' + commentId[i].innerText;
+    input.focus();
 
     upperCommentNo = document.getElementsByClassName('comment-no')[i].value;
     console.log('upperCommentNo: ' + upperCommentNo);
@@ -331,6 +332,7 @@ function selectCommentListM(boardNo, commentListUl) {
             const commentInput = document.getElementById('commentInputM');
             commentInput.value = '';
             commentInput.value = '@' + commentMemberIdA.innerText + ' ';
+            commentInput.focus();
 
             upperCommentNo = commentNoInput.value;
             console.log('upperCommentNo: ' + upperCommentNo);
@@ -553,6 +555,7 @@ function selectReplyListM(commentNo, commentLi) {
           const commentInput = document.getElementById('commentInputM');
           commentInput.value = '';
           commentInput.value = '@' + replyMemberIdA.innerText + ' ';
+          commentInput.focus();
 
           upperCommentNo = commentNo;
           console.log("upperCommentNo: " + upperCommentNo);
@@ -565,6 +568,16 @@ function selectReplyListM(commentNo, commentLi) {
 
         // 답글 ... 버튼에 클릭 이벤트 추가
         hoverBtn.addEventListener('click', function () {
+          console.log(replyMemberIdA.innerText);
+          console.log(memberNickname);
+
+          deleteCommentNo = comment.commentNo;
+          deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
+            .parentElement.nextElementSibling.value;
+          
+          console.log(deleteCommentNo);
+          console.log(deleteBoardNo);
+
           if (replyMemberIdA.innerText == memberNickname) {
             // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
             loginCommentMenu.style.display = 'flex';
@@ -600,10 +613,7 @@ for (let i = 0; i < moreReplyBtn.length; i++) {
 
 // ------------------------------------------------------------------------------------------------
 
-let deleteBoardNo = 0;
-let deleteCommentNo = 0;
-let deleteCommentUl = null;
-let deleteReplyCount = 0;
+
 
 // 댓글 ...아이콘 클릭 시 메뉴창
 const hoverBtn = document.getElementsByClassName('hover-btn');
@@ -633,9 +643,9 @@ for (let item of hoverBtn) {
         item.parentElement.parentElement.parentElement.previousElementSibling
           .value;
 
-      deleteReplyCount =
-        item.parentElement.parentElement.parentElement.nextElementSibling
-          .firstElementChild.innerText;
+      
+      console.log(deleteCommentUl);
+      
     } else {
       commentMenu.style.display = 'flex';
     }
@@ -666,34 +676,12 @@ commentDeleteBtn.addEventListener('click', () => {
   console.log("deleteCommentNo: " + deleteCommentNo);
   console.log(deleteCommentUl);
 
-
-  if (deleteReplyCount > 0) {
-    // 답글 1개 이상이면
-    // 댓글 내용을 삭제된 댓글입니다로 바꾸기
-    $.ajax({
-      url: '/comment/deleteContent',
-      data: { commentNo: deleteCommentNo },
-      success: (result) => {
-        if (result > 0) {
-          selectCommentList(deleteBoardNo, deleteCommentUl);
-        } else {
-          console.log('댓글 삭제 실패');
-        }
-      },
-      error: () => {
-        console.log('댓글 삭제 에러');
-      },
-    });
-  }
-
-  if (deleteReplyCount == 0) {
-    // 답글이 없으면 삭제하기
-
     $.ajax({
       url: '/comment/delete',
-      data: { commentNo: deleteCommentNo },
+      data: { "commentNo": deleteCommentNo },
       success: (result) => {
         if (result > 0) {
+          loginCommentMenu.style.display = 'none';
           selectCommentList(deleteBoardNo, deleteCommentUl);
         } else {
           console.log('댓글 삭제 실패');
@@ -703,7 +691,6 @@ commentDeleteBtn.addEventListener('click', () => {
         console.log('댓글 삭제 에러');
       },
     });
-  }
 });
 
 

@@ -265,6 +265,11 @@
         var memberProfileImg = "${loginMember.memberProfileImg}";
         var upperCommentNo = 0;
         var boardNo;
+
+        var deleteBoardNo;
+        var deleteCommentNo;
+        var deleteCommentUl;
+        var deleteReplyCount;
       </script>
     </c:if>
 
