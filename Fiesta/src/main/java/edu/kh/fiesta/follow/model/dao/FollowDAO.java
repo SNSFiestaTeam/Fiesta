@@ -30,23 +30,45 @@ public class FollowDAO {
 	 */
 	public int followHashtag(Map<String, Object> map) {
 		
-		// 해시태그 테이블에 삽입
-		int result = sqlSession.insert("followMapper.insertHashtag", map);
+		// 해시태그 테이블에 존재하는지 확인하기
+		int result = sqlSession.selectOne("followMapper.hashtagInsertCheck", map);
 		
-		// 삽입 성공 시 팔로우 테이블에 삽입 (이미 등록되어 있는 경우에도 해시태그번호가 다르게 들어감)
-		if(result > 0) {
+		if(result > 0) { // 해시태그 테이블에 이미 존재 -> 해시태그 테이블에 삽입x -> 팔로우테이블에 바로 삽입
+			
+			// 팔로우 테이블에 삽입
 			result = sqlSession.insert("followMapper.followHashtag", map);
+			
+			
+		} else { // 해시태그 테이블에 존재하지 않음 -> 해시태그 테이블에 삽입 o -> 팔로우 테이블에 삽입 o
+			
+			
+			// 해시태그 테이블에 삽입
+			result = sqlSession.insert("followMapper.insertHashtag", map);
+			
+			
+			if(result > 0) { //해시태그 테이블에 삽입 성공 시, 팔로우 테이블에 삽입
+				
+				// 팔로우 테이블에 삽입
+				result = sqlSession.insert("followMapper.followHashtag", map);
+			
+			} else {  // 삽입 실패 시
+				result = -1;
+				System.out.println("해시태그 테이블 삽입 실패");
+			}
 		}
+		
 		return result;
 	}
 
 
+	
+	
 	/** 해시태그 언팔로우 DAO
 	 * @param map
 	 * @return result
 	 */
 	public int unfollowHashtag(Map<String, Object> map) {
-		return 0;
+		return sqlSession.delete("followMapper.unfollowHashtag", map);
 	}
 
 

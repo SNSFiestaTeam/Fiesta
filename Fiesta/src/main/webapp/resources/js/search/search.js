@@ -10,17 +10,27 @@
                 // 요소.removeAttribute("속성명")
     
 
+// 검색창에 검색 키워드 남겨놓기
+
+const searchInput = document.getElementById("searchInput");
+const params = new URL(location.href).searchParams;  // 주소에서 쿼리스트링만 분리한 객체
+const keyword = params.get("query");
+
+(()=>{
+    searchInput.value = keyword;
+})();
+
+
+
 
 // 해시태그 팔로우 버튼
 const followHashtagBtn = document.getElementById("followHashtagBtn");
-const searchInput = document.getElementById("searchInput");
-
 
 // 해시태그 팔로우 여부에 따라 화면 전환
 (()=>{
     $.ajax({
         url: "/followHashtagCheck",
-        data: {"searchInput" : searchInput.value},
+        data: {"keyword" : keyword},
         type: "GET",
         success: (result) => {
 

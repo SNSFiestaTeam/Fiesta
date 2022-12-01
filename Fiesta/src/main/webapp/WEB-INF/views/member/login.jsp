@@ -40,7 +40,7 @@
 
           <!-- 패스워드 -->
           <div class="login-area">
-            <input type="password" name="memberPw" id="memberPw" value="pass01!" 
+            <input type="password" name="memberPw" id="memberPw" value="pass01!!" 
                 maxlength="30" required readonly>
             <label for="memberPw">비밀번호</label>
           </div>
