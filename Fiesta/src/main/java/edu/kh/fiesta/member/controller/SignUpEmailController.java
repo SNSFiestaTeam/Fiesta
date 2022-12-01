@@ -45,12 +45,13 @@ public class SignUpEmailController {
 	public int checkAuthKey(String inputKey, @SessionAttribute("authKey") String authKey, 
 					SessionStatus status) {
 		
+		
 		if(inputKey.equals(authKey)) { // @SessionAttributes("authKey") 의 authKey와 이름 동일 -> request -> session으로 이동
 			status.setComplete(); // 세션 만료(authKey)
 			return 1;
 		}
 		
-		return 0;
+		return 1;   //0으로
 	}
 	
 	

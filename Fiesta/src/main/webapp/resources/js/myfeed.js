@@ -7,6 +7,7 @@ const self = document.getElementById("self");
 const profileContainer = document.getElementById("profile-container");
 const editClose = document.getElementById("edit-close");
 
+
 followBtn.addEventListener("click", function(){
 
     $.ajax({
@@ -157,9 +158,9 @@ followingClose.addEventListener("click", function(){
 })
 
 followingContainer.addEventListener("click", function(){
-    followingContainer.style.display ="none";
-    scrollrock.style.overflow = "visible";
-    document.getElementById("followingList").innerHTML ="";
+        followingContainer.style.display ="none";
+        scrollrock.style.overflow = "visible";
+        document.getElementById("followingList").innerHTML ="";
 })
 
 self.addEventListener("click", function(){
@@ -172,3 +173,82 @@ editClose.addEventListener("click", function(){
     scrollrock.style.overflow = "visible";
 })
 
+const feedSection = document.querySelector(".feed-section");
+let listEnd = feedSection.lastElementChild;
+const option = {
+  root: null,
+  rootMargin: "0px 0px 0px 0px",
+  threshold: 1.0,
+};
+
+const observer = new IntersectionObserver(selectBoardImgList, option);
+observer.observe(listEnd);
+let cp = 2;
+    
+function selectBoardImgList() {
+
+    $.ajax({
+        url : "/feed/" + memberNo + "/selectBoardImgList",
+        type : "GET",
+    data : {"memberNo" : memberNo, "cp" : cp},
+    dataType : "json",
+    success : (map) => {
+        console.log(map.boardImgList);
+
+        const boardImgList = map.boardImgList;
+        const pagination = map.pagination;
+        cp++;
+
+        for(let boardImg of boardImgList) {
+            
+            const feedSection = document.getElementById("feed-section");
+            
+            const imgContainer = document.createElement("div");
+            imgContainer.classList.add("img-container");
+            
+            feedSection.append(imgContainer);
+            
+            for(let boardImg of boardImgList){
+                
+                const boardImgContainer = document.createElement("a");
+                boardImgContainer.href = "/feed/"+ loginMember.memberNickname;
+                
+                imgContainer.append(boardImgContainer);
+                
+                const feedImg = document.createElement("img");
+                feedImg.classList.add("feed-img");
+                feedImg.setAttribute("src", "/resources/images/feed/feed.png");
+                
+                const hoverIconContainer = document.createElement("hover-icon-container")
+                hoverIconContainer.classList.add("hover-icon-container");
+                
+                boardImgContainer.append(feedImg, hoverIconContainer);
+                
+                const faHeart = document.createElement("i");
+                faHeart.classList.add("fa-regular fa-heart");
+                
+                const faComment = document.createElement("i");
+                faComment.classList.add("fa-regular fa-comment");
+                
+                boardImgContainer.append(faComment, faHeart);
+                
+                const boardLikeSpan = document.createElement("span");
+                const boardCommentSpan = document.createElement("span");
+                
+                boardLikeSpan.innerText = board.likeCount;
+                boardCommentSpan.innerText = board.commentCount;
+                
+                faHeart.append(boardLikeSpan);
+                faComment.append(boardCommentSpan);
+                
+            }
+            
+        }
+    },
+    error : () => {
+        console.log("게시글 오류 발생");
+    }
+    
+});
+
+}
