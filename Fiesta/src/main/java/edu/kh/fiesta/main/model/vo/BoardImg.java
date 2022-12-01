@@ -16,6 +16,7 @@ public class BoardImg {
 	private String imgOriginalName;
 	private String imgChangeName;
 	private int boardNo;
+	private int memberNo;
 	
 	
 	

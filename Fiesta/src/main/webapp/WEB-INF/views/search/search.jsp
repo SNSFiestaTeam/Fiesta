@@ -40,14 +40,23 @@
         -->
 
         <section class="keywordResult-section">
+            <%-- 검색 결과 대표 이미지 (인기게시글로) --%>
             <div class="keywordPicture">
-                <img src="../../resources/images/square/cat1.jpg">
+                <c:if test="${not empty hotBoardList}">  <%-- 있으면 인기글 첫번째 이미지 --%>
+                  <c:forEach var="hotItem" items="${hotBoardList}" begin="0" end="0">
+                    <a href="#"><img src="${hotItem.imgPath}" alt="" class="keywordpPic"></a> 
+                  </c:forEach>
+                </c:if>
+
+                <c:if test="${empty hotBoardList}"> <%-- 없으면 기본이미지 --%>
+                    <a href="#"><img src="/resources/images/default/defaultImg.png" alt="" class="keywordpPic"></a> 
+                </c:if>
             </div>
 
             <div class="keyword-area">
                 <div>
                     <div class="searchKeyword">
-                        <script>searchInput.value</script>
+                        #${searchInput}
                     </div>
                 </div>    
                 <div class="total">
@@ -62,7 +71,7 @@
                 </div>
 
                 <div class="follow-button">
-                    <a href="/main/search/followHashtag">팔로우</a>
+                    <a href="/search/followHashtag" id="followHashtagBtn"></a>
                 </div>
             </div>
         </section>
@@ -154,32 +163,32 @@
               최근 게시글
           </div>
 
-          <c:if test="${not empty recentBoardList}}">
-              <div class="boardResult">
-                <c:if test="${fn:length(recentBoardList) > 0}">
-                  <div class="boardImage">
-                    <c:forEach var="recentItem" items="${recentBoardList}" begin="0" end="2">
-                      <a href="#"><img src="${recentItem.imgPath}" alt=""></a> 
-                    </c:forEach>
-                  </div>
-                </c:if>
-               
-                <c:if test="${fn:length(recentBoardList) > 3}">
-                  <div class="boardImage">
-                    <c:forEach var="recentItem" items="${recentBoardList}" begin="3" end="5">
-                      <a href="#"><img src="${recentItem.imgPath}" alt=""></a> 
-                    </c:forEach>
-                  </div>
-                </c:if>
-                
-                <c:if test="${fn:length(recentBoardList) > 6}">
-                  <div class="boardImage">
-                    <c:forEach var="recentItem" items="${recentBoardList}" begin="6" end="8">
-                      <a href="#"><img src="${recentItem.imgPath}" alt=""></a> 
-                    </c:forEach>
-                  </div>
-                </c:if>
-              </div>
+          <c:if test="${not empty recentBoardList}"> 
+            <div class="boardResult">
+              <c:if test="${fn:length(recentBoardList) > 0}">
+                <div class="boardImage">
+                  <c:forEach var="recentItem" items="${recentBoardList}" begin="0" end="2">
+                    <a href="#"><img src="${recentItem.imgPath}" alt=""></a> 
+                  </c:forEach>
+                </div>
+              </c:if>
+
+              <c:if test="${fn:length(recentBoardList) > 3}">
+                <div class="boardImage">
+                  <c:forEach var="recentItem" items="${recentBoardList}" begin="3" end="5">
+                    <a href="#"><img src="${recentItem.imgPath}" alt=""></a> 
+                  </c:forEach>
+                </div>
+              </c:if> 
+
+              <c:if test="${fn:length(recentBoardList) > 6}">
+                <div class="boardImage">
+                  <c:forEach var="recentItem" items="${recentBoardList}" begin="6" end="8">
+                   <a href="#"><img src="${recentItem.imgPath}" alt=""></a> 
+                  </c:forEach>
+                </div>              
+              </c:if>
+            </div>
           </c:if>
 
           <c:if test="${empty recentBoardList}">
