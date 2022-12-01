@@ -47,7 +47,7 @@ public class MemberController {
 			
 		}else {
 			path = "/";
-			ra.addFlashAttribute("message", "아이디, 비밀번호가 일치하지 않습니다😢");  
+			ra.addFlashAttribute("message", "아이디, 비밀번호가 올바르지 않습니다😢");  
 			
 		}
 		return "redirect:"+ path;

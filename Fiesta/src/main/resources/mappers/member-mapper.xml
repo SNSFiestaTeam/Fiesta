@@ -31,10 +31,21 @@
   
   
   <!-- 회원가입 -->
-  <insert id="signUp" parameterType="edu.kh.fiesta.member.model.vo.Member">
+  <insert id="signUp" parameterType="Member" useGeneratedKeys="true">
+   	<selectKey keyProperty="memberNo" resultType="_int" order="BEFORE" >
+  		SELECT SEQ_MEMBER_NO.NEXTVAL FROM DUAL
+  	</selectKey>
 	  	INSERT INTO "MEMBER"
-			VALUES(SEQ_MEMBER_NO.NEXTVAL, #{memberEmail}, #{memberPw}, #{memberName}, #{memberNickname}, NULL, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+			VALUES(#{memberNo}, #{memberEmail}, #{memberPw}, #{memberName}, #{memberNickname}, NULL, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
   </insert>
+  
+  
+  <!-- 회원가입 후 좋아요, 조회수 공개 여부에 회원번호 삽입 -->
+  <insert id="insertUserPubPriFl">
+  	INSERT INTO "SETTING"
+  	VALUES(#{memberNo}, DEFAULT)
+  </insert>
+  
   
   
   <!-- 회원가입_이메일 중복 체크 -->
@@ -51,38 +62,36 @@
   		SELECT COUNT(*)
   		FROM "MEMBER"	
   		WHERE MEMBER_NICKNAME = #{memberNickname}
+  		AND SECESSION_FL ='N'
   </select>
-	<!-- AND SECESSION_FL ='N' -->
-  
-  
-  <!-- 회원가입 후 좋아요, 조회수 공개 여부 -->
-  <insert id="userPubPriFl">
-  	INSERT INTO "SETTING"
-  	VALUES(#{memberNo}, DEFAULT)
-  </insert>
-  
-  
   
   <!-- 계정찾기_비밀번호 재설정 -->
   <update id="updatePw">
   	UPDATE MEMBER
   	SET MEMBER_PW = #{memberPw}
   	WHERE MEMBER_EMAIL = #{memberEmail}
+  	AND SECESSION_FL ='N'
   </update>
   
   
-  
+  <!-- 자기자신 팔로우 위한 회원번호 조회 -->
   <select id="selectMemberNo" resultType="_int">
+  
   	SELECT MEMBER_NO
   	FROM MEMBER
   	WHERE MEMBER_EMAIL = #{memberEmail}
+  	AND SECESSION_FL ='N'
   </select>
   
   
+  <!-- 가입 시 자기 자신 팔로우 -->
   <insert id="followMyself">
   	INSERT INTO FOLLOW
   	VALUES(#{memberNo}, #{memberNo}, 'M', 'Y')
   </insert>
+  
+  
+
   
   
 </mapper>

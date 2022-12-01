@@ -1,4 +1,4 @@
-package edu.kh.fiesta.search;
+package edu.kh.fiesta.search.model.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.search.model.dao.SearchDAO;
 
 @Service
 public class SearchServiceImpl implements SearchService{
@@ -28,14 +29,9 @@ public class SearchServiceImpl implements SearchService{
 		return dao.selectBoardTotal(searchInput);
 	}
 
-	// 검색_관련 계정 조회
-//	@Override
-//	public List<Map<String, Object>> selectAccount(String searchInput) {
-//		return dao.selectAccount(searchInput);
-//	}
 
 	
-	
+	// 검색 결과 조회 Map
 	@Override
 	public Map<String, Object> selectSearchResult(String searchInput) {
 		
@@ -55,8 +51,10 @@ public class SearchServiceImpl implements SearchService{
 		searchResultMap.put("hotBoardList", hotBoardList);
 		searchResultMap.put("recentBoardList", recentBoardList);
 		
-		
 		return searchResultMap;
 	}
+
+	
+
 
 }

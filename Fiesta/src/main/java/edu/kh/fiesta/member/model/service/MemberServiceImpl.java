@@ -94,5 +94,4 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updatePw(member);
 	}
 
-
 }
