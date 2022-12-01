@@ -43,7 +43,7 @@
         /* border: 1px solid red; */
         width: 100%;
         flex-basis: 100%;
-        padding-top : 5px;
+        padding-top : 25px;
     
         display: flex;
         flex-direction: column;
@@ -52,10 +52,14 @@
     }
     
     
-    .keywordPicture img{
-        height: 100%;
-        width: 150px;
+    .keywordpPic{
+        /* height: 100%; */
+        height: 160px;
+        width: 160px;
         border-radius: 50%;
+    
+        margin-top: 10px;
+        margin-left: 10px;
     }
     
     
@@ -76,6 +80,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 3px 0;
     }
     
     .total-number{
@@ -83,24 +88,42 @@
     }
     
     
-    .follow-button{
-        min-width: 80px;
-        background-color: var(--fiesta-color);
+    .follow-button a{
+        min-width: 160px;
         border-radius: 5px;
-        padding: 2px 0;
+        padding: 4px 0;
     
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    
-    .follow-button a{
-        color: white;
-        font-weight: 500;
+
         font-size: 0.9em;
+        font-weight: 500;
+
+        /* background-color: var(--fiesta-color);
+        color: white;
+        border: none; */
     }
     
-    
+    /* --------------------------------------------------- */
+    .followButton{
+        background-color: var(--fiesta-color);
+        color: white;
+        border: none;
+    }
+
+
+    .unfollowButton{
+        background-color: gray;
+        color: white;
+        border: 1px solid gray;
+    }
+    /* --------------------------------------------------- */
+
+
+
+
+
     
     /* 검색결과 - 관련 있는 계정 */
     .accountResult-section{
@@ -143,10 +166,14 @@
     }
     
     .account-Group{
+        height: 105px;
+        width: 65px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+        
     }
     
     .account-Group a{
@@ -160,28 +187,34 @@
         width: 80%;
         border-radius: 50%;
         margin-bottom: 8px;
+        margin-left: auto;
     }
     
     .profileNickname{
         font-size: 0.7em;
+        white-space: nowrap;
+        margin-left: auto;
+        margin-right: 4px;
     }
     
     .follow-button-small a{
         font-size: 0.7em;
         font-weight: bold;
         color: var(--fiesta-color);
+        margin-top: 4px;
+        margin-left: 10px;
     }
     
     
     
     /* 검색결과 - 인기게시글(사진) 섹션 */
     .boardResult-section{
-        flex-basis: 60%;
-        width: 100%;
-        /* border: 1px solid black; */
-    
-        display: flex;
-        flex-direction: column;
+    flex-basis: 100%;
+    width: 100%;
+    /* border: 1px solid black; */
+
+    display: flex;
+    flex-direction: column;
     }
     
     .boardResult-section > div:first-child{ /* 인기 게시글 */
@@ -194,23 +227,26 @@
     .boardResult{
         width: 100%;
         height: 100%;
-    
+        margin-left: 5%;
+
         display: flex;
         flex-direction: column;
         justify-content: center;
+        /* align-items: center; */
     }
-    
-    
+
     .boardImage{
-        width: 99vw;
-        height: 33vw;
+        width: 84vw;
+        height: 28vw;
+        overflow: hidden;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 5px;
     }
     
     .boardImage a{
-        flex-basis: 33%;
+        width: 33%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -230,6 +266,7 @@
         margin-bottom: 7px;
         font-weight: bold;
     }
+
 
     .emptyResultMessage{
         font-size: 0.9em;

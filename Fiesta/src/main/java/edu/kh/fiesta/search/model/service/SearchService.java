@@ -1,4 +1,4 @@
-package edu.kh.fiesta.search;
+package edu.kh.fiesta.search.model.service;
 
 import java.util.List;
 import java.util.Map;
@@ -25,5 +25,8 @@ public interface SearchService {
 	 * @return searchResultMap
 	 */
 	Map<String, Object> selectSearchResult(String searchInput);
+
+	
+
 
 }

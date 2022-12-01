@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="searchMapper">
+<mapper namespace="followMapper">
 	
 		<!--   <resultMap type="edu.kh.project.member.model.vo.Member" id="member"></resultMap> -->
 	 	<resultMap type="Member" id="member_rm">
@@ -38,7 +38,6 @@
       <result property="bookmarkCheck" column="BOOKMARK_CHECK" />
       <result property="myNo" column="MY_NO" />
       <result property="imgPath" column="IMG_PATH" />
-      
   	</resultMap>
 	
 	
@@ -56,81 +55,35 @@
       <result property="boardNo" column="BOARD_NO" />
   	</resultMap>
 	
-	
-	
-	
-		<!-- 검색_관련 계정 수 -->
-		<select id="selectAccountTotal" parameterType="string" resultType="_int">
+
+		<!-- 해시태그 팔로우 여부 조회 -->
+		<select id="followHashtagCheck" parameterType="hashMap" resultType="_int">
 			SELECT COUNT(*)
-			FROM "MEMBER" 
-			WHERE (MEMBER_NICKNAME LIKE '%${searchInput}%'
-			OR MEMBER_NAME LIKE '%${searchInput}%')
-			AND SECESSION_FL = 'N'
+			FROM FOLLOW
+			WHERE F_FROM_MEMBER_NO = #{memberNo}
+			AND FOLLOW_TYPE = 'H'
+			AND F_TO_TARGET_NO = (SELECT HASHTAG_NO
+									FROM HASHTAG 
+									WHERE HASHTAG_CONTENT LIKE '%${searchInput}%')			
 		</select>
-		<!-- '&${searchInput}% -->
-		
-		<!-- 검색_게시글 수 -->
-		<select id="selectBoardTotal" parameterType="string" resultType="_int">
-			SELECT COUNT(*)
-			FROM "BOARD" 
-			JOIN "MEMBER" USING(MEMBER_NO)
-			WHERE BOARD_CONTENT LIKE '%#${searchInput}%'
-			AND BOARD_DEL_FL = 'N'
-			AND SECESSION_FL = 'N'	
-		</select>
-	
-	
-	
-		<!-- 검색_관련 계정 조회 -->
-		<select id="selectAccountList" resultMap="member_rm">
-			SELECT MEMBER_PROFILE_IMG, SUBSTR(MEMBER_NICKNAME, 1, 8) MEMBER_NICKNAME		
-			FROM "MEMBER" 
-			WHERE SECESSION_FL = 'N'
-			AND (MEMBER_NICKNAME LIKE '%${searchInput}%'
-			OR MEMBER_NAME = '${searchInput}')
-			<![CDATA[AND ROWNUM <= 6 ]]>	
-		</select>
-		
-		<!-- 인기게시글 조회 -->
-		<select id="selectHotBoardList" resultMap="board_rm">
-				SELECT * 
-				FROM (SELECT B.BOARD_NO, BOARD_CREATE_DATE, MEMBER_NO,
-								(SELECT COUNT(*) 
-								FROM BOARD_LIKE BL 
-								WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
-								(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
-								FROM BOARD_IMG BI 
-								WHERE BI.BOARD_NO = B.BOARD_NO 
-								AND IMG_ORDER = 1) IMG_PATH				
-						FROM BOARD B
-						JOIN "MEMBER" USING(MEMBER_NO)
-						WHERE BOARD_CREATE_DATE > (SYSDATE - 30)
-						AND BOARD_CONTENT LIKE '%#${searchInput}%'
-						AND BOARD_DEL_FL = 'N'
-						AND MEMBER_OPEN_FL = 'Y'
-					ORDER BY LIKE_COUNT DESC)
-			<![CDATA[WHERE ROWNUM <= 9 ]]>
-		</select>
-  
-  	<!-- 최근 게시글 조회 -->
-	  <select id="selectRecentBoardList" resultMap="board_rm">
-			SELECT B.BOARD_NO, BOARD_CREATE_DATE,
-				(SELECT COUNT(*) FROM BOARD_LIKE BL 
-				WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
-				(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
-				FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
-				AND IMG_ORDER = 1) IMG_PATH
-			FROM BOARD B
-			JOIN MEMBER USING(MEMBER_NO)
-			WHERE BOARD_CONTENT LIKE '%#${searchInput}%'
-			AND BOARD_DEL_FL = 'N'
-			AND MEMBER_OPEN_FL = 'Y'
-			<![CDATA[AND ROWNUM <= 9 ]]>
-			ORDER BY BOARD_CREATE_DATE DESC 
-	  </select>
-  
-  
-  
-  
+
+
+		<!-- HASHTAG 테이블에 삽입 -->
+		<insert id="insertHashtag" useGeneratedKeys="true">
+			<selectKey keyProperty="hashtagNo" resultType="_int" order="BEFORE">
+			 	SELECT SEQ_HASHTAG_NO FROM DUAL
+			</selectKey>
+			INSERT INTO HASHTAG
+			VALUES(#{hashtagNo},#{searchInput}) 		
+		</insert>
+
+		<!-- 해시태그 팔로우 -->
+  	<insert id="followHashtag">
+			INSERT INTO FOLLOW
+			VALUES (#{memberNo}, #{hashtagNo}, 'H', DEFAULT)
+  	</insert>
+  	
+  	
+  	
   
 </mapper>
