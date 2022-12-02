@@ -155,7 +155,7 @@ for (let i = 0; i < postingBtn.length; i++) {
   
       commentInput[i].value = commentInput[i].value.replace(regEx2, (match) => {
         const tagName = match.replace("@", '');
-        return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
+        return "<a href='/feed"+tagName+"' class='hashtag'>"+match+"</a>"
       });
 
       console.log("바뀐 댓글 내용: "+ commentInput[i].value);
@@ -265,7 +265,7 @@ function selectCommentListM(boardNo, commentListUl) {
 
           const commentSpan = document.createElement('span');
           commentSpan.classList.add('comment-content-m');
-          commentSpan.innerHTML = comment.commentContent;
+          commentSpan.innerText = comment.commentContent;
 
           commentDiv2.append(commentMemberIdA, commentSpan);
 
@@ -487,7 +487,7 @@ function selectReplyListM(commentNo, commentLi) {
 
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content-m');
-        replySpan.innerHTML = comment.commentContent;
+        replySpan.innerText = comment.commentContent;
 
         replyDiv2.append(replyMemberIdA, mention, replySpan);
 

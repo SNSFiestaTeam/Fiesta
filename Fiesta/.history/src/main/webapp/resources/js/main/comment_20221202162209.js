@@ -143,9 +143,9 @@ for (let i = 0; i < postingBtn.length; i++) {
 
       // 해시태그 인식해서 a 태그로 감싸기
       const regEx = /(#[^\s#]+)/gm;
-      commentInput[i].value
+      const commentContent = commentInput[i].value
   
-      commentInput[i].value = commentInput[i].value.replace(regEx, (match) => {
+      commentContent = commentContent.replace(regEx, (match) => {
         const tagName = match.replace("#", '');
         return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
       });
@@ -153,12 +153,11 @@ for (let i = 0; i < postingBtn.length; i++) {
       // 언급 인식해서 a 태그로 감싸기
       const regEx2 = /(@[^\s@]+)/gm;
   
-      commentInput[i].value = commentInput[i].value.replace(regEx2, (match) => {
-        const tagName = match.replace("@", '');
-        return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
+      commentContent = commentContent.replace(regEx, (match) => {
+        const tagName = match.replace("#", '');
+        return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
       });
 
-      console.log("바뀐 댓글 내용: "+ commentInput[i].value);
 
 
       $.ajax({
@@ -167,7 +166,7 @@ for (let i = 0; i < postingBtn.length; i++) {
         data: {
           "memberNo": memberNo,
           "boardNo": boardNo[i].value,
-          "commentContent": commentInput[i].value,
+          "commentContent": commentContent,
           "upperCommentNo": upperCommentNo,
         },
         success: (result) => {
@@ -265,7 +264,7 @@ function selectCommentListM(boardNo, commentListUl) {
 
           const commentSpan = document.createElement('span');
           commentSpan.classList.add('comment-content-m');
-          commentSpan.innerHTML = comment.commentContent;
+          commentSpan.innerText = comment.commentContent;
 
           commentDiv2.append(commentMemberIdA, commentSpan);
 
@@ -487,7 +486,7 @@ function selectReplyListM(commentNo, commentLi) {
 
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content-m');
-        replySpan.innerHTML = comment.commentContent;
+        replySpan.innerText = comment.commentContent;
 
         replyDiv2.append(replyMemberIdA, mention, replySpan);
 

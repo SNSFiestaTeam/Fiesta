@@ -1005,7 +1005,7 @@ function selectCommentList(boardNo, commentListUl) {
 
           const commentSpan = document.createElement('span');
           commentSpan.classList.add('comment-content');
-          commentSpan.innerHTML = comment.commentContent;
+          commentSpan.innerText = comment.commentContent;
 
           commentDiv2.append(commentMemberIdA, commentSpan);
 
@@ -1249,7 +1249,7 @@ function selectReplyList(commentNo, commentLi) {
 
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content');
-        replySpan.innerHTML = comment.commentContent;
+        replySpan.innerText = comment.commentContent;
 
         replyDiv2.append(replyMemberIdA, mention, replySpan);
 

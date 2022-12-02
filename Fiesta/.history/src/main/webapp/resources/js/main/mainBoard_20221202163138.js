@@ -1249,7 +1249,7 @@ function selectReplyList(commentNo, commentLi) {
 
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content');
-        replySpan.innerHTML = comment.commentContent;
+        replySpan.innerText = comment.commentContent;
 
         replyDiv2.append(replyMemberIdA, mention, replySpan);
 
