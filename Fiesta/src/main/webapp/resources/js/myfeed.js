@@ -252,3 +252,15 @@ function selectBoardImgList() {
 });
 
 }
+
+const mainContainer = document.getElementsByClassName("main-container");
+const chk = document.getElementById("header-menu-toggle");
+mainContainer.addEventListener("click", () => {
+
+    if(chk.checked(true)) {
+        
+        chk.checked = false;
+    };
+
+});
+
