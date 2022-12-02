@@ -26,12 +26,20 @@
   	#{boardNo}, #{upperCommentNo})
   </insert>
   
+  <select id="selectReplyCount" resultType="_int">
+  	SELECT COUNT(*)
+  	FROM "COMMENT"
+  	WHERE UPPER_COMMENT_NO = #{commentNo}
+  </select>
+  
+  <!-- 댓글 내용 삭제 -->
   <update id="deleteCommentContent">
   	UPDATE "COMMENT" SET
   	COMMENT_CONTENT = '삭제된 내용입니다.'
   	WHERE COMMENT_NO = #{commentNo}
   </update>
   
+  <!-- 댓글 삭제 -->
   <delete id="deleteComment">
   	DELETE FROM "COMMENT"
   	WHERE COMMENT_NO = #{commentNo}

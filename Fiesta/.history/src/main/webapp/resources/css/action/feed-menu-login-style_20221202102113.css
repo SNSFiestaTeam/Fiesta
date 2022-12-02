@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+  text-decoration: none;
+  list-style: none;
+}
+@import './root-style.css';
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.feed-menu-container-login {
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000070;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.feed-menu-login {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.feed-menu-btn-login {
+  width: 100%;
+
+  flex-basis: 33%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feed-menu-btn-login  > button:hover {
+  background-color: rgba(250, 145, 103, 0.2);
+}
+
+.feed-menu-btn-login  > button:active {
+  font-size: 14px;
+}
+
+.feed-menu-btn-login  > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  color: black;
+  font-size: 15px;
+}
+
+.btn1 > button {
+  color: red;
+  font-weight: bold;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.btn1 > button,
+.btn2 > button {
+  border-bottom: 1px solid #ddd;
+}
+
+.btn3 > button {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
