@@ -28,12 +28,20 @@ const keyword = decodeURI((location.search).substring(13));     //lastindexOf("=
 (()=>{
     console.log(keyword);
     searchInput.value = keyword;
+    searchInput.style.color = 'lightgray';
+
+
+    searchInput.addEventListener("focus", () => {
+        searchInput.value = "";
+        searchInput.style.color = 'black';
+    });
+
 })();
 
 
 
 
-// 해시태그 팔로우 버튼
+// * 해시태그 팔로우 버튼 *
 const followHashtagBtn = document.getElementById("followHashtagBtn");
 
 // 해시태그 팔로우 여부에 따라 버튼 다르게
@@ -46,15 +54,15 @@ const followHashtagBtn = document.getElementById("followHashtagBtn");
 
             if(result > 0) {  // 팔로우한 상태
                 followHashtagBtn.innerHTML = "팔로잉";
-                followHashtagBtn.classList.add("unfollowButton");
-                followHashtagBtn.classList.remove("followButton");
+                followHashtagBtn.classList.add("unfollowHashtagBtn");
+                followHashtagBtn.classList.remove("followHashtagBtn");
                 console.log("팔로우한 상태");
             } 
 
             else if(result == 0 ){ // 팔로우 안 한 상태
                 followHashtagBtn.innerHTML = "팔로우";
-                followHashtagBtn.classList.add("followButton");
-                followHashtagBtn.classList.remove("unfollowButton");
+                followHashtagBtn.classList.add("followHashtagBtn");
+                followHashtagBtn.classList.remove("unfollowHashtagBtn");
                 console.log("팔로우 안 한 상태");
             } 
         },
@@ -65,6 +73,83 @@ const followHashtagBtn = document.getElementById("followHashtagBtn");
 
 
 followHashtagBtn.addEventListener("click", e => {
+
+    if(e.target.classList.contains('followHashtagBtn')){ // 팔로우 안 한 상태
+        
+        $.ajax({
+            url: "/followHashtag",
+            data:{"keyword" : keyword},  /* memberNo는 header에 전역변수로 선언 */
+            type: "GET",
+            success: (result) => {
+                if(result > 0){ 
+                    e.target.innerHTML = "팔로잉";
+                    e.target.classList.add("unfollowHashtagBtn");
+                    e.target.classList.remove("followHashtagBtn");
+                } else {
+                    console.log("팔로잉 실패");
+                }
+            },
+            error: () => {
+                console.log("해시태그 팔로우 오류");
+            }
+    
+        });
+    
+    } else { // 팔로우한 상태
+
+        $.ajax({
+            url: "/unfollowHashtag",
+            data:{"keyword" : keyword},
+            type: "GET",
+            success: (result) => {
+                if(result > 0) {  // 언팔로우 성공
+                    e.target.classList.innerHTML = "팔로우";
+                    e.target.classList.add("followHashtagBtn");
+                    e.target.classList.remove("unfollowHashtagBtn");
+                } else {
+                    console.log("팔로우 실패");
+                }
+            },
+            error : () => {console.log("해시태그 언팔로우 오류");}
+        });
+    }
+});
+
+
+
+
+// * 관련 계정 팔로우 *
+const followAccountBtn = document.getElementById("aFollow");
+
+// 계정 팔로우 여부에 따라 버튼 다르게
+(()=>{
+    $.ajax({
+        url: "/followAccountCheck",
+        data: {"keyword" : keyword},
+        type: "GET",
+        success: (result) => {
+
+            if(result > 0) {  // 팔로우한 상태
+                followAccountBtn.innerHTML = "팔로잉";
+                followAccountBtn.classList.add("unfollowButton");
+                followAccountBtn.classList.remove("followButton");
+                console.log("팔로우한 상태");
+            } 
+
+            else if(result == 0 ){ // 팔로우 안 한 상태
+                followAccountBtn.innerHTML = "팔로우";
+                followAccountBtn.classList.add("followButton");
+                followAccountBtn.classList.remove("unfollowButton");
+                console.log("팔로우 안 한 상태");
+            } 
+        },
+        error: (result) => {console.log("팔로우 여부 조회 오류");}
+    })
+})();
+
+
+
+followAccountBtn.addEventListener("click", e => {
 
     if(e.target.classList.contains('followButton')){ // 팔로우 안 한 상태
         
@@ -106,6 +191,20 @@ followHashtagBtn.addEventListener("click", e => {
         });
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 

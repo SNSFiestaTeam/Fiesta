@@ -48,7 +48,6 @@ public class FollowController {
 		return result;
 	}
 	
-
 	
 	
 	// 해시태그 팔로우
@@ -78,6 +77,18 @@ public class FollowController {
 		// 언팔로우 성공하면 1 반환 / 실패하면 -1
 		return service.unfollowHashtag(map);
 	}
+	
+	
+	
+	
+	// 계정 팔로우 여부 조회(버튼색 변경) -> 팔로우할지 언팔로우할지 결정
+	@GetMapping("/followAccountCheck")
+	public int followAccountCheck() {
+		
+		return 0;
+	}
+	
+	
 	
 	
 	

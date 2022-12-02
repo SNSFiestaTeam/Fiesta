@@ -88,14 +88,13 @@
 			VALUES(#{hashtagNo}, #{keyword}) 		
 		</insert>
 
+
 		<!-- 해시태그 팔로우 -->
   	<insert id="followHashtag">
 			INSERT INTO FOLLOW
 			VALUES (#{memberNo}, #{hashtagNo}, 'H', DEFAULT)
   	</insert>
-  	
-  	
-  	
+
   	
   	<!-- 해시태그 언팔로우 -->
   	<delete id="unfollowHashtag">
