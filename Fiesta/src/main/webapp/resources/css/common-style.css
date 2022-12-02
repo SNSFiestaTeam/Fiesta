@@ -337,3 +337,53 @@ nav i {
     right: 10px;
   }
 }
+
+#header-menu-toggle{
+  display: none;
+}
+
+label[for='header-menu-toggle'] {
+  cursor: pointer;
+}
+
+/* 체크박스 다음 div */
+#header-menu{
+  display: none;
+}
+
+/* 체크박스가 체크된 경우 다음 div */
+#header-menu-toggle:checked + div{
+  display: block;
+}
+
+.header-menu-parent{
+  position: relative;
+
+}
+
+#header-menu{
+  position: absolute;
+  top: 30px;
+  right: -10px;
+  z-index: 500;
+  width: 150px;
+  height: 100px;
+  background-color: white;
+  box-shadow: 0px 0px 1px gray;
+  border-radius: 6px;
+}
+
+
+#header-menu > a{
+  display: flex;
+  height: 50%;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#header-menu > a:first-child{
+  border-bottom: 1px solid #ccc;
+}
+
