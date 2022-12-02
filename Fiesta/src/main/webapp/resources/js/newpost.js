@@ -120,17 +120,19 @@ document.getElementById("basicImage").addEventListener("click", ()=>{
   });
 });
 
-// 사진크롭 
-var isInitialized = false;
-var cropper = '';
-var file = '';
-var _URL = window.URL || window.webkitURL;
 
-const zoomSlider = document.getElementById("zoomSlider");
+// // 사진크롭 
+// var isInitialized = false;
+// var cropper = '';
+// var file = '';
+// var _URL = window.URL || window.webkitURL;
+
+// const zoomSlider = document.getElementById("zoomSlider");
+
 //! 컴퓨터에서 선택
 
 
-document.getElementById("fileInput").addEventListener("change", (e) => {
+document.getElementById("cropperfile").addEventListener("change", (e) => {
   if (e.target.files[0] != undefined) {
     // 이벤트 발생한 요소에 선택된 파일이 있을 경우
     for (let i = 0; i < e.target.files.length; i++) {
@@ -152,16 +154,17 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
         const editFileImg = document.createElement("img");
         editFileDiv.classList.add("edit-file", "swiper-slide");
 
-        editFileImg.id = "editFile";
+        editFileImg.classList.add("ready");
+        editFileImg.id = "cropper-img";
 
         // 읽어온 URL을 editFileIm에 src요소로 추가
         editFileImg.setAttribute("src", e.target.result);
-        // 사진 크롭
-        editFileImg.classList.add('ready');
-        if (isInitialized == true) {
-          zoomSlider.val(0);
-          cropper.destroy();
-      }
+        // // 사진 크롭
+        // editFileImg.classList.add('ready');
+        // if (isInitialized == true) {
+        //   zoomSlider.val(0);
+        //   cropper.destroy();
+      // }
       // initCropper();
 
 
@@ -189,6 +192,7 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
         previewRemoveDiv.appendChild(times);
 
         filePreview.append(previewFileDiv);
+
 
         
         // 사진넘기게 하기 위해 swiper 작성구문
@@ -301,6 +305,8 @@ for (let value of form.values()) {
     reader.onload = ()=>{
       // console.log("값확인해볼거임");
       // console.log(reader.result);
+      // *text 부분 파일-------------------------------------------------------------
+      // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
     const swiperSildeDiv = document.createElement("div");
     const fileImg = document.createElement("img");
     
@@ -311,7 +317,9 @@ for (let value of form.values()) {
     swiperSildeDiv.append(fileImg);
     textFileSwiper.append(swiperSildeDiv);
 
-    // *text 접근성 부분 파일*
+        // *text 접근성 부분 파일*
+        // postFileText.style.display = "block";
+
         // <div class="postFileText">
         //   <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
         //   <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
@@ -364,12 +372,12 @@ const value = document.getElementById("value");
 // value.addEventListener("change", (e) => {
 //   zoomInOut.style.transform = "scale(${value})";
 // });
-zoomInOut.addEventListener("input", (e) => {
-  zoomInOut.innerHTML = e.target.value;
-  editFileImg.style.transform = "scale(${value})"; // value값만큼 확대
-  // editFileImg.style.zIndex = 1;
-  editFileImg.style.transition = "all 0.5s"; // 속도
-});
+// zoomInOut.addEventListener("input", (e) => {
+//   zoomInOut.innerHTML = e.target.value;
+//   editFileImg.style.transform = "scale(${value})"; // value값만큼 확대
+//   // editFileImg.style.zIndex = 1;
+//   editFileImg.style.transition = "all 0.5s"; // 속도
+// });
 
 
 // ! edit에서 파일 추가 버튼
@@ -393,8 +401,24 @@ addFileInput.addEventListener("change", (e) => {
         const editFileDiv = document.createElement("div");
         const editFileImg = document.createElement("img");
         editFileDiv.classList.add("edit-file", "swiper-slide");
+        editFileImg.classList.add("ready");
+        editFileImg.id = "cropper-img";
 
-        editFileImg.id = "editFile";
+
+
+        // ---------------------------------------------------------------------------
+
+
+        
+
+
+        // ---------------------------------------------------------------------------
+
+
+
+
+
+
 
         // 읽어온 URL을 editFileIm에 src요소로 추가
         editFileImg.setAttribute("src", e.target.result);
@@ -438,3 +462,88 @@ newPostAll.addEventListener("click", () => {
     },
   });
 });
+
+
+
+
+// Write Javascript code!
+var isInitialized = false;
+var cropper = '';
+var file = '';
+var _URL = window.URL || window.webkitURL;
+// Initialize Slider
+
+$(document).ready(function () {
+    $("#cropperfile")
+        .change(function (e) {
+            if (file = this.files[0]) {
+                var oFReader = new FileReader();
+                oFReader.readAsDataURL(file);
+                oFReader.onload = function () {
+
+                    $('#cropper-img').addClass('ready');
+                    if (isInitialized == true) {
+                        $('#zoom-slider').val(0);
+                        cropper.destroy();
+                    }
+                    initCropper();
+                }
+            }
+        });
+
+    $("#zoom-slider").slider({
+        orientation: "horizontal",
+        range: "min",
+        max: 1,
+        min: 0,
+        value: 0,
+        step: 0.0001,
+        slide: function () {
+            if (isInitialized == true) {
+                if (cropper.canvasData.naturalWidth < 600 || cropper.canvasData.naturalHeight < 400) {
+                    event.preventDefault();
+                } else {
+                    var currentValue = $("#zoom-slider").slider("value");
+                    var zoomValue = parseFloat(currentValue);
+                    cropper.zoomTo(zoomValue.toFixed(4));
+                }
+            }
+        }
+    });
+});
+
+function initCropper() {
+    var vEl = document.getElementById('cropper-img');
+    cropper = new Cropper(vEl, {
+        viewMode: 1,
+        dragMode: 'move',
+        aspectRatio: 1.5,
+        checkOrientation: false,
+        cropBoxMovable: false,
+        cropBoxResizable: false,
+        zoomOnTouch: false,
+        zoomOnWheel: false,
+        guides: false,
+        highlight: false,
+        ready: function (e) {
+            var cropper = this.cropper;
+            cropper.zoomTo(0);
+
+            var imageData = cropper.getImageData();
+            console.log("imageData ", imageData);
+            var minSliderZoom = imageData.width / imageData.naturalWidth;
+
+            $('#min-zoom-val').html(minSliderZoom.toFixed(4));
+
+            $(".cr-slider-wrap").show();
+            $("#zoom-slider").slider("option", "max", 1);
+            $("#zoom-slider").slider("option", "min", minSliderZoom);
+            $("#zoom-slider").slider("value", minSliderZoom);
+        }
+    });
+    isInitialized = true;
+}
+
+
+
+

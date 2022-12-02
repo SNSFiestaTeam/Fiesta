@@ -59,7 +59,7 @@
 @media (min-width: 1200px) {
   /* 1200px 이상  큰 노트북, 데스크톱 */
   .modal_post_section {
-    width: 755px;
+    width: 555px;
   }
 }
 
