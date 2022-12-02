@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.fiesta.follow.model.service.FollowService;
 import edu.kh.fiesta.member.model.vo.Member;
@@ -31,7 +29,6 @@ public class FollowController {
 	@ResponseBody
 	public int followHashtagCheck(@SessionAttribute(value = "loginMember") Member loginMember, 
 								   String keyword, Model model ) {
-		System.out.println(keyword + "출력");
 		
 		int result = 0;
 		
@@ -80,13 +77,30 @@ public class FollowController {
 	
 	
 	
+	//-----------------------------------------------------------------
 	
-	// 계정 팔로우 여부 조회(버튼색 변경) -> 팔로우할지 언팔로우할지 결정
+	
+	// 계정 팔로우 여부 조회(버튼색 변경)
 	@GetMapping("/followAccountCheck")
-	public int followAccountCheck() {
+	@ResponseBody
+	public int followAccountCheck(@SessionAttribute(value="loginMember") Member loginMember, int followToMemberNo) {
 		
-		return 0;
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("memberNo", loginMember.getMemberNo());
+		map.put("followToMemberNo", followToMemberNo);
+		
+		System.out.println(followToMemberNo + "출력");
+		return service.followAccountCheck(map);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

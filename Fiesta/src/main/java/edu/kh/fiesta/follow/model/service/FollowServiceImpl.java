@@ -34,6 +34,14 @@ public class FollowServiceImpl implements FollowService{
 	}
 
 	
+	
+	// 계정 팔로우 여부 조회
+	@Override
+	public int followAccountCheck(Map<String, Object> map) {
+		return dao.followAccountCheck(map);
+	}
+
+	
 
 
 }

@@ -1,3 +1,4 @@
+@import "../root-style.css";
 
 /* tablet */
 /* main의 min-width 수정  + 아래 글씨 크기 정도 수정 */
@@ -188,7 +189,7 @@
     .unfollowHashtagBtn{
         background-color: gray;
         color: white;
-        border: 1px solid gray;
+        /* border: 1px solid gray; */
     }
 
 
@@ -204,11 +205,6 @@
         border: none;
     }
     /* --------------------------------------------------- */
-
-
-
-
-
 
 
     /* 검색결과 - 인기게시글(사진) 섹션 */

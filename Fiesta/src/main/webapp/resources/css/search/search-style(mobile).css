@@ -1,3 +1,4 @@
+@import "../root-style.css";
 
 /* mobile */
 /* 전체적으로 수정 */
@@ -200,7 +201,6 @@
     .unfollowHashtagBtn{
         background-color: gray;
         color: white;
-        border: 1px solid gray;
     }
 
 
