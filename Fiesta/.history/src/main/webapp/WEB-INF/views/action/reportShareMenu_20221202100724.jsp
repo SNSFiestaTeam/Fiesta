@@ -3,10 +3,9 @@
 
 <div class="feed-menu-container-login" id="feedMenuLogin">
   <div class="feed-menu-login">
-    <div class="feed-menu-btn-login btn1"><button id="feedReportBtnLogin">신고</button></div>
-    <div class="feed-menu-btn-login btn2"><button id="feedShareBtnLogin">링크 복사</button></div>
-    <div class="feed-menu-btn-login btn3"><button id="feedShareBtnLogin">링크 복사</button></div>
-    <div class="feed-menu-btn-login btn4" ><button id="feedMenuCancelLogin">취소</button></div>
+    <div class="feed-menu-btn-login btn1"><button id="feedReportBtn">신고</button></div>
+    <div class="feed-menu-btn-login btn2"><button id="feedShareBtn">링크 복사</button></div>
+    <div class="feed-menu-btn-login btn3" ><button id="feedMenuCancel">취소</button></div>
   </div>
 </div>
 
