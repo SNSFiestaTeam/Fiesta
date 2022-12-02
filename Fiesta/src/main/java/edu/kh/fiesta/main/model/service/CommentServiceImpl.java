@@ -57,20 +57,25 @@ public class CommentServiceImpl implements CommentService{
 		return dao.selectReplyList(map);
 	}
 	
-	/** 댓글 내용 삭제
-	 *
-	 */
-	@Override
-	public int deleteCommentContent(int commentNo) {
-		return dao.deleteCommentContent(commentNo);
-	}
+
 	
 	/** 댓글 삭제
 	 *
 	 */
 	@Override
 	public int deleteComment(int commentNo) {
-		return dao.deleteComment(commentNo);
+		
+		int result = dao.selectReplyCount(commentNo);
+		
+		if(result > 0) {
+			result = dao.deleteCommentContent(commentNo);
+		}
+		
+		if(result == 0) {
+		  result = dao.deleteComment(commentNo);
+		}
+		
+		return result;
 	}
 	
 }
