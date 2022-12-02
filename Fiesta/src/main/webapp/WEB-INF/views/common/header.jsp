@@ -71,7 +71,7 @@
 
               <input type="checkbox" id="header-menu-toggle">
 
-              <div id="header-menu">
+              <div id="toggle-menu">
                   <a href="/feed/${loginMember.memberNickname}">프로필</a>
                   <a href="/feed/logout">로그아웃</a>
               </div>

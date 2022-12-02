@@ -347,7 +347,7 @@ label[for='header-menu-toggle'] {
 }
 
 /* 체크박스 다음 div */
-#header-menu{
+#toggle-menu{
   display: none;
 }
 
@@ -361,7 +361,7 @@ label[for='header-menu-toggle'] {
 
 }
 
-#header-menu{
+#toggle-menu{
   position: absolute;
   top: 30px;
   right: -10px;
@@ -374,7 +374,7 @@ label[for='header-menu-toggle'] {
 }
 
 
-#header-menu > a{
+#toggle-menu > a{
   display: flex;
   height: 50%;
   justify-content: center;
@@ -383,7 +383,9 @@ label[for='header-menu-toggle'] {
   font-weight: bold;
 }
 
-#header-menu > a:first-child{
+#toggle-menu > a:first-child{
   border-bottom: 1px solid #ccc;
 }
+
+
 
