@@ -550,7 +550,7 @@ function createBoard(board) {
         allCommentBtn.classList.remove('hide');
         document.getElementsByTagName('body')[0].classList.remove('scrollLock');
         document.getElementById('commentInputM').value = "";
-        modalOn=0;
+  
       });
   
     });
@@ -884,12 +884,12 @@ function createBoard(board) {
 
 
 // 댓글 목록 조회 후 출력
-function selectCommentList(boardNo1, commentListUl) {
-  console.log(boardNo1, memberNo);
+function selectCommentList(boardNo, commentListUl) {
+  console.log(boardNo, memberNo);
 
   $.ajax({
     url: '/comment/list',
-    data: { 'boardNo': boardNo1, 'myNo': memberNo },
+    data: { 'boardNo': boardNo, 'myNo': memberNo },
     dataType: 'JSON',
     success: (commentList) => {
       console.log(commentList);
@@ -1238,17 +1238,22 @@ function selectReplyList(commentNo, commentLi) {
 
         replyFirstLine.append(replyDiv2, replyDiv3);
 
-        // replyDiv2의 자식 요소 replyMemberIdA, replySpan
+        // replyDiv2의 자식 요소 replyMemberIdA, mention, replySpan
         const replyMemberIdA = document.createElement('a');
         replyMemberIdA.classList.add('reply-memberId');
         replyMemberIdA.innerText = comment.memberNickname;
 
-      
+        // 답글 멘션 부분
+        const mention = document.createElement('a');
+        mention.href = '';
+        mention.classList.add('mention');
+        mention.innerText = '@' + comment.mentionNickname;
+
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content');
         replySpan.innerHTML = comment.commentContent;
 
-        replyDiv2.append(replyMemberIdA, replySpan);
+        replyDiv2.append(replyMemberIdA, mention, replySpan);
 
         // commentDiv3의 자식 요소 commentLikeBtn
         const replyLikeBtn = document.createElement('button');

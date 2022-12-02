@@ -289,8 +289,6 @@
         var deleteReplyCount;
 
         var modalOn = 0;
-        var boardMemberNickname;
-        var boardMemberProfileImg;
       </script>
     </c:if>
 
