@@ -129,14 +129,14 @@ for (let i = 0; i < replyBtn.length; i++) {
 // 댓글 등록 버튼 클릭 시
 for (let i = 0; i < postingBtn.length; i++) {
   postingBtn[i].addEventListener('click', () => {
-    const boardNo = postingBtn[i].parentElement.parentElement.parentElement.nextElementSibling;
+    const boardNo = document.getElementsByClassName('board-no');
     const commentInput = document.getElementsByClassName('comment-input');
     const commentListUl = document.getElementsByClassName('comment-list')[i];
     const mainContainer = document.getElementsByClassName('main-container')[i];
 
     console.log(commentInput[i].value);
     console.log('upperCommentNo: ' + upperCommentNo);
-    console.log(boardNo.value);
+    console.log(boardNo[i].value);
 
     
     if (commentInput[i].value != '') {
@@ -166,13 +166,13 @@ for (let i = 0; i < postingBtn.length; i++) {
         type: 'Post',
         data: {
           "memberNo": memberNo,
-          "boardNo": boardNo.value,
+          "boardNo": boardNo[i].value,
           "commentContent": commentInput[i].value,
           "upperCommentNo": upperCommentNo,
         },
         success: (result) => {
           if (result > 0) {
-            selectCommentList(boardNo.value, commentListUl);
+            selectCommentList(boardNo[i].value, commentListUl);
             commentInput[i].value = '';
             mainContainer.scrollTop = mainContainer.scrollHeight;
             upperCommentNo = 0;
@@ -484,12 +484,17 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
         replyMemberIdA.innerText = comment.memberNickname;
         replyMemberIdA.href = '/feed/' + comment.memberNickname;
 
-    
+        // 답글 멘션 부분
+        const mention = document.createElement('a');
+        mention.href = '';
+        mention.classList.add('mention-m');
+        mention.innerText = '@' + comment.mentionNickname;
+
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content-m');
         replySpan.innerHTML = comment.commentContent;
 
-        replyDiv2.append(replyMemberIdA, replySpan);
+        replyDiv2.append(replyMemberIdA, mention, replySpan);
 
         // commentDiv3의 자식 요소 commentLikeBtn
         const replyLikeBtn = document.createElement('button');
@@ -755,7 +760,7 @@ postingBtnM.addEventListener('click', () => {
       type: 'Post',
       data: {
         "memberNo": memberNo,
-        "boardNo": boardNo,
+        "boardNo": boardNo,,
         "commentContent": commentInputM.value,
         "upperCommentNo": upperCommentNo,
       },
@@ -763,7 +768,6 @@ postingBtnM.addEventListener('click', () => {
         if (result > 0) {
           selectCommentListM(boardNo, commentListUlM);
           commentInputM.value = '';
-          upperCommentNo = 0;
         }
       },
       error: () => {
