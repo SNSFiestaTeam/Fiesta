@@ -516,7 +516,7 @@ function initCropper() {
     var vEl = document.getElementById('cropper-img');
     cropper = new Cropper(vEl, {
         viewMode: 1,
-        dragMode: 'move',
+        dragMode: 'move', // 마우스 포인터의 역할(move, crop, none)
         aspectRatio: 1.5,
         checkOrientation: false,
         cropBoxMovable: false,
