@@ -36,6 +36,7 @@ public class CommentServiceImpl implements CommentService{
 	 */
 	@Override
 	public int commentInsert(Map<String, Object> map) {
+		
 		return dao.commentInsert(map);
 	}
 	

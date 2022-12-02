@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.google.gson.Gson;
 
@@ -40,6 +39,30 @@ public class FeedController {
 		model.addAttribute("feedMap", feedMap);
 		
 		return "profile/myfeed";
+	}
+	
+	@GetMapping("/feed/{memberNickname}/bookmark")
+	public String myfeedSaved(@SessionAttribute("loginMember") Member loginMember, Model model){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> feedMap = service.selectFeedAll(memberNo);
+		
+		model.addAttribute("feedMap", feedMap);
+		
+		return "profile/myfeedBookmark";
+	}
+	
+	@GetMapping("/feed/{memberNickname}/taged")
+	public String myfeedTaged(@SessionAttribute("loginMember") Member loginMember, Model model){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> feedMap = service.selectFeedAll(memberNo);
+		
+		model.addAttribute("feedMap", feedMap);
+		
+		return "profile/myfeedTaged";
 	}
 	
 	/** 게시글 이미지 조회
@@ -95,14 +118,6 @@ public class FeedController {
 		return new Gson().toJson(followList);
 	}
 	
-	// 로그아웃
-		@GetMapping("/feed/logout")
-		public String logout(SessionStatus status) {
-			
-			status.setComplete();
-			
-			return "redirect:/";
 	
-		}
 	
 }

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,23 @@ public class BoardServicepImple implements BoardService{
 		
 		// 게시글 삽입
 		board.setBoardContent(Util.XSSHandling(board.getBoardContent())); // XSS 방지 처리
+		
+//		board.getBoardContent().replaceAll("(#[^\\s#]+)", 
+//				"<a href='/search?searchInput=\"+tagName+\"' class='hashtag'>\"+match+\"</a>");
+//		
+//		Pattern pattern = Pattern.compile("(#[^\\s#]+)");
+//		
+//		Matcher matcher = pattern.matcher(board.getBoardContent());
+//		
+//		while(matcher.find()) {
+//			String str = matcher.group(1);
+//			
+//			String tagName = str.replaceAll("#", ""); 
+//			
+//			board.setBoardContent(board.getBoardContent().replace(str,
+//					"<a href='/search?searchInput="+tagName+"' class='hashtag'>"+str+"</a>"));
+//		}
+//		
 		board.setBoardContent(Util.newLineHandling(board.getBoardContent())); // 개행문자 처리
 		
 		int boardNo = dao.boardWrite(board);

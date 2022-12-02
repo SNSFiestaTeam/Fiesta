@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/login-comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/share-style.css" />
@@ -27,6 +28,12 @@
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
+    
+    <%-- 사진크롭 --%>
+    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.css" rel="stylesheet">
+ 
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
@@ -57,7 +64,7 @@
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
                         </c:if>
                       </a>
-                      <a href="#" class="feed-memberId">${board.memberNickname} boardNo.${board.boardNo}</a>
+                      <a href="#" class="feed-memberId">${board.memberNickname}</a>
                     </div>
                     <div>
                       <button type="button" class="fa-solid fa-ellipsis feed-header-menu"></button>
@@ -111,7 +118,20 @@
 
                   <div class="main-container">
                     <!-- 좋야요 수 표시 -->
+                    <c:if test="${board.boardPubPriFlag == 'Y'}">
                     <div class="like-count">좋아요 <span class="board-like-count">${board.likeCount}</span>개</div>
+                    </c:if>
+                    <c:if test="${board.boardPubPriFlag == 'N'}">
+                      <c:if test="${board.likeCount == 0}">
+                      <div class="like-count">좋아요를 눌러주세요</div>
+                      </c:if>
+                      <c:if test="${board.likeCount == 1}">
+                      <div class="like-count">한 명이 좋아합니다</div>
+                      </c:if>
+                      <c:if test="${board.likeCount > 1}">
+                      <div class="like-count">여러명이 좋아합니다</div>
+                      </c:if>
+                    </c:if>
 
 
                     <!-- 본문 내용 -->
@@ -120,7 +140,7 @@
                         <a href="#"><span class="member-id">${board.memberNickname}</span></a>
                         <span class = "board-content">
                           ${board.boardContent}
-                          <a href="/main/search?searchInput=피에스타" class="hashtag">#aespa</a><a href="#" class="hashtag">#에스파</a><a href="#" class="hashtag">#KARINA</a><a href="#" class="hashtag">#카리나</a>
+                          
                         </span>
                       </div>
 
@@ -133,6 +153,7 @@
                     </div>
 
                       <!-- 댓글 리스트 -->
+                      <c:if test="${board.commentBlockFlag == 'N'}">
                       <div class="comment-container">
                         <c:if test="${fn:length(board.commentList) > 2}">
                         <button class="all-comment-btn">댓글 모두 보기(${fn:length(board.commentList)})</button>
@@ -230,9 +251,12 @@
                       <textarea name="comment" id="commentInput" class="comment-input" placeholder="댓글 달기..." autocomplete="off"></textarea>
                       <button class="posting-btn" disabled>게시</button>
                     </div>
+                      </c:if>
                   </div>
                 </div>
               <input type="hidden" class="board-no" value="${board.boardNo}">
+              <input type="hidden" class="comment-block-fl" value="${board.commentBlockFlag}">
+              <input type="hidden" class="board-pub-pri-fl" value="${board.boardPubPriFlag}">
               </div>
             </c:forEach>
           </c:if>
@@ -249,6 +273,7 @@
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+    
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
@@ -269,6 +294,10 @@
         var deleteCommentNo;
         var deleteCommentUl;
         var deleteReplyCount;
+
+        var modalOn = 0;
+        var boardMemberNickname;
+        var boardMemberProfileImg;
       </script>
     </c:if>
 
@@ -314,6 +343,11 @@
     <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
+    <%-- 사진크롭 --%>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
+    <%-- <script type="text/javascript" src="index.js"></script> --%>
     <script src="/resources/js/newpost.js"></script>
   </body>
 </html>

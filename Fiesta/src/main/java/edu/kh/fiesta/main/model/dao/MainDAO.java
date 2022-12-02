@@ -58,7 +58,13 @@ public class MainDAO {
 		map.put("boardNo", boardNo);
 		map.put("memberNo", memberNo);
 		
-		return sqlSession.insert("mainMapper.boardLikeUp", map);
+		int result = sqlSession.insert("mainMapper.boardLikeUp", map);
+		
+		if(result > 0) {
+			result = sqlSession.selectOne("mainMapper.likeCount", map);
+		}
+		
+		return result;
 	}
 
 
@@ -71,7 +77,14 @@ public class MainDAO {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("boardNo", boardNo);
 		map.put("memberNo", memberNo);
-		return sqlSession.delete("mainMapper.boardLikeDown", map);
+		
+		int result = sqlSession.delete("mainMapper.boardLikeDown", map);
+		
+		if(result > 0) {
+			result = sqlSession.selectOne("mainMapper.likeCount", map);
+		}
+		
+		return result;
 	}
 
 

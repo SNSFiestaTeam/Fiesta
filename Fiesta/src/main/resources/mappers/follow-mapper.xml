@@ -54,9 +54,10 @@
       <result property="imgChangeName" column="IMG_CHANGE_NAME" />
       <result property="boardNo" column="BOARD_NO" />
   	</resultMap>
-	
 
-		<!-- 해시태그 팔로우 여부 조회 -->
+
+
+		<!-- 해시태그 팔로우 여부 조회 -> 이거 따라서 팔로우/언팔로우-->
 		<select id="followHashtagCheck" parameterType="hashMap" resultType="_int">
 			SELECT COUNT(*)
 			FROM FOLLOW
@@ -64,26 +65,44 @@
 			AND FOLLOW_TYPE = 'H'
 			AND F_TO_TARGET_NO = (SELECT HASHTAG_NO
 									FROM HASHTAG 
-									WHERE HASHTAG_CONTENT LIKE '%${searchInput}%')			
+									WHERE HASHTAG_CONTENT = #{keyword})			
+		</select>
+
+
+
+
+		<!-- 해시태그가 이미 존재하는지 확인 -->
+		<select id="hashtagInsertCheck" parameterType="map" resultType="_int">
+			SELECT NVL(SUM(HASHTAG_NO),0) HASHTAG_NO 
+			FROM HASHTAG 
+			WHERE HASHTAG_CONTENT = #{keyword}
 		</select>
 
 
 		<!-- HASHTAG 테이블에 삽입 -->
-		<insert id="insertHashtag" useGeneratedKeys="true">
-			<selectKey keyProperty="hashtagNo" resultType="_int" order="BEFORE">
-			 	SELECT SEQ_HASHTAG_NO FROM DUAL
-			</selectKey>
+		<insert id="insertHashtag" parameterType="map" useGeneratedKeys="true">
+	   	<selectKey keyProperty="hashtagNo" resultType="_int" order="BEFORE" >
+	  		SELECT SEQ_HASHTAG_NO.NEXTVAL FROM DUAL
+	  	</selectKey>
 			INSERT INTO HASHTAG
-			VALUES(#{hashtagNo},#{searchInput}) 		
+			VALUES(#{hashtagNo}, #{keyword}) 		
 		</insert>
+
 
 		<!-- 해시태그 팔로우 -->
   	<insert id="followHashtag">
 			INSERT INTO FOLLOW
 			VALUES (#{memberNo}, #{hashtagNo}, 'H', DEFAULT)
   	</insert>
+
   	
-  	
+  	<!-- 해시태그 언팔로우 -->
+  	<delete id="unfollowHashtag">
+  		DELETE FROM FOLLOW 
+			WHERE F_FROM_MEMBER_NO = #{memberNo}
+			AND F_TO_TARGET_NO = 
+			(SELECT HASHTAG_NO FROM HASHTAG WHERE HASHTAG_CONTENT = #{keyword})
+  	</delete>
   	
   
 </mapper>

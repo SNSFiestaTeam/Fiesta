@@ -17,17 +17,20 @@
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-post-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
-    <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
 
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
     ></script>
+
+  <style>
+   #title-section-board{
+    border-top : 1px solid black;
+   }
+  </style>
+
   </head>
   <body id="scrollrock">
     <jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -52,10 +55,10 @@
               <span>${loginMember.memberNickname}</span>
 
               <button id="btn">
-                <a href="/setting">프로필 편집</a>
+                <a href="/setting"><i class="fa-solid fa-gear"></i></a>
               </button>
 
-              <a href="#"><i class="fa-solid fa-gear"></i></a>
+            
             </div>
 
             <div id="profile-board">
@@ -72,11 +75,17 @@
 
         <section class="title-section">
           <div id="text-area">
-            <span id="a"><i class="fa-solid fa-chess-board" id="fa-solid fa-chess-board"></i> 게시물</span>
+          <a href="/feed/${loginMember.memberNickname}" id="title-section-board">
+           <span><i class="fa-solid fa-chess-board"></i> 게시물</span>
+          </a>
+           
+           <a href="/feed/${loginMember.memberNickname}/bookmark"  id="title-section-bookmark">
+            <span><i class="fa-regular fa-bookmark"></i> 저장됨</span>
+           </a> 
 
-            <span class=""><i class="fa-regular fa-bookmark"></i> 저장됨</span>
-
-            <span class=""><i class="fa-solid fa-children"></i> 태그됨</span>
+            <a href="/feed/${loginMember.memberNickname}/taged" id="title-section-taged">
+            <span><i class="fa-solid fa-children"></i> 태그됨</span>
+            </a>
           </div>
         </section>
 
@@ -131,7 +140,7 @@
         </c:if>
 
         <c:if test="${empty feedAllList}">
-          <div>게시글을 작성해주세요.</div>
+          <pre>게시글을 작성해주세요.</pre>
         </c:if>
       
 
