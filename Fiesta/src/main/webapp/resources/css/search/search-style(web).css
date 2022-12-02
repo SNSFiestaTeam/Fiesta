@@ -1,8 +1,6 @@
 /* 화면 작아질때 footer가 중간에 위치하는 문제 해결하기! */
 /* 화면 작아질때 비율 해결하기 */
 
-@import "../root-style.css";
-
 body{
     width: 100vw;
     display: flex;
