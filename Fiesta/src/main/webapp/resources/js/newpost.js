@@ -126,6 +126,28 @@ document.getElementById("basicImage").addEventListener("click", ()=>{
   
 });
 
+
+
+ // 사진넘기게 하기 위해 swiper 작성구문
+ new Swiper(".swiper", {
+  // autoplay: {
+  //   delay: 5000
+  // },
+  loop: false, // 무한반복 x
+  slidesPerView: 1, // 슬라이드 몇개 보여줄지
+  spaceBetween: 0, // 슬라이드간 간격
+  centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
+  pagination: {
+    // 페이징 클릭시 해당영역 이동
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    // 다음 화살표 버튼
+    prevEl: ".swiper-button-prev",
+    nextEl: ".swiper-button-next",
+  },
+});
 //! 컴퓨터에서 선택
 
 
@@ -191,26 +213,6 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
         swiperSildeDiv.append(fileImg);
         textFileSwiper.append(swiperSildeDiv);
 
-        // 사진넘기게 하기 위해 swiper 작성구문
-        new Swiper(".swiper", {
-          // autoplay: {
-          //   delay: 5000
-          // },
-          loop: false, // 무한반복 x
-          slidesPerView: 1, // 슬라이드 몇개 보여줄지
-          spaceBetween: 0, // 슬라이드간 간격
-          centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
-          pagination: {
-            // 페이징 클릭시 해당영역 이동
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            // 다음 화상표 버튼
-            prevEl: ".swiper-button-prev",
-            nextEl: ".swiper-button-next",
-          },
-        });
         // *text 접근성 부분 파일*
         // postFileText.style.display = "block";
         // <div class="postFileText">
