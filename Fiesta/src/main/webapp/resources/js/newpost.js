@@ -443,7 +443,7 @@ $(document).ready(function () {
 function initCropper() {
   for(let i = 0; i <form.length; i++){
     
-    var vEl = document.getElementsByClassName("cropper-img")[i];
+    var vEl = document.getElementsByClassName("ready")[i];
     cropper = new Cropper(vEl, {
         viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
         dragMode: 'move', // 마우스 포인터의 역할(move, crop, none)

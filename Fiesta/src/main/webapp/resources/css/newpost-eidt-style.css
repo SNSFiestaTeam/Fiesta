@@ -1,3 +1,5 @@
+@import "./root-style.css";
+
 .modal_background {
   position: fixed;
   top: 0;

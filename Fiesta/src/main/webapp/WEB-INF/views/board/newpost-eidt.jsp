@@ -20,10 +20,13 @@
             <div class="images swiper-wrapper " id="slideImages">  
             <%-- 이미지 리스트 --%>
               
-              <%-- <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
-              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
-              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
-              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
+              <%-- <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
               </div> --%>
             </div>
           </div>
