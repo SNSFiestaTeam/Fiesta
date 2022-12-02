@@ -41,6 +41,30 @@ public class FeedController {
 		return "profile/myfeed";
 	}
 	
+	@GetMapping("/feed/{memberNickname}/bookmark")
+	public String myfeedSaved(@SessionAttribute("loginMember") Member loginMember, Model model){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> feedMap = service.selectFeedAll(memberNo);
+		
+		model.addAttribute("feedMap", feedMap);
+		
+		return "profile/myfeedBookmark";
+	}
+	
+	@GetMapping("/feed/{memberNickname}/taged")
+	public String myfeedTaged(@SessionAttribute("loginMember") Member loginMember, Model model){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> feedMap = service.selectFeedAll(memberNo);
+		
+		model.addAttribute("feedMap", feedMap);
+		
+		return "profile/myfeedTaged";
+	}
+	
 	/** 게시글 이미지 조회
 	 * @param memberNickname
 	 * @param model

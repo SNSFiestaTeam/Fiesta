@@ -17,16 +17,20 @@
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-post-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
 
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
     ></script>
 
-  <style>
-   #title-section-board{
+    <style>
+   #title-section-bookmark{
     border-top : 1px solid black;
    }
   </style>
@@ -89,58 +93,8 @@
           </div>
         </section>
 
-        <c:if test="${not empty feedAllList}"> 
-        <section class="feed-section" id="feed-section">
-
-          <c:if test ="${fn:length(feedAllList) > 0}">
-          <div class="img-container">
-            <c:forEach var="imageItem" items ="${feedAllList}" begin="0" end="2">
-            <a href="#">
-              <img class="feed-img" src="${imageItem.imgPath}"
-              />
-              <div class="hover-icon-container">
-                <i class="fa-regular fa-heart"></i><span>${imageItem.likeCount}</span>
-                <i class="fa-regular fa-comment"></i><span>${imageItem.commentCount}</span>
-              </div>
-            </a>
-            </c:forEach>
-          </div>
-          </c:if>
-
-          <c:if test ="${fn:length(feedAllList) > 3}">
-          <div class="img-container2">
-            <c:forEach var="imageItem" items ="${feedAllList}" begin="3" end="5">
-            <a href="#">
-              <img class="feed-img" src="${imageItem.imgPath}"
-              />
-              <div class="hover-icon-container">
-                <i class="fa-regular fa-heart"></i><span>${imageItem.likeCount}</span>
-                <i class="fa-regular fa-comment"></i><span>${imageItem.commentCount}</span>
-              </div>
-            </a>
-            </c:forEach>
-          </div>
-          </c:if>
-
-           <c:if test ="${fn:length(feedAllList) > 6}">
-          <div class="img-container3">
-            <c:forEach var="imageItem" items ="${feedAllList}" begin="6" end="8">
-            <a href="#">
-              <img class="feed-img" src="${imageItem.imgPath}"
-              />
-              <div class="hover-icon-container">
-                <i class="fa-regular fa-heart"></i><span>${imageItem.likeCount}</span>
-                <i class="fa-regular fa-comment"></i><span>${imageItem.commentCount}</span>
-              </div>
-            </a>
-            </c:forEach>
-          </div>
-          </c:if>
-        </section>
-        </c:if>
-
         <c:if test="${empty feedAllList}">
-          <pre>게시글을 작성해주세요.</pre>
+          <div>게시글을 작성해주세요.</div>
         </c:if>
       
 
