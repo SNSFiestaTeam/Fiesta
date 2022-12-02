@@ -84,6 +84,7 @@ div > aside > button > img{
     height: 100%;
     text-align: right;
     overflow: hidden;
+    border-radius: 50%;
 }
 
 form > div{

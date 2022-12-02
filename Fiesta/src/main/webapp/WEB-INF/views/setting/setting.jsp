@@ -37,13 +37,15 @@
             <div class="di-1">
               <aside>
                 <button type="button" id="chg-img">
+                  <input type="file" name="memberProfileImg", id="image-input" accept="image/*">
+                  
                   <c:if test="${empty loginMember.memberProfileImg}">   
                   <img id="profile-image" src="/resources/images/user.jpg">
                   </c:if> 
                   <c:if test="${!empty loginMember.memberProfileImg}">   
                   <img id="profile-image" src="${loginMember.memberProfileImg}">
                   </c:if>
-                </button><button id=prosubmit></button>
+                </button>
               </aside>
               <div class="main">
                 <h1>${loginMember.memberNickname}</h1>
@@ -95,9 +97,9 @@
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>
-   
    <script>
     const memberNo = "${loginMember.memberNo}";
+    const loginMemberNickname = "${loginMember.memberNickname}";
    </script>
    
    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

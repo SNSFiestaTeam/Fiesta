@@ -138,6 +138,42 @@ margin: 10px;
     color:#8e8e8e;
 }
 
+#clickUp{
+    flex-basis: 10%;
+    border-bottom: 1px solid #ccc;
+    display:flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;    
+}
+
+#right > #click{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#chattingRoom{
+
+    flex-basis: 80%;
+
+}
+
+#input{
+    flex-basis: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+#chattingInput{
+    height: 50%;
+    width: 70%;
+    border-radius: 15px;
+
+}
+
+
+
 
 
 

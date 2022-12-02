@@ -62,13 +62,11 @@
                         <p class="not-read-count">${room.notReadCount}</p>
                       </c:if>
                     </div>
-                  </div>
+                  </div>  
                 </li>
               </c:forEach>
             </ul>
-            </div>
           </section>
-        </div>
         <div class="right" id="right">
           <div id="no-click">
             <img src="../../resources/images/dm-icon.png" style="width: 96px" />
@@ -121,7 +119,7 @@
     
     const next = document.getElementById("next");
    
-   
+    // 다음 클릭
     next.addEventListener("click", ()=>{
       dmMenu.style.display = "none";
       noClick.style.display = "none";
@@ -131,7 +129,26 @@
     
     const noClick = document.getElementById("no-click");
 
-  
+    // 받는 사람에 입력 있을시
+    const sendPeople = document.getElementById("sendPeople");
+    sendPeople.addEventListener("input", ()=>{
+
+      $.ajax({
+        url: "",
+        data : {"input": inputValue},
+        success : (memberList)=>{
+
+          console.log(memberList);
+          
+        }
+
+
+      });
+
+    })
+
+
+    
     
 
 

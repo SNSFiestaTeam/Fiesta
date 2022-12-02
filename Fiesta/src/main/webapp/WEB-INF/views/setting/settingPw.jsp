@@ -37,7 +37,12 @@
             <section class="setting-main">
                 <div class="top">
                     <aside class="menu-left">
-                        <img src="../../resources/images/user.jpg" class="pro-img">
+                        <c:if test="${empty loginMember.memberProfileImg}">   
+                        <img id="profile-image" src="/resources/images/user.jpg" class="pro-img">
+                        </c:if> 
+                        <c:if test="${!empty loginMember.memberProfileImg}">   
+                        <img id="profile-image" src="${loginMember.memberProfileImg}" class="pro-img">
+                        </c:if>
                     </aside> 
                     <h1 class="loginid">${loginMember.memberNickname}</h1>
                 </div>

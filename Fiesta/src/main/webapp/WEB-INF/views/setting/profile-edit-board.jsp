@@ -6,7 +6,7 @@
             <div class="profile-change" id="profile-change">프로필 사진 바꾸기</div>
             <div class="profile-update" id="profile-update">
                 <label for="image-input">사진 업로드</label>
-                <input type="file" name="memberProfileImg", id="image-input" accept="image/*">
+                
             </div>
             <div class="profile-delete" id="profile-delete">현재 사진 삭제</div>
             <div class="edit-close" id="edit-close">취소</div>

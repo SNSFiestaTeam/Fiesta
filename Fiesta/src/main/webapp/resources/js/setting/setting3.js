@@ -74,19 +74,6 @@ const idOpen3 = document.getElementById("idOpen3")
 
     });
 
-/*
-SELECT MEMBER_OPEN_FL, USER_PUB_PRI_FL  
-FROM "MEMBER"
-JOIN SETTING USING(MEMBERNO)
-WHERE MEMBER_NO = 10
-
-
-SELECT INTRO_CONTENT
-FROM "INTRODUCE"
-WHERE MEMBER_NO = 10;
-
-
-*/
 
 
 };

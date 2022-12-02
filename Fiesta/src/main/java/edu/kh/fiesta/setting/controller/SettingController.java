@@ -47,17 +47,15 @@ public class SettingController {
 		inputMember.setIntroContent(introContent);
 		int result = service.updateSetting(inputMember);
 		
-		String message = null;
 		if(result > 0) {
-			message = "회원 정보 수정";
 		loginMember.setMemberNickname(inputMember.getMemberNickname());
 		loginMember.setMemberName(inputMember.getMemberName());
 		loginMember.setIntroContent(inputMember.getIntroContent());
 		
 		} else {
-			message = "실패";		}
+					}
 		
-		ra.addFlashAttribute("message", message);
+	
 		
 		return "redirect:/setting";
 	}
@@ -146,7 +144,8 @@ public class SettingController {
 			@RequestParam(value="memberProfileImg") MultipartFile memberProfileImg,
 			@SessionAttribute("loginMember") Member loginMember,  
 			RedirectAttributes ra, 
-			HttpServletRequest req) throws Exception{
+			HttpServletRequest req,
+			@RequestHeader("referer") String referer) throws Exception{
 				
 		System.out.println(memberProfileImg);
 		// 인터넷 주소로 접근할 수 있는 경로
@@ -166,7 +165,7 @@ public class SettingController {
 		
 		ra.addFlashAttribute("message", message);
 	
-		return "redirect:";
+		return "redirect:" + referer;
 	}
 	
 

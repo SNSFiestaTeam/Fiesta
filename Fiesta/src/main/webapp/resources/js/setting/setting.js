@@ -1,7 +1,7 @@
 
 const checkObj = {
-    "memberName" : false,
-    "memberNickname"  : false
+    "memberName" : true,
+    "memberNickname"  : true
 };
 
 
@@ -14,15 +14,15 @@ document.getElementById("setting-frm").addEventListener("submit", function(event
         if( !checkObj[key]){
 
             switch(key){
-            case "memberName" : str = "이름이 유효하지 않습니다."; break;
-            case "memberNickname" : str = "사용자 이름이 유효하지 않습니다."; break;
-        }
+                case "memberName" : str = "이름이 유효하지 않습니다."; break;
+                case "memberNickname" : str = "사용자 이름이 유효하지 않습니다."; break;
+            }
 
             alert(str); 
             document.getElementById(key).focus();
             event.preventDefault();
             return; 
-    }
+        }
     }
 });
 
@@ -71,8 +71,15 @@ memberName.addEventListener("keyup", function(){
 const memberNickname = document.getElementById("memberNickname");
 const nickMessage = document.getElementById("nick-message");
 
-memberNickname.addEventListener("input", function(){
 
+
+
+
+memberNickname.addEventListener("input", function(){
+    console.log(loginMemberNickname);
+
+    if(loginMemberNickname != this.value){
+    
     if(memberNickname.value.trim().length ==0){
         nickMessage.innerText = "사용자 이름을 입력해주세요";
         nickMessage.style.color="red";
@@ -81,7 +88,9 @@ memberNickname.addEventListener("input", function(){
     }
 
     const regEx = /^[\w\-\_\.]{3,20}$/;
-    if(memberNickname.value != this.value){
+    
+    
+       
         if(regEx.test(memberNickname.value)){ 
 
             const param = { "memberNickname" : memberNickname.value };
@@ -116,7 +125,7 @@ memberNickname.addEventListener("input", function(){
             nickMessage.innerText = "유효하지 않은 사용자 이름 형식입니다.";
             nickMessage.style.color="red";
             checkObj.memberNickname = false;
-        }
+        } 
     }
         else {
             checkObj.memberNickname = true;
@@ -149,7 +158,6 @@ editClose.addEventListener("click", function(){
 const changeImg = document.getElementById("change-img");
 const profileImg = document.getElementById("profile-image");
 const profileFrm = document.getElementById("profilefrm");
-const prosubmit = document.getElementById("prosubmit");
 
 
 
@@ -162,6 +170,7 @@ const text = document.getElementById("text");
 
 function start(){
     
+
     if(text.value != null){
         $.ajax({
             url : "/setting",
@@ -186,7 +195,6 @@ function start(){
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
-    prosubmit.style.display = "none";
     start();
 });
 
@@ -211,8 +219,8 @@ if(imageInput != null){
                 
                 profileImg.setAttribute("src", event.target.result);
                 profileContainer.style.display = "none";
+                profileFrm.submit();
 
-                prosubmit.click();
             } 
 
         } else {
@@ -224,6 +232,7 @@ if(imageInput != null){
 
         profileImg.setAttribute("src", "/resources/images/user.jpg")
         profileContainer.style.display = "none";
+        profileFrm.submit();
 
         imageInput.value = "";
 

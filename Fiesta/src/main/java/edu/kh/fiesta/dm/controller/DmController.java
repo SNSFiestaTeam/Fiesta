@@ -7,13 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.kh.fiesta.dm.model.service.DmService;
 
-@RequestMapping("dm/dm")
+@RequestMapping("/dm")
 @Controller
 public class DmController {
 	
 	@Autowired
 	private DmService service;
 
+	
+	@GetMapping("/dm")
+	public String dm() {
+		
+		return "dm/dm";
+	}
 	
 	
 

@@ -59,6 +59,7 @@
 .setting-main .menu-left .pro-img{
     width: 38px;
     margin-right: 8px;
+    border-radius: 50%;
 }
 
 .menu-left{
