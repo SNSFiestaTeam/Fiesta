@@ -55,12 +55,8 @@ body {
 }
 
 #btn{
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    padding: 3px 5px;
-    background-color: whitesmoke;
-    margin-right: 20px;
-    font-weight: 500;
+   
+    font-size: 18px;
 }
 
 
@@ -106,8 +102,10 @@ body {
     width: 980px;
 }
 
-#text-area span{
-    padding:15px 30px 5px;
+#text-area a{
+    padding:15px 10px 5px;
+    margin: 0px 20px;
+    cursor: pointer;
 }
 
 .feed-section{
@@ -186,8 +184,8 @@ body {
   }
   
   .feed-img:hover + .hover-icon-container {
-    width: 100%;
-    height: 100%;
+    width: 315px;
+    height: 315px;
     background-color: #00000070;
   
     position: absolute;
@@ -197,6 +195,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
   }
   
   .hover-icon-container > i {
@@ -210,7 +209,7 @@ body {
     font-size: 14px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1000px) {
     .feed-section {
       width: 1000px;
     }
