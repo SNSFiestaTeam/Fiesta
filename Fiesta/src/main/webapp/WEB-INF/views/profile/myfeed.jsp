@@ -17,8 +17,12 @@
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-post-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
 
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -127,7 +131,7 @@
         </c:if>
 
         <c:if test="${empty feedAllList}">
-          <pre>게시글을 작성해주세요.</pre>
+          <div>게시글을 작성해주세요.</div>
         </c:if>
       
 

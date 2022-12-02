@@ -83,14 +83,11 @@ public class CommentController {
 	}
 	
 	
-	@GetMapping("/deleteContent")
-	public int deleteCommentContent(int CommentNo) {
-		return service.deleteCommentContent(CommentNo);
-	}
-	
+
 	@GetMapping("/delete")
-	public int deleteComment(int CommentNo) {
-		return service.deleteComment(CommentNo);
+	public int deleteComment(int commentNo) {
+		
+		return service.deleteComment(commentNo);	
 	}
 	
 

@@ -80,6 +80,7 @@ main > section {
   margin-bottom: 25px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  line-height: 15px;
 }
 
 /* 피드 작성자 정보 */
@@ -352,7 +353,7 @@ a.comment-profile {
 }
 .create-date {
   color: var(--main-font-color);
-  font-size: 10px;
+  font-size: var(--small-font-size);
   display: block;
   margin-top: 20px;
 }
@@ -379,7 +380,7 @@ a.comment-profile {
   outline: none;
   flex-basis: 90%;
   resize: none;
-  font-size: var(--medium-font-size);
+  font-size: var(--main-font-size);
   padding-top: 20px;
   overflow: hidden;
 }
@@ -525,6 +526,7 @@ a.comment-profile {
 
   .like-count {
     margin-top: 10px;
+    font-weight: bold;
   }
 
   .hashtag {
@@ -589,6 +591,7 @@ a.comment-profile {
     margin-left: 5px;
     margin-right: 5px;
   }
+
 
   .reply-firstchild {
     padding-left: 30px;
@@ -659,7 +662,7 @@ a.comment-profile {
   }
 
   .comment-input-area > div > textarea {
-    font-size: 15px;
+    font-size: var(--main-font-size);
     height: auto;
     border: none;
     resize: none;
