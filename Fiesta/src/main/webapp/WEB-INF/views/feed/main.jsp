@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/login-comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/share-style.css" />
@@ -63,7 +64,7 @@
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
                         </c:if>
                       </a>
-                      <a href="#" class="feed-memberId">${board.memberNickname} boardNo.${board.boardNo}</a>
+                      <a href="#" class="feed-memberId">${board.memberNickname}</a>
                     </div>
                     <div>
                       <button type="button" class="fa-solid fa-ellipsis feed-header-menu"></button>
@@ -117,7 +118,20 @@
 
                   <div class="main-container">
                     <!-- 좋야요 수 표시 -->
+                    <c:if test="${board.boardPubPriFlag == 'Y'}">
                     <div class="like-count">좋아요 <span class="board-like-count">${board.likeCount}</span>개</div>
+                    </c:if>
+                    <c:if test="${board.boardPubPriFlag == 'N'}">
+                      <c:if test="${board.likeCount == 0}">
+                      <div class="like-count">좋아요를 눌러주세요</div>
+                      </c:if>
+                      <c:if test="${board.likeCount == 1}">
+                      <div class="like-count">한 명이 좋아합니다</div>
+                      </c:if>
+                      <c:if test="${board.likeCount > 1}">
+                      <div class="like-count">여러명이 좋아합니다</div>
+                      </c:if>
+                    </c:if>
 
 
                     <!-- 본문 내용 -->
@@ -139,6 +153,7 @@
                     </div>
 
                       <!-- 댓글 리스트 -->
+                      <c:if test="${board.commentBlockFlag == 'N'}">
                       <div class="comment-container">
                         <c:if test="${fn:length(board.commentList) > 2}">
                         <button class="all-comment-btn">댓글 모두 보기(${fn:length(board.commentList)})</button>
@@ -236,9 +251,12 @@
                       <textarea name="comment" id="commentInput" class="comment-input" placeholder="댓글 달기..." autocomplete="off"></textarea>
                       <button class="posting-btn" disabled>게시</button>
                     </div>
+                      </c:if>
                   </div>
                 </div>
               <input type="hidden" class="board-no" value="${board.boardNo}">
+              <input type="hidden" class="comment-block-fl" value="${board.commentBlockFlag}">
+              <input type="hidden" class="board-pub-pri-fl" value="${board.boardPubPriFlag}">
               </div>
             </c:forEach>
           </c:if>

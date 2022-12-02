@@ -199,6 +199,13 @@
   	AND MEMBER_NO = #{memberNo}
   </delete>
   
+  <!-- 게시글 좋아요 수 조회 -->
+  <select id="likeCount" resultType="_int">
+  	SELECT COUNT(*)
+  	FROM BOARD_LIKE
+  	WHERE BOARD_NO = #{boardNo}
+  </select>
+  
   <!-- 게시글 북마크 추가 -->
   <insert id="boardBookmarkOn">
   	INSERT INTO BOOKMARK
