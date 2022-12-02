@@ -234,9 +234,9 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-<%--     <script>
+    <script>
       const followMemberNo = "${accountList.memberNo}";
-    </script> --%>
+    </script>
 
 
     <%-- jQuery 라이브러리(.js 파일) 추가 (CDN 방식 (Content Delivery Network)) --%>
