@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.ClassGenerator;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fiesta.member.model.vo.Member;
@@ -32,6 +33,8 @@ public class FollowDAO {
 		
 		// 해시태그 테이블에 존재하는지 확인하기
 		int result = sqlSession.selectOne("followMapper.hashtagInsertCheck", map);
+		
+		map.put("hashtagNo", result);
 		
 		if(result > 0) { // 해시태그 테이블에 이미 존재 -> 해시태그 테이블에 삽입x -> 팔로우테이블에 바로 삽입
 			

@@ -72,15 +72,15 @@
 
 
 		<!-- 해시태그가 이미 존재하는지 확인 -->
-		<select id="hashtagInsertCheck" parameterType="hashMap" resultType="_int">
-			SELECT COUNT(*)
+		<select id="hashtagInsertCheck" parameterType="map" resultType="_int">
+			SELECT NVL(SUM(HASHTAG_NO),0) HASHTAG_NO 
 			FROM HASHTAG 
 			WHERE HASHTAG_CONTENT = #{keyword}
 		</select>
 
 
 		<!-- HASHTAG 테이블에 삽입 -->
-		<insert id="insertHashtag" parameterType="hashMap" useGeneratedKeys="true">
+		<insert id="insertHashtag" parameterType="map" useGeneratedKeys="true">
 	   	<selectKey keyProperty="hashtagNo" resultType="_int" order="BEFORE" >
 	  		SELECT SEQ_HASHTAG_NO.NEXTVAL FROM DUAL
 	  	</selectKey>
@@ -101,9 +101,8 @@
   	<delete id="unfollowHashtag">
   		DELETE FROM FOLLOW 
 			WHERE F_FROM_MEMBER_NO = #{memberNo}
-			AND F_TO_TARGET_NO = (SELECT HASHTAG_NO
-														FROM HASHTAG 
-														WHERE HASHTAG_CONTENT = #{keyword})
+			AND F_TO_TARGET_NO = 
+			(SELECT HASHTAG_NO FROM HASHTAG WHERE HASHTAG_CONTENT = #{keyword})
   	</delete>
   	
   

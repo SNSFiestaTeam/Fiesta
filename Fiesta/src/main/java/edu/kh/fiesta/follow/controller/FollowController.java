@@ -22,14 +22,6 @@ public class FollowController {
 	@Autowired
 	private FollowService service;
 	
-	
-	/*
-		해시태그 팔로우   -> 데이터베이스 다시 확인 (F_TO_TARGET_NO)
-		팔로우 되어 있는지 확인 -> 안되어있으면 해시태그 넣고 result >0  -> 팔로우 테이블에 넣기
-	                   -> 되어 있으면 -> 팔로우 취소 
-	 */
-	
-	
 	// ajax에서 키워드 데이터 보내기!! == 쿼리스트링
 	
 	
@@ -52,10 +44,7 @@ public class FollowController {
 			result = service.followHashtagCheck(map);
 		}
 		
-//		model.addAttribute("result", result);
-		
-//		String path = "/search/?searchInput" + searchInput;
-		
+		// 팔로우 상태면 1 / 아니면 0
 		return result;
 	}
 	
@@ -73,7 +62,6 @@ public class FollowController {
 		
 		// 성공하면 1 반환 / 실패하면 -1 반환   -> js에서 구분하기
 		return service.followHashtag(map);
-				
 	}
 
 	

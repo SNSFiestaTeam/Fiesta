@@ -44,7 +44,7 @@
             <div class="keywordPicture">
                 <c:if test="${not empty hotBoardList}">  <%-- 있으면 인기글 첫번째 이미지 --%>
                   <c:forEach var="hotItem" items="${hotBoardList}" begin="0" end="0">
-                    <a href="#"><img src="${hotItem.imgPath}" alt="" class="keywordpPic"></a> 
+                    <a href="#"><img src="${hotItem.imgPath}" alt="" class="keywordPic"></a> 
                   </c:forEach>
                 </c:if>
 
