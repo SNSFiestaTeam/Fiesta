@@ -64,6 +64,7 @@
               </button>
             </li>
 
+       
             <li class="header-menu-parent">
               <label for="header-menu-toggle">
                   <i class="fa-regular fa-user"></i>
@@ -75,6 +76,7 @@
                   <a href="/feed/${loginMember.memberNickname}">프로필</a>
                   <a href="/feed/logout">로그아웃</a>
               </div>
+
             </li>
           </ul>
         </nav>
