@@ -192,7 +192,7 @@ header > section {
 }
 
 nav {
-  flex-shrink: 0;
+  min-width: 300px;
 }
 
 nav > ul {

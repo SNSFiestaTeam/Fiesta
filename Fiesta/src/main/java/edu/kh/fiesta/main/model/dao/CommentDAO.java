@@ -99,4 +99,13 @@ public class CommentDAO {
 		return sqlSession.delete("commentMapper.deleteComment", commentNo);
 	}
 
+	/**
+	 * 답글 수 조회
+	 * @param commentNo
+	 * @return result
+	 */
+	public int selectReplyCount(int commentNo) {
+		return sqlSession.selectOne("commentMapper.selectReplyCount", commentNo);
+	}
+
 }
