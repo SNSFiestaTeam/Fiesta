@@ -52,7 +52,7 @@
     }
     
     
-    .keywordpPic{
+    .keywordPic{
         /* height: 100%; */
         height: 160px;
         width: 160px;
@@ -88,8 +88,8 @@
     }
     
     
-    .follow-button a{
-        min-width: 160px;
+    .follow-button{
+        min-width: 130px;
         border-radius: 5px;
         padding: 4px 0;
     
@@ -100,30 +100,12 @@
         font-size: 0.9em;
         font-weight: 500;
 
+        cursor: pointer;
         /* background-color: var(--fiesta-color);
         color: white;
         border: none; */
     }
     
-    /* --------------------------------------------------- */
-    .followButton{
-        background-color: var(--fiesta-color);
-        color: white;
-        border: none;
-    }
-
-
-    .unfollowButton{
-        background-color: gray;
-        color: white;
-        border: 1px solid gray;
-    }
-    /* --------------------------------------------------- */
-
-
-
-
-
     
     /* 검색결과 - 관련 있는 계정 */
     .accountResult-section{
@@ -176,7 +158,7 @@
         
     }
     
-    .account-Group a{
+    .account-Group{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -206,6 +188,40 @@
     }
     
     
+    /* --------------------------------------------------- */
+    /* 해시태그 팔로우 버튼 변경 클래스 */
+    .followHashtagBtn{
+        background-color: var(--fiesta-color);
+        color: white;
+        border: none;
+    }
+
+
+    .unfollowHashtagBtn{
+        background-color: gray;
+        color: white;
+        border: 1px solid gray;
+    }
+
+
+    /* 관련 계정 팔로우 버튼 변경 클래스 */
+    .followAccountBtn{
+        color: var(--fiesta-color);
+        border: none;
+    }
+
+
+    .unfollowAccountBtn{
+        color: gray;
+        border: none;
+    }
+    /* --------------------------------------------------- */
+
+
+
+
+
+
     
     /* 검색결과 - 인기게시글(사진) 섹션 */
     .boardResult-section{
@@ -232,31 +248,33 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* align-items: center; */
     }
 
     .boardImage{
         width: 84vw;
-        height: 28vw;
+        height: 26vw;
         overflow: hidden;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         margin-bottom: 5px;
     }
     
     .boardImage a{
-        width: 33%;
+        width: 26vw;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
+        margin-right: 5px;
+
+        position: relative;
     }
     
     
     .boardImage img{
-        width: 100%;
-        height: 100%;
-        padding: 1%;
+        width: 26vw;
+        /* width: 100%;
+        height: 100%; */
     }
 
     .recentBoardResult-section > div:first-child{ /* 최근 게시글 */
@@ -268,6 +286,40 @@
     }
 
 
+    /* 검색결과 hover시  */
+    .hover-icon-container {
+        display: none;
+    }
+
+    .boardImage img:hover + .hover-icon-container {
+        width: 100%;
+        height: 100%;
+        
+        background-color: #00000070;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding-right: 5px;
+    }
+
+    .hover-icon-container > i {
+        color: white;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .hover-icon-container > span {
+        color: white;
+        font-size: 3px;
+    }
+
+    /* 검색 결과 없음 */
     .emptyResultMessage{
         font-size: 0.9em;
         color: gray;

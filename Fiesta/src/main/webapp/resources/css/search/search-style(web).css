@@ -59,8 +59,8 @@ main {
 }
 
 
-/* 검색결과 이미지 _피드 프로필하고 맞추기*/
-.keywordpPic{
+/* 검색결과 이미지 _인기게시글 첫 번째 이미지로*/
+.keywordPic{
     /* height: 100%; */
     height: 160px;
     width: 160px;
@@ -94,7 +94,7 @@ main {
 }
 
 
-.follow-button a{
+.follow-button{
     width: 40%;
     border-radius: 5px;
     padding: 4px 0;
@@ -108,26 +108,12 @@ main {
     font-weight: 500;
     font-size: 0.9em;
     
+    cursor: pointer;
     /* background-color: var(--fiesta-color);
     color: white;
     border: none; */
 }
 
-/* --------------------------------------------------- */
-.followButton{
-    background-color: var(--fiesta-color);
-    color: white;
-    border: none;
-}
-
-
-
-.unfollowButton{
-    background-color: gray;
-    color: white;
-    border: 1px solid gray;
-}
-/* --------------------------------------------------- */
 
 
 /* 검색결과 - 관련 있는 계정 */
@@ -190,12 +176,46 @@ main {
     font-size: 0.8em;
 }
 
-.follow-button-small a{
+.follow-button-small{
     font-size: 0.8em;
     font-weight: bold;
-    color: var(--fiesta-color);
+    /* color: var(--fiesta-color); */
     padding-top :4px;
 }
+
+
+/* --------------------------------------------------- */
+
+/* 해시태그 팔로우 버튼 변경 클래스 */
+.followHashtagBtn{
+    background-color: var(--fiesta-color);
+    color: white;
+    border: none;
+}
+
+
+.unfollowHashtagBtn{
+    background-color: gray;
+    color: white;
+    border: 1px solid gray;
+}
+
+
+/* 관련 계정 팔로우 버튼 변경 클래스 */
+.followAccountBtn{
+    color: var(--fiesta-color);
+    border: none;
+}
+
+
+.unfollowAccountBtn{
+    color: gray;
+    border: none;
+}
+
+/* --------------------------------------------------- */
+
+
 
 
 
@@ -225,32 +245,35 @@ main {
 
 
 .boardImage{
-    height: 320px;
+    width: 100%;
+    height: 310px;
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .boardImage a{
-    flex-basis: 33%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    /* flex-basis: 33%; */
+    width: 310px;
+    height: 310px;
 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 10px;
+
+    position: relative;
+}
 
 .boardImage img{
-    width: 100%;
-    height: 100%;
-}
+    width: 310px;
+    /* height: 320px; */
 
-/* 인기 게시글의 사진
-    1) 사진만을 감싸는 부분과 a 태그의 부분이
-       똑같은 공간을 가지도록.
-    2) img에 padding을 줘서 간격을 만들기.
-*/
+/*  width: 100%;
+    height: 100%; */
+}
 
 /* 최근 게시글 */
 
@@ -261,6 +284,44 @@ main {
     margin-bottom: 7px;
     font-weight: bold;
 }
+
+
+/* 검색결과 hover시  */
+.hover-icon-container {
+    display: none;
+  }
+
+.boardImage img:hover + .hover-icon-container {
+    width: 100%;
+    height: 100%;
+    
+    background-color: #00000070;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hover-icon-container > i {
+    color: white;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.hover-icon-container > span {
+    color: white;
+    font-size: 14px;
+}
+
+/* 인기 게시글의 사진
+    1) 사진만을 감싸는 부분과 a 태그의 부분이
+       똑같은 공간을 가지도록.
+    2) img에 padding을 줘서 간격을 만들기.
+*/
 
 
 /* 검색 결과가 없습니다 */
