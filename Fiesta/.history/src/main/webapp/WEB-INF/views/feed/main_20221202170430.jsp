@@ -28,12 +28,6 @@
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-    
-    <%-- 사진크롭 --%>
-    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.css" rel="stylesheet">
- 
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
@@ -273,7 +267,6 @@
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
-    
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
@@ -296,8 +289,6 @@
         var deleteReplyCount;
 
         var modalOn = 0;
-        var boardMemberNickname;
-        var boardMemberProfileImg;
       </script>
     </c:if>
 
@@ -343,11 +334,6 @@
     <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
-    <%-- 사진크롭 --%>
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
-    <%-- <script type="text/javascript" src="index.js"></script> --%>
     <script src="/resources/js/newpost.js"></script>
   </body>
 </html>

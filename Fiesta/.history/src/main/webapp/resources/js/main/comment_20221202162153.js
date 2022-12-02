@@ -16,7 +16,6 @@ for (let i = 0; i < commentInput.length; i++) {
 const allCommentBtn = document.getElementsByClassName('all-comment-btn');
 for (let i = 0; i < allCommentBtn.length; i++) {
   allCommentBtn[i].addEventListener('click', () => {
-    modalOn = 1;
     const commentList = document.getElementById('commentContainerM');
     const commentUl = document.getElementsByClassName('comment-list')[i];
 
@@ -37,7 +36,7 @@ for (let i = 0; i < allCommentBtn.length; i++) {
     commentList.style.display = 'flex';
     document.getElementsByTagName('body')[0].classList.add('scrollLock');
 
-
+ 
 
   
 
@@ -47,7 +46,8 @@ for (let i = 0; i < allCommentBtn.length; i++) {
       allCommentBtn[i].classList.remove('hide');
       document.getElementsByTagName('body')[0].classList.remove('scrollLock');
       document.getElementById('commentInputM').value = "";
-      modalOn = 0;
+
+  
     });
   });
 }
@@ -129,36 +129,36 @@ for (let i = 0; i < replyBtn.length; i++) {
 // 댓글 등록 버튼 클릭 시
 for (let i = 0; i < postingBtn.length; i++) {
   postingBtn[i].addEventListener('click', () => {
-    const boardNo = postingBtn[i].parentElement.parentElement.parentElement.nextElementSibling;
+    const boardNo = document.getElementsByClassName('board-no');
     const commentInput = document.getElementsByClassName('comment-input');
     const commentListUl = document.getElementsByClassName('comment-list')[i];
     const mainContainer = document.getElementsByClassName('main-container')[i];
 
     console.log(commentInput[i].value);
     console.log('upperCommentNo: ' + upperCommentNo);
-    console.log(boardNo.value);
+    console.log(boardNo[i].value);
 
     
     if (commentInput[i].value != '') {
 
-      // 해시태그 인식해서 a 태그로 감싸기
+      // 해시태그 인식해서 a태그로 감싸기
       const regEx = /(#[^\s#]+)/gm;
-      commentInput[i].value
+      const commentContent = commentInput[i].value
   
-      commentInput[i].value = commentInput[i].value.replace(regEx, (match) => {
+      commentContent = commentContent.replace(regEx, (match) => {
         const tagName = match.replace("#", '');
         return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
       });
 
-      // 언급 인식해서 a 태그로 감싸기
-      const regEx2 = /(@[^\s@]+)/gm;
+      // 언급 인식해서 a태그로 감싸기
+      const regEx = /(#[^\s#]+)/gm;
+      const commentContent = commentInput[i].value
   
-      commentInput[i].value = commentInput[i].value.replace(regEx2, (match) => {
-        const tagName = match.replace("@", '');
-        return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
+      commentContent = commentContent.replace(regEx, (match) => {
+        const tagName = match.replace("#", '');
+        return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
       });
 
-      console.log("바뀐 댓글 내용: "+ commentInput[i].value);
 
 
       $.ajax({
@@ -166,13 +166,13 @@ for (let i = 0; i < postingBtn.length; i++) {
         type: 'Post',
         data: {
           "memberNo": memberNo,
-          "boardNo": boardNo.value,
-          "commentContent": commentInput[i].value,
+          "boardNo": boardNo[i].value,
+          "commentContent": commentContent,
           "upperCommentNo": upperCommentNo,
         },
         success: (result) => {
           if (result > 0) {
-            selectCommentList(boardNo.value, commentListUl);
+            selectCommentList(boardNo[i].value, commentListUl);
             commentInput[i].value = '';
             mainContainer.scrollTop = mainContainer.scrollHeight;
             upperCommentNo = 0;
@@ -265,7 +265,7 @@ function selectCommentListM(boardNo, commentListUl) {
 
           const commentSpan = document.createElement('span');
           commentSpan.classList.add('comment-content-m');
-          commentSpan.innerHTML = comment.commentContent;
+          commentSpan.innerText = comment.commentContent;
 
           commentDiv2.append(commentMemberIdA, commentSpan);
 
@@ -365,11 +365,6 @@ function selectCommentListM(boardNo, commentListUl) {
           hoverBtn.classList.add('fa-solid', 'fa-ellipsis', 'hover-btn');
 
           hoverBtn.addEventListener('click', function () {
-
-            deleteCommentNo = comment.commentNo;
-            deleteBoardNo = boardNo;
-            deleteCommentUl = commentListUl;
-
             if (commentMemberIdA.innerText == memberNickname) {
               // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
               loginCommentMenu.style.display = 'flex';
@@ -395,7 +390,7 @@ function selectCommentListM(boardNo, commentListUl) {
             moreReply.addEventListener('click', () => {
               moreReply.style.display = 'none';
 
-              selectReplyListM(commentNo, commentLi, boardNo);
+              selectReplyListM(commentNo, commentLi);
             });
           }
         }
@@ -409,7 +404,7 @@ function selectCommentListM(boardNo, commentListUl) {
 
 
 // 모달 대댓글 목록 조회 후 출력
-function selectReplyListM(commentNo, commentLi, boardNo) {
+function selectReplyListM(commentNo, commentLi) {
   $.ajax({
     url: '/comment/select/reply',
     data: {'commentNo': commentNo, 'myNo':memberNo},
@@ -484,12 +479,17 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
         replyMemberIdA.innerText = comment.memberNickname;
         replyMemberIdA.href = '/feed/' + comment.memberNickname;
 
-    
+        // 답글 멘션 부분
+        const mention = document.createElement('a');
+        mention.href = '';
+        mention.classList.add('mention-m');
+        mention.innerText = '@' + comment.mentionNickname;
+
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content-m');
-        replySpan.innerHTML = comment.commentContent;
+        replySpan.innerText = comment.commentContent;
 
-        replyDiv2.append(replyMemberIdA, replySpan);
+        replyDiv2.append(replyMemberIdA, mention, replySpan);
 
         // commentDiv3의 자식 요소 commentLikeBtn
         const replyLikeBtn = document.createElement('button');
@@ -594,8 +594,8 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
           console.log(memberNickname);
 
           deleteCommentNo = comment.commentNo;
-          deleteBoardNo = boardNo;
-          deleteCommentUl = commentLi.parentElement;
+          deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
+            .parentElement.nextElementSibling.value;
           
           console.log(deleteCommentNo);
           console.log(deleteBoardNo);
@@ -697,7 +697,6 @@ commentDeleteBtn.addEventListener('click', () => {
   console.log("deleteBoardNo: "+ deleteBoardNo);
   console.log("deleteCommentNo: " + deleteCommentNo);
   console.log(deleteCommentUl);
-  console.log("modalOn: " + modalOn);
 
     $.ajax({
       url: '/comment/delete',
@@ -705,15 +704,7 @@ commentDeleteBtn.addEventListener('click', () => {
       success: (result) => {
         if (result > 0) {
           loginCommentMenu.style.display = 'none';
-          
-          if(modalOn == 0) {
-            selectCommentList(deleteBoardNo, deleteCommentUl);
-          }
-          
-          if(modalOn == 1) {
-            selectCommentListM(deleteBoardNo, deleteCommentUl);
-
-          }
+          selectCommentList(deleteBoardNo, deleteCommentUl);
         } else {
           console.log('댓글 삭제 실패');
         }
@@ -731,21 +722,6 @@ const commentListUlM = document.getElementById('commentListUl');
 
 // 댓글 모달창 게시 클릭 이벤트 추가
 postingBtnM.addEventListener('click', () => {
-  const regEx = /(#[^\s#]+)/gm;
-
-
-  commentInputM.value = commentInputM.value.replace(regEx, (match) => {
-    const tagName = match.replace("#", '');
-    return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
-  });
-
-  // 언급 인식해서 a 태그로 감싸기
-  const regEx2 = /(@[^\s@]+)/gm;
-
-  commentInputM.value = commentInputM.value.replace(regEx2, (match) => {
-    const tagName = match.replace("@", '');
-    return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
-  });
 
   console.log("댓글 등록 boardNo: " + boardNo);
 
@@ -763,7 +739,6 @@ postingBtnM.addEventListener('click', () => {
         if (result > 0) {
           selectCommentListM(boardNo, commentListUlM);
           commentInputM.value = '';
-          upperCommentNo = 0;
         }
       },
       error: () => {

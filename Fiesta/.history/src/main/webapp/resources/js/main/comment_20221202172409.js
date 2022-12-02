@@ -484,7 +484,8 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
         replyMemberIdA.innerText = comment.memberNickname;
         replyMemberIdA.href = '/feed/' + comment.memberNickname;
 
-    
+        // 답글 멘션 부분
+
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content-m');
         replySpan.innerHTML = comment.commentContent;

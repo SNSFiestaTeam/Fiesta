@@ -484,12 +484,17 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
         replyMemberIdA.innerText = comment.memberNickname;
         replyMemberIdA.href = '/feed/' + comment.memberNickname;
 
-    
+        // 답글 멘션 부분
+        const mention = document.createElement('a');
+        mention.href = '';
+        mention.classList.add('mention-m');
+        mention.innerText = '@' + comment.mentionNickname;
+
         const replySpan = document.createElement('span');
         replySpan.classList.add('comment-content-m');
         replySpan.innerHTML = comment.commentContent;
 
-        replyDiv2.append(replyMemberIdA, replySpan);
+        replyDiv2.append(replyMemberIdA, mention, replySpan);
 
         // commentDiv3의 자식 요소 commentLikeBtn
         const replyLikeBtn = document.createElement('button');
