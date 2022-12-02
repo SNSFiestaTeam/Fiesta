@@ -563,7 +563,6 @@ checkAuthKeyBtn.addEventListener("click", function(){
                 } else{
                     // alert("인증번호가 일치하지 않습니다.")
                     checkObj.authKey = false; 
-                    // checkObj.authKey = true;
 
                     checkAuthKeyBtn.innerHTML = "불일치";
                     checkAuthKeyBtn.classList.add("red");

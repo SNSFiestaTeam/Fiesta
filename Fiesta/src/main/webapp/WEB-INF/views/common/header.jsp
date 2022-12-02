@@ -27,7 +27,6 @@
               <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
             </fieldset>
               
-            <%-- </button> --%>
           </form>
         </section>
         <!-- 메뉴 -->
@@ -98,6 +97,5 @@
           </button>
         </fieldset>
           
-        <%-- </button> --%>
       </form>
     </section>
