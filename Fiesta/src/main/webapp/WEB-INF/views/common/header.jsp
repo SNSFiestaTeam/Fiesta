@@ -58,16 +58,25 @@
                 <i class="fa-regular fa-compass"></i>
               </a>
             </li>
+
             <li>
               <button>
                 <i class="fa-regular fa-bell"></i>
               </button>
             </li>
-            <li>
-              <a href="/feed/${loginMember.memberNickname}">
-                <i class="fa-regular fa-user"></i>
-              </a>
+            <li class="header-menu-parent">
+              <label for="header-menu-toggle">
+                   <i class="fa-regular fa-user"></i>
+              </label>
+
+              <input type="checkbox" id="header-menu-toggle">
+
+              <div id="header-menu">
+                  <a href="/feed/${loginMember.memberNickname}">프로필</a>
+                  <a href="/feed/logout">로그아웃</a>
+              </div>
             </li>
+
           </ul>
         </nav>
       </section>
