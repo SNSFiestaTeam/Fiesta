@@ -1,14 +1,4 @@
-:root {
-  --background-color: white;
-  --main-font-color: #8e8e8e;
-  --icon-button-color: #262626;
-  --point-font-color: #0095f6;
-  --mention-font-color: #00376b;
-  --fiesta-color: #dd4132;
-  --small-font-size: 12px;
-  --madium-font-size: 16px;
-  --large-icon-size: 24px;
-}
+
 /*------------모달 배경------------*/
 .modal_background {
   position: fixed;
@@ -100,6 +90,7 @@
   background-color: white;
   position: relative;
   border-radius: 10px;
+  overflow: hidden;
 }
 .new-post-bottom > form {
   position: absolute;

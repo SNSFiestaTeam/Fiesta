@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.support.SessionStatus;
 
 import com.google.gson.Gson;
 
@@ -95,14 +94,6 @@ public class FeedController {
 		return new Gson().toJson(followList);
 	}
 	
-	// 로그아웃
-		@GetMapping("/feed/logout")
-		public String logout(SessionStatus status) {
-			
-			status.setComplete();
-			
-			return "redirect:/";
 	
-		}
 	
 }
