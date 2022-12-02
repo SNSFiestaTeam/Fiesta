@@ -24,7 +24,7 @@ newPostClose.addEventListener("click", function () {
     filePreview.innerHTML="";
     textFileSwiper.innerHTML="";
     postFileTextArea.innerHTML="";
-});
+});``
 // 작성 중 x버튼
 document.getElementById("newPostClosePostEdit").addEventListener("click", function () {
     modalBackground.style.display = "flex";
@@ -162,7 +162,7 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
           zoomSlider.val(0);
           cropper.destroy();
       }
-      initCropper();
+      // initCropper();
 
 
         // div와 img 합치기
@@ -221,59 +221,59 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
   }
 });
 
-zoomSlider.slider({
-  orientation: "horizontal",
-  range: "min",
-  max: 1,
-  min: 0,
-  value: 0,
-  step: 0.0001,
-  slide: function () {
-      if (isInitialized == true) {
-          if (cropper.canvasData.naturalWidth < 600 || cropper.canvasData.naturalHeight < 400) {
-              event.preventDefault();
-          } else {
-              var currentValue = $("#zoom-slider").slider("value");
-              var zoomValue = parseFloat(currentValue);
-              cropper.zoomTo(zoomValue.toFixed(4));
-          }
-      }
-  }
-});
-const minZoomVal= document.getElementById("minZoomVal");
-const maxZoomVal= document.getElementById("maxZoomVal");
+// zoomSlider.slider({
+//   orientation: "horizontal",
+//   range: "min",
+//   max: 1,
+//   min: 0,
+//   value: 0,
+//   step: 0.0001,
+//   slide: function () {
+//       if (isInitialized == true) {
+//           if (cropper.canvasData.naturalWidth < 600 || cropper.canvasData.naturalHeight < 400) {
+//               event.preventDefault();
+//           } else {
+//               var currentValue = $("#zoom-slider").slider("value");
+//               var zoomValue = parseFloat(currentValue);
+//               cropper.zoomTo(zoomValue.toFixed(4));
+//           }
+//       }
+//   }
+// });
+// const minZoomVal= document.getElementById("minZoomVal");
+// const maxZoomVal= document.getElementById("maxZoomVal");
 
 
-function initCropper() {
-  cropper = new Cropper(editFile, {
-      viewMode: 1,
-      dragMode: 'move',
-      aspectRatio: 1.5,
-      checkOrientation: false,
-      cropBoxMovable: false,
-      cropBoxResizable: false,
-      zoomOnTouch: false,
-      zoomOnWheel: false,
-      guides: false,
-      highlight: false,
-      ready: function (e) {
-          var cropper = this.cropper;
-          cropper.zoomTo(0);
+// function initCropper() {
+//   cropper = new Cropper(editFile, {
+//       viewMode: 1,
+//       dragMode: 'move',
+//       aspectRatio: 1.5,
+//       checkOrientation: false,
+//       cropBoxMovable: false,
+//       cropBoxResizable: false,
+//       zoomOnTouch: false,
+//       zoomOnWheel: false,
+//       guides: false,
+//       highlight: false,
+//       ready: function (e) {
+//           var cropper = this.cropper;
+//           cropper.zoomTo(0);
 
-          var imageData = cropper.getImageData();
-          console.log("imageData ", imageData);
-          var minSliderZoom = imageData.width / imageData.naturalWidth;
+//           var imageData = cropper.getImageData();
+//           console.log("imageData ", imageData);
+//           var minSliderZoom = imageData.width / imageData.naturalWidth;
 
-          minZoomVal.html(minSliderZoom.toFixed(4));
+//           minZoomVal.html(minSliderZoom.toFixed(4));
 
-          $(".cr-slider-wrap").show();
-          zoomSlider.slider("option", "max", 1);
-          zoomSlider.slider("option", "min", minSliderZoom);
-          zoomSlider.slider("value", minSliderZoom);
-      }
-  });
-  isInitialized = true;
-}
+//           $(".cr-slider-wrap").show();
+//           zoomSlider.slider("option", "max", 1);
+//           zoomSlider.slider("option", "min", minSliderZoom);
+//           zoomSlider.slider("value", minSliderZoom);
+//       }
+//   });
+//   isInitialized = true;
+// }
 
 
 //! 다음 버튼
