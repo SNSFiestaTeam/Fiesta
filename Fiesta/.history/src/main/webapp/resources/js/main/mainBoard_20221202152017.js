@@ -457,8 +457,7 @@ function createBoard(board) {
   const regEx = /(#[^\s#]+)/gm;
 
   const boardContent = board.boardContent.replace(regEx, (match) => {
-    const tagName = match.replace("#", '');
-    return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
+    return "<a href='/search?searchInput="+match+"' class='hashtag'>"+match+"</a>"
   });
   // TODO: 해시태그 클릭 이벤트 생성
 

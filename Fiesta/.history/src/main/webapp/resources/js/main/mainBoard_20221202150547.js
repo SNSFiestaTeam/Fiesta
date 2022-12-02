@@ -455,11 +455,11 @@ function createBoard(board) {
   // 해시태그 및 더보기 버튼
   // 해시태그
   const regEx = /(#[^\s#]+)/gm;
-
-  const boardContent = board.boardContent.replace(regEx, (match) => {
-    const tagName = match.replace("#", '');
-    return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
-  });
+  const boardContent = board.boardContent.replace(
+    regEx,
+    // FIXME: 해시태그 검색 요청 주소 달기
+    "<a href='/search?searchInput=$&' class='hashtag'>$&</a>"
+  );
   // TODO: 해시태그 클릭 이벤트 생성
 
 
