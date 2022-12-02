@@ -90,6 +90,7 @@
   background-color: white;
   position: relative;
   border-radius: 10px;
+  overflow: hidden;
 }
 .new-post-bottom > form {
   position: absolute;

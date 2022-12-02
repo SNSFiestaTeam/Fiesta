@@ -18,8 +18,8 @@
             <div class="new-post-file-img"><i class="fa-solid fa-photo-film fa-4x"></i></div>
             <p class="input-message">사진과 동영상을 여기에 끌어다 놓으세요</p>
             <div class="file-select-btn" id="fileSelect" >
-              <label for="fileInput" > 컴퓨터에서 선택</label>
-              <input type="file" name="new-post-file" id="fileInput" none accept="image/*" multiple>
+              <label for="cropperfile" > 컴퓨터에서 선택</label>
+              <input type="file" name="new-post-file" id="cropperfile" none accept="image/*" multiple>
             </div>
             <div class="file-select-btn" id="basicImage">
               <label for="baceImage" > 기본 이미지</label>

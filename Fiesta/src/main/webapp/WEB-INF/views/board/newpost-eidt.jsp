@@ -19,12 +19,16 @@
           <%-- 이미지 리스트 묶음 --%>
             <div class="images swiper-wrapper " id="slideImages">  
             <%-- 이미지 리스트 --%>
+              
               <%-- <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
+              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
+              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
+              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
               </div> --%>
             </div>
           </div>
           <%-- 줌 슬라이더 --%>
-          <div id="zoomSlider"></div>
+          <div id="zoom-slider"></div>
           <%-- 사진 몇번째 인지 밑에 보여주는거 --%>
           <div class="swiper-pagination"></div>
           <%-- 이미지 슬라이드 좌우 버튼 --%>
@@ -48,8 +52,8 @@
                 <div class="slider-val-area">
                     <span id="maxZoomVal" class="pull-right">1</span>
                 </div>
-                <input type="range" min="1" max="10" value="1" id="zoomInOut">
-                <p>Value: <span id="value"></span></p>
+                <%-- <input type="range" min="1" max="10" value="1" id="zoomInOut">
+                <p>Value: <span id="value"></span></p> --%>
               </div>
             </div>
 
