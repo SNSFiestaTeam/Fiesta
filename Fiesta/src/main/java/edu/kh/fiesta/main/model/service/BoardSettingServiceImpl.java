@@ -41,4 +41,22 @@ public class BoardSettingServiceImpl implements BoardSettingService{
 	}
 	
 	
+	/**
+	 * 좋아요 수 숨기기 수정
+	 */
+	public int updateBoardPubPri(String boardPubPriFlag, int boardNo) {
+		
+		int result = 0;
+		
+		if(boardPubPriFlag.equals('Y')) {
+			result = dao.updateBoardPubPriN(boardNo);
+		} else {
+			result = dao.updateBoardPubPriY(boardNo);
+		}
+		
+		return result;
+	}
+	
+
+	
 }

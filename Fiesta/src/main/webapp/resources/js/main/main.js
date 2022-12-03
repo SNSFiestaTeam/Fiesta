@@ -170,7 +170,7 @@ feedCommentBtnLogin.addEventListener('click', () => {
 
         // 댓글 기능을 다시 사용하는 경우
         if (tags.commentContainer != null) {
-            tags.commentContainer.style.display = 'flex';
+            tags.commentContainer.style.display = 'block';
             tags.commentInputArea.style.display = 'block';         
         } else {
           // 댓글 만들어서 넣기
@@ -569,7 +569,42 @@ feedCommentBtnLogin.addEventListener('click', () => {
 });
 
 // 좋아요 공개 유무버튼에 클릭 이벤트 리스너 추가
-feedLikeBtnLogin.addEventListener('click', () => { });
+feedLikeBtnLogin.addEventListener('click', () => { 
+
+  $.ajax({
+    url: "/boardSetting/boardPubPri",
+    data: { "boardPubPriFlag": boardPubPriFlag.value, "boardNo": boardNo},
+    success: (result) => { 
+      body.classList.remove('scrollLock');
+      loginFeedMenu.style.display = 'none';
+
+      if (boardPubPriFlag.value == 'Y') {
+        // 좋아요 공개에서 -> 비공개
+        boardPubPriFlag.value = "N";
+        feedLikeBtnLogin.innerText = "좋아요 수 숨기기 해제";
+        
+        if (result == 0) {
+          tags.likeCount.innerText = "좋아요를 눌러주세요";
+        } else if (result == 1) {
+          tags.likeCount.innerText = "한 명이 좋아합니다";
+        } else {
+          tags.likeCount.innerText = "여러 명이 좋아합니다";
+        }
+        
+      } else {
+        // 좋아요 비공개에서 공개
+        boardPubPriFlag.value = "Y";
+        feedLikeBtnLogin.innerText = "좋아요 수 숨기기";
+
+        tags.likeCount.innerHTML = '좋아요 <span class="board-like-count">' + result + '개</span>';
+      }
+    },
+    error: () => { 
+      console.log("좋아요 공개 여부 설정 오류");
+    }
+  })
+
+});
 
 
 

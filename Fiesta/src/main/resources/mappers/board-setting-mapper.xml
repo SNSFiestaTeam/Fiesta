@@ -18,5 +18,25 @@
 		WHERE BOARD_NO = #{boardNo}
 	</update>
 	
+	<!-- 좋아요 수 숨기기 -->
+	<update id="updateBoardPubPriN">
+		UPDATE BOARD SET
+		BOARD_PUB_PRI_FL = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 좋아요 수 숨기기 해제 -->
+	<update id="updateBoardPubPriY">
+		UPDATE BOARD SET
+		BOARD_PUB_PRI_FL = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<select id="selectBoardLikeCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOARD_LIKE
+		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
 
 </mapper>
