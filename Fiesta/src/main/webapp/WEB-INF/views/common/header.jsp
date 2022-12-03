@@ -62,12 +62,6 @@
                 <i class="fa-regular fa-bell"></i>
               </button>
             </li>
-<<<<<<< Updated upstream
-
-       
-=======
-            
->>>>>>> Stashed changes
             <li class="header-menu-parent">
               <label for="header-menu-toggle">
                   <i class="fa-regular fa-user"></i>
