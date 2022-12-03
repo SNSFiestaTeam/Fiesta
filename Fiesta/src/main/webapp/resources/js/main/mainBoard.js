@@ -749,6 +749,15 @@ function createBoard(board) {
         const commentMenu = document.getElementById('commentMenu');
         const loginCommentMenu = document.getElementById('commentMenuL');
 
+        deleteBoardNo = comment.boardNo;
+        deleteCommentNo = comment.commentNo;
+        deleteCommentUl = commentUl;
+
+        console.log(deleteBoardNo);
+        console.log(deleteCommentNo);
+        console.log(deleteCommentUl);
+
+
         if(commentMemberIdA.innerText == memberNickname) {
           // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
           loginCommentMenu.style.display = "flex";
@@ -827,7 +836,9 @@ function createBoard(board) {
         },
         success: (result) => {
           if (result > 0) {
-            selectCommentList(board.boardNo, commentUl);
+            const flag = 1; //1이 등록 0이 삭제
+
+            selectCommentList(board.boardNo, commentUl, flag);
             commentInput.value = '';
             mainContainerDiv.scrollTop = mainContainerDiv.scrollHeight;
           }
@@ -884,7 +895,7 @@ function createBoard(board) {
 
 
 // 댓글 목록 조회 후 출력
-function selectCommentList(boardNo1, commentListUl) {
+function selectCommentList(boardNo1, commentListUl, flag) {
   console.log(boardNo1, memberNo);
 
   $.ajax({
@@ -893,54 +904,59 @@ function selectCommentList(boardNo1, commentListUl) {
     dataType: 'JSON',
     success: (commentList) => {
       console.log(commentList);
-
-      if (commentList.length > 3) {
-        // 댓글이 3개보다 크다면 댓글 모두보기 버튼 내용 수정
+      if (commentListUl.parentElement.parentElement.firstElementChild.classList.contains('all-comment-btn')) {
+        
+        // 댓글 모두 보기 버튼 내용 수정
         commentListUl.parentElement.parentElement.firstElementChild.innerText =
           '댓글 모두 보기(' + commentList.length + ')';
+      } else {
 
-      } else if (commentList.length == 3) { 
-        // 댓글이 추가해서 3개가 됐다면 댓글 모두보기 버튼 추가
-        const allCommentBtn = document.createElement('button');
-        allCommentBtn.innerText = '댓글 모두 보기(' + commentList.length + ')';
-        commentListUl.parentElement.parentElement.prepend(allCommentBtn);
-
-        allCommentBtn.addEventListener('click', () => {
-          modalOn = 1;
-          const commentList = document.getElementById('commentContainerM');
+        if (commentList.length == 3 && flag == 1) { 
+          // 댓글이 추가해서 3개가 됐다면 댓글 모두보기 버튼 추가
+          const allCommentBtn = document.createElement('button');
+          allCommentBtn.classList.add('all-comment-btn');
+          allCommentBtn.innerText = '댓글 모두 보기(' + commentList.length + ')';
+          commentListUl.parentElement.parentElement.prepend(allCommentBtn);
+  
+          allCommentBtn.addEventListener('click', () => {
+            modalOn = 1;
+            const commentList = document.getElementById('commentContainerM');
+        
+            console.log('댓글 모두 보기 실행');
+        
+            allCommentBtn.classList.add('hide');
+        
+            // 게시글 번호 얻어오기
+            boardNo = commentListUl.parentElement.parentElement.parentElement
+              .parentElement.nextElementSibling.value;
+            
+            console.log("boardNo: " + boardNo) ;
       
-          console.log('댓글 모두 보기 실행');
+            const commentListUlM = document.getElementById('commentListUl');
       
-          allCommentBtn.classList.add('hide');
+        
+            // 댓글 리스트 불러오기
+            selectCommentListM(boardNo, commentListUlM);
+        
+            commentList.style.display = 'flex';
+            document.getElementsByTagName('body')[0].classList.add('scrollLock');
       
-          // 게시글 번호 얻어오기
-          boardNo = commentListUl.parentElement.parentElement.parentElement
-            .parentElement.nextElementSibling.value;
-          
-          console.log("boardNo: " + boardNo) ;
-    
-          const commentListUlM = document.getElementById('commentListUl');
-    
       
-          // 댓글 리스트 불러오기
-          selectCommentListM(boardNo, commentListUlM);
-      
-          commentList.style.display = 'flex';
-          document.getElementsByTagName('body')[0].classList.add('scrollLock');
-    
-    
-          // 댓글 더보기 리스트 X 버튼 클릭 시
-          document.getElementById('commentListXBtn').addEventListener('click', () => {
-            commentList.style.display = 'none';
-            allCommentBtn.classList.remove('hide');
-            document.getElementsByTagName('body')[0].classList.remove('scrollLock');
-            document.getElementById('commentInputM').value = "";
-            modalOn = 0;
+            // 댓글 더보기 리스트 X 버튼 클릭 시
+            document.getElementById('commentListXBtn').addEventListener('click', () => {
+              commentList.style.display = 'none';
+              allCommentBtn.classList.remove('hide');
+              document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+              document.getElementById('commentInputM').value = "";
+              modalOn = 0;
+            });
+        
           });
-      
-        });
-
+  
+        }
       }
+
+
 
       // 댓글 목록 최상위 태그의 내용 삭제
       commentListUl.innerHTML = '';
@@ -1121,8 +1137,7 @@ function selectCommentList(boardNo1, commentListUl) {
             console.log(memberNickname);
 
             deleteCommentNo = comment.commentNo;
-            deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
-              .parentElement.nextElementSibling.value;
+            deleteBoardNo = comment.boardNo;
             deleteCommentUl = commentListUl;
 
             console.log("deleteCommentNo: " + deleteCommentNo);
@@ -1357,8 +1372,8 @@ function selectReplyList(commentNo, commentLi) {
           console.log(memberNickname);
 
           deleteCommentNo = comment.commentNo;
-          deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
-            .parentElement.nextElementSibling.value;
+          deleteBoardNo = comment.boardNo;
+          deleteCommentUl = commentLi.parentElement;
           
           console.log(deleteCommentNo);
           console.log(deleteBoardNo);

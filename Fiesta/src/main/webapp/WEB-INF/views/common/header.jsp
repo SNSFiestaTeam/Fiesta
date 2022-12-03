@@ -80,7 +80,7 @@
         </nav>
       </section>
     </header>
-    <section class="toggle-search-section">
+    <section class="toggle-search-section" id="toggleSearchSection">
       <form action="/search">
         <fieldset>
           <input

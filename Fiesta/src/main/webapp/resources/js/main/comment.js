@@ -172,7 +172,8 @@ for (let i = 0; i < postingBtn.length; i++) {
         },
         success: (result) => {
           if (result > 0) {
-            selectCommentList(boardNo.value, commentListUl);
+            const flag = 1; // 1이 등록, 2가 삭제
+            selectCommentList(boardNo.value, commentListUl, flag);
             commentInput[i].value = '';
             mainContainer.scrollTop = mainContainer.scrollHeight;
             upperCommentNo = 0;
@@ -667,6 +668,8 @@ for (let item of hoverBtn) {
 
       
       console.log(deleteCommentUl);
+      console.log(deleteCommentNo);
+      console.log(deleteBoardNo);
       
     } else {
       commentMenu.style.display = 'flex';
@@ -693,27 +696,30 @@ document.getElementById('commentMenuCancelL').addEventListener('click', () => {
 // TODO: 댓글 삭제 버튼 클릭 시 삭제
 const commentDeleteBtn = document.getElementById('commentDeleteBtnL');
 commentDeleteBtn.addEventListener('click', () => {
-
+  
   console.log("deleteBoardNo: "+ deleteBoardNo);
   console.log("deleteCommentNo: " + deleteCommentNo);
   console.log(deleteCommentUl);
   console.log("modalOn: " + modalOn);
 
-    $.ajax({
-      url: '/comment/delete',
-      data: { "commentNo": deleteCommentNo },
+  $.ajax({
+    url: '/comment/delete',
+    data: { "commentNo": deleteCommentNo },
       success: (result) => {
         if (result > 0) {
           loginCommentMenu.style.display = 'none';
+
+          const flag = '0';
           
           if(modalOn == 0) {
-            selectCommentList(deleteBoardNo, deleteCommentUl);
+            selectCommentList(deleteBoardNo, deleteCommentUl, flag);
           }
           
           if(modalOn == 1) {
             selectCommentListM(deleteBoardNo, deleteCommentUl);
-
+            
           }
+          body.classList.remove('scrollLock');
         } else {
           console.log('댓글 삭제 실패');
         }
