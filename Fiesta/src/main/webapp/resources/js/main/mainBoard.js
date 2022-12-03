@@ -39,7 +39,6 @@ function selectBoardList() {
       const pagination = map.pagination;
       cp++;
       for (let board of boardList) {
-        console.log("commentBlockFlag: " + board.commentBlockFlag );
         createBoard(board);
         console.log(cp);
       }
@@ -102,12 +101,18 @@ function createBoard(board) {
 
   // * feedMenuBtn 클릭 시 이벤트 추가
   feedMenuBtn.addEventListener('click', () => {
+
     const feedMenu = document.getElementById('feedMenu');
     const loginFeedMenu = document.getElementById('feedMenuLogin');
     const body = document.getElementsByTagName('body')[0];
-    feedCommentBtnLogin = document.getElementById('feedCommentBtnLogin');
-    feedLikeBtnLogin = document.getElementById('feedLikeBtnLogin');
-    boardNo = board.boardNo;
+    const feedCommentBtnLogin = document.getElementById('feedCommentBtnLogin');
+    const feedLikeBtnLogin = document.getElementById('feedLikeBtnLogin');
+
+    commentBlockFlag = commentBlockFlagInput;
+    boardPubPriFlag = boardPubPriFlagInput;
+
+    console.log("commentBlockFlag " + commentBlockFlag);
+    console.log("boardPubPriFlag " + boardPubPriFlag);
 
     if (board.memberNickname == memberNickname) {
       // 댓글 기능 사용 유무에 따른 버튼 내용 변경
@@ -125,6 +130,17 @@ function createBoard(board) {
       }
 
       loginFeedMenu.style.display = 'flex';
+
+      tags = null;
+      tags = {"likeCount": likeCount, "commentContainer": commentContainer,
+        "commentInputArea": commentInputArea, "mainContainer": mainContainerDiv
+      };
+      
+      console.log(tags.likeCount);
+      console.log(tags.commentContainer);
+      console.log(tags.commentInputArea);
+      console.log(tags.mainContainerDiv);
+
     } else {
       feedMenu.style.display = 'flex';
     }
@@ -521,6 +537,11 @@ function createBoard(board) {
   const commentContainer = document.createElement('div');
   const commentInputArea = document.createElement('div');
 
+  const createDate = document.createElement('span');
+  createDate.classList.add('create-date');
+  createDate.innerHTML = board.boardCreateDate;
+  
+
   if(board.commentBlockFlag == 'N') {
   commentContainer.classList.add('comment-container');
 
@@ -895,6 +916,7 @@ function createBoard(board) {
     mainContainerDiv.append(commentContainer);
   }
 
+  mainContainerDiv.append(createDate);
   
   mainContentDiv.append(mainContainerDiv);
   if(board.commentBlockFlag == 'N') {
@@ -907,17 +929,17 @@ function createBoard(board) {
   boardNoInput.classList.add("board-no");
   boardNoInput.value = board.boardNo;
 
-  const commentBlockFlag = document.createElement("input");
-  commentBlockFlag.setAttribute("type", "hidden");
-  commentBlockFlag.classList.add("comment-block-fl");
-  commentBlockFlag.value = board.commentBlockFlag;
+  const commentBlockFlagInput = document.createElement("input");
+  commentBlockFlagInput.setAttribute("type", "hidden");
+  commentBlockFlagInput.classList.add("comment-block-fl");
+  commentBlockFlagInput.value = board.commentBlockFlag;
 
-  const boardPubPriFlag = document.createElement("input");
-  boardPubPriFlag.setAttribute("type", "hidden");
-  boardPubPriFlag.classList.add("board-pub-pri-fl");
-  boardPubPriFlag.value = board.boardPubPriFlag;
+  const boardPubPriFlagInput = document.createElement("input");
+  boardPubPriFlagInput.setAttribute("type", "hidden");
+  boardPubPriFlagInput.classList.add("board-pub-pri-fl");
+  boardPubPriFlagInput.value = board.boardPubPriFlag;
 
-  feedDiv.append(mainContentDiv, boardNoInput, commentBlockFlag, boardPubPriFlag);
+  feedDiv.append(mainContentDiv, boardNoInput, commentBlockFlagInput, boardPubPriFlagInput);
 
   const feedSection = document.getElementById('feedSection');
   feedSection.append(feedDiv);

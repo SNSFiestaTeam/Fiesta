@@ -301,6 +301,8 @@
 
         var commentBlockFlag;
         var boardPubPriFlag;
+
+        var tags;
       </script>
     </c:if>
 
