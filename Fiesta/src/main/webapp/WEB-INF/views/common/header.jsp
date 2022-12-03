@@ -62,8 +62,6 @@
                 <i class="fa-regular fa-bell"></i>
               </button>
             </li>
-
-       
             <li class="header-menu-parent">
               <label for="header-menu-toggle">
                   <i class="fa-regular fa-user"></i>
@@ -73,6 +71,7 @@
 
               <div id="toggle-menu">
                   <a href="/feed/${loginMember.memberNickname}">프로필</a>
+                  <a href="/setting">설정</a>
                   <a href="/feed/logout">로그아웃</a>
               </div>
 

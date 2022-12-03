@@ -62,6 +62,7 @@ body {
 button {
   border: none;
   background-color: white;
+  color: black;
 }
 
 footer {
@@ -122,7 +123,7 @@ header > section {
   width: 50%;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end
 }
 
 .search-section fieldset {
@@ -200,6 +201,8 @@ nav > ul {
 
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0;
+  align-items: center;
 }
 
 nav li {
@@ -211,12 +214,15 @@ nav li {
 
 nav li > button {
   width: 100%;
-  height: 100%;
   font-size: var(--large-icon-size);
 }
 
 nav li > button:active {
   color: var(--main-font-color);
+}
+
+nav li > a {
+  line-height: 30px;
 }
 
 nav li > a:active {
@@ -345,6 +351,7 @@ nav i {
 
 label[for='header-menu-toggle'] {
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 /* 체크박스 다음 div */
@@ -363,11 +370,11 @@ label[for='header-menu-toggle'] {
 
 #toggle-menu{
   position: absolute;
-  top: 30px;
+  top: 38px;
   right: -10px;
   z-index: 500;
   width: 150px;
-  height: 100px;
+  height: 150px;
   background-color: white;
   box-shadow: 0px 0px 1px gray;
   border-radius: 6px;
@@ -376,7 +383,7 @@ label[for='header-menu-toggle'] {
 
 #toggle-menu > a{
   display: flex;
-  height: 50%;
+  height: 33.3%;
   justify-content: center;
   align-items: center;
   font-size: 14px;
@@ -384,6 +391,10 @@ label[for='header-menu-toggle'] {
 }
 
 #toggle-menu > a:first-child{
+  border-bottom: 1px solid #ccc;
+}
+
+#toggle-menu > a:nth-child(2) {
   border-bottom: 1px solid #ccc;
 }
 
