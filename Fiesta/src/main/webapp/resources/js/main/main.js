@@ -163,13 +163,15 @@ feedCommentBtnLogin.addEventListener('click', () => {
         tags.commentInputArea.style.display = 'none';
         feedCommentBtnLogin.innerText = "댓글 기능 설정";
         commentBlockFlag.value = 'Y';
-      } else {
+      }
+      
+      if(commentBlockFlag.value == 'Y'){
         commentBlockFlag.value = 'N';
         feedCommentBtnLogin.innerText = "댓글 기능 해제";
 
 
         // 댓글 기능을 다시 사용하는 경우
-        if (tags.commentContainer != null) {
+        if (tags.commentContainer != null && tags.commentContainer == '<div></div>') {
             tags.commentContainer.style.display = 'block';
             tags.commentInputArea.style.display = 'block';         
         } else {
@@ -581,7 +583,7 @@ feedLikeBtnLogin.addEventListener('click', () => {
       if (boardPubPriFlag.value == 'Y') {
         // 좋아요 공개에서 -> 비공개
         boardPubPriFlag.value = "N";
-        feedLikeBtnLogin.innerText = "좋아요 수 숨기기 해제";
+        // feedLikeBtnLogin.innerText = "좋아요 수 숨기기 취소";
         
         if (result == 0) {
           tags.likeCount.innerText = "좋아요를 눌러주세요";
@@ -594,7 +596,7 @@ feedLikeBtnLogin.addEventListener('click', () => {
       } else {
         // 좋아요 비공개에서 공개
         boardPubPriFlag.value = "Y";
-        feedLikeBtnLogin.innerText = "좋아요 수 숨기기";
+        // feedLikeBtnLogin.innerText = "좋아요 수 숨기기";
 
         tags.likeCount.innerHTML = '좋아요 <span class="board-like-count">' + result + '개</span>';
       }

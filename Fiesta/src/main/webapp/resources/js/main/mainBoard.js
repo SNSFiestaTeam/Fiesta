@@ -99,6 +99,8 @@ function createBoard(board) {
   feedMenuBtn.setAttribute('type', 'button');
   feedMenuBtn.classList.add('fa-solid', 'fa-ellipsis', 'feed-header-menu');
 
+  const mainContainerDiv = document.createElement('div');
+
   // * feedMenuBtn 클릭 시 이벤트 추가
   feedMenuBtn.addEventListener('click', () => {
 
@@ -111,14 +113,16 @@ function createBoard(board) {
     commentBlockFlag = commentBlockFlagInput;
     boardPubPriFlag = boardPubPriFlagInput;
 
-    console.log("commentBlockFlag " + commentBlockFlag);
-    console.log("boardPubPriFlag " + boardPubPriFlag);
+    console.log(commentBlockFlag);
+    console.log(boardPubPriFlag);
 
     if (board.memberNickname == memberNickname) {
       // 댓글 기능 사용 유무에 따른 버튼 내용 변경
-      if (board.commentBlockFlag == 'N') {
+      if (commentBlockFlag.value == 'N') {
         feedCommentBtnLogin.innerText = '댓글 기능 해제'
-      } else {
+      }
+      
+      if(commentBlockFlag.value == 'Y'){
         feedCommentBtnLogin.innerText = '댓글 기능 설정'
       }
       
@@ -139,7 +143,7 @@ function createBoard(board) {
       console.log(tags.likeCount);
       console.log(tags.commentContainer);
       console.log(tags.commentInputArea);
-      console.log(tags.mainContainerDiv);
+      console.log(tags.mainContainer);
 
     } else {
       feedMenu.style.display = 'flex';
@@ -379,7 +383,7 @@ function createBoard(board) {
   mainContentDiv.append(commentIconDiv);
 
   // 본문 컨테이너 생성
-  const mainContainerDiv = document.createElement('div');
+  
   mainContainerDiv.classList.add('main-container');
 
   // TODO: 좋아요 수 표시
