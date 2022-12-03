@@ -12,9 +12,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
+    
+    <%-- 사진크롭 --%>
+    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.css" rel="stylesheet">
 
     <!-- CSS 링크 -->
-    <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
@@ -28,11 +32,7 @@
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-    
-    <%-- 사진크롭 --%>
-    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
  
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
