@@ -73,6 +73,16 @@ public class FollowDAO {
 	}
 
 
+	
+	/** 계정 팔로우 여부 조회 DAO
+	 * @param map
+	 * @return result
+	 */
+	public int followAccountCheck(Map<String, Object> map) {
+		return sqlSession.selectOne("followMapper.followAccountCheck", map);
+	}
+
+
 
 
 	

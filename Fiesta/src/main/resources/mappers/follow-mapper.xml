@@ -104,5 +104,20 @@
 			(SELECT HASHTAG_NO FROM HASHTAG WHERE HASHTAG_CONTENT = #{keyword})
   	</delete>
   	
+  	
+  	<!-- 계정 팔로우 여부 조회 -->
+  	<select id="followAccountCheck" parameterType="map" resultType="_int">
+  		SELECT COUNT(*)
+			FROM FOLLOW
+			WHERE F_FROM_MEMBER_NO = #{memberNo}
+			AND FOLLOW_TYPE = 'M'
+			AND F_TO_TARGET_NO = #{followToMemberNo}
+  	</select>
+  	
+  	
+  	
+  	
+  	
+  	
   
 </mapper>

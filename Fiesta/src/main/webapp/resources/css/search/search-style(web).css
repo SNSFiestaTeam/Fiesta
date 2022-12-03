@@ -1,7 +1,6 @@
 /* 화면 작아질때 footer가 중간에 위치하는 문제 해결하기! */
 /* 화면 작아질때 비율 해결하기 */
 
-
 body{
     width: 100vw;
     display: flex;
@@ -184,6 +183,10 @@ main {
 }
 
 
+#followToMemberNo{
+    display: none;
+}
+
 /* --------------------------------------------------- */
 
 /* 해시태그 팔로우 버튼 변경 클래스 */
@@ -197,7 +200,6 @@ main {
 .unfollowHashtagBtn{
     background-color: gray;
     color: white;
-    border: 1px solid gray;
 }
 
 

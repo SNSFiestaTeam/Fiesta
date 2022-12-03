@@ -188,7 +188,7 @@
     .unfollowHashtagBtn{
         background-color: gray;
         color: white;
-        border: 1px solid gray;
+        /* border: 1px solid gray; */
     }
 
 
@@ -204,11 +204,6 @@
         border: none;
     }
     /* --------------------------------------------------- */
-
-
-
-
-
 
 
     /* 검색결과 - 인기게시글(사진) 섹션 */
