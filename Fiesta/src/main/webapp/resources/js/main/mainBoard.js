@@ -105,8 +105,25 @@ function createBoard(board) {
     const feedMenu = document.getElementById('feedMenu');
     const loginFeedMenu = document.getElementById('feedMenuLogin');
     const body = document.getElementsByTagName('body')[0];
+    feedCommentBtnLogin = document.getElementById('feedCommentBtnLogin');
+    feedLikeBtnLogin = document.getElementById('feedLikeBtnLogin');
+    boardNo = board.boardNo;
 
-    if(board.memberNickname == memberNickname) {
+    if (board.memberNickname == memberNickname) {
+      // 댓글 기능 사용 유무에 따른 버튼 내용 변경
+      if (board.commentBlockFlag == 'N') {
+        feedCommentBtnLogin.innerText = '댓글 기능 해제'
+      } else {
+        feedCommentBtnLogin.innerText = '댓글 기능 설정'
+      }
+      
+      // 좋아요 수 공개 유무에 따른 버튼 내용 변경
+      if (board.boardPubPriFlag == 'Y') {
+        feedLikeBtnLogin.innerText = '좋아요 수 숨기기'
+      } else {
+        feedLikeBtnLogin.innerText = '좋아요 수 숨기기 취소'
+      }
+
       loginFeedMenu.style.display = 'flex';
     } else {
       feedMenu.style.display = 'flex';
@@ -528,9 +545,26 @@ function createBoard(board) {
   
       // 게시글 번호 얻어오기
       boardNo = board.boardNo;
+      boardMemberNickname = board.memberNickname;
+      boardMemberProfileImg = board.memberProfileImg;
+      
+      console.log("boardNo: " + boardNo) ;
+      console.log("boardMemberNickname: " + boardMemberNickname) ;
+      console.log("boardMemberProfileImg: " + boardMemberProfileImg) ;
+
       console.log("boardNo: " + boardNo) ;
 
       const commentListUlM = document.getElementById('commentListUl');
+
+      // 모달창 프로필, 닉네임 설정
+      const profilePhotoM = document.getElementById('profilePhotoM');
+      const feedProfileImageM = document.getElementById('feedProfileImageM');
+      const feedMemberIdM = document.getElementById('feedMemberIdM');
+      profilePhotoM.href = '/feed/' + boardMemberNickname;
+      feedProfileImageM.setAttribute('src', boardMemberProfileImg);
+
+      feedMemberIdM.innerText = boardMemberNickname;
+      feedMemberIdM.href = '/feed/' + boardMemberNickname;
 
   
       // 댓글 리스트 불러오기
@@ -918,8 +952,10 @@ function selectCommentList(boardNo1, commentListUl, flag) {
           allCommentBtn.innerText = '댓글 모두 보기(' + commentList.length + ')';
           commentListUl.parentElement.parentElement.prepend(allCommentBtn);
   
+          // 댓글 모두보기 버튼에 클릭 이벤트
           allCommentBtn.addEventListener('click', () => {
             modalOn = 1;
+
             const commentList = document.getElementById('commentContainerM');
         
             console.log('댓글 모두 보기 실행');
@@ -929,12 +965,31 @@ function selectCommentList(boardNo1, commentListUl, flag) {
             // 게시글 번호 얻어오기
             boardNo = commentListUl.parentElement.parentElement.parentElement
               .parentElement.nextElementSibling.value;
+            boardMemberNickname = commentListUl.parentElement.parentElement.parentElement
+              .parentElement.parentElement.firstElementChild.firstElementChild.firstElementChild
+              .firstElementChild.nextElementSibling.innerText;
+            boardMemberProfileImg = commentListUl.parentElement.parentElement.parentElement
+              .parentElement.parentElement.firstElementChild.firstElementChild.firstElementChild
+              .firstElementChild.firstElementChild.getAttribute('src');
             
             console.log("boardNo: " + boardNo) ;
+            console.log("boardMemberNickname: " + boardMemberNickname) ;
+            console.log("boardMemberProfileImg: " + boardMemberProfileImg) ;
       
             const commentListUlM = document.getElementById('commentListUl');
-      
-        
+
+
+            // 모달창 프로필, 닉네임 설정
+            const profilePhotoM = document.getElementById('profilePhotoM');
+            const feedProfileImageM = document.getElementById('feedProfileImageM');
+            const feedMemberIdM = document.getElementById('feedMemberIdM');
+            profilePhotoM.href = '/feed/' + boardMemberNickname;
+            feedProfileImageM.setAttribute('src', boardMemberProfileImg);
+
+            feedMemberIdM.innerText = boardMemberNickname;
+            feedMemberIdM.href = '/feed/' + boardMemberNickname;
+
+            
             // 댓글 리스트 불러오기
             selectCommentListM(boardNo, commentListUlM);
         

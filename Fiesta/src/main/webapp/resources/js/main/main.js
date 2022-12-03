@@ -4,6 +4,8 @@ const feedMenuCancel = document.getElementById("feedMenuCancel");
 const loginFeedMenuCancel = document.getElementById("feedMenuCancelLogin");
 const feedMenu = document.getElementById("feedMenu");
 const loginFeedMenu = document.getElementById("feedMenuLogin");
+const feedCommentBtnLogin = document.getElementById('feedCommentBtnLogin');
+const feedLikeBtnLogin = document.getElementById('feedLikeBtnLogin');
 
 
 
@@ -16,35 +18,45 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
     console.log(boardNo);
     const boardMemberNickname = feedHeaderMenu[i].parentElement.previousElementSibling.
     firstElementChild.nextElementSibling.innerText;
+    commentBlockFlag = document.getElementsByClassName('comment-block-fl')[i].value;
+    boardPubPriFlag = document.getElementsByClassName('board-pub-pri-fl')[i].value;
 
-    console.log(boardMemberNickname);
-    console.log(memberNickname);
 
-    if(memberNickname == boardMemberNickname) {
+    // 로그인 멤버 == 게시글 작성자
+    if (memberNickname == boardMemberNickname) {
+      if (commentBlockFlag == 'N') {
+        feedCommentBtnLogin.innerText = '댓글 기능 해제'
+      } else {
+        feedCommentBtnLogin.innerText = '댓글 기능 설정'
+      }
+      
+      // 좋아요 수 공개 유무에 따른 버튼 내용 변경
+      if (boardPubPriFlag == 'Y') {
+        feedLikeBtnLogin.innerText = '좋아요 수 숨기기'
+      } else {
+        feedLikeBtnLogin.innerText = '좋아요 수 숨기기 취소'
+      }
+
+
+
       loginFeedMenu.style.display = "flex";
+
+
     } else {
       feedMenu.style.display = "flex";
     }
 
     body.classList.add("scrollLock");
+
   });
 }
 
-
-
+// -------------------------------------피드 메뉴-------------------------------------------------------
 // 피트 헤더 메뉴창 취소 클릭시 닫힘
 feedMenuCancel.addEventListener("click", function () {
   feedMenu.style.display = "none";
   body.classList.remove("scrollLock");
 });
-
-loginFeedMenuCancel.addEventListener("click", function () {
-  loginFeedMenu.style.display = "none";
-  body.classList.remove("scrollLock");
-});
-
-
-
 
 
 // 피드 신고 버튼 클릭시 신고 창 열림
@@ -54,23 +66,18 @@ const report = document.getElementById("report");
 feedReportBtn.addEventListener("click", function () {
   feedMenu.style.display = "none";
   report.style.display = "flex";
-
+  
   body.classList.add("scrollLock");
 });
-
-
-
 
 
 // 신고창 취소 버튼 클릭 시 닫힘
 const reportCancle = document.getElementById("reportCancle");
 reportCancle.addEventListener("click", function () {
   report.style.display = "none";
-
+  
   body.classList.remove("scrollLock");
 });
-
-
 
 
 
@@ -81,12 +88,9 @@ const feedShareBtn = document.getElementById("feedShareBtn");
 feedShareBtn.addEventListener("click", function () {
   feedMenu.style.display = "none";
   share.style.display = "flex";
-
+  
   body.classList.add("scrollLock");
 });
-
-
-
 
 
 // 공유하기 모달창에서 클릭버튼 클릭 시
@@ -95,6 +99,48 @@ shareCancleBtn.addEventListener("click", function () {
   share.style.display = "none";
   body.classList.remove("scrollLock");
 });
+
+// -------------------------------------피드 메뉴 끝-------------------------------------------------------
+
+
+
+
+
+
+
+// ------------------------------------- 로그인 피드 메뉴-------------------------------------------------------
+// 로그인 피드 메뉴 취소버튼 클릭 시 취소
+loginFeedMenuCancel.addEventListener("click", function () {
+  loginFeedMenu.style.display = "none";
+  body.classList.remove("scrollLock");
+});
+
+const feedDeleteBtnLogin = document.getElementById("feedDeleteBtnLogin");
+const feedUpdateBtnLogin = document.getElementById("feedUpdateBtnLogin");
+const feedShareBtnLogin = document.getElementById("feedShareBtnLogin");
+const feedSelectBtnLogin = document.getElementById("feedSelectBtnLogin");
+
+// 댓글 기능 사용 유무버튼에 클릭 이벤트 리스너 추가
+feedCommentBtnLogin.addEventListener('click', () => { 
+
+  $.ajax({
+    url: '/board'
+  })
+
+});
+
+// 좋아요 공개 유무버튼에 클릭 이벤트 리스너 추가
+feedLikeBtnLogin.addEventListener('click', () => { });
+
+
+
+// ------------------------------------- 로그인 피드 메뉴 끝-------------------------------------------------------
+
+
+
+
+
+
 
 
 
