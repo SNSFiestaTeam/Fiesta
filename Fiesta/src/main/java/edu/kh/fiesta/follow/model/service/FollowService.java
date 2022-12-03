@@ -28,5 +28,12 @@ public interface FollowService {
 	int unfollowHashtag(Map<String, Object> map);
 
 
+	/** 계정 팔로우 여부 조회
+	 * @param map
+	 * @return result
+	 */
+	int followAccountCheck(Map<String, Object> map);
+
+
 
 }
