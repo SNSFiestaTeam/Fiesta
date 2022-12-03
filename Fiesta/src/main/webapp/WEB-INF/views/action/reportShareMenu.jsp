@@ -3,11 +3,12 @@
 
 <div class="feed-menu-container-login" id="feedMenuLogin">
   <div class="feed-menu-login">
-    <div class="feed-menu-btn-login btn1"><button id="feedReportBtnLogin">수정</button></div>
+    <div class="feed-menu-btn-login btn1"><button id="feedDeleteBtnLogin">삭제</button></div>
+    <div class="feed-menu-btn-login btn2"><button id="feedUpdateBtnLogin">수정</button></div>
     <div class="feed-menu-btn-login btn2"><button id="feedShareBtnLogin">링크 복사</button></div>
-    <div class="feed-menu-btn-login btn2"><button id="feedShareBtnLogin">좋아요 수 숨기기</button></div>
-    <div class="feed-menu-btn-login btn2"><button id="feedShareBtnLogin">댓글 기능 해제</button></div>
-    <div class="feed-menu-btn-login btn2"><button id="feedShareBtnLogin">게시물로 이동</button></div>
+    <div class="feed-menu-btn-login btn2"><button id="feedLikeBtnLogin">좋아요 수 숨기기</button></div>
+    <div class="feed-menu-btn-login btn2"><button id="feedCommentBtnLogin">댓글 기능 해제</button></div>
+    <div class="feed-menu-btn-login btn2"><button id="feedSelectBtnLogin">게시물로 이동</button></div>
     <div class="feed-menu-btn-login btn3" ><button id="feedMenuCancelLogin">취소</button></div>
   </div>
 </div>

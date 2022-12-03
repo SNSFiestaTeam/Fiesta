@@ -20,6 +20,7 @@ for (let i = 0; i < allCommentBtn.length; i++) {
     const commentList = document.getElementById('commentContainerM');
     const commentUl = document.getElementsByClassName('comment-list')[i];
 
+   
     console.log('댓글 모두 보기 실행');
 
     allCommentBtn[i].classList.add('hide');
@@ -28,8 +29,28 @@ for (let i = 0; i < allCommentBtn.length; i++) {
     boardNo =
       allCommentBtn[i].parentElement.parentElement.parentElement
         .nextElementSibling.value;
+    boardMemberNickname = allCommentBtn[i].parentElement.parentElement.parentElement
+      .parentElement.firstElementChild.firstElementChild.firstElementChild
+      .firstElementChild.nextElementSibling.innerText;
+    boardMemberProfileImg = allCommentBtn[i].parentElement.parentElement.parentElement
+      .parentElement.firstElementChild.firstElementChild.firstElementChild
+      .firstElementChild.firstElementChild.getAttribute('src');
+    
+    console.log("boardNo: " + boardNo) ;
+    console.log("boardMemberNickname: " + boardMemberNickname) ;
+    console.log("boardMemberProfileImg: " + boardMemberProfileImg) ;
 
     const commentListUlM = document.getElementById('commentListUl');
+
+    // 모달창 프로필, 닉네임 설정
+    const profilePhotoM = document.getElementById('profilePhotoM');
+    const feedProfileImageM = document.getElementById('feedProfileImageM');
+    const feedMemberIdM = document.getElementById('feedMemberIdM');
+    profilePhotoM.href = '/feed/' + boardMemberNickname;
+    feedProfileImageM.setAttribute('src', boardMemberProfileImg);
+
+    feedMemberIdM.innerText = boardMemberNickname;
+    feedMemberIdM.href = '/feed/' + boardMemberNickname;
 
     // 댓글 리스트 불러오기
     selectCommentListM(boardNo, commentListUlM);
@@ -172,8 +193,10 @@ for (let i = 0; i < postingBtn.length; i++) {
         },
         success: (result) => {
           if (result > 0) {
-            selectCommentList(boardNo.value, commentListUl);
+            const flag = 1; // 1이 등록, 2가 삭제
+            selectCommentList(boardNo.value, commentListUl, flag);
             commentInput[i].value = '';
+            postingBtn[i].setAttribute('disabled', true);
             mainContainer.scrollTop = mainContainer.scrollHeight;
             upperCommentNo = 0;
           }
@@ -667,6 +690,8 @@ for (let item of hoverBtn) {
 
       
       console.log(deleteCommentUl);
+      console.log(deleteCommentNo);
+      console.log(deleteBoardNo);
       
     } else {
       commentMenu.style.display = 'flex';
@@ -693,27 +718,30 @@ document.getElementById('commentMenuCancelL').addEventListener('click', () => {
 // TODO: 댓글 삭제 버튼 클릭 시 삭제
 const commentDeleteBtn = document.getElementById('commentDeleteBtnL');
 commentDeleteBtn.addEventListener('click', () => {
-
+  
   console.log("deleteBoardNo: "+ deleteBoardNo);
   console.log("deleteCommentNo: " + deleteCommentNo);
   console.log(deleteCommentUl);
   console.log("modalOn: " + modalOn);
 
-    $.ajax({
-      url: '/comment/delete',
-      data: { "commentNo": deleteCommentNo },
+  $.ajax({
+    url: '/comment/delete',
+    data: { "commentNo": deleteCommentNo },
       success: (result) => {
         if (result > 0) {
           loginCommentMenu.style.display = 'none';
+
+          const flag = '0';
           
           if(modalOn == 0) {
-            selectCommentList(deleteBoardNo, deleteCommentUl);
+            selectCommentList(deleteBoardNo, deleteCommentUl, flag);
           }
           
           if(modalOn == 1) {
             selectCommentListM(deleteBoardNo, deleteCommentUl);
-
+            
           }
+          body.classList.remove('scrollLock');
         } else {
           console.log('댓글 삭제 실패');
         }
@@ -763,6 +791,7 @@ postingBtnM.addEventListener('click', () => {
         if (result > 0) {
           selectCommentListM(boardNo, commentListUlM);
           commentInputM.value = '';
+          postingBtnM.setAttribute('disabled', true);
           upperCommentNo = 0;
         }
       },

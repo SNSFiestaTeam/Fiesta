@@ -5,13 +5,13 @@
       <section id="commentListAreaM">
         <div id="writerInfoAreaM">
           <div id="writerInfoM">
-            <a href="html/profile/memberfeed(신아민) .html" id="profilePhotoM">
+            <a href="" id="profilePhotoM">
               <img
                 id="feedProfileImageM"
-                src="../../resources/images/karina.jpeg"
+                src=""
               />
             </a>
-            <a href="#" class="feed-memberId-m">karina_aespas_</a>
+            <a href="#" class="feed-memberId-m" id ="feedMemberIdM">karina_aespas_</a>
           </div>
           <div>
             <button

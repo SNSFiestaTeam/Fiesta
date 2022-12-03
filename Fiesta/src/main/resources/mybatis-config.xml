@@ -40,6 +40,7 @@
 		<mapper resource="/mappers/comment-mapper.xml"/>
 		<mapper resource="/mappers/follow-mapper.xml"/>
 		<mapper resource="/mappers/dm-mapper.xml"/>
+		<mapper resource="/mappers/board-setting-mapper.xml"/>
 
 		
 	
