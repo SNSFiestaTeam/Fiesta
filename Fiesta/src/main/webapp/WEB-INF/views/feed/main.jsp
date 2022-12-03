@@ -19,6 +19,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.css" rel="stylesheet">
 
     <!-- CSS 링크 -->
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
@@ -32,7 +33,6 @@
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-    <link rel="stylesheet" href="/resources/css/common-style.css" />
  
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -56,7 +56,7 @@
                   <!-- 작성자 프로필 -->
                   <div class="feed-header">
                     <div class="writer-info">
-                      <a href="" class="profile-photo">
+                      <a href="/feed/${board.memberNickname}" class="profile-photo">
                         <c:if test="${empty board.memberProfileImg}">
                           <img class="feed-profile-image" src="/resources/images/profile/profile.jpg" />
                         </c:if>
@@ -64,7 +64,7 @@
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
                         </c:if>
                       </a>
-                      <a href="#" class="feed-memberId">${board.memberNickname}</a>
+                      <a href="/feed/${board.memberNickname}" class="feed-memberId">${board.memberNickname}</a>
                     </div>
                     <div>
                       <button type="button" class="fa-solid fa-ellipsis feed-header-menu"></button>
@@ -298,6 +298,11 @@
         var modalOn = 0;
         var boardMemberNickname;
         var boardMemberProfileImg;
+
+        var commentBlockFlag;
+        var boardPubPriFlag;
+
+        var tags;
       </script>
     </c:if>
 
@@ -343,6 +348,7 @@
     <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
+    <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
     <%-- 사진크롭 --%>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>

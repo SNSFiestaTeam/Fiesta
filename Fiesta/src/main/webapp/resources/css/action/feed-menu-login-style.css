@@ -1,15 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: 0;
-  text-decoration: none;
-  list-style: none;
-}
+
 @import '../root-style.css';
 
 body {
   width: 100vw;
-  height: 100vh;
+
 }
 
 
@@ -73,6 +67,10 @@ body {
   font-weight: bold;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
+}
+
+#feedUpdateBtnLogin {
+  color: var(--fiesta-color);
 }
 
 .btn1 > button,
