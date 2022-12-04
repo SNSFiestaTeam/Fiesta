@@ -1,20 +1,25 @@
+let endList;
+
+window.addEventListener("load", (event) => {
+  endList = document.getElementById('feedSection').lastElementChild;
+
+  createObserver();
+}, false)
+
+
 // ! 무한 스크롤 용 객체 생성
-const feedSection = document.querySelector('.feed-section');
-let listEnd = feedSection.lastElementChild;
-const option = {
-  root: null,
-  rootMargin: '0px 0px 0px 0px',
-  threshold: 1.0,
-};
+function createObserver() {
+  let observer;
 
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1
+  };
 
-
-
-
-// * 무한 스크롤
-const observer = new IntersectionObserver(selectBoardList, option);
-observer.observe(listEnd);
-
+  observer = new IntersectionObserver(selectBoardList, options);
+  observer.observe(endList);
+}
 
 
 
@@ -27,25 +32,38 @@ let cp = 2;
 
 
 // TODO: 게시글 상세 조회 후 화면 출력
-function selectBoardList() {
-  // TODO: 로그인 멤버가 팔로우한 회원의 게시글 목록 조회
-  $.ajax({
-    url: '/selectBoardList',
-    type: 'GET',
-    data: { memberNo: memberNo, cp: cp },
-    dataType: 'json',
-    success: (map) => {
-      const boardList = map.boardList;
-      const pagination = map.pagination;
-      cp++;
-      for (let board of boardList) {
-        createBoard(board);
-        console.log(cp);
-      }
-    },
-    error: () => {
-      console.log('게시글 조회 중 오류 발생');
-    },
+function selectBoardList(entries, observer) {
+  entries.forEach((entry) => { 
+    if (entry.isIntersecting) {
+      
+      // TODO: 로그인 멤버가 팔로우한 회원의 게시글 목록 조회
+      $.ajax({
+        url: '/selectBoardList',
+        type: 'GET',
+        data: { memberNo: memberNo, cp: cp },
+        dataType: 'json',
+        success: (map) => {
+
+          
+
+          const boardList = map.boardList;
+          const pagination = map.pagination;
+          for (let board of boardList) {
+            createBoard(board);
+          }
+          if (cp != pagination.maxPage) {
+            endList = document.getElementById('feedSection').lastElementChild;
+            createObserver();
+            cp++;
+            console.log("cp :" + cp);
+          }
+          console.log(endList);
+        },
+        error: () => {
+          console.log('게시글 조회 중 오류 발생');
+        },
+      });
+    }
   });
 }
 
@@ -74,14 +92,14 @@ function createBoard(board) {
   profilePhotoA.classList.add('profile-photo');
 
   // FIXME: 멤버 프로필 주소로 이동하는 GetMapping 만들기
-  profilePhotoA.setAttribute('href', '#');
+  profilePhotoA.setAttribute('href', '/feed/' + board.memberNickname);
 
   const profileImage = document.createElement('img');
   profileImage.classList.add('feed-profile-image');
 
   const memberIdA = document.createElement('a');
   memberIdA.classList.add('feed-memberId');
-  memberIdA.setAttribute('href', '#');
+  memberIdA.setAttribute('href', '/feed/' + board.memberNickname);
 
   // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
   if (board.memberProfileImg == undefined) {
@@ -483,7 +501,7 @@ function createBoard(board) {
   feedContentDiv.classList.add('feed-content', 'one-line');
 
   const a = document.createElement('a');
-  a.setAttribute('href', '#');
+  a.setAttribute('href', '/feed/' + board.memberNickname);
 
   const memberIdSpan = document.createElement('span');
   memberIdSpan.classList.add('member-id');
@@ -664,6 +682,7 @@ function createBoard(board) {
       // commentFirstChild의 자식 요소 commentProfileA, commentDiv1
       const commentProfileA = document.createElement('a');
       commentProfileA.classList.add('comment-profile');
+      commentProfileA.href = '/feed/' + comment.memberNickname;
 
       const commentDiv1 = document.createElement('div');
 
@@ -698,6 +717,7 @@ function createBoard(board) {
       // commentDiv2의 자식 요소 commentMemberIdA, commentSpan
       const commentMemberIdA = document.createElement('a');
       commentMemberIdA.classList.add('comment-memberId');
+      commentMemberIdA.href = '/feed/' + comment.memberNickname;
       commentMemberIdA.innerText = comment.memberNickname;
 
       const commentSpan = document.createElement('span');
@@ -906,6 +926,38 @@ function createBoard(board) {
           console.log('댓글 등록 오류');
         },
       });
+    }
+  });
+
+    // 댓글 입력창에 enter 이벤트 리스너 추가
+    commentInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+
+      if (commentInput.value != '') {
+        $.ajax({
+          url: '/comment/insert',
+          type: 'Post',
+          data: {
+            'memberNo': memberNo,
+            'boardNo': board.boardNo,
+            'commentContent': commentInput.value,
+            'upperCommentNo': upperCommentNo,
+          },
+          success: (result) => {
+            if (result > 0) {
+              const flag = 1; //1이 등록 0이 삭제
+
+              selectCommentList(board.boardNo, commentUl, flag);
+              commentInput.value = '';
+              mainContainerDiv.scrollTop = mainContainerDiv.scrollHeight;
+            }
+          },
+          error: () => {
+            console.log('댓글 등록 오류');
+          },
+        });
+      }
+    
     }
   });
   

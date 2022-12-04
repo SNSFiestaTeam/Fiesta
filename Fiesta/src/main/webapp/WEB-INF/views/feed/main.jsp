@@ -12,6 +12,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
+
+    <%-- 무한 스크롤 --%>
+
+
     
     <%-- 사진크롭 --%>
     <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +34,7 @@
     <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
     <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
@@ -138,7 +143,7 @@
                     <!-- 본문 내용 -->
                     <div class="feed-main-content">
                       <div class="feed-content one-line">
-                        <a href="#"><span class="member-id">${board.memberNickname}</span></a>
+                        <a href="/feed/${board.memberNickname}"><span class="member-id">${board.memberNickname}</span></a>
                         <span class = "board-content">
                           ${board.boardContent}
                           
@@ -168,7 +173,7 @@
                                 <li class="comment">
                                   <input type="hidden" value="${comment.commentNo}" class="comment-no">
                                   <div class="comment-firstchild">
-                                    <a href="#" class="comment-profile">
+                                    <a href="/feed/${comment.memberNickname}" class="comment-profile">
                                       <c:if test="${empty comment.memberProfileImg}">
                                         <img class="comment-profile-image" src="/resources/images/profile/profile.jpg" />
                                       </c:if>
@@ -179,7 +184,7 @@
                                     <div>
                                       <div class="comment-firstline">
                                         <div class= "comment-id-content">
-                                          <a href="#" class="comment-memberId">${comment.memberNickname}</a>
+                                          <a href="/feed/${comment.memberNickname}" class="comment-memberId">${comment.memberNickname}</a>
                                           <span class="comment-content">${comment.commentContent}</span>
                                         </div>
                                         <div>
@@ -210,7 +215,7 @@
                                     <li class="comment" id="reply">
                                       <input type="hidden" value="${comment.commentNo}" class="comment-no">
                                       <div class="reply-firstchild">
-                                        <a href="#" class="comment-profile">
+                                        <a href="/feed/${comment.memberNickname}" class="comment-profile">
                                           <c:if test="${empty comment.memberProfileImg}">
                                           <img class="comment-profile-image" src="/resources/images/profile/profile.jpg" />
                                           </c:if>
@@ -221,7 +226,7 @@
                                         <div>
                                           <div class="reply-firstline">
                                             <div>
-                                              <a href="#" class="comment-memberId">${comment.memberNickname}</a>
+                                              <a href="/feed/${comment.memberNickname}" class="comment-memberId">${comment.memberNickname}</a>
                                               <a href="#" class="mention">@${comment.mentionNickname}</a>
                                               <span class="comment-content">${comment.commentContent}</span>
                                             </div>
@@ -307,6 +312,8 @@
         var boardPubPriFlag;
 
         var tags;
+
+        var mentionSet = null;
       </script>
     </c:if>
 

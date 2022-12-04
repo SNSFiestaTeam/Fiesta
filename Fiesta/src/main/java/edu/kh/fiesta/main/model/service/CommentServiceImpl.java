@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import edu.kh.fiesta.common.Util;
 import edu.kh.fiesta.main.model.dao.CommentDAO;
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.main.model.vo.Hashtag;
+import edu.kh.fiesta.member.model.vo.Member;
 
 @Service
 public class CommentServiceImpl implements CommentService{
@@ -40,7 +42,7 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public int commentInsert(Comment comment) {
 		
-		// 게시글 삽입
+		// 댓글 삽입
 		comment.setCommentContent(Util.XSSHandling(comment.getCommentContent())); // XSS 방지 처리
 		
 		comment.setCommentContent(Util.hashTagHandling(comment.getCommentContent())); //해시태그 A태그로 감싸기
@@ -90,6 +92,27 @@ public class CommentServiceImpl implements CommentService{
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * 언급 자동완성
+	 */
+	public List<Member> mentionAutoComplete(String[] searchWord) {
+		
+		String searchName = searchWord[searchWord.length-1];
+			
+		return dao.mentionAutoComplete(searchName);
+	}
+	
+	
+	/*
+	 * 해시태그 자동완성
+	 */
+	public List<Hashtag> hashtagAutoComplete(String[] searchWord){
+		
+		String searchName = searchWord[searchWord.length-1];
+		
+		return dao.hashtagAutoComplete(searchName);
 	}
 	
 }
