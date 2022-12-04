@@ -11,6 +11,7 @@
     <!-- 링크 주소 상대주소로 변경한거니까 다시 바꾸지 말아주세요 -->
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/dm/dm-style.css" />
+    <link rel="stylesheet" href="/resources/css/dm/dm-message2.css"/>
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -27,18 +28,12 @@
           <section class="up">
             <div class="id">${loginMember.memberNickname}</div>
             <!-- 로그인 연결 -->
-            <a href="#"
-              ><img
-                id="login"
-                src="/resources/images/arrow-down.png"
-                style="width: 16px"
-            /></a>
+            <button id="dmOpen">  
               <img
                 src="/resources/images/write.png"
                 name="dm-message"
                 style="width: 24px"
-                onclick="dmOpen()"
-              />
+                /></button>
 
             
           </section>
@@ -74,12 +69,12 @@
         </div>  
         <div class="right" id="right">
           <div id="no-click">
-            <img src="../../resources/images/dm-icon.png" style="width: 96px" />
+            <img src="/resources/images/dm-icon.png" style="width: 96px" />
             <h1>내 메시지</h1>
             <div class="message-info">
               친구나 그룹에 비공개 사진과 메세지를 보내보세요.
             </div>
-            <button class="send" type="button" id="sendMessage">
+            <button class="send" type="button" id="sendMessageBtn">
             메시지 보내기</a>
             </button>
           </div>  
@@ -87,11 +82,14 @@
            <%-- 클릭되었을때  --%>
           <div id="click">
             <div id="clickUp">
-              <a href="#" id="proImg"><img src="../../resources/images/user.jpg" style="width: 50px;"></a>
+              <button id="proImg"><img src="/resources/images/user.jpg" style="width: 50px;"></button>
               <div class="messageName" id="messageName"> test</div>
-              <a href="" id="info"><img src="../../resources/images/info.png" style="width:24px;"></a>
+              <button id="info"><img src="/resources/images/info.png" style="width:24px;"></button>
             </div>
             <div id="chattingRoom">
+              <ul class="dm-area">
+
+              </ul>
             </div>
             <div id="input">
             <input type="text" size="50" id="chattingInput" onkeyup="inputEnter()">
@@ -104,6 +102,16 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <jsp:include page="/WEB-INF/views/dm/dm-message.jsp"/>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script>
+      // 로그인한 회원 번호
+      const loginMemberNo = "${loginMember.memberNo}";
+  
+      // 게시판에서 사용자 닉네임을 눌러서 채팅 화면으로 넘어온 경우
+      // 그 때 전달된 채팅방 번호를 저장하는 변수
+      const tempNo = "${chattingNo}"; 
+    </script>
     <script src="/resources/js/dm/dm.js"></script>
   </body>
 </html>

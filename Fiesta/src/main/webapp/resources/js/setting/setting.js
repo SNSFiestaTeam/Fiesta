@@ -145,11 +145,13 @@ const profileDelete = document.getElementById("profile-delete");
 const imageInput = document.getElementById("image-input");
 profileContainer.style.display = "none";
 
-
+// 이미지 클릭시
 chgImg.addEventListener("click", ()=>{
     profileContainer.style.display = "flex";
 });
 
+
+// 모달 닫기
 editClose.addEventListener("click", function(){
 
     profileContainer.style.display = "none";

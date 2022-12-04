@@ -10,7 +10,7 @@
     <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/setting/setting-style.css" />
-    <link rel="stylesheet" href="../../../resources/css/profile-edit-board.css">
+    <link rel="stylesheet" href="/resources/css/profile-edit-board.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"

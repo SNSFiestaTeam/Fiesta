@@ -9,12 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
+    <link rel="stylesheet" href="/resources/css/dm/dm-message2.css" />
   </head>
   <body>
     <div class="feed-menu-container">
       <div class="feed-menu">
-        <div class="feed-menu-btn btn1">  
+        <div class="feedMenu1">  
           <div class="x">
           <img src="/resources/images/x.png">
           </div>
@@ -25,18 +25,20 @@
           <button id="next">다음</button>
           </div>
         </div>
-        <div class="feed-menu-btn btn2">
+        <div class="feedMenu2">
           <div>  
-            <h4>받는 사람 :</h4>
+            <h4 id="rece">받는 사람 :</h4>
+            <span id="Recipient"></span>
           </div>  
           <div>
             <input type="text" id="sendPeople" class="search" placeholder="검색...">
           </div>
         </div>
-        <div class="feed-menu-btn btn3">
+        <div class="feedMenu3">
           <span>추천</span>
-          
-
+          <div id="memberListArea">
+            ss
+          </div>
         </div>
       </div>
     </div>
