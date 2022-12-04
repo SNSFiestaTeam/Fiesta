@@ -100,7 +100,7 @@
 		<!-- 인기게시글 조회 -->
 		<select id="selectHotBoardList" resultMap="board_rm">
 			SELECT * 
-			FROM (SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE, MEMBER_NO,
+			FROM (SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE,
 							(SELECT COUNT(*) 
 							FROM BOARD_LIKE BL 
 							WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
@@ -112,7 +112,7 @@
 							 WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT
 					FROM BOARD B
 					JOIN "MEMBER" USING(MEMBER_NO)
-					JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
+					LEFT JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
 					JOIN BOARD_IMG BI ON (B.BOARD_NO = BI.BOARD_NO)
 					WHERE BOARD_CREATE_DATE > (SYSDATE - 30)  
 					AND (BOARD_CONTENT LIKE UPPER('%#${searchInput}%') OR BOARD_CONTENT LIKE LOWER('%#${searchInput}%')
@@ -124,9 +124,9 @@
 			<![CDATA[WHERE ROWNUM <= 9]]>
 		</select>
   
-  	<!-- 최근 게시글 조회 -->
+  	<!-- 최근 게시글 조회 -->  <!-- <![CDATA[AND ROWNUM <= 9]]> -->
 	  <select id="selectRecentBoardList" resultMap="board_rm">
-				SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE, MEMBER_NO,
+				SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE,
 								(SELECT COUNT(*) FROM BOARD_LIKE BL 
 								WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
 								(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
@@ -136,17 +136,34 @@
 								WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT	
 				FROM BOARD B
 				JOIN MEMBER USING(MEMBER_NO)
-				JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
+				LEFT JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
 				WHERE (BOARD_CONTENT LIKE UPPER('%#${searchInput}%') OR BOARD_CONTENT LIKE LOWER('%#${searchInput}%') 
 				OR COMMENT_CONTENT LIKE UPPER('%#${searchInput}%') OR COMMENT_CONTENT LIKE LOWER('%#${searchInput}%'))
 				AND BOARD_DEL_FL = 'N'
 				AND MEMBER_OPEN_FL = 'Y'
-				<![CDATA[AND ROWNUM <= 9]]>
 				ORDER BY BOARD_CREATE_DATE DESC 
 	  </select>
   
   
-  
-  
+  	<!-- 최근 게시글 조회 _ 게시글 수 조회 -->
+  	<select id="getListCount" parameterType="map" resultType="_int">
+  			SELECT COUNT(*)
+ 			  FROM(	SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE,
+							(SELECT COUNT(*) FROM BOARD_LIKE BL 
+							WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+							(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
+							FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
+							AND IMG_ORDER = 0) IMG_PATH,
+							(SELECT COUNT(*) FROM "COMMENT" C
+							WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT	
+							FROM BOARD B
+							JOIN MEMBER USING(MEMBER_NO)
+							LEFT JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
+							WHERE (BOARD_CONTENT LIKE UPPER('%#${searchInput}%') OR BOARD_CONTENT LIKE LOWER('%#${searchInput}%') 
+							OR COMMENT_CONTENT LIKE UPPER('%#${searchInput}%') OR COMMENT_CONTENT LIKE LOWER('%#${searchInput}%'))
+							AND BOARD_DEL_FL = 'N'
+							AND MEMBER_OPEN_FL = 'Y'
+							ORDER BY BOARD_CREATE_DATE DESC)
+  	</select>
   
 </mapper>

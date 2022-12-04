@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.kh.fiesta.feed.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.member.model.vo.Member;
 import edu.kh.fiesta.search.model.dao.SearchDAO;
@@ -55,6 +56,25 @@ public class SearchServiceImpl implements SearchService{
 	}
 
 	
-
+	// 최근 게시글 조회(pagination)
+	@Override
+	public Map<String, Object> selectRecentList(Map<String, Object> recentMap) {
+		
+		// 1. 특정 게시판의 전체 게시글 수 조회(삭제 제외)
+		int listCount = dao.getListCount(recentMap);
+		
+		
+		// 2. 전체 게시글 수 + cp(현재 페이지) 이용해서 페이지 처리 객체 생성
+		Pagination pagination = new Pagination(listCount, 1);
+		
+		// 3. 페이징 처리 객체를 이용해서 게시글 목록 조회
+		List<Board> recentBoardList = dao.selectRecentList(pagination, recentMap);
+		
+		Map<String, Object> recentResultMap = new HashMap<String, Object>();
+		recentResultMap.put("pagination", pagination);
+		recentResultMap.put("recentBoardList", recentBoardList);
+		
+		return recentResultMap;
+	}
 
 }

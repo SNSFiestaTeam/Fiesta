@@ -27,6 +27,14 @@ public interface SearchService {
 	Map<String, Object> selectSearchResult(Map<String, Object> paramMap);
 
 	
+	/** 최근 게시글 조회(pagination)
+	 * @param searchInput
+	 * @param cp
+	 * @return result
+	 */
+	Map<String, Object> selectRecentList(Map<String, Object> recentMap);
+
+	
 
 
 }

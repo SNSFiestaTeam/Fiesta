@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.google.gson.Gson;
 
 import edu.kh.fiesta.member.model.vo.Member;
 import edu.kh.fiesta.search.model.service.SearchService;
@@ -31,12 +32,14 @@ public class SearchController {
 		int accountTotal = service.selectAccountTotal(searchInput);
 		int boardTotal = service.selectBoardTotal(searchInput);
 		
-		// 검색_관련 계정 조회
-		Map<String, Object> paramMap = new HashMap<String, Object>();
+		// 검색_관련 계정, 인기게시글, 최근게시글 조회
 		
+		// 검색에 필요한 매개변수
+		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("searchInput", searchInput);
 		paramMap.put("memberNickname", loginMember.getMemberNickname());
 		
+		// 관련계정, 인기게시글, 최근게시글 조회 서비스 호출
 		Map<String, Object> searchResultMap = service.selectSearchResult(paramMap);
 		
 		searchResultMap.put("accountTotal", accountTotal);
@@ -48,5 +51,27 @@ public class SearchController {
 		
 		return "search/search";
 	}
+	
+	
+	// 최근게시글 조회_pagination
+ 	@GetMapping("/selectRecentList")
+ 	public String selectRecentList(String searchInput, int cp, Model model) {
+ 		
+ 		// 서비스 호출에 필요한 매개변수
+ 		Map<String, Object> recentMap = new HashMap<String, Object>();
+ 		recentMap.put("searchInput", searchInput);
+ 		recentMap.put("cp", cp);
+ 		
+ 		// 최근게시글 조회 서비스 호출
+ 		Map<String, Object> recentResultMap = service.selectRecentList(recentMap);
+ 		
+ 		model.addAttribute("recentResultMap", recentResultMap);
+ 		
+ 		return new Gson().toJson(recentResultMap);
+ 		
+ 	}
+
+	
+	
 
 }

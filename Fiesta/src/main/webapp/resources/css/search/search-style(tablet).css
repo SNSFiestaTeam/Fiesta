@@ -255,7 +255,7 @@
         margin-bottom: 5px;
     }
     
-    .boardImage a{
+    .aBoardImage{
         width: 26vw;
         display: flex;
         justify-content: flex-start;
@@ -266,7 +266,7 @@
     }
     
     
-    .boardImage img{
+    .b-img{
         width: 26vw;
         /* width: 100%;
         height: 100%; */
@@ -285,7 +285,7 @@
         display: none;
     }
 
-    .boardImage img:hover + .hover-icon-container {
+    .b-img:hover + .hover-icon-container {
         width: 100%;
         height: 100%;
         
@@ -300,13 +300,13 @@
         align-items: center;
     }
 
-    .hover-icon-container > i {
+    .iHover {
         color: white;
         margin-left: 20px;
         margin-right: 5px;
     }
 
-    .hover-icon-container > span {
+    .spanHover {
         color: white;
         font-size: 14px;
     }

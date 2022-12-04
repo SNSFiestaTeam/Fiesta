@@ -8,6 +8,8 @@
 <c:set var="hotBoardList" value="${searchResultMap.hotBoardList}"/>
 <c:set var="recentBoardList" value="${searchResultMap.recentBoardList}"/>
 
+<c:set var="pagination" value="${map.pagination}" />
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -123,11 +125,11 @@
               <c:if test="${fn:length(hotBoardList) > 0}">
                 <div class="boardImage">
                   <c:forEach var="hotItem" items="${hotBoardList}" begin="0" end="2">
-                    <a href="#">
+                    <a href="#" class="aBoardImage">
                       <img class="b-img" src="${hotItem.imgPath}" alt=""> 
                       <div class="hover-icon-container">
-                        <i class="fa-regular fa-heart"></i><span>${hotItem.likeCount}</span>
-                        <i class="fa-regular fa-comment"></i><span>${hotItem.commentCount}</span>
+                        <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${hotItem.likeCount}</span>
+                        <i class="fa-regular fa-comment iHover"></i><span class="spanHover">${hotItem.commentCount}</span>
                       </div>
                     </a>
                   </c:forEach>
@@ -137,11 +139,11 @@
               <c:if test="${fn:length(hotBoardList) > 3}">
                 <div class="boardImage">
                   <c:forEach var="hotItem" items="${hotBoardList}" begin="3" end="5">
-                    <a href="#">
-                      <img src="${hotItem.imgPath}" alt=""> 
+                    <a href="#" class="aBoardImage">
+                      <img class="b-img" src="${hotItem.imgPath}" alt=""> 
                       <div class="hover-icon-container">
-                        <i class="fa-regular fa-heart"></i><span>${hotItem.likeCount}</span>
-                        <i class="fa-regular fa-comment"></i><span>${hotItem.commentCount}</span>
+                        <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${hotItem.likeCount}</span>
+                        <i class="fa-regular fa-comment iHover"></i><span class="spanHover">${hotItem.commentCount}</span>
                       </div>
                     </a>
                   </c:forEach>
@@ -151,11 +153,11 @@
               <c:if test="${fn:length(hotBoardList) > 6}">
                 <div class="boardImage">
                   <c:forEach var="hotItem" items="${hotBoardList}" begin="6" end="8">
-                    <a href="#">
-                      <img src="${hotItem.imgPath}" alt="">
+                    <a href="#" class="aBoardImage">
+                      <img class="b-img" src="${hotItem.imgPath}" alt="">
                       <div class="hover-icon-container">
-                        <i class="fa-regular fa-heart"></i><span>${hotItem.likeCount}</span>
-                        <i class="fa-regular fa-comment"></i><span>${hotItem.commentCount}</span>
+                        <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${hotItem.likeCount}</span>
+                        <i class="fa-regular fa-comment iHover"></i><span class="spanHover">${hotItem.commentCount}</span>
                       </div>
                     </a> 
                   </c:forEach>
@@ -182,11 +184,13 @@
               <c:if test="${fn:length(recentBoardList) > 0}">
                 <div class="boardImage">
                   <c:forEach var="recentItem" items="${recentBoardList}" begin="0" end="2">
-                    <a href="#">
-                      <img src="${recentItem.imgPath}" alt="" >
+                    <a href="#" class="aBoardImage">
+                      <img class="b-img" src="${recentItem.imgPath}" alt="" >
                       <div class="hover-icon-container">
-                        <i class="fa-regular fa-heart"></i><span>${recentItem.likeCount}</span>
-                        <i class="fa-regular fa-comment"></i><span>${recentItem.commentCount}</span>
+                        <i class="fa-regular fa-heart iHover"></i>
+                        <span class="spanHover">${recentItem.likeCount}</span>
+                        <i class="fa-regular fa-comment iHover"></i>
+                        <span class="spanHover">${recentItem.commentCount}</span>
                       </div>
                     </a> 
                   </c:forEach>
@@ -196,11 +200,11 @@
               <c:if test="${fn:length(recentBoardList) > 3}">
                 <div class="boardImage">
                   <c:forEach var="recentItem" items="${recentBoardList}" begin="3" end="5">
-                    <a href="#">
-                      <img src="${recentItem.imgPath}" alt="">
+                    <a href="#" class="aBoardImage">
+                      <img class="b-img" src="${recentItem.imgPath}" alt="">
                       <div class="hover-icon-container">
-                        <i class="fa-regular fa-heart"></i><span>${recentItem.likeCount}</span>
-                        <i class="fa-regular fa-comment"></i><span>${recentItem.commentCount}</span>
+                        <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${recentItem.likeCount}</span>
+                        <i class="fa-regular fa-comment iHover"></i><span class="spanHover">${recentItem.commentCount}</span>
                       </div>
                     </a> 
                   </c:forEach>
@@ -210,18 +214,62 @@
               <c:if test="${fn:length(recentBoardList) > 6}">
                 <div class="boardImage">
                   <c:forEach var="recentItem" items="${recentBoardList}" begin="6" end="8">
-                    <a href="#">
-                      <img src="${recentItem.imgPath}" alt="">
+                    <a href="#" class="aBoardImage">
+                      <img class="b-img" src="${recentItem.imgPath}" alt="">
                       <div class="hover-icon-container">
-                        <i class="fa-regular fa-heart"></i><span>${recentItem.likeCount}</span>
-                        <i class="fa-regular fa-comment"></i><span>${recentItem.commentCount}</span>
+                        <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${recentItem.likeCount}</span>
+                        <i class="fa-regular fa-comment iHover"></i><span class="spanHover">${recentItem.commentCount}</span>
                       </div>
                     </a> 
                   </c:forEach>
                 </div>              
               </c:if>
             </div>
+          
+
+            <!-- 새로 나타나는 페이지 -->
+            <!-- <c:if test="${fn:length(recentBoardList) > 9}">
+              <div class="boardImage">
+                <c:forEach var="recentItem" items="${recentBoardList}" begin="9" end="11">
+                  <a href="#" class="aBoardImage">
+                    <img class="b-img" src="${recentItem.imgPath}" alt="">
+                    <div class="hover-icon-container">
+                      <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${recentItem.likeCount}</span>
+                      <i class="fa-regular fa-comment iHover"></i><span class="spanHover">${recentItem.commentCount}</span>
+                    </div>
+                  </a> 
+                </c:forEach>
+              </div>              
+            </c:if>
+          </div>
+            <div class="boardImage">
+                글을 써보자
+            </div>
+            <div class="boardImage">
+                출력되는지 확인하기
+            </div>
+            <div class="boardImage">
+                무한 스크롤 어떻게 하는거야
+            </div>
+            <div class="boardImage">
+                어후
+            </div> -->
+            
+          
+          
+          
+          
+          
+          
           </c:if>
+
+
+
+
+
+
+
+
 
           <c:if test="${empty recentBoardList}">
             <div class="emptyResultMessage">
@@ -229,6 +277,11 @@
             </div>
           </c:if>
         </section>
+
+
+
+
+
 
     </main>
 
