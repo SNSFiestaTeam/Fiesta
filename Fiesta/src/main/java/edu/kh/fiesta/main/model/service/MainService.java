@@ -60,6 +60,14 @@ public interface MainService {
 	public int boardBookmarkOff(int boardNo, int memberNo);
 
 
+	/**
+	 * 게시글 삭제
+	 * @param boardNo
+	 * @return result
+	 */
+	public int deleteBoard(int boardNo);
+
+
 
 
 }

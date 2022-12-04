@@ -99,6 +99,8 @@ function createBoard(board) {
   feedMenuBtn.setAttribute('type', 'button');
   feedMenuBtn.classList.add('fa-solid', 'fa-ellipsis', 'feed-header-menu');
 
+  const mainContainerDiv = document.createElement('div');
+
   // * feedMenuBtn 클릭 시 이벤트 추가
   feedMenuBtn.addEventListener('click', () => {
 
@@ -111,19 +113,21 @@ function createBoard(board) {
     commentBlockFlag = commentBlockFlagInput;
     boardPubPriFlag = boardPubPriFlagInput;
 
-    console.log("commentBlockFlag " + commentBlockFlag);
-    console.log("boardPubPriFlag " + boardPubPriFlag);
+    console.log(commentBlockFlag);
+    console.log(boardPubPriFlag);
 
     if (board.memberNickname == memberNickname) {
       // 댓글 기능 사용 유무에 따른 버튼 내용 변경
-      if (board.commentBlockFlag == 'N') {
+      if (commentBlockFlag.value == 'N') {
         feedCommentBtnLogin.innerText = '댓글 기능 해제'
-      } else {
+      }
+      
+      if(commentBlockFlag.value == 'Y'){
         feedCommentBtnLogin.innerText = '댓글 기능 설정'
       }
       
       // 좋아요 수 공개 유무에 따른 버튼 내용 변경
-      if (board.boardPubPriFlag == 'Y') {
+      if (boardPubPriFlag.value == 'Y') {
         feedLikeBtnLogin.innerText = '좋아요 수 숨기기'
       } else {
         feedLikeBtnLogin.innerText = '좋아요 수 숨기기 취소'
@@ -139,7 +143,7 @@ function createBoard(board) {
       console.log(tags.likeCount);
       console.log(tags.commentContainer);
       console.log(tags.commentInputArea);
-      console.log(tags.mainContainerDiv);
+      console.log(tags.mainContainer);
 
     } else {
       feedMenu.style.display = 'flex';
@@ -379,7 +383,7 @@ function createBoard(board) {
   mainContentDiv.append(commentIconDiv);
 
   // 본문 컨테이너 생성
-  const mainContainerDiv = document.createElement('div');
+  
   mainContainerDiv.classList.add('main-container');
 
   // TODO: 좋아요 수 표시
@@ -535,6 +539,8 @@ function createBoard(board) {
   
   // 댓글 컨테이너 생성
   const commentContainer = document.createElement('div');
+  commentContainer.classList.add('comment-container');
+
   const commentInputArea = document.createElement('div');
 
   const createDate = document.createElement('span');
@@ -543,7 +549,6 @@ function createBoard(board) {
   
 
   if(board.commentBlockFlag == 'N') {
-  commentContainer.classList.add('comment-container');
 
   // 댓글 2개 초과일 시 댓글 더보기 출력
   if(board.commentList.length > 2) {
@@ -847,23 +852,22 @@ function createBoard(board) {
 
   // 댓글 입력창 추가
   
-  commentInputArea.classList.add('comment-input-area');
-
+  
   const div4 = document.createElement('div');
-
+  
   commentInputArea.append(div4);
-
+  
   const commentInput = document.createElement('textarea');
   commentInput.setAttribute('name', 'comment');
   commentInput.setAttribute('placeholder', '댓글 달기...');
   commentInput.id = 'commentInput';
   commentInput.classList.add('comment-input');
-
+  
   const postingBtn = document.createElement('button');
   postingBtn.classList.add('posting-btn');
   postingBtn.disabled = true;
   postingBtn.innerText = '게시';
-
+  
   // 댓글 입력창에 입력 이벤트 추가
   commentInput.addEventListener('input', () => {
     if (commentInput.value.trim().length == 0) {
@@ -874,11 +878,11 @@ function createBoard(board) {
       return;
     }
   });
-
+  
   // postingBtn에 게시 클릭 이벤트 추가
   postingBtn.addEventListener('click', () => {
     console.log(commentInput.innerText);
-
+    
     if (commentInput.value != '') {
       $.ajax({
         url: '/comment/insert',
@@ -904,24 +908,18 @@ function createBoard(board) {
       });
     }
   });
-
-  div4.append(commentInput, postingBtn);
-
-  }
-
-  mainContainerDiv.append(feedMainContentDiv);
-
-
-  if(board.commentBlockFlag == 'N') {
-    mainContainerDiv.append(commentContainer);
-  }
-
-  mainContainerDiv.append(createDate);
   
-  mainContentDiv.append(mainContainerDiv);
-  if(board.commentBlockFlag == 'N') {
-    mainContentDiv.append(commentInputArea);
-  }
+  div4.append(commentInput, postingBtn);
+  
+}
+
+commentInputArea.classList.add('comment-input-area');
+mainContainerDiv.append(feedMainContentDiv);
+mainContainerDiv.append(commentContainer);
+mainContainerDiv.append(createDate);
+mainContentDiv.append(mainContainerDiv);
+mainContentDiv.append(commentInputArea);
+
 
   // boardNo hidden input 태그 추가
   const boardNoInput = document.createElement("input");

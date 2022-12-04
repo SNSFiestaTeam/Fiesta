@@ -267,5 +267,12 @@
 	JOIN "MEMBER" M ON(b.MEMBER_NO = M.MEMBER_NO)
 	WHERE BOARD_NO = #{boardNo}
   </select>
+  
+  <!-- 게시글 삭제 -->
+  <update id="deleteBoard">
+  	UPDATE BOARD SET
+  	BOARD_DEL_FL = 'Y'
+  	WHERE BOARD_NO = #{boardNo}
+  </update>
 
 </mapper>

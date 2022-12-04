@@ -162,22 +162,6 @@ for (let i = 0; i < postingBtn.length; i++) {
     
     if (commentInput[i].value != '') {
 
-      // 해시태그 인식해서 a 태그로 감싸기
-      const regEx = /(#[^\s#]+)/gm;
-      commentInput[i].value
-  
-      commentInput[i].value = commentInput[i].value.replace(regEx, (match) => {
-        const tagName = match.replace("#", '');
-        return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
-      });
-
-      // 언급 인식해서 a 태그로 감싸기
-      const regEx2 = /(@[^\s@]+)/gm;
-  
-      commentInput[i].value = commentInput[i].value.replace(regEx2, (match) => {
-        const tagName = match.replace("@", '');
-        return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
-      });
 
       console.log("바뀐 댓글 내용: "+ commentInput[i].value);
 
@@ -759,21 +743,7 @@ const commentListUlM = document.getElementById('commentListUl');
 
 // 댓글 모달창 게시 클릭 이벤트 추가
 postingBtnM.addEventListener('click', () => {
-  const regEx = /(#[^\s#]+)/gm;
 
-
-  commentInputM.value = commentInputM.value.replace(regEx, (match) => {
-    const tagName = match.replace("#", '');
-    return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
-  });
-
-  // 언급 인식해서 a 태그로 감싸기
-  const regEx2 = /(@[^\s@]+)/gm;
-
-  commentInputM.value = commentInputM.value.replace(regEx2, (match) => {
-    const tagName = match.replace("@", '');
-    return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
-  });
 
   console.log("댓글 등록 boardNo: " + boardNo);
 

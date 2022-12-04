@@ -58,6 +58,36 @@ public class BoardSettingDAO {
 		
 		return board;
 	}
+
+	/**
+	 * 좋아요 수 숨기기
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateBoardPubPriN(int boardNo) {
+		int result = sqlSession.update("boardSettingMapper.updateBoardPubPriN", boardNo);
+		
+		if(result > 0) {
+			result = sqlSession.selectOne("boardSettingMapper.selectBoardLikeCount", boardNo);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * 좋아요 수 숨기기 해제
+	 * @param boardNo
+	 * @return
+	 */
+	public int updateBoardPubPriY(int boardNo) {
+		int result = sqlSession.update("boardSettingMapper.updateBoardPubPriY", boardNo);
+		
+		if(result > 0) {
+			result = sqlSession.selectOne("boardSettingMapper.selectBoardLikeCount", boardNo);
+		}
+		
+		return result;
+	}
 	
 
 	

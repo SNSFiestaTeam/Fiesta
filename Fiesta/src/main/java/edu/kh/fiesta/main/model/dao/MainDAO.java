@@ -114,6 +114,16 @@ public class MainDAO {
 		return sqlSession.delete("mainMapper.boardBookmarkOff", map);
 	}
 
+	
+	/**
+	 * 게시글 삭제
+	 * @param boardNo
+	 * @return result
+	 */
+	public int deleteBoard(int boardNo) {
+		return sqlSession.update("mainMapper.deleteBoard", boardNo);
+	}
+
 
 
 }
