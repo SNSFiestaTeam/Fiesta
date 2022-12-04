@@ -1,3 +1,4 @@
+// 검색 모달창 
 const searchBtn = document.getElementById('searchBtn');
 
 searchBtn.addEventListener('click', () => { 
@@ -50,3 +51,5 @@ searchBtn.addEventListener('click', () => {
     }, 500);
   });
 });
+
+

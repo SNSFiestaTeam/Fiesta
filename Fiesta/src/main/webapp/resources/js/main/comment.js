@@ -277,6 +277,7 @@ function selectCommentListM(boardNo, commentListUl) {
 
           // commentFirstChild의 자식 요소 commentProfileA, commentDiv1
           const commentProfileA = document.createElement('a');
+          commentProfileA.href = '/feed/' + comment.memberNickname;
           commentProfileA.id = 'commentProfileM';
 
           const commentDiv1 = document.createElement('div');
@@ -498,6 +499,7 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
 
         // replyFirstChild의 자식 요소 replyProfileA, replyDiv1
         const replyProfileA = document.createElement('a');
+        replyProfileA.href = '/feed/' + comment.memberNickname;
         replyProfileA.id = 'commentProfileM';
 
         const replyDiv1 = document.createElement('div');

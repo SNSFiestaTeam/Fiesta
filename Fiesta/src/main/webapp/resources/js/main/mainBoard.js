@@ -74,14 +74,14 @@ function createBoard(board) {
   profilePhotoA.classList.add('profile-photo');
 
   // FIXME: 멤버 프로필 주소로 이동하는 GetMapping 만들기
-  profilePhotoA.setAttribute('href', '#');
+  profilePhotoA.setAttribute('href', '/feed/' + board.memberNickname);
 
   const profileImage = document.createElement('img');
   profileImage.classList.add('feed-profile-image');
 
   const memberIdA = document.createElement('a');
   memberIdA.classList.add('feed-memberId');
-  memberIdA.setAttribute('href', '#');
+  memberIdA.setAttribute('href', '/feed/' + board.memberNickname);
 
   // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
   if (board.memberProfileImg == undefined) {
@@ -483,7 +483,7 @@ function createBoard(board) {
   feedContentDiv.classList.add('feed-content', 'one-line');
 
   const a = document.createElement('a');
-  a.setAttribute('href', '#');
+  a.setAttribute('href', '/feed/' + board.memberNickname);
 
   const memberIdSpan = document.createElement('span');
   memberIdSpan.classList.add('member-id');
@@ -664,6 +664,7 @@ function createBoard(board) {
       // commentFirstChild의 자식 요소 commentProfileA, commentDiv1
       const commentProfileA = document.createElement('a');
       commentProfileA.classList.add('comment-profile');
+      commentProfileA.href = '/feed/' + comment.memberNickname;
 
       const commentDiv1 = document.createElement('div');
 
@@ -698,6 +699,7 @@ function createBoard(board) {
       // commentDiv2의 자식 요소 commentMemberIdA, commentSpan
       const commentMemberIdA = document.createElement('a');
       commentMemberIdA.classList.add('comment-memberId');
+      commentMemberIdA.href = '/feed/' + comment.memberNickname;
       commentMemberIdA.innerText = comment.memberNickname;
 
       const commentSpan = document.createElement('span');

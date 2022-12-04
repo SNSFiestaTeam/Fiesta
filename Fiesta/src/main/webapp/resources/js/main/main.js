@@ -79,11 +79,14 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
 }
 
 // -------------------------------------피드 메뉴-------------------------------------------------------
-// 피트 헤더 메뉴창 취소 클릭시 닫힘
+// 피드 헤더 메뉴창 취소 클릭시 닫힘
 feedMenuCancel.addEventListener("click", function () {
   feedMenu.style.display = "none";
   body.classList.remove("scrollLock");
 });
+
+
+
 
 
 // 피드 신고 버튼 클릭시 신고 창 열림
@@ -108,6 +111,7 @@ reportCancle.addEventListener("click", function () {
 
 
 
+
 // 피드 공유하기 버튼 클릭시 공유하기 창 열림
 const share = document.getElementById("share");
 const feedShareBtn = document.getElementById("feedShareBtn");
@@ -120,17 +124,15 @@ feedShareBtn.addEventListener("click", function () {
 });
 
 
-// 공유하기 모달창에서 클릭버튼 클릭 시
+// 공유하기 모달창에서 취소 버튼 클릭 시 닫힘
 const shareCancleBtn = document.getElementById("shareCancleBtn");
 shareCancleBtn.addEventListener("click", function () {
   share.style.display = "none";
   body.classList.remove("scrollLock");
 });
 
+
 // -------------------------------------피드 메뉴 끝-------------------------------------------------------
-
-
-
 
 
 
@@ -141,6 +143,8 @@ loginFeedMenuCancel.addEventListener("click", function () {
   loginFeedMenu.style.display = "none";
   body.classList.remove("scrollLock");
 });
+
+
 
 const feedDeleteBtnLogin = document.getElementById("feedDeleteBtnLogin");
 const feedUpdateBtnLogin = document.getElementById("feedUpdateBtnLogin");
@@ -311,6 +315,7 @@ feedCommentBtnLogin.addEventListener('click', () => {
   
               // commentFirstChild의 자식 요소 commentProfileA, commentDiv1
               const commentProfileA = document.createElement('a');
+              commentProfileA.href = '/feed/' + comment.memberNickname;
               commentProfileA.classList.add('comment-profile');
   
               const commentDiv1 = document.createElement('div');
@@ -345,6 +350,7 @@ feedCommentBtnLogin.addEventListener('click', () => {
   
               // commentDiv2의 자식 요소 commentMemberIdA, commentSpan
               const commentMemberIdA = document.createElement('a');
+              commentMemberIdA.href = '/feed/' + comment.memberNickname;
               commentMemberIdA.classList.add('comment-memberId');
               commentMemberIdA.innerText = comment.memberNickname;
   
@@ -663,7 +669,8 @@ deleteCancleBtn.addEventListener('click', () => {
 
 
 
-// 게시글 삭제 컨펌창 삭제 버튼 클릭 이벤트 추가
+
+// 게시글 삭제 컨펌창 삭제 버튼 클릭 시 게시글 삭제
 const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
 deleteConfirmBtn.addEventListener('click', () => { 
   $.ajax({
@@ -680,10 +687,6 @@ deleteConfirmBtn.addEventListener('click', () => {
 
 
 // ------------------------------------- 로그인 피드 메뉴 끝-------------------------------------------------------
-
-
-
-
 
 
 
@@ -777,7 +780,7 @@ const dmContainer = document.getElementById("dmContainer");
 for (let i = 0; i < dmBtn.length; i++) {
   dmBtn[i].addEventListener("click", () => {
     dmContainer.style.display = "flex";
-    dmContainer.classList.add("scrollrock");
+    body.classList.add("scrollrock");
   });
 }
 
@@ -789,8 +792,9 @@ for (let i = 0; i < dmBtn.length; i++) {
 
 document.getElementById("dmCloseBtn").addEventListener("click", () => {
   dmContainer.style.display = "none";
-  dmContainer.classList.remove("scrollrock");
+  body.classList.remove("scrollrock");
 });
+
 
 
 
@@ -904,3 +908,44 @@ reportCancle.addEventListener("click", function () {
 
   body.classList.remove("scrollLock");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.addEventListener('click', (e) => {
+  // 신고창 밖 클릭 시 닫힘
+  e.target === report ? report.style.display = 'none' : false
+  
+  // 공유하기 모달창 밖 클릭 시 닫힘
+  e.target === share ? share.style.display = 'none' : false
+  
+  // DM 모달창 밖 클릭 시 닫힘
+  e.target === dmContainer ? dmContainer.style.display = 'none' : false
+  
+  // 삭제 컨펌 모달창 밖 클릭 시 닫힘
+  e.target === confirmContainerM ? confirmContainerM.style.display = 'none' : false
+  
+  // 로그인 피드 메뉴 밖 클릭 시 닫힘
+  e.target === loginFeedMenu ? loginFeedMenu.style.display = 'none' : false
+    
+  // 피드 헤더 메뉴창 바깥 클릭 시 닫힘
+  e.target === feedMenu ? feedMenu.style.display = 'none' : false
+
+  // 신고창 밖 클릭 시 닫힘
+  e.target === report ? report.style.display = 'none' : false
+
+  body.classList.remove("scrollLock");
+
+});
+
+
+
