@@ -1,13 +1,38 @@
 // 댓글 창에 입력 시 게시 버튼 활성화
+// const commentInput = document.getElementsByClassName('comment-input');
 const postingBtn = document.getElementsByClassName('posting-btn');
+
 for (let i = 0; i < commentInput.length; i++) {
-  commentInput[i].addEventListener('input', function () {
+  commentInput[i].addEventListener('input', (e) => {
     if (commentInput[i].value.trim().length == 0) {
       postingBtn[i].setAttribute('disabled', true);
       return;
     } else {
       postingBtn[i].removeAttribute('disabled');
-      return;
+    }
+  });
+}
+
+for (let i = 0; i < commentInput.length; i++) {
+  commentInput[i].addEventListener('keyup', (e) => {
+    // @키 입력 시 언급 자동완성 모달창
+    if (e.key === '@') {
+      
+      const autoCompleteModal = document.createElement('div');
+      autoCompleteModal.classList.add('auto-complete-container');
+      autoCompleteModal.id = 'autoCompleteModal';
+
+      commentInput[i].parentElement.parentElement.append(autoCompleteModal);
+
+      commentInput[i].parentElement.parentElement.style.position = 'relative';
+    
+
+      
+    }
+
+    // #키 입력 시 해시태그 자동완성 모달창 추가
+    if (e.key === '#') {
+      
     }
   });
 }
@@ -196,45 +221,48 @@ for (let i = 0; i < postingBtn.length; i++) {
 // 댓글 입력 후 Enter키 입력 시
 for (let i = 0; i < commentInput.length; i++) {
   commentInput[i].addEventListener('keypress', e => {
-    const boardNo = postingBtn[i].parentElement.parentElement.parentElement.nextElementSibling;
-    const commentInput = document.getElementsByClassName('comment-input');
-    const commentListUl = document.getElementsByClassName('comment-list')[i];
-    const mainContainer = document.getElementsByClassName('main-container')[i];
-
-    console.log(commentInput[i].value);
-    console.log('upperCommentNo: ' + upperCommentNo);
-    console.log(boardNo.value);
-
+    if (e.key === 'Enter') {
+      
+      const boardNo = postingBtn[i].parentElement.parentElement.parentElement.nextElementSibling;
+      const commentInput = document.getElementsByClassName('comment-input');
+      const commentListUl = document.getElementsByClassName('comment-list')[i];
+      const mainContainer = document.getElementsByClassName('main-container')[i];
+      
+      console.log(commentInput[i].value);
+      console.log('upperCommentNo: ' + upperCommentNo);
+      console.log(boardNo.value);
     
-    if (commentInput[i].value != '') {
+    
+      if (commentInput[i].value != '') {
 
 
-      console.log("바뀐 댓글 내용: "+ commentInput[i].value);
+        console.log("바뀐 댓글 내용: "+ commentInput[i].value);
 
-
-      $.ajax({
-        url: '/comment/insert',
-        type: 'Post',
-        data: {
-          "memberNo": memberNo,
-          "boardNo": boardNo.value,
-          "commentContent": commentInput[i].value,
-          "upperCommentNo": upperCommentNo,
-        },
-        success: (result) => {
-          if (result > 0) {
-            const flag = 1; // 1이 등록, 2가 삭제
-            selectCommentList(boardNo.value, commentListUl, flag);
-            commentInput[i].value = '';
-            postingBtn[i].setAttribute('disabled', true);
-            mainContainer.scrollTop = mainContainer.scrollHeight;
-            upperCommentNo = 0;
-          }
-        },
-        error: () => {
-          console.log('댓글 등록 오류');
-        },
-      });
+        
+        $.ajax({
+          url: '/comment/insert',
+          type: 'Post',
+          data: {
+            "memberNo": memberNo,
+            "boardNo": boardNo.value,
+            "commentContent": commentInput[i].value,
+            "upperCommentNo": upperCommentNo,
+          },
+          success: (result) => {
+            if (result > 0) {
+              const flag = 1; // 1이 등록, 2가 삭제
+              selectCommentList(boardNo.value, commentListUl, flag);
+              commentInput[i].value = '';
+              postingBtn[i].setAttribute('disabled', true);
+              mainContainer.scrollTop = mainContainer.scrollHeight;
+              upperCommentNo = 0;
+            }
+          },
+          error: () => {
+            console.log('댓글 등록 오류');
+          },
+        });
+      }
     }
   });
 }

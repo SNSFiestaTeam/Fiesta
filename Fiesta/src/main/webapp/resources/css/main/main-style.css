@@ -366,9 +366,11 @@ a.comment-profile {
   margin: 10px 0;
   height: 40px;
   font-size: var(--small-font-size);
+
+  /* position:relative; */
 }
 
-.comment-input-area > div {
+.comment-input-area > div:first-child {
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -655,7 +657,7 @@ a.comment-profile {
   /* 답글 스타일 end */
 
   /* 댓글 입력창 */
-  .comment-input-area > div {
+  .comment-input-area > div:first-child {
     height: 50px;
     align-items: center;
     margin-bottom: 5px;

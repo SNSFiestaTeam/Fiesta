@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
     <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
@@ -273,6 +274,7 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <!-- 모달창 include -->
+    <jsp:include page="/WEB-INF/views/action/comment-auto-complete.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
