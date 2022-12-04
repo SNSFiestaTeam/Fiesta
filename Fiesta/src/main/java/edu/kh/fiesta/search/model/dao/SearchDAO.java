@@ -1,6 +1,7 @@
 package edu.kh.fiesta.search.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +39,8 @@ public class SearchDAO {
 	 * @param searchInput
 	 * @return accountList
 	 */
-	public List<Member> selectAccountList(String searchInput) {
-		return sqlSession.selectList("searchMapper.selectAccountList", searchInput);
+	public List<Member> selectAccountList(Map<String, Object> paramMap) {
+		return sqlSession.selectList("searchMapper.selectAccountList", paramMap);
 	}
 
 
@@ -47,8 +48,8 @@ public class SearchDAO {
 	 * @param searchInput
 	 * @return hotBoardList
 	 */
-	public List<Board> selectHotBoardList(String searchInput) {
-		return sqlSession.selectList("searchMapper.selectHotBoardList", searchInput);
+	public List<Board> selectHotBoardList(Map<String, Object> paramMap) {
+		return sqlSession.selectList("searchMapper.selectHotBoardList", paramMap);
 	}
 
 
@@ -56,8 +57,8 @@ public class SearchDAO {
 	 * @param searchInput
 	 * @return recentBoardList
 	 */
-	public List<Board> selectRecentBoardList(String searchInput) {
-		return sqlSession.selectList("searchMapper.selectRecentBoardList", searchInput);
+	public List<Board> selectRecentBoardList(Map<String, Object> paramMap) {
+		return sqlSession.selectList("searchMapper.selectRecentBoardList", paramMap);
 	}
 
 

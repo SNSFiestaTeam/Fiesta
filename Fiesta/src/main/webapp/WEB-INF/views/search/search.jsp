@@ -8,7 +8,6 @@
 <c:set var="hotBoardList" value="${searchResultMap.hotBoardList}"/>
 <c:set var="recentBoardList" value="${searchResultMap.recentBoardList}"/>
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,7 +68,7 @@
                         <span>${boardTotal}</span> <!-- 게시글 결과값 -->
                     </span>
                 </div>
-
+                <!-- 팔로우 버튼 -->
                 <div class="follow-button" id="followHashtagBtn"></div>
             </div>
         </section>
@@ -99,8 +98,8 @@
                     <a href="/feed/${account.memberNickname}" class="profileNickname">
                       ${account.memberNickname}
                     </a>
-                    <span class="follow-button-small" id="aFollow"></span>
-                    <input type="hidden" name="followToMemberNo" id="followToMemberNo" value="${account.memberNo}"> 
+                    <!-- 팔로우 버튼 -->
+                    <div class="follow-button-small"></div>
                   </div>
                 </c:forEach>
               </article>
@@ -237,6 +236,9 @@
 
     <%-- jQuery 라이브러리(.js 파일) 추가 (CDN 방식 (Content Delivery Network)) --%>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        
     <script src="/resources/js/search/search.js"></script>
+    <script src="/resources/js/follow/follow.js"></script>
+    <script src="/resources/js/common/common.js"></script>
     </body>
   </html>

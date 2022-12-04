@@ -33,19 +33,19 @@ public class SearchServiceImpl implements SearchService{
 	
 	// 검색 결과 조회 Map
 	@Override
-	public Map<String, Object> selectSearchResult(String searchInput) {
+	public Map<String, Object> selectSearchResult(Map<String, Object> paramMap) {
 		
 		// 결과 저장할 Map 생성  _ List에 넣어서 Map에 모두 넣어놓고, Map 자체를 model로 보내서 jsp에서 꺼내서 쓰자! //상세페이지 조회는 아민이꺼
 		Map<String, Object> searchResultMap = new HashMap<String, Object>();
 		
 		// 관련 계정 조회 DAO 호출
-		List<Member> accountList = dao.selectAccountList(searchInput);
+		List<Member> accountList = dao.selectAccountList(paramMap);
 		
 		// 인기 게시글 조회
-		List<Board> hotBoardList = dao.selectHotBoardList(searchInput);
+		List<Board> hotBoardList = dao.selectHotBoardList(paramMap);
 		
 		// 최근 게시글 조회 _페이지네이션 처리(보경이꺼 참고)
-		List<Board> recentBoardList = dao.selectRecentBoardList(searchInput);
+		List<Board> recentBoardList = dao.selectRecentBoardList(paramMap);
 		
 		searchResultMap.put("accountList", accountList);
 		searchResultMap.put("hotBoardList", hotBoardList);

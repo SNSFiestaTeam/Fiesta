@@ -15,7 +15,8 @@
     // location.pathname = 현재 요청 주소만을 반환(프로토콜, ip, 포트 제외)  ex)/board/1
     // location.search : 쿼리스트링만 반환  ex) ?cp=2
 
-// 검색창에 검색 키워드 남겨놓기
+
+// * 검색창에 검색 키워드 남겨놓기
 
 const searchInput = document.getElementById("searchInput");
 //const params = new URL(location.href).searchParams;  // 주소에서 쿼리스트링만 분리한 객체
@@ -41,158 +42,12 @@ const keyword = decodeURI((location.search).substring(13));     //lastindexOf("=
 
 
 
-// * 해시태그 팔로우 버튼 *
-const followHashtagBtn = document.getElementById("followHashtagBtn");
-
-// 해시태그 팔로우 여부에 따라 버튼 다르게
-//FIXME: DOMCONTENTLOADED로 고치기
-(()=>{
-    $.ajax({
-        url: "/followHashtagCheck",
-        data: {"keyword" : keyword},
-        type: "GET",
-        success: (result) => {
-
-            if(result > 0) {  // 팔로우한 상태
-                followHashtagBtn.innerHTML = "팔로잉";
-                followHashtagBtn.classList.add("unfollowHashtagBtn");
-                followHashtagBtn.classList.remove("followHashtagBtn");
-                console.log("팔로우한 상태");
-            } 
-
-            else if(result == 0 ){ // 팔로우 안 한 상태
-                followHashtagBtn.innerHTML = "팔로우";
-                followHashtagBtn.classList.add("followHashtagBtn");
-                followHashtagBtn.classList.remove("unfollowHashtagBtn");
-                console.log("팔로우 안 한 상태");
-            } 
-        },
-        error: (result) => {console.log("팔로우 여부 조회 오류");}
-    })
-})();
-
-
-
-followHashtagBtn.addEventListener("click", e => {
-
-    if(e.target.classList.contains('followHashtagBtn')){ // 팔로우 안 한 상태
-        
-        $.ajax({
-            url: "/followHashtag",
-            data:{"keyword" : keyword},  /* memberNo는 header에 전역변수로 선언 */
-            type: "GET",
-            success: (result) => {
-                if(result > 0){ 
-                    e.target.innerHTML = "팔로잉";
-                    e.target.classList.add("unfollowHashtagBtn");
-                    e.target.classList.remove("followHashtagBtn");
-                } else {
-                    console.log("팔로잉 실패");
-                }
-            },
-            error: () => {
-                console.log("해시태그 팔로우 오류");
-            }
-    
-        });
-    
-    } else { // 팔로우한 상태
-
-        $.ajax({
-            url: "/unfollowHashtag",
-            data:{"keyword" : keyword},
-            type: "GET",
-            success: (result) => {
-                if(result > 0) {  // 언팔로우 성공
-                    e.target.classList.innerHTML = "팔로우";
-                    e.target.classList.add("followHashtagBtn");
-                    e.target.classList.remove("unfollowHashtagBtn");
-                } else {
-                    console.log("팔로우 실패");
-                }
-            },
-            error : () => {console.log("해시태그 언팔로우 오류");}
-        });
-    }
-});
 
 
 
 
-// * 관련 계정 팔로우 *
-const followAccountBtn = document.getElementById("aFollow");
-const followToMemberNo = document.getElementById("followToMemberNo");
-
-// 계정 팔로우 여부에 따라 버튼 다르게
-(()=>{
-    $.ajax({
-        url: "/followAccountCheck",
-        data: {"followToMemberNo" : followToMemberNo.value},
-        type: "GET",
-        success: (result) => {
-
-            if(result > 0) {  // 팔로우한 상태
-                followAccountBtn.innerHTML = "팔로잉";
-                followAccountBtn.classList.add("unfollowAccountBtn");
-                followAccountBtn.classList.remove("followAccountBtn");
-                console.log("팔로우한 상태");
-            } 
-
-            else if(result == 0 ){ // 팔로우 안 한 상태
-                followAccountBtn.innerHTML = "팔로우";
-                followAccountBtn.classList.add("followAccountBtn");
-                followAccountBtn.classList.remove("unfollowAccountBtn");
-                console.log("팔로우 안 한 상태");
-            } 
-        },
-        error: (result) => {console.log("팔로우 여부 조회 오류");}
-    })
-})();
 
 
-
-// followAccountBtn.addEventListener("click", e => {
-
-//     if(e.target.classList.contains('followButton')){ // 팔로우 안 한 상태
-        
-//         $.ajax({
-//             url: "/followHashtag",
-//             data:{"keyword" : keyword},  /* memberNo는 header에 전역변수로 선언 */
-//             type: "GET",
-//             success: (result) => {
-//                 if(result > 0){ 
-//                     e.target.innerHTML = "팔로잉";
-//                     e.target.classList.add("unfollowButton");
-//                     e.target.classList.remove("followButton");
-//                 } else {
-//                     console.log("팔로잉 실패");
-//                 }
-//             },
-//             error: () => {
-//                 console.log("해시태그 팔로우 오류");
-//             }
-    
-//         });
-    
-//     } else { // 팔로우한 상태
-
-//         $.ajax({
-//             url: "/unfollowHashtag",
-//             data:{"keyword" : keyword},
-//             type: "GET",
-//             success: (result) => {
-//                 if(result > 0) {  // 언팔로우 성공
-//                     e.target.classList.innerHTML = "팔로우";
-//                     e.target.classList.add("followButton");
-//                     e.target.classList.remove("unfollowButton");
-//                 } else {
-//                     console.log("팔로우 실패");
-//                 }
-//             },
-//             error : () => {console.log("해시태그 언팔로우 오류");}
-//         });
-//     }
-// });
 
 
 

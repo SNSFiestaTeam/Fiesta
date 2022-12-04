@@ -1,3 +1,5 @@
+@import '../root-style.css';
+
 
 /* tablet */
 /* main의 min-width 수정  + 아래 글씨 크기 정도 수정 */
@@ -141,6 +143,7 @@
     }
     
     .account-Group{
+        flex-basis : 16%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -160,18 +163,28 @@
         min-width: 55px;
         border-radius: 50%;
         margin-bottom: 8px;
+        /* margin-left: 10px; */
     }
     
     .profileNickname{
         font-size: 0.7em;
         white-space: nowrap;
+        /* margin-left: auto;
+        margin-right: 4px; */
     }
+
+
+    .profileNickname:hover {
+        text-decoration: underline;
+    }
+
     
     .follow-button-small{
         font-size: 0.7em;
         font-weight: bold;
-        color: var(--fiesta-color);
         padding-top :4px;
+        /* margin-left: auto; */
+        cursor: pointer;
     }
     
     

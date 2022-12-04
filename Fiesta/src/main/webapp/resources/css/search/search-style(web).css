@@ -1,6 +1,8 @@
 /* 화면 작아질때 footer가 중간에 위치하는 문제 해결하기! */
 /* 화면 작아질때 비율 해결하기 */
 
+@import '../root-style.css';
+
 body{
     width: 100vw;
     display: flex;
@@ -153,6 +155,8 @@ main {
 }
 
 .account-Group{
+    /* flex-basis : 16%; */
+    width: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -173,6 +177,11 @@ main {
 
 .profileNickname{
     font-size: 0.8em;
+    text-align: left;
+}
+
+.profileNickname:hover {
+    text-decoration: underline;
 }
 
 .follow-button-small{
@@ -180,6 +189,7 @@ main {
     font-weight: bold;
     /* color: var(--fiesta-color); */
     padding-top :4px;
+    cursor: pointer;
 }
 
 
@@ -306,6 +316,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    transition: 0.2s;
+
+    transition-timing-function: ease-in-out;
 }
 
 .hover-icon-container > i {
