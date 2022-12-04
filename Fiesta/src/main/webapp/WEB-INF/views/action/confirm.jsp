@@ -9,8 +9,6 @@
         <div id="deleteBtnArea">
           <button type="button" id="deleteConfirmBtn">삭제</button>
           <button type="button" id="deleteCancleBtn">취소</button>
-        <div>
-        
         </div>
       </section>
     </section>

@@ -22,7 +22,7 @@
   	</selectKey>
   	
   	INSERT INTO "COMMENT"
-  	VALUES(#{commentNo}, #{memberNo}, #{commentContent}, DEFAULT,
+  	VALUES(#{commentNo}, #{commentMemberNo}, #{commentContent}, DEFAULT,
   	#{boardNo}, #{upperCommentNo})
   </insert>
   
