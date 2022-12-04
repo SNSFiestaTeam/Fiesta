@@ -155,40 +155,46 @@ feedCommentBtnLogin.addEventListener('click', () => {
     data: { "commentBlockFlag": commentBlockFlag.value, "boardNo": boardNo, "memberNo": memberNo},
     dataType: "json",
     success: (board) => { 
+
+      console.log(tags.likeCount);
+      console.log(tags.commentContainer);
+      console.log(tags.commentInputArea);
+      console.log(tags.mainContainer);
+      console.log(commentBlockFlag);
+
       body.classList.remove('scrollLock');
       loginFeedMenu.style.display = 'none';
+
       if (commentBlockFlag.value == 'N') {
         // 댓글 기능을 해제한 경우
-        tags.commentContainer.style.display = 'none';
-        tags.commentInputArea.style.display = 'none';
-        feedCommentBtnLogin.innerText = "댓글 기능 설정";
+        console.log(commentBlockFlag.value);
         commentBlockFlag.value = 'Y';
+        console.log(commentBlockFlag.value);
+
+        tags.commentContainer.innerHTML = "";
+        tags.commentInputArea.innerHTML = '';
+        feedCommentBtnLogin.innerText = "댓글 기능 설정";
       } else {
+        console.log(commentBlockFlag.value);
         commentBlockFlag.value = 'N';
+        console.log(commentBlockFlag.value);
+
         feedCommentBtnLogin.innerText = "댓글 기능 해제";
 
 
         // 댓글 기능을 다시 사용하는 경우
-        if (tags.commentContainer != null) {
-            tags.commentContainer.style.display = 'flex';
-            tags.commentInputArea.style.display = 'block';         
-        } else {
-          // 댓글 만들어서 넣기
-          const mainContainerDiv = tags.mainContainer;
+
+
   
           // 댓글 컨테이너 생성
-          const commentContainer = document.createElement('div');
-          const commentInputArea = document.createElement('div');
-          const createDate = document.createElement('span');
-          createDate.classList.add('create-date');
-          createDate.innerHTML = board.boardCreateDate;
 
-          mainContainerDiv.append(commentContainer);
-          mainContainerDiv.after(commentInputArea);
-          commentContainer.after(createDate);
+          // const createDate = document.createElement('span');
+          // createDate.classList.add('create-date');
+          // createDate.innerHTML = board.boardCreateDate;
+
+          // commentContainer.after(createDate);
   
           if(board.commentBlockFlag == 'N') {
-          commentContainer.classList.add('comment-container');
   
           // 댓글 2개 초과일 시 댓글 더보기 출력
           if(board.commentList.length > 2) {
@@ -196,7 +202,7 @@ feedCommentBtnLogin.addEventListener('click', () => {
             allCommentBtn.classList.add('all-comment-btn');
             allCommentBtn.innerHTML = '댓글 모두 보기(' + board.commentCount + ')';
             
-            commentContainer.append(allCommentBtn);
+            tags.commentContainer.append(allCommentBtn);
   
   
   
@@ -263,7 +269,7 @@ feedCommentBtnLogin.addEventListener('click', () => {
           const commentArea = document.createElement('div');
           commentArea.classList.add('comment-area');
   
-          commentContainer.append(commentArea);
+          tags.commentContainer.append(commentArea);
   
           // commentArea의 자식 요소 commentUl
           const commentUl = document.createElement('ul');
@@ -282,6 +288,8 @@ feedCommentBtnLogin.addEventListener('click', () => {
           // TODO: 대댓글 모두보기 버튼 클릭하면 모두 보기
           for (let comment of board.commentList) {
             if (comment.upperCommentNo == 0) {
+
+              console.log(comment);
   
               // commentUl의 자식 요소 commentLi
               const commentLi = document.createElement('li');
@@ -491,12 +499,9 @@ feedCommentBtnLogin.addEventListener('click', () => {
           }
   
           // 댓글 입력창 추가
-          
-          commentInputArea.classList.add('comment-input-area');
-  
           const div4 = document.createElement('div');
   
-          commentInputArea.append(div4);
+          tags.commentInputArea.append(div4);
   
           const commentInput = document.createElement('textarea');
           commentInput.setAttribute('name', 'comment');
@@ -555,11 +560,6 @@ feedCommentBtnLogin.addEventListener('click', () => {
           }
 
         }
-
-
-
-
-      }   
     },
     error: () => { 
       console.log("댓글 기능 사용 유무 변경 에러");
@@ -569,8 +569,83 @@ feedCommentBtnLogin.addEventListener('click', () => {
 });
 
 // 좋아요 공개 유무버튼에 클릭 이벤트 리스너 추가
-feedLikeBtnLogin.addEventListener('click', () => { });
+feedLikeBtnLogin.addEventListener('click', () => { 
 
+  $.ajax({
+    url: "/boardSetting/boardPubPri",
+    data: { "boardPubPriFlag": boardPubPriFlag.value, "boardNo": boardNo},
+    success: (result) => { 
+      body.classList.remove('scrollLock');
+      loginFeedMenu.style.display = 'none';
+
+      console.log(tags.boardPubPriFlag);
+      
+      if (boardPubPriFlag.value == 'Y') {
+        // 좋아요 공개에서 -> 비공개
+        console.log(boardPubPriFlag.value);
+        boardPubPriFlag.value = "N";
+        console.log(boardPubPriFlag.value);
+        // feedLikeBtnLogin.innerText = "좋아요 수 숨기기 취소";
+        
+        if (result == 0) {
+          tags.likeCount.innerText = "좋아요를 눌러주세요";
+        } else if (result == 1) {
+          tags.likeCount.innerText = "한 명이 좋아합니다";
+        } else {
+          tags.likeCount.innerText = "여러 명이 좋아합니다";
+        }
+        
+      } else {
+        // 좋아요 비공개에서 공개
+        console.log(boardPubPriFlag.value);
+        boardPubPriFlag.value = "Y";
+        console.log(boardPubPriFlag.value);
+        // feedLikeBtnLogin.innerText = "좋아요 수 숨기기";
+
+        tags.likeCount.innerHTML = '좋아요 <span class="board-like-count">' + result + '개</span>';
+      }
+    },
+    error: () => { 
+      console.log("좋아요 공개 여부 설정 오류");
+    }
+  })
+
+});
+
+// 게시글 삭제 버튼에 이벤트 리스너 추가
+feedDeleteBtnLogin.addEventListener('click', () => {
+  const confirmContainerM = document.getElementById('confirmContainerM');
+
+  loginFeedMenu.style.display = "none";
+  confirmContainerM.style.display = "flex";
+  
+});
+
+
+
+// 삭제 취소버튼에 클릭 이벤트리스너 추가
+const deleteCancleBtn = document.getElementById('deleteCancleBtn');
+deleteCancleBtn.addEventListener('click', () => { 
+  confirmContainerM.style.display = "none";
+  body.classList.remove('scrollLock');
+})
+
+
+
+// 게시글 삭제 컨펌창 삭제 버튼 클릭 이벤트 추가
+const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
+deleteConfirmBtn.addEventListener('click', () => { 
+  $.ajax({
+    url: '/deleteBoard',
+    data: { "boardNo": boardNo },
+    success: (result) => {
+      if (result > 0) {
+        location.href = "/main";
+      }
+    }
+  });
+
+})
 
 
 // ------------------------------------- 로그인 피드 메뉴 끝-------------------------------------------------------

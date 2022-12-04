@@ -15,6 +15,14 @@ public interface BoardSettingService {
 	 * @return board
 	 */
 	Board updateCommentBlock(String commentBlockFlag, Map<String, Object> map);
+
+	/**
+	 * 좋아요 수 숨기기 수정
+	 * @param boardPubPriFlag
+	 * @param boardNo
+	 * @return result
+	 */
+	int updateBoardPubPri(String boardPubPriFlag, int boardNo);
 	
 
 

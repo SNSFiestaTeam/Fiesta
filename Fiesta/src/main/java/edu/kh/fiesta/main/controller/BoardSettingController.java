@@ -37,6 +37,13 @@ public class BoardSettingController {
 		return new Gson().toJson(board);
 	}
 	
+	
+	@GetMapping("/boardPubPri")
+	public int updateboardPubPri(String boardPubPriFlag, int boardNo) {
+		
+		return service.updateBoardPubPri(boardPubPriFlag, boardNo);
+	}
+	
 
 
 }

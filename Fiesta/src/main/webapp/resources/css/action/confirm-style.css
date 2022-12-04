@@ -1,0 +1,79 @@
+@import '../root-style.css';
+
+#confirmContainerM {
+  width: 100vw;
+  height: 100vh;
+  background-color: #8e8e8e70;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 5;
+  font-size: var(--large-font-size);
+
+  display: none;
+
+}
+
+#confirmAreaM {
+  width: 300px;
+  height: 150px;
+  background-color: white;
+
+  border-radius: 10px;
+
+  padding: 10px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 15px;
+  font-size: var(--medium-font-size)
+}
+
+#deleteSpanArea {
+  flex-basis: 60%;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#deleteBtnArea{
+  flex-basis: 40%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#deleteBtnArea > button {
+  margin: 0 20px;
+  width: 80px;
+}
+
+#deleteBtnArea > button:hover {
+  opacity: 0.7;
+}
+
+#deleteConfirmBtn{
+  color: red;
+}
+
+@media screen and (min-width: 1024px) {
+  #confirmAreaM {
+    background-color: white;
+
+    border-radius: 10px;
+
+    padding: 10px 20px;
+  }
+}
