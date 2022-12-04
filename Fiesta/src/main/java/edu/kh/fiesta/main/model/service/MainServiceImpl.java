@@ -106,5 +106,13 @@ public class MainServiceImpl implements MainService {
 	}
 
 
+	/**
+	 * 게시글 삭제
+	 * @param boardNo
+	 * @return result
+	 */
+	public int deleteBoard(int boardNo) {
+		return dao.deleteBoard(boardNo);
+	}
 
 }

@@ -612,6 +612,40 @@ feedLikeBtnLogin.addEventListener('click', () => {
 
 });
 
+// 게시글 삭제 버튼에 이벤트 리스너 추가
+feedDeleteBtnLogin.addEventListener('click', () => {
+  const confirmContainerM = document.getElementById('confirmContainerM');
+
+  loginFeedMenu.style.display = "none";
+  confirmContainerM.style.display = "flex";
+  
+});
+
+
+
+// 삭제 취소버튼에 클릭 이벤트리스너 추가
+const deleteCancleBtn = document.getElementById('deleteCancleBtn');
+deleteCancleBtn.addEventListener('click', () => { 
+  confirmContainerM.style.display = "none";
+  body.classList.remove('scrollLock');
+})
+
+
+
+// 게시글 삭제 컨펌창 삭제 버튼 클릭 이벤트 추가
+const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
+deleteConfirmBtn.addEventListener('click', () => { 
+  $.ajax({
+    url: '/deleteBoard',
+    data: { "boardNo": boardNo },
+    success: (result) => {
+      if (result > 0) {
+        location.href = "/main";
+      }
+    }
+  });
+
+})
 
 
 // ------------------------------------- 로그인 피드 메뉴 끝-------------------------------------------------------

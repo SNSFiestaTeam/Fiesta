@@ -87,6 +87,12 @@ public class MainController {
 		return result;
 	}
 	
+	@GetMapping("/deleteBoard")
+	@ResponseBody
+	public int deleteBoard(int boardNo) {	
+
+		return service.deleteBoard(boardNo);
+	}
 
 
 }
