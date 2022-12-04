@@ -3,6 +3,7 @@ package edu.kh.fiesta.main.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,8 @@ import com.google.gson.Gson;
 
 import edu.kh.fiesta.main.model.service.CommentService;
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.main.model.vo.Hashtag;
+import edu.kh.fiesta.member.model.vo.Member;
 
 @RestController
 @RequestMapping("/comment")
@@ -137,6 +140,37 @@ public class CommentController {
 	public int deleteComment(int commentNo) {
 		
 		return service.deleteComment(commentNo);	
+	}
+	
+	
+	
+	/**
+	 * 언급 자동완성
+	 * @param searchWord
+	 * @return
+	 */
+	@GetMapping("/autoComplete/mention")
+	@ResponseBody
+	public String mentionAutoComplete(String[] searchWord) {
+		
+		List<Member> mentionList = service.mentionAutoComplete(searchWord);
+				
+		return new Gson().toJson(mentionList);
+	}
+	
+	
+	/**
+	 * 해시태그 자동완성
+	 * @param searchWord
+	 * @return
+	 */
+	@GetMapping("/autoComplete/hashtag")
+	@ResponseBody
+	public String hashtagAutoComplete(String[] searchWord) {
+		
+		List<Hashtag> hashtagList = service.hashtagAutoComplete(searchWord);
+				
+		return new Gson().toJson(hashtagList);
 	}
 	
 
