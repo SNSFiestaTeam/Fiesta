@@ -1,6 +1,8 @@
 package edu.kh.fiesta.common;
 
 import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //유요한 기능을 모아둔 클래스
 public class Util {
@@ -46,4 +48,45 @@ public class Util {
 	public static String newLineClear(String content) {
 		return content.replaceAll("<br>", "\n");
 	}
+	
+	
+	
+//	해시태그 인식해서 a태그로 감싸기
+	public static String hashTagHandling(String content) {
+
+		Pattern pattern = Pattern.compile("(#[^\\s#]+)");
+		
+		Matcher matcher = pattern.matcher(content);
+		
+		while(matcher.find()) {
+			String str = matcher.group(1);
+			
+			String pathName = str.replaceAll("#", ""); 
+			
+			content = content.replace(str,
+					"<a href='/search?searchInput="+pathName+"' class='hashtag'>"+str+"</a>");
+		}
+		return content;
+	}
+	
+	
+//	언급 인식해서 a태그로 감싸기
+	public static String mentionHandling(String content) {
+
+		Pattern pattern = Pattern.compile("(@[^\\s@]+)");
+		
+		Matcher matcher = pattern.matcher(content);
+		
+		while(matcher.find()) {
+			String str = matcher.group(1);
+			
+			String pathName = str.replaceAll("@", ""); 
+			
+			content = content.replace(str,
+					"<a href='/feed/"+pathName+"' class='mention'>"+str+"</a>");
+		}
+		return content;
+	}
+
+	
 }

@@ -50,14 +50,14 @@ public class CommentDAO {
 	 * @param memberNo
 	 * @return commentNo
 	 */
-	public int commentInsert(Map<String, Object> map) {
+	public int commentInsert(Comment comment) {
 		
 		
-		int result =  sqlSession.insert("commentMapper.commentInsert", map);
+		int result =  sqlSession.insert("commentMapper.commentInsert", comment);
 		
 
 		if(result > 0) {
-			result = (int)map.get("commentNo");
+			result = (int)comment.getCommentNo();
 		}
 		
 		return result;

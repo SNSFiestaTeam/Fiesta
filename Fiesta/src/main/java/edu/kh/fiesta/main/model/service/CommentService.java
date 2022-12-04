@@ -29,7 +29,7 @@ public interface CommentService {
 	 * @param memberNo
 	 * @return commentNo
 	 */
-	public int commentInsert(Map<String, Object> map);
+	public int commentInsert(Comment comment);
 
 	/** 댓글 목록 조회
 	 * @param boardNo
