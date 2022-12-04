@@ -2,6 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="commentMapper">
 
+	<resultMap type="Member" id="member_rm">
+       <!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
+	    <id property = "memberNo" column="MEMBER_NO"/>
+	    <!-- 나머지 일반 컬럼 -->
+	     <result property="memberEmail" column="MEMBER_EMAIL" />
+	     <result property="memberPw" column="MEMBER_PW" />
+	     <result property="memberName" column="MEMBER_NAME" />
+	     <result property="memberNickname" column="MEMBER_NICKNAME" />
+	     <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
+	     <result property="enrollDate" column="ENROLL_DATE" />
+	     <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
+	     <result property="secessionFl" column="SECESSION_FL" />
+	     <result property="authority" column="AUTHORITY" />
+ 	</resultMap>
+
+
+
     <!-- 댓글 좋아요 증가 -->
   <insert id="commentLikeUp">
   	INSERT INTO COMMENT_LIKE
@@ -45,5 +62,15 @@
   	WHERE COMMENT_NO = #{commentNo}
   </delete>
 
+ <select id="selectMemberList" resultMap="member_rm">
+ 	SELECT MEMBER_NICKNAME, MEMBER_NAME, MEMBER_PROFILE_IMG
+	FROM "MEMBER"
+	WHERE (MEMBER_NICKNAME LIKE '%${searchName}%' 
+		OR MEMBER_NICKNAME LIKE '%UPPER(${searchName})%'  
+		OR MEMBER_NICKNAME LIKE '%LOWER(${searchName})%')
+	OR (MEMBER_NAME LIKE '%${searchName}%' 
+		OR MEMBER_NAME LIKE '%UPPER(${searchName})%' 
+		OR MEMBER_NAME LIKE '%LOWER(${searchName})%')
+ </select>
   
 </mapper>

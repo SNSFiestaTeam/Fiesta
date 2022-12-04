@@ -54,7 +54,7 @@ public class Util {
 //	해시태그 인식해서 a태그로 감싸기
 	public static String hashTagHandling(String content) {
 
-		Pattern pattern = Pattern.compile("(#[^\\s#]+)");
+		Pattern pattern = Pattern.compile("(#[^\s#]+)");
 		
 		Matcher matcher = pattern.matcher(content);
 		
@@ -72,8 +72,8 @@ public class Util {
 	
 //	언급 인식해서 a태그로 감싸기
 	public static String mentionHandling(String content) {
-
-		Pattern pattern = Pattern.compile("(@[^\\s@]+)");
+// \ 하나로 수정
+		Pattern pattern = Pattern.compile("(@[^\s@]+)");
 		
 		Matcher matcher = pattern.matcher(content);
 		

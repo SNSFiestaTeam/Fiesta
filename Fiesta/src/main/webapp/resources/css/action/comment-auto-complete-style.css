@@ -30,8 +30,8 @@
   
   .auto-complete-content {
     width: 100%;
-    height: 100px;
-
+    height: 55px;
+    flex-shrink: 0;
   
     display: flex;
     align-items: center;
@@ -100,14 +100,27 @@
     height: 18px;
   }
 
-  span.member-nickname {
+  span.mention-nickname {
     font-size: var(--small-font-size);
     font-weight: bold;
 
   }
 
-  span.member-name {
+  span.mention-name {
     font-size: var(--main-font-size);
     font-weight: normal;
     color: gray;
   }
+
+.auto-complete-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg path,
+svg rect{
+  fill: var(--fiesta-color);
+}

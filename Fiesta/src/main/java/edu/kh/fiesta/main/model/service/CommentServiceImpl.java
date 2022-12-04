@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.fiesta.common.Util;
 import edu.kh.fiesta.main.model.dao.CommentDAO;
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.member.model.vo.Member;
 
 @Service
 public class CommentServiceImpl implements CommentService{
@@ -90,6 +91,14 @@ public class CommentServiceImpl implements CommentService{
 		}
 		
 		return result;
+	}
+	
+	
+	public List<Member> mentionAutoComplete(String[] searchWord) {
+		
+		String searchName = searchWord[searchWord.length-1];
+			
+		return dao.mentionAutoComplete(searchName);
 	}
 	
 }

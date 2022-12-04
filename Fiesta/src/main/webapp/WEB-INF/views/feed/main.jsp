@@ -274,7 +274,6 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <!-- 모달창 include -->
-    <jsp:include page="/WEB-INF/views/action/comment-auto-complete.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
@@ -309,6 +308,8 @@
         var boardPubPriFlag;
 
         var tags;
+
+        var mentionSet = null;
       </script>
     </c:if>
 
