@@ -153,8 +153,8 @@
                     </div>
 
                       <!-- 댓글 리스트 -->
-                      <c:if test="${board.commentBlockFlag == 'N'}">
                       <div class="comment-container">
+                      <c:if test="${board.commentBlockFlag == 'N'}">
                         <c:if test="${fn:length(board.commentList) > 2}">
                         <button class="all-comment-btn">댓글 모두 보기(${fn:length(board.commentList)})</button>
                         </c:if>
@@ -243,15 +243,17 @@
                           </c:if>
                           </ul>
                         </div>
-                      </div>
+                      </c:if>
+                      </div> 
                     <span class="create-date">${board.boardCreateDate}</span>
                   </div>
                   <div class="comment-input-area">
+                  <c:if test="${board.commentBlockFlag == 'N'}">
                     <div>
                       <textarea name="comment" id="commentInput" class="comment-input" placeholder="댓글 달기..." autocomplete="off"></textarea>
                       <button class="posting-btn" disabled>게시</button>
                     </div>
-                      </c:if>
+                  </c:if>
                   </div>
                 </div>
               <input type="hidden" class="board-no" value="${board.boardNo}">
