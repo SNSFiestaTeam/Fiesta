@@ -1,20 +1,25 @@
+let endList;
+
+window.addEventListener("load", (event) => {
+  endList = document.getElementById('feedSection').lastElementChild;
+
+  createObserver();
+}, false)
+
+
 // ! 무한 스크롤 용 객체 생성
-const feedSection = document.querySelector('.feed-section');
-let listEnd = feedSection.lastElementChild;
-const option = {
-  root: null,
-  rootMargin: '0px 0px 0px 0px',
-  threshold: 1.0,
-};
+function createObserver() {
+  let observer;
 
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1
+  };
 
-
-
-
-// * 무한 스크롤
-const observer = new IntersectionObserver(selectBoardList, option);
-observer.observe(listEnd);
-
+  observer = new IntersectionObserver(selectBoardList, options);
+  observer.observe(endList);
+}
 
 
 
@@ -27,25 +32,38 @@ let cp = 2;
 
 
 // TODO: 게시글 상세 조회 후 화면 출력
-function selectBoardList() {
-  // TODO: 로그인 멤버가 팔로우한 회원의 게시글 목록 조회
-  $.ajax({
-    url: '/selectBoardList',
-    type: 'GET',
-    data: { memberNo: memberNo, cp: cp },
-    dataType: 'json',
-    success: (map) => {
-      const boardList = map.boardList;
-      const pagination = map.pagination;
-      cp++;
-      for (let board of boardList) {
-        createBoard(board);
-        console.log(cp);
-      }
-    },
-    error: () => {
-      console.log('게시글 조회 중 오류 발생');
-    },
+function selectBoardList(entries, observer) {
+  entries.forEach((entry) => { 
+    if (entry.isIntersecting) {
+      
+      // TODO: 로그인 멤버가 팔로우한 회원의 게시글 목록 조회
+      $.ajax({
+        url: '/selectBoardList',
+        type: 'GET',
+        data: { memberNo: memberNo, cp: cp },
+        dataType: 'json',
+        success: (map) => {
+
+          
+
+          const boardList = map.boardList;
+          const pagination = map.pagination;
+          for (let board of boardList) {
+            createBoard(board);
+          }
+          if (cp != pagination.maxPage) {
+            endList = document.getElementById('feedSection').lastElementChild;
+            createObserver();
+            cp++;
+            console.log("cp :" + cp);
+          }
+          console.log(endList);
+        },
+        error: () => {
+          console.log('게시글 조회 중 오류 발생');
+        },
+      });
+    }
   });
 }
 

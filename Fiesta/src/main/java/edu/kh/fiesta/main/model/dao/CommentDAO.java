@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.main.model.vo.Hashtag;
 import edu.kh.fiesta.member.model.vo.Member;
 
 @Repository
@@ -117,6 +118,16 @@ public class CommentDAO {
 	 */
 	public List<Member> mentionAutoComplete(String searchName) {
 		return sqlSession.selectList("commentMapper.selectMemberList", searchName);
+	}
+
+
+	/**
+	 * 해시태그 자동완성
+	 * @param searchName
+	 * @return
+	 */
+	public List<Hashtag> hashtagAutoComplete(String searchName) {
+		return sqlSession.selectList("commentMapper.selectHashtagList", searchName);
 	}
 	
 	

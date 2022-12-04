@@ -12,6 +12,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
+
+    <%-- 무한 스크롤 --%>
+
+
     
     <%-- 사진크롭 --%>
     <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">

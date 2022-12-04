@@ -16,6 +16,14 @@
 	     <result property="secessionFl" column="SECESSION_FL" />
 	     <result property="authority" column="AUTHORITY" />
  	</resultMap>
+ 	
+	<resultMap type="Hashtag" id="hashtag_rm">
+       <!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
+	   <id property = "hashtagNo" column="HASHTAG_NO"/>
+	   <!-- 나머지 일반 컬럼 -->
+	   <result property="hashtagContent" column="HASHTAG_CONTENT" />
+	   <result property="boardCount" column="BOARD_COUNT" />
+ 	</resultMap>
 
 
 
@@ -62,15 +70,24 @@
   	WHERE COMMENT_NO = #{commentNo}
   </delete>
 
- <select id="selectMemberList" resultMap="member_rm">
- 	SELECT MEMBER_NICKNAME, MEMBER_NAME, MEMBER_PROFILE_IMG
-	FROM "MEMBER"
-	WHERE (MEMBER_NICKNAME LIKE '%${searchName}%' 
-		OR MEMBER_NICKNAME LIKE '%UPPER(${searchName})%'  
-		OR MEMBER_NICKNAME LIKE '%LOWER(${searchName})%')
-	OR (MEMBER_NAME LIKE '%${searchName}%' 
-		OR MEMBER_NAME LIKE '%UPPER(${searchName})%' 
-		OR MEMBER_NAME LIKE '%LOWER(${searchName})%')
- </select>
+	<!-- 언급 자동완성 -->
+	<select id="selectMemberList" resultMap="member_rm">
+	 	SELECT MEMBER_NICKNAME, MEMBER_NAME, MEMBER_PROFILE_IMG
+		FROM "MEMBER"
+		WHERE (MEMBER_NICKNAME LIKE '%${searchName}%' 
+			OR MEMBER_NICKNAME LIKE '%UPPER(${searchName})%'  
+			OR MEMBER_NICKNAME LIKE '%LOWER(${searchName})%')
+		OR (MEMBER_NAME LIKE '%${searchName}%' 
+			OR MEMBER_NAME LIKE '%UPPER(${searchName})%' 
+			OR MEMBER_NAME LIKE '%LOWER(${searchName})%')
+	</select>
+	
+	<!-- 해시태그 자동완성 -->
+	<select id="selectHashtagList" resultMap="hashtag_rm">
+		SELECT HASHTAG_CONTENT, 
+			(SELECT COUNT(*) FROM BOARD WHERE BOARD_CONTENT LIKE '%#${searchName}%') BOARD_COUNT
+		FROM HASHTAG
+		WHERE HASHTAG_CONTENT LIKE '%${searchName}%'
+	</select>
   
 </mapper>

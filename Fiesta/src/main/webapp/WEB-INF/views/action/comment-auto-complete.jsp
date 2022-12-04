@@ -5,7 +5,7 @@
 
       <div class="auto-complete-container" id="autoCompleteModal">
 
-
+        <!--
         <div class="auto-complete-loading">
           <div class="loader loader--style1" title="0">
             <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -25,7 +25,7 @@
               </path>
             </svg>
           </div>  
-        </div>
+        </div> -->
 
 
       
@@ -39,8 +39,15 @@
             </div>
         </div> -->
 
+  
 
-      
+        <div class="auto-complete-content">
+            <div class="hashtag-info">
+              <span class="hashtag-content"><span>#</span>해시태그</span>
+              <span class= "hashtag-board-count">게시물 35만</span>
+            </div>
+        </div>
+
 
       
 

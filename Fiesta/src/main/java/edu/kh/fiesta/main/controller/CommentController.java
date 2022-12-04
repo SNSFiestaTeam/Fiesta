@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 
 import edu.kh.fiesta.main.model.service.CommentService;
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.main.model.vo.Hashtag;
 import edu.kh.fiesta.member.model.vo.Member;
 
 @RestController
@@ -143,7 +144,11 @@ public class CommentController {
 	
 	
 	
-	
+	/**
+	 * 언급 자동완성
+	 * @param searchWord
+	 * @return
+	 */
 	@GetMapping("/autoComplete/mention")
 	@ResponseBody
 	public String mentionAutoComplete(String[] searchWord) {
@@ -152,5 +157,21 @@ public class CommentController {
 				
 		return new Gson().toJson(mentionList);
 	}
+	
+	
+	/**
+	 * 해시태그 자동완성
+	 * @param searchWord
+	 * @return
+	 */
+	@GetMapping("/autoComplete/hashtag")
+	@ResponseBody
+	public String hashtagAutoComplete(String[] searchWord) {
+		
+		List<Hashtag> hashtagList = service.hashtagAutoComplete(searchWord);
+				
+		return new Gson().toJson(hashtagList);
+	}
+	
 
 }

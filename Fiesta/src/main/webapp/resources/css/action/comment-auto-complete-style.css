@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
 
-    box-shadow: 1px 1px 5px gray;
+    box-shadow: 1px 1px 3px gray;
     position: absolute;
     top: 48px;
     padding: 5px 1px;
@@ -86,7 +86,7 @@
     align-items: center;
   }
 
-  .member-info {
+  .member-info, .hashtag-info {
     width: 85%;
     display: flex;
     flex-direction: column;
@@ -96,17 +96,20 @@
 
   }
 
-  .member-info > span {
+  .member-info > span,
+  .hashtag-info > span {
     height: 18px;
   }
 
-  span.mention-nickname {
+  span.mention-nickname,
+  span.hashtag-content {
     font-size: var(--small-font-size);
     font-weight: bold;
 
   }
 
-  span.mention-name {
+  span.mention-name,
+  span.hashtag-count {
     font-size: var(--main-font-size);
     font-weight: normal;
     color: gray;

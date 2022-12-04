@@ -11,5 +11,6 @@ public class Hashtag {
 	
 	private int hashtagNo;
 	private String hashtagContent;
+	private int boardCount;
 
 }
