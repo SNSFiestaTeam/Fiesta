@@ -146,7 +146,7 @@ for (let i = 0; i < replyBtn.length; i++) {
 
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
 
-// TODO: 댓글 입력 후 ENTER 입력 시도 만들 것
+
 // 댓글 등록 버튼 클릭 시
 for (let i = 0; i < postingBtn.length; i++) {
   postingBtn[i].addEventListener('click', () => {
@@ -193,7 +193,51 @@ for (let i = 0; i < postingBtn.length; i++) {
   });
 }
 
+// 댓글 입력 후 Enter키 입력 시
+for (let i = 0; i < commentInput.length; i++) {
+  commentInput[i].addEventListener('keypress', e => {
+    const boardNo = postingBtn[i].parentElement.parentElement.parentElement.nextElementSibling;
+    const commentInput = document.getElementsByClassName('comment-input');
+    const commentListUl = document.getElementsByClassName('comment-list')[i];
+    const mainContainer = document.getElementsByClassName('main-container')[i];
 
+    console.log(commentInput[i].value);
+    console.log('upperCommentNo: ' + upperCommentNo);
+    console.log(boardNo.value);
+
+    
+    if (commentInput[i].value != '') {
+
+
+      console.log("바뀐 댓글 내용: "+ commentInput[i].value);
+
+
+      $.ajax({
+        url: '/comment/insert',
+        type: 'Post',
+        data: {
+          "memberNo": memberNo,
+          "boardNo": boardNo.value,
+          "commentContent": commentInput[i].value,
+          "upperCommentNo": upperCommentNo,
+        },
+        success: (result) => {
+          if (result > 0) {
+            const flag = 1; // 1이 등록, 2가 삭제
+            selectCommentList(boardNo.value, commentListUl, flag);
+            commentInput[i].value = '';
+            postingBtn[i].setAttribute('disabled', true);
+            mainContainer.scrollTop = mainContainer.scrollHeight;
+            upperCommentNo = 0;
+          }
+        },
+        error: () => {
+          console.log('댓글 등록 오류');
+        },
+      });
+    }
+  });
+}
 
 // 모달창 댓글 목록 조회 후 출력
 function selectCommentListM(boardNo, commentListUl) {
@@ -772,6 +816,37 @@ postingBtnM.addEventListener('click', () => {
   }
 });
 
+// 댓글 모달창 댓글 입력 후 Enter키 입력 시
+commentInputM.addEventListener('keypress', e => {
+
+  if (e.key === 'Enter') {
+
+    if (commentInputM.value != '') {
+      $.ajax({
+        url: '/comment/insert',
+        type: 'Post',
+        data: {
+          "memberNo": memberNo,
+          "boardNo": boardNo,
+          "commentContent": commentInputM.value,
+          "upperCommentNo": upperCommentNo,
+        },
+        success: (result) => {
+          if (result > 0) {
+            selectCommentListM(boardNo, commentListUlM);
+            commentInputM.value = '';
+            postingBtnM.setAttribute('disabled', true);
+            upperCommentNo = 0;
+          }
+        },
+        error: () => {
+          console.log('댓글 등록 오류');
+        },
+      });
+    }
+    
+  }
+});
 
    // 댓글 모달창 입력 이벤트 추가
 

@@ -40,7 +40,7 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public int commentInsert(Comment comment) {
 		
-		// 게시글 삽입
+		// 댓글 삽입
 		comment.setCommentContent(Util.XSSHandling(comment.getCommentContent())); // XSS 방지 처리
 		
 		comment.setCommentContent(Util.hashTagHandling(comment.getCommentContent())); //해시태그 A태그로 감싸기

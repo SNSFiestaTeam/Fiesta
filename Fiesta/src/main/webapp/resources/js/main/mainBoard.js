@@ -908,6 +908,38 @@ function createBoard(board) {
       });
     }
   });
+
+    // 댓글 입력창에 enter 이벤트 리스너 추가
+    commentInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+
+      if (commentInput.value != '') {
+        $.ajax({
+          url: '/comment/insert',
+          type: 'Post',
+          data: {
+            'memberNo': memberNo,
+            'boardNo': board.boardNo,
+            'commentContent': commentInput.value,
+            'upperCommentNo': upperCommentNo,
+          },
+          success: (result) => {
+            if (result > 0) {
+              const flag = 1; //1이 등록 0이 삭제
+
+              selectCommentList(board.boardNo, commentUl, flag);
+              commentInput.value = '';
+              mainContainerDiv.scrollTop = mainContainerDiv.scrollHeight;
+            }
+          },
+          error: () => {
+            console.log('댓글 등록 오류');
+          },
+        });
+      }
+    
+    }
+  });
   
   div4.append(commentInput, postingBtn);
   
