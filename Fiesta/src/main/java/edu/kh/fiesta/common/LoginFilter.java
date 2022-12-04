@@ -13,7 +13,7 @@
 //import javax.servlet.http.HttpSession;
 //
 //@WebFilter(filterName="loginFilter",
-//			urlPatterns = {"/main"})
+//			urlPatterns = {"/"})
 //public class LoginFilter implements Filter {
 //
 //    public void init(FilterConfig fConfig) throws ServletException {
@@ -34,9 +34,9 @@
 //		// -> session에 loginMember가 있는지 확인
 //		HttpSession session = req.getSession(); 
 //		
-//		if(session.getAttribute("loginMember") != null) {
+//		if(session.getAttribute("loginMember") != null) { // 로그인o
 //			resp.sendRedirect("/main");
-//			chain.doFilter(request, response);
+////			chain.doFilter(request, response);
 //		} 
 //	}
 //}
