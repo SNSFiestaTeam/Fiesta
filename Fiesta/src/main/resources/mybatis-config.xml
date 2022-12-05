@@ -27,7 +27,7 @@
 		<typeAlias type="edu.kh.fiesta.setting.model.vo.Introduce" alias="Introduce"/>
 		<typeAlias type="edu.kh.fiesta.setting.model.vo.Setting" alias="Setting"/>
 		<typeAlias type="edu.kh.fiesta.dm.model.vo.ChattingRoom" alias="ChattingRoom"/>
-		<typeAlias type="edu.kh.fiesta.dm.model.vo.Message" alias="Message"/>
+		<typeAlias type="edu.kh.fiesta.dm.model.vo.Message" alias="Chat"/>
 	</typeAliases>
 	
 	<!-- mapper 파일(SQL 작성되는파일) 위치 등록 부분 -->
