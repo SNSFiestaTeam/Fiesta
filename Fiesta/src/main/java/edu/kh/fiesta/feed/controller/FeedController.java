@@ -1,7 +1,11 @@
 package edu.kh.fiesta.feed.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,20 +75,26 @@ public class FeedController {
 		return "profile/myfeedTaged";
 	}
 	
-	/** 게시글 이미지 조회
+	/** 게시글 AJAX 조회
 	 * @param memberNickname
 	 * @param model
 	 * @param cp
 	 * @return
 	 */
-//	@GetMapping("/feed/{memberNickname}/selectBoardImgList")
-//	@ResponseBody
-//	public String selectBoardImgList(@PathVariable("memberNickname") String memberNickname, Model model, int cp) {
-//		
-//		Map<String, Object> map = service.selectBoardImgList(memberNickname, cp);
-//		
-//		return new Gson().toJson(map);
-//	}
+	@GetMapping("/feed/{memberNickname}/selectBoardList")
+	@ResponseBody
+	public String selectBoardList(@PathVariable("memberNickname") String memberNickname, Model model, int cp, @SessionAttribute(value="loginMember") Member loginMember) {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("memberNickname",memberNickname);
+		paramMap.put("memberNo", loginMember.getMemberNo());
+		paramMap.put("cp", cp);
+		
+		Map<String, Object> feedMap = service.selectBoardList(paramMap);
+		
+		return new Gson().toJson(feedMap);
+	}
 	
 	
 	/** 인기피드
@@ -131,9 +141,11 @@ public class FeedController {
 	 */
 	@GetMapping("/logout")
 
-	public String logout(SessionStatus status) {
+	public String logout(HttpServletRequest req) {
 		
-		status.setComplete();
+		 HttpSession session = req.getSession();
+		 
+		 session.invalidate();
 		
 		return "redirect:/";
 	}

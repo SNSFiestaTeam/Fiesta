@@ -913,6 +913,7 @@ reportCancle.addEventListener("click", function () {
 
 
 
+
 // 모달창 바깥 클릭 시 모달창 꺼짐
 window.addEventListener('click', (e) => {
   // 신고창 밖 클릭 시 닫힘

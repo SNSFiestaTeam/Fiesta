@@ -25,7 +25,7 @@ public class MemberController {
 	private MemberService service;
 	
 	// 로그인
-	@PostMapping("/main")
+	@PostMapping("/login")
 	public String login(Member inputMember, Model model, 
 						RedirectAttributes ra, 
 						@RequestHeader(value="referer")String referer,
