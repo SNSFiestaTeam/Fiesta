@@ -899,15 +899,14 @@ commentReportBtn.addEventListener("click", function () {
 });
 
 
-
-
-
 // 신고창 취소 버튼 클릭 시 닫힘
 reportCancle.addEventListener("click", function () {
   report.style.display = "none";
 
   body.classList.remove("scrollLock");
 });
+
+
 
 
 
@@ -933,9 +932,6 @@ window.addEventListener('click', (e) => {
     
   // 피드 헤더 메뉴창 바깥 클릭 시 닫힘
   e.target === feedMenu ? feedMenu.style.display = 'none' : false
-
-  // 신고창 밖 클릭 시 닫힘
-  e.target === report ? report.style.display = 'none' : false
 
   body.classList.remove("scrollLock");
 

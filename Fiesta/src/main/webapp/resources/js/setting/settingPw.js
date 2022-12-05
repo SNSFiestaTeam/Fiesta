@@ -10,7 +10,6 @@ if(changePwForm != null){
         const newPwConfirm = document.getElementById("newPwConfirm");
 
 
-
         if(currentPw.value.trim().length ==0 ){
             alert("이전 비밀번호를 입력해주세요.");
             currentPw.focus();
