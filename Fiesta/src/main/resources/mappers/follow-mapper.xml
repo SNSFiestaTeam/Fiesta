@@ -104,5 +104,35 @@
 			(SELECT HASHTAG_NO FROM HASHTAG WHERE HASHTAG_CONTENT = #{keyword})
   	</delete>
   	
+  	
+  	<!-- 계정 팔로우 여부 조회 -->
+  	<select id="followAccountCheck" parameterType="map" resultType="_int">
+  		SELECT COUNT(*)
+			FROM FOLLOW
+			WHERE F_FROM_MEMBER_NO = #{memberNo}
+			AND FOLLOW_TYPE = 'M'
+			AND F_TO_TARGET_NO = (SELECT MEMBER_NO 
+														FROM MEMBER 
+														WHERE MEMBER_NICKNAME = #{followToNickname})
+  	</select>
+  	
+  	
+  	<!-- 계정 팔로우 (닉네임 일치)-->
+  	<insert id="followAccount" parameterType="map">
+	  	INSERT INTO FOLLOW VALUES (#{memberNo}, (SELECT MEMBER_NO FROM "MEMBER" WHERE MEMBER_NICKNAME = #{followToNickname}), 'M', 
+				(SELECT CASE
+						WHEN MEMBER_OPEN_FL = 'Y' THEN 'Y'
+						ELSE 'N'
+					END "FOLLOW_ACCEPT_FL"
+				FROM "MEMBER"
+				WHERE MEMBER_NICKNAME= #{followToNickname}))
+  	</insert>
+  	
+  	<delete id="unfollowAccount">
+  		DELETE FROM FOLLOW 
+			WHERE F_FROM_MEMBER_NO = #{memberNo}
+			AND F_TO_TARGET_NO = (SELECT MEMBER_NO FROM "MEMBER" WHERE MEMBER_NICKNAME=#{followToNickname})
+  	</delete>
+  	
   
 </mapper>

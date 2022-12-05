@@ -33,7 +33,27 @@ public class FollowServiceImpl implements FollowService{
 		return dao.unfollowHashtag(map);
 	}
 
+	//----------------------------------------------------------
+	
+	
+	// 계정 팔로우 여부 조회
+	@Override
+	public int followAccountCheck(Map<String, Object> map) {
+		return dao.followAccountCheck(map);
+	}
+
+	
+	// 계정 팔로우
+	@Override
+	public int followAccount(Map<String, Object> map) {
+		return dao.followAccount(map);
+	}
 	
 
+	// 계정 언팔로우
+	@Override
+	public int unfollowAccount(Map<String, Object> map) {
+		return dao.unfollowAccount(map);
+	}
 
 }

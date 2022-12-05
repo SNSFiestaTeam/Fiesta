@@ -80,18 +80,18 @@
         </nav>
       </section>
     </header>
-    <section class="toggle-search-section">
-      <form action="/search">
+    <section class="toggle-search-section hide" id="toggleSearchSection">
+      <form action="/search" id="toggleSearchForm">
         <fieldset>
           <input
           type="text"
           name="searchInput"
-          id="searchInput"
+          id="toggleSearchInput"
           placeholder="검색"
           autocapitalize="none"
           autocomplete="off"
           />
-          <button id="search-glass">
+          <button id="searchGlass" disabled>
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </fieldset>

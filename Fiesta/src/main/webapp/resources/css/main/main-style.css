@@ -46,7 +46,7 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+
 }
 
 button {
@@ -349,7 +349,7 @@ a.comment-profile {
 .reply-firstline {
   display: flex;
   justify-content: space-between;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 .create-date {
   color: var(--main-font-color);
@@ -366,9 +366,11 @@ a.comment-profile {
   margin: 10px 0;
   height: 40px;
   font-size: var(--small-font-size);
+
+  /* position:relative; */
 }
 
-.comment-input-area > div {
+.comment-input-area > div:first-child {
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -393,6 +395,10 @@ a.comment-profile {
 .comment-input-area button:disabled {
   color: #dbbbb8;
   cursor: default;
+}
+
+.comment-input-area button:disabled:active {
+  transform: none;
 }
 
 .one-line {
@@ -651,7 +657,7 @@ a.comment-profile {
   /* 답글 스타일 end */
 
   /* 댓글 입력창 */
-  .comment-input-area > div {
+  .comment-input-area > div:first-child {
     height: 50px;
     align-items: center;
     margin-bottom: 5px;
@@ -763,4 +769,39 @@ a.comment-profile {
 /* 클래스로 효과 주기 */
 .hide {
   display: none;
+  opacity: 0;
 }
+
+.appear {
+  animation: fade-in 0.5s;
+  animation-fill-mode: forwards;
+  display: flex;
+}
+
+.disappear {
+  animation: fade-out 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  } to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  } to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+
+

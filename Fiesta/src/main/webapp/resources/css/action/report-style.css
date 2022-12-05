@@ -1,4 +1,4 @@
-@import './root-style.css';
+@import '../root-style.css';
 
 * {
   margin: 0;
@@ -10,7 +10,7 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+
 }
 
 .declaration-container {
@@ -44,6 +44,8 @@ body {
   width: 90%;
   flex-basis: 70%;
   border-bottom: 1px solid #ddd;
+
+  font-size: var(--main-font-size);
 }
 
 #declarationOption {

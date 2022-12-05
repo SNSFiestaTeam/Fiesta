@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardSettingMapper">
+
+
+    <!-- 댓글 기능 차단 N으로 수정 -->
+	<update id="updateCommentBlockN">
+		UPDATE BOARD SET
+		COMMENT_BLOCK_FL = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	
+    <!-- 댓글 기능 차단 Y로 수정 -->
+	<update id="updateCommentBlockY">
+		UPDATE BOARD SET
+		COMMENT_BLOCK_FL = 'Y'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 좋아요 수 숨기기 -->
+	<update id="updateBoardPubPriN">
+		UPDATE BOARD SET
+		BOARD_PUB_PRI_FL = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<!-- 좋아요 수 숨기기 해제 -->
+	<update id="updateBoardPubPriY">
+		UPDATE BOARD SET
+		BOARD_PUB_PRI_FL = 'N'
+		WHERE BOARD_NO = #{boardNo}
+	</update>
+	
+	<select id="selectBoardLikeCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOARD_LIKE
+		WHERE BOARD_NO = #{boardNo}
+	</select>
+	
+
+</mapper>

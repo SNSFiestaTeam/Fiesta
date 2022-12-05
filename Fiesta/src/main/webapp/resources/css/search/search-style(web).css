@@ -1,6 +1,7 @@
 /* 화면 작아질때 footer가 중간에 위치하는 문제 해결하기! */
 /* 화면 작아질때 비율 해결하기 */
 
+@import '../root-style.css';
 
 body{
     width: 100vw;
@@ -154,6 +155,8 @@ main {
 }
 
 .account-Group{
+    /* flex-basis : 16%; */
+    width: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -174,6 +177,11 @@ main {
 
 .profileNickname{
     font-size: 0.8em;
+    text-align: left;
+}
+
+.profileNickname:hover {
+    text-decoration: underline;
 }
 
 .follow-button-small{
@@ -181,8 +189,13 @@ main {
     font-weight: bold;
     /* color: var(--fiesta-color); */
     padding-top :4px;
+    cursor: pointer;
 }
 
+
+#followToMemberNo{
+    display: none;
+}
 
 /* --------------------------------------------------- */
 
@@ -197,7 +210,6 @@ main {
 .unfollowHashtagBtn{
     background-color: gray;
     color: white;
-    border: 1px solid gray;
 }
 
 
@@ -222,6 +234,7 @@ main {
 /* 검색결과 - 인기게시글(사진) 섹션 */
 .boardResult-section{
     flex-basis: 60%;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -230,6 +243,7 @@ main {
 .boardResult-section > div:first-child{ /* 인기 게시글 */
     flex-basis: 10%;
     height: 10%;
+    margin-top: 30px;
     margin-bottom: 7px;
     font-weight: bold;
 }
@@ -254,7 +268,7 @@ main {
     margin-bottom: 10px;
 }
 
-.boardImage a{
+.aBoardImage{
     /* flex-basis: 33%; */
     width: 310px;
     height: 310px;
@@ -264,10 +278,12 @@ main {
     align-items: center;
     margin-right: 10px;
 
+    border: 1px solid lightgray;
+
     position: relative;
 }
 
-.boardImage img{
+.b-img{
     width: 310px;
     /* height: 320px; */
 
@@ -291,7 +307,7 @@ main {
     display: none;
   }
 
-.boardImage img:hover + .hover-icon-container {
+.b-img:hover + .hover-icon-container {
     width: 100%;
     height: 100%;
     
@@ -306,13 +322,13 @@ main {
     align-items: center;
 }
 
-.hover-icon-container > i {
+.iHover {
     color: white;
     margin-left: 20px;
     margin-right: 5px;
 }
 
-.hover-icon-container > span {
+.spanHover {
     color: white;
     font-size: 14px;
 }

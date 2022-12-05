@@ -54,6 +54,11 @@ a {
   color: black;
 }
 
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   width: vw;
   font-size: 18px;
@@ -63,6 +68,16 @@ button {
   border: none;
   background-color: white;
   color: black;
+}
+
+button:focus {
+  outline: none;
+}
+
+
+
+button:active {
+  transform: scale(0.95);
 }
 
 footer {
@@ -93,7 +108,7 @@ header {
 
   display: flex;
   justify-content: center;
-  z-index: 2;
+  z-index: 45;
 }
 
 header > section {
@@ -233,6 +248,8 @@ nav i {
   flex-shrink: 0;
 }
 
+
+
 #searchBtn {
   display: none;
 }
@@ -243,6 +260,9 @@ nav i {
 
 @media screen and (min-width: 1024px) {
   /* Desktop */
+  .toggle-search-section {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 471px) and (max-width: 1023px) {
@@ -260,7 +280,7 @@ nav i {
 
   .toggle-search-section {
     width: 100vw;
-    height: 80px;
+    height: 50px;
 
     position: sticky;
     top: 60px;
@@ -269,13 +289,13 @@ nav i {
     justify-content: center;
     align-items: center;
     z-index: 40;
-    display: none;
+    /* display: none; */
   }
 
   .toggle-search-section fieldset {
     height: 38px;
     width: 100%;
-    background-color: #ffffff90;
+    background-color: #ffffff;
     border: 1px solid #8e8e8e;
     border-radius: 5px;
     padding-left: 10px;
@@ -305,6 +325,18 @@ nav i {
 
     flex-basis: 10%;
   }
+
+  .toggle-search-section fieldset > button:disabled {
+    color: #dbbbb8;
+    cursor: auto;
+  }
+
+  .toggle-search-section fieldset > button:disabled:active {
+    transform: none;
+  }
+
+  
+
 }
 
 @media screen and (max-width: 470px) {
@@ -317,6 +349,11 @@ nav i {
   body {
     width: vw;
   }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
 
   footer {
     display: none;

@@ -1,14 +1,384 @@
 // 댓글 창에 입력 시 게시 버튼 활성화
 const postingBtn = document.getElementsByClassName('posting-btn');
 for (let i = 0; i < commentInput.length; i++) {
-  commentInput[i].addEventListener('input', function () {
+  commentInput[i].addEventListener('input', (e) => {
     if (commentInput[i].value.trim().length == 0) {
       postingBtn[i].setAttribute('disabled', true);
       return;
     } else {
       postingBtn[i].removeAttribute('disabled');
-      return;
     }
+  });
+}
+
+for (let i = 0; i < commentInput.length; i++) {
+  commentInput[i].addEventListener('keyup', function (event) {
+    
+
+    // @키 입력 시 언급 자동완성 모달창
+    if (event.key === '@') {
+      const selection = window.getSelection();
+      
+      var range = document.createRange();
+
+      range.setStart(selection.anchorNode, 0);
+
+      
+      // 언급 자동완성 창 생성
+      const autoCompleteModal = document.createElement('div');
+      autoCompleteModal.classList.add('auto-complete-container');
+      autoCompleteModal.id = 'autoCompleteModal';
+
+      
+      commentInput[i].addEventListener('input', function (e) { 
+        
+        if (commentInput[i].value.trim().length != 0) {
+
+          // 로딩 창 생성
+          autoCompleteModal.innerHTML =
+          '<div class="auto-complete-loading">'
+          +' <div class="loader loader--style1" title="0">'
+          +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+          +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+          +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+          +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+          +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+          +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+          +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+          +'     <animateTransform attributeType="xml"'
+          +'       attributeName="transform"'
+          +'       type="rotate"'
+          +'       from="0 20 20"'
+          +'       to="360 20 20"'
+          +'       dur="0.5s"'
+          +'       repeatCount="indefinite"/>'
+          +'   </path>'
+          +' </svg>'
+          +'</div>'  
+          +'</div > ';
+          
+      
+          commentInput[i].parentElement.parentElement.append(autoCompleteModal);
+          commentInput[i].parentElement.parentElement.style.position = 'relative';
+          
+
+          // ***** input 입력 값!!! ******
+          const regEx = /(@[^\s@]+)/gm;
+
+          let str = e.target.value;
+
+          // console.log(str);
+          let searchWord = str.match(regEx);
+          
+          if (searchWord != null) { 
+            searchWord = searchWord.join(', ');
+
+            searchWord = searchWord.replaceAll('@', '');
+
+            searchWord = searchWord.split(', ');
+          }
+
+          
+
+          if (searchWord != null) {
+            // 입력된 값으로 검색하기
+            $.ajax({
+              url: '/comment/autoComplete/mention',
+              data: { "searchWord": searchWord},
+              traditional: true,
+              dataType: 'json',
+              success: (mentionList) => {
+                if (mentionList != null) {
+                  autoCompleteModal.innerHTML = '';
+    
+                  for (let mention of mentionList) {
+  
+  
+                    const autoCompleteDiv = document.createElement('div');
+                    autoCompleteDiv.classList.add('auto-complete-content');
+  
+                    // 언급 멤버 프로필 이미지
+                    const mentionProfileImg = document.createElement('img');
+
+                    if (mention.memberProfileImg != undefined) {
+                      mentionProfileImg.setAttribute('src', mention.memberProfileImg);
+                    } else {
+                      mentionProfileImg.setAttribute('src', '/resources/images/profile/profile.jpg');
+                    }
+
+                    autoCompleteDiv.append(mentionProfileImg);
+  
+                    // 언급 멤버 정보
+                    const memberInfo = document.createElement('div');
+                    memberInfo.classList.add('member-info');
+  
+                    // 언급 멤버 닉네임
+                    const mentionNickname = document.createElement('span');
+                    mentionNickname.classList.add('mention-nickname');
+                    mentionNickname.innerText = mention.memberNickname;
+                    
+                    // 언급 멤버 이름
+                    const mentionName = document.createElement('span');
+                    mentionName.classList.add('mention-name');
+                    mentionName.innerText = mention.memberName;
+  
+                    memberInfo.append(mentionNickname, mentionName);
+  
+                    autoCompleteDiv.append(memberInfo);
+  
+                    autoCompleteModal.append(autoCompleteDiv);
+
+
+                    // 언급 아이디 클릭 시
+                    autoCompleteDiv.addEventListener('click', () => {
+
+                      // 언급 아이디 인풋 태그에 추가
+                      const inputWord = searchWord[searchWord.length - 1];
+                      commentInput[i].value = commentInput[i].value.replaceAll(inputWord, mention.memberNickname) + " ";
+
+
+                      // 모달창 제거
+                      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+
+                      // 인풋 이벤트 리스너 제거해서 모달창 안나오게
+                      commentInput[i].removeEventListener('input', arguments.callee);
+                      commentInput[i].focus();
+                    });
+
+
+                  }  
+                } else {
+                  // 로딩 창 생성
+                  autoCompleteModal.innerHTML =
+                  '<div class="auto-complete-loading">'
+                  +' <div class="loader loader--style1" title="0">'
+                  +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+                  +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+                  +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+                  +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+                  +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+                  +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+                  +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+                  +'     <animateTransform attributeType="xml"'
+                  +'       attributeName="transform"'
+                  +'       type="rotate"'
+                  +'       from="0 20 20"'
+                  +'       to="360 20 20"'
+                  +'       dur="0.5s"'
+                  +'       repeatCount="indefinite"/>'
+                  +'   </path>'
+                  +' </svg>'
+                  +'</div>'  
+                    + '</div > ';
+                  
+
+                }
+              },
+              error: () => {
+                console.log("언급 자동완성 에러");
+              },
+            });
+            
+
+          }
+
+
+
+        } else {
+          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+          console.log('모달 삭제');
+          commentInput[i].removeEventListener('input', arguments.callee);
+        }
+
+      });
+      
+    }
+
+    // #키 입력 시 해시태그 자동완성 모달창 추가
+    if (event.key === '#') {
+      const selection = window.getSelection();
+      
+      var range = document.createRange();
+
+      range.setStart(selection.anchorNode, 0);
+
+      
+      // 언급 자동완성 창 생성
+      const autoCompleteModal = document.createElement('div');
+      autoCompleteModal.classList.add('auto-complete-container');
+      autoCompleteModal.id = 'autoCompleteModal';
+
+      
+      commentInput[i].addEventListener('input', function (e) { 
+        
+        if (commentInput[i].value.trim().length != 0) {
+
+          // 로딩 창 생성
+          autoCompleteModal.innerHTML =
+          '<div class="auto-complete-loading">'
+          +' <div class="loader loader--style1" title="0">'
+          +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+          +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+          +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+          +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+          +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+          +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+          +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+          +'     <animateTransform attributeType="xml"'
+          +'       attributeName="transform"'
+          +'       type="rotate"'
+          +'       from="0 20 20"'
+          +'       to="360 20 20"'
+          +'       dur="0.5s"'
+          +'       repeatCount="indefinite"/>'
+          +'   </path>'
+          +' </svg>'
+          +'</div>'  
+          +'</div > ';
+          
+      
+          commentInput[i].parentElement.parentElement.append(autoCompleteModal);
+          commentInput[i].parentElement.parentElement.style.position = 'relative';
+          
+
+          // ***** input 입력 값!!! ******
+          const regEx = /(#[^\s#]+)/gm;
+
+          let str = e.target.value;
+
+          // console.log(str);
+          let searchWord = str.match(regEx);
+          
+          if (searchWord != null) { 
+            searchWord = searchWord.join(', ');
+
+            searchWord = searchWord.replaceAll('#', '');
+
+            searchWord = searchWord.split(', ');
+          }
+
+          
+
+          if (searchWord != null) {
+            // 입력된 값으로 검색하기
+            $.ajax({
+              url: '/comment/autoComplete/hashtag',
+              data: { "searchWord": searchWord},
+              traditional: true,
+              dataType: 'json',
+              success: (hashtagList) => {
+                if (hashtagList != null) {
+                  console.log(hashtagList);
+                  autoCompleteModal.innerHTML = '';
+    
+                  for (let hashtag of hashtagList) {
+  
+  
+                    const autoCompleteDiv = document.createElement('div');
+                    autoCompleteDiv.classList.add('auto-complete-content');
+
+                    // 해시태그 정보
+                    const hashtagInfo = document.createElement('div');
+                    hashtagInfo.classList.add('hashtag-info');
+  
+                    // 해시태그 내용
+                    const hashtagContent = document.createElement('span');
+                    hashtagContent.classList.add('hashtag-content');
+                    
+                    const span = document.createElement('span');
+                    span.innerText = '#'
+                    
+                    hashtagContent.append(span);
+                    hashtagContent.innerText += hashtag.hashtagContent;
+                    
+                    // 해시태그 관련 게시물 수
+                    const boardCount = document.createElement('span');
+                    boardCount.classList.add('hashtag-board-count');
+                    boardCount.innerText = '게시물 ' +  hashtag.boardCount;
+  
+                    hashtagInfo.append(hashtagContent, boardCount);
+  
+                    autoCompleteDiv.append(hashtagInfo);
+  
+                    autoCompleteModal.append(autoCompleteDiv);
+
+
+                    // 언급 아이디 클릭 시
+                    autoCompleteDiv.addEventListener('click', () => {
+
+                      // 언급 아이디 인풋 태그에 추가
+                      const inputWord = searchWord[searchWord.length - 1];
+                      commentInput[i].value = commentInput[i].value.replaceAll(inputWord, hashtag.hashtagContent) + " ";
+
+
+                      // 모달창 제거
+                      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+
+                      // 인풋 이벤트 리스너 제거해서 모달창 안나오게
+                      commentInput[i].removeEventListener('input', arguments.callee);
+                      commentInput[i].focus();
+                    });
+
+
+                  }  
+                } else {
+                  // 로딩 창 생성
+                  autoCompleteModal.innerHTML =
+                  '<div class="auto-complete-loading">'
+                  +' <div class="loader loader--style1" title="0">'
+                  +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+                  +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+                  +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+                  +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+                  +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+                  +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+                  +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+                  +'     <animateTransform attributeType="xml"'
+                  +'       attributeName="transform"'
+                  +'       type="rotate"'
+                  +'       from="0 20 20"'
+                  +'       to="360 20 20"'
+                  +'       dur="0.5s"'
+                  +'       repeatCount="indefinite"/>'
+                  +'   </path>'
+                  +' </svg>'
+                  +'</div>'  
+                    + '</div > ';
+                  
+
+                }
+              },
+              error: () => {
+                console.log("언급 자동완성 에러");
+              },
+            });
+            
+
+          }
+
+
+
+        } else {
+          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+          console.log('모달 삭제');
+          commentInput[i].removeEventListener('input', arguments.callee);
+        }
+
+      });
+    }
+
+
+
+    if (event.keyCode === 32) {
+      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+      console.log('모달 삭제');
+      commentInput[i].removeEventListener('input', arguments.callee);
+    }
+
+
+
+
+    event.preventDefault();
   });
 }
 
@@ -20,6 +390,7 @@ for (let i = 0; i < allCommentBtn.length; i++) {
     const commentList = document.getElementById('commentContainerM');
     const commentUl = document.getElementsByClassName('comment-list')[i];
 
+   
     console.log('댓글 모두 보기 실행');
 
     allCommentBtn[i].classList.add('hide');
@@ -28,8 +399,28 @@ for (let i = 0; i < allCommentBtn.length; i++) {
     boardNo =
       allCommentBtn[i].parentElement.parentElement.parentElement
         .nextElementSibling.value;
+    boardMemberNickname = allCommentBtn[i].parentElement.parentElement.parentElement
+      .parentElement.firstElementChild.firstElementChild.firstElementChild
+      .firstElementChild.nextElementSibling.innerText;
+    boardMemberProfileImg = allCommentBtn[i].parentElement.parentElement.parentElement
+      .parentElement.firstElementChild.firstElementChild.firstElementChild
+      .firstElementChild.firstElementChild.getAttribute('src');
+    
+    console.log("boardNo: " + boardNo) ;
+    console.log("boardMemberNickname: " + boardMemberNickname) ;
+    console.log("boardMemberProfileImg: " + boardMemberProfileImg) ;
 
     const commentListUlM = document.getElementById('commentListUl');
+
+    // 모달창 프로필, 닉네임 설정
+    const profilePhotoM = document.getElementById('profilePhotoM');
+    const feedProfileImageM = document.getElementById('feedProfileImageM');
+    const feedMemberIdM = document.getElementById('feedMemberIdM');
+    profilePhotoM.href = '/feed/' + boardMemberNickname;
+    feedProfileImageM.setAttribute('src', boardMemberProfileImg);
+
+    feedMemberIdM.innerText = boardMemberNickname;
+    feedMemberIdM.href = '/feed/' + boardMemberNickname;
 
     // 댓글 리스트 불러오기
     selectCommentListM(boardNo, commentListUlM);
@@ -125,7 +516,7 @@ for (let i = 0; i < replyBtn.length; i++) {
 
 // ! ------------------------------------댓글 등록 시작 -------------------------------------
 
-// TODO: 댓글 입력 후 ENTER 입력 시도 만들 것
+
 // 댓글 등록 버튼 클릭 시
 for (let i = 0; i < postingBtn.length; i++) {
   postingBtn[i].addEventListener('click', () => {
@@ -141,22 +532,6 @@ for (let i = 0; i < postingBtn.length; i++) {
     
     if (commentInput[i].value != '') {
 
-      // 해시태그 인식해서 a 태그로 감싸기
-      const regEx = /(#[^\s#]+)/gm;
-      commentInput[i].value
-  
-      commentInput[i].value = commentInput[i].value.replace(regEx, (match) => {
-        const tagName = match.replace("#", '');
-        return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
-      });
-
-      // 언급 인식해서 a 태그로 감싸기
-      const regEx2 = /(@[^\s@]+)/gm;
-  
-      commentInput[i].value = commentInput[i].value.replace(regEx2, (match) => {
-        const tagName = match.replace("@", '');
-        return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
-      });
 
       console.log("바뀐 댓글 내용: "+ commentInput[i].value);
 
@@ -172,8 +547,10 @@ for (let i = 0; i < postingBtn.length; i++) {
         },
         success: (result) => {
           if (result > 0) {
-            selectCommentList(boardNo.value, commentListUl);
+            const flag = 1; // 1이 등록, 2가 삭제
+            selectCommentList(boardNo.value, commentListUl, flag);
             commentInput[i].value = '';
+            postingBtn[i].setAttribute('disabled', true);
             mainContainer.scrollTop = mainContainer.scrollHeight;
             upperCommentNo = 0;
           }
@@ -186,7 +563,54 @@ for (let i = 0; i < postingBtn.length; i++) {
   });
 }
 
+// 댓글 입력 후 Enter키 입력 시
+for (let i = 0; i < commentInput.length; i++) {
+  commentInput[i].addEventListener('keypress', e => {
+    if (e.key === 'Enter') {
+      
+      const boardNo = postingBtn[i].parentElement.parentElement.parentElement.nextElementSibling;
+      const commentInput = document.getElementsByClassName('comment-input');
+      const commentListUl = document.getElementsByClassName('comment-list')[i];
+      const mainContainer = document.getElementsByClassName('main-container')[i];
+      
+      console.log(commentInput[i].value);
+      console.log('upperCommentNo: ' + upperCommentNo);
+      console.log(boardNo.value);
+    
+    
+      if (commentInput[i].value != '') {
 
+
+        console.log("바뀐 댓글 내용: "+ commentInput[i].value);
+
+        
+        $.ajax({
+          url: '/comment/insert',
+          type: 'Post',
+          data: {
+            "memberNo": memberNo,
+            "boardNo": boardNo.value,
+            "commentContent": commentInput[i].value,
+            "upperCommentNo": upperCommentNo,
+          },
+          success: (result) => {
+            if (result > 0) {
+              const flag = 1; // 1이 등록, 2가 삭제
+              selectCommentList(boardNo.value, commentListUl, flag);
+              commentInput[i].value = '';
+              postingBtn[i].setAttribute('disabled', true);
+              mainContainer.scrollTop = mainContainer.scrollHeight;
+              upperCommentNo = 0;
+            }
+          },
+          error: () => {
+            console.log('댓글 등록 오류');
+          },
+        });
+      }
+    }
+  });
+}
 
 // 모달창 댓글 목록 조회 후 출력
 function selectCommentListM(boardNo, commentListUl) {
@@ -220,12 +644,13 @@ function selectCommentListM(boardNo, commentListUl) {
 
           // commentLi의 자식요소 commentFirstChild, moreReply
           const commentFirstChild = document.createElement('div');
-          commentFirstChild.classList.add('comment-firstchild-m');
+          // commentFirstChild.classList.add('comment-firstchild-m');
 
           commentLi.append(commentNoInput, commentFirstChild);
 
           // commentFirstChild의 자식 요소 commentProfileA, commentDiv1
           const commentProfileA = document.createElement('a');
+          commentProfileA.href = '/feed/' + comment.memberNickname;
           commentProfileA.id = 'commentProfileM';
 
           const commentDiv1 = document.createElement('div');
@@ -447,6 +872,7 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
 
         // replyFirstChild의 자식 요소 replyProfileA, replyDiv1
         const replyProfileA = document.createElement('a');
+        replyProfileA.href = '/feed/' + comment.memberNickname;
         replyProfileA.id = 'commentProfileM';
 
         const replyDiv1 = document.createElement('div');
@@ -667,6 +1093,8 @@ for (let item of hoverBtn) {
 
       
       console.log(deleteCommentUl);
+      console.log(deleteCommentNo);
+      console.log(deleteBoardNo);
       
     } else {
       commentMenu.style.display = 'flex';
@@ -693,27 +1121,30 @@ document.getElementById('commentMenuCancelL').addEventListener('click', () => {
 // TODO: 댓글 삭제 버튼 클릭 시 삭제
 const commentDeleteBtn = document.getElementById('commentDeleteBtnL');
 commentDeleteBtn.addEventListener('click', () => {
-
+  
   console.log("deleteBoardNo: "+ deleteBoardNo);
   console.log("deleteCommentNo: " + deleteCommentNo);
   console.log(deleteCommentUl);
   console.log("modalOn: " + modalOn);
 
-    $.ajax({
-      url: '/comment/delete',
-      data: { "commentNo": deleteCommentNo },
+  $.ajax({
+    url: '/comment/delete',
+    data: { "commentNo": deleteCommentNo },
       success: (result) => {
         if (result > 0) {
           loginCommentMenu.style.display = 'none';
+
+          const flag = '0';
           
           if(modalOn == 0) {
-            selectCommentList(deleteBoardNo, deleteCommentUl);
+            selectCommentList(deleteBoardNo, deleteCommentUl, flag);
           }
           
           if(modalOn == 1) {
             selectCommentListM(deleteBoardNo, deleteCommentUl);
-
+            
           }
+          body.classList.remove('scrollLock');
         } else {
           console.log('댓글 삭제 실패');
         }
@@ -731,21 +1162,7 @@ const commentListUlM = document.getElementById('commentListUl');
 
 // 댓글 모달창 게시 클릭 이벤트 추가
 postingBtnM.addEventListener('click', () => {
-  const regEx = /(#[^\s#]+)/gm;
 
-
-  commentInputM.value = commentInputM.value.replace(regEx, (match) => {
-    const tagName = match.replace("#", '');
-    return "<a href='/search?searchInput="+tagName+"' class='hashtag'>"+match+"</a>"
-  });
-
-  // 언급 인식해서 a 태그로 감싸기
-  const regEx2 = /(@[^\s@]+)/gm;
-
-  commentInputM.value = commentInputM.value.replace(regEx2, (match) => {
-    const tagName = match.replace("@", '');
-    return "<a href='/feed/"+tagName+"' class='hashtag'>"+match+"</a>"
-  });
 
   console.log("댓글 등록 boardNo: " + boardNo);
 
@@ -763,6 +1180,7 @@ postingBtnM.addEventListener('click', () => {
         if (result > 0) {
           selectCommentListM(boardNo, commentListUlM);
           commentInputM.value = '';
+          postingBtnM.setAttribute('disabled', true);
           upperCommentNo = 0;
         }
       },
@@ -773,6 +1191,37 @@ postingBtnM.addEventListener('click', () => {
   }
 });
 
+// 댓글 모달창 댓글 입력 후 Enter키 입력 시
+commentInputM.addEventListener('keypress', e => {
+
+  if (e.key === 'Enter') {
+
+    if (commentInputM.value != '') {
+      $.ajax({
+        url: '/comment/insert',
+        type: 'Post',
+        data: {
+          "memberNo": memberNo,
+          "boardNo": boardNo,
+          "commentContent": commentInputM.value,
+          "upperCommentNo": upperCommentNo,
+        },
+        success: (result) => {
+          if (result > 0) {
+            selectCommentListM(boardNo, commentListUlM);
+            commentInputM.value = '';
+            postingBtnM.setAttribute('disabled', true);
+            upperCommentNo = 0;
+          }
+        },
+        error: () => {
+          console.log('댓글 등록 오류');
+        },
+      });
+    }
+    
+  }
+});
 
    // 댓글 모달창 입력 이벤트 추가
 

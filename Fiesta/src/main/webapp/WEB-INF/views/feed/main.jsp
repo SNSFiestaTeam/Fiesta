@@ -12,6 +12,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
+
+    <%-- 무한 스크롤 --%>
+
+
     
     <%-- 사진크롭 --%>
     <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +23,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.css" rel="stylesheet">
 
     <!-- CSS 링크 -->
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
@@ -28,11 +33,12 @@
     <link rel="stylesheet" href="/resources/css/action/report-style.css" />
     <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-    <link rel="stylesheet" href="/resources/css/common-style.css" />
  
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -56,7 +62,7 @@
                   <!-- 작성자 프로필 -->
                   <div class="feed-header">
                     <div class="writer-info">
-                      <a href="" class="profile-photo">
+                      <a href="/feed/${board.memberNickname}" class="profile-photo">
                         <c:if test="${empty board.memberProfileImg}">
                           <img class="feed-profile-image" src="/resources/images/profile/profile.jpg" />
                         </c:if>
@@ -64,7 +70,7 @@
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
                         </c:if>
                       </a>
-                      <a href="#" class="feed-memberId">${board.memberNickname}</a>
+                      <a href="/feed/${board.memberNickname}" class="feed-memberId">${board.memberNickname}</a>
                     </div>
                     <div>
                       <button type="button" class="fa-solid fa-ellipsis feed-header-menu"></button>
@@ -137,7 +143,7 @@
                     <!-- 본문 내용 -->
                     <div class="feed-main-content">
                       <div class="feed-content one-line">
-                        <a href="#"><span class="member-id">${board.memberNickname}</span></a>
+                        <a href="/feed/${board.memberNickname}"><span class="member-id">${board.memberNickname}</span></a>
                         <span class = "board-content">
                           ${board.boardContent}
                           
@@ -153,8 +159,8 @@
                     </div>
 
                       <!-- 댓글 리스트 -->
-                      <c:if test="${board.commentBlockFlag == 'N'}">
                       <div class="comment-container">
+                      <c:if test="${board.commentBlockFlag == 'N'}">
                         <c:if test="${fn:length(board.commentList) > 2}">
                         <button class="all-comment-btn">댓글 모두 보기(${fn:length(board.commentList)})</button>
                         </c:if>
@@ -167,7 +173,7 @@
                                 <li class="comment">
                                   <input type="hidden" value="${comment.commentNo}" class="comment-no">
                                   <div class="comment-firstchild">
-                                    <a href="#" class="comment-profile">
+                                    <a href="/feed/${comment.memberNickname}" class="comment-profile">
                                       <c:if test="${empty comment.memberProfileImg}">
                                         <img class="comment-profile-image" src="/resources/images/profile/profile.jpg" />
                                       </c:if>
@@ -178,7 +184,7 @@
                                     <div>
                                       <div class="comment-firstline">
                                         <div class= "comment-id-content">
-                                          <a href="#" class="comment-memberId">${comment.memberNickname}</a>
+                                          <a href="/feed/${comment.memberNickname}" class="comment-memberId">${comment.memberNickname}</a>
                                           <span class="comment-content">${comment.commentContent}</span>
                                         </div>
                                         <div>
@@ -209,7 +215,7 @@
                                     <li class="comment" id="reply">
                                       <input type="hidden" value="${comment.commentNo}" class="comment-no">
                                       <div class="reply-firstchild">
-                                        <a href="#" class="comment-profile">
+                                        <a href="/feed/${comment.memberNickname}" class="comment-profile">
                                           <c:if test="${empty comment.memberProfileImg}">
                                           <img class="comment-profile-image" src="/resources/images/profile/profile.jpg" />
                                           </c:if>
@@ -220,7 +226,7 @@
                                         <div>
                                           <div class="reply-firstline">
                                             <div>
-                                              <a href="#" class="comment-memberId">${comment.memberNickname}</a>
+                                              <a href="/feed/${comment.memberNickname}" class="comment-memberId">${comment.memberNickname}</a>
                                               <a href="#" class="mention">@${comment.mentionNickname}</a>
                                               <span class="comment-content">${comment.commentContent}</span>
                                             </div>
@@ -243,15 +249,17 @@
                           </c:if>
                           </ul>
                         </div>
-                      </div>
+                      </c:if>
+                      </div> 
                     <span class="create-date">${board.boardCreateDate}</span>
                   </div>
                   <div class="comment-input-area">
+                  <c:if test="${board.commentBlockFlag == 'N'}">
                     <div>
                       <textarea name="comment" id="commentInput" class="comment-input" placeholder="댓글 달기..." autocomplete="off"></textarea>
                       <button class="posting-btn" disabled>게시</button>
                     </div>
-                      </c:if>
+                  </c:if>
                   </div>
                 </div>
               <input type="hidden" class="board-no" value="${board.boardNo}">
@@ -278,6 +286,7 @@
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
     <jsp:include page="/WEB-INF/views/action/comment.jsp" />
+    <jsp:include page="/WEB-INF/views/action/confirm.jsp" />
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
@@ -298,6 +307,13 @@
         var modalOn = 0;
         var boardMemberNickname;
         var boardMemberProfileImg;
+
+        var commentBlockFlag;
+        var boardPubPriFlag;
+
+        var tags;
+
+        var mentionSet = null;
       </script>
     </c:if>
 
@@ -343,6 +359,7 @@
     <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
+    <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
     <%-- 사진크롭 --%>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>

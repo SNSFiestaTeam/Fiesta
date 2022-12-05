@@ -2,12 +2,17 @@ package edu.kh.fiesta.main.model.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.kh.fiesta.common.Util;
 import edu.kh.fiesta.main.model.dao.CommentDAO;
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.main.model.vo.Hashtag;
+import edu.kh.fiesta.member.model.vo.Member;
 
 @Service
 public class CommentServiceImpl implements CommentService{
@@ -35,9 +40,19 @@ public class CommentServiceImpl implements CommentService{
 	 *
 	 */
 	@Override
-	public int commentInsert(Map<String, Object> map) {
+	public int commentInsert(Comment comment) {
 		
-		return dao.commentInsert(map);
+		// 댓글 삽입
+		comment.setCommentContent(Util.XSSHandling(comment.getCommentContent())); // XSS 방지 처리
+		
+		comment.setCommentContent(Util.hashTagHandling(comment.getCommentContent())); //해시태그 A태그로 감싸기
+		
+		comment.setCommentContent(Util.mentionHandling(comment.getCommentContent())); //언급 A태그로 감싸기
+		
+		comment.setCommentContent(Util.newLineHandling(comment.getCommentContent())); // 개행문자 처리
+		
+		
+		return dao.commentInsert(comment);
 	}
 	
 	 
@@ -77,6 +92,27 @@ public class CommentServiceImpl implements CommentService{
 		}
 		
 		return result;
+	}
+	
+	/**
+	 * 언급 자동완성
+	 */
+	public List<Member> mentionAutoComplete(String[] searchWord) {
+		
+		String searchName = searchWord[searchWord.length-1];
+			
+		return dao.mentionAutoComplete(searchName);
+	}
+	
+	
+	/*
+	 * 해시태그 자동완성
+	 */
+	public List<Hashtag> hashtagAutoComplete(String[] searchWord){
+		
+		String searchName = searchWord[searchWord.length-1];
+		
+		return dao.hashtagAutoComplete(searchName);
 	}
 	
 }

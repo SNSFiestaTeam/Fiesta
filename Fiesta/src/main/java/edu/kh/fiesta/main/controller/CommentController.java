@@ -3,6 +3,7 @@ package edu.kh.fiesta.main.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,8 @@ import com.google.gson.Gson;
 
 import edu.kh.fiesta.main.model.service.CommentService;
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.main.model.vo.Hashtag;
+import edu.kh.fiesta.member.model.vo.Member;
 
 @RestController
 @RequestMapping("/comment")
@@ -23,6 +26,12 @@ public class CommentController {
 	@Autowired
 	private CommentService service;
 	
+	/**
+	 * 댓글 좋아요
+	 * @param commentNo
+	 * @param memberNo
+	 * @return
+	 */
 	@GetMapping("/likeUp")
 	public int commentLikeUp(int commentNo, int memberNo) {
 		
@@ -31,6 +40,15 @@ public class CommentController {
 		return result;
 	}
 	
+	
+	
+	
+	/**
+	 * 댓글 좋아요 취소
+	 * @param commentNo
+	 * @param memberNo
+	 * @return
+	 */
 	@GetMapping("/likeDown")
 	public int commentLikeDown(int commentNo, int memberNo) {
 		
@@ -39,6 +57,15 @@ public class CommentController {
 		return result;
 	}
 	
+	
+	
+	
+	/**
+	 * 댓글 목록 조회
+	 * @param boardNo
+	 * @param myNo
+	 * @return
+	 */
 	@GetMapping("/list")
 	public String selectCommentList(int boardNo, int myNo) {
 		
@@ -52,23 +79,43 @@ public class CommentController {
 		return new Gson().toJson(commentList);
 	}
 	
+	
+	
+	
 
+	/**
+	 * 댓글 삽입
+	 * @param boardNo
+	 * @param memberNo
+	 * @param commentContent
+	 * @param upperCommentNo
+	 * @return
+	 */
 	@PostMapping("/insert")
 	public int commentInsert(int boardNo, int memberNo, String commentContent, int upperCommentNo) {
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("boardNo", boardNo);
-		map.put("memberNo", memberNo);
-		map.put("commentContent", commentContent);
-		map.put("upperCommentNo", upperCommentNo);
+		Comment comment = new Comment();
+
+		comment.setBoardNo(boardNo);
+		comment.setCommentMemberNo(memberNo);
+		comment.setCommentContent(commentContent);
+		comment.setUpperCommentNo(upperCommentNo);
 	
 		
-		int commentNo = service.commentInsert(map);
+		int commentNo = service.commentInsert(comment);
 		
 		return commentNo;
 	}
 	
 	
+	
+	
+	/**
+	 * 답글 목록 조회
+	 * @param commentNo
+	 * @param myNo
+	 * @return
+	 */
 	@PostMapping("/select/reply")
 	public String selectReplyList(int commentNo, int myNo) {
 		
@@ -84,10 +131,46 @@ public class CommentController {
 	
 	
 
+	/**
+	 * 댓글 삭제
+	 * @param commentNo
+	 * @return
+	 */
 	@GetMapping("/delete")
 	public int deleteComment(int commentNo) {
 		
 		return service.deleteComment(commentNo);	
+	}
+	
+	
+	
+	/**
+	 * 언급 자동완성
+	 * @param searchWord
+	 * @return
+	 */
+	@GetMapping("/autoComplete/mention")
+	@ResponseBody
+	public String mentionAutoComplete(String[] searchWord) {
+		
+		List<Member> mentionList = service.mentionAutoComplete(searchWord);
+				
+		return new Gson().toJson(mentionList);
+	}
+	
+	
+	/**
+	 * 해시태그 자동완성
+	 * @param searchWord
+	 * @return
+	 */
+	@GetMapping("/autoComplete/hashtag")
+	@ResponseBody
+	public String hashtagAutoComplete(String[] searchWord) {
+		
+		List<Hashtag> hashtagList = service.hashtagAutoComplete(searchWord);
+				
+		return new Gson().toJson(hashtagList);
 	}
 	
 

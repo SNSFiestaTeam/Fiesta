@@ -1,3 +1,5 @@
+@import '../root-style.css';
+
 
 /* tablet */
 /* main의 min-width 수정  + 아래 글씨 크기 정도 수정 */
@@ -141,6 +143,7 @@
     }
     
     .account-Group{
+        flex-basis : 16%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -160,18 +163,28 @@
         min-width: 55px;
         border-radius: 50%;
         margin-bottom: 8px;
+        /* margin-left: 10px; */
     }
     
     .profileNickname{
         font-size: 0.7em;
         white-space: nowrap;
+        /* margin-left: auto;
+        margin-right: 4px; */
     }
+
+
+    .profileNickname:hover {
+        text-decoration: underline;
+    }
+
     
     .follow-button-small{
         font-size: 0.7em;
         font-weight: bold;
-        color: var(--fiesta-color);
         padding-top :4px;
+        /* margin-left: auto; */
+        cursor: pointer;
     }
     
     
@@ -188,7 +201,7 @@
     .unfollowHashtagBtn{
         background-color: gray;
         color: white;
-        border: 1px solid gray;
+        /* border: 1px solid gray; */
     }
 
 
@@ -204,11 +217,6 @@
         border: none;
     }
     /* --------------------------------------------------- */
-
-
-
-
-
 
 
     /* 검색결과 - 인기게시글(사진) 섹션 */
@@ -247,7 +255,7 @@
         margin-bottom: 5px;
     }
     
-    .boardImage a{
+    .aBoardImage{
         width: 26vw;
         display: flex;
         justify-content: flex-start;
@@ -258,7 +266,7 @@
     }
     
     
-    .boardImage img{
+    .b-img{
         width: 26vw;
         /* width: 100%;
         height: 100%; */
@@ -277,7 +285,7 @@
         display: none;
     }
 
-    .boardImage img:hover + .hover-icon-container {
+    .b-img:hover + .hover-icon-container {
         width: 100%;
         height: 100%;
         
@@ -292,13 +300,13 @@
         align-items: center;
     }
 
-    .hover-icon-container > i {
+    .iHover {
         color: white;
         margin-left: 20px;
         margin-right: 5px;
     }
 
-    .hover-icon-container > span {
+    .spanHover {
         color: white;
         font-size: 14px;
     }

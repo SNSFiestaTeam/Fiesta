@@ -23,6 +23,7 @@
 		<typeAlias type="edu.kh.fiesta.main.model.vo.Comment" alias="Comment"/>
 		<typeAlias type="edu.kh.fiesta.main.model.vo.BoardImg" alias="BoardImg"/>
 		<typeAlias type="edu.kh.fiesta.main.model.vo.Follow" alias="Follow"/>
+		<typeAlias type="edu.kh.fiesta.main.model.vo.Hashtag" alias="Hashtag"/>
 		<typeAlias type="edu.kh.fiesta.setting.model.vo.Introduce" alias="Introduce"/>
 		<typeAlias type="edu.kh.fiesta.setting.model.vo.Setting" alias="Setting"/>
 		<typeAlias type="edu.kh.fiesta.dm.model.vo.ChattingRoom" alias="ChattingRoom"/>
@@ -40,6 +41,7 @@
 		<mapper resource="/mappers/comment-mapper.xml"/>
 		<mapper resource="/mappers/follow-mapper.xml"/>
 		<mapper resource="/mappers/dm-mapper.xml"/>
+		<mapper resource="/mappers/board-setting-mapper.xml"/>
 
 		
 	

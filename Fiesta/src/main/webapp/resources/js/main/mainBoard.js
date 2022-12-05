@@ -1,20 +1,25 @@
+let endList;
+
+window.addEventListener("load", (event) => {
+  endList = document.getElementById('feedSection').lastElementChild;
+
+  createObserver();
+}, false)
+
+
 // ! 무한 스크롤 용 객체 생성
-const feedSection = document.querySelector('.feed-section');
-let listEnd = feedSection.lastElementChild;
-const option = {
-  root: null,
-  rootMargin: '0px 0px 0px 0px',
-  threshold: 1.0,
-};
+function createObserver() {
+  let observer;
 
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 1
+  };
 
-
-
-
-// * 무한 스크롤
-const observer = new IntersectionObserver(selectBoardList, option);
-observer.observe(listEnd);
-
+  observer = new IntersectionObserver(selectBoardList, options);
+  observer.observe(endList);
+}
 
 
 
@@ -27,26 +32,38 @@ let cp = 2;
 
 
 // TODO: 게시글 상세 조회 후 화면 출력
-function selectBoardList() {
-  // TODO: 로그인 멤버가 팔로우한 회원의 게시글 목록 조회
-  $.ajax({
-    url: '/selectBoardList',
-    type: 'GET',
-    data: { memberNo: memberNo, cp: cp },
-    dataType: 'json',
-    success: (map) => {
-      const boardList = map.boardList;
-      const pagination = map.pagination;
-      cp++;
-      for (let board of boardList) {
-        console.log("commentBlockFlag: " + board.commentBlockFlag );
-        createBoard(board);
-        console.log(cp);
-      }
-    },
-    error: () => {
-      console.log('게시글 조회 중 오류 발생');
-    },
+function selectBoardList(entries, observer) {
+  entries.forEach((entry) => { 
+    if (entry.isIntersecting) {
+      
+      // TODO: 로그인 멤버가 팔로우한 회원의 게시글 목록 조회
+      $.ajax({
+        url: '/selectBoardList',
+        type: 'GET',
+        data: { memberNo: memberNo, cp: cp },
+        dataType: 'json',
+        success: (map) => {
+
+          
+
+          const boardList = map.boardList;
+          const pagination = map.pagination;
+          for (let board of boardList) {
+            createBoard(board);
+          }
+          if (cp != pagination.maxPage) {
+            endList = document.getElementById('feedSection').lastElementChild;
+            createObserver();
+            cp++;
+            console.log("cp :" + cp);
+          }
+          console.log(endList);
+        },
+        error: () => {
+          console.log('게시글 조회 중 오류 발생');
+        },
+      });
+    }
   });
 }
 
@@ -75,14 +92,14 @@ function createBoard(board) {
   profilePhotoA.classList.add('profile-photo');
 
   // FIXME: 멤버 프로필 주소로 이동하는 GetMapping 만들기
-  profilePhotoA.setAttribute('href', '#');
+  profilePhotoA.setAttribute('href', '/feed/' + board.memberNickname);
 
   const profileImage = document.createElement('img');
   profileImage.classList.add('feed-profile-image');
 
   const memberIdA = document.createElement('a');
   memberIdA.classList.add('feed-memberId');
-  memberIdA.setAttribute('href', '#');
+  memberIdA.setAttribute('href', '/feed/' + board.memberNickname);
 
   // 멤버 프로필 이미지가 있으면 그 이미지로, 없으면 기본 이미지 출력
   if (board.memberProfileImg == undefined) {
@@ -100,14 +117,52 @@ function createBoard(board) {
   feedMenuBtn.setAttribute('type', 'button');
   feedMenuBtn.classList.add('fa-solid', 'fa-ellipsis', 'feed-header-menu');
 
+  const mainContainerDiv = document.createElement('div');
+
   // * feedMenuBtn 클릭 시 이벤트 추가
   feedMenuBtn.addEventListener('click', () => {
+
     const feedMenu = document.getElementById('feedMenu');
     const loginFeedMenu = document.getElementById('feedMenuLogin');
     const body = document.getElementsByTagName('body')[0];
+    const feedCommentBtnLogin = document.getElementById('feedCommentBtnLogin');
+    const feedLikeBtnLogin = document.getElementById('feedLikeBtnLogin');
 
-    if(board.memberNickname == memberNickname) {
+    commentBlockFlag = commentBlockFlagInput;
+    boardPubPriFlag = boardPubPriFlagInput;
+
+    console.log(commentBlockFlag);
+    console.log(boardPubPriFlag);
+
+    if (board.memberNickname == memberNickname) {
+      // 댓글 기능 사용 유무에 따른 버튼 내용 변경
+      if (commentBlockFlag.value == 'N') {
+        feedCommentBtnLogin.innerText = '댓글 기능 해제'
+      }
+      
+      if(commentBlockFlag.value == 'Y'){
+        feedCommentBtnLogin.innerText = '댓글 기능 설정'
+      }
+      
+      // 좋아요 수 공개 유무에 따른 버튼 내용 변경
+      if (boardPubPriFlag.value == 'Y') {
+        feedLikeBtnLogin.innerText = '좋아요 수 숨기기'
+      } else {
+        feedLikeBtnLogin.innerText = '좋아요 수 숨기기 취소'
+      }
+
       loginFeedMenu.style.display = 'flex';
+
+      tags = null;
+      tags = {"likeCount": likeCount, "commentContainer": commentContainer,
+        "commentInputArea": commentInputArea, "mainContainer": mainContainerDiv
+      };
+      
+      console.log(tags.likeCount);
+      console.log(tags.commentContainer);
+      console.log(tags.commentInputArea);
+      console.log(tags.mainContainer);
+
     } else {
       feedMenu.style.display = 'flex';
     }
@@ -346,7 +401,7 @@ function createBoard(board) {
   mainContentDiv.append(commentIconDiv);
 
   // 본문 컨테이너 생성
-  const mainContainerDiv = document.createElement('div');
+  
   mainContainerDiv.classList.add('main-container');
 
   // TODO: 좋아요 수 표시
@@ -446,7 +501,7 @@ function createBoard(board) {
   feedContentDiv.classList.add('feed-content', 'one-line');
 
   const a = document.createElement('a');
-  a.setAttribute('href', '#');
+  a.setAttribute('href', '/feed/' + board.memberNickname);
 
   const memberIdSpan = document.createElement('span');
   memberIdSpan.classList.add('member-id');
@@ -502,10 +557,16 @@ function createBoard(board) {
   
   // 댓글 컨테이너 생성
   const commentContainer = document.createElement('div');
+  commentContainer.classList.add('comment-container');
+
   const commentInputArea = document.createElement('div');
 
+  const createDate = document.createElement('span');
+  createDate.classList.add('create-date');
+  createDate.innerHTML = board.boardCreateDate;
+  
+
   if(board.commentBlockFlag == 'N') {
-  commentContainer.classList.add('comment-container');
 
   // 댓글 2개 초과일 시 댓글 더보기 출력
   if(board.commentList.length > 2) {
@@ -528,9 +589,26 @@ function createBoard(board) {
   
       // 게시글 번호 얻어오기
       boardNo = board.boardNo;
+      boardMemberNickname = board.memberNickname;
+      boardMemberProfileImg = board.memberProfileImg;
+      
+      console.log("boardNo: " + boardNo) ;
+      console.log("boardMemberNickname: " + boardMemberNickname) ;
+      console.log("boardMemberProfileImg: " + boardMemberProfileImg) ;
+
       console.log("boardNo: " + boardNo) ;
 
       const commentListUlM = document.getElementById('commentListUl');
+
+      // 모달창 프로필, 닉네임 설정
+      const profilePhotoM = document.getElementById('profilePhotoM');
+      const feedProfileImageM = document.getElementById('feedProfileImageM');
+      const feedMemberIdM = document.getElementById('feedMemberIdM');
+      profilePhotoM.href = '/feed/' + boardMemberNickname;
+      feedProfileImageM.setAttribute('src', boardMemberProfileImg);
+
+      feedMemberIdM.innerText = boardMemberNickname;
+      feedMemberIdM.href = '/feed/' + boardMemberNickname;
 
   
       // 댓글 리스트 불러오기
@@ -604,6 +682,7 @@ function createBoard(board) {
       // commentFirstChild의 자식 요소 commentProfileA, commentDiv1
       const commentProfileA = document.createElement('a');
       commentProfileA.classList.add('comment-profile');
+      commentProfileA.href = '/feed/' + comment.memberNickname;
 
       const commentDiv1 = document.createElement('div');
 
@@ -638,6 +717,7 @@ function createBoard(board) {
       // commentDiv2의 자식 요소 commentMemberIdA, commentSpan
       const commentMemberIdA = document.createElement('a');
       commentMemberIdA.classList.add('comment-memberId');
+      commentMemberIdA.href = '/feed/' + comment.memberNickname;
       commentMemberIdA.innerText = comment.memberNickname;
 
       const commentSpan = document.createElement('span');
@@ -749,6 +829,15 @@ function createBoard(board) {
         const commentMenu = document.getElementById('commentMenu');
         const loginCommentMenu = document.getElementById('commentMenuL');
 
+        deleteBoardNo = comment.boardNo;
+        deleteCommentNo = comment.commentNo;
+        deleteCommentUl = commentUl;
+
+        console.log(deleteBoardNo);
+        console.log(deleteCommentNo);
+        console.log(deleteCommentUl);
+
+
         if(commentMemberIdA.innerText == memberNickname) {
           // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
           loginCommentMenu.style.display = "flex";
@@ -783,23 +872,22 @@ function createBoard(board) {
 
   // 댓글 입력창 추가
   
-  commentInputArea.classList.add('comment-input-area');
-
+  
   const div4 = document.createElement('div');
-
+  
   commentInputArea.append(div4);
-
+  
   const commentInput = document.createElement('textarea');
   commentInput.setAttribute('name', 'comment');
   commentInput.setAttribute('placeholder', '댓글 달기...');
   commentInput.id = 'commentInput';
   commentInput.classList.add('comment-input');
-
+  
   const postingBtn = document.createElement('button');
   postingBtn.classList.add('posting-btn');
   postingBtn.disabled = true;
   postingBtn.innerText = '게시';
-
+  
   // 댓글 입력창에 입력 이벤트 추가
   commentInput.addEventListener('input', () => {
     if (commentInput.value.trim().length == 0) {
@@ -810,11 +898,11 @@ function createBoard(board) {
       return;
     }
   });
-
+  
   // postingBtn에 게시 클릭 이벤트 추가
   postingBtn.addEventListener('click', () => {
     console.log(commentInput.innerText);
-
+    
     if (commentInput.value != '') {
       $.ajax({
         url: '/comment/insert',
@@ -827,7 +915,9 @@ function createBoard(board) {
         },
         success: (result) => {
           if (result > 0) {
-            selectCommentList(board.boardNo, commentUl);
+            const flag = 1; //1이 등록 0이 삭제
+
+            selectCommentList(board.boardNo, commentUl, flag);
             commentInput.value = '';
             mainContainerDiv.scrollTop = mainContainerDiv.scrollHeight;
           }
@@ -839,22 +929,49 @@ function createBoard(board) {
     }
   });
 
-  div4.append(commentInput, postingBtn);
+    // 댓글 입력창에 enter 이벤트 리스너 추가
+    commentInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
 
-  }
+      if (commentInput.value != '') {
+        $.ajax({
+          url: '/comment/insert',
+          type: 'Post',
+          data: {
+            'memberNo': memberNo,
+            'boardNo': board.boardNo,
+            'commentContent': commentInput.value,
+            'upperCommentNo': upperCommentNo,
+          },
+          success: (result) => {
+            if (result > 0) {
+              const flag = 1; //1이 등록 0이 삭제
 
-  mainContainerDiv.append(feedMainContentDiv);
-
-
-  if(board.commentBlockFlag == 'N') {
-    mainContainerDiv.append(commentContainer);
-  }
-
+              selectCommentList(board.boardNo, commentUl, flag);
+              commentInput.value = '';
+              mainContainerDiv.scrollTop = mainContainerDiv.scrollHeight;
+            }
+          },
+          error: () => {
+            console.log('댓글 등록 오류');
+          },
+        });
+      }
+    
+    }
+  });
   
-  mainContentDiv.append(mainContainerDiv);
-  if(board.commentBlockFlag == 'N') {
-    mainContentDiv.append(commentInputArea);
-  }
+  div4.append(commentInput, postingBtn);
+  
+}
+
+commentInputArea.classList.add('comment-input-area');
+mainContainerDiv.append(feedMainContentDiv);
+mainContainerDiv.append(commentContainer);
+mainContainerDiv.append(createDate);
+mainContentDiv.append(mainContainerDiv);
+mainContentDiv.append(commentInputArea);
+
 
   // boardNo hidden input 태그 추가
   const boardNoInput = document.createElement("input");
@@ -862,17 +979,17 @@ function createBoard(board) {
   boardNoInput.classList.add("board-no");
   boardNoInput.value = board.boardNo;
 
-  const commentBlockFlag = document.createElement("input");
-  commentBlockFlag.setAttribute("type", "hidden");
-  commentBlockFlag.classList.add("comment-block-fl");
-  commentBlockFlag.value = board.commentBlockFlag;
+  const commentBlockFlagInput = document.createElement("input");
+  commentBlockFlagInput.setAttribute("type", "hidden");
+  commentBlockFlagInput.classList.add("comment-block-fl");
+  commentBlockFlagInput.value = board.commentBlockFlag;
 
-  const boardPubPriFlag = document.createElement("input");
-  boardPubPriFlag.setAttribute("type", "hidden");
-  boardPubPriFlag.classList.add("board-pub-pri-fl");
-  boardPubPriFlag.value = board.boardPubPriFlag;
+  const boardPubPriFlagInput = document.createElement("input");
+  boardPubPriFlagInput.setAttribute("type", "hidden");
+  boardPubPriFlagInput.classList.add("board-pub-pri-fl");
+  boardPubPriFlagInput.value = board.boardPubPriFlag;
 
-  feedDiv.append(mainContentDiv, boardNoInput, commentBlockFlag, boardPubPriFlag);
+  feedDiv.append(mainContentDiv, boardNoInput, commentBlockFlagInput, boardPubPriFlagInput);
 
   const feedSection = document.getElementById('feedSection');
   feedSection.append(feedDiv);
@@ -884,7 +1001,7 @@ function createBoard(board) {
 
 
 // 댓글 목록 조회 후 출력
-function selectCommentList(boardNo1, commentListUl) {
+function selectCommentList(boardNo1, commentListUl, flag) {
   console.log(boardNo1, memberNo);
 
   $.ajax({
@@ -893,54 +1010,80 @@ function selectCommentList(boardNo1, commentListUl) {
     dataType: 'JSON',
     success: (commentList) => {
       console.log(commentList);
-
-      if (commentList.length > 3) {
-        // 댓글이 3개보다 크다면 댓글 모두보기 버튼 내용 수정
+      if (commentListUl.parentElement.parentElement.firstElementChild.classList.contains('all-comment-btn')) {
+        
+        // 댓글 모두 보기 버튼 내용 수정
         commentListUl.parentElement.parentElement.firstElementChild.innerText =
           '댓글 모두 보기(' + commentList.length + ')';
+      } else {
 
-      } else if (commentList.length == 3) { 
-        // 댓글이 추가해서 3개가 됐다면 댓글 모두보기 버튼 추가
-        const allCommentBtn = document.createElement('button');
-        allCommentBtn.innerText = '댓글 모두 보기(' + commentList.length + ')';
-        commentListUl.parentElement.parentElement.prepend(allCommentBtn);
+        if (commentList.length == 3 && flag == 1) { 
+          // 댓글이 추가해서 3개가 됐다면 댓글 모두보기 버튼 추가
+          const allCommentBtn = document.createElement('button');
+          allCommentBtn.classList.add('all-comment-btn');
+          allCommentBtn.innerText = '댓글 모두 보기(' + commentList.length + ')';
+          commentListUl.parentElement.parentElement.prepend(allCommentBtn);
+  
+          // 댓글 모두보기 버튼에 클릭 이벤트
+          allCommentBtn.addEventListener('click', () => {
+            modalOn = 1;
 
-        allCommentBtn.addEventListener('click', () => {
-          modalOn = 1;
-          const commentList = document.getElementById('commentContainerM');
+            const commentList = document.getElementById('commentContainerM');
+        
+            console.log('댓글 모두 보기 실행');
+        
+            allCommentBtn.classList.add('hide');
+        
+            // 게시글 번호 얻어오기
+            boardNo = commentListUl.parentElement.parentElement.parentElement
+              .parentElement.nextElementSibling.value;
+            boardMemberNickname = commentListUl.parentElement.parentElement.parentElement
+              .parentElement.parentElement.firstElementChild.firstElementChild.firstElementChild
+              .firstElementChild.nextElementSibling.innerText;
+            boardMemberProfileImg = commentListUl.parentElement.parentElement.parentElement
+              .parentElement.parentElement.firstElementChild.firstElementChild.firstElementChild
+              .firstElementChild.firstElementChild.getAttribute('src');
+            
+            console.log("boardNo: " + boardNo) ;
+            console.log("boardMemberNickname: " + boardMemberNickname) ;
+            console.log("boardMemberProfileImg: " + boardMemberProfileImg) ;
       
-          console.log('댓글 모두 보기 실행');
+            const commentListUlM = document.getElementById('commentListUl');
+
+
+            // 모달창 프로필, 닉네임 설정
+            const profilePhotoM = document.getElementById('profilePhotoM');
+            const feedProfileImageM = document.getElementById('feedProfileImageM');
+            const feedMemberIdM = document.getElementById('feedMemberIdM');
+            profilePhotoM.href = '/feed/' + boardMemberNickname;
+            feedProfileImageM.setAttribute('src', boardMemberProfileImg);
+
+            feedMemberIdM.innerText = boardMemberNickname;
+            feedMemberIdM.href = '/feed/' + boardMemberNickname;
+
+            
+            // 댓글 리스트 불러오기
+            selectCommentListM(boardNo, commentListUlM);
+        
+            commentList.style.display = 'flex';
+            document.getElementsByTagName('body')[0].classList.add('scrollLock');
       
-          allCommentBtn.classList.add('hide');
       
-          // 게시글 번호 얻어오기
-          boardNo = commentListUl.parentElement.parentElement.parentElement
-            .parentElement.nextElementSibling.value;
-          
-          console.log("boardNo: " + boardNo) ;
-    
-          const commentListUlM = document.getElementById('commentListUl');
-    
-      
-          // 댓글 리스트 불러오기
-          selectCommentListM(boardNo, commentListUlM);
-      
-          commentList.style.display = 'flex';
-          document.getElementsByTagName('body')[0].classList.add('scrollLock');
-    
-    
-          // 댓글 더보기 리스트 X 버튼 클릭 시
-          document.getElementById('commentListXBtn').addEventListener('click', () => {
-            commentList.style.display = 'none';
-            allCommentBtn.classList.remove('hide');
-            document.getElementsByTagName('body')[0].classList.remove('scrollLock');
-            document.getElementById('commentInputM').value = "";
-            modalOn = 0;
+            // 댓글 더보기 리스트 X 버튼 클릭 시
+            document.getElementById('commentListXBtn').addEventListener('click', () => {
+              commentList.style.display = 'none';
+              allCommentBtn.classList.remove('hide');
+              document.getElementsByTagName('body')[0].classList.remove('scrollLock');
+              document.getElementById('commentInputM').value = "";
+              modalOn = 0;
+            });
+        
           });
-      
-        });
-
+  
+        }
       }
+
+
 
       // 댓글 목록 최상위 태그의 내용 삭제
       commentListUl.innerHTML = '';
@@ -1121,8 +1264,7 @@ function selectCommentList(boardNo1, commentListUl) {
             console.log(memberNickname);
 
             deleteCommentNo = comment.commentNo;
-            deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
-              .parentElement.nextElementSibling.value;
+            deleteBoardNo = comment.boardNo;
             deleteCommentUl = commentListUl;
 
             console.log("deleteCommentNo: " + deleteCommentNo);
@@ -1357,8 +1499,8 @@ function selectReplyList(commentNo, commentLi) {
           console.log(memberNickname);
 
           deleteCommentNo = comment.commentNo;
-          deleteBoardNo = commentLi.parentElement.parentElement.parentElement.parentElement
-            .parentElement.nextElementSibling.value;
+          deleteBoardNo = comment.boardNo;
+          deleteCommentUl = commentLi.parentElement;
           
           console.log(deleteCommentNo);
           console.log(deleteBoardNo);
