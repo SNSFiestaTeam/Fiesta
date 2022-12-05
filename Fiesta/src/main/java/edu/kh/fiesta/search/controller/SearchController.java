@@ -64,9 +64,9 @@ public class SearchController {
 		map.put("memberNo", loginMember.getMemberNo());
 		map.put("boardNo", boardNo);
 		
-		Board boardResult = service.searchBoardDetail(map);
+		Board board = service.searchBoardDetail(map);
 		
-		return new Gson().toJson(boardResult);
+		return new Gson().toJson(board);
 	}
 	
 	

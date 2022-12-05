@@ -8,14 +8,14 @@
     <!-- 인스타 피드 -->
         <section class="feed-background" id="feedBackground">
           <!-- 피드 리스트 -->
-              <div class="feed">
+              <%-- <div class="feed">
                 <div class="profile-image-area">
                   <!-- 작성자 프로필 -->
                   <div class="feed-header">
                     <div class="writer-info" id="writerInfoDiv">
                       <%-- <a href="" class="profile-photo" id="profilePhotoA"> --%>
                         <%-- <c:if test="${empty board.memberProfileImg}"> --%>
-                            <img class="feed-profile-image" id="feedProfileImage" src="/resources/images/profile/profile.jpg" />
+                            <!--<img class="feed-profile-image" id="feedProfileImage" src="/resources/images/profile/profile.jpg" /> --%>
                         <%-- </c:if> --%>
                        <%--  <c:if test="${not empty board.memberProfileImg}"> --%>
                           <%-- <img class="feed-profile-image" src="${board.memberProfileImg}" /> --%>
@@ -28,9 +28,9 @@
                     </div>
                   </div>
 
-                  <!-- 사진 목록 -->
-                  <div class="image-list swiper mySwiper" id="imageList">
-                    <ul class="swiper-wrapper" id="imageUl">
+                  <%-- 사진 목록
+                   <div class="image-list swiper mySwiper" id="imageList">
+                    <ul class="swiper-wrapper" id="imageUl">  --%>
                       <%-- <c:if test="${empty board.imageList}"> --%>
                         <%-- <li class="swiper-slide" id="imageLi">
                           <img class="uploaded-image" id="uploadedImage" src="/resources/images/이영지.jpg" />
@@ -50,7 +50,7 @@
                   </div>
                 </div>
 
-                <!-- 본문 -->
+                <%-- 본문 --%>
                 <div class="main-content-section">
                   <div class="comment-icon-menu">
                     <div id="buttonArea">
@@ -74,7 +74,7 @@
                   </div>
 
                   <div class="main-container" id="mainContainer">
-                    <!-- 좋야요 수 표시 -->
+                    <%-- 좋야요 수 표시 --%>
                     <%-- <c:if test="${board.boardPubPriFlag == 'Y'}"> --%>
                     <div class="like-count" id="likeCount">좋아요 <span class="board-like-count" id=boardLikeCount>1</span>개</div>
                    <%--  </c:if>
@@ -91,7 +91,7 @@
                     </c:if> --%>
 
 
-                    <!-- 본문 내용 -->
+                    <%-- 본문 내용 --%> 
                     <div class="feed-main-content" id="feedMainContentDiv">
                       <div class="feed-content one-line" id="feedContentDiv">
                         <a href="" id="aMemberNickname"><span class="member-id" id="spanMemberId"></span></a>
@@ -110,7 +110,7 @@
 
                     </div>
 
-                      <!-- 댓글 리스트 -->
+                     <%--  댓글 리스트 --%>
                       <div class="comment-container" id="commentContainer">
                       <%-- <c:if test="${board.commentBlockFlag == 'N'}">
                         <c:if test="${fn:length(board.commentList) > 2}">
@@ -160,7 +160,7 @@
                                 <%-- </li> --%>
                           <%--     </c:if> --%>
 
-                                  <%-- <!-- 답글 리스트 -->
+                                  <%-- 답글 리스트 --%>
                                   <c:if test="${comment.upperCommentNo > 0}">
               
                                     <li class="comment" id="reply">
@@ -193,9 +193,9 @@
                                         </div>
                                       </div>
                                     </li>
-                                    <!-- 답글 li 종료 -->
+                                   <%-- 답글 li 종료 --%>
                                   </c:if> --%>
-                              <!-- 댓글 li 종료 -->
+                              <%-- 댓글 li 종료 --%>
                           <%--   </c:forEach>
                           </c:if> --%>
                           <%-- </ul>
@@ -216,5 +216,6 @@
               <input type="hidden" class="board-no" value="">
               <input type="hidden" class="comment-block-fl" value="">
               <input type="hidden" class="board-pub-pri-fl" value="">
-              </div>
+              </div> -->
+
         </section>

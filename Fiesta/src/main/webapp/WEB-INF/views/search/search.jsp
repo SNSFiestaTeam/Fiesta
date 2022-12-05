@@ -264,7 +264,7 @@
 
     </main>
 
-    <%-- <jsp:include page="/WEB-INF/views/action/boardDetail.jsp"/> --%>
+    <jsp:include page="/WEB-INF/views/action/boardDetail.jsp"/>
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp"/>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
