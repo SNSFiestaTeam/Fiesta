@@ -8,9 +8,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.kh.fiesta.feed.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.member.model.vo.Member;
+import edu.kh.fiesta.search.model.vo.SearchPagination;
 
 @Repository
 public class SearchDAO {
@@ -89,7 +89,7 @@ public class SearchDAO {
 	 * @param recentMap
 	 * @return recentBoardList
 	 */
-	public List<Board> selectRecentList(Pagination pagination, Map<String, Object> recentMap) {
+	public List<Board> selectRecentList(SearchPagination pagination, Map<String, Object> recentMap) {
 		
 		// Pagination에 limit = 10으로 되어있음. 9로 하기!
 		// 몇 개 건너뛸지

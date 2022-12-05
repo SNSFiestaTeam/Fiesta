@@ -46,12 +46,12 @@ const keyword = decodeURI((location.search).substring(13));     //lastindexOf("=
 
 
 /*
-const aBoardImage = document.getElementsByClassName("aBoardImage");
+const buttonBoardImage = document.getElementsByClassName("buttonBoardImage");
 
-for(i=0; i<aBoardImage.length; i++){
-    const inputBoardNo = aBoardImage[i].firstElementChild.nextElementSibling.nextElementSibling;
+for(i=0; i<buttonBoardImage.length; i++){
+    const inputBoardNo = buttonBoardImage[i].firstElementChild.nextElementSibling.nextElementSibling;
     
-    aBoardImage[i].addEventListener("click", () => {
+    buttonBoardImage[i].addEventListener("click", () => {
     
         $.ajax({
             url: "/search/boardDetail",
@@ -1669,20 +1669,21 @@ function selectCommentList(boardNo, commentListUl, flag) {
 // * 최근 게시글 불러오기(무한스크롤)
 
 let recentEndList;
-const boardResult = document.getElementsByClassName("recentBoardResult-section")[0];
-
-window.addEventListener("load", (event) => {
+const boardResult = document.getElementById('boardResult');
+window.addEventListener("load", function (event) {
 
     recentEndList = boardResult.lastElementChild;
 
     createObserver();
+
+    window.removeEventListener("load",arguments.callee );
 }, false)
 
 
 // 무한 스크롤용 객체 생성
 function createObserver(){
-
     let observer;
+
 
     let options = {
         root: null,  
@@ -1696,7 +1697,7 @@ function createObserver(){
     // 최근 게시글을 ajax를 이용해서 불러오고 성공하면 요소 생성
     observer = new IntersectionObserver(selectRecentList, options); 
     observer.observe(recentEndList);  // recentBoardEnd가 화면에 등장하는지 감시
-
+    // observer.unobserve(recentEndList);
 }
 
 
@@ -1708,13 +1709,12 @@ function createObserver(){
 
 
 // 현재 페이지 번호 변수 선언
-let cp = 2;
+let cp = 4;
 
 
 
 // 최근 게시글 목록 화면 출력(페이지네이션, 무한스크롤)
-function selectRecentList(entries, obeserver){
-
+function selectRecentList(entries, observer){
     // entries: 더 보이거나 덜 보이게 되면서 통과한 역치를 나타내는, 
     //           ntersectionObserverEntry (en-US) 객체의 배열.
 
@@ -1728,28 +1728,43 @@ function selectRecentList(entries, obeserver){
 
         if(entry.isIntersecting){
 
-            alert("감지");
+            // alert("감지");
 
             $.ajax({
                 url: '/selectRecentList',
                 type: 'GET',
-                data: {"searchInput" : searchInput, "cp" : cp},
+                data: {"searchInput" : searchInput.value, "cp" : cp},
                 dataType: 'json',
                 success: (recentResultMap) => {
-                    const recentBoardList = recentResultMap.recentBoardList;
-                    const pagination = recentResultMap.pagination;
-                    
-                    for(let recentItem of recentBoardList){
-                        createRecentBoard(recentItem);
+
+                    if(recentResultMap == null) {
+                        console.log("결과없음");
+                    } else {
+                        const recentBoardList = recentResultMap.recentBoardList;
+                        const pagination = recentResultMap.pagination;
+                        
+                        console.log(pagination.listCount);
+    
+    
+                        createRecentBoard(recentBoardList, pagination);
+                        
+                        // for(let recentItem of recentBoardList){
+                        // }
+    
+                        if(cp <= pagination.maxPage){
+                            recentEndList = boardResult.lastElementChild;
+                            createObserver();
+                            cp++;
+                            console.log("cp : " + cp);
+                        } else {
+                            console.log(cp == pagination.maxPage);
+                            // IntersectionObserver.unobserve(target);
+                            observer.unobserve(recentEndList);
+                            return;
+                        }
+                        console.log(recentEndList);
                     }
 
-                    if(cp != pagination.maxPage){
-                        recentEndList = boardResult.lastElementChild;
-                        createObserver();
-                        cp++;
-                        console.log("cp : " + cp);
-                    }
-                    console.log(recentEndList);
                 },
                 error: () => {
                     console.log("최근 게시글 조회 중 오류 발생");
@@ -1757,64 +1772,64 @@ function selectRecentList(entries, obeserver){
             });
         }
     });
+
 }
 
 
 
 
 // 최근 게시글 화면 출력용 함수 (boardResult클래스 게시글 9개 기준)
-function createRecentBoard(recentItem){
+function createRecentBoard(recentBoardList, pagination){
 
-    if(rBoardList != null) {
+    if(recentBoardList != null) {
 
-        for(let n=0 ; n<3 ; n++){  // 3번 반복해서 총 3행 반환 (3행 * 3열)
+// 1열(사진3장) 반환 // (0, 3, 6), 9, 12, 15, 18
+        // if(recentBoardList.length > 9){ 
+      
+   
+        const divBoardResult = document.getElementById("boardResult");
+
+        const divBoardImage = document.createElement('div');
+        divBoardImage.classList.add("boardImage");
+
+        divBoardResult.append(divBoardImage);
+
+
+        for(let recentBoard of recentBoardList){
+        // for(let i=9; i<11; i++){
+            const buttonBoardImage = document.createElement('button');
+            buttonBoardImage.classList.add("buttonBoardImage");
+
+            const imgBoardImage = document.createElement('img');
+            imgBoardImage.classList.add("b-img");
+            imgBoardImage.setAttribute('src', recentBoard.imgPath);
+
     
-            if(recentBoardList.length > pagination.limit){ // 1열(사진3장) 반환 // (0, 3, 6), 9, 12, 15, 18
-            // if(recentBoardList.length > 9){ 
+            const divHoverIcon = document.createElement('div');
+            divHoverIcon.classList.add("hover-icon-container");
 
-                const divBoardResult = document.createElement('div');
-                divBoardResult.classList.add('boardResult');
-
-
-                const divBoardImage = document.createElement('div');
-                divBoardImage.classList.add("boardImage");
-
-                boardResult.append(divBoardImage);
-
-                for(let i=pagination.limit; i<(pagination.limit+2); i++){
-                // for(let i=9; i<11; i++){
-                    const aBoardImage = document.createElement('a');
-                    aBoardImage.classList.add("aBoardImage");
-                    aBoardImage.setAttribute('href', '#')
-
-                    const imgBoardImage = document.createElement('img');
-                    imgBoardImage.classList.add("b-img");
-                    imgBoardImage.setAttribute('src', recentItem.imgPath);
-
+            const iHover1 = document.createElement('i');
+            iHover1.classList.add('fa-regular', 'fa-heart', 'iHover');
             
-                    const divHoverIcon = document.createElement('div');
-                    divHoverIcon.classList.add("hover-icon-container");
+            const spanHover1 = document.createElement('span');
+            spanHover1.classList.add('spanHover');
+            spanHover1.innerText = recentBoard.likeCount;
 
-                    const iHover1 = document.createElement('i');
-                    iHover1.classList.add('fa-regular', 'fa-heart', 'iHover');
-                    
-                    const spanHover1 = document.createElement('span');
-                    spanHover1.classList.add('spanHover');
-                    spanHover1.innerText = recentItem.likeCount;
+            const iHover2 = document.createElement('i');
+            iHover2.classList.add('fa-regular', 'fa-heart', 'iHover');
+            
+            const spanHover2 = document.createElement('span');
+            spanHover2.classList.add('spanHover');
+            spanHover2.innerText = recentBoard.commentCount;
 
-                    const iHover2 = document.createElement('i');
-                    iHover2.classList.add('fa-regular', 'fa-heart', 'iHover');
-                    
-                    const spanHover2 = document.createElement('span');
-                    spanHover2.classList.add('spanHover');
-                    spanHover2.innerText = recentItem.CommentCount;
+            divBoardImage.append(buttonBoardImage);
+            buttonBoardImage.append(imgBoardImage);
+            imgBoardImage.after(divHoverIcon);
+            divHoverIcon.append(iHover1, spanHover1, iHover2, spanHover2);
 
-                    divBoardImage.append(aBoardImage, imgBoardImage);
-                    imgBoardImage.after(divHoverIcon);
-                    divHoverIcon.append(iHover1, spanHover1, iHover2, spanHover2);
-                }
-            }  
         }
+         
+    
     }
   
 }
