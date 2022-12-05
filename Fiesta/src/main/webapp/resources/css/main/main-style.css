@@ -46,7 +46,7 @@
 
 body {
   width: 100vw;
-
+  
 }
 
 button {
@@ -55,6 +55,7 @@ button {
 
 main {
   width: 100%;
+  background-color: #fafafa;
 }
 
 main > section {
@@ -783,6 +784,11 @@ a.comment-profile {
 .disappear {
   animation: fade-out 0.5s;
   animation-fill-mode: forwards;
+}
+
+.loading {
+  height: 200px;
+  margin: 40px 0;
 }
 
 @keyframes fade-in {

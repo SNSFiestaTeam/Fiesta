@@ -22,6 +22,8 @@
 
 #commentListAreaM {
   width: 70%;
+
+
   background-color: white;
 
   border-radius: 10px;
@@ -398,4 +400,13 @@ div.reply-firstline-m {
 
     padding: 10px 20px;
   }
+}
+
+@media screen and (max-width: 550px) {
+  #commentListAreaM {
+    width: 90%;
+  
+
+  }
+
 }
