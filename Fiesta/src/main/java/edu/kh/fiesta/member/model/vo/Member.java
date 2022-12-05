@@ -23,5 +23,8 @@ public class Member {
 	
 	private String introContent;
 	private char userPubPriFl;
+	
+	private int followingCount;
+	private int followCount;
+	private int followCheck;
 }
-
