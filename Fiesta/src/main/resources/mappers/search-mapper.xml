@@ -63,39 +63,44 @@
 		<select id="selectAccountTotal" parameterType="string" resultType="_int">
 			SELECT COUNT(*)
 			FROM "MEMBER" 
-			WHERE (MEMBER_NICKNAME LIKE '%${searchInput}%'
-			OR MEMBER_NAME LIKE '%${searchInput}%')
+			WHERE (MEMBER_NICKNAME LIKE UPPER('%${searchInput}%') OR MEMBER_NICKNAME LIKE LOWER('%${searchInput}%')
+			OR MEMBER_NAME LIKE UPPER('%${searchInput}%') OR MEMBER_NAME LIKE LOWER('%${searchInput}%'))
 			AND SECESSION_FL = 'N'
 		</select>
 		<!-- '&${searchInput}% -->
 		
+		
 		<!-- 검색_게시글 수 -->
 		<select id="selectBoardTotal" parameterType="string" resultType="_int">
 			SELECT COUNT(*)
-			FROM "BOARD" 
-			JOIN "MEMBER" USING(MEMBER_NO)
-			JOIN "COMMENT" USING(BOARD_NO)
-			WHERE (BOARD_CONTENT LIKE '%#${searchInput}%' OR COMMENT_CONTENT LIKE '%#${searchInput}%')
-			AND BOARD_DEL_FL = 'N'
-			AND SECESSION_FL = 'N'	
+			FROM (SELECT DISTINCT BOARD_NO
+						FROM "BOARD" 
+						JOIN "MEMBER" USING(MEMBER_NO)
+						JOIN "COMMENT" USING(BOARD_NO)
+						WHERE (BOARD_CONTENT LIKE UPPER('%#${searchInput}%') OR BOARD_CONTENT LIKE LOWER('%#${searchInput}%')
+						OR COMMENT_CONTENT LIKE UPPER('%#${searchInput}%') OR COMMENT_CONTENT LIKE LOWER('%#${searchInput}%'))
+						AND BOARD_DEL_FL = 'N'
+						AND SECESSION_FL = 'N')	
 		</select>
 	
 	
 	
-		<!-- 검색_관련 계정 조회 -->  <!-- SUBSTR(MEMBER_NICKNAME, 1, 8) 추가하기 -->
+		<!-- 검색_관련 계정 조회 -->  <!-- SUBSTR(MEMBER_NICKNAME, 1, 15) MEMBER_NICKNAME 추가하기 -->
 		<select id="selectAccountList" resultMap="member_rm">
 			SELECT MEMBER_PROFILE_IMG, MEMBER_NICKNAME, MEMBER_NO	
 			FROM "MEMBER" 
 			WHERE SECESSION_FL = 'N'
-			AND (MEMBER_NICKNAME LIKE '%${searchInput}%'
-			OR MEMBER_NAME = '${searchInput}')
+			AND (MEMBER_NICKNAME LIKE UPPER('%${searchInput}%') OR MEMBER_NICKNAME LIKE LOWER('%${searchInput}%')
+			OR MEMBER_NAME = UPPER('${searchInput}') OR MEMBER_NAME = LOWER('${searchInput}'))
+			AND MEMBER_NICKNAME != #{memberNickname}
 			<![CDATA[AND ROWNUM <= 6 ]]>	
 		</select>
+		
 		
 		<!-- 인기게시글 조회 -->
 		<select id="selectHotBoardList" resultMap="board_rm">
 			SELECT * 
-			FROM (SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE, MEMBER_NO,
+			FROM (SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE,
 							(SELECT COUNT(*) 
 							FROM BOARD_LIKE BL 
 							WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
@@ -107,10 +112,11 @@
 							 WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT
 					FROM BOARD B
 					JOIN "MEMBER" USING(MEMBER_NO)
-					JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
+					LEFT JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
 					JOIN BOARD_IMG BI ON (B.BOARD_NO = BI.BOARD_NO)
 					WHERE BOARD_CREATE_DATE > (SYSDATE - 30)  
-					AND (BOARD_CONTENT LIKE '%#${searchInput}%' OR COMMENT_CONTENT LIKE '%#${searchInput}%')
+					AND (BOARD_CONTENT LIKE UPPER('%#${searchInput}%') OR BOARD_CONTENT LIKE LOWER('%#${searchInput}%')
+					 OR COMMENT_CONTENT LIKE UPPER('%#${searchInput}%') OR COMMENT_CONTENT LIKE LOWER('%#${searchInput}%'))
 					AND BOARD_DEL_FL = 'N'
 					AND MEMBER_OPEN_FL = 'Y'
 					AND IMG_ORDER = 0
@@ -118,9 +124,9 @@
 			<![CDATA[WHERE ROWNUM <= 9]]>
 		</select>
   
-  	<!-- 최근 게시글 조회 -->
+  	<!-- 최근 게시글 조회 -->  <!-- <![CDATA[AND ROWNUM <= 9]]> -->
 	  <select id="selectRecentBoardList" resultMap="board_rm">
-				SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE, MEMBER_NO,
+				SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE,
 								(SELECT COUNT(*) FROM BOARD_LIKE BL 
 								WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
 								(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
@@ -130,16 +136,34 @@
 								WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT	
 				FROM BOARD B
 				JOIN MEMBER USING(MEMBER_NO)
-				JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
-				WHERE (BOARD_CONTENT LIKE '%#${searchInput}%' OR COMMENT_CONTENT LIKE '%#${searchInput}%')
+				LEFT JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
+				WHERE (BOARD_CONTENT LIKE UPPER('%#${searchInput}%') OR BOARD_CONTENT LIKE LOWER('%#${searchInput}%') 
+				OR COMMENT_CONTENT LIKE UPPER('%#${searchInput}%') OR COMMENT_CONTENT LIKE LOWER('%#${searchInput}%'))
 				AND BOARD_DEL_FL = 'N'
 				AND MEMBER_OPEN_FL = 'Y'
-				<![CDATA[AND ROWNUM <= 9]]>
 				ORDER BY BOARD_CREATE_DATE DESC 
 	  </select>
   
   
-  
-  
+  	<!-- 최근 게시글 조회 _ 게시글 수 조회 -->
+  	<select id="getListCount" parameterType="map" resultType="_int">
+  			SELECT COUNT(*)
+ 			  FROM(	SELECT DISTINCT B.BOARD_NO, BOARD_CREATE_DATE,
+							(SELECT COUNT(*) FROM BOARD_LIKE BL 
+							WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+							(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
+							FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
+							AND IMG_ORDER = 0) IMG_PATH,
+							(SELECT COUNT(*) FROM "COMMENT" C
+							WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT	
+							FROM BOARD B
+							JOIN MEMBER USING(MEMBER_NO)
+							LEFT JOIN "COMMENT" ON ("COMMENT".BOARD_NO = B.BOARD_NO)
+							WHERE (BOARD_CONTENT LIKE UPPER('%#${searchInput}%') OR BOARD_CONTENT LIKE LOWER('%#${searchInput}%') 
+							OR COMMENT_CONTENT LIKE UPPER('%#${searchInput}%') OR COMMENT_CONTENT LIKE LOWER('%#${searchInput}%'))
+							AND BOARD_DEL_FL = 'N'
+							AND MEMBER_OPEN_FL = 'Y'
+							ORDER BY BOARD_CREATE_DATE DESC)
+  	</select>
   
 </mapper>

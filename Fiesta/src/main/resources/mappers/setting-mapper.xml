@@ -117,6 +117,19 @@ FROM "INTRODUCE"
 WHERE MEMBER_NO = #{memberNo}
 </select>
 
+<!-- intro에 memberNo있는지 조회 -->
+<select id="introCheck" parameterType="Member" resultType="_int">
+SELECT COUNT(*)
+FROM INTRODUCE
+WHERE MEMBER_NO = #{memberNo}
+</select>
+
+<!-- intro에 memberNo 없어서 새로 소개글 작성 -->
+<insert id="insertIntro">
+INSERT INTO INTRODUCE
+VALUES(#{memberNo}, #{introContent})
+</insert>
+
 
 </mapper>
  

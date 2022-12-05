@@ -7,7 +7,7 @@
     <title>instagram</title>
     <!-- 링크 주소 상대주소로 변경한거니까 다시 바꾸지 말아주세요 -->
     <link rel="stylesheet" href="../../resources/css/common-style.css" />
-    <link rel="stylesheet" href="../../resources/css/dm-style.css" />
+    <link rel="stylesheet" href="../../resources/css/dm/dm-style.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -96,16 +96,33 @@
             </a>
           </section>
           <section class="down">
-            <div class="chat" id="chat">
-              <a href="#"><img src="../../resources/images/user.jpg" class="pro-img"></a>
-              <div class="chat-content">
-                <div class="chat-content-right">
-                <span>상대방 아이디</span>
-                <div class="chat-content2">내용 일부</div>
-                <div class="chat-time"> 몇초전</div>
-                </div>
-              </div>
-            </div>
+            <ul class="dm-list">
+              <c:forEach var="chat">
+                <li class="dm-item" id="${chat.chattingNo}-${chat.targetNo}">
+                  <div class="item-header">
+                    <c:if test="${not empty room.targetProfile}">
+                      <img class="target-profile" src="${room.targetProfile}">
+                    </c:if>
+                    <c:if test="${empty room.targetProfile">
+                      <img class="target-profile" src="/resources/images/user.jpg">
+                    </c:if>
+                  </div>
+                  <div class="item-body">
+                    <p>
+                      <span class="target-name">${room.targetNickName}</span>
+                      <span class="recent-send-time">${room.sendTime}</span>
+                    </p>
+                    <div>
+                      <p class="recent-message">${room.lastMessage}</p>
+      
+                      <c:if test="${room.notReadCount > 0}">
+                        <p class="not-read-count">${room.notReadCount}</p>
+                      </c:if>
+                    </div>
+                  </div>
+                </li>
+              </c:forEach>
+            </ul>
           </section>
         </div>
         <div class="right" id="right">
@@ -118,7 +135,8 @@
             <a href="../dm/dm-message.html"> 메시지 보내기</a>
           </button> -->
           
-          
+
+
            <!-- 클릭되었을때  -->
            <div class="up">
             <a href="#" id="proImg"><img src="../../resources/images/user.jpg" style="width: 50px;"></a>
@@ -150,7 +168,6 @@
     
     
     </footer>
-
     <script src="/Fiesta/src/main/webapp/resources/js/dm.js"></script>
   </body>
 </html>
