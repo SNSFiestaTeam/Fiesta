@@ -5,7 +5,6 @@ const accountFrm = document.getElementById("account-frm");
 const idOpen = document.getElementById("idOpen");
 
 
-
 function memberDeleteValidate(){
 
     if(!confirm("탈퇴하시겠습니까?")){

@@ -4,7 +4,6 @@ const checkObj = {
     "memberNickname"  : true
 };
 
-
 document.getElementById("setting-frm").addEventListener("submit", function(event){
 
     for(let key in checkObj){
