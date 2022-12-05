@@ -30,7 +30,11 @@ public class BoardServicepImple implements BoardService{
 	public int boardWrite(Board board, List<MultipartFile> fileList, String webPath, String folderPath) throws IOException {
 		
 		// 게시글 삽입
-//		board.setBoardContent(Util.XSSHandling(board.getBoardContent())); // XSS 방지 처리
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent())); // XSS 방지 처리
+		
+		board.setBoardContent(Util.hashTagHandling(board.getBoardContent())); // 해시태크 감싸기
+		
+		board.setBoardContent(Util.mentionHandling(board.getBoardContent())); // a태그 감싸기
 		
 //		board.getBoardContent().replaceAll("(#[^\\s#]+)", 
 //				"<a href='/search?searchInput=\"+tagName+\"' class='hashtag'>\"+match+\"</a>");
