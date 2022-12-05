@@ -11,6 +11,7 @@ for (let i = 0; i < commentInput.length; i++) {
   });
 }
 
+
 for (let i = 0; i < commentInput.length; i++) {
   commentInput[i].addEventListener('keyup', function (event) {
     
@@ -134,7 +135,11 @@ for (let i = 0; i < commentInput.length; i++) {
 
                       // 언급 아이디 인풋 태그에 추가
                       const inputWord = searchWord[searchWord.length - 1];
-                      commentInput[i].value = commentInput[i].value.replaceAll(inputWord, mention.memberNickname) + " ";
+
+           
+                      // console.log(commentInput[i].value.split('@'));
+
+                      commentInput[i].value = commentInput[i].value.replace(inputWord, mention.memberNickname) + " ";
 
 
                       // 모달창 제거
@@ -644,7 +649,7 @@ function selectCommentListM(boardNo, commentListUl) {
 
           // commentLi의 자식요소 commentFirstChild, moreReply
           const commentFirstChild = document.createElement('div');
-          // commentFirstChild.classList.add('comment-firstchild-m');
+          commentFirstChild.classList.add('comment-firstchild-m');
 
           commentLi.append(commentNoInput, commentFirstChild);
 
