@@ -80,6 +80,7 @@
         </nav>
       </section>
     </header>
+
     <section class="toggle-search-section hide" id="toggleSearchSection">
       <form action="/search" id="toggleSearchForm">
         <fieldset>
@@ -98,3 +99,8 @@
           
       </form>
     </section>
+
+    <button type="button" id="topButton" class="hide">
+      <span>&uarr;</span>
+      <span>TOP</span>
+    </button>
