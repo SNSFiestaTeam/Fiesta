@@ -76,14 +76,14 @@ public class DmController {
 	
 	
 	// 채팅화면 이동
-	@GetMapping("/dm")
-	public String dm(@SessionAttribute("loginMember") Member loginMember, Model model) {
+//	@GetMapping("/dm")
+//	public String dm(@SessionAttribute("loginMember") Member loginMember, Model model) {
+//		
+//		List<ChattingRoom> roomList = service.selectRoomList(loginMember.getMemberNo());
+//		model.addAttribute("roomList", roomList);
+//		return "dm/dm";
 		
-		List<ChattingRoom> roomList = service.selectRoomList(loginMember.getMemberNo());
-		model.addAttribute("roomList", roomList);
-		return "dm/dm";
-		
-	}
+//	}
 	
 	// DM 목록 비동기 조회(왼쪽 받는 사람)
 	
