@@ -15,7 +15,10 @@
       <result property="enrollDate" column="ENROLL_DATE" />
       <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
       <result property="secessionFl" column="SECESSION_FL" />
-      <result property="authority" column="AUTHORITY" />
+      <result property="introContent" column="INTRO_CONTENT" />
+      <result property="followingCount" column="FOLLOWING_COUNT" />
+      <result property="followCount" column="FOLLOW_COUNT" />
+      <result property="followCheck" column="FOLLOW_CHECK " />
   </resultMap>
   
 		  <!-- 게시글 객체 저장용 resultMap -->
@@ -93,19 +96,8 @@
 		AND FOLLOW_TYPE = 'M'
   </select>
   
-  <!-- 게시글 이미지 조회 -->
-  <select id="selectBoardImgList" resultMap="member_rm">
-		SELECT IMG_ACCESSIBILITY 
-		FROM BOARD
-		JOIN BOARD_IMG USING (BOARD_NO)
-		JOIN MEMBER USING (MEMBER_NO)
-		WHERE BOARD_DEL_FL = 'N'
-		AND MEMBER_NICKNAME = #{memberNickname}
-		ORDER BY IMG_ORDER
-  </select>
-  
   <!-- 게시글 수 조회 -->
-  <select id="getListCount" parameterType="string" resultType="_int">
+  <select id="selectBoardCount" parameterType="string" resultType="_int">
 		SELECT COUNT(*)
 		FROM BOARD 
 		JOIN MEMBER USING (MEMBER_NO)
@@ -114,20 +106,31 @@
   </select>
   
   <!-- 게시글 조회 -->
-  <select id="selectFeedAllList" resultMap="board_rm">
+  <select id="selectBoardList" resultMap="board_rm">
 	SELECT * 
-	FROM (SELECT B.BOARD_NO, BOARD_CREATE_DATE, 
-				(SELECT COUNT(*) FROM BOARD_LIKE BL 
-				WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
-				(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
-				FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
-				AND IMG_ORDER = 1) IMG_PATH,
-				(SELECT COUNT(*) FROM "COMMENT" C
-				 WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT
-			FROM BOARD B
-			WHERE MEMBER_NO = #{memberNo}
-			ORDER BY BOARD_CREATE_DATE DESC)
-			<![CDATA[WHERE ROWNUM <= 9 ]]>
+		FROM (SELECT B.BOARD_NO, BOARD_CREATE_DATE, 
+					(SELECT COUNT(*) FROM BOARD_LIKE BL 
+					WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+					(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
+					FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
+					AND IMG_ORDER = 1) IMG_PATH,
+					(SELECT COUNT(*) FROM "COMMENT" C
+					 WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT
+		FROM BOARD B
+		JOIN MEMBER USING (MEMBER_NO)
+		WHERE MEMBER_NICKNAME = #{memberNickname}
+		ORDER BY BOARD_CREATE_DATE DESC)
+  </select>
+  
+  <!-- 회원 정보 조회 -->
+  <select id="selectMember" resultMap="member_rm">
+  	SELECT m.MEMBER_NO , MEMBER_NICKNAME , MEMBER_NAME , MEMBER_PROFILE_IMG , MEMBER_OPEN_FL, INTRO_CONTENT,
+			(SELECT COUNT(*) FROM FOLLOW f WHERE f.F_FROM_MEMBER_NO = m.MEMBER_NO) FOLLOWING_COUNT,
+			(SELECT COUNT(*) FROM FOLLOW f WHERE f.F_TO_TARGET_NO = m.MEMBER_NO) FOLLOW_COUNT,
+			(SELECT COUNT(*) FROM FOLLOW f WHERE f.F_TO_TARGET_NO = m.MEMBER_NO AND f.F_FROM_MEMBER_NO = #{memberNo}) FOLLOW_CHECK 
+		FROM "MEMBER" m
+		LEFT JOIN INTRODUCE i ON(m.MEMBER_NO = i.MEMBER_NO)
+		WHERE MEMBER_NICKNAME = #{memberNickname}
   </select>
   
   </mapper>

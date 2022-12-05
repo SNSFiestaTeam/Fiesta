@@ -22,20 +22,16 @@ public interface FeedService {
 	 */
 	List<Member> selectFollowList(int memberNo);
 
-	/** 게시글 수 조회
-	 * @param memberNickname
-	 * @return
-	 */
-//	Map<String, Object> selectBoardImgList(String memberNickname);
 
-	/** AJAX 게시글 이미지 조회
+	
+	/** 회원 정보 조회
 	 * @param memberNo
-	 * @param cp
 	 * @return
 	 */
-//	Map<String, Object> selectBoardImgList(String memberNickname, int cp);
+	Map<String, Object> selectFeedAll(int memberNo, String memberNickname);
 
-	Map<String, Object> selectFeedAll(int memberNo);
+
+
 
 		
 }
