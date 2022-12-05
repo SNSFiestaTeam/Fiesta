@@ -644,7 +644,7 @@ function selectCommentListM(boardNo, commentListUl) {
 
           // commentLi의 자식요소 commentFirstChild, moreReply
           const commentFirstChild = document.createElement('div');
-          // commentFirstChild.classList.add('comment-firstchild-m');
+          commentFirstChild.classList.add('comment-firstchild-m');
 
           commentLi.append(commentNoInput, commentFirstChild);
 

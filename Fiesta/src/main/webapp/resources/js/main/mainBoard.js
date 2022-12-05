@@ -14,7 +14,7 @@ function createObserver() {
   let options = {
     root: null,
     rootMargin: "0px",
-    threshold: 1
+    threshold: 0.8
   };
 
   observer = new IntersectionObserver(selectBoardList, options);
@@ -960,6 +960,389 @@ function createBoard(board) {
     
     }
   });
+
+
+
+
+
+  // 댓글 입력창에 @, # 입력 이벤트 추가
+  commentInput.addEventListener('keyup', function (event) {
+    
+
+    // @키 입력 시 언급 자동완성 모달창
+    if (event.key === '@') {
+      const selection = window.getSelection();
+      
+      var range = document.createRange();
+
+      range.setStart(selection.anchorNode, 0);
+
+      
+      // 언급 자동완성 창 생성
+      const autoCompleteModal = document.createElement('div');
+      autoCompleteModal.classList.add('auto-complete-container');
+      autoCompleteModal.id = 'autoCompleteModal';
+
+      
+      commentInput.addEventListener('input', function (e) { 
+        
+        if (commentInput.value.trim().length != 0) {
+
+          // 로딩 창 생성
+          autoCompleteModal.innerHTML =
+          '<div class="auto-complete-loading">'
+          +' <div class="loader loader--style1" title="0">'
+          +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+          +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+          +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+          +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+          +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+          +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+          +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+          +'     <animateTransform attributeType="xml"'
+          +'       attributeName="transform"'
+          +'       type="rotate"'
+          +'       from="0 20 20"'
+          +'       to="360 20 20"'
+          +'       dur="0.5s"'
+          +'       repeatCount="indefinite"/>'
+          +'   </path>'
+          +' </svg>'
+          +'</div>'  
+          +'</div > ';
+          
+      
+          commentInput.parentElement.parentElement.append(autoCompleteModal);
+          commentInput.parentElement.parentElement.style.position = 'relative';
+          
+
+          // ***** input 입력 값!!! ******
+          const regEx = /(@[^\s@]+)/gm;
+
+          let str = e.target.value;
+
+          // console.log(str);
+          let searchWord = str.match(regEx);
+          
+          if (searchWord != null) { 
+            searchWord = searchWord.join(', ');
+
+            searchWord = searchWord.replaceAll('@', '');
+
+            searchWord = searchWord.split(', ');
+          }
+
+          
+
+          if (searchWord != null) {
+            // 입력된 값으로 검색하기
+            $.ajax({
+              url: '/comment/autoComplete/mention',
+              data: { "searchWord": searchWord},
+              traditional: true,
+              dataType: 'json',
+              success: (mentionList) => {
+                if (mentionList != null) {
+                  autoCompleteModal.innerHTML = '';
+    
+                  for (let mention of mentionList) {
+  
+  
+                    const autoCompleteDiv = document.createElement('div');
+                    autoCompleteDiv.classList.add('auto-complete-content');
+  
+                    // 언급 멤버 프로필 이미지
+                    const mentionProfileImg = document.createElement('img');
+
+                    if (mention.memberProfileImg != undefined) {
+                      mentionProfileImg.setAttribute('src', mention.memberProfileImg);
+                    } else {
+                      mentionProfileImg.setAttribute('src', '/resources/images/profile/profile.jpg');
+                    }
+
+                    autoCompleteDiv.append(mentionProfileImg);
+  
+                    // 언급 멤버 정보
+                    const memberInfo = document.createElement('div');
+                    memberInfo.classList.add('member-info');
+  
+                    // 언급 멤버 닉네임
+                    const mentionNickname = document.createElement('span');
+                    mentionNickname.classList.add('mention-nickname');
+                    mentionNickname.innerText = mention.memberNickname;
+                    
+                    // 언급 멤버 이름
+                    const mentionName = document.createElement('span');
+                    mentionName.classList.add('mention-name');
+                    mentionName.innerText = mention.memberName;
+  
+                    memberInfo.append(mentionNickname, mentionName);
+  
+                    autoCompleteDiv.append(memberInfo);
+  
+                    autoCompleteModal.append(autoCompleteDiv);
+
+
+                    // 언급 아이디 클릭 시
+                    autoCompleteDiv.addEventListener('click', () => {
+
+                      // 언급 아이디 인풋 태그에 추가
+                      const inputWord = searchWord[searchWord.length - 1];
+                      commentInput.value = commentInput.value.replaceAll(inputWord, mention.memberNickname) + " ";
+
+
+                      // 모달창 제거
+                      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+
+                      // 인풋 이벤트 리스너 제거해서 모달창 안나오게
+                      commentInput.removeEventListener('input', arguments.callee);
+                      commentInput.focus();
+                    });
+
+
+                  }  
+                } else {
+                  // 로딩 창 생성
+                  autoCompleteModal.innerHTML =
+                  '<div class="auto-complete-loading">'
+                  +' <div class="loader loader--style1" title="0">'
+                  +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+                  +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+                  +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+                  +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+                  +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+                  +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+                  +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+                  +'     <animateTransform attributeType="xml"'
+                  +'       attributeName="transform"'
+                  +'       type="rotate"'
+                  +'       from="0 20 20"'
+                  +'       to="360 20 20"'
+                  +'       dur="0.5s"'
+                  +'       repeatCount="indefinite"/>'
+                  +'   </path>'
+                  +' </svg>'
+                  +'</div>'  
+                    + '</div > ';
+                  
+
+                }
+              },
+              error: () => {
+                console.log("언급 자동완성 에러");
+              },
+            });
+            
+
+          }
+
+
+
+        } else {
+          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+          console.log('모달 삭제');
+          commentInput.removeEventListener('input', arguments.callee);
+        }
+
+      });
+      
+    }
+
+    // #키 입력 시 해시태그 자동완성 모달창 추가
+    if (event.key === '#') {
+      const selection = window.getSelection();
+      
+      var range = document.createRange();
+
+      range.setStart(selection.anchorNode, 0);
+
+      
+      // 언급 자동완성 창 생성
+      const autoCompleteModal = document.createElement('div');
+      autoCompleteModal.classList.add('auto-complete-container');
+      autoCompleteModal.id = 'autoCompleteModal';
+
+      
+      commentInput.addEventListener('input', function (e) { 
+        
+        if (commentInput.value.trim().length != 0) {
+
+          // 로딩 창 생성
+          autoCompleteModal.innerHTML =
+          '<div class="auto-complete-loading">'
+          +' <div class="loader loader--style1" title="0">'
+          +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+          +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+          +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+          +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+          +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+          +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+          +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+          +'     <animateTransform attributeType="xml"'
+          +'       attributeName="transform"'
+          +'       type="rotate"'
+          +'       from="0 20 20"'
+          +'       to="360 20 20"'
+          +'       dur="0.5s"'
+          +'       repeatCount="indefinite"/>'
+          +'   </path>'
+          +' </svg>'
+          +'</div>'  
+          +'</div > ';
+          
+      
+          commentInput.parentElement.parentElement.append(autoCompleteModal);
+          commentInput.parentElement.parentElement.style.position = 'relative';
+          
+
+          // ***** input 입력 값!!! ******
+          const regEx = /(#[^\s#]+)/gm;
+
+          let str = e.target.value;
+
+          // console.log(str);
+          let searchWord = str.match(regEx);
+          
+          if (searchWord != null) { 
+            searchWord = searchWord.join(', ');
+
+            searchWord = searchWord.replaceAll('#', '');
+
+            searchWord = searchWord.split(', ');
+          }
+
+          
+
+          if (searchWord != null) {
+            // 입력된 값으로 검색하기
+            $.ajax({
+              url: '/comment/autoComplete/hashtag',
+              data: { "searchWord": searchWord},
+              traditional: true,
+              dataType: 'json',
+              success: (hashtagList) => {
+                if (hashtagList != null) {
+                  console.log(hashtagList);
+                  autoCompleteModal.innerHTML = '';
+    
+                  for (let hashtag of hashtagList) {
+  
+  
+                    const autoCompleteDiv = document.createElement('div');
+                    autoCompleteDiv.classList.add('auto-complete-content');
+
+                    // 해시태그 정보
+                    const hashtagInfo = document.createElement('div');
+                    hashtagInfo.classList.add('hashtag-info');
+  
+                    // 해시태그 내용
+                    const hashtagContent = document.createElement('span');
+                    hashtagContent.classList.add('hashtag-content');
+                    
+                    const span = document.createElement('span');
+                    span.innerText = '#'
+                    
+                    hashtagContent.append(span);
+                    hashtagContent.innerText += hashtag.hashtagContent;
+                    
+                    // 해시태그 관련 게시물 수
+                    const boardCount = document.createElement('span');
+                    boardCount.classList.add('hashtag-board-count');
+                    boardCount.innerText = '게시물 ' +  hashtag.boardCount;
+  
+                    hashtagInfo.append(hashtagContent, boardCount);
+  
+                    autoCompleteDiv.append(hashtagInfo);
+  
+                    autoCompleteModal.append(autoCompleteDiv);
+
+
+                    // 언급 아이디 클릭 시
+                    autoCompleteDiv.addEventListener('click', () => {
+
+                      // 언급 아이디 인풋 태그에 추가
+                      const inputWord = searchWord[searchWord.length - 1];
+                      commentInput.value = commentInput.value.replaceAll(inputWord, hashtag.hashtagContent) + " ";
+
+
+                      // 모달창 제거
+                      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+
+                      // 인풋 이벤트 리스너 제거해서 모달창 안나오게
+                      commentInput.removeEventListener('input', arguments.callee);
+                      commentInput.focus();
+                    });
+
+
+                  }  
+                } else {
+                  // 로딩 창 생성
+                  autoCompleteModal.innerHTML =
+                  '<div class="auto-complete-loading">'
+                  +' <div class="loader loader--style1" title="0">'
+                  +'  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'
+                  +'   width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">'
+                  +'   <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946'
+                  +'     s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634'
+                  +'     c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>'
+                  +'   <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0'
+                  +'     C22.32,8.481,24.301,9.057,26.013,10.047z">'
+                  +'     <animateTransform attributeType="xml"'
+                  +'       attributeName="transform"'
+                  +'       type="rotate"'
+                  +'       from="0 20 20"'
+                  +'       to="360 20 20"'
+                  +'       dur="0.5s"'
+                  +'       repeatCount="indefinite"/>'
+                  +'   </path>'
+                  +' </svg>'
+                  +'</div>'  
+                    + '</div > ';
+                  
+
+                }
+              },
+              error: () => {
+                console.log("언급 자동완성 에러");
+              },
+            });
+          }
+
+        } else {
+          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+          console.log('모달 삭제');
+          commentInput.removeEventListener('input', arguments.callee);
+        }
+
+      });
+    }
+
+
+
+    if (event.keyCode === 32) {
+      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+      console.log('모달 삭제');
+      commentInput.removeEventListener('input', arguments.callee);
+    }
+
+
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   div4.append(commentInput, postingBtn);
   

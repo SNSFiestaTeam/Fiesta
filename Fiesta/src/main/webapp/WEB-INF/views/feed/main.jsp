@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
     <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/boardDeteil-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
@@ -287,6 +288,7 @@
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
     <jsp:include page="/WEB-INF/views/action/comment.jsp" />
     <jsp:include page="/WEB-INF/views/action/confirm.jsp" />
+    <%-- <jsp:include page="/WEB-INF/views/action/boardDeteil.jsp" /> --%>
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 

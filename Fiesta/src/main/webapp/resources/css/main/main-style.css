@@ -81,6 +81,7 @@ main > section {
   border: 1px solid #ccc;
   border-radius: 5px;
   line-height: 15px;
+  background-color: white;
 }
 
 /* 피드 작성자 정보 */
