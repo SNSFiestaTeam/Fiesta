@@ -3,6 +3,9 @@ package edu.kh.fiesta.feed.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -131,9 +134,11 @@ public class FeedController {
 	 */
 	@GetMapping("/logout")
 
-	public String logout(SessionStatus status) {
+	public String logout(HttpServletRequest req) {
 		
-		status.setComplete();
+		 HttpSession session = req.getSession();
+		 
+		 session.invalidate();
 		
 		return "redirect:/";
 	}

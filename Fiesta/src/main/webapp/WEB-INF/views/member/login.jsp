@@ -23,13 +23,14 @@
     <!-- 메인 섹션 -->
     <main>
       <section class="login-section">
+    ${loginMember}
         <!-- 로고 -->
         <div class="logo-area">
           <a href="#">Fiesta</a>
         </div>
 
         <!-- 로그인 -->
-        <form action="/main" method="post" id="login-frm">
+        <form action="/login" method="post" id="login-frm">
          
           <!-- 이메일 -->
           <div class="login-area">
