@@ -43,21 +43,26 @@ function selectBoardList(entries, observer) {
         data: { memberNo: memberNo, cp: cp },
         dataType: 'json',
         success: (map) => {
+          if(map == null) {
+            console.log("결과 없음");
+          } else {
+            
+            const boardList = map.boardList;
+            const pagination = map.pagination;
+            for (let board of boardList) {
+              createBoard(board);
+            }
+            if (cp <= pagination.maxPage) {
+              endList = document.getElementById('feedSection').lastElementChild;
+              createObserver();
+              cp++;
+              console.log("cp :" + cp);
+            }
+            console.log(endList);
+
+          }
 
           
-
-          const boardList = map.boardList;
-          const pagination = map.pagination;
-          for (let board of boardList) {
-            createBoard(board);
-          }
-          if (cp != pagination.maxPage) {
-            endList = document.getElementById('feedSection').lastElementChild;
-            createObserver();
-            cp++;
-            console.log("cp :" + cp);
-          }
-          console.log(endList);
         },
         error: () => {
           console.log('게시글 조회 중 오류 발생');

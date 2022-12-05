@@ -13,12 +13,16 @@ public class MainInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-//		HttpSession session = request.getSession();
-//		
-//		if(session.getAttribute("loginMember") != null) {  //로그인o
-//			response.sendRedirect("/main");
-//			
-//		} 
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		HttpSession session = req.getSession();
+		
+		if(session.getAttribute("loginMember") != null) { // 로그인 O
+			resp.sendRedirect("/main");
+			
+		}
+		
 //		
 		return HandlerInterceptor.super.preHandle(request, response, handler);
 	}

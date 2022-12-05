@@ -28,6 +28,7 @@ public class MainController {
 	@GetMapping("/main")
 	public String main(@SessionAttribute("loginMember") Member loginMember, Model model) {
 		
+		
 		int memberNo= loginMember.getMemberNo();
 		
 		Map<String, Object> map = service.selectBoardList(memberNo);

@@ -68,14 +68,20 @@ public class MainServiceImpl implements MainService {
 		
 		Pagination pagination = new Pagination(listCount, cp);
 		
-		List<Board> boardList = dao.selectBoardList(pagination, memberNo);
+		if(cp <= pagination.getMaxPage()) {
+			
+			List<Board> boardList = dao.selectBoardList(pagination, memberNo);
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("pagination", pagination);
+			map.put("boardList", boardList);
+			
+			return map;
+		} else {
+			return null;
+		}
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-		return map;
 	}
 	
 	
