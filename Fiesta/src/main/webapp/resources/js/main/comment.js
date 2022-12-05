@@ -12,6 +12,9 @@ for (let i = 0; i < commentInput.length; i++) {
 }
 
 
+
+ 
+let autoCompleteModal;
 for (let i = 0; i < commentInput.length; i++) {
   commentInput[i].addEventListener('keyup', function (event) {
     
@@ -26,12 +29,19 @@ for (let i = 0; i < commentInput.length; i++) {
 
       
       // 언급 자동완성 창 생성
-      const autoCompleteModal = document.createElement('div');
+      autoCompleteModal = document.createElement('div');
       autoCompleteModal.classList.add('auto-complete-container');
       autoCompleteModal.id = 'autoCompleteModal';
 
+      let flag = false;
+      let start;
+      let end1;
+      let end2;
+      let content;
+      let targetCotent;
       
       commentInput[i].addEventListener('input', function (e) { 
+
         
         if (commentInput[i].value.trim().length != 0) {
 
@@ -79,6 +89,7 @@ for (let i = 0; i < commentInput.length; i++) {
             searchWord = searchWord.split(', ');
           }
 
+
           
 
           if (searchWord != null) {
@@ -93,8 +104,6 @@ for (let i = 0; i < commentInput.length; i++) {
                   autoCompleteModal.innerHTML = '';
     
                   for (let mention of mentionList) {
-  
-  
                     const autoCompleteDiv = document.createElement('div');
                     autoCompleteDiv.classList.add('auto-complete-content');
   
@@ -129,18 +138,47 @@ for (let i = 0; i < commentInput.length; i++) {
   
                     autoCompleteModal.append(autoCompleteDiv);
 
+                    //! 언급 커서 위치로 문장 구분
 
-                    // 언급 아이디 클릭 시
+                    // 입력된 문장
+                    content = e.target.value;
+                    
+                    // 현재 커서의 위치
+                    end1 = e.target.selectionStart;
+
+                    // 커서 바로 앞의 @의 위치
+                    start = content.substring(0, end1).lastIndexOf('@');
+
+                    // @부터 커서 위치까지의 문장
+                    const temp = content.substring(start, end1);
+
+                    if(/\s/.test(temp)){ // 빈칸이 있을 경우
+                      flag = false;
+                    }else{
+                        flag = true;
+                    }
+
+                    if(start > -1 && flag){
+
+                      end2 = start + temp.length;
+
+                      //@뒤의 문장 선택
+                      targetCotent = content.substring(start, end2);
+                    }
+
+                    // ! 언급 아이디 클릭 시
                     autoCompleteDiv.addEventListener('click', () => {
 
                       // 언급 아이디 인풋 태그에 추가
-                      const inputWord = searchWord[searchWord.length - 1];
+                      // const inputWord = searchWord[searchWord.length - 1];
+                      // commentInput[i].value = commentInput[i].value.replace(inputWord, mention.memberNickname) + " ";
 
-           
-                      // console.log(commentInput[i].value.split('@'));
+                      const before = content.substring(0, start);
+                      const after = content.substring(end2, content.length);
 
-                      commentInput[i].value = commentInput[i].value.replace(inputWord, mention.memberNickname) + " ";
+                      commentInput[i].value = before + "@" + mention.memberNickname + " " + after;
 
+                      flag = false;
 
                       // 모달창 제거
                       autoCompleteModal.parentElement.removeChild(autoCompleteModal);
@@ -190,13 +228,17 @@ for (let i = 0; i < commentInput.length; i++) {
 
 
         } else {
-          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-          console.log('모달 삭제');
+          if(autoCompleteModal !== undefined) {
+            autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+            console.log('모달 삭제');
+
+          }
+          event.preventDefault();
           commentInput[i].removeEventListener('input', arguments.callee);
         }
 
       });
-      
+      event.preventDefault();
     }
 
     // #키 입력 시 해시태그 자동완성 모달창 추가
@@ -277,9 +319,10 @@ for (let i = 0; i < commentInput.length; i++) {
                   autoCompleteModal.innerHTML = '';
     
                   for (let hashtag of hashtagList) {
-  
-  
-                    const autoCompleteDiv = document.createElement('div');
+                    if(hashtag.boardCount > 0) {
+
+                      
+                      const autoCompleteDiv = document.createElement('div');
                     autoCompleteDiv.classList.add('auto-complete-content');
 
                     // 해시태그 정보
@@ -302,29 +345,68 @@ for (let i = 0; i < commentInput.length; i++) {
                     boardCount.innerText = '게시물 ' +  hashtag.boardCount;
   
                     hashtagInfo.append(hashtagContent, boardCount);
-  
+                    
                     autoCompleteDiv.append(hashtagInfo);
-  
+                    
                     autoCompleteModal.append(autoCompleteDiv);
+                    
 
+                    //! 언급 커서 위치로 문장 구분
 
-                    // 언급 아이디 클릭 시
+                    // 입력된 문장
+                    content = e.target.value;
+                    
+                    // 현재 커서의 위치
+                    end1 = e.target.selectionStart;
+
+                    // 커서 바로 앞의 #의 위치
+                    start = content.substring(0, end1).lastIndexOf('#');
+
+                    // #부터 커서 위치까지의 문장
+                    const temp = content.substring(start, end1);
+                    
+                    if(/\s/.test(temp)){ // 빈칸이 있을 경우
+                      flag = false;
+                    }else{
+                        flag = true;
+                    }
+
+                    if(start > -1 && flag){
+
+                      end2 = start + temp.length;
+                      
+                      //#뒤의 문장 선택
+                      targetCotent = content.substring(start, end2);
+                    }
+                    
+                    
+                    
+                    // !해시태그  클릭 시
                     autoCompleteDiv.addEventListener('click', () => {
 
-                      // 언급 아이디 인풋 태그에 추가
-                      const inputWord = searchWord[searchWord.length - 1];
-                      commentInput[i].value = commentInput[i].value.replaceAll(inputWord, hashtag.hashtagContent) + " ";
+                      // 해시태그 인풋 태그에 추가
+                      // const inputWord = searchWord[searchWord.length - 1];
+                      // commentInput[i].value = commentInput[i].value.replaceAll(inputWord, hashtag.hashtagContent) + " ";
+                      
+                      
+                      const before = content.substring(0, start);
+                      const after = content.substring(end2, content.length);
 
+                      commentInput[i].value = before + "#" + hashtag.hashtagContent + " " + after;
 
+                      flag = false;
+
+                      
                       // 모달창 제거
                       autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-
+                      
                       // 인풋 이벤트 리스너 제거해서 모달창 안나오게
                       commentInput[i].removeEventListener('input', arguments.callee);
                       commentInput[i].focus();
                     });
 
-
+                  }
+                    
                   }  
                 } else {
                   // 로딩 창 생성
@@ -364,8 +446,12 @@ for (let i = 0; i < commentInput.length; i++) {
 
 
         } else {
-          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-          console.log('모달 삭제');
+          if(autoCompleteModal !== undefined) {
+            autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+            console.log('모달 삭제');
+
+          }
+          event.preventDefault();
           commentInput[i].removeEventListener('input', arguments.callee);
         }
 
@@ -375,13 +461,13 @@ for (let i = 0; i < commentInput.length; i++) {
 
 
     if (event.keyCode === 32) {
-      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-      console.log('모달 삭제');
+      if(autoCompleteModal !== undefined) {
+        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+        console.log('모달 삭제');
+      }
+      event.preventDefault();
       commentInput[i].removeEventListener('input', arguments.callee);
     }
-
-
-
 
     event.preventDefault();
   });
