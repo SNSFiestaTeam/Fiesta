@@ -436,4 +436,29 @@ label[for='header-menu-toggle'] {
 }
 
 
+#topButton {
+  width: 70px;
+  height: 70px;
+
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+
+  border-radius: 50%;
+
+  font-size: var(--medium-font-size);
+  font-weight: bold;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--fiesta-color);
+  color: white;
+
+  z-index: 10;
+
+}
+
 
