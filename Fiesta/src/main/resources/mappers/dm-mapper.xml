@@ -15,16 +15,96 @@
    </resultMap>
 
 	<!-- 채팅 메시지 resultMap -->
-   <resultMap type="Message" id="message_rm">
-      <id property="messageNo" column="MESSAGE_NO" />
+   <resultMap type="Chat" id="chat_rm">
+      <id property="messageNo" column="CHAT_NO" />
 
-      <result property="messageContent" column="MESSAGE_CONTENT" />
-      <result property="readFlag" column="READ_FL" />
-      <result property="senderNo" column="SENDER_NO" />
+      <result property="messageContent" column="CHAT_CONTENT" />
+      <result property="readFlag" column="CHAT_READ_FL" />
+      <result property="senderNo" column="C_FROM_MEMBER_NO" />
       <result property="chattingNo" column="CHATTING_NO" />
-      <result property="sendTime" column="SEND_TIME" />
+      <result property="sendTime" column="CHAT_SEND_TIME" />
    </resultMap>
+   
+   <resultMap type="Member" id="member_rm">
+  
+        <!-- DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그 -->
+     <id property = "memberNo" column="MEMBER_NO"/>
+     
+     <!-- 나머지 일반 컬럼 -->
+      <result property="memberEmail" column="MEMBER_EMAIL" />
+      <result property="memberPw" column="MEMBER_PW" />
+      <result property="memberName" column="MEMBER_NAME" />
+      <result property="memberNickname" column="MEMBER_NICKNAME" />
+      <result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
+      <result property="enrollDate" column="ENROLL_DATE" />
+      <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
+      <result property="secessionFl" column="SECESSION_FL" />
+      <result property="authority" column="AUTHORITY" />
+      
+  	</resultMap>
 
 
+<!-- 모달 받는 사람 회원 목록 비동기 조회 -->
+<select id="selectMember" parameterType="string" resultMap="member_rm">
+SELECT MEMBER_NICKNAME, MEMBER_PROFILE_IMG
+FROM "MEMBER"
+WHERE MEMBER_NICKNAME LIKE '%${memberNickname}%'
+</select>
+
+
+<select id="checkChattingNo" resultType="_int">
+      SELECT NVL(SUM(CHATTING_NO),0) CHATTING_NO FROM CHATTING_ROOM
+      WHERE (MEMBER_NO_1 = #{loginMemberNo} AND MEMBER_NO_2 = #{targetNo})
+      OR (MEMBER_NO_1 = #{targetNo} AND MEMBER_NO_2 = #{loginMemberNo})
+</select>
+
+
+
+<insert id="createChattingRoom" parameterType="map" useGeneratedKeys="true">
+
+   <selectKey keyProperty="chattingNo" order="BEFORE" resultType="_int">
+      SELECT SEQ_ROOM_NO.NEXTVAL FROM DUAL
+   </selectKey>
+
+   INSERT INTO CHATTING_ROOM
+   VALUES(#{chattingNo}, DEFAULT, #{loginMemberNo}, #{targetNo})
+</insert>
+
+<select id="selectRoomList" resultMap="chattingRoom_rm">
+   SELECT CHATTING_NO
+      ,(SELECT CHAT_CONTENT FROM (
+         SELECT * FROM CHAT C2
+         WHERE C2.CHATTING_NO = R.CHATTING_NO
+         ORDER BY CHAT_NO DESC) 
+         WHERE ROWNUM = 1) LAST_MESSAGE 
+      ,TO_CHAR(NVL((SELECT MAX(CHAT_SEND_DATE) SEND_TIME 
+            FROM CHAT C
+            WHERE R.CHATTING_NO  = C.CHATTING_NO), CHATTING_CREATE_DATE), 
+            'YYYY.MM.DD') SEND_TIME
+      ,NVL2((SELECT MEMBER_NO_1 FROM CHATTING_ROOM R2
+         WHERE R2.CHATTING_NO = R.CHATTING_NO
+         AND R2.MEMBER_NO_1  = #{memberNo}),
+         R.MEMBER_NO_2 ,
+         R.MEMBER_NO_1 
+         ) TARGET_NO 
+      ,NVL2((SELECT MEMBER_NO_1 FROM CHATTING_ROOM R2
+         WHERE R2.CHATTING_NO = R.CHATTING_NO
+         AND R2.MEMBER_NO_1 = #{memberNo}),
+         (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.MEMBER_NO_2),
+         (SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_NO = R.MEMBER_NO_1)
+         ) TARGET_NICKNAME  
+      ,NVL2((SELECT MEMBER_NO_1 FROM CHATTING_ROOM R2
+         WHERE R2.CHATTING_NO = R.CHATTING_NO
+         AND R2.MEMBER_NO_1  = #{memberNo}),
+         (SELECT MEMBER_PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.MEMBER_NO_2),
+         (SELECT MEMBER_PROFILE_IMG FROM MEMBER WHERE MEMBER_NO = R.MEMBER_NO_1)
+         ) TARGET_PROFILE
+      ,(SELECT COUNT(*) FROM CHAT C WHERE C.CHATTING_NO = R.CHATTING_NO AND CHAT_READ_FL = 'N' AND C_FROM_MEMBER_NO != #{memberNo}) NOT_READ_COUNT
+      ,(SELECT MAX(CHAT_NO) CHAT_SEND_DATE FROM CHAT C WHERE R.CHATTING_NO  = C.CHATTING_NO) MAX_MESSAGE_NO
+   FROM CHATTING_ROOM R
+   WHERE MEMBER_NO_1 = #{memberNo}
+   OR MEMBER_NO_2 = #{memberNo}
+   ORDER BY MAX_MESSAGE_NO DESC NULLS LAST    
+</select>
 
 </mapper>

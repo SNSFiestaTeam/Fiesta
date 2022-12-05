@@ -5,7 +5,6 @@ const accountFrm = document.getElementById("account-frm");
 const idOpen = document.getElementById("idOpen");
 
 
-
 function memberDeleteValidate(){
 
     if(!confirm("탈퇴하시겠습니까?")){
@@ -74,19 +73,6 @@ const idOpen3 = document.getElementById("idOpen3")
 
     });
 
-/*
-SELECT MEMBER_OPEN_FL, USER_PUB_PRI_FL  
-FROM "MEMBER"
-JOIN SETTING USING(MEMBERNO)
-WHERE MEMBER_NO = 10
-
-
-SELECT INTRO_CONTENT
-FROM "INTRODUCE"
-WHERE MEMBER_NO = 10;
-
-
-*/
 
 
 };

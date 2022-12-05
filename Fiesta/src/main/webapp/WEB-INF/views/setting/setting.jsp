@@ -10,7 +10,7 @@
     <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/setting/setting-style.css" />
-    <link rel="stylesheet" href="../../../resources/css/profile-edit-board.css">
+    <link rel="stylesheet" href="/resources/css/profile-edit-board.css">
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -33,10 +33,12 @@
         </section>
 
         <section class="setting-main">
-          <form action="/setting/updateImage" method="POST" id="profile-frm" name="profile-img" enctype="multipart/form-data">
+          <form action="/setting/updateImage" method="POST" id="profilefrm" name="memberProfileImg" enctype="multipart/form-data">
             <div class="di-1">
               <aside>
                 <button type="button" id="chg-img">
+                  <input type="file" name="memberProfileImg", id="image-input" accept="image/*">
+                  
                   <c:if test="${empty loginMember.memberProfileImg}">   
                   <img id="profile-image" src="/resources/images/user.jpg">
                   </c:if> 
@@ -95,9 +97,9 @@
 
    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
    <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>
-   
    <script>
     const memberNo = "${loginMember.memberNo}";
+    const loginMemberNickname = "${loginMember.memberNickname}";
    </script>
    
    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>

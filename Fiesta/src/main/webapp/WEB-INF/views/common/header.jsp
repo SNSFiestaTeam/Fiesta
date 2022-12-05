@@ -72,7 +72,7 @@
               <div id="toggle-menu">
                   <a href="/feed/${loginMember.memberNickname}">프로필</a>
                   <a href="/setting">설정</a>
-                  <a href="/feed/logout">로그아웃</a>
+                  <a href="/logout">로그아웃</a>
               </div>
 
             </li>
@@ -80,6 +80,7 @@
         </nav>
       </section>
     </header>
+
     <section class="toggle-search-section hide" id="toggleSearchSection">
       <form action="/search" id="toggleSearchForm">
         <fieldset>
@@ -98,3 +99,8 @@
           
       </form>
     </section>
+
+    <button type="button" id="topButton" class="hide">
+      <span>&uarr;</span>
+      <span>TOP</span>
+    </button>

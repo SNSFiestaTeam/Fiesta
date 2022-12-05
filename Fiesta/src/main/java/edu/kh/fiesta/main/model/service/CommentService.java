@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.fiesta.main.model.vo.Comment;
+import edu.kh.fiesta.main.model.vo.Hashtag;
+import edu.kh.fiesta.member.model.vo.Member;
 
 public interface CommentService {
 	
@@ -49,6 +51,21 @@ public interface CommentService {
 	 * @return
 	 */
 	public int deleteComment(int commentNo);
+
+	
+	/**
+	 * 언급 자동완성
+	 * @param searchWord
+	 * @return
+	 */
+	public List<Member> mentionAutoComplete(String[] searchWord);
+
+	/**
+	 * 해시태그 자동완성
+	 * @param searchWord
+	 * @return
+	 */
+	public List<Hashtag> hashtagAutoComplete(String[] searchWord);
 	
 
 

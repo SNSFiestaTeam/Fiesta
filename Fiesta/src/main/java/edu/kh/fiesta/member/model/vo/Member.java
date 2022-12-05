@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class Member {
-	private int memberNo;
+	public int memberNo;
 	private String memberEmail;
 	private String memberPw;
 	private String memberName;
@@ -23,5 +23,8 @@ public class Member {
 	
 	private String introContent;
 	private char userPubPriFl;
+	
+	private int followingCount;
+	private int followCount;
+	private int followCheck;
 }
-

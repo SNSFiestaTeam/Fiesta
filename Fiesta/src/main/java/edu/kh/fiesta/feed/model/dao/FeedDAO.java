@@ -8,11 +8,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.fiesta.feed.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
-import edu.kh.fiesta.main.model.vo.Pagination;
 import edu.kh.fiesta.member.model.vo.Member;
+
 
 @Repository
 public class FeedDAO {
@@ -37,29 +38,56 @@ public class FeedDAO {
 	 * @param memberNickname
 	 * @return
 	 */
-	public int getListCount(String memberNickname) {
-
-		return sqlSession.selectOne("feedMapper.getListCount", memberNickname);
+	public int selectBoardCount(String memberNickname) {
+		return sqlSession.selectOne("feedMapper.selectBoardCount", memberNickname);
 	}
 
-	/** 게시글 이미지 조회
+	
+	
+	
+	/** 특정 회원 게시글 목록 조회
 	 * @param pagination
 	 * @param memberNickname
+	 * @return boardList
+	 */
+	public List<Board> selectBoardList(Pagination pagination, String memberNickname) {
+		
+//		불러올 게시글의 시작 번호
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+//		시작 번호부터 몇개의 글을 불러올 것인지 설정
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+	
+
+		
+		return sqlSession.selectList("feedMapper.selectBoardList", memberNickname, rowBounds);
+	}
+
+	
+	
+	/** 회원 정보 조회
+	 * @param member
 	 * @return
 	 */
-	public List<BoardImg> selectBoardImgList(Pagination pagination, String memberNickname) {
-		
-		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
-		
-		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
-		return sqlSession.selectList("feedMapper.selectBoardImgList", memberNickname, rowBounds);
+	public Member selectMember(Member member) {
+		return sqlSession.selectOne("feedMapper.selectMember", member);
+	}
+	
+	public Member selectMember(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("feedMapper.selectMember", paramMap);
 	}
 
-	public List<Board> selectFeedAllList(int memberNo) {
+	
+	
 
-		return sqlSession.selectList("feedMapper.selectFeedAllList", memberNo);
-	}
+
+
+	/** 프로필 정보 조회
+	 * @param memberNo
+	 * @return
+	 */
+
+	
 
 
 

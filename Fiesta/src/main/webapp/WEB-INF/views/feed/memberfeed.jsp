@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>instagram</title>
+    <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/memberfeed.css" />
     <script
@@ -31,7 +31,7 @@
 
           <div id="profile-text">
             <div id="nickname">
-              <a href="#">_97.05.07</a>
+              <a href="#">${memberNickname}</a>
 
               <button id="btn-dm">
                 <a href="#">메세지 보내기</a>
@@ -41,7 +41,6 @@
                 <a href="#"><i class="fa-solid fa-user-group"></i></a>
               </button>
 
-              <a href="#">. . .</a>
             </div>
 
             <div id="profile-board">
@@ -52,10 +51,6 @@
 
             <p class="introduce-text">${loginMember.introContent}</p>
 
-            <div id="profile-follow">
-              <a href="#" class="info">s_am_97, sbk_93</a
-              ><span id="text">님 외 21명이 팔로우 합니다.</span>
-            </div>
           </div>
         </section>
 

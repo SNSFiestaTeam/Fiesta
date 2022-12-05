@@ -38,6 +38,19 @@
 	
 	<context:component-scan base-package="edu.kh.fiesta" />
 	
+	
+	<!-- 인터셉터 등록 / 매핑주소 설정 -->
+ 	<interceptors>
+		<interceptor>
+			<mapping path="/"/> 
+<!-- 			<exclude-mapping path="/"/>  예외 -->
+			<beans:bean id="mainInterceptor" class="edu.kh.fiesta.common.MainInterceptor" /> 
+		</interceptor>
+	</interceptors> 
+	
+	
+	
+	
 	<!-- 스프링 스케쥴러 어노테이션 인식 -->
 	<task:annotation-driven/>
 	

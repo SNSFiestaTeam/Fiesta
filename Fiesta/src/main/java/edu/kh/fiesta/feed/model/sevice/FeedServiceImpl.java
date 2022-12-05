@@ -1,5 +1,6 @@
 package edu.kh.fiesta.feed.model.sevice;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,10 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.fiesta.feed.model.dao.FeedDAO;
+import edu.kh.fiesta.feed.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
-import edu.kh.fiesta.main.model.vo.Pagination;
+
 import edu.kh.fiesta.member.model.vo.Member;
 
 @Service
@@ -33,52 +35,79 @@ public class FeedServiceImpl implements FeedService{
 		return dao.selectFollowList(memberNo);
 	}
 
-//	// 게시글 수 조회
-//	@Override
-//	public Map<String, Object> selectBoardImgList(String memberNickname) {
-//		
-//		int listCount = dao.getListCount(memberNickname);		
-//		
-//		Pagination pagination = new Pagination(listCount, 1);
-//		
-//		List<BoardImg> boardImgList = dao.selectBoardImgList(pagination, memberNickname);
-//		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		
-//		map.put("pagination", pagination);
-//		map.put("boardImgList", boardImgList);
-//		
-//		return map;
-//	}
-//
-//	// 게시글 이미지 조회
-//	@Override
-//	public Map<String, Object> selectBoardImgList(String memberNickname, int cp) {
-//		
-//		int listCount = dao.getListCount(memberNickname);
-//		
-//		Pagination pagination = new Pagination(listCount, cp);
-//		
-//		List<BoardImg> boardImgList = dao.selectBoardImgList(pagination, memberNickname);
-//		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		
-//		map.put("pagination", pagination);
-//		map.put("boardImgList", boardImgList);
-//		
-//		return map;
-//	}
 
+
+	// 회원 정보 조회
 	@Override
-	public Map<String, Object> selectFeedAll(int memberNo) {
+	public Map<String, Object> selectFeedAll(int memberNo, String memberNickname) {
+		
+		Member member = new Member();
+		member.setMemberNickname(memberNickname);
+		member.setMemberNo(memberNo);
+		
+		
+//		게시글 개수
+		int boardCount = dao.selectBoardCount(memberNickname);
+		
+		
+//		게시글 리스트(게시글 번호, 댓글 수, 좋아요 수, 첫번째 이미지)	
+		Pagination pagination = new Pagination(boardCount, 1);
+		
+		
+		List<Board> boardList = dao.selectBoardList(pagination, memberNickname);
+
+		
+//		회원 정보(번호, 닉네임, 이름, 팔로워수, 팔로잉수, 자기소개, 프로필이미지, 로그인 멤버의 팔로우 여부)
+		Member feedMember = dao.selectMember(member);
 		
 		Map<String, Object> feedMap = new HashMap<String, Object>();
 		
-		List<Board> feedAllList = dao.selectFeedAllList(memberNo);
+		feedMap.put("boardCount", boardCount);
+		feedMap.put("pagination", pagination);
+		feedMap.put("boardList", boardList);
+		feedMap.put("feedMember", feedMember);
 		
-		feedMap.put("feedAllList", feedAllList);
 		
 		return feedMap;
 	}
+
+
+
+	@Override
+	public Map<String, Object> selectBoardList(Map<String, Object> paramMap) {
+
+		
+//		게시글 개수
+		int boardCount = dao.selectBoardCount((String)paramMap.get("memberNickname"));
+		
+		
+//		게시글 리스트(게시글 번호, 댓글 수, 좋아요 수, 첫번째 이미지)	
+		Pagination pagination = new Pagination(boardCount, (int)paramMap.get("cp"));
+		
+		if((int)paramMap.get("cp") <= pagination.getMaxPage()) {
+			
+		
+		List<Board> boardList = dao.selectBoardList(pagination, (String)paramMap.get("memberNickname"));
+
+		
+//		회원 정보(번호, 닉네임, 이름, 팔로워수, 팔로잉수, 자기소개, 프로필이미지, 로그인 멤버의 팔로우 여부)
+		Member feedMember = dao.selectMember(paramMap);
+		
+		Map<String, Object> feedMap = new HashMap<String, Object>();
+		
+		feedMap.put("boardCount", boardCount);
+		feedMap.put("pagination", pagination);
+		feedMap.put("boardList", boardList);
+		feedMap.put("feedMember", feedMember);
+		
+		
+		return feedMap;
+		} else {
+			return null;
+		}
+	}
+
+
+
 
 }
