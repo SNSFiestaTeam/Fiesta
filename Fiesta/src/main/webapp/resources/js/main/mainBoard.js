@@ -983,7 +983,13 @@ function createBoard(board) {
       autoCompleteModal.classList.add('auto-complete-container');
       autoCompleteModal.id = 'autoCompleteModal';
 
-      
+      let flag = false;
+      let start;
+      let end1;
+      let end2;
+      let content;
+      let targetCotent;
+
       commentInput.addEventListener('input', function (e) { 
         
         if (commentInput.value.trim().length != 0) {
@@ -1083,13 +1089,53 @@ function createBoard(board) {
                     autoCompleteModal.append(autoCompleteDiv);
 
 
-                    // 언급 아이디 클릭 시
+
+
+
+                    //! 언급 커서 위치로 문장 구분
+
+                    // 입력된 문장
+                    content = e.target.value;
+                    
+                    // 현재 커서의 위치
+                    end1 = e.target.selectionStart;
+
+                    // 커서 바로 앞의 @의 위치
+                    start = content.substring(0, end1).lastIndexOf('@');
+
+                    // @부터 커서 위치까지의 문장
+                    const temp = content.substring(start, end1);
+
+                    if(/\s/.test(temp)){ // 빈칸이 있을 경우
+                      flag = false;
+                    }else{
+                        flag = true;
+                    }
+
+                    if(start > -1 && flag){
+
+                      end2 = start + temp.length;
+
+                      //@뒤의 문장 선택
+                      targetCotent = content.substring(start, end2);
+                    }
+
+
+
+
+                    // ! 언급 아이디 클릭 시
                     autoCompleteDiv.addEventListener('click', () => {
 
                       // 언급 아이디 인풋 태그에 추가
-                      const inputWord = searchWord[searchWord.length - 1];
-                      commentInput.value = commentInput.value.replaceAll(inputWord, mention.memberNickname) + " ";
+                      // const inputWord = searchWord[searchWord.length - 1];
+                      // commentInput.value = commentInput.value.replaceAll(inputWord, mention.memberNickname) + " ";
 
+                      const before = content.substring(0, start);
+                      const after = content.substring(end2, content.length);
+
+                      commentInput.value = before + "@" + mention.memberNickname + " " + after;
+
+                      flag = false;
 
                       // 모달창 제거
                       autoCompleteModal.parentElement.removeChild(autoCompleteModal);
@@ -1139,13 +1185,17 @@ function createBoard(board) {
 
 
         } else {
-          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-          console.log('모달 삭제');
+          if(autoCompleteModal !== undefined) {
+            autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+            console.log('모달 삭제');
+            event.preventDefault();
+          }
+
           commentInput.removeEventListener('input', arguments.callee);
         }
 
       });
-      
+      event.preventDefault();
     }
 
     // #키 입력 시 해시태그 자동완성 모달창 추가
@@ -1257,12 +1307,53 @@ function createBoard(board) {
                     autoCompleteModal.append(autoCompleteDiv);
 
 
+
+                     //! 언급 커서 위치로 문장 구분
+
+                    // 입력된 문장
+                    content = e.target.value;
+                    
+                    // 현재 커서의 위치
+                    end1 = e.target.selectionStart;
+
+                    // 커서 바로 앞의 #의 위치
+                    start = content.substring(0, end1).lastIndexOf('#');
+
+                    // #부터 커서 위치까지의 문장
+                    const temp = content.substring(start, end1);
+                    
+                    if(/\s/.test(temp)){ // 빈칸이 있을 경우
+                      flag = false;
+                    }else{
+                        flag = true;
+                    }
+
+                    if(start > -1 && flag){
+
+                      end2 = start + temp.length;
+                      
+                      //#뒤의 문장 선택
+                      targetCotent = content.substring(start, end2);
+                    }
+                    
+
+
+
                     // 언급 아이디 클릭 시
                     autoCompleteDiv.addEventListener('click', () => {
 
                       // 언급 아이디 인풋 태그에 추가
-                      const inputWord = searchWord[searchWord.length - 1];
-                      commentInput.value = commentInput.value.replaceAll(inputWord, hashtag.hashtagContent) + " ";
+                      // const inputWord = searchWord[searchWord.length - 1];
+                      // commentInput.value = commentInput.value.replaceAll(inputWord, hashtag.hashtagContent) + " ";
+
+
+                      const before = content.substring(0, start);
+                      const after = content.substring(end2, content.length);
+
+                      commentInput.value = before + "#" + hashtag.hashtagContent + " " + after;
+
+                      flag = false;
+
 
 
                       // 모달창 제거
@@ -1309,8 +1400,11 @@ function createBoard(board) {
           }
 
         } else {
-          autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-          console.log('모달 삭제');
+          if(autoCompleteModal !== undefined) {
+            autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+            console.log('모달 삭제');
+
+          }
           commentInput.removeEventListener('input', arguments.callee);
         }
 
@@ -1320,13 +1414,15 @@ function createBoard(board) {
 
 
     if (event.keyCode === 32) {
-      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-      console.log('모달 삭제');
+      if(autoCompleteModal !== undefined) {
+        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+        console.log('모달 삭제');
+      }
       commentInput.removeEventListener('input', arguments.callee);
     }
 
 
-
+    event.preventDefault();
   });
 
 
