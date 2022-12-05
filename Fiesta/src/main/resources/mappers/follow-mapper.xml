@@ -128,6 +128,7 @@
 				WHERE MEMBER_NICKNAME= #{followToNickname}))
   	</insert>
   	
+  	<!-- 계정 언팔로우 -->
   	<delete id="unfollowAccount">
   		DELETE FROM FOLLOW 
 			WHERE F_FROM_MEMBER_NO = #{memberNo}

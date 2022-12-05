@@ -77,7 +77,7 @@ const followAccountBtn = document.getElementsByClassName("follow-button-small");
 const profileNickname = document.getElementsByClassName("profileNickname");
 
 // * 계정 팔로우 여부 보여주기 -> 버튼 다르게
-for(let i=0; i<6; i++){
+for(let i=0; i<followAccountBtn.length; i++){
     console.log(i);
     console.log(followAccountBtn[i]);
     console.log(profileNickname[i]);
@@ -115,57 +115,61 @@ for(let i=0; i<6; i++){
 
 // * 계정 팔로우, 언팔로우
 // '팔로우'버튼에 0~5 아이디 붙이기
-for(let i=0; i<6; i++){
-    followAccountBtn[i].id = i;
+for(let i=0; i < followAccountBtn.length; i++){
+    // followAccountBtn[i].id = i;
     
     // 클릭됐을 때 해당 아이디(순서)에 맞는 요소가 선택되도록!
     followAccountBtn[i].addEventListener("click", (e) => {
     
-        var btnId = followAccountBtn[i].id;
+        // var btnId = followAccountBtn[i].id;
     
         // console.log(btnDiv);
-        console.log(btnId);
+        // console.log(btnId);
         
-        if(e.target.classList.contains('followAccountBtn')){ // 팔로우 안 한 상태
+        if(profileNickname[i].innerText != undefined){
+            if(e.target.classList.contains('followAccountBtn')){ // 팔로우 안 한 상태
+                
+                $.ajax({
+                    url: "/followAccount",
+                    data:{"followToNickname" : profileNickname[i].innerText},  
+                    type: "GET",
+                    success: (result) => {
+                        
+                        if(result > 0){ 
+                            e.target.innerText = "팔로잉";
+                            e.target.classList.add("unfollowAccountBtn");
+                            e.target.classList.remove("followAccountBtn");
+                        } else {
+                            console.log("계정 팔로잉 실패");
+                        }
+                    },
+                    error: () => {
+                        console.log("계정 팔로우 오류");
+                    }
             
-            $.ajax({
-                url: "/followAccount",
-                data:{"followToNickname" : profileNickname[btnId].innerText},  
-                type: "GET",
-                success: (result) => {
-                    
-                    if(result > 0){ 
-                        e.target.innerText = "팔로잉";
-                        e.target.classList.add("unfollowAccountBtn");
-                        e.target.classList.remove("followAccountBtn");
-                    } else {
-                        console.log("계정 팔로잉 실패");
-                    }
-                },
-                error: () => {
-                    console.log("계정 팔로우 오류");
-                }
+                });
+            
+            } else if(e.target.classList.contains('unfollowAccountBtn')){ // 팔로우한 상태
         
-            });
-        
-        } else if(e.target.classList.contains('unfollowAccountBtn')){ // 팔로우한 상태
-    
-            $.ajax({
-                url: "/unfollowAccount",
-                data:{"followToNickname" : profileNickname[btnId].innerText},
-                type: "GET",
-                success: (result) => {
-                    if(result > 0) {  // 언팔로우 성공
-                        e.target.innerText = "팔로우";
-                        e.target.classList.add("followAccountBtn");
-                        e.target.classList.remove("unfollowAccountBtn");
-                    } else {
-                        console.log("계정 언팔로우 실패");
-                    }
-                },
-                error : () => {console.log("계정 언팔로우 오류");}
-            });
+                $.ajax({
+                    url: "/unfollowAccount",
+                    data:{"followToNickname" : profileNickname[i].innerText},
+                    type: "GET",
+                    success: (result) => {
+                        if(result > 0) {  // 언팔로우 성공
+                            console.log(profileNickname[i].innerText);
+                            e.target.innerText = "팔로우";
+                            e.target.classList.add("followAccountBtn");
+                            e.target.classList.remove("unfollowAccountBtn");
+                        } else {
+                            console.log("계정 언팔로우 실패");
+                        }
+                    },
+                    error : () => {console.log("계정 언팔로우 오류");}
+                });
+            }
         }
+
     });
     
 
