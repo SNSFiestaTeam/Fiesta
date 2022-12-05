@@ -46,7 +46,7 @@
 
 <!-- 모달 받는 사람 회원 목록 비동기 조회 -->
 <select id="selectMember" parameterType="string" resultMap="member_rm">
-SELECT MEMBER_NICKNAME, MEMBER_PROFILE_IMG
+SELECT MEMBER_NICKNAME, MEMBER_PROFILE_IMG, MEMBER_NO
 FROM "MEMBER"
 WHERE MEMBER_NICKNAME LIKE '%${memberNickname}%'
 </select>
@@ -106,5 +106,34 @@ WHERE MEMBER_NICKNAME LIKE '%${memberNickname}%'
    OR MEMBER_NO_2 = #{memberNo}
    ORDER BY MAX_MESSAGE_NO DESC NULLS LAST    
 </select>
+
+<insert id="insertMessage">
+INSERT INTO "CHAT"
+VALUES(SEQ_CHAT_NO.NEXTVAL, #{messageContent}, DEFAULT, DEFAULT, #{chattingNo}, #{senderNo}, #{targetNo})
+</insert>
+
+<select id="selectMessageList" resultMap="chat_rm">
+SELECT CHAT_NO, CHAT_CONTENT, CHAT_READ_FL, C_FROM_MEMBER_NO, CHATTING_NO,
+TO_CHAR(CHAT_SEND_DATE, 'YYYY.MM.DD HH24:MI') SEND_TIME 
+FROM CHAT
+WHERE CHATTING_NO = #{chattingNo}
+ORDER BY CHAT_NO
+</select>
+
+<update id="updateReadFlag">
+UPDATE "CHAT" SET
+CHAT_READ_FL = 'Y'
+WHERE CHATTING_NO = #{chattingNo}
+AND C_FROM_MEMBER_NO != #{memberNo}
+</update>
+
+<select id="selectNumber" parameterType="string" resultType="_int">
+SELECT MEMBER_NO
+FROM "MEMBER"
+WHERE MEMBER_NICKNAME = #{memberNickname}
+</select>
+
+
+
 
 </mapper>

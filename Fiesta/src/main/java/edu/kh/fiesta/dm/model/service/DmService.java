@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.fiesta.dm.model.vo.ChattingRoom;
+import edu.kh.fiesta.dm.model.vo.Message;
 import edu.kh.fiesta.member.model.vo.Member;
 
 public interface DmService {
@@ -19,6 +20,15 @@ public interface DmService {
 	int createChattingRoom(Map<String, Integer> map);
 
 	List<ChattingRoom> selectRoomList(int memberNo);
+
+	int insertMessage(Message msg);
+
+	List<Message> selectMessageList(Map<String, Object> paramMap);
+
+	int updateReadFlag(Map<String, Object> paramMap);
+
+	int selectNumber(String memberNickname);
+
 
 	
 }

@@ -23,43 +23,26 @@ sendMessageBtn.addEventListener("click", ()=>{
 })
 
 
-
-
-function inputEnter(){
-
-    if( window.event.key == "Enter"){
-
-        readValue();   
-    }    
-}    
-
-function readValue(){
-
-    const room = document.getElementById("chattingRoom");
-    const input = document.querySelector("#chattingInput");
-
-
-    if( input.value.trim().length > 0){
-        room.innerHTML += "<p><span>"+ input.value +"</span></p>";
-
-        room.scrollTop =  room.scrollHeight;   
-    } else {      
-    
-    }       
-        input.value="";
-
-
-}        
-
 const proImg = document.getElementById("proImg")
 const next = document.getElementById("next");
 const messageName = document.getElementById("messageName");
+
 // 다음 클릭
 next.addEventListener("click", ()=>{
   dmMenu.style.display = "none";
   noClick.style.display = "none";
   click.style.display = "flex";
   messageName.innerText = recipient.innerText;
+
+  $.ajax({
+    url: "/dm/number",
+    data : {"memberNickname" : RecipientMemberNick},
+    success : (result) =>{
+      
+      const RecipeintMemberNo = result;
+    }
+
+  })
   
 })
 
@@ -107,25 +90,20 @@ const param = {"memberNickname" : sendPeople.value}
             const itemName = item.innerText;
             const itemImage = item.getAttribute("src");
           
-            recipient.innerText = itemName;
-            
+            recipient.innerText = itemName;  
           
           })
-        
 
         }
 
-
-
-
+      }
+    },
+    error: ()=>{
+      console.log("실패");
     }
-  },
-  error: ()=>{
-    console.log("실패");
-  }
 
   
-    });    
+  });    
 })
 
 
@@ -154,22 +132,22 @@ let selectTargetProfile;
 
 let chattingSock;
 
-// if(loginMemberNo != ""){
-//   chattingSock = new SockJs("/chattingSock");
-// }
+if(loginMemberNo != ""){
+	chattingSock = new SockJS("/chattingSock");
+}
 
 document.addEventListener("DOMContentLoaded", ()=>{
 
   roomListAddEvent();
 
-  // send.addEventListener("click", sendMessage);
+  //  send.addEventListener("click", sendMessage);
 
   if(tempNo != ""){
-    const chattingItemList = document.getElementsByClassName("chatting-item");
+    const chattingItemList = document.getElementsByClassName("dm-item");
 
     for(let item of chattingItemList){
 
-      const id= item.getAttribute("id");
+      const id= item.getAttribute("id");  
       const arr = id.split("-");
 
       if(arr[0] == tempNo){
@@ -184,7 +162,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 const dmArea = document.getElementsByClassName("dm-area")[0];
 
 const roomListAddEvent = () =>{
-  const chattingItemList = document.getElementsByClassName("chatting-item");
+  const chattingItemList = document.getElementsByClassName("dm-item");
 
   for(let item of chattingItemList){
     item.addEventListener("click", e =>{
@@ -264,5 +242,177 @@ const selectChattingFn = () =>{
   })
 }
 
+const selectRoomList = () =>{
+  $.ajax({
+    url : "/dm/roomList",
+    data : {"memberNo" : loginMemberNo},
+    dataType : "JSON",
+    success : roomList =>{
+
+      const chattingList = document.querySelector(".dm-list");
+
+      chattingList.innerHTML = "";
+
+      for(let room of roomList){
+        const li = document.createElement("li");
+        li.classList.add("dm-item");
+        li.setAttribute("id", room.chattingNo + "-" + room.targetNo);
+
+        if(room.chattingNo == selectChattingNo){
+          li.classList.add("select");
+        }
+
+        const itemHeader = document.createElement("div");
+        itemHeader.classList.add("item-header");
+
+        const listProfile = document.createElement("img");
+        listProfile.classList.add("list-profile");
+
+        if(room.targetProfile == undefined){
+          listProfile.setAttribute("src", "/resources/images/user.jpg");
+        } else{
+          listProfile.setAttribute("src", room.targetProfile);
+        }
+
+        itemHeader.append(listProfile);
+
+        const itemBody = document.createElement("div");
+        itemBody.classList.add("item-body");
+
+        const p = document.createElement("p");
+
+        const targetName = document.createElement("span");
+        targetName.classList.add("target-name");
+        targetName.innerText = room.targetNickName;
+
+        const recentSendTime = document.createElement("span");
+        recentSendTime.classList.add("recent-send-time");
+        recentSendTime.innerText = roon.sendDate;
+
+        p.append(targetName, recentSendTime);
+
+        const div = document.createElement("div");
+
+        const recentMessage = document.createElement("p");
+        recentMessage.classList.add("recent-message");
+
+        if(room.lastMessage != undefined){
+          recentMessage.innerHTML = room.lastMessage;
+        }
+
+        div.append(recentMessage);
+        
+        itemBody.append(p, div);
 
 
+        if(room.notReadCount > 0 && room.chattingNo != selectChattingNo){
+
+          const notReadCount = document.createElement("p");
+          notReadCount.classList.add("not-read-count");
+          notReadCount.innerText = room.notReadCount;
+          div.append(notReadCount);
+        } else{
+          $.ajax({
+            url : "/dm/updateReadFlag",
+            data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
+            success : result => {
+              console.log("성공");
+            },
+            error : () => {
+              console.log("실패");
+            }
+          })
+        }
+
+        li.append(itemHeader, itemBody);
+        chattingList.append(li);
+
+      }
+      roomListAddEvent();
+    }
+  })
+
+}
+
+
+const sendMessage = () =>{
+  const chattingInput = document.getElementById("chattingInput");
+
+  if(chattingInput.value.trim().length == 0){
+    chattingInput.value = "";
+  } else{
+    var obj = {
+      "senderNo": loginMemberNo,
+      "targetNo" : selectTargetNo,
+      "chattingNo" : selectChattingNo,
+      "messageContent" : chattingInput.value,
+    };
+    chattingSock.send(JSON.stringify(obj));
+
+    chattingInput.value = "";
+  }
+}
+
+chattingInput.addEventListener("keyup", e=>{
+  if(e.key == "Enter"){
+    if(!e.shiftKey){
+      sendMessage();
+    }
+  }
+})
+
+
+chattingSock.onmessage = function(e){
+  const msg = JSON.parse(e.data);
+
+  if(selectChattingNo == msg.chattingNo){
+    const ul = document.querySelector(".dm-area");
+
+    const li = document.createElement("li");
+
+    const span = document.createElement("span");
+    span.classList.add("chatDate");
+    span.innerText = msg.sendDate;
+
+    const p = document.createElement("p");
+    p.classList.add("chat");
+    p.innerHTML = msg.messageContent;
+
+    if(loginMemberNo == msg.senderNo){
+      li.classList.add("my-chat");
+
+      li.append(span, p);
+    } else {
+    li.classList.add("target-chat");
+
+    const img = document.createElement("img");
+    img.setAttribute("src", selectTargetProfile);
+
+    const div = document.createElement("div");
+
+    const b = document.createElement("b");
+    b.innerText = selectTargetName;
+
+    const br = document.createElement("br");
+
+    div.append(b, br, p, span);
+    li.append(img, div);
+  }  
+  ul.append(li);
+  dmArea.scrollTop = dmArea.scrollHeight;
+  }
+ selectRoomList();
+}
+
+
+const openNo = () => {
+
+  $.ajax({
+    url : "/dm/openNo",
+    data: {"memberNickname" : RecipientMemberNick},
+    success : () => {
+      console.log("성공");
+    }
+  })
+
+}
