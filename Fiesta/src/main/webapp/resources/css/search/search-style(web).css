@@ -28,6 +28,10 @@ main {
 }
 
 
+main > section {
+    display: block;
+}
+
 /* 검색 결과 (맨위)*/
 .keywordResult-section{
     /* border: 1px solid black; */

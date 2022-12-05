@@ -55,6 +55,15 @@ public class SearchServiceImpl implements SearchService{
 		return searchResultMap;
 	}
 
+	// 검색 게시글 1개 상세조회
+	@Override
+	public Board searchBoardDetail(Map<String, Object> map) {
+		return dao.searchBoardDetail(map);
+	}
+	
+	
+	
+	
 	
 	// 최근 게시글 조회(pagination)
 	@Override
@@ -65,7 +74,7 @@ public class SearchServiceImpl implements SearchService{
 		
 		
 		// 2. 전체 게시글 수 + cp(현재 페이지) 이용해서 페이지 처리 객체 생성
-		Pagination pagination = new Pagination(listCount, 1);
+		Pagination pagination = new Pagination(listCount, (int)recentMap.get("cp"));
 		
 		// 3. 페이징 처리 객체를 이용해서 게시글 목록 조회
 		List<Board> recentBoardList = dao.selectRecentList(pagination, recentMap);

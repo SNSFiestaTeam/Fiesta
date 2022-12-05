@@ -97,20 +97,6 @@ public class FollowController {
 		}
 		
 		return result;
-		// 팔로우한 상태면, 1 출력
-//		String output = null;
-//		
-//		if(result > 0) {
-//			output = followToNickname;
-//		
-//		} else {
-//			output = "!@#$";  // 닉네임으로 쓸 수 없는 특수문자
-//		}
-//		
-//		System.out.println(output + "출력");
-//
-//		// result == string
-//		return output;
 	}
 	
 	
@@ -140,15 +126,6 @@ public class FollowController {
 		
 		return service.unfollowAccount(map);
 	}
-	
-	
-	
-	
-	
-	// 계정 언팔로우
-	
-	
-	
 	
 	
 	

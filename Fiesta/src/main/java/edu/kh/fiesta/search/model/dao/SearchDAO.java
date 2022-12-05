@@ -74,6 +74,16 @@ public class SearchDAO {
 		return sqlSession.selectOne("searchMapper.getListCount", recentMap);
 	}
 
+	
+	/** 검색 게시글 1개 상세 조회
+	 * @param map
+	 * @return boardResult
+	 */
+	public Board searchBoardDetail(Map<String, Object> map) {
+		return sqlSession.selectOne("mainMapper.selectBoard", map);
+	}
+	
+	
 	/** 최근 게시글 목록 조회
 	 * @param pagination
 	 * @param recentMap
@@ -90,6 +100,10 @@ public class SearchDAO {
 		return sqlSession.selectList("searchMapper.selectRecentBoardList", recentMap, rowBounds);
 														// 이미 만들어 놓은 것
 	}
+
+
+	
+	
 
 	
 

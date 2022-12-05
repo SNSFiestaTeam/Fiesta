@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.google.gson.Gson;
 
+import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.member.model.vo.Member;
 import edu.kh.fiesta.search.model.service.SearchService;
 
@@ -53,8 +55,27 @@ public class SearchController {
 	}
 	
 	
+	// 검색 게시글 1개 상세조회
+	@GetMapping("/search/boardDetail")
+	@ResponseBody
+	public String searchBoardDetail(@SessionAttribute(value="loginMember") Member loginMember, int boardNo) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberNo", loginMember.getMemberNo());
+		map.put("boardNo", boardNo);
+		
+		Board boardResult = service.searchBoardDetail(map);
+		
+		return new Gson().toJson(boardResult);
+	}
+	
+	
+	
+	
+	
 	// 최근게시글 조회_pagination
  	@GetMapping("/selectRecentList")
+ 	@ResponseBody
  	public String selectRecentList(String searchInput, int cp, Model model) {
  		
  		// 서비스 호출에 필요한 매개변수
@@ -68,7 +89,6 @@ public class SearchController {
  		model.addAttribute("recentResultMap", recentResultMap);
  		
  		return new Gson().toJson(recentResultMap);
- 		
  	}
 
 	

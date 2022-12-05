@@ -21,6 +21,12 @@
         /* align-items:center; */
     }
     
+    main > section {
+        margin: 0;
+        display: block;
+    }
+    
+
     
     /* 검색 결과 (맨위)*/
     .keywordResult-section{
