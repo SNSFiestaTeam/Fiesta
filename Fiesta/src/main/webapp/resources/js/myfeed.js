@@ -9,16 +9,20 @@ const editClose = document.getElementById("edit-close");
 
 
 followBtn.addEventListener("click", function(){
+
     memberNo = document.getElementById('nickname').firstElementChild.nextElementSibling.value;
+    
+    console.log(memberNo);
+    
     $.ajax({
         url :"/feed/" + memberNickname + "/followList",
         type : "post",
         data : {"memberNo" : memberNo},
         dataType : "json",
         success : (followList) => {
-            console.log(followList);
-
+            
             for(let follow of followList) {
+                console.log(follow.memberNo);
 
                 if(follow.memberNo != memberNo){
 
