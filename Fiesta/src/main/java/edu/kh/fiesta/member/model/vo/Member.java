@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class Member {
-	private int memberNo;
+	public int memberNo;
 	private String memberEmail;
 	private String memberPw;
 	private String memberName;

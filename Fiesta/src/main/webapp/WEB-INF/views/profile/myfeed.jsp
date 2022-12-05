@@ -59,6 +59,7 @@
           <div id="profile-text">
             <div id="nickname">
               <span>${feedMember.memberNickname}</span>
+              <input type="hidden" value="${feedMember.memberNo}"/>
 
               <button id="btn">
                 <a href="/setting"><i class="fa-solid fa-gear"></i></a>
@@ -67,8 +68,8 @@
 
             <div id="profile-board">
               <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
-              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount}</button></span>
-              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount}</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount-1}</button></span>
             </div>
 
             <div class="profileName">${feedMember.memberName}</div>
@@ -112,6 +113,7 @@
         <div id="profile-text">
           <div id="nickname">
             <span>${memberNickname}</span>
+            <input type="hidden" value="${feedMember.memberNo}"/>
 
             <button id="btn-dm">
               <span>메세지 보내기</span>
@@ -125,8 +127,8 @@
 
           <div id="profile-board">
               <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
-              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount}</button></span>
-              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount}</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount-1}</button></span>
           </div>
 
           <p class="introduce-text">${feedMember.introContent}</p>
@@ -154,6 +156,7 @@
 
           <c:if test ="${fn:length(boardList) > 0}">
           <div class="img-container">
+
             <c:forEach var="board" items ="${boardList}" begin="0" end="2">
             <a href="#">
               <img class="feed-img" src="${board.imgPath}"
@@ -164,8 +167,11 @@
               </div>
             </a>
             </c:forEach>
+
           </div>
           </c:if>
+
+
 
           <c:if test ="${fn:length(boardList) > 3}">
           <div class="img-container2">

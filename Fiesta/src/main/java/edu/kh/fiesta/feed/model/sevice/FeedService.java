@@ -31,6 +31,9 @@ public interface FeedService {
 	Map<String, Object> selectFeedAll(int memberNo, String memberNickname);
 
 
+	Map<String, Object> selectBoardList(Map<String, Object> paramMap);
+
+
 
 
 		

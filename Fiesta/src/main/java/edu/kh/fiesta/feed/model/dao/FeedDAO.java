@@ -8,10 +8,10 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.fiesta.feed.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
-import edu.kh.fiesta.main.model.vo.Pagination;
 import edu.kh.fiesta.member.model.vo.Member;
 
 
@@ -72,7 +72,12 @@ public class FeedDAO {
 	public Member selectMember(Member member) {
 		return sqlSession.selectOne("feedMapper.selectMember", member);
 	}
+	
+	public Member selectMember(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("feedMapper.selectMember", paramMap);
+	}
 
+	
 	
 
 
