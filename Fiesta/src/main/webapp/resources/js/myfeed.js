@@ -9,7 +9,7 @@ const editClose = document.getElementById("edit-close");
 
 
 followBtn.addEventListener("click", function(){
-
+    memberNo = document.getElementById('nickname').firstElementChild.nextElementSibling.value;
     $.ajax({
         url :"/feed/" + memberNickname + "/followList",
         type : "post",
@@ -19,45 +19,49 @@ followBtn.addEventListener("click", function(){
             console.log(followList);
 
             for(let follow of followList) {
-                const followArea = document.getElementById("followList");
 
-                const followContent = document.createElement("div");
-                followContent.classList.add("follow-content");
+                if(follow.memberNo != memberNo){
 
-                followArea.append(followContent);
+                    const followArea = document.getElementById("followList");
 
-                const div1 = document.createElement("div");
-                const div2 = document.createElement("div");
+                    const followContent = document.createElement("div");
+                    followContent.classList.add("follow-content");
 
-                followContent.append(div1);
-                div1.append(div2);
+                    followArea.append(followContent);
 
-                const profileImgSpan = document.createElement("span");
-                const profileImg = document.createElement("img");
-                if(follow.memberProfileImg == undefined) {
-                    profileImg.setAttribute("src","/resources/images/profile/profile.jpg" )
-                
-                } else {
-                    profileImg.setAttribute("src",follow.memberProfileImg);
+                    const div1 = document.createElement("div");
+                    const div2 = document.createElement("div");
 
+                    followContent.append(div1);
+                    div1.append(div2);
+
+                    const profileImgSpan = document.createElement("span");
+                    const profileImg = document.createElement("img");
+
+                    if(follow.memberProfileImg == undefined) {
+                        profileImg.setAttribute("src","/resources/images/profile/profile.jpg" )
+                    
+                    } else {
+                        profileImg.setAttribute("src",follow.memberProfileImg);
+
+                    }
+
+                    const profileNickname = document.createElement("span");
+                    const nicknameA = document.createElement("a");
+
+                    nicknameA.href = "/feed/"+ follow.memberNickname;
+                    nicknameA.innerText = follow.memberNickname;
+
+                    div2.append(profileImgSpan, profileNickname);
+
+                    profileImgSpan.append(profileImg);
+                    profileNickname.append(nicknameA);
+
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.innerText = "삭제";
+
+                    div1.append(deleteBtn);
                 }
-
-                const profileNickname = document.createElement("span");
-                const nicknameA = document.createElement("a");
-
-                nicknameA.href = "/feed/"+ follow.memberNickname;
-                nicknameA.innerText = follow.memberNickname;
-
-                div2.append(profileImgSpan, profileNickname);
-
-                profileImgSpan.append(profileImg);
-                profileNickname.append(nicknameA);
-
-                const deleteBtn = document.createElement("button");
-                deleteBtn.innerText = "삭제";
-
-                div1.append(deleteBtn);
-
             }
 
             followContainer.style.display ="flex";
@@ -69,7 +73,7 @@ followBtn.addEventListener("click", function(){
 });
 
 followingBtn.addEventListener("click", function(){
-    
+    memberNo = document.getElementById('nickname').firstElementChild.nextElementSibling.value;
     $.ajax({
         url : "/feed/" + memberNickname + "/followingList",
         type : "post",
@@ -79,54 +83,56 @@ followingBtn.addEventListener("click", function(){
             console.log(followingList);
             
             for( let following of followingList) {
-                
-                // followingContent를 추가할 부모요소 불러오기
-                const followingArea = document.getElementById("followingList");
-                
-                // followingContent(div)요소 생성 및 class추가
-                const followingContent = document.createElement("div");
-                followingContent.classList.add("following-content");
+                if(following.memberNo != memberNo) {
+                    
+                    // followingContent를 추가할 부모요소 불러오기
+                    const followingArea = document.getElementById("followingList");
+                    
+                    // followingContent(div)요소 생성 및 class추가
+                    const followingContent = document.createElement("div");
+                    followingContent.classList.add("following-content");
+                    
+                    // followingArea안에 followingContent를 조립
+                    followingArea.append(followingContent)
 
-                // followingArea안에 followingContent를 조립
-                followingArea.append(followingContent)
+                    const div1 = document.createElement("div");
+                    const div2 = document.createElement("div");
 
-                const div1 = document.createElement("div");
-                const div2 = document.createElement("div");
+                    followingContent.append(div1);
+                    div1.append(div2);
 
-                followingContent.append(div1);
-                div1.append(div2);
+                    // div2안에 span태그와 img태그를 삽입하기 위한 요소 생성
+                    // following멤버에 프로필 사진과 닉네임
+                    const profileImgSpan = document.createElement("span");
+                    const profileImg = document.createElement("img");
+                    
+                    if(following.memberProfileImg == undefined){
+                        profileImg.setAttribute("src", "/resources/images/profile/profile.jpg");
+                        
+                    } else {
+                        profileImg.setAttribute("src", following.memberProfileImg);
+                        
+                    }
+                    
+                    profileImgSpan.append(profileImg);
 
-                // div2안에 span태그와 img태그를 삽입하기 위한 요소 생성
-                // following멤버에 프로필 사진과 닉네임
-                const profileImgSpan = document.createElement("span");
-                const profileImg = document.createElement("img");
-                
-                if(following.memberProfileImg == undefined){
-                    profileImg.setAttribute("src", "/resources/images/profile/profile.jpg");
-
-                } else {
-                    profileImg.setAttribute("src", following.memberProfileImg);
-
+                    const nicknameSpan = document.createElement("span");
+                    const nicknameA = document.createElement("a");
+                    
+                    nicknameA.href = "/feed/"+ following.memberNickname;
+                    nicknameA.innerText = following.memberNickname;
+                    
+                    nicknameSpan.append(nicknameA);
+                    
+                    div2.append(profileImgSpan, nicknameSpan);
+                    
+                    const followingBtn = document.createElement("button");
+                    followingBtn.innerText = "팔로잉";
+                    
+                    div1.append(followingBtn);
                 }
-
-                profileImgSpan.append(profileImg);
-
-                const nicknameSpan = document.createElement("span");
-                const nicknameA = document.createElement("a");
-
-                nicknameA.href = "/feed/"+ following.memberNickname;
-                nicknameA.innerText = following.memberNickname;
-
-                nicknameSpan.append(nicknameA);
-
-                div2.append(profileImgSpan, nicknameSpan);
-
-                const followingBtn = document.createElement("button");
-                followingBtn.innerText = "팔로잉";
-
-                div1.append(followingBtn);
             }
-
+            
             followingContainer.style.display = "flex";
             scrollrock.style.overflow = "hidden";
         },
@@ -144,12 +150,6 @@ followClose.addEventListener("click", function(){
     document.getElementById("followList").innerHTML ="";
 })
 
-followContainer.addEventListener("click", function(){
-    followContainer.style.display ="none";
-    scrollrock.style.overflow = "visible";
-    document.getElementById("followList").innerHTML ="";
-})
-
 const followingClose = document.getElementById("following-close")
 followingClose.addEventListener("click", function(){
     followingContainer.style.display ="none";
@@ -157,11 +157,6 @@ followingClose.addEventListener("click", function(){
     document.getElementById("followingList").innerHTML ="";
 })
 
-followingContainer.addEventListener("click", function(){
-        followingContainer.style.display ="none";
-        scrollrock.style.overflow = "visible";
-        document.getElementById("followingList").innerHTML ="";
-})
 
 self.addEventListener("click", function(){
     profileContainer.style.display = "flex";
@@ -173,95 +168,196 @@ editClose.addEventListener("click", function(){
     scrollrock.style.overflow = "visible";
 })
 
-// const feedSection = document.querySelector(".feed-section");
-// let listEnd = feedSection.lastElementChild;
-// const option = {
-//   root: null,
-//   rootMargin: "0px 0px 0px 0px",
-//   threshold: 1.0,
-// };
+const feedSection = document.querySelector(".feed-section");
+let listEnd = feedSection.lastElementChild;
+const option = {
+  root: null,
+  rootMargin: "0px 0px 0px 0px",
+  threshold: 1.0,
+};
 
-// const observer = new IntersectionObserver(selectBoardImgList, option);
-// observer.observe(listEnd);
-// let cp = 2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let endList;
+
+window.addEventListener("load", (event) => {
+  endList = document.getElementById('feed-section').lastElementChild;
+
+  createObserver();
+}, false)
+
+
+// ! 무한 스크롤 용 객체 생성
+function createObserver() {
+  let observer;
+
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.8
+  };
+
+  observer = new IntersectionObserver(selectBoardList, options);
+  observer.observe(endList);
+}
+
+
+
+
+// * 현재 페이지 번호 변수 선언
+let cp = 2;
     
-// function selectBoardImgList() {
+function selectBoardList(entries, observer) {
 
-//     $.ajax({
-//         url : "/feed/" + memberNo + "/selectBoardImgList",
-//         type : "GET",
-//     data : {"memberNo" : memberNo, "cp" : cp},
-//     dataType : "json",
-//     success : (map) => {
-//         console.log(map.boardImgList);
+    entries.forEach((entry) => {
 
-//         const boardImgList = map.boardImgList;
-//         const pagination = map.pagination;
-//         cp++;
+        if(entry.isIntersecting){
 
-//         for(let boardImg of boardImgList) {
             
-//             const feedSection = document.getElementById("feed-section");
             
-//             const imgContainer = document.createElement("div");
-//             imgContainer.classList.add("img-container");
-            
-//             feedSection.append(imgContainer);
-            
-//             for(let boardImg of boardImgList){
-                
-//                 const boardImgContainer = document.createElement("a");
-//                 boardImgContainer.href = "/feed/"+ loginMember.memberNickname;
-                
-//                 imgContainer.append(boardImgContainer);
-                
-//                 const feedImg = document.createElement("img");
-//                 feedImg.classList.add("feed-img");
-//                 feedImg.setAttribute("src", "/resources/images/feed/feed.png");
-                
-//                 const hoverIconContainer = document.createElement("hover-icon-container")
-//                 hoverIconContainer.classList.add("hover-icon-container");
-                
-//                 boardImgContainer.append(feedImg, hoverIconContainer);
-                
-//                 const faHeart = document.createElement("i");
-//                 faHeart.classList.add("fa-regular fa-heart");
-                
-//                 const faComment = document.createElement("i");
-//                 faComment.classList.add("fa-regular fa-comment");
-                
-//                 boardImgContainer.append(faComment, faHeart);
-                
-//                 const boardLikeSpan = document.createElement("span");
-//                 const boardCommentSpan = document.createElement("span");
-                
-//                 boardLikeSpan.innerText = board.likeCount;
-//                 boardCommentSpan.innerText = board.commentCount;
-                
-//                 faHeart.append(boardLikeSpan);
-//                 faComment.append(boardCommentSpan);
-                
-//             }
-            
-//         }
-//     },
-//     error : () => {
-//         console.log("게시글 오류 발생");
-//     }
+                $.ajax({
+                    url : "/feed/" + memberNickname + "/selectBoardList",
+                    type : "GET",
+                    data : {"memberNo" : memberNo, "cp" : cp},
+                    dataType : "json",
+                    success : (map) => {
+
+                        if(map==null) {
+                            console.log("결과 없음");
+                        }else{
+
+                            const boardList = map.boardList;
+                            const pagination = map.pagination;
     
-// });
-
-// }
-
-// const mainContainer = document.getElementsByClassName("main-container");
-// const chk = document.getElementById("header-menu-toggle");
-// mainContainer.addEventListener("click", () => {
-
-//     if(chk.checked(true)) {
+                           
+                            if (cp <= pagination.maxPage) {
+                                endList = document.getElementById('feed-section').lastElementChild;
+                                createObserver();
+                                cp++;
+                                console.log("cp :" + cp);
+                            }
+    
+                            
+            
+                                const feedSection = document.getElementById("feed-section");
+                    
+                                const imgContainer = document.createElement("div");
+                                imgContainer.classList.add("img-container");
+                            
+                                feedSection.append(imgContainer);
+                    
+                            for(let board of boardList){
         
-//         chk.checked = false;
-//     };
+                                const boardContainer = document.createElement("a");
+                                boardContainer.href = "#";
+                
+                                imgContainer.append(boardContainer);
+                
+                                const feedImg = document.createElement("img");
+                                feedImg.classList.add("feed-img");
+                                feedImg.setAttribute("src", board.imgPath);
+    
+                                const hoverIconContainer = document.createElement("div")
+                                hoverIconContainer.classList.add("hover-icon-container");
+    
+                                boardContainer.append(feedImg, hoverIconContainer);
+    
+                                const faHeart = document.createElement("i");
+                                faHeart.classList.add("fa-regular", "fa-heart");
+    
+                                const faComment = document.createElement("i");
+                                faComment.classList.add("fa-regular", "fa-comment");
+    
+                                hoverIconContainer.append(faHeart, faComment);
+    
+                                const boardLikeSpan = document.createElement("span");
+                                const boardCommentSpan = document.createElement("span");
+    
+                                boardLikeSpan.innerText = board.likeCount;
+                                boardCommentSpan.innerText = board.commentCount;
+    
+                                faHeart.append(boardLikeSpan);
+                                faComment.append(boardCommentSpan);
+    
+                            }
+                        }
+                
 
-// });
+                    
+                },
+                error : () => {
+                    console.log("게시글 오류 발생");
+                }
+            
+            });
+        }
+    })
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.addEventListener("click", (e) => {
+
+    e.target === followContainer ? 
+        (followContainer.style.display = "none") && (scrollrock.style.overflow = "visible")
+        && (document.getElementById("followList").innerHTML = "") : false
+
+    e.target === followingContainer ?
+        (followingContainer.style.display = "none") && (scrollrock.style.overflow = "visible")
+        && (document.getElementById("followingList").innerHTML ="") : false
+
+    e.target === profileContainer ? 
+        (profileContainer.style.display = "none") && (scrollrock.style.overflow = "visible") : false
+});
 
 

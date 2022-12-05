@@ -1,5 +1,6 @@
 package edu.kh.fiesta.feed.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,20 +72,26 @@ public class FeedController {
 		return "profile/myfeedTaged";
 	}
 	
-	/** 게시글 이미지 조회
+	/** 게시글 AJAX 조회
 	 * @param memberNickname
 	 * @param model
 	 * @param cp
 	 * @return
 	 */
-//	@GetMapping("/feed/{memberNickname}/selectBoardImgList")
-//	@ResponseBody
-//	public String selectBoardImgList(@PathVariable("memberNickname") String memberNickname, Model model, int cp) {
-//		
-//		Map<String, Object> map = service.selectBoardImgList(memberNickname, cp);
-//		
-//		return new Gson().toJson(map);
-//	}
+	@GetMapping("/feed/{memberNickname}/selectBoardList")
+	@ResponseBody
+	public String selectBoardList(@PathVariable("memberNickname") String memberNickname, Model model, int cp, @SessionAttribute(value="loginMember") Member loginMember) {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("memberNickname",memberNickname);
+		paramMap.put("memberNo", loginMember.getMemberNo());
+		paramMap.put("cp", cp);
+		
+		Map<String, Object> feedMap = service.selectBoardList(paramMap);
+		
+		return new Gson().toJson(feedMap);
+	}
 	
 	
 	/** 인기피드
