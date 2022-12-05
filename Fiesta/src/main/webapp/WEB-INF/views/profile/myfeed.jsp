@@ -46,12 +46,12 @@
         <section class="info-section">
           <div id="profile-photo">
             <button id="self">
-              <c:if test="${ empty loginMember.memberProfileImg}">
+              <c:if test="${ empty feedMember.memberProfileImg}">
                 <img id="selfImg" src="/resources/images/profile/profile.jpg" />
               </c:if>
 
-              <c:if test="${ !empty loginMember.memberProfileImg}">
-                <img id="selfImg" src="${loginMember.memberProfileImg}" />
+              <c:if test="${ !empty feedMember.memberProfileImg}">
+                <img id="selfImg" src="${feedMember.memberProfileImg}" />
               </c:if>
             </button>
           </div>
