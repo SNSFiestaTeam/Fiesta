@@ -27,24 +27,7 @@ const proImg = document.getElementById("proImg")
 const next = document.getElementById("next");
 const messageName = document.getElementById("messageName");
 
-// 다음 클릭
-next.addEventListener("click", ()=>{
-  dmMenu.style.display = "none";
-  noClick.style.display = "none";
-  click.style.display = "flex";
-  messageName.innerText = recipient.innerText;
 
-  $.ajax({
-    url: "/dm/number",
-    data : {"memberNickname" : RecipientMemberNick},
-    success : (result) =>{
-      
-      const RecipeintMemberNo = result;
-    }
-
-  })
-  
-})
 
 const memberListArea = document.getElementById("memberListArea");
 
@@ -88,11 +71,8 @@ sendPeople.addEventListener("input", ()=>{
           item.addEventListener("click", e=>{
             const itemName = item.innerText;
             const itemImage = item.getAttribute("src");
-          
-            const sendPeople = document.getElementById('sendPeople');
-            sendPeople.value = '';
+
             recipient.innerText = itemName;  
-          
           })
 
         }
@@ -105,6 +85,30 @@ sendPeople.addEventListener("input", ()=>{
 
   
   });    
+})
+
+// 다음 클릭
+next.addEventListener("click", ()=>{
+  dmMenu.style.display = "none";
+  noClick.style.display = "none";
+  click.style.display = "flex";
+  messageName.innerText = recipient.innerText;
+
+  const RecipientMemberNick = recipient.innerText;
+
+  // targetNo 얻어오기
+  $.ajax({
+    url: "/dm/number",
+    data : {"memberNickname" : RecipientMemberNick},
+    success : (result) =>{
+      
+      console.log("성공");
+      targetNo = result;
+      
+    }
+
+  })
+  
 })
 
 
