@@ -92,7 +92,7 @@
               </ul>
             </div>
             <div id="input">
-            <input type="text" size="50" id="chattingInput" onkeyup="inputEnter()">
+            <input type="text" size="50" id="chattingInput">
             </div>
           </div>
         </div>
@@ -107,6 +107,12 @@
     <script>
       // 로그인한 회원 번호
       const loginMemberNo = "${loginMember.memberNo}";
+
+      const RecipientMemberNick = "${Recipeint.innerText}";
+      // 모달에서 닉네임 얻어오기
+
+
+
   
       // 게시판에서 사용자 닉네임을 눌러서 채팅 화면으로 넘어온 경우
       // 그 때 전달된 채팅방 번호를 저장하는 변수
