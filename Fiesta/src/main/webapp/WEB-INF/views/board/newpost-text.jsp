@@ -10,7 +10,7 @@
     <section class="modal_post_section-text" >
       <!-- post top -->
 
-      <form action="/write" method="POST" enctype="multipart/form-data">
+      <form action="/write" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
 
 
         <input type="file" name="newPostFile" id="cropperfile" none accept="image/*" multiple style="display:none" onsubmit="return writeValidate()">
@@ -20,7 +20,7 @@
           <div id="backBtnText">
             <i class="fa-solid fa-arrow-left"></i>
           </div>
-          <p>새 게시물 만들기</p>
+          <p id="postName">새 게시물 만들기</p>
           <button name="newpostText" id="newPostAll">게시하기</button>
         </div>
         <!-- post-bottom -->

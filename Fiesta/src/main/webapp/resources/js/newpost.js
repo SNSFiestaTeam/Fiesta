@@ -7,7 +7,7 @@ const modalBackgroundText = document.getElementById("modalBackgroundText"); // �
 const slideImages = document.getElementById("slideImages"); // edit화면 파일 리스트
 const filePreview = document.getElementById("filePreview"); // edit화면 파일 추가의 미리보기
 const textFileSwiper = document.getElementById("textFileSwiper"); // text화면 파일 리스트(합치기,지우기사용)
-const postFileTextArea = document.getElementById("postFileTextArea"); // text 접근성 리스트
+// const postFileTextArea = document.getElementById("postFileTextArea"); // text 접근성 리스트
 
 const modalBackgroundFinish = document.getElementById("modalBackgroundFinish"); // 새 게시물 작성 완료 창 
 const modalBackgroundClose = document.getElementById("modalBackgroundClose"); // 새 게시물 작성 취소 창
@@ -26,7 +26,7 @@ newPostClose.addEventListener("click", function () {
   slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
   filePreview.innerHTML = "";
   textFileSwiper.innerHTML = "";
-  postFileTextArea.innerHTML = "";
+  // postFileTextArea.innerHTML = "";
 });
 ``;
 // edit작성 중 x버튼
@@ -65,7 +65,20 @@ document.getElementById("closeTextDelete").addEventListener("click", () => {
   slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
   filePreview.innerHTML = "";
   textFileSwiper.innerHTML = "";
-  postFileTextArea.innerHTML = "";
+  // postFileTextArea.innerHTML = "";
+});
+const backBtnText = document.getElementById("backBtnText");
+backBtnText.addEventListener("click", () => {
+  modalBackground.style.display = "flex";
+  modalBackgroundClose.style.display = "none";
+  modalBackgroundEidt.style.display = "none";
+  modalBackgroundText.style.display = "none";
+  // slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+  // filePreview.innerHTML = "";
+  // textFileSwiper.innerHTML = "";
+  // postFileTextArea.innerHTML = "";
+  document.postForm.reset();
+  console.log(document.getElementById("cropperfile").files);
 });
 document.getElementById("closeTextCancel").addEventListener("click", () => {
   modalBackgroundClose.style.display = "none";
@@ -106,14 +119,14 @@ document.getElementById("closeTextCancel").addEventListener("click", () => {
 //   formData.delete("files");
 // });
 // text에서 뒤로가기
-const backBtnText = document.getElementById("backBtnText");
-backBtnText.addEventListener("click", () => {
-  modalBackgroundText.style.display = "none";
-  modalBackgroundEidt.style.display = "flex";
-  textFileSwiper.innerHTML = "";
-  postFileTextArea.innerHTML = "";
-  // formData.delete('files');
-});
+
+// backBtnText.addEventListener("click", () => {
+//   modalBackgroundText.style.display = "none";
+//   modalBackgroundEidt.style.display = "flex";
+//   textFileSwiper.innerHTML = "";
+//   postFileTextArea.innerHTML = "";
+//   // formData.delete('files');
+// });
 
 // //! 접근성 토클
 // const $toggle = document.querySelector(".toggleSwitch");
@@ -207,7 +220,7 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
 
 
         postFileTextDiv.append(postFileTextImg, postFileTextInput);
-        postFileTextArea.append(postFileTextDiv);
+        // postFileTextArea.append(postFileTextDiv);
 
         var swiper = new Swiper(".swiper", {
           spaceBetween: 0.5,    // 슬라이드 사이 여백                     
@@ -309,16 +322,68 @@ document.getElementById("newPostCloseFinish").addEventListener("click", () => {
 
 
 
-function is_checked() {
-  
-  // 1. checkbox element를 찾습니다.
-  const boardPubPriFlag = document.getElementById("boardPubPriFlag");
-  const commentBlockFlag = document.getElementById("commentBlockFlag");
+feedUpdateBtnLogin.addEventListener("click", () => {
+  modalBackgroundText.style.display = "flex";
+  feedMenuLogin.style.display = "none";
+  console.log("눌림?");
+});
 
-  // 2. checked 속성을 체크합니다.
-  const is_checked = checkbox.checked;
+// const update = document.getElementById("update");
+// update.addEventListener("click", () => {
 
-  // 3. 결과를 출력합니다.
-  document.getElementById('result').innerText = is_checked;
+//   $.ajax({
+//       url : "/upate",
+//       type : "Post",
+//       data : {"boardContent": boardContent.value},
+//       success: (result) => {
+//           if(result > 0){
+//               console.log("게시물 작성 성공");
+//               modalBackgroundUpdate.style.display = "none";
+//               location.reload();
+//           }else{
+//               console.log("게시물 작성 실패");
+//           }
+//         },
+//         error: () => {
+//           console.log("게시물 작성 에러");
+//         },
+//   });
+// });
+const modalBackgroundUpdate = document.getElementById('modalBackgroundUpdate');
+//! 수정
+feedUpdateBtnLogin.addEventListener("click", () => {
   
-}
+  const postName = document.getElementById("postName");
+  
+  postName.innerText="";
+  postName.innerText='정보 수정';
+
+  console.log("눌림?");
+
+  $.ajax({
+    url : "/selectOneBoard",
+    data: {"boardNo": boardNo},
+    dataType: "json",
+    success: (board) => {
+
+      console.log(board);
+      const boardContent = document.getElementById('updateBoardContent');
+      const boardImageOne = document.getElementById('boardImageOne');
+      const boardNo = document.getElementById('boardNo');
+
+      boardNo.value = board.boardNo;
+
+      const img = document.createElement('img');
+      img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
+
+      boardImageOne.append(img);
+      boardContent.innerText = board.boardContent;
+
+      modalBackgroundUpdate.style.display = "flex";
+      feedMenuLogin.style.display = "none";
+    },
+    error: () => {
+      console.log("게시글 조회 error");
+    },
+  })
+});
