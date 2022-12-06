@@ -86,11 +86,10 @@ sendPeople.addEventListener("input", ()=>{
 
         for(let item of chatMember){
           item.addEventListener("click", e=>{
-            const itemName = item.innerText;
+            const itemName = document.getElementById("sendPeople");
+            itemName.item.innerText ='';
             const itemImage = item.getAttribute("src");
           
-            const sendPeople = document.getElementById('sendPeople');
-            sendPeople.value = '';
             recipient.innerText = itemName;  
           
           })

@@ -178,16 +178,13 @@ margin: 10px;
 #memberListArea{
     display: flex;
     flex-direction: column;
-    padding-left: 0;
-    margin-top: 10px;
 }
 
 /* 모달 - 추천 창 */
 .chatMember{
-    height: 60px;
+    height: 70px;
     padding: 2px;
     display: flex;
-    align-items: center;
     cursor: pointer;
 }
 

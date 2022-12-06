@@ -56,13 +56,14 @@ const recipient = document.getElementById("Recipient");
 const sendPeople = document.getElementById("sendPeople");
 sendPeople.addEventListener("input", ()=>{
   
+const param = {"memberNickname" : sendPeople.value}
+
   $.ajax({  
     url: "/dm/selectMember",
-    data: {"memberNickname": sendPeople.value},
     type:"GET",
     dataType:"JSON",
     success : (memberList)=>{
-      memberListArea.innerHTML = "";
+
       
       
       for(let member of memberList){
@@ -89,8 +90,6 @@ sendPeople.addEventListener("input", ()=>{
             const itemName = item.innerText;
             const itemImage = item.getAttribute("src");
           
-            const sendPeople = document.getElementById('sendPeople');
-            sendPeople.value = '';
             recipient.innerText = itemName;  
           
           })

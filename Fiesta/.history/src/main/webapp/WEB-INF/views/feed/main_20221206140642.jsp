@@ -341,7 +341,6 @@
     <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
-    <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
-    <%-- <script src="/resources/js/newpost.js"></script> --%>
+    <script src="/resources/js/newpost.js"></script>
   </body>
 </html>

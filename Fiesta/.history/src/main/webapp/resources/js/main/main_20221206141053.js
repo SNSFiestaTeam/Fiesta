@@ -936,9 +936,6 @@ window.addEventListener('click', (e) => {
 
   // 피드 헤더 메뉴창 바깥 클릭 시 닫힘
   e.target === commentMenu ? commentMenu.style.display = 'none' : false
- 
-  // 피드 헤더 메뉴창 바깥 클릭 시 닫힘
-  e.target === loginCommentMenu ? loginCommentMenu.style.display = 'none' : false
 
   body.classList.remove("scrollLock");
 

@@ -62,7 +62,7 @@ sendPeople.addEventListener("input", ()=>{
     type:"GET",
     dataType:"JSON",
     success : (memberList)=>{
-      memberListArea.innerHTML = "";
+
       
       
       for(let member of memberList){
@@ -89,8 +89,6 @@ sendPeople.addEventListener("input", ()=>{
             const itemName = item.innerText;
             const itemImage = item.getAttribute("src");
           
-            const sendPeople = document.getElementById('sendPeople');
-            sendPeople.value = '';
             recipient.innerText = itemName;  
           
           })
