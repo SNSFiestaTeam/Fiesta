@@ -15,7 +15,7 @@
 // location.pathname = 현재 요청 주소만을 반환(프로토콜, ip, 포트 제외)  ex)/board/1
 // location.search : 쿼리스트링만 반환  ex) ?cp=2
 
-
+//*-----------------------------------------------------------------
 // * 검색창에 검색 키워드 남겨놓기
 const searchInput = document.getElementById("searchInput");
 //const params = new URL(location.href).searchParams;  // 주소에서 쿼리스트링만 분리한 객체
@@ -41,7 +41,7 @@ const keyword = decodeURI((location.search).substring(13));     //lastindexOf("=
 
 
 
-
+//*----------------------------------------------------------------
 // * 최근 게시글 불러오기(무한스크롤)
 
 let recentEndList;
@@ -60,20 +60,18 @@ window.addEventListener("load", function (event) {
 function createObserver(){
     let observer;
 
-
     let options = {
         root: null,  
         rootMargin: "0px",
         threshold: 0.8   // observe하는 크기의 얼마나 보였을 때 실행할 건지.
     };
-
-    
-    // html요소 등장하면 이 안에 코드 실행해줌
-    // selectRecentList : 최근 게시글 불러오는 함수
-    // 최근 게시글을 ajax를 이용해서 불러오고 성공하면 요소 생성
+                                   // selectRecentList : 최근 게시글 불러오는 함수    
     observer = new IntersectionObserver(selectRecentList, options); 
     observer.observe(recentEndList);  // recentBoardEnd가 화면에 등장하는지 감시
     // observer.unobserve(recentEndList);
+
+    // html요소 등장하면 이 안에 코드 실행해줌
+    // 최근 게시글을 ajax를 이용해서 불러오고 성공하면 요소 생성
 }
 
 
@@ -88,7 +86,6 @@ function createObserver(){
 let cp = 4;
 
 
-
 // 최근 게시글 목록 화면 출력(페이지네이션, 무한스크롤)
 function selectRecentList(entries, observer){
     // entries: 더 보이거나 덜 보이게 되면서 통과한 역치를 나타내는, 
@@ -97,7 +94,6 @@ function selectRecentList(entries, observer){
     // observer : 자신을 호출한 IntersectionObserver.
     //           이 기능을 이용해 화면 맨 아래에 div 요소를 넣어 
     //           이 div 요소를 IntersectionObserver 가 감시.
-
 
 
     entries.forEach((entry) => {
@@ -148,7 +144,6 @@ function selectRecentList(entries, observer){
     });
 
 }
-
 
 
 
