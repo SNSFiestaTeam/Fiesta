@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'NanumSquareNeo-Variable';
+}
+
+body {
+  display: flex;
+}
+
+/* 사이드 바 */
+.sidebar{
+  width: 300px;
+  height: vh;
+  background-color: black;
+  color: white;
+
+
+}
+
+/* 관리자 페이지 타이틀 */
+.management-title{
+  
+  border-bottom: 1px solid black;
+
+
+}
+
+/* 관리자 페이지 내용 */
+.management-content {
+
+}
