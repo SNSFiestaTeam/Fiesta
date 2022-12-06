@@ -23,7 +23,7 @@ public interface DmService {
 
 	int insertMessage(Message msg);
 
-	List<Message> selectMessageList(Map<String, Object> paramMap);
+	List<Message> selectMessageList(int chattingNo);
 
 	int updateReadFlag(Map<String, Object> paramMap);
 

@@ -53,6 +53,7 @@ public class DmController {
 	
 	// 채팅방 입장
 	@GetMapping("/enter")
+	@ResponseBody
 	public String dmEnter (int targetNo, RedirectAttributes ra,
 			@SessionAttribute("loginMember") Member loginMember) {
 	
@@ -64,19 +65,31 @@ public class DmController {
 		map.put("targetNo", targetNo);
 		map.put("loginMemberNo", loginMember.getMemberNo());
 		
+//		채팅방 존재여부 확인
 		int chattingNo = service.checkChattingNo(map);
 		
+		
+//		채팅방 존재 x 일 때
         if(chattingNo == 0) { 
         	
         	// 새로운 채팅방 생성 후 채팅방 번호 반환
             chattingNo = service.createChattingRoom(map);
+
+//      채팅방이 존재할 때
+        } else {
+        	
+//        	메세지 내용 가져와서 반환
+        	List<Message> messageList = service.selectMessageList(chattingNo);
+        	map.put("messageList", messageList);
         }
         
-        ra.addFlashAttribute("chattingNo", chattingNo);
-        System.out.println(chattingNo);
         
-        return "/enter";
-		
+        map.put("chattingNo", chattingNo);
+        
+        
+        ra.addFlashAttribute("chattingNo", chattingNo);
+        
+        return new Gson().toJson(map);	
 	}
 	
 	
@@ -104,9 +117,9 @@ public class DmController {
 	// 메세지 화면 비동기 조회
 	@GetMapping("/selectMessage")
 	@ResponseBody
-	public String selectMessageList(@RequestParam Map<String, Object> paramMap) {
+	public String selectMessageList(int chattingNo) {
 		
-		List<Message> messageList = service.selectMessageList(paramMap);
+		List<Message> messageList = service.selectMessageList(chattingNo);
 		
 		return new Gson().toJson(messageList);
 		
