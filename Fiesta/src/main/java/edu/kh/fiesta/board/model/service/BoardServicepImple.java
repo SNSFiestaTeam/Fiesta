@@ -36,23 +36,8 @@ public class BoardServicepImple implements BoardService{
 		
 		board.setBoardContent(Util.mentionHandling(board.getBoardContent())); // a태그 감싸기
 		
-//		board.getBoardContent().replaceAll("(#[^\\s#]+)", 
-//				"<a href='/search?searchInput=\"+tagName+\"' class='hashtag'>\"+match+\"</a>");
-//		
-//		Pattern pattern = Pattern.compile("(#[^\\s#]+)");
-//		
-//		Matcher matcher = pattern.matcher(board.getBoardContent());
-//		
-//		while(matcher.find()) {
-//			String str = matcher.group(1);
-//			
-//			String tagName = str.replaceAll("#", ""); 
-//			
-//			board.setBoardContent(board.getBoardContent().replace(str,
-//					"<a href='/search?searchInput="+tagName+"' class='hashtag'>"+str+"</a>"));
-//		}
-//		
 		board.setBoardContent(Util.newLineHandling(board.getBoardContent())); // 개행문자 처리
+		
 		
 		int boardNo = dao.boardWrite(board);
 		
@@ -93,6 +78,7 @@ public class BoardServicepImple implements BoardService{
 		}
 		return boardNo;
 	}
+
 
 
 }
