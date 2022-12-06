@@ -50,12 +50,18 @@ sendPeople.addEventListener("input", ()=>{
       
       for(let member of memberList){
         const li = document.createElement("li");
+        const input = document.createElement("input")
         const img = document.createElement("img");
         const span = document.createElement("span");
         
         memberListArea.append(li);
+        input.setAttribute('type', 'hidden');
+        input.setAttribute("value", member.memberNo);
+        input.setAttribute("name", 'targetNo');
+
+
         li.classList.add("chatMember")
-        li.append(img, span);
+        li.append(input,img, span);
         img.classList.add("modalProfile")
         span.classList.add("modalNick")
         
@@ -71,21 +77,37 @@ sendPeople.addEventListener("input", ()=>{
           item.addEventListener("click", e=>{
             const itemName = item.innerText;
             const itemImage = item.getAttribute("src");
+            const targetNo = item.children[0].value;
 
+            console.log(targetNo);
             recipient.innerText = itemName;  
+          
+            
           })
+          $.ajax({
+            url : "/dm/enter",
+            data : {"targetNo" : item.children[0].value},
+            dataType:"JSON",
+            success : ()=>{
+              console.log("성공");
+            }
 
+          });
+          
+          }
         }
-
+ 
+      },
+      error: ()=>{
+        console.log("실패");
       }
-    },
-    error: ()=>{
-      console.log("실패");
-    }
+    }); 
+    })
 
-  
-  });    
-})
+   
+
+
+
 
 // 다음 클릭
 next.addEventListener("click", ()=>{
@@ -96,19 +118,6 @@ next.addEventListener("click", ()=>{
 
   const RecipientMemberNick = recipient.innerText;
 
-  // targetNo 얻어오기
-  $.ajax({
-    url: "/dm/number",
-    data : {"memberNickname" : RecipientMemberNick},
-    success : (result) =>{
-      
-      console.log("성공");
-      targetNo = result;
-      
-    }
-
-  })
-  
 })
 
 
@@ -292,7 +301,7 @@ const selectRoomList = () =>{
 
         const recentSendTime = document.createElement("span");
         recentSendTime.classList.add("recent-send-time");
-        recentSendTime.innerText = roon.sendDate;
+        recentSendTime.innerText = room.sendTime;
 
         p.append(targetName, recentSendTime);
 
@@ -377,7 +386,7 @@ chattingSock.onmessage = function(e){
 
     const span = document.createElement("span");
     span.classList.add("chatDate");
-    span.innerText = msg.sendDate;
+    span.innerText = msg.sendTime;
 
     const p = document.createElement("p");
     p.classList.add("chat");

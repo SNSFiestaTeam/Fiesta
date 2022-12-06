@@ -24,12 +24,12 @@ public class DmServiceImple implements DmService{
 	}
 
 	@Override
-	public int checkChattingNo(Map<String, Integer> map) {
+	public int checkChattingNo(Map<String, Object> map) {
 		return dao.checkChattingNo(map);
 	}
 
 	@Override
-	public int createChattingRoom(Map<String, Integer> map) {
+	public int createChattingRoom(Map<String, Object> map) {
 		return dao.createChattingRoom(map);
 	}
 
