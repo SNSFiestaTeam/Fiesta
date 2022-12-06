@@ -21,12 +21,12 @@
       <div class="main-container">
         <section class="info-section">
           <div id="profile-photo">
-            <a href="#">
+            <form action="/setting/updateImage" method="POST" id="profilefrm" name="memberProfileImg" enctype="multipart/form-data">
               <img
                 id="self"
                 src="/resources/images/14f5961af72ef1686b2548d7c5c792e6.jpg"
-              />
-            </a>
+              /><input type="file" name="memberProfileImg", id="image-input" accept="image/*">
+            </form>
           </div>
 
           <div id="profile-text">

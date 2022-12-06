@@ -1,4 +1,4 @@
-@import "../root-style.css";
+@import "./root-style.css";
 
 * {
   margin: 0;
@@ -12,7 +12,6 @@ body {
   width: 100vw;
 
 }
-
 
 .comment-menu-container {
   width: 100vw;

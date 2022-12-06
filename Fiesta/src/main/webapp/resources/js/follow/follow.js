@@ -1,5 +1,4 @@
 // * 해시태그 팔로우 버튼 *
-
 const followHashtagBtn = document.getElementById("followHashtagBtn");
 
 // 해시태그 팔로우 여부 보여주기 -> 버튼 다르게

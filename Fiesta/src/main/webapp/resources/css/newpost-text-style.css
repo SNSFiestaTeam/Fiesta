@@ -1,21 +1,20 @@
-@import "./root-style.css";
-/*------------모달 배경------------*/
 .modal_background {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  z-index: 100000;
-  /* display: none; */
+  z-index: 5;
+  display: none;
 }
+
 /*------------닫기 버튼------------*/
 .new-post-close {
   position: fixed;
@@ -31,170 +30,47 @@
   color: white;
 }
 
-/* ************** 게시물 작성 창 ******************* */
-@media (max-width: 600px) {
-  /* 이미지편집 부분 */
-  /* 600px이하 핸드폰 */
-  .modal_post_section {
+/* @media (max-width: 600px) { */
+/* 600px이하 핸드폰 */
+/* .modal_post_section-text {
     width: 348px;
-    height: 398px;
-  }
-  .new-post-bottom {
-    height: 348px;
-  }
-  /* text작성부분 */
-  .modal_post_section_text {
-    width: 348px;
-    height: 398px;
-  }
-
-  .new-post-bottom-text {
-    height: 348px;
-    background-color: white;
-  }
-  .bottom-left-box {
-    width: 348px;
-    height: 348px;
-  }
-  .new-post-bottom-text {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    position: relative;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    /* display: flex; */
-    overflow: auto;
   }
 }
-@media (min-width: 600px) {
-  /* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
-  /* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
-  .modal_post_section {
+@media (min-width: 600px) { */
+/* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
+/* .modal_post_section-text {
     width: 459px;
-    height: 509px;
-  }
-  .new-post-bottom {
-    height: 459px;
-  }
-  /* text작성부분 */
-  .modal_post_section_text {
-    width: 459px;
-    height: 509px;
-  }
-
-  .board-write-bottom {
-    height: 459px;
-  }
-  .bottom-left-box {
-    width: 459px;
-    height: 459px;
-  }
-  .new-post-bottom-text {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    position: relative;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    /* display: flex; */
-    overflow: auto;
   }
 }
-@media (min-width: 992px) {
-  /* 992px 이상 노트북, 작은 데스크톱 */
-  .modal_post_section {
-    width: 455px;
-    height: 605px;
-  }
-  .new-post-bottom {
-    height: 455px;
-  }
-  /* text작성부분 */
-  .modal_post_section_text {
-    width: 755px;
-    height: 605px;
-  }
-
-  .board-write-bottom {
-    height: 455px;
-  }
-  .bottom-left-box {
-    width: 455px;
-    height: 455px;
-  }
-  .new-post-bottom-text {
-    width: 100%;
-    height: 90%;
-    background-color: white;
-    position: relative;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    display: flex;
-    overflow: auto;
+@media (min-width: 768px) { */
+/* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
+/* .modal_post_section-text {
+    width: 459px;
   }
 }
-@media (min-width: 1200px) {
-  /* 1200px 이상  큰 노트북, 데스크톱 */
-  .modal_post_section {
-    width: 555px;
-    height: 605px;
-  }
-  .new-post-bottom {
-    height: 555px;
-  }
-  /* text작성부분 */
-  .modal_post_section-text {
+@media (min-width: 992px) { */
+/* 992px 이상 노트북, 작은 데스크톱 */
+/* .modal_post_section-text {
     width: 855px;
-    height: 605px;
-  }
-
-  .board-write-bottom {
-    height: 555px;
-  }
-  .bottom-left-box {
-    width: 555px;
-    height: 555px;
   }
 }
+@media (min-width: 1200px) { */
+/* 1200px 이상  큰 노트북, 데스크톱 */
+/* .modal_post_section-text {
+    width: 855px;
+  }
+  .new-post-bottom-text {
+    display: flex;
+  }
+} */
 
 .modal_post_section-text {
   background-color: white;
   border-radius: 10px;
-}
-
-/* ----- 게시물작성 top ------ */
-.new-post-top-text {
-  display: flex;
-  justify-content: space-between;
-  /* border-radius: 10px; */
-  /* justify-content: center; */
-  border-bottom: 1px solid #ececec;
-  height: 50px;
-}
-.new-post-top-text > p {
-  align-items: cneter;
-  margin: 0;
-  justify-content: center;
-}
-/* top-버튼 스타일 */
-.new-post-top-text > * {
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  cursor: pointer;
-  padding: 15px;
-  width: 160px;
-}
-
-.new-post-top-text > button:last-of-type {
-  color: var(--fiesta-color);
-  /* box-sizing: content-box; */
-  font-size: 16px;
-  flex-direction: row-reverse;
+  width: 90%;
+  min-width: 855px;
+  max-width: 855px;
+  /* overflow: auto; */
 }
 /* ----- 게시물작성 top ------ */
 .new-post-top-text {
@@ -222,7 +98,7 @@
   flex-direction: row-reverse;
 }
 /* bottom */
-/* .new-post-bottom-text {
+.new-post-bottom-text {
   width: 100%;
   height: 90%;
   background-color: white;
@@ -232,31 +108,33 @@
 
   display: flex;
   overflow: auto;
-} */
+}
+
 
 .bottom-left-box {
   position: relative;
   display: flex;
-  /* min-width: 388px;
+  min-width: 388px;
   max-width: 588px;
   min-height: 388px;
-  max-height: 588px; */
-  /* width: 70%; */
-  /* height: 50vh; */
-  /* overflow: scroll; */
+  max-height: 588px;
+  width: 70%;
+  height: 50vh;
+  overflow: scroll;
+  
 }
 .bottom-left-box > img {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  /* min-width: 388px;
+  min-width: 388px;
   max-width: 588px;
   min-height: 388px;
-  max-height: 588px; */
+  max-height: 588px;      
+          
+
 }
 
 .bottom-right-box {
-  width: 100%;
+  width: 46%;
   overflow: auto;
   height: auto;
   /* background-color: blueviolet; */
@@ -348,7 +226,6 @@
 }
 #set-btn1:checked ~ div {
   display: block;
-  width: 50%;
 }
 #set-btn2:checked ~ div {
   display: block;
@@ -359,9 +236,6 @@
 .postFileText {
   display: flex;
   margin-top: 10px;
-}
-.postFileText-area {
-  width: auto;
 }
 .postFileText-area > div {
   width: 50px;
@@ -379,7 +253,57 @@
   border: 1px solid rgb(197, 197, 197);
   padding: 10px;
 }
-.set1-open > p {
-  width: 50%;
-  color: red;
+
+.setting-on-off {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 16px;
+  color: rgb(157, 157, 157);
 }
+/* .on-off-btn> i{
+  font-size: 30px;
+  cursor: pointer;
+  transform: scaleX(-1);
+  margin-left: 10px;
+  
+} */
+.toggleSwitch {
+  width: 50px;
+  margin: 5px;
+  height: 30px;
+  display: block;
+  position: relative;
+  border-radius: 30px;
+  background-color: #fff;
+  /* box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%); */
+  border: 1px solid rgb(179, 179, 179);
+  cursor: pointer;
+}
+
+.toggleSwitch .toggleButton {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--fiesta-color);
+}
+
+.toggleSwitch.active {
+  background: var(--fiesta-color);
+}
+
+.toggleSwitch.active .toggleButton {
+  left: calc(100% - 25px);
+  background: #fff;
+}
+
+.toggleSwitch,
+.toggleButton {
+  transition: all 0.2s ease-in;
+}
+
