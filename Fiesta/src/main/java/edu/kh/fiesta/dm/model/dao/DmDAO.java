@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.fiesta.dm.model.vo.ChattingRoom;
+import edu.kh.fiesta.dm.model.vo.Message;
 import edu.kh.fiesta.member.model.vo.Member;
 
 @Repository
@@ -32,12 +33,35 @@ public class DmDAO {
 
 
 	public int createChattingRoom(Map<String, Integer> map) {
-		return sqlSession.insert("dmMapper.createChattingRoom", map);
+		int result = sqlSession.insert("dmMapper.createChattingRoom", map);
+		int chattingNo = 0;
+		if(result > 0) chattingNo = (int)map.get("chattingNo");
+		return chattingNo;
 	}
 
 
 	public List<ChattingRoom> selectRoomList(int memberNo) {
 		return sqlSession.selectList("dmMapper.selectRoomList", memberNo);
+	}
+
+
+	public int insertMessage(Message msg) {
+		return sqlSession.insert("dmMapper.insertMessage", msg);
+	}
+
+
+	public List<Message> selectMessageList(Map<String, Object> paramMap) {
+		return sqlSession.selectList("dmMapper.selectMessageList", paramMap);
+	}
+
+
+	public int updateReadFlag(Map<String, Object> paramMap) {
+		return sqlSession.update("dmMapper.updateReadFlag", paramMap);
+	}
+
+
+	public int selectNumber(String memberNickname) {
+		return sqlSession.selectOne("dmMapper.selectNumber", memberNickname);
 	}
 
 	

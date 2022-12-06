@@ -31,8 +31,6 @@ public class FeedDAO {
 		return sqlSession.selectList("feedMapper.selectFollowList", memberNo);
 	}
 	
-	
-	
 
 	/** 게시글 수 조회
 	 * @param memberNickname
@@ -42,8 +40,6 @@ public class FeedDAO {
 		return sqlSession.selectOne("feedMapper.selectBoardCount", memberNickname);
 	}
 
-	
-	
 	
 	/** 특정 회원 게시글 목록 조회
 	 * @param pagination
@@ -57,14 +53,10 @@ public class FeedDAO {
 		
 //		시작 번호부터 몇개의 글을 불러올 것인지 설정
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-	
-
 		
 		return sqlSession.selectList("feedMapper.selectBoardList", memberNickname, rowBounds);
 	}
 
-	
-	
 	/** 회원 정보 조회
 	 * @param member
 	 * @return
@@ -73,19 +65,17 @@ public class FeedDAO {
 		return sqlSession.selectOne("feedMapper.selectMember", member);
 	}
 	
+	/** 게시글 AJAX 조회
+	 * @param paramMap
+	 * @return
+	 */
 	public Member selectMember(Map<String, Object> paramMap) {
 		return sqlSession.selectOne("feedMapper.selectMember", paramMap);
 	}
 
-	
-	
 
 
 
-	/** 프로필 정보 조회
-	 * @param memberNo
-	 * @return
-	 */
 
 	
 

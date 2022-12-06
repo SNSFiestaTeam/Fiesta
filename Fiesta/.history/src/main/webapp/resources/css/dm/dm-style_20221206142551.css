@@ -1,0 +1,285 @@
+@import '../root-style.css';
+body {
+    width: 100vw;
+    height: 100vh;
+  }
+
+
+.container{
+    width: 1200px;
+    height: 800px;
+    border: 1px solid #ccc;
+    display: flex;
+    margin: auto;
+    margin-top: 100px;
+    
+    
+}
+
+
+.left{
+    width: 400px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.right{
+    width: 800px;
+    height: 800px;
+    border-left: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+}
+
+#dmOpen{
+    margin-left: 30px;
+}
+
+.right > #no-click{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left > .up{
+    flex-basis: 10%;
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+   
+}
+
+.left .down{
+    
+    flex-basis: 90%;
+
+}
+.left .up .id {
+    margin: 30px 10px 30px 100px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#login{
+    width: 8px;
+    margin-left: 30px;
+    margin-right: 30px;
+    display: inline-block;
+
+}
+
+.right> #no-click > img{
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.right > #no-click> h1{
+   font-weight: lighter;
+}
+
+.right > #no-click > .message-info{
+    font-size: 14px;
+    color : #aaa;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.right > #no-click>.send {
+    box-sizing: border-box;
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    background-color: var(--fiesta-color);
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+
+}
+
+.right > .send > a{
+    color :white
+}
+
+.chat{
+    display: flex;
+    padding : 8px 20px;
+
+}
+
+.down .chat .pro-img{
+width: 56px;
+height: 56px;
+margin: 10px;
+}
+
+.chat-content-right > span{
+    font-size: 1em;
+    font-weight: 500;
+    display: block;
+    margin: 10px;
+}
+
+.down .chat > .chat-content{
+    display: flex;
+    flex-direction: column;
+}
+.chat-content2{
+    display: inline;
+    margin-left: 5px;
+    font-size: 0.9em;
+    color: #8e8e8e;
+}
+
+.chat-time{
+    display: inline-block;
+    margin-left:5px;
+    font-size: 0.9em;
+    color:#8e8e8e;
+}
+
+#clickUp{
+    flex-basis: 10%;
+    border-bottom: 1px solid #ccc;
+    display:flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;    
+}
+
+#right > #click{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#chattingRoom{
+
+    flex-basis: 80%;
+
+}
+
+#input{
+    flex-basis: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+#chattingInput{
+    height: 50%;
+    width: 70%;
+    border-radius: 15px;
+
+}
+#memberListArea{
+    display: flex;
+    flex-direction: column;
+}
+
+/* 모달 - 추천 창 */
+.chatMember{
+    height: 70px;
+    padding: 2px;
+    display: flex;
+    cursor: pointer;
+}
+
+.chatMember > span {
+    font-size: 12px;
+}
+
+.modalProfile{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.modalNick{
+    font-size: 20px;
+    margin: 20px;
+}
+
+.chatting-item.select{
+	background-color: #ddd;
+}
+
+.chatting-content{
+	width: 70%;
+}
+
+
+.dm-area > li{
+	margin: 10px 0;
+}
+
+.target-chat{
+	display: flex;
+	align-items: flex-start;
+}
+.target-chat > img{
+	width: 50px;
+	margin-right: 5px;
+}
+
+.chat {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #eee;
+	text-align: left;
+	max-width: 500px;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+
+.input-area {
+	height: 80px;
+	width: 100%;
+	display: flex;
+}
+
+#chattingInput {
+	padding: 3px;
+	font-size: 1.3em;
+	width: 80%;
+	resize: none;
+}
+
+
+.my-chat {
+	text-align: right;
+}
+
+.my-chat>p {
+	background-color: yellow;
+}
+
+.chatDate {
+	font-size: 9px;
+}
+
+
+
+@media screen and (max-width: 470px) {
+
+
+.container > .right {
+ display: none;
+}
+
+.container{
+    border: none;
+    margin-top: 0;
+
+}
+
+.left{
+    width: 100%;
+    
+}
+
+}
