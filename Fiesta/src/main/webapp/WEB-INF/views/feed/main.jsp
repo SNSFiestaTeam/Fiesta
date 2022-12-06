@@ -27,9 +27,12 @@
     <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/action/boardDeteil-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
+
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
 
 
@@ -270,6 +273,11 @@
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
+
+
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
@@ -342,6 +350,9 @@
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
     <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
-    <%-- <script src="/resources/js/newpost.js"></script> --%>
+
+    <script src="/resources/js/newpost.js"></script>
+    <script src="/resources/js/boardWriteUpdate.js"></script>
+
   </body>
 </html>

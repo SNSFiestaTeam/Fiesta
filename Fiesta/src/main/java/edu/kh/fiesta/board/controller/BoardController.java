@@ -62,4 +62,7 @@ public class BoardController {
 		return service.boardWrite(board, fileList, webPath, folderPath);
 	}
 	
+	// 게시글 수정
+	
+	
 }

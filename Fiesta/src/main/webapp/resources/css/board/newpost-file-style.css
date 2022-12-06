@@ -1,4 +1,4 @@
-
+@import "./root-style.css";
 /*------------모달 배경------------*/
 .modal_background {
   position: fixed;
@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   padding: 15px;
-  z-index: 500;
+  z-index: 100;
   display: none;
 }
 /*------------닫기 버튼------------*/
@@ -36,30 +36,41 @@
   /* 600px이하 핸드폰 */
   .modal_post_section {
     width: 348px;
+    height: 398px;
+  }
+  .new-post-bottom {
+    height: 348px;
   }
 }
 @media (min-width: 600px) {
   /* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
-  .modal_post_section {
-    width: 459px;
-  }
-}
-@media (min-width: 768px) {
   /* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
   .modal_post_section {
     width: 459px;
+    height: 509px;
+  }
+  .new-post-bottom {
+    height: 459px;
   }
 }
 @media (min-width: 992px) {
   /* 992px 이상 노트북, 작은 데스크톱 */
   .modal_post_section {
-    width: 655px;
+    width: 455px;
+    height: 505px;
+  }
+  .new-post-bottom {
+    height: 455px;
   }
 }
 @media (min-width: 1200px) {
   /* 1200px 이상  큰 노트북, 데스크톱 */
   .modal_post_section {
     width: 555px;
+    height: 605px;
+  }
+  .new-post-bottom {
+    height: 555px;
   }
 }
 
@@ -76,7 +87,9 @@
   border-bottom: 2px solid #ececec;
   height: 50px;
 }
-
+.new-post-top-file > p {
+  margin: 0;
+}
 .new-post-top > * {
   display: flex;
   align-items: center;
@@ -86,7 +99,7 @@
 
 .new-post-bottom {
   width: 100%;
-  padding-bottom: 100%;
+  /* padding-bottom: 100%; */
   background-color: white;
   position: relative;
   border-radius: 10px;

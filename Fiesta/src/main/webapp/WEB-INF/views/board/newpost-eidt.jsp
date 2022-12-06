@@ -20,28 +20,39 @@
             <div class="images swiper-wrapper " id="slideImages">  
             <%-- 이미지 리스트 --%>
               
-              <%-- <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
-              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
-              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
-              <div class="edit-file swiper-slide"><img id="editFile"class="cropper-img" src="../../resources/images/박보검.gif" alt="파일미리보기">
+              <%-- <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
+                   <div class="edit-file swiper-slide"><img id="cropper-img" class="ready" src="../../resources/images/박보검.gif" alt="파일미리보기">
               </div> --%>
             </div>
           </div>
           <%-- 줌 슬라이더 --%>
           <div id="zoom-slider"></div>
+          <div id="zoom-slider0"></div>
+          <div id="zoom-slider1"></div>
+          <div id="zoom-slider2"></div>
+          <div id="zoom-slider3"></div>
+          <div id="zoom-slider4"></div>
+          <div id="zoom-slider5"></div>
+ 
           <%-- 사진 몇번째 인지 밑에 보여주는거 --%>
           <div class="swiper-pagination"></div>
           <%-- 이미지 슬라이드 좌우 버튼 --%>
           <div class="siltde-btn-area slide-controller">
-            <div class="sild-file-btn swiper-button-prev"></div>
-            <div class="sild-file-btn swiper-button-next"></div>
+            <div class="sild-file-btn swiper-button-prev" id="prewBtn"></div>
+            <div class="sild-file-btn swiper-button-next" id="nextBtn"></div>
           </div>
 
            <div class="img-btn">
             <!-- 이미지 확대 축소 -->
             <div class="new-post-btn-menu">
               <input id="check-btn1" type="checkbox" name="btn" />
-              <label for="check-btn1">
+              <label for="check-btn1" id="zoomBtn">
                 
                 <div class="btn-background"><i class="fa-solid fa-magnifying-glass-plus"></i> </div>
               </label>
