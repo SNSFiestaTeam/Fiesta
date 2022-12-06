@@ -115,11 +115,11 @@ backBtnText.addEventListener("click", () => {
   // formData.delete('files');
 });
 
-//! 접근성 토클
-const $toggle = document.querySelector(".toggleSwitch");
-$toggle.onclick = () => {
-  $toggle.classList.toggle("active");
-};
+// //! 접근성 토클
+// const $toggle = document.querySelector(".toggleSwitch");
+// $toggle.onclick = () => {
+//   $toggle.classList.toggle("active");
+// };
 // const $toggle2 = document.querySelector(".toggleSwitch2");
 // $toggle2.onclick = () => {
 //   $toggle2.classList.toggle("active");
@@ -204,6 +204,8 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
         postFileTextInput.id = "imgAccessibility"+[i];
         postFileTextInput.setAttribute("placeholder", "대체 텍스트 입력...");
 
+
+
         postFileTextDiv.append(postFileTextImg, postFileTextInput);
         postFileTextArea.append(postFileTextDiv);
 
@@ -240,52 +242,83 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
 });
 
 //! 최종 제출(게시하기 버튼 클릭)
-const newPostAll = document.getElementById("newPostAll");
-newPostAll.addEventListener("click", () => {
-  const boardContent = document.getElementById("boardContent");
-  const files = document.getElementById("file");
+// const newPostAll = document.getElementById("newPostAll");
+// newPostAll.addEventListener("click", () => {
+//   const boardContent = document.getElementById("boardContent");
+//   const files = document.getElementById("file");
 
+//   if(boardContent.value.trim().length == 0){
+//     alert("내용을 입력해주세요.");
+//     boardContent.value = "";
+//     boardContent.focus();
+//   }else{
+
+  
+//     form.append("boardContent", boardContent.value); //게시물 텍스트 작성담기
+    
+//     // console.log("object");
+//     // const imgAccessibilities = {"av0": document.getElementById('imgAccessibility0').value, 
+//     // "av1": document.getElementById('imgAccessibility1').value,
+//     //                            "av2": document.getElementById('imgAccessibility2').value
+//     //                           }
+                              
+                              
+//     // form.append("imgAccessibilities", imgAccessibilities); //게시물 텍스트 작성담기
+    
+//      // 접근성 담기?여러개가 감기나?
+    
+//     $.ajax({
+//       url: "/write",
+//       type: "Post",
+//       processData: false,
+//       contentType: false,
+//       data: form,
+//       success: (result) => {
+//         if (result > 0) {
+//           console.log("게시물 작성 성공");
+//           modalBackgroundText.style.display = "none";
+//           modalBackgroundFinish.style.display = "flex";
+//           // location.reload();
+//         } else {
+//           console.log("게시물 작성 실패");
+//         }
+//       },
+//       error: () => {
+//         console.log("게시물 작성 에러");
+//       },
+//     });
+
+//   }
+// });
+
+function writeValidate(){
+  const boardContent = document.querySelector("[name='boardContent']");
   if(boardContent.value.trim().length == 0){
     alert("내용을 입력해주세요.");
     boardContent.value = "";
     boardContent.focus();
-  }else{
-
-  
-    form.append("boardContent", boardContent.value); //게시물 텍스트 작성담기
-
-    // console.log("object");
-
-    for(let i = 0; i<files.length; i++){
-      form.append("imgAccessibility", imgAccessibility[i].value);
-    }
-     // 접근성 담기?여러개가 감기나?
-    
-    $.ajax({
-      url: "/write",
-      type: "Post",
-      processData: false,
-      contentType: false,
-      data: form,
-      success: (result) => {
-        if (result > 0) {
-          console.log("게시물 작성 성공");
-          modalBackgroundText.style.display = "none";
-          modalBackgroundFinish.style.display = "flex";
-          // location.reload();
-        } else {
-          console.log("게시물 작성 실패");
-        }
-      },
-      error: () => {
-        console.log("게시물 작성 에러");
-      },
-    });
-
+    return false();
   }
-});
+  return true;
+}
 
 document.getElementById("newPostCloseFinish").addEventListener("click", () => {
   modalBackgroundFinish.style.display = "none";
   location.reload();
 });
+
+
+
+function is_checked() {
+  
+  // 1. checkbox element를 찾습니다.
+  const boardPubPriFlag = document.getElementById("boardPubPriFlag");
+  const commentBlockFlag = document.getElementById("commentBlockFlag");
+
+  // 2. checked 속성을 체크합니다.
+  const is_checked = checkbox.checked;
+
+  // 3. 결과를 출력합니다.
+  document.getElementById('result').innerText = is_checked;
+  
+}
