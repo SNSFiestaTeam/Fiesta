@@ -18,14 +18,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>검색</title>
-    <link rel="stylesheet" href="/resources/css/main/main-style.css" />
+    
+    <!-- CSS 링크 -->
+    <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    
+    <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/share-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/report-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/login-comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/boardDetail-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
-    <link rel="stylesheet" href="/resources/css/common-style.css" />
-    <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
+
+    <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
+
+    <link rel="stylesheet" href="/resources/css/search/board-detail-style.css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(web).css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(tablet).css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(mobile).css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -133,7 +152,7 @@
               <c:if test="${fn:length(hotBoardList) > 0}">
                 <div class="boardImage">
                   <c:forEach var="hotItem" items="${hotBoardList}" begin="0" end="2">
-                    <button class="aBoardImage">
+                    <button class="buttonBoardImage">
                       <img class="b-img" src="${hotItem.imgPath}" alt=""> 
                       <div class="hover-icon-container">
                         <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${hotItem.likeCount}</span>
@@ -148,7 +167,7 @@
               <c:if test="${fn:length(hotBoardList) > 3}">
                 <div class="boardImage">
                   <c:forEach var="hotItem" items="${hotBoardList}" begin="3" end="5">
-                    <button class="aBoardImage">
+                    <button class="buttonBoardImage">
                       <img class="b-img" src="${hotItem.imgPath}" alt=""> 
                       <div class="hover-icon-container">
                         <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${hotItem.likeCount}</span>
@@ -163,7 +182,7 @@
               <c:if test="${fn:length(hotBoardList) > 6}">
                 <div class="boardImage">
                   <c:forEach var="hotItem" items="${hotBoardList}" begin="6" end="8">
-                    <button class="aBoardImage">
+                    <button class="buttonBoardImage">
                       <img class="b-img" src="${hotItem.imgPath}" alt="">
                       <div class="hover-icon-container">
                         <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${hotItem.likeCount}</span>
@@ -191,11 +210,12 @@
           </div>
 
           <c:if test="${not empty recentBoardList}"> 
-            <div class="boardResult">
+            <div class="boardResult" id="boardResult">
+
               <c:if test="${fn:length(recentBoardList) > 0}">
                 <div class="boardImage">
                   <c:forEach var="recentItem" items="${recentBoardList}" begin="0" end="2">
-                    <button class="aBoardImage">
+                    <button class="buttonBoardImage">
                       <img class="b-img" src="${recentItem.imgPath}" alt="" >
                       <div class="hover-icon-container">
                         <i class="fa-regular fa-heart iHover"></i>
@@ -209,10 +229,12 @@
                 </div>
               </c:if>
 
+
+
               <c:if test="${fn:length(recentBoardList) > 3}">
                 <div class="boardImage">
                   <c:forEach var="recentItem" items="${recentBoardList}" begin="3" end="5">
-                    <button class="aBoardImage">
+                    <button class="buttonBoardImage">
                       <img class="b-img" src="${recentItem.imgPath}" alt="">
                       <div class="hover-icon-container">
                         <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${recentItem.likeCount}</span>
@@ -224,10 +246,13 @@
                 </div>
               </c:if> 
 
+
+
+
               <c:if test="${fn:length(recentBoardList) > 6}">
                 <div class="boardImage">
                   <c:forEach var="recentItem" items="${recentBoardList}" begin="6" end="8">
-                    <button class="aBoardImage">
+                    <button class="buttonBoardImage">
                       <img class="b-img" src="${recentItem.imgPath}" alt="">
                       <div class="hover-icon-container">
                         <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${recentItem.likeCount}</span>
@@ -238,46 +263,12 @@
                   </c:forEach>
                 </div>              
               </c:if>
-            </div>
-          
 
-            <!-- 새로 나타나는 페이지 -->
-            <!-- <c:if test="${fn:length(recentBoardList) > 9}">
-              <div class="boardImage">
-                <c:forEach var="recentItem" items="${recentBoardList}" begin="9" end="11">
-                  <button class="aBoardImage">
-                    <img class="b-img" src="${recentItem.imgPath}" alt="">
-                    <div class="hover-icon-container">
-                      <i class="fa-regular fa-heart iHover"></i><span class="spanHover">${recentItem.likeCount}</span>
-                      <i class="fa-regular fa-comment iHover"></i><span class="spanHover">${recentItem.commentCount}</span>
-                    </div>
-                  </button> 
-                </c:forEach>
-              </div>              
-            </c:if>
-          </div>
-            <div class="boardImage">
-                글을 써보자
-            </div>
-            <div class="boardImage">
-                출력되는지 확인하기
-            </div>
-            <div class="boardImage">
-                무한 스크롤 어떻게 하는거야
-            </div>
-            <div class="boardImage">
-                어후
-            </div> -->
-            
-          
-          
-          
-          
-          
+
+
+            </div> <%-- boardResult 끝 --%>
           
           </c:if>
-
-
 
 
           <c:if test="${empty recentBoardList}">
@@ -287,18 +278,55 @@
           </c:if>
         </section>
 
-
-
-
     </main>
 
-    <jsp:include page="/WEB-INF/views/action/boardDetail.jsp"/>
-    <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp"/>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 
+    <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
+    <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
+    <jsp:include page="/WEB-INF/views/action/confirm.jsp" />
+    <jsp:include page="/WEB-INF/views/action/comment.jsp" />
+
+    <!-- 모달창 include -->
+    <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+    
+
+    <%-- 검색 게시글 상세조회 --%>
+    <jsp:include page="/WEB-INF/views/action/boardDetail.jsp"/>
+    
+
+    <c:if test="${ not empty loginMember }">
+      <script>
+        var loginMember = "${loginMember}";
+        var memberNo = "${loginMember.memberNo}";
+        var memberNickname = "${loginMember.memberNickname}";
+        var memberProfileImg = "${loginMember.memberProfileImg}";
+        var upperCommentNo = 0;
+        var boardNo;
+
+        var deleteBoardNo;
+        var deleteCommentNo;
+        var deleteCommentUl;
+        var deleteReplyCount;
+
+        var modalOn = 0;
+        var boardMemberNickname;
+        var boardMemberProfileImg;
+
+        var commentBlockFlag;
+        var boardPubPriFlag;
+
+        var tags;
+
+        var mentionSet = null;
+      </script>
+    </c:if>
+
     <script>
-      var swiper = new Swiper(".mySwiper", {
+      var swiper = new Swiper(".searchSwiper", {
         speed: 1000,
         // cssMode: true,
 
@@ -336,17 +364,12 @@
       });
     </script>
 
-    <script>
-      var memberNo = "${loginMember.memberNo}";
-      var memberNickname = "${loginMember.memberNickname}";
-      var upperCommentNo = 0;
-    </script>
 
 
     <%-- jQuery 라이브러리(.js 파일) 추가 (CDN 방식 (Content Delivery Network)) --%>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         
-    <script src="/resources/js/search/search.js"></script>
+    <script src="/resources/js/search/search.js"></script> <%-- mainBoard.js와 거의 동일 --%>
     <script src="/resources/js/follow/follow.js"></script>
     <script src="/resources/js/common/common.js"></script>
 

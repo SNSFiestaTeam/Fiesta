@@ -16,6 +16,8 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
     boardNo = feedHeaderMenu[i].parentElement.parentElement.parentElement.nextElementSibling.nextElementSibling.value;
 
     console.log(boardNo);
+
+    console.log(boardNo);
     const boardMemberNickname = feedHeaderMenu[i].parentElement.previousElementSibling.
     firstElementChild.nextElementSibling.innerText;
     
@@ -48,17 +50,22 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
       
       
       loginFeedMenu.style.display = "flex";
+
       
       const likeCount = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
+
       const commentContainer = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling
         .nextElementSibling;
+
       const commentInputArea = feedHeaderMenu[i].parentElement.parentElement.parentElement.
       nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling;
+
       const mainContainer = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling;
       tags = null;
+
       tags = {
         "likeCount": likeCount, "commentContainer": commentContainer,
         "commentInputArea": commentInputArea, "mainContainer": mainContainer
