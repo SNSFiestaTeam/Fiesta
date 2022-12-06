@@ -105,4 +105,7 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
   </body>
+
+<script src="/resources/js/common/common.js"></script>
+    
 </html>

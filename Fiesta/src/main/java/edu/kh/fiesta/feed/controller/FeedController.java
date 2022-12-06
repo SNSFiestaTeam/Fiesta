@@ -54,7 +54,7 @@ public class FeedController {
 
 		int memberNo = loginMember.getMemberNo();
 		
-		Map<String, Object> feedMap = service.selectFeedAll(memberNo, memberNickname);
+		Map<String, Object> feedMap = service.selectBookmark(memberNo, memberNickname);
 		
 		model.addAttribute("feedMap", feedMap);
 		
