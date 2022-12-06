@@ -50,8 +50,8 @@ public class DmDAO {
 	}
 
 
-	public List<Message> selectMessageList(Map<String, Object> paramMap) {
-		return sqlSession.selectList("dmMapper.selectMessageList", paramMap);
+	public List<Message> selectMessageList(int chattingNo) {
+		return sqlSession.selectList("dmMapper.selectMessageList", chattingNo);
 	}
 
 

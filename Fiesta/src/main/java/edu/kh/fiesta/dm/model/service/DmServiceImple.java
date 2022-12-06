@@ -44,9 +44,10 @@ public class DmServiceImple implements DmService{
 	}
 
 	@Override
-	public List<Message> selectMessageList(Map<String, Object> paramMap) {
-		return dao.selectMessageList(paramMap);
+	public List<Message> selectMessageList(int chattingNo) {
+		return dao.selectMessageList(chattingNo);
 	}
+
 
 	@Override
 	public int updateReadFlag(Map<String, Object> paramMap) {
