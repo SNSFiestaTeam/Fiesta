@@ -115,11 +115,15 @@ backBtnText.addEventListener("click", () => {
   // formData.delete('files');
 });
 
-//! 접근성 토클
-const $toggle = document.querySelector(".toggleSwitch");
-$toggle.onclick = () => {
-  $toggle.classList.toggle("active");
-};
+// //! 접근성 토클
+// const $toggle = document.querySelector(".toggleSwitch");
+// $toggle.onclick = () => {
+//   $toggle.classList.toggle("active");
+// };
+// const $toggle2 = document.querySelector(".toggleSwitch2");
+// $toggle2.onclick = () => {
+//   $toggle2.classList.toggle("active");
+// };
 
 const postFileText = document.getElementById("postFileText"); // 접근성박스
 // ! 기본 이미지 선택
@@ -155,280 +159,166 @@ document.getElementById("basicImage").addEventListener("click", () => {
 document.getElementById("cropperfile").addEventListener("change", (e) => {
   if (e.target.files[0] != undefined) {
     // 이벤트 발생한 요소에 선택된 파일이 있을 경우
-
     for (let i = 0; i < e.target.files.length; i++) {
       // 이벤트 발생 파일 길이 만큼 반복문 돌림
 
       form.append("files", e.target.files[i]);
+
       const reader = new FileReader(); // 파일 읽는 객체
-      console.log(e.target.files[i]);
-      reader.onload = (e) => {
-        
-
-        // *edit부분 파일*-----------------------------------------
-        // *<div class="eidt-file swiper-slide"><img id="eidtFile" src=""></div>
-        // 나타날 div, img 생성
-        const editFileDiv = document.createElement("div");
-        const editFileImg = document.createElement("img");
-        editFileDiv.classList.add("edit-file", "swiper-slide");
-
-        editFileImg.classList.add("ready");
-        editFileImg.id = "cropper-img" + [i];
-
-        // 읽어온 URL을 editFileIm에 src요소로 추가
-        editFileImg.setAttribute("src", e.target.result);
-        
-        // div와 img 합치기
-        editFileDiv.append(editFileImg);
-        // 부모요소에 div 합치기
-        slideImages.append(editFileDiv);
-
-      };
-      filelist = e.target.result;
       reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
-    }
-    modalBackground.style.display = "none";
-    modalBackgroundEidt.style.display = "flex";
-    postFileText.style.display = "block";
-  }
-});
 
-//! 다음 버튼
-// edit 다음 버튼
-document.getElementById("editNextBtn").addEventListener("click", () => {
-  modalBackgroundEidt.style.display = "none";
-  modalBackgroundText.style.display = "flex";
-  /* key 확인하기 */
-
-
-  // *text 부분 파일-------------------------------------------------------------
-  // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
-  const reader = new FileReader();
-  reader.readAsDataURL(value);
-
-  reader.onload = () => {
-   
-  };
-});
-
-// ! edit에서 파일 추가 버튼
-const addFileInput = document.getElementById("addFileInput");
-
-addFileInput.addEventListener("change", (e) => {
-  if (e.target.files[0] != undefined) {
-    // 이벤트 발생한 요소에 선택된 파일이 있을 경우
-    for (let i = 0; i < e.target.files.length; i++) {
-      // 이벤트 발생 파일 길이 만큼 반복문 돌림
-      const reader = new FileReader(); // 파일 읽는 객체
-
-      reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
+      // console.log(e.target.files[i]);
 
       reader.onload = (e) => {
         // 파일 읽은 후
-        // <div class="eidt-file swiper-slide"><img id="eidtFile" src=""></div>
+        // *text 부분 파일-------------------------------------------------------------
+        // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
 
-        // *edit부분 파일*
-        // 나타날 div, img 생성
-        const editFileDiv = document.createElement("div");
-        const editFileImg = document.createElement("img");
-        editFileDiv.classList.add("edit-file", "swiper-slide");
-        editFileImg.classList.add("ready");
-        editFileImg.id = "cropper-img";
+        const swiperSildeDiv = document.createElement("div");
+        const fileImg = document.createElement("img");
 
-        // 읽어온 URL을 editFileIm에 src요소로 추가
-        editFileImg.setAttribute("src", e.target.result);
+        swiperSildeDiv.classList.add("swiper-slide");
+        fileImg.id = "files";
+        fileImg.setAttribute("src", e.target.result);
 
-        // div와 img 합치기
-        editFileDiv.append(editFileImg);
+        swiperSildeDiv.append(fileImg);
+        textFileSwiper.append(swiperSildeDiv);
 
-        // 부모요소에 div 합치기
-        slideImages.append(editFileDiv);
+        // *text 접근성 부분 파일*
+        // postFileText.style.display = "block";
+
+        // <div class="postFileText">
+        //   <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
+        //   <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
+        // </div>
+
+        const postFileTextDiv = document.createElement("div");
+        const postFileTextImg = document.createElement("img");
+        const postFileTextInput = document.createElement("input");
+
+        postFileTextDiv.classList.add("postFileText");
+        postFileTextImg.id = "editFile";
+        postFileTextImg.setAttribute("src", e.target.result);
+        postFileTextInput.setAttribute("type", "text");
+        postFileTextInput.setAttribute("name", "imgAccessibility");
+        postFileTextInput.id = "imgAccessibility"+[i];
+        postFileTextInput.setAttribute("placeholder", "대체 텍스트 입력...");
+
+
+
+        postFileTextDiv.append(postFileTextImg, postFileTextInput);
+        postFileTextArea.append(postFileTextDiv);
+
+        var swiper = new Swiper(".swiper", {
+          spaceBetween: 0.5,    // 슬라이드 사이 여백                     
+          slidesPerView : 'auto', // 한 슬라이드에 보여줄 갯수
+          centeredSlides: true,    //센터모드
+          // autoplay: {     //자동슬라이드 (false-비활성화)
+          //   delay: 2500, // 시간 설정
+          //   disableOnInteraction: false, // false-스와이프 후 자동 재생
+          // },
+          loop : false,   // 슬라이드 반복 여부
+  
+          loopAdditionalSlides : 1,// 슬라이드 반복 시 마지막 슬라이드에서 다음 슬라이드가 보여지지 않는 현상 수정
+          pagination: { // 호출(pager) 여부
+            el: ".swiper-pagination", //버튼을 담을 태그 설정
+            clickable: true, // 버튼 클릭 여부
+          },
+          navigation: {   // 버튼
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+        
       };
+      
     }
+    modalBackground.style.display = "none";
+    // modalBackgroundEidt.style.display = "flex";
+    postFileText.style.display = "block";
+    // modalBackgroundEidt.style.display = "none";
+    modalBackgroundText.style.display = "flex";
   }
 });
 
 //! 최종 제출(게시하기 버튼 클릭)
-const newPostAll = document.getElementById("newPostAll");
-newPostAll.addEventListener("click", () => {
-  const boardContent = document.getElementById("boardContent");
-  const files = document.getElementById("file");
+// const newPostAll = document.getElementById("newPostAll");
+// newPostAll.addEventListener("click", () => {
+//   const boardContent = document.getElementById("boardContent");
+//   const files = document.getElementById("file");
 
-  // 해시태그 인식해서 a 태그로 감싸기
-  const regEx = /(#[^\s#]+)/gm;
+//   if(boardContent.value.trim().length == 0){
+//     alert("내용을 입력해주세요.");
+//     boardContent.value = "";
+//     boardContent.focus();
+//   }else{
 
-  boardContent.value = boardContent.value.replace(regEx, (match) => {
-    const tagName = match.replace("#", "");
-    return (
-      "<a href='/search?searchInput=" +
-      tagName +
-      "' class='hashtag'>" +
-      match +
-      "</a>"
-    );
-  });
+  
+//     form.append("boardContent", boardContent.value); //게시물 텍스트 작성담기
+    
+//     // console.log("object");
+//     // const imgAccessibilities = {"av0": document.getElementById('imgAccessibility0').value, 
+//     // "av1": document.getElementById('imgAccessibility1').value,
+//     //                            "av2": document.getElementById('imgAccessibility2').value
+//     //                           }
+                              
+                              
+//     // form.append("imgAccessibilities", imgAccessibilities); //게시물 텍스트 작성담기
+    
+//      // 접근성 담기?여러개가 감기나?
+    
+//     $.ajax({
+//       url: "/write",
+//       type: "Post",
+//       processData: false,
+//       contentType: false,
+//       data: form,
+//       success: (result) => {
+//         if (result > 0) {
+//           console.log("게시물 작성 성공");
+//           modalBackgroundText.style.display = "none";
+//           modalBackgroundFinish.style.display = "flex";
+//           // location.reload();
+//         } else {
+//           console.log("게시물 작성 실패");
+//         }
+//       },
+//       error: () => {
+//         console.log("게시물 작성 에러");
+//       },
+//     });
 
-  // 언급 인식해서 a 태그로 감싸기
-  const regEx2 = /(@[^\s@]+)/gm;
+//   }
+// });
 
-  boardContent.value = boardContent.value.replace(regEx2, (match) => {
-    const tagName = match.replace("@", "");
-    return "<a href='/feed/" + tagName + "' class='hashtag'>" + match + "</a>";
-  });
-
-  form.append("boardContent", boardContent.value); //게시물 텍스트 작성담기
-
-  $.ajax({
-    url: "/write",
-    type: "Post",
-    processData: false,
-    contentType: false,
-    data: form,
-    success: (result) => {
-      if (result > 0) {
-        console.log("게시물 작성 성공");
-        modalBackgroundText.style.display = "none";
-        modalBackgroundFinish.style.display = "flex";
-        // location.reload();
-      } else {
-        console.log("게시물 작성 실패");
-      }
-    },
-    error: () => {
-      console.log("게시물 작성 에러");
-    },
-  });
-});
+function writeValidate(){
+  const boardContent = document.querySelector("[name='boardContent']");
+  if(boardContent.value.trim().length == 0){
+    alert("내용을 입력해주세요.");
+    boardContent.value = "";
+    boardContent.focus();
+    return false();
+  }
+  return true;
+}
 
 document.getElementById("newPostCloseFinish").addEventListener("click", () => {
   modalBackgroundFinish.style.display = "none";
   location.reload();
 });
-//! 사진 크롭
-// var isInitialized = false;
-// var cropper = "";
-// var file = "";
-// var _URL = window.URL || window.webkitURL;
-// Initialize Slider
-
-// $(document).ready(function () {
-//   $("#cropperfile").change(function (e) {
-//     if ((file = this.files[0])) {
-//       var oFReader = new FileReader();
-//       oFReader.readAsDataURL(file);
-//       oFReader.onload = function () {
-//         // Destroy the old cropper instance
-//         $("#cropper-img").attr("src", this.result);
-//         $("#cropper-img").addClass("ready");
-//         if (isInitialized == true) {
-//           $("#zoom-slider").val(0);
-//           cropper.destroy();
-//         }
-//         initCropper();
-//       };
-//     }
-//   });
 
 
 
-$("#zoom-slider").slider({
-  orientation: "horizontal",
-  range: "min",
-  max: 1,
-  min: 0,
-  value: 0,
-  step: 0.0001,
-  slide: function () {
-    if (isInitialized == true) {
-      if (
-        cropper.canvasData.naturalWidth < 600 ||
-        cropper.canvasData.naturalHeight < 400
-      ) {
-        event.preventDefault();
-      } else {
-        var currentValue = $("#zoom-slider").slider("value");
-        var zoomValue = parseFloat(currentValue);
-        cropper.zoomTo(zoomValue.toFixed(4));
-      }
-    }
-  },
-});
+function is_checked() {
+  
+  // 1. checkbox element를 찾습니다.
+  const boardPubPriFlag = document.getElementById("boardPubPriFlag");
+  const commentBlockFlag = document.getElementById("commentBlockFlag");
 
+  // 2. checked 속성을 체크합니다.
+  const is_checked = checkbox.checked;
 
-// function initCropper() {
-//   console.log("호출됨?");
-//   console.log(form);
-//   // var vEl = document.getElementById("cropper-img");
-//   var vEl = document.getElementsByClassName("ready");
-//   cropper = new Cropper(vEl, {
-//     viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
-//     dragMode: "move", // 마우스 포인터의 역할(move, crop, none)
-//     aspectRatio: 1, // 자르기 비율
-//     checkOrientation: false,
-//     cropBoxMovable: true, // 드래그해 자르기 상자 이동
-//     cropBoxResizable: false, //CropperBox의 사이즈 고정(자르기 상자 안커지게)
-//     zoomOnTouch: true, //터치 드래그 이미지 확대.축소
-//     zoomOnWheel: true, // 휠로 확대
-//     guides: true,
-//     highlight: false,
-//     autoCropArea: 1.0, //cropper 시작시 CopperBox의 크기 지정(0.1~1.0)
-//     ready: function (e) {
-//       var cropper = this.cropper;
-//       cropper.zoomTo(0);
-
-//       var imageData = cropper.getImageData();
-//       console.log("imageData ", imageData);
-//       var minSliderZoom = imageData.width / imageData.naturalWidth;
-
-//       $("#min-zoom-val").html(minSliderZoom.toFixed(4));
-
-//       $(".cr-slider-wrap").show();
-//       $("#zoom-slider").slider("option", "max", 1);
-//       $("#zoom-slider").slider("option", "min", minSliderZoom);
-//       $("#zoom-slider").slider("value", minSliderZoom);
-//     },
-//   });
-//   isInitialized = true;
-// }
-
-// function initCropper() {
-//   console.log("호출됨?");
-//   console.log(form);
-//   var vEl = document.getElementById("cropper-img");
-//   cropper = new Cropper(vEl, {
-//     viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
-//     dragMode: "move", // 마우스 포인터의 역할(move, crop, none)
-//     aspectRatio: 1, // 자르기 비율
-//     checkOrientation: false,
-//     cropBoxMovable: true, // 드래그해 자르기 상자 이동
-//     cropBoxResizable: false, //CropperBox의 사이즈 고정(자르기 상자 안커지게)
-//     zoomOnTouch: true, //터치 드래그 이미지 확대.축소
-//     zoomOnWheel: true, // 휠로 확대
-//     guides: true,
-//     highlight: false,
-//     autoCropArea: 1.0, //cropper 시작시 CopperBox의 크기 지정(0.1~1.0)
-//     ready: function (e) {
-//       var cropper = this.cropper;
-//       cropper.zoomTo(0);
-
-//       var imageData = cropper.getImageData();
-//       console.log("imageData ", imageData);
-//       var minSliderZoom = imageData.width / imageData.naturalWidth;
-
-//       $("#min-zoom-val").html(minSliderZoom.toFixed(4));
-
-//       $(".cr-slider-wrap").show();
-//       $("#zoom-slider").slider("option", "max", 1);
-//       $("#zoom-slider").slider("option", "min", minSliderZoom);
-//       $("#zoom-slider").slider("value", minSliderZoom);
-//     },
-//   });
-//   isInitialized = true;
-// }
-
-// const feedUpdateBtnLogin = document.getElementById("feedUpdateBtnLogin");
-// const modalBackgroundUpdate = document.getElementById("modalBackgroundUpdate");
-
-// feedUpdateBtnLogin.addEventListener("click", () => {
-//   modalBackgroundUpdate.style.display = "flex";
-// });
+  // 3. 결과를 출력합니다.
+  document.getElementById('result').innerText = is_checked;
+  
+}
