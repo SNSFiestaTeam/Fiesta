@@ -374,6 +374,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
     <script src="/resources/js/newpost.js"></script>
-    <%-- <script src="/resources/js/boardWriteUpdate.js"></script> --%>
+    <script src="/resources/js/boardWriteUpdate.js"></script>
   </body>
 </html>

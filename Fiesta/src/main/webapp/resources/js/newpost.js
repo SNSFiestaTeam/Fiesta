@@ -9,7 +9,7 @@ const filePreview = document.getElementById("filePreview"); // edit화면 파일
 const textFileSwiper = document.getElementById("textFileSwiper"); // text화면 파일 리스트(합치기,지우기사용)
 const postFileTextArea = document.getElementById("postFileTextArea"); // text 접근성 리스트
 
-const modalBackgroundFinish = document.getElementById("modalBackgroundFinish"); // 새 게시물 작성 완료 창
+const modalBackgroundFinish = document.getElementById("modalBackgroundFinish"); // 새 게시물 작성 완료 창 
 const modalBackgroundClose = document.getElementById("modalBackgroundClose"); // 새 게시물 작성 취소 창
 
 var form = new FormData(); // 파일 리스트 보내기 위해 form 선언
