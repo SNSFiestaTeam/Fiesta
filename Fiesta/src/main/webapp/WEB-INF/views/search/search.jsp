@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="/resources/css/search/search-style(web).css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(tablet).css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(mobile).css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 

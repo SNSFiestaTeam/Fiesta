@@ -41,7 +41,10 @@ const keyword = decodeURI((location.search).substring(13));     //lastindexOf("=
 
 
 
-//*----------------------------------------------------------------
+
+
+
+// todo----------------------------------------------------------------
 // * 최근 게시글 불러오기(무한스크롤)
 
 let recentEndList;
@@ -84,7 +87,6 @@ function createObserver(){
 
 // 현재 페이지 번호 변수 선언
 let cp = 4;
-
 
 // 최근 게시글 목록 화면 출력(페이지네이션, 무한스크롤)
 function selectRecentList(entries, observer){
@@ -203,6 +205,20 @@ function createRecentBoard(recentBoardList, pagination){
 
             divHoverIcon.after(inputBoardNo);
 
+            buttonBoardImage.addEventListener("click", () => {
+
+              $.ajax({
+                url: "/search/boardDetail",
+                data: { "boardNo": recentBoard.boardNo },
+                dataType: "json",
+                success: (board) => {
+                  createBoard(board);
+                  
+                },
+                error: () => { console.log("검색 게시글 상세조회 중 오류 발생")}
+              });
+            })
+
         }
          
     
@@ -216,29 +232,7 @@ function createRecentBoard(recentBoardList, pagination){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------------------------
+// todo---------------------------------------------------------------------------------
 
 // * 상세조회
 
@@ -253,7 +247,6 @@ const feedMenu = document.getElementById("feedMenu");
 const loginFeedMenu = document.getElementById("feedMenuLogin");
 const feedCommentBtnLogin = document.getElementById('feedCommentBtnLogin');
 const feedLikeBtnLogin = document.getElementById('feedLikeBtnLogin');
-
 
 for (i = 0; i < buttonBoardImage.length; i++) {
   const inputBoardNo = buttonBoardImage[i].firstElementChild.nextElementSibling.nextElementSibling;
@@ -355,7 +348,6 @@ function createBoard(board) {
 
   const mainContainerDiv = document.createElement('div');
 
-  // todo feedMenuBtn 클릭 시 이벤트 추가 있던 자리
 
   // * feedMenuBtn 클릭 시 이벤트 추가
   feedMenuBtn.addEventListener('click', () => {
@@ -562,10 +554,10 @@ function createBoard(board) {
   });
 
   // DM 모달창 X버튼 클릭 시 닫힘
-document.getElementById("dmCloseBtn").addEventListener("click", () => {
-  dmContainer.style.display = "none";
-  body.classList.remove("scrollrock");
-});
+  document.getElementById("dmCloseBtn").addEventListener("click", () => {
+    dmContainer.style.display = "none";
+    body.classList.remove("scrollrock");
+  });
 
   const heartIcon = document.createElement('i');
 
@@ -593,6 +585,8 @@ document.getElementById("dmCloseBtn").addEventListener("click", () => {
   bookmarkBtn.addEventListener('click', () => {
     const emptyIcon = '<i class="fa-regular fa-bookmark"></i>';
     const solidIcon = '<i class="fa-solid fa-bookmark"></i>';
+
+    body.classList.add('scrollLock');
 
     if (bookmarkBtn.innerHTML == emptyIcon) {
       $.ajax({
@@ -684,6 +678,8 @@ document.getElementById("dmCloseBtn").addEventListener("click", () => {
   likeBtn.addEventListener('click', function () {
     const emptyHeart = '<i class="fa-regular fa-heart"></i>';
     const solidHeart = '<i class="fa-solid fa-heart"></i>';
+
+    body.classList.add('scrollLock');
 
     if (!likeBtn.classList.contains('red')) {
       $.ajax({
@@ -2315,7 +2311,7 @@ shareCancleBtn.addEventListener("click", function () {
 });
 
 
-// // -------------------------------------피드 메뉴 끝-------------------------------------------------------
+// -------------------------------------피드 메뉴 끝-------------------------------------------------------
 
 
 
@@ -3472,22 +3468,7 @@ function selectReplyListM(commentNo, commentLi, boardNo) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// todo: 모달창 바깥 클릭 시 모달창 꺼짐
+// todo: 모달창 바깥 클릭 시 모달창 꺼짐--------------------------------------------
 window.addEventListener('click', (e) => {
 
   const feedBackground = document.getElementById("feedBackground")

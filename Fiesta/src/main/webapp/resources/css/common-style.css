@@ -157,6 +157,8 @@ header > section {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: relative;
 }
 
 .search-section fieldset input {
