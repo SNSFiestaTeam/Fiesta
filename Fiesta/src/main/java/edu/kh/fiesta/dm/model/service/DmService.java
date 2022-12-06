@@ -15,9 +15,9 @@ public interface DmService {
 	 */
 	List<Member> selectMember(String memberNickname);
 
-	int checkChattingNo(Map<String, Object> map);
+	int checkChattingNo(Map<String, Integer> map);
 
-	int createChattingRoom(Map<String, Object> map);
+	int createChattingRoom(Map<String, Integer> map);
 
 	List<ChattingRoom> selectRoomList(int memberNo);
 

@@ -53,14 +53,15 @@ public class DmController {
 	
 	// 채팅방 입장
 	@GetMapping("/enter")
+<<<<<<< HEAD
 	@ResponseBody
 	public String dmEnter (int targetNo, RedirectAttributes ra,
+=======
+	public String dmEnter(int targetNo, RedirectAttributes ra,
+>>>>>>> parent of a098d22 (Merge pull request #194 from SNSFiestaTeam/setting)
 			@SessionAttribute("loginMember") Member loginMember) {
-	
-		System.out.println(targetNo);
 		
-		
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		
 		map.put("targetNo", targetNo);
 		map.put("loginMemberNo", loginMember.getMemberNo());
@@ -84,12 +85,17 @@ public class DmController {
         }
         
         
+<<<<<<< HEAD
         map.put("chattingNo", chattingNo);
         
         
         ra.addFlashAttribute("chattingNo", chattingNo);
         
         return new Gson().toJson(map);	
+=======
+        return "redirect:/dm";
+		
+>>>>>>> parent of a098d22 (Merge pull request #194 from SNSFiestaTeam/setting)
 	}
 	
 	

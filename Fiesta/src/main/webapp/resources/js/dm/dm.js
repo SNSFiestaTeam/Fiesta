@@ -27,7 +27,24 @@ const proImg = document.getElementById("proImg")
 const nextBtn = document.getElementById("nextBtn");
 const messageName = document.getElementById("messageName");
 
+// 다음 클릭
+next.addEventListener("click", ()=>{
+  dmMenu.style.display = "none";
+  noClick.style.display = "none";
+  click.style.display = "flex";
+  messageName.innerText = recipient.innerText;
 
+  $.ajax({
+    url: "/dm/number",
+    data : {"memberNickname" : RecipientMemberNick},
+    success : (result) =>{
+      
+      const RecipeintMemberNo = result;
+    }
+
+  })
+  
+})
 
 const memberListArea = document.getElementById("memberListArea");
 
@@ -50,20 +67,18 @@ sendPeople.addEventListener("input", ()=>{
       
       for(let member of memberList){
         const li = document.createElement("li");
-        const input = document.createElement("input")
         const img = document.createElement("img");
         const span = document.createElement("span");
         const targetNoInput = document.createElement("input");
 
 
         memberListArea.append(li);
-        input.setAttribute('type', 'hidden');
-        input.setAttribute("value", member.memberNo);
-        input.setAttribute("name", 'targetNo');
-
-
         li.classList.add("chatMember")
+<<<<<<< HEAD
         li.append(input,img, span, targetNoInput);
+=======
+        li.append(img, span);
+>>>>>>> parent of a098d22 (Merge pull request #194 from SNSFiestaTeam/setting)
         img.classList.add("modalProfile")
         span.classList.add("modalNick")
         targetNoInput.setAttribute('type', 'hidden');
@@ -77,6 +92,7 @@ sendPeople.addEventListener("input", ()=>{
 
         span.innerText = member.memberNickname;
 
+<<<<<<< HEAD
 
         li.addEventListener("click", e => {
 
@@ -101,11 +117,27 @@ sendPeople.addEventListener("input", ()=>{
         })
 
           
+=======
+        for(let item of chatMember){
+          item.addEventListener("click", e=>{
+            const itemName = item.innerText;
+            const itemImage = item.getAttribute("src");
+          
+            const sendPeople = document.getElementById('sendPeople');
+            sendPeople.value = '';
+            recipient.innerText = itemName;  
+          
+          })
+
+        }
+
+>>>>>>> parent of a098d22 (Merge pull request #194 from SNSFiestaTeam/setting)
       }
     },
     error: ()=>{
       console.log("실패");
     }
+<<<<<<< HEAD
   }); 
 })
 
@@ -156,7 +188,11 @@ nextBtn.addEventListener("click", () => {
   messageName.innerText = recipient.innerText;
 
   const RecipientMemberNick = recipient.innerText;
+=======
+>>>>>>> parent of a098d22 (Merge pull request #194 from SNSFiestaTeam/setting)
 
+  
+  });    
 })
 
 
@@ -340,7 +376,7 @@ const selectRoomList = () =>{
 
         const recentSendTime = document.createElement("span");
         recentSendTime.classList.add("recent-send-time");
-        recentSendTime.innerText = room.sendTime;
+        recentSendTime.innerText = roon.sendDate;
 
         p.append(targetName, recentSendTime);
 
@@ -425,7 +461,7 @@ chattingSock.onmessage = function(e){
 
     const span = document.createElement("span");
     span.classList.add("chatDate");
-    span.innerText = msg.sendTime;
+    span.innerText = msg.sendDate;
 
     const p = document.createElement("p");
     p.classList.add("chat");

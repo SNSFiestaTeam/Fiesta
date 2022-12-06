@@ -22,7 +22,11 @@
             새로운 메시지
           </div>
           <div class="next">
+<<<<<<< HEAD
           <button id="nextBtn">다음</button>
+=======
+          <button id="next">다음</button>
+>>>>>>> parent of a098d22 (Merge pull request #194 from SNSFiestaTeam/setting)
           </div>
         </div>
         <div class="feedMenu2">

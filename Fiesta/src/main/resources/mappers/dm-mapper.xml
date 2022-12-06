@@ -63,7 +63,7 @@ WHERE MEMBER_NICKNAME LIKE '%${memberNickname}%'
 <insert id="createChattingRoom" parameterType="map" useGeneratedKeys="true">
 
    <selectKey keyProperty="chattingNo" order="BEFORE" resultType="_int">
-      SELECT SEQ_CHAT_ROOM_NO.NEXTVAL FROM DUAL
+      SELECT SEQ_ROOM_NO.NEXTVAL FROM DUAL
    </selectKey>
 
    INSERT INTO CHATTING_ROOM
@@ -104,7 +104,7 @@ WHERE MEMBER_NICKNAME LIKE '%${memberNickname}%'
    FROM CHATTING_ROOM R
    WHERE MEMBER_NO_1 = #{memberNo}
    OR MEMBER_NO_2 = #{memberNo}
-   ORDER BY MAX_MESSAGE_NO DESC NULLS LAST 
+   ORDER BY MAX_MESSAGE_NO DESC NULLS LAST    
 </select>
 
 <insert id="insertMessage">

@@ -205,17 +205,14 @@ margin: 10px;
     margin: 20px;
 }
 
-.dm-item.select{
+.chatting-item.select{
 	background-color: #ddd;
 }
 
 .chatting-content{
 	width: 70%;
 }
-.target-profile{ width: 65px;
-    border-radius: 50%;
-    margin : 10px;
-}
+
 
 .dm-area > li{
 	margin: 10px 0;
@@ -255,13 +252,6 @@ margin: 10px;
 	resize: none;
 }
 
-.dm-item > div{ height: 100%; }
-.item-header{ width : 25%; }
-.item-body{ 
-	width : 75%; 
-	padding : 2px 0;
-}
-
 
 .my-chat {
 	text-align: right;
@@ -275,21 +265,7 @@ margin: 10px;
 	font-size: 9px;
 }
 
-.dm-item{
-	height: 12%;
-	display: flex;
-	padding: 5px 0;
-	border-bottom: 1px solid #ccc;
-	cursor: pointer;
-    width: auto;
-}
 
-.dm-list{
-	width: 100%;
-	border: 1px solid #ccc;
-	list-style: none;
-	overflow: auto;
-}
 
 @media screen and (max-width: 470px) {
 
