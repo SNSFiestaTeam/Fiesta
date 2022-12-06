@@ -31,7 +31,18 @@ public interface FeedService {
 	Map<String, Object> selectFeedAll(int memberNo, String memberNickname);
 
 
+	/** 게시글 AJAX 조회
+	 * @param paramMap
+	 * @return
+	 */
 	Map<String, Object> selectBoardList(Map<String, Object> paramMap);
+
+ 	/** 북마크 조회
+	 * @param memberNo
+	 * @param memberNickname
+	 * @return
+	 */
+	Map<String, Object> selectBookmark(int memberNo, String memberNickname);
 
 
 
