@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.fiesta.dm.model.dao.DmDAO;
 import edu.kh.fiesta.dm.model.vo.ChattingRoom;
+import edu.kh.fiesta.dm.model.vo.Message;
 import edu.kh.fiesta.member.model.vo.Member;
 
 @Service
@@ -35,6 +36,26 @@ public class DmServiceImple implements DmService{
 	@Override
 	public List<ChattingRoom> selectRoomList(int memberNo) {
 		return dao.selectRoomList(memberNo);
+	}
+
+	@Override
+	public int insertMessage(Message msg) {
+		return dao.insertMessage(msg);
+	}
+
+	@Override
+	public List<Message> selectMessageList(Map<String, Object> paramMap) {
+		return dao.selectMessageList(paramMap);
+	}
+
+	@Override
+	public int updateReadFlag(Map<String, Object> paramMap) {
+		return dao.updateReadFlag(paramMap);
+	}
+
+	@Override
+	public int selectNumber(String memberNickname) {
+		return dao.selectNumber(memberNickname);
 	}
 
 	

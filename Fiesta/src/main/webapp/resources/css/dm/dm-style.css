@@ -201,6 +201,61 @@ margin: 10px;
 	background-color: #ddd;
 }
 
+.chatting-content{
+	width: 70%;
+}
+
+
+.dm-area > li{
+	margin: 10px 0;
+}
+
+.target-chat{
+	display: flex;
+	align-items: flex-start;
+}
+.target-chat > img{
+	width: 50px;
+	margin-right: 5px;
+}
+
+.chat {
+	display: inline-block;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #eee;
+	text-align: left;
+	max-width: 500px;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+
+.input-area {
+	height: 80px;
+	width: 100%;
+	display: flex;
+}
+
+#chattingInput {
+	padding: 3px;
+	font-size: 1.3em;
+	width: 80%;
+	resize: none;
+}
+
+
+.my-chat {
+	text-align: right;
+}
+
+.my-chat>p {
+	background-color: yellow;
+}
+
+.chatDate {
+	font-size: 9px;
+}
 
 
 
