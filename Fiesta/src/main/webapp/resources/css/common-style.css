@@ -114,7 +114,7 @@ header {
 
   display: flex;
   justify-content: center;
-  /* z-index: 45;  */ /* 게시물 작성 클릭시 헤더가 계속 보여 주석 처리함 (새 게시물에 z-index를 높게 줘도 계속 보임*/
+  z-index: 45;
 }
 
 header > section {
