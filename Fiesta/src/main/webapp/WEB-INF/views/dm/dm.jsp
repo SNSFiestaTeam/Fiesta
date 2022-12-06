@@ -111,6 +111,9 @@
       // const RecipientMemberNick = "${Recipeint.innerText}";
       // // 모달에서 닉네임 얻어오기
 
+      // 대상 번호 전역변수로 선언
+      var targetNo = 0;
+      var chattingNo = 0;
         
       // 게시판에서 사용자 닉네임을 눌러서 채팅 화면으로 넘어온 경우
       // 그 때 전달된 채팅방 번호를 저장하는 변수
