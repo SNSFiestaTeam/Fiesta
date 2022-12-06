@@ -1,0 +1,17 @@
+
+/* 사이드 바 */
+.w3-sidebar{
+  color: black;
+}
+
+/* 관리자 페이지 타이틀 */
+.management-title{
+
+  border-bottom: 1px solid black;
+
+}
+
+/* 관리자 페이지 내용 */
+.management-content {
+
+}
