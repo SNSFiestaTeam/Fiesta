@@ -33,6 +33,13 @@
           </div>
           <%-- 줌 슬라이더 --%>
           <div id="zoom-slider"></div>
+          <div id="zoom-slider0"></div>
+          <div id="zoom-slider1"></div>
+          <div id="zoom-slider2"></div>
+          <div id="zoom-slider3"></div>
+          <div id="zoom-slider4"></div>
+          <div id="zoom-slider5"></div>
+ 
           <%-- 사진 몇번째 인지 밑에 보여주는거 --%>
           <div class="swiper-pagination"></div>
           <%-- 이미지 슬라이드 좌우 버튼 --%>

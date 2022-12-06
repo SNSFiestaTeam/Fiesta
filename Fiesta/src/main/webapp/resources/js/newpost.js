@@ -151,35 +151,19 @@ document.getElementById("basicImage").addEventListener("click", () => {
   });
 });
 
-// // 사진크롭
-// var isInitialized = false;
-// var cropper = '';
-// var file = '';
-// var _URL = window.URL || window.webkitURL;
-
-// const zoomSlider = document.getElementById("zoomSlider");
-
-//! 사진 크롭
-var isInitialized = false;
-var cropper = "";
-var file = "";
-var _URL = window.URL || window.webkitURL;
-
 //! 컴퓨터에서 선택
 document.getElementById("cropperfile").addEventListener("change", (e) => {
   if (e.target.files[0] != undefined) {
     // 이벤트 발생한 요소에 선택된 파일이 있을 경우
+
     for (let i = 0; i < e.target.files.length; i++) {
       // 이벤트 발생 파일 길이 만큼 반복문 돌림
 
       form.append("files", e.target.files[i]);
-
       const reader = new FileReader(); // 파일 읽는 객체
-
       console.log(e.target.files[i]);
-
       reader.onload = (e) => {
-        // 파일 읽은 후
+        
 
         // *edit부분 파일*-----------------------------------------
         // *<div class="eidt-file swiper-slide"><img id="eidtFile" src=""></div>
@@ -189,105 +173,16 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
         editFileDiv.classList.add("edit-file", "swiper-slide");
 
         editFileImg.classList.add("ready");
-        // editFileImg.classList.add("cropper-img" + [i]);
-
-        // editFileImg.id = "cropper-img";
         editFileImg.id = "cropper-img" + [i];
 
         // 읽어온 URL을 editFileIm에 src요소로 추가
         editFileImg.setAttribute("src", e.target.result);
+        
         // div와 img 합치기
         editFileDiv.append(editFileImg);
         // 부모요소에 div 합치기
         slideImages.append(editFileDiv);
 
-        // $("#cropper-img").attr("src", e.target.result);
-        // $("#cropper-img").addClass("ready");
-        // !11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-
-        if (isInitialized == true) {
-          $("#zoom-slider").val();
-          cropper.destroy();
-          console.log("넘어갔나?");
-        }
-        // initCropper();
-        //?11111111111111111111111111
-        console.log("호출됨?");
-        console.log(form);
-        var vEl = document.getElementById("cropper-img0");
-        cropper = new Cropper(vEl, {
-          viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
-          dragMode: "move", // 마우스 포인터의 역할(move, crop, none)
-          aspectRatio: 1, // 자르기 비율
-          checkOrientation: false,
-          cropBoxMovable: true, // 드래그해 자르기 상자 이동
-          cropBoxResizable: false, //CropperBox의 사이즈 고정(자르기 상자 안커지게)
-          zoomOnTouch: true, //터치 드래그 이미지 확대.축소
-          zoomOnWheel: true, // 휠로 확대
-          guides: true,
-          highlight: false,
-          autoCropArea: 1.0, //cropper 시작시 CopperBox의 크기 지정(0.1~1.0)
-          ready: function (e) {
-            var cropper = this.cropper;
-            cropper.zoomTo(0);
-
-            var imageData = cropper.getImageData();
-            console.log("imageData ", imageData);
-            var minSliderZoom = imageData.width / imageData.naturalWidth;
-
-            $("#min-zoom-val").html(minSliderZoom.toFixed(4));
-
-            $(".cr-slider-wrap").show();
-            $("#zoom-slider").slider("option", "max", 1);
-            $("#zoom-slider").slider("option", "min", minSliderZoom);
-            $("#zoom-slider").slider("value", minSliderZoom);
-          },
-        });
-        isInitialized = true;
-        // if (isInitialized == true) {
-        //   $("#zoom-slider").val(i);
-        //   cropper.destroy();
-        // }
-        // initCropper(i);
-        // *edit 미리보기 부분 파일*
-        // <div class="preview-file swiper-slide">
-        //   <img src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-        //   <div class="preview-remove">&times;</div>
-        // </div>
-        const previewFileDiv = document.createElement("div");
-        const previewFileImg = document.createElement("img");
-        const previewRemoveDiv = document.createElement("div");
-        const times = document.createTextNode("x");
-
-        previewFileDiv.classList.add("preview-file", "swiper-slide");
-        previewFileImg.setAttribute("src", e.target.result);
-        previewRemoveDiv.classList.add("preview-remove");
-
-        previewFileDiv.append(previewFileImg, previewRemoveDiv);
-        previewRemoveDiv.appendChild(times);
-
-        filePreview.append(previewFileDiv);
-
-        // 사진넘기게 하기 위해 swiper 작성구문
-        new Swiper(".swiper", {
-          // autoplay: {
-          //   delay: 5000
-          // },
-          loop: false, // 무한반복 x
-          slidesPerView: 1, // 슬라이드 몇개 보여줄지
-          spaceBetween: 0, // 슬라이드간 간격
-          centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
-          pagination: {
-            // 페이징 클릭시 해당영역 이동
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            // 다음 화상표 버튼
-            prevEl: ".swiper-button-prev",
-            nextEl: ".swiper-button-next",
-          },
-        });
       };
       filelist = e.target.result;
       reader.readAsDataURL(e.target.files[i]); // 파일 정보를 불러와서 URL형태로 저장
@@ -297,122 +192,6 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
     postFileText.style.display = "block";
   }
 });
-// //! 확대 버튼 클릭 했을 때
-// document.getElementByIdBtn("zoomBtn").addEventListener("click", () => {
-//   console.log("확대버튼클릭됨?");
-//   // console.log(form);
-//   var vEl = document.getElementById("cropper-img");
-//   cropper = new Cropper(vEl, {
-//     viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
-//     dragMode: "move", // 마우스 포인터의 역할(move, crop, none)
-//     aspectRatio: 1, // 자르기 비율
-//     checkOrientation: false,
-//     cropBoxMovable: true, // 드래그해 자르기 상자 이동
-//     cropBoxResizable: false, //CropperBox의 사이즈 고정(자르기 상자 안커지게)
-//     zoomOnTouch: true, //터치 드래그 이미지 확대.축소
-//     zoomOnWheel: true, // 휠로 확대
-//     guides: true,
-//     highlight: false,
-//     autoCropArea: 1.0, //cropper 시작시 CopperBox의 크기 지정(0.1~1.0)
-//     ready: function (e) {
-//       var cropper = this.cropper;
-//       cropper.zoomTo(0);
-
-//       var imageData = cropper.getImageData();
-//       console.log("imageData ", imageData);
-//       var minSliderZoom = imageData.width / imageData.naturalWidth;
-
-//       $("#min-zoom-val").html(minSliderZoom.toFixed(4));
-
-//       $(".cr-slider-wrap").show();
-//       $("#zoom-slider").slider("option", "max", 1);
-//       $("#zoom-slider").slider("option", "min", minSliderZoom);
-//       $("#zoom-slider").slider("value", minSliderZoom);
-//     },
-//   });
-//   isInitialized = true;
-// });
-
-const prewBtn = document.getElementById("prewBtn");
-const nextBtn = document.getElementById("nextBtn");
-
-// 슬라이드 이전 버튼
-let imgNum = 0;
-prewBtn.addEventListener("click", () => {
-  imgNum--;
-  if (isInitialized == true) {
-    $("#zoom-slider").val();
-    // cropper.destroy();
-  }
-  var vEl = document.getElementById("cropper-img" + [imgNum]);
-  cropper = new Cropper(vEl, {
-    viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
-    dragMode: "move", // 마우스 포인터의 역할(move, crop, none)
-    aspectRatio: 1, // 자르기 비율
-    checkOrientation: false,
-    cropBoxMovable: true, // 드래그해 자르기 상자 이동
-    cropBoxResizable: false, //CropperBox의 사이즈 고정(자르기 상자 안커지게)
-    zoomOnTouch: true, //터치 드래그 이미지 확대.축소
-    zoomOnWheel: true, // 휠로 확대
-    guides: true,
-    highlight: false,
-    autoCropArea: 1.0, //cropper 시작시 CopperBox의 크기 지정(0.1~1.0)
-    ready: function (e) {
-      var cropper = this.cropper;
-      cropper.zoomTo(0);
-
-      var imageData = cropper.getImageData();
-      console.log("imageData ", imageData);
-      var minSliderZoom = imageData.width / imageData.naturalWidth;
-
-      $("#min-zoom-val").html(minSliderZoom.toFixed(4));
-
-      $(".cr-slider-wrap").show();
-      $("#zoom-slider").slider("option", "max", 1);
-      $("#zoom-slider").slider("option", "min", minSliderZoom);
-      $("#zoom-slider").slider("value", minSliderZoom);
-    },
-  });
-  isInitialized = true;
-});
-nextBtn.addEventListener("click", () => {
-  // modalBackgroundEidt.style.display = "none";
-  imgNum++;
-  if (isInitialized == true) {
-    $("#zoom-slider").val();
-    // cropper.destroy();
-  }
-  var vEl = document.getElementById("cropper-img" + [imgNum]);
-  cropper = new Cropper(vEl, {
-    viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
-    dragMode: "move", // 마우스 포인터의 역할(move, crop, none)
-    aspectRatio: 1, // 자르기 비율
-    // checkOrientation: false,
-    // cropBoxMovable: true, // 드래그해 자르기 상자 이동
-    cropBoxResizable: false, //CropperBox의 사이즈 고정(자르기 상자 안커지게)
-    // zoomOnTouch: true, //터치 드래그 이미지 확대.축소
-    // zoomOnWheel: true, // 휠로 확대
-    guides: true,
-    highlight: false,
-    autoCropArea: 1.0, //cropper 시작시 CopperBox의 크기 지정(0.1~1.0)
-    ready: function (e) {
-      var cropper = this.cropper;
-      cropper.zoomTo(0);
-
-      var imageData = cropper.getImageData();
-      console.log("imageData ", imageData);
-      var minSliderZoom = imageData.width / imageData.naturalWidth;
-
-      $("#min-zoom-val").html(minSliderZoom.toFixed(4));
-
-      $(".cr-slider-wrap").show();
-      $("#zoom-slider").slider("option", "max", 1);
-      $("#zoom-slider").slider("option", "min", minSliderZoom);
-      $("#zoom-slider").slider("value", minSliderZoom);
-    },
-  });
-  isInitialized = true;
-});
 
 //! 다음 버튼
 // edit 다음 버튼
@@ -420,14 +199,7 @@ document.getElementById("editNextBtn").addEventListener("click", () => {
   modalBackgroundEidt.style.display = "none";
   modalBackgroundText.style.display = "flex";
   /* key 확인하기 */
-  for (let key of form.keys()) {
-    console.log(key);
-  }
 
-  /* value 확인하기 */
-  for (let value of form.values()) {
-    console.log(value);
-  }
 
   // *text 부분 파일-------------------------------------------------------------
   // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
@@ -435,56 +207,8 @@ document.getElementById("editNextBtn").addEventListener("click", () => {
   reader.readAsDataURL(value);
 
   reader.onload = () => {
-    const swiperSildeDiv = document.createElement("div");
-    const fileImg = document.createElement("img");
-
-    swiperSildeDiv.classList.add("swiper-slide");
-    fileImg.id = "files";
-    fileImg.setAttribute("src", reader.result);
-
-    swiperSildeDiv.append(fileImg);
-    textFileSwiper.append(swiperSildeDiv);
-
-    // *text 접근성 부분 파일*
-    // postFileText.style.display = "block";
-
-    // <div class="postFileText">
-    //   <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-    //   <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
-    // </div>
-
-    const postFileTextDiv = document.createElement("div");
-    const postFileTextImg = document.createElement("img");
-    const postFileTextInput = document.createElement("input");
-
-    postFileTextDiv.classList.add("postFileText");
-    postFileTextImg.id = "editFile";
-    postFileTextImg.setAttribute("src", reader.result);
-    postFileTextInput.setAttribute("type", "text");
-    postFileTextInput.setAttribute("name", "postFileText");
-    postFileTextInput.setAttribute("placeholder", "대체 텍스트 입력...");
-
-    postFileTextDiv.append(postFileTextImg, postFileTextInput);
-    postFileTextArea.append(postFileTextDiv);
-
-    form.append("postFileText", postFileText.value); // 접근성 담기?여러개가 감기나?
+   
   };
-});
-//! edit 미리보기 슬라이드
-new Swiper(".preview-swiper", {
-  // autoplay: {
-  //   delay: 5000
-  // },
-  loop: false, // 무한반복 x
-  slidesPerView: 2.5, // 슬라이드 몇개 보여줄지
-  spaceBetween: 10, // 슬라이드간 간격
-  //centeredSlides: true, // 활성화된 슬라이드 가운데 보이게 지정
-  // breakpoints: slidesPerView,
-  navigation: {
-    // 다음 화상표 버튼
-    prevEl: ".preview-swiper-button-prev",
-    nextEl: ".preview-swiper-button-next",
-  },
 });
 
 // ! edit에서 파일 추가 버튼
@@ -605,6 +329,8 @@ document.getElementById("newPostCloseFinish").addEventListener("click", () => {
 //     }
 //   });
 
+
+
 $("#zoom-slider").slider({
   orientation: "horizontal",
   range: "min",
@@ -627,6 +353,7 @@ $("#zoom-slider").slider({
     }
   },
 });
+
 
 // function initCropper() {
 //   console.log("호출됨?");

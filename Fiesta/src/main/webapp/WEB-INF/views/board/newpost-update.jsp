@@ -5,21 +5,24 @@
   <!-- 메인 섹션 -->
   <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
   <!-- 모달 배경 -->
-  <div class="modal_background">
+  <div class="modal_background" id="modalBackgroundUpdate">
     <!-- 닫기버튼 -->
-    <div class="new-post-close" id="newPostClose">&times;</div>
+    <div class="new-post-close" id="updateClose">&times;</div>
     <!-- post 배경 -->
-    <section class="modal_post_section-text" id="modalBackgroundUpdate">
+    <section class="modal_post_section-text" >
       <!-- post top -->
       <div class="new-post-top-text">
-        <div id="backBtnText">취소</div>
+        <div id="updateClose2">취소</div>
         <p>정보 수정</p>
         <button name="newpostText" id="update">완료</button>
       </div>
       <!-- post-bottom -->
       <div class="new-post-bottom-text">
         <div class="bottom-left-box">
-          <img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기">
+         <%-- <c:forEach var="i" begin="${start}" end="${fn:length(board.imageList) - 1}">
+            <img src="${board.imageList[i].imagePath}${board.imageList[i].imageReName}">
+          </c:forEach> --%>
+          <%-- <img id="file" src=""> --%>
 
         </div>
 
@@ -27,7 +30,7 @@
           <div class="new-post-bottom-information">
             <div class="new-post-bottom-member">
               <img id="file" src="../../resources/images/user.jpg" alt="작성자 프로필">
-              <div class="member-nikname">juyeong7063</div>
+              <div class="member-nikname">${loginMember.memberNickname}</div>
             </div>
 
             <div class="new-post-bottom-inputtext">
