@@ -20,21 +20,30 @@
     <title>검색</title>
     
     <!-- CSS 링크 -->
-    <link rel="stylesheet" href="/resources/css/main/main-style.css" />
+    <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+
+    <link rel="stylesheet" href="/resources/css/common-style.css" />
+    
+    <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/share-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/report-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
+    <link rel="stylesheet" href="/resources/css/action/login-comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/boardDetail-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
-    <link rel="stylesheet" href="/resources/css/common-style.css" />
-    <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
+
+    <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
+
+    <link rel="stylesheet" href="/resources/css/search/board-detail-style.css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(web).css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(tablet).css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(mobile).css" />
-
-    <link rel="stylesheet" href="/resources/css/action/share-style.css" />
-    <link rel="stylesheet" href="/resources/css/action/report-style.css" />
-    <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
-    <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
-    <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
-    <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -268,27 +277,55 @@
           </c:if>
         </section>
 
-
-
-
     </main>
 
-    <jsp:include page="/WEB-INF/views/action/boardDetail.jsp"/>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
+    <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
+    <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
+    <jsp:include page="/WEB-INF/views/action/confirm.jsp" />
+    <jsp:include page="/WEB-INF/views/action/comment.jsp" />
 
     <!-- 모달창 include -->
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
     
-    <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
-    <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
-    <jsp:include page="/WEB-INF/views/action/comment.jsp" />
-    <jsp:include page="/WEB-INF/views/action/confirm.jsp" />
-    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+    <%-- 검색 게시글 상세조회 --%>
+    <jsp:include page="/WEB-INF/views/action/boardDetail.jsp"/>
+    
+
+    <c:if test="${ not empty loginMember }">
+      <script>
+        var loginMember = "${loginMember}";
+        var memberNo = "${loginMember.memberNo}";
+        var memberNickname = "${loginMember.memberNickname}";
+        var memberProfileImg = "${loginMember.memberProfileImg}";
+        var upperCommentNo = 0;
+        var boardNo;
+
+        var deleteBoardNo;
+        var deleteCommentNo;
+        var deleteCommentUl;
+        var deleteReplyCount;
+
+        var modalOn = 0;
+        var boardMemberNickname;
+        var boardMemberProfileImg;
+
+        var commentBlockFlag;
+        var boardPubPriFlag;
+
+        var tags;
+
+        var mentionSet = null;
+      </script>
+    </c:if>
 
     <script>
-      var swiper = new Swiper(".mySwiper", {
+      var swiper = new Swiper(".searchSwiper", {
         speed: 1000,
         // cssMode: true,
 
@@ -326,36 +363,12 @@
       });
     </script>
 
-    <script>
-        var loginMember = "${loginMember}";
-        var memberNo = "${loginMember.memberNo}";
-        var memberNickname = "${loginMember.memberNickname}";
-        var memberProfileImg = "${loginMember.memberProfileImg}";
-        var upperCommentNo = 0;
-        var boardNo;
-
-        var deleteBoardNo;
-        var deleteCommentNo;
-        var deleteCommentUl;
-        var deleteReplyCount;
-
-        var modalOn = 0;
-        var boardMemberNickname;
-        var boardMemberProfileImg;
-
-        var commentBlockFlag;
-        var boardPubPriFlag;
-
-        var tags;
-
-        var mentionSet = null;
-    </script>
 
 
     <%-- jQuery 라이브러리(.js 파일) 추가 (CDN 방식 (Content Delivery Network)) --%>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         
-    <script src="/resources/js/search/search.js"></script>
+    <script src="/resources/js/search/search.js"></script> <%-- mainBoard.js와 거의 동일 --%>
     <script src="/resources/js/follow/follow.js"></script>
     <script src="/resources/js/common/common.js"></script>
 

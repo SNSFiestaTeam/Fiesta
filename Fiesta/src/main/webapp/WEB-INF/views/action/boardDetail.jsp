@@ -5,12 +5,14 @@
   
     
     
-    <!-- 인스타 피드 -->
-        <section class="feed-background" id="feedBackground">
+    <!-- at.boardDetail  인스타 피드 -->
+        <%-- <section class="feed-background" id="feedBackground">
           <!-- 피드 리스트 -->
               <div class="feed" id="feed">
  
-              </div> 
 
-        </section>
+
+
+              </div> 
+        </section> --%>
 

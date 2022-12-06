@@ -358,6 +358,7 @@
       });
     </script>
 
+
     <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
