@@ -62,7 +62,7 @@
                 <div class="postFileText-area" id="postFileTextArea">
                   <%-- <div class="postFileText">
                     <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-                    <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
+                    <input type="text" id="imgAccessibility" name="imgAccessibility" placeholder="대체 텍스트 입력...">
                   </div> --%>
                   
                 </div>
