@@ -24,14 +24,14 @@ sendMessageBtn.addEventListener("click", ()=>{
 
 
 const proImg = document.getElementById("proImg")
-const next = document.getElementById("next");
+const nextBtn = document.getElementById("nextBtn");
 const messageName = document.getElementById("messageName");
 
 
 
 const memberListArea = document.getElementById("memberListArea");
 
-const chatMember = document.getElementsByClassName("chatMember");
+
 const modalNick = document.getElementsByClassName("modalNick");
 const recipient = document.getElementById("Recipient");
 
@@ -53,7 +53,9 @@ sendPeople.addEventListener("input", ()=>{
         const input = document.createElement("input")
         const img = document.createElement("img");
         const span = document.createElement("span");
-        
+        const targetNoInput = document.createElement("input");
+
+
         memberListArea.append(li);
         input.setAttribute('type', 'hidden');
         input.setAttribute("value", member.memberNo);
@@ -61,9 +63,11 @@ sendPeople.addEventListener("input", ()=>{
 
 
         li.classList.add("chatMember")
-        li.append(input,img, span);
+        li.append(input,img, span, targetNoInput);
         img.classList.add("modalProfile")
         span.classList.add("modalNick")
+        targetNoInput.setAttribute('type', 'hidden');
+        targetNoInput.value = member.memberNo;
         
         if(member.memberProfileImg == null){
           img.setAttribute("src", "/resources/images/user.jpg")
@@ -73,44 +77,79 @@ sendPeople.addEventListener("input", ()=>{
 
         span.innerText = member.memberNickname;
 
-        for(let item of chatMember){
-          item.addEventListener("click", e=>{
-            const itemName = item.innerText;
-            const itemImage = item.getAttribute("src");
-            const targetNo = item.children[0].value;
 
-            console.log(targetNo);
-            recipient.innerText = itemName;  
-          
-            
-          })
-          $.ajax({
-            url : "/dm/enter",
-            data : {"targetNo" : item.children[0].value},
-            dataType:"JSON",
-            success : ()=>{
-              console.log("성공");
-            }
+        li.addEventListener("click", e => {
 
-          });
+
+          targetNo = member.memberNo;
+
+          recipient.innerText = "";  
+          recipient.innerText = member.memberNickname;  
+          sendPeople.value = '';
           
-          }
-        }
- 
-      },
-      error: ()=>{
-        console.log("실패");
+
+          // $.ajax({
+          //   url : "/dm/enter",
+          //   data : {"targetNo" : item.children[0].value},
+          //   dataType:"JSON",
+          //   success : ()=>{
+          //     console.log("성공");
+          //   }
+  
+          // });
+
+        })
+
+          
       }
-    }); 
-    })
+    },
+    error: ()=>{
+      console.log("실패");
+    }
+  }); 
+})
 
-   
 
 
 
 
 // 다음 클릭
-next.addEventListener("click", ()=>{
+nextBtn.addEventListener("click", () => {
+  
+  $.ajax({
+    url: "/dm/enter",
+    data: { "targetNo": targetNo },
+    dataType: "json",
+    success: (map) => {
+      console.log(map);
+
+      const messageList = map.messageList;
+
+      // 전역변수 targetNo에 타겟넘버 저장
+      targetNo = map.targetNo;
+      chattingNo = map.chattingNo;
+
+      if (messageList.length > 0) {
+
+
+        // 메세지가 존재하면 화면에 출력
+        for (let message of messageList) {
+
+          // 메세지 출력구문
+
+
+          
+        }
+      }
+
+    },
+    error: () => {
+      console.log("채팅방 입장에러");
+    }
+    
+  })
+
+
   dmMenu.style.display = "none";
   noClick.style.display = "none";
   click.style.display = "flex";
@@ -207,9 +246,9 @@ const selectChattingFn = () =>{
 
   $.ajax({
     url : "dm/selectMessage",
-    data:{"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
+    data:{"chattingNo" : selectChattingNo},
     dataType : "JSON",
-    success : messageList =>{
+    success : (messageList) =>{
 
       const ul = document.querySelector(".dm-area");
       ul.innerHTML = "";
@@ -351,14 +390,14 @@ const selectRoomList = () =>{
 
 const sendMessage = () =>{
   const chattingInput = document.getElementById("chattingInput");
-
+  console.log(selectTargetNo);
   if(chattingInput.value.trim().length == 0){
     chattingInput.value = "";
   } else{
     var obj = {
       "senderNo": loginMemberNo,
-      "targetNo" : selectTargetNo,
-      "chattingNo" : selectChattingNo,
+      "targetNo" : targetNo,
+      "chattingNo" : chattingNo,
       "messageContent" : chattingInput.value,
     };
     chattingSock.send(JSON.stringify(obj));
