@@ -124,6 +124,16 @@ memberEmail.addEventListener("input", function(){
 
 })
 
+if(memberEmail.checkObj == true){
+    memberName.addEventListener("focus", () => {
+        alert("이메일 인증을 먼저 진행해주세요😊");
+    })
+}
+
+
+
+
+
 
 // 성명 아이콘 : 필수 입력, 유효성 검사(한글, 영문자만 가능, 2글자 이상)
 const nameCheck = document.getElementById("nameCheck");
@@ -228,6 +238,7 @@ memberNickname.addEventListener("input", () => {
     })
 
 })
+
 
 
 
