@@ -2,9 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
-<c:set var="boardList" value="${feedMap.boardList}"></c:set>
+<c:set var="bookmarkList" value="${feedMap.bookmarkList}"></c:set>
 <c:set var="pagination" value="${feedMap.pagination}"></c:set>
 <c:set var="boardCount" value="${feedMap.boardCount}"></c:set>
+<c:set var="bookmarkCount" value="${feedMap.bookmarkCount}"></c:set>
 <c:set var="feedMember" value="${feedMap.feedMember}"></c:set>
 
 <!DOCTYPE html>
@@ -15,16 +16,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
-    <link rel="stylesheet" href="/resources/css/myfeed.css" />
+    <link rel="stylesheet" href="/resources/css/myfeedBookmark.css" />
     <%-- <link rel="stylesheet" href="/resources/css/memberfeed.css"> --%>
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
+<link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -69,8 +72,8 @@
 
             <div id="profile-board">
               <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
-              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount}</button></span>
-              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount}</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount-1}</button></span>
             </div>
 
             <div class="profileName">${feedMember.memberName}</div>
@@ -78,6 +81,7 @@
             <p class="introduce-text">${feedMember.introContent}</p>
           </div>
         </section>
+
 
         <section class="title-section">
           <div id="text-area">
@@ -89,9 +93,6 @@
             <span><i class="fa-regular fa-bookmark"></i> 저장됨</span>
            </a> 
 
-            <a href="/feed/${loginMember.memberNickname}/taged" id="title-section-taged">
-            <span><i class="fa-solid fa-children"></i> 태그됨</span>
-            </a>
           </div>
         </section>
 
@@ -127,8 +128,8 @@
 
           <div id="profile-board">
               <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
-              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount}</button></span>
-              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount}</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount-1}</button></span>
             </div>
 
 
@@ -153,48 +154,48 @@
 
       </c:if>
 
-        <c:if test="${not empty boardList}"> 
+        <c:if test="${not empty bookmarkList}"> 
         <section class="feed-section" id="feed-section">
 
-          <c:if test ="${fn:length(boardList) > 0}">
+          <c:if test ="${fn:length(bookmarkList) > 0}">
           <div class="img-container">
-            <c:forEach var="board" items ="${boardList}" begin="0" end="2">
-            <a href="#">
-              <img class="feed-img" src="${board.imgPath}"
+            <c:forEach var="bookmark" items ="${bookmarkList}" begin="0" end="2">
+            <a href="/feedDetail/${board.boardNo}">
+              <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
-                <i class="fa-regular fa-heart"></i><span>${board.likeCount}</span>
-                <i class="fa-regular fa-comment"></i><span>${board.commentCount}</span>
+                <i class="fa-regular fa-heart"></i><span>${bookmark.likeCount}</span>
+                <i class="fa-regular fa-comment"></i><span>${bookmark.commentCount}</span>
               </div>
             </a>
             </c:forEach>
           </div>
           </c:if>
 
-          <c:if test ="${fn:length(boardList) > 3}">
+          <c:if test ="${fn:length(bookmarkList) > 3}">
           <div class="img-container2">
-            <c:forEach var="board" items ="${boardList}" begin="3" end="5">
-            <a href="#">
-              <img class="feed-img" src="${board.imgPath}"
+            <c:forEach var="bookmark" items ="${bookmarkList}" begin="3" end="5">
+            <a href="/feedDetail/${board.boardNo}">
+              <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
-                <i class="fa-regular fa-heart"></i><span>${board.likeCount}</span>
-                <i class="fa-regular fa-comment"></i><span>${board.commentCount}</span>
+                <i class="fa-regular fa-heart"></i><span>${bookmark.likeCount}</span>
+                <i class="fa-regular fa-comment"></i><span>${bookmark.commentCount}</span>
               </div>
             </a>
             </c:forEach>
           </div>
           </c:if>
 
-           <c:if test ="${fn:length(boardList) > 6}">
+           <c:if test ="${fn:length(bookmarkList) > 6}">
           <div class="img-container3">
-            <c:forEach var="board" items ="${boardList}" begin="6" end="8">
-            <a href="#">
-              <img class="feed-img" src="${board.imgPath}"
+            <c:forEach var="bookmark" items ="${bookmarkList}" begin="6" end="8">
+            <a href="/feedDetail/${board.boardNo}">
+              <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
-                <i class="fa-regular fa-heart"></i><span>${board.likeCount}</span>
-                <i class="fa-regular fa-comment"></i><span>${board.commentCount}</span>
+                <i class="fa-regular fa-heart"></i><span>${bookmark.likeCount}</span>
+                <i class="fa-regular fa-comment"></i><span>${bookmark.commentCount}</span>
               </div>
             </a>
             </c:forEach>
@@ -203,7 +204,7 @@
         </section>
         </c:if>
 
-        <c:if test="${empty boardList}">
+        <c:if test="${empty bookmarkList}">
           <pre>게시글을 작성해주세요.</pre>
         </c:if>
       
@@ -214,22 +215,23 @@
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/profile-edit-board.jsp"/>
         <%-- 새게시물작성 모달jsp --%>
-        <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
+
       <script>
         var memberNickname = "${loginMember.memberNickname}";
         var memberNo = "${loginMember.memberNo}";
       </script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-    <script src="/resources/js/myfeed.js"></script>
+    <script src="/resources/js/profile/myfeedBookmark.js"></script>
     <script src="/resources/js/newpost.js"></script>
-    <script src="/resources/js/boardWriteUpdate.js"></script>
     <script src="/resources/js/common/common.js"></script>
+    <script src="/resources/js/boardWriteUpdate.js"></script>
     
   </body>
 </html>

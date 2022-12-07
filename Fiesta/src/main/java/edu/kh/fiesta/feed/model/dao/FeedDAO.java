@@ -8,10 +8,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.fiesta.feed.model.vo.Bookmark;
 import edu.kh.fiesta.feed.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
+import edu.kh.fiesta.main.model.vo.Hashtag;
 import edu.kh.fiesta.member.model.vo.Member;
 
 
@@ -21,23 +23,46 @@ public class FeedDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
+	/** 팔로잉 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
 	public List<Member> selectFollowingList(int memberNo) {
 
 		return sqlSession.selectList("feedMapper.selectFollowingList", memberNo);
 	}
 
+	/** 팔로우 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
 	public List<Member> selectFollowList(int memberNo) {
 		
 		return sqlSession.selectList("feedMapper.selectFollowList", memberNo);
 	}
 	
-
+	/** 해시태그 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
+	public List<Hashtag> selectHashtagList(int memberNo) {
+		return sqlSession.selectList("feedMapper.selectHashtagList", memberNo);
+	}
+	
 	/** 게시글 수 조회
 	 * @param memberNickname
 	 * @return
 	 */
 	public int selectBoardCount(String memberNickname) {
 		return sqlSession.selectOne("feedMapper.selectBoardCount", memberNickname);
+	}
+	
+	/** 북마크 수 조회
+	 * @param memberNickname
+	 * @return
+	 */
+	public int selectBookmarkCount(String memberNickname) {
+		return sqlSession.selectOne("feedMapper.selectBookmarkCount", memberNickname);
 	}
 
 	
@@ -56,6 +81,20 @@ public class FeedDAO {
 		
 		return sqlSession.selectList("feedMapper.selectBoardList", memberNickname, rowBounds);
 	}
+	
+	/** 북마크 조회
+	 * @param memberNo 
+	 * @param pagination 
+	 * @return
+	 */
+	public List<Board> selectBookmarkList(Pagination pagination, String memberNickname) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("feedMapper.selectBookmarkList", memberNickname, rowBounds);
+	}
 
 	/** 회원 정보 조회
 	 * @param member
@@ -73,12 +112,9 @@ public class FeedDAO {
 		return sqlSession.selectOne("feedMapper.selectMember", paramMap);
 	}
 
-
-
-
-
-	
-
+	public Board selectFeedDetail(Map<String, Object> map) {
+		return sqlSession.selectOne("mainMapper.selectBoard", map);
+	}
 
 
 }
