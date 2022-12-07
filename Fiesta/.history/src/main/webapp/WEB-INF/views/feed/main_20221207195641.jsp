@@ -65,7 +65,7 @@
                     <div class="writer-info">
                       <a href="" class="profile-photo">
                         <c:if test="${empty board.memberProfileImg}">
-                          <img class="feed-profile-image" src="/resources/images/profile/profile.jpg" />
+                          <img class="feed-profile-image" src="/resources/images/default/default.png" />
                         </c:if>
                         <c:if test="${not empty board.memberProfileImg}">
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
@@ -83,7 +83,7 @@
                     <ul class="swiper-wrapper">
                       <c:if test="${empty board.imageList}">
                         <li class="swiper-slide">
-                          <img class="uploaded-image" src="/resources/images/default/defaultImg.png" />
+                          <img class="uploaded-image" src="/resources/images/이영지.jpg" />
                         </li>
                       </c:if>
                       <c:if test="${not empty board.imageList}">
