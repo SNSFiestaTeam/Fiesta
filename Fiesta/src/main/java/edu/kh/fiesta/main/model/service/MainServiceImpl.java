@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.fiesta.main.model.dao.MainDAO;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.Pagination;
+import edu.kh.fiesta.main.model.vo.Report;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -119,6 +120,14 @@ public class MainServiceImpl implements MainService {
 	 */
 	public int deleteBoard(int boardNo) {
 		return dao.deleteBoard(boardNo);
+	}
+	
+	/** 신고 삽입
+	 *
+	 */
+	@Override
+	public int insertReport(Report report) {
+		return dao.insertReport(report);
 	}
 
 }

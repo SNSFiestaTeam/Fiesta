@@ -81,7 +81,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: 100%;
   width: 100%;
   color: black;
   font-size: 14px;
@@ -97,8 +97,4 @@ body {
 
 .btn2 {
   font-weight: bold;
-}
-
-.report-submit-btn {
-  color: orangered;
 }

@@ -42,6 +42,28 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public int commentInsert(Comment comment) {
 		
+		
+//		댓글에 적힌 해시태그 인식해서 해시태그 테이블에 있는지 조회 후 없으면 등록
+		Pattern pattern = Pattern.compile("(#[^\\s#]+)");
+		
+		Matcher matcher = pattern.matcher(comment.getCommentContent());
+		
+		while(matcher.find()) {
+			String str = matcher.group(1);
+			
+			
+			String keyword = str.replaceAll("#", ""); 
+			
+			int result = dao.hashtagCheck(keyword);
+			
+			if(result == 0) {
+				result = dao.insertHashtag(keyword);
+				
+			}
+			
+		}
+		
+		
 		// 댓글 삽입
 		comment.setCommentContent(Util.XSSHandling(comment.getCommentContent())); // XSS 방지 처리
 		
@@ -50,6 +72,9 @@ public class CommentServiceImpl implements CommentService{
 		comment.setCommentContent(Util.mentionHandling(comment.getCommentContent())); //언급 A태그로 감싸기
 		
 		comment.setCommentContent(Util.newLineHandling(comment.getCommentContent())); // 개행문자 처리
+		
+		
+		
 		
 		
 		return dao.commentInsert(comment);
