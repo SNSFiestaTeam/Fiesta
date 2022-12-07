@@ -78,7 +78,7 @@ public class BoardController {
 			System.out.println("게시물 작성 실패");
 			path = referer;
 		}
-		return "redirect:";
+		return "redirect:"+path;
 	}
 	
 	// 게시글 수정

@@ -13,8 +13,8 @@
       <form action="/write" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
 
 
-        <input type="file" name="newPostFile" id="cropperfile" none accept="image/*" multiple style="display:none" onsubmit="return writeValidate()">
-        <input name="new-post-file"  type="hidden" >
+        <input type="file" name="newPostFile"  none accept="image/*" multiple style="display:none" onsubmit="return writeValidate()">
+        <input name="new-post-file"  name="newPostFile"  none type="hidden" ><%--id="cropperfile" id="basicImage" --%>
 
 
         <div class="new-post-top-text">
