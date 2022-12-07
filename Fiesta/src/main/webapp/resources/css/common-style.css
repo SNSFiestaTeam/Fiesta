@@ -109,6 +109,7 @@ header {
   display: flex;
   justify-content: center;
   z-index: 45;
+  position: relative;
 }
 
 header > section {
@@ -141,6 +142,13 @@ header > section {
   justify-content: flex-end
 }
 
+
+
+.search-section form{
+ position: relative; 
+}
+
+
 .search-section fieldset {
   height: 36px;
   width: 90%;
@@ -152,6 +160,7 @@ header > section {
   justify-content: center;
   align-items: center;
 }
+
 
 .search-section fieldset input {
   width: 200px;
@@ -256,6 +265,7 @@ nav i {
 
 .toggle-search-section {
   display: none;
+  position: relative;
 }
 
 @media screen and (min-width: 1024px) {
@@ -263,10 +273,17 @@ nav i {
   .toggle-search-section {
     display: none;
   }
+
+  #searchCompleteModal2{
+    display: none;
+  }
 }
 
 @media screen and (min-width: 471px) and (max-width: 1023px) {
   /* Tablet */
+  .toggle-search-section {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 780px) {
@@ -292,6 +309,10 @@ nav i {
     /* display: none; */
   }
 
+  /* #toggleSearchForm{
+    position: relative;
+  } */
+
   .toggle-search-section fieldset {
     height: 38px;
     width: 100%;
@@ -303,6 +324,7 @@ nav i {
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
 
   .toggle-search-section fieldset > input {

@@ -25,9 +25,8 @@
                 autocomplete="off"
               />
               <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
-              <jsp:include page="/WEB-INF/views/search/search-complete.jsp" />
             </fieldset>
-              
+          <jsp:include page="/WEB-INF/views/search/search-complete.jsp" />
           </form>
         </section>
         <!-- 메뉴 -->
@@ -97,7 +96,8 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </fieldset>
-          
+        <button type="button" id="topButton" class="hide">    
+      <jsp:include page="/WEB-INF/views/search/search-complete2.jsp" />
       </form>
     </section>
 

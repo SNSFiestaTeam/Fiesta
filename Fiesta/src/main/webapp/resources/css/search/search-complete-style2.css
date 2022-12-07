@@ -1,7 +1,7 @@
 @import '../root-style.css';
   
 
-  .search-complete-container{
+  .search-complete-container2{
     width: 280px;
     height: 200px;
     background-color: white;
@@ -24,14 +24,14 @@
 
     z-index: 10;
 
+    /* display: none; */
+  }
+  
+  .search-complete-container2::-webkit-scrollbar {
     display: none;
   }
   
-  .search-complete-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .search-complete-content {
+  .search-complete-content2 {
     width: 100%;
     height: 55px;
     flex-shrink: 0;
@@ -46,17 +46,17 @@
   }
   
 
-  .search-complete-content span{
+  .search-complete-content2 span{
     display: flex;
     align-items: center;
   } 
 
   
-  .search-complete-content:hover {
+  .search-complete-content2:hover {
     background-color: rgba(221, 221, 221, 0.3);
   }
   
-  .search-complete-content img{
+  .search-complete-content2 img{
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -65,16 +65,16 @@
   }
   
   
-  .search-complete-content i {
+  .search-complete-content2 i {
     margin-right: 10px;
   }
   
-  .search-complete-content a {
+  .search-complete-content2 a {
     font-size: 14px;
     font-weight: bold;
   }
 
-  .search-complete-content button{
+  .search-complete-content2 button{
     background-color: white;
     border: 1px solid lightgray;
     width: 48px;

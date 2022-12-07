@@ -35,7 +35,6 @@ public class SearchController {
 		int boardTotal = service.selectBoardTotal(searchInput);
 		
 		// 검색_관련 계정, 인기게시글, 최근게시글 조회
-		
 		// 검색에 필요한 매개변수
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("searchInput", searchInput);
@@ -50,6 +49,7 @@ public class SearchController {
 	
 		model.addAttribute("searchResultMap", searchResultMap);
 		model.addAttribute("searchInput", searchInput);
+		model.addAttribute("memberProfileImg", loginMember.getMemberProfileImg());
 		
 		return "search/search";
 	}

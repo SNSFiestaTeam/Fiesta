@@ -21,9 +21,12 @@
     
     <!-- CSS  링크 -->
     <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
+
 
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     
@@ -45,6 +48,7 @@
     <link rel="stylesheet" href="/resources/css/search/search-style(tablet).css" />
     <link rel="stylesheet" href="/resources/css/search/search-style(mobile).css" />
     <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
@@ -115,6 +119,8 @@
             <c:if test="${not empty accountList}">
               <article class="account-container">
                 <c:forEach var="account" items="${accountList}">
+
+                <c:if test="${account.memberNickname != loginMember.memberNickname}">
                   <div class="account-Group">
                     <a href="/feed/${account.memberNickname}" class="profileImages">
                       <c:if test="${not empty acoount.memberProfileImg}">
@@ -130,6 +136,26 @@
                     <!-- 팔로우 버튼 -->
                     <div class="follow-button-small"></div>
                   </div>
+                </c:if>
+                <!-- 로그인멤버가 검색될때 -->
+                <c:if test="${account.memberNickname == loginMember.memberNickname}">
+                   <div class="account-Group">
+                    <a href="/feed/${loginMember.memberNickname}" class="profileImages">
+                      <c:if test="${not empty memberProfileImg}">
+                        <img src="${memberProfileImg}">
+                      </c:if>
+                      <c:if test="${empty memberProfileImg}">
+                        <img src="/resources/images/profile/profile.jpg">
+                      </c:if>
+                    </a>
+                    <a href="/feed/${loginMember.memberNickname}" class="profileNickname">
+                      ${loginMember.memberNickname}
+                    </a>
+                    <!-- 팔로우 버튼 -->
+                    <div class="myAccount">내계정</div>
+                  </div>
+                </c:if>
+
                 </c:forEach>
               </article>
             </c:if>
@@ -292,7 +318,10 @@
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
-    
+    <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
+
 
     <%-- 검색 게시글 상세조회 --%>
     <jsp:include page="/WEB-INF/views/action/boardDetail.jsp"/>
@@ -369,6 +398,9 @@
     <%-- jQuery 라이브러리(.js 파일) 추가 (CDN 방식 (Content Delivery Network)) --%>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         
+    <script src="/resources/js/newpost.js"></script>
+    <script src="/resources/js/boardWriteUpdate.js"></script>
+
     <script src="/resources/js/search/search.js"></script> <%-- mainBoard.js와 거의 동일 --%>
     <script src="/resources/js/follow/follow.js"></script>
     <script src="/resources/js/common/common.js"></script>
