@@ -23,7 +23,6 @@
                 placeholder="검색"
                 autocapitalize="none"
                 autocomplete="off"
-                class="header-search-input"
               />
               <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
               <jsp:include page="/WEB-INF/views/search/search-complete.jsp" />
@@ -93,7 +92,6 @@
           placeholder="검색"
           autocapitalize="none"
           autocomplete="off"
-          class="header-search-input"
           />
           <button id="searchGlass" disabled>
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -107,3 +105,5 @@
       <span>&uarr;</span>
       <span>TOP</span>
     </button>
+
+

@@ -24,6 +24,7 @@ import edu.kh.fiesta.feed.model.sevice.FeedService;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
+import edu.kh.fiesta.main.model.vo.Hashtag;
 import edu.kh.fiesta.member.model.vo.Member;
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -96,6 +97,29 @@ public class FeedController {
 		return new Gson().toJson(feedMap);
 	}
 	
+	/** 북마크 AJAX 조회
+	 * @param memberNickname
+	 * @param model
+	 * @param cp
+	 * @param loginMember
+	 * @return
+	 */
+	@GetMapping("/feed/{memberNickname}/selectBookmarkList")
+	@ResponseBody
+	public String selectBookmarkList(@PathVariable("memberNickname") String memberNickname, Model model, int cp, @SessionAttribute(value="loginMember") Member loginMember) {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("memberNickname",memberNickname);
+		paramMap.put("memberNo", loginMember.getMemberNo());
+		paramMap.put("cp", cp);
+		
+		Map<String, Object> feedMap = service.selectBookmarkList(paramMap);
+		
+		return new Gson().toJson(feedMap);
+		
+	}
+	
 	
 	/** 인기피드
 	 * @return
@@ -134,6 +158,18 @@ public class FeedController {
 		return new Gson().toJson(followList);
 	}
 	
+	/** 해시태그 목록 조회
+	 * @param memberNo
+	 * @return
+	 */
+	@PostMapping("/feed/{memberNickname}/hashtagList")
+	@ResponseBody
+	public String selectHashtagList(int memberNo) {
+		List<Hashtag> hashtagList = service.selectHashtagList(memberNo);
+		
+		return new Gson().toJson(hashtagList);
+	}
+	
 	
 	/** 로그아웃
 	 * @param status
@@ -149,6 +185,8 @@ public class FeedController {
 		
 		return "redirect:/";
 	}
+	
+
 	
 	
 }
