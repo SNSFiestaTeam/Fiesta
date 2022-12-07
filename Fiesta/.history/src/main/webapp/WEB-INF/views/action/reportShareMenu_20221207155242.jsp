@@ -64,7 +64,7 @@
   <div class="report-menu">
     <div class="report-menu-title btn1"><span>신고하기</span></div>
     <div class="declaration-content">
-      <form action="/report" method="get" name="report" id="reportForm">
+      <form action="/report" method="get" name="report">
         <input type="hidden" name="reportTargetNo" id="reportTargetNo">
         <input type="hidden" name="reportType" id="reportType">
         <select name="reportReason" id="declarationOption" required>

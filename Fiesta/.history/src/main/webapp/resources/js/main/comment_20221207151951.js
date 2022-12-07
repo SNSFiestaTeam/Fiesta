@@ -36,7 +36,7 @@ const loading =
  
 let autoCompleteModal;
 for (let i = 0; i < commentInput.length; i++) {
-  commentInput[i].addEventListener('keyup', function (event) {
+  commentInput[i].addEventListener('keypress', function (event) {
     
 
     // @키 입력 시 언급 자동완성 모달창
@@ -60,7 +60,7 @@ for (let i = 0; i < commentInput.length; i++) {
       let content;
       let targetCotent;
       
-
+   
       commentInput[i].addEventListener('input', function (e) { 
 
         
@@ -219,7 +219,7 @@ for (let i = 0; i < commentInput.length; i++) {
           commentInput[i].removeEventListener('input', arguments.callee);
         }
 
-      });
+      // });
       event.preventDefault();
     }
 

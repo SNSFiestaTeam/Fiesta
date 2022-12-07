@@ -60,7 +60,7 @@ for (let i = 0; i < commentInput.length; i++) {
       let content;
       let targetCotent;
       
-
+   
       commentInput[i].addEventListener('input', function (e) { 
 
         

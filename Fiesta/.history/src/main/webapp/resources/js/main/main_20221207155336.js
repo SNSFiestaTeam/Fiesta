@@ -122,7 +122,6 @@ reportCancle.addEventListener("click", function () {
   report.style.display = "none";
 
   const reportForm = document.getElementById('reportForm');
-  reportForm.reset();
   
   body.classList.remove("scrollLock");
 });

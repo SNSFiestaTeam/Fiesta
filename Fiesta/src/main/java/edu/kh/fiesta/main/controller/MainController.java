@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
@@ -99,7 +101,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/report")
-	public String insertReport(Report report, HttpServletRequest req) {
+	public String insertReport(Report report, HttpServletRequest req,
+			@RequestHeader("referer") String referer, RedirectAttributes ra ) {
 		
 		
 		int result = service.insertReport(report);
@@ -109,10 +112,14 @@ public class MainController {
 		
 		if(result > 0) {
 			
-			path = req.getContextPath();
+			path = referer;
+			
+			ra.addFlashAttribute("message", "신고되었습니다.");
+			
 		}
+	
 
-		return "redirect/" + path;
+		return "redirect:" + path;
 	}
 
 
