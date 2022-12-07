@@ -286,6 +286,8 @@
 	WHERE BOARD_NO = #{boardNo}
   </select>
   
+
+  
   <!-- 게시글 삭제 -->
   <update id="deleteBoard">
   	UPDATE BOARD SET

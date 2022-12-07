@@ -33,4 +33,12 @@ public class BoardDAO {
 	public int insertBoardImageList(List<BoardImg> boardImgList) {
 		return sqlSession.insert("boardMapper.insertBoardImageList", boardImgList);
 	}
+
+	public Board selectOneBoard(int boardNo) {
+		return sqlSession.selectOne("boardMapper.selectOneBoard", boardNo);
+	}
+
+	public int boardUpdate(Board board) {
+		return sqlSession.update("boardMapper.boardUpdate", board);
+	}
 }
