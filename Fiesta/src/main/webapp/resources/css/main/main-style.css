@@ -65,6 +65,23 @@ main > section {
   justify-content: center;
 }
 
+
+#emptyBoardList {
+  height: 73vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-board-logo {
+  font-size: 150px;
+  font-family: "Cookie", cursive;
+  color: var(--fiesta-color);
+}
+
+
 /* 피드 섹션 */
 .feed-section {
   margin: 50px 10px 0;
