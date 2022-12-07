@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="boardList" value="${map.boardList}" />
+<c:set var="pagination" value="${map.pagination}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +51,14 @@
         <!-- 인스타 피드 -->
         <section class="feed-section" id="feedSection">
           <!-- 피드 리스트 -->
-
+		  <c:if test="${empty boardList}">
+          <div id="emptyBoardList">
+            <span class="empty-board-logo">Fiesta</span>
+            <sapn>멤버/해시태그를 검색하여 팔로우 하면 팔로우한 멤버/해시태그의 게시글이 보여요!</span>
+          </div>
+          </c:if>
+          <c:if test="${not empty boardList}">
+            <c:forEach var="board" items="${boardList}">
               <div class="feed">
                 <div class="profile-image-area">
                   <!-- 작성자 프로필 -->
@@ -75,7 +84,7 @@
                     <ul class="swiper-wrapper">
                       <c:if test="${empty board.imageList}">
                         <li class="swiper-slide">
-                          <img class="uploaded-image" src="/resources/images/이영지.jpg" />
+                          <img class="uploaded-image" src="/resources/images/default/defaultImg.png" />
                         </li>
                       </c:if>
                       <c:if test="${not empty board.imageList}">
@@ -258,7 +267,8 @@
               <input type="hidden" class="comment-block-fl" value="${board.commentBlockFlag}">
               <input type="hidden" class="board-pub-pri-fl" value="${board.boardPubPriFlag}">
               </div>
-
+            </c:forEach>
+          </c:if>
         </section>
       </section>
       <div id="endList"></div>
