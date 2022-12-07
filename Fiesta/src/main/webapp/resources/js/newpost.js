@@ -9,26 +9,28 @@ const filePreview = document.getElementById("filePreview"); // edit화면 파일
 const textFileSwiper = document.getElementById("textFileSwiper"); // text화면 파일 리스트(합치기,지우기사용)
 // const postFileTextArea = document.getElementById("postFileTextArea"); // text 접근성 리스트
 
-const modalBackgroundFinish = document.getElementById("modalBackgroundFinish"); // 새 게시물 작성 완료 창 
+const modalBackgroundFinish = document.getElementById("modalBackgroundFinish"); // 새 게시물 작성 완료 창
 const modalBackgroundClose = document.getElementById("modalBackgroundClose"); // 새 게시물 작성 취소 창
 
 var form = new FormData(); // 파일 리스트 보내기 위해 form 선언
 // 게시물 작성 버튼 누르면
 newPostOpen.addEventListener("click", function () {
   modalBackground.style.display = "flex";
-  document.getElementsByTagName("body")[0].classList.add("scrollLock");
+  document.body.style.overflow = "hidden";
 });
 //! 닫기 버튼
 // 닫기 버튼 누르면
 newPostClose.addEventListener("click", function () {
   modalBackground.style.display = "none";
-  document.getElementsByTagName("body")[0].classList.remove("scrollLock");
+  document.body.style.overflow = "unset";
   slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
   filePreview.innerHTML = "";
   textFileSwiper.innerHTML = "";
   // postFileTextArea.innerHTML = "";
 });
-``;
+// boardContent.addEventListener("change", () => {
+//   boardContent.sytle.color = "red";
+// });
 // edit작성 중 x버튼
 // document
 //   .getElementById("newPostClosePostEdit")
@@ -60,7 +62,6 @@ newPostClosePostText.addEventListener("click", function () {
 document.getElementById("closeTextDelete").addEventListener("click", () => {
   modalBackground.style.display = "flex";
   modalBackgroundClose.style.display = "none";
-  modalBackgroundEidt.style.display = "none";
   modalBackgroundText.style.display = "none";
   slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
   filePreview.innerHTML = "";
@@ -77,7 +78,7 @@ backBtnText.addEventListener("click", () => {
   // filePreview.innerHTML = "";
   // textFileSwiper.innerHTML = "";
   // postFileTextArea.innerHTML = "";
-  document.postForm.reset();
+  // document.postForm.reset();
   console.log(document.getElementById("cropperfile").files);
 });
 document.getElementById("closeTextCancel").addEventListener("click", () => {
@@ -155,6 +156,7 @@ document.getElementById("basicImage").addEventListener("click", () => {
   const fileImg = document.createElement("img");
 
   swiperSildeDiv.classList.add("swiper-slide");
+  fileImg.classList.add("post-img-viwe");
   fileImg.id = "files";
   fileImg.setAttribute("src", "/resources/images/default/defaultImg.png");
   console.log(fileImg);
@@ -163,16 +165,16 @@ document.getElementById("basicImage").addEventListener("click", () => {
   textFileSwiper.append(swiperSildeDiv);
   // -----------
 
-  postFileText.style.display = "none";
+  // postFileText.style.display = "none";
   backBtnText.addEventListener("click", () => {
     modalBackground.style.display = "flex";
     modalBackgroundEidt.style.display = "none";
     modalBackgroundText.style.display = "none";
   });
 });
-document.getElementById("newPostAll").addEventListener("click", ()=>{
-  console.log(fileImg);
-});
+// document.getElementById("newPostAll").addEventListener("click", () => {
+//   console.log(fileImg);
+// });
 //! 컴퓨터에서 선택
 document.getElementById("cropperfile").addEventListener("change", (e) => {
   if (e.target.files[0] != undefined) {
@@ -196,6 +198,7 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
         const fileImg = document.createElement("img");
 
         swiperSildeDiv.classList.add("swiper-slide");
+        fileImg.classList.add("post-img-viwe");
         fileImg.id = "files";
         fileImg.setAttribute("src", e.target.result);
 
@@ -222,54 +225,52 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
         // postFileTextInput.id = "imgAccessibility"+[i];
         // postFileTextInput.setAttribute("placeholder", "대체 텍스트 입력...");
 
-
-
         // postFileTextDiv.append(postFileTextImg, postFileTextInput);
         // postFileTextArea.append(postFileTextDiv);
 
         var swiper = new Swiper(".swiper", {
-          spaceBetween: 0.5,    // 슬라이드 사이 여백                     
-          slidesPerView : 'auto', // 한 슬라이드에 보여줄 갯수
-          centeredSlides: true,    //센터모드
+          spaceBetween: 0.5, // 슬라이드 사이 여백
+          slidesPerView: "auto", // 한 슬라이드에 보여줄 갯수
+          centeredSlides: true, //센터모드
           // autoplay: {     //자동슬라이드 (false-비활성화)
           //   delay: 2500, // 시간 설정
           //   disableOnInteraction: false, // false-스와이프 후 자동 재생
           // },
-          loop : false,   // 슬라이드 반복 여부
-  
-          loopAdditionalSlides : 1,// 슬라이드 반복 시 마지막 슬라이드에서 다음 슬라이드가 보여지지 않는 현상 수정
-          pagination: { // 호출(pager) 여부
+          loop: false, // 슬라이드 반복 여부
+
+          loopAdditionalSlides: 1, // 슬라이드 반복 시 마지막 슬라이드에서 다음 슬라이드가 보여지지 않는 현상 수정
+          pagination: {
+            // 호출(pager) 여부
             el: ".swiper-pagination", //버튼을 담을 태그 설정
             clickable: true, // 버튼 클릭 여부
           },
-          navigation: {   // 버튼
+          navigation: {
+            // 버튼
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           },
         });
-        
       };
-      
     }
     modalBackground.style.display = "none";
     // modalBackgroundEidt.style.display = "flex";
-    postFileText.style.display = "block";
+    // postFileText.style.display = "block";
     // modalBackgroundEidt.style.display = "none";
     modalBackgroundText.style.display = "flex";
   }
 });
 
-function writeValidate(){
+function writeValidate() {
   const boardContent = document.getElementById("boardContent");
-  if(boardContent.value.trim().length == 0){
+  if (boardContent.value.trim().length == 0) {
     alert("내용을 입력해주세요.");
     boardContent.value = "";
     boardContent.focus();
-    return false();
-  } else{
-     return true;
+    return false;
+  } else {
+    return true;
+    console("true가 들어감");
   }
- 
 }
 
 document.getElementById("newPostCloseFinish").addEventListener("click", () => {
@@ -277,59 +278,64 @@ document.getElementById("newPostCloseFinish").addEventListener("click", () => {
   location.reload();
 });
 
-
 // todo: 모달창 바깥 클릭 시 모달창 꺼짐--------------------------------------------
-window.addEventListener('click', (e) => {
-
-  const modalBackground = document.getElementById("modalBackground")
+window.addEventListener("click", (e) => {
+  const modalBackground = document.getElementById("modalBackground");
   const modalBackgroundEidt = document.getElementById("modalBackgroundEidt");
   const modalBackgroundText = document.getElementById("modalBackgroundText");
-  const modalBackgroundFinish = document.getElementById("modalBackgroundFinish");
+  const modalBackgroundFinish = document.getElementById(
+    "modalBackgroundFinish"
+  );
   const modalBackgroundClose = document.getElementById("modalBackgroundClose");
-  const modalBackgroundUpdate = document.getElementById("modalBackgroundUpdate");
+  const modalBackgroundUpdate = document.getElementById(
+    "modalBackgroundUpdate"
+  );
 
   // 파일화면
-  e.target === modalBackground ? modalBackground.style.display = 'none' : false
+  e.target === modalBackground
+    ? (modalBackground.style.display = "none")
+    : false;
 
   // 편집화면
-  e.target === modalBackgroundEidt ? modalBackgroundEidt.style.display = 'none' : false
+  e.target === modalBackgroundEidt
+    ? (modalBackgroundEidt.style.display = "none")
+    : false;
 
   // 텍스트작성홤녀
-  e.target === modalBackgroundText ? modalBackgroundText.style.display = 'none' : false
+  e.target === modalBackgroundText
+    ? (modalBackgroundText.style.display = "none")
+    : false;
 
   // 작성완료 홤녀
-  e.target === modalBackgroundFinish ? modalBackgroundFinish.style.display = 'none' : false
-  
+  e.target === modalBackgroundFinish
+    ? (modalBackgroundFinish.style.display = "none")
+    : false;
+
   // 업데이트 홤녀
-  e.target === modalBackgroundUpdate ? modalBackgroundUpdate.style.display = 'none' : false
+  e.target === modalBackgroundUpdate
+    ? (modalBackgroundUpdate.style.display = "none")
+    : false;
 
-  // 취소화면 
-  e.target === modalBackgroundClose ? modalBackgroundClose.style.display = 'none' : false
+  // 취소화면
+  e.target === modalBackgroundClose
+    ? (modalBackgroundClose.style.display = "none")
+    : false;
 
-  // // 검색 상세조회 시 바깥 클릭하면 닫힘
-  // e.target === feedBackground ? 
-  // (feedBackground.style.display = 'none') && (feedBackground.remove())
-  // : false
-
-  document.querySelector('body').classList.remove("scrollLock");
-
+  document.body.style.overflow = "unset";
 });
 
-document.getElementById("boardPubPriFlag").addEventListener('change',()=>{
-  if(document.getElementById("boardPubPriFlag").checked){
+document.getElementById("boardPubPriFlag").addEventListener("change", () => {
+  if (document.getElementById("boardPubPriFlag").checked) {
     document.getElementById("boardPubPriFlag_hidden").disabled = true;
-  }else{
+  } else {
     document.getElementById("boardPubPriFlag_hidden").disabled = false;
   }
-
 });
 
-document.getElementById("commentBlockFlag").addEventListener('change',()=>{
-  if(document.getElementById("commentBlockFlag").checked) {
+document.getElementById("commentBlockFlag").addEventListener("change", () => {
+  if (document.getElementById("commentBlockFlag").checked) {
     document.getElementById("commentBlockFlag_hidden").disabled = true;
-  }else{
+  } else {
     document.getElementById("commentBlockFlag_hidden").disabled = false;
   }
 });
-
-

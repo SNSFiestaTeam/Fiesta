@@ -4,19 +4,19 @@
 <%-- <form action="/" method="POST" enctype="multipart/from-data" onsubmit="return writeValidate()"> --%>
 <div class="modal_background" id="modalBackgroundUpdate">
     <!-- 닫기버튼 -->
-    <div class="new-post-close" id="newPostClosePostText">&times;</div>
+    <div class="new-post-close" id="updateClose2">&times;</div>
     <!-- post 배경 -->
 
     <section class="modal_post_section-text" >
       <!-- post top -->
 
 
-      <form action="/boardUpdate" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
+      <form action="/boardUpdate" method="POST" enctype="multipart/form-data" id="postForm" name="postForm" onsubmit="return writeValidate()">
 
         <input type="hidden" name="boardNo" id="boardNo">
 
         <div class="new-post-top-text">
-          <div id="backBtnText">취소</div>
+          <div id="updateClose">취소</div>
           <p id="postName">정보 수정</p>
           <button name="newpostText" id="newPostAll">완료</button>
         </div>
@@ -27,6 +27,7 @@
           <div class="swiper-wrapper" id="textFileSwiper">
 
             <div class=" swiper-slide" id="boardImageOne">
+
             </div> 
             
           </div>
@@ -45,7 +46,7 @@
           <div class="bottom-right-box">
             <div class="new-post-bottom-information">
               <div class="new-post-bottom-member">
-                <img id="file" src="../../resources/images/user.jpg" alt="작성자 프로필">
+                <img id="file" src="${loginMember.memberProfileImg}" alt="작성자 프로필">
                 <div class="member-nikname">${loginMember.memberNickname}</div>
               </div>
 

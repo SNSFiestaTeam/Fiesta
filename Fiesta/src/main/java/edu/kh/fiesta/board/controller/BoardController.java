@@ -43,24 +43,6 @@ public class BoardController {
 		// 로그인한 회원 번호 board 객체에 세팅
 		board.setMemberNo(loginMember.getMemberNo());
 		
-////		if(board.getBoardPubPriFlag().equals("on")) {
-////			board.setBoardPubPriFlag("N");
-////		} 
-//		
-//		if(board.getBoardPubPriFlag() == "N,Y") {
-//			board.setBoardPubPriFlag("N");
-//		}
-//		
-//		
-////		if(board.getCommentBlockFlag().equals("on")) {
-////			board.setCommentBlockFlag("Y");
-////		} 
-//		
-//		if(board.getCommentBlockFlag() == "N,Y") {
-//			board.setCommentBlockFlag("N");
-//		}
-//		
-		
 		
 		// 업로드된 파일 웹접근경로, 서버내부 경로
 		String webPath = "/resources/images/board/"; // 웹 접근 경로
