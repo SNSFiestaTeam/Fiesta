@@ -96,8 +96,8 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </fieldset>
+          <jsp:include page="/WEB-INF/views/search/search-complete2.jsp" />
         <button type="button" id="topButton" class="hide">    
-      <jsp:include page="/WEB-INF/views/search/search-complete2.jsp" />
       </form>
     </section>
 

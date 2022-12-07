@@ -222,18 +222,19 @@ const searchInput1 = document.getElementById('searchInput');
    
 
   });
+  
+  
+  
+  
 
 
-
-
-
-
-
+  
 
 // TODO 모바일창에서 검색창 
 
   let searchCompleteModal2;
   const searchInput2 = document.getElementById('toggleSearchInput');
+  const toggleSearchSection = document.getElementById("toggleSearchSection");
   
   
     searchInput2.addEventListener('input', function (event) {
@@ -271,6 +272,7 @@ const searchInput1 = document.getElementById('searchInput');
   
   
           searchCompleteModal2.style.display = 'flex';
+          toggleSearchSection.style.top = '162px';
   
           if (searchInput2.value != "") {
             // 입력된 값으로 검색하기
@@ -327,6 +329,8 @@ const searchInput1 = document.getElementById('searchInput');
                       // 모달창 제거
                       searchCompleteModal2.style.display = 'none';
                       searchCompleteModal2.innerHTML = "";
+
+                      toggleSearchSection.style.top = '40px';
   
                     });
   
@@ -352,6 +356,8 @@ const searchInput1 = document.getElementById('searchInput');
       } else {
         searchCompleteModal2.style.display = 'none';
         searchCompleteModal2.innerHTML = "";
+
+        toggleSearchSection.style.top = '40px';
       }
   
      

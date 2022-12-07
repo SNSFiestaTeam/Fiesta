@@ -121,6 +121,7 @@ header > section {
   align-items: center;
 }
 
+
 .logo-section a {
   font-family: 'Cookie', cursive;
   /* font-family: 'Chewy', cursive; */
@@ -155,7 +156,7 @@ header > section {
   background-color: --main-font-color;
   border: none;
   border-radius: 5px;
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,7 +213,7 @@ header > section {
   margin-right: 10px;
   font-size: 16px;
   color: var(--main-font-color);
-
+  
   flex-basis: 10%;
 }
 
@@ -222,7 +223,7 @@ nav {
 
 nav > ul {
   font-size: var(--large-icon-size);
-
+  
   display: flex;
   justify-content: space-between;
   margin-bottom: 0;
@@ -300,7 +301,7 @@ nav i {
     height: 50px;
 
     position: sticky;
-    top: 60px;
+    top: 45px;
 
     display: flex;
     justify-content: center;
@@ -309,9 +310,8 @@ nav i {
     /* display: none; */
   }
 
-  #toggleSearchForm{
-    position: relative;
-  }
+  /* #toggleSearchForm{
+  } */
 
   .toggle-search-section fieldset {
     height: 38px;
