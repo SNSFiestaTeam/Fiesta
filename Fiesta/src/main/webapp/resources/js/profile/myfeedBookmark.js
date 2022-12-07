@@ -205,7 +205,7 @@ function createObserver() {
 }
 
 // * 현재 페이지 번호 변수 선언
-let cp = 2;
+let cp = 4;
     
 function selectBookmarkList(entries, observer) {
 
@@ -245,7 +245,7 @@ function selectBookmarkList(entries, observer) {
                             for(let bookmark of bookmarkList){
         
                                 const boardContainer = document.createElement("a");
-                                boardContainer.href = "/feedDetail/"+ board.boardNo;
+                                boardContainer.href = "/feedDetail/"+ bookmark.boardNo;
                 
                                 imgContainer.append(boardContainer);
                 

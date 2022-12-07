@@ -34,18 +34,14 @@
          
           <!-- 이메일 -->
           <div class="login-area">
-
-            <input type="text" name="memberEmail"  id="memberEmail" value="" 
-
+            <input type="text" name="memberEmail"  id="memberEmail"  
                 maxlength="50" autocomplete="off" required readonly> 
             <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
 
           <!-- 패스워드 -->
           <div class="login-area">
-
-            <input type="password" name="memberPw" id="memberPw" value="" 
-
+            <input type="password" name="memberPw" id="memberPw"  
                 maxlength="30" required readonly>
             <label for="memberPw">비밀번호</label>
           </div>
