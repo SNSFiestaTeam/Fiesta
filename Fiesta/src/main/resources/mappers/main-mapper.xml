@@ -150,7 +150,7 @@
 		          FROM FOLLOW 
 		          JOIN HASHTAG ON (F_TO_TARGET_NO = HASHTAG_NO)
 		          WHERE F_FROM_MEMBER_NO = #{memberNo}
-		          AND FOLLOW_TYPE = 'H'))) 
+		          AND FOLLOW_TYPE = 'H'))) AND BOARD_DEL_FL = 'N'
 		   ORDER BY b.BOARD_NO DESC
   </select>
   
