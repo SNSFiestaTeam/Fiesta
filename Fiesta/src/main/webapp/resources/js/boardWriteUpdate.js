@@ -39,10 +39,15 @@ feedUpdateBtnLogin.addEventListener("click", () => {
 })
 updateClose.addEventListener("click", () =>{
     modalBackgroundUpdate.style.display = "none";
+    boardImageOne.innerHTML = "";
+    boardContent.innerText = "";
+
     console.log("눌렸나욤?");
 });
 updateClose2.addEventListener("click", () =>{
     modalBackgroundUpdate.style.display = "none";
+    boardImageOne.innerHTML = "";
+    boardContent.innerText = "";
     console.log("눌렸나욤?2");
 });
 });
