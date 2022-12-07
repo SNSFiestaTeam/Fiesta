@@ -299,15 +299,13 @@ for (let i = 0; i < commentInput.length; i++) {
                     hashtagContent.append(span);
                     hashtagContent.innerText += hashtag.hashtagContent;
                     
-                    hashtagInfo.append(hashtagContent);
                     // 해시태그 관련 게시물 수
                     if(hashtag.boardCount > 0) {
                       const boardCount = document.createElement('span');
                       boardCount.classList.add('hashtag-board-count');
                       boardCount.innerText = '게시물 ' +  hashtag.boardCount;
-                      hashtagInfo.append(boardCount);
                     }
-                    
+                    hashtagInfo.append(hashtagContent, boardCount);
                     
                     autoCompleteDiv.append(hashtagInfo);
                     

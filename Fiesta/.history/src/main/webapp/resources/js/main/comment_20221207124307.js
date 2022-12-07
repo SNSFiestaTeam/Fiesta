@@ -305,9 +305,9 @@ for (let i = 0; i < commentInput.length; i++) {
                       const boardCount = document.createElement('span');
                       boardCount.classList.add('hashtag-board-count');
                       boardCount.innerText = '게시물 ' +  hashtag.boardCount;
-                      hashtagInfo.append(boardCount);
                     }
                     
+                    hashtagInfo.append(boardCount);
                     
                     autoCompleteDiv.append(hashtagInfo);
                     

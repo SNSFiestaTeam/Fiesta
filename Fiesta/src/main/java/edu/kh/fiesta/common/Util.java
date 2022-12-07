@@ -4,8 +4,17 @@ import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.kh.fiesta.main.model.dao.CommentDAO;
+
+
 //유요한 기능을 모아둔 클래스
 public class Util {
+	
+
+	
 	// 파일명 변경 메소드
 	public static String fileRename(String originFileName) {
 		SimpleDateFormat sdfd = new SimpleDateFormat("yyyyMMdd");
@@ -24,6 +33,8 @@ public class Util {
 			// Fiesta_20221130_171257985
 		return teamName + date + time + str + ext;
 	}
+	
+	
 //	Util.fileRename()으로 사용
 
 	// XSS 방지 처리 : HTML에서 해석되는 문자를 단순 글자로 변경
@@ -60,6 +71,7 @@ public class Util {
 		
 		while(matcher.find()) {
 			String str = matcher.group(1);
+			
 			
 			String pathName = str.replaceAll("#", ""); 
 			

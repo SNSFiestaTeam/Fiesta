@@ -87,6 +87,12 @@
 			INSERT INTO HASHTAG
 			VALUES(#{hashtagNo}, #{keyword}) 		
 		</insert>
+		
+		<!-- HASHTAG 테이블에 삽입 -->
+		<insert id="insertHashtag2">
+			INSERT INTO HASHTAG
+			VALUES(SEQ_HASHTAG_NO.NEXTVAL, #{keyword}) 		
+		</insert>
 
 
 		<!-- 해시태그 팔로우 -->
