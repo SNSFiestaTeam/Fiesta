@@ -284,7 +284,7 @@ function createObserver() {
 }
 
 // * 현재 페이지 번호 변수 선언
-let cp = 2;
+let cp = 4;
     
 function selectBoardList(entries, observer) {
 
