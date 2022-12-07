@@ -82,7 +82,14 @@
            <%-- 클릭되었을때  --%>
           <div id="click">
             <div id="clickUp">
-              <button id="proImg"><img src="/resources/images/user.jpg" style="width: 50px;"></button>
+              <button id="proImg">
+                <c:if test="${not empty room.targetProfile}">
+                  <img id="chatProfile" src="${room.targetProfile}" style="width: 50px;">
+                </c:if>
+                <c:if test="${empty room.targetProfile}">
+                  <img id="chatProfile" src="/resources/images/user.jpg" style="width: 50px;">
+                </c:if>
+              </button>
               <div class="messageName" id="messageName"> test</div>
               <button id="info"><img src="/resources/images/info.png" style="width:24px;"></button>
             </div>

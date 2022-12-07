@@ -54,6 +54,7 @@ body {
 .left .down{
     
     flex-basis: 90%;
+    overflow: auto;
 
 }
 .left .up .id {
@@ -157,9 +158,23 @@ margin: 10px;
     height: 100%;
 }
 
+.not-read-count{
+	width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--fiesta-color);
+    color: white;
+    font-size: 12px;
+    margin: 10px 10px 0 0;
+}
+
 #chattingRoom{
 
     flex-basis: 80%;
+    overflow: auto;
 
 }
 
@@ -167,12 +182,14 @@ margin: 10px;
     flex-basis: 10%;
     display: flex;
     justify-content: center;
+    padding: 3px;
 }
 
 #chattingInput{
     height: 50%;
     width: 70%;
     border-radius: 15px;
+    padding: 5px;
 
 }
 #memberListArea{
@@ -290,6 +307,12 @@ margin: 10px;
 	list-style: none;
 	overflow: auto;
 }
+
+/* 채팅창 위 사진 */
+#chatProfile{
+    border-radius: 50%;
+}
+
 
 @media screen and (max-width: 470px) {
 

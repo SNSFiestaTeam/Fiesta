@@ -242,13 +242,19 @@ const roomListAddEvent = () =>{
   }
 }
 
+const chatProfile = document.getElementById("chatProfile");
 const selectChattingFn = () =>{
 
   $.ajax({
-    url : "dm/selectMessage",
+    url : "/dm/selectMessage",
     data:{"chattingNo" : selectChattingNo},
     dataType : "JSON",
     success : (messageList) =>{
+
+      noClick.style.display = "none";
+      click.style.display = "flex";
+      messageName.innerText = selectTargetName;
+      chatProfile.setAttribute("src", selectTargetProfile);
 
       const ul = document.querySelector(".dm-area");
       ul.innerHTML = "";
@@ -286,13 +292,15 @@ const selectChattingFn = () =>{
           li.append(img,div);
         }
         ul.append(li);
-        display.scrollTop = display.scrollHeight;
+        dmArea.scrollTop = dmArea.scrollHeight;
       }
 
     },
       error : () => {
-        console.log(object);}
+        console.log();}      
+      
   })
+ 
 }
 
 const selectRoomList = () =>{
@@ -342,20 +350,20 @@ const selectRoomList = () =>{
         recentSendTime.classList.add("recent-send-time");
         recentSendTime.innerText = room.sendTime;
 
-        p.append(targetName, recentSendTime);
-
+        
         const div = document.createElement("div");
-
+        
         const recentMessage = document.createElement("p");
         recentMessage.classList.add("recent-message");
-
+        
         if(room.lastMessage != undefined){
           recentMessage.innerHTML = room.lastMessage;
         }
-
-        div.append(recentMessage);
         
-        itemBody.append(p, div);
+        p.append(targetName, recentSendTime, recentMessage);
+        // div.append(recentMessage);
+        
+        itemBody.append(p);
 
 
         if(room.notReadCount > 0 && room.chattingNo != selectChattingNo){
@@ -364,24 +372,27 @@ const selectRoomList = () =>{
           notReadCount.classList.add("not-read-count");
           notReadCount.innerText = room.notReadCount;
           div.append(notReadCount);
-        } else{
-          $.ajax({
-            url : "/dm/updateReadFlag",
-            data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
-            success : result => {
-              console.log("성공");
-            },
-            error : () => {
-              console.log("실패");
-            }
-          })
-        }
+          } else{
+
+            $.ajax({
+              url : "/dm/updateReadFlag",
+              data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
+              type:"GET",
+              success : result => {
+                console.log(result);
+              },
+              error : () => {
+                console.log("실패");
+              }
+            })
+          }
 
         li.append(itemHeader, itemBody);
         chattingList.append(li);
 
       }
       roomListAddEvent();
+      selectRoomList();
     }
   })
 
@@ -396,10 +407,14 @@ const sendMessage = () =>{
   } else{
     var obj = {
       "senderNo": loginMemberNo,
-      "targetNo" : targetNo,
-      "chattingNo" : chattingNo,
+      "targetNo" : selectTargetNo,
+      "chattingNo" : selectChattingNo,
       "messageContent" : chattingInput.value,
     };
+
+    console.log(targetNo);
+    console.log(selectChattingNo);
+    
     chattingSock.send(JSON.stringify(obj));
 
     chattingInput.value = "";
@@ -414,18 +429,32 @@ chattingInput.addEventListener("keyup", e=>{
   }
 })
 
+const chattingRoom = document.getElementById("chattingRoom");
+
+
 
 chattingSock.onmessage = function(e){
   const msg = JSON.parse(e.data);
 
+
+  console.log(msg);
+  console.log(msg.sendDate);
+  console.log(msg.sendTime);
+
   if(selectChattingNo == msg.chattingNo){
+
+    // noClick.style.display = "none";
+    // click.style.display = "flex";
+    // messageName.innerText = selectTargetName;
+    // chatProfile.setAttribute("src", selectTargetProfile);
+
     const ul = document.querySelector(".dm-area");
 
     const li = document.createElement("li");
 
     const span = document.createElement("span");
     span.classList.add("chatDate");
-    span.innerText = msg.sendTime;
+    span.innerText = msg.SendDate;
 
     const p = document.createElement("p");
     p.classList.add("chat");
@@ -433,29 +462,31 @@ chattingSock.onmessage = function(e){
 
     if(loginMemberNo == msg.senderNo){
       li.classList.add("my-chat");
-
       li.append(span, p);
-    } else {
-    li.classList.add("target-chat");
 
-    const img = document.createElement("img");
-    img.setAttribute("src", selectTargetProfile);
+      } else {
+      li.classList.add("target-chat");
 
-    const div = document.createElement("div");
+      const img = document.createElement("img");
+      img.setAttribute("src", selectTargetProfile);
 
-    const b = document.createElement("b");
-    b.innerText = selectTargetName;
+      const div = document.createElement("div");
 
-    const br = document.createElement("br");
+      const b = document.createElement("b");
+      b.innerText = selectTargetName;
 
-    div.append(b, br, p, span);
-    li.append(img, div);
-  }  
+      const br = document.createElement("br");
+
+      div.append(b, br, p, span);
+      li.append(img, div);
+    }  
   ul.append(li);
-  dmArea.scrollTop = dmArea.scrollHeight;
+  chattingRoom.style.scrollTop = chattingRoom.style.scrollHeight;
   }
- selectRoomList();
+
+ selectChattingFn();
 }
+
 
 
 const openNo = () => {

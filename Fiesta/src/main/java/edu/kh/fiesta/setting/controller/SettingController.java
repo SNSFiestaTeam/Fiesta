@@ -38,6 +38,7 @@ public class SettingController {
 		return "setting/setting";
 	}
 	
+	// 개인정보 변경
 	@PostMapping("/setting")
 	public String updateSetting(Member inputMember,
 			@RequestParam(value="set", required=false) String introContent,
@@ -62,12 +63,13 @@ public class SettingController {
 	
 	
 	
-	
+	// 비밀번호 변경 이동
 	@GetMapping("/changePw")
 	public String changePw() {
 		return "setting/settingPw";
 	}
 	
+	// 비밀번호 변경
 	@PostMapping("/changePw")
 	public String changePw(@SessionAttribute("loginMember") Member loginMember,
 			@RequestParam Map<String, Object> paramMap, RedirectAttributes ra) { 
@@ -93,12 +95,13 @@ public class SettingController {
 		
 	}
 
-	
+	// 기타 설정 변경 이동
 	@GetMapping("/changeEtc")
 	public String setting3() {
 		return "setting/setting3";
 	}
 	
+	// 계정 탈퇴
 	@PostMapping("/delete")
 	public String memberDelete(
 			@SessionAttribute("loginMember") Member loginMember,
@@ -127,7 +130,7 @@ public class SettingController {
 		return "redirect:" + path;
 	}
 	
-
+	// 사용자이름 중복 검사
 	@GetMapping("/nicknameDupCheck")
 	@ResponseBody // 반환되는 값을 JSP 경로가 아닌 값 자체로 인식
 	public int nicknameDupCheck(String memberNickname) {
@@ -138,7 +141,7 @@ public class SettingController {
 	}
 	
 	
-		
+	// 프로필 수정
 	@PostMapping("/updateImage")
 	public String updateImage(
 			@RequestParam(value="memberProfileImg") MultipartFile memberProfileImg,
@@ -195,6 +198,7 @@ public class SettingController {
 		return "redirect:changeEtc";
 	}
 	
+	// 좋아요, 조회수 공개여부
 	@PostMapping("/like")
 	public String like(@RequestParam(value="chk1", required=false) String chk1,
 			@SessionAttribute("loginMember") Member loginMember, Board board,
@@ -229,7 +233,7 @@ public class SettingController {
 		return "redirect:changeEtc";
 	}
 		
-	
+	// 체크박스, 라디오 ajax 조회
 	@PostMapping("/changeEtc")
 	@ResponseBody
 	public String settingUpdate(int memberNo) {
@@ -239,6 +243,7 @@ public class SettingController {
 		return new Gson().toJson(member);
 	}
 	
+	// 소개 ajax 조회
 	@PostMapping()
 	@ResponseBody
 	public String settingIntro(int memberNo) {
