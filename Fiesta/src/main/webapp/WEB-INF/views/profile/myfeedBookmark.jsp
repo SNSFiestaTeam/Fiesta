@@ -21,12 +21,13 @@
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
+<link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
-
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
@@ -128,7 +129,7 @@
           <div id="profile-board">
               <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
               <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount-1}</button></span>
-              <span class="board-menu-btn3"><button id="following-tn">팔로잉 ${feedMember.followingCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount-1}</button></span>
             </div>
 
 
@@ -159,7 +160,7 @@
           <c:if test ="${fn:length(bookmarkList) > 0}">
           <div class="img-container">
             <c:forEach var="bookmark" items ="${bookmarkList}" begin="0" end="2">
-            <a href="feedDetail">
+            <a href="/feedDetail/${board.boardNo}">
               <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
@@ -174,7 +175,7 @@
           <c:if test ="${fn:length(bookmarkList) > 3}">
           <div class="img-container2">
             <c:forEach var="bookmark" items ="${bookmarkList}" begin="3" end="5">
-            <a href="feedDetail">
+            <a href="/feedDetail/${board.boardNo}">
               <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
@@ -189,7 +190,7 @@
            <c:if test ="${fn:length(bookmarkList) > 6}">
           <div class="img-container3">
             <c:forEach var="bookmark" items ="${bookmarkList}" begin="6" end="8">
-            <a href="feedDetail">
+            <a href="/feedDetail/${board.boardNo}">
               <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
@@ -214,12 +215,13 @@
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/profile-edit-board.jsp"/>
         <%-- 새게시물작성 모달jsp --%>
-        <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
-        <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
+
       <script>
         var memberNickname = "${loginMember.memberNickname}";
         var memberNo = "${loginMember.memberNo}";
@@ -228,8 +230,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="/resources/js/profile/myfeedBookmark.js"></script>
     <script src="/resources/js/newpost.js"></script>
-    <script src="/resources/js/boardWriteUpdate.js"></script>
     <script src="/resources/js/common/common.js"></script>
+    <script src="/resources/js/boardWriteUpdate.js"></script>
     
   </body>
 </html>

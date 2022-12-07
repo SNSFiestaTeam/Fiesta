@@ -130,8 +130,8 @@ followingBtn.addEventListener("click", function(){
                     div2.append(profileImgSpan, nicknameSpan);
                     
                     const followingBtn = document.createElement("button");
-                    followingBtn.classList.add("following-div");
-                    followingBtn.innerText = "팔로잉"
+                    followingBtn.classList.add("following-btn-small");
+                    followingBtn.innerText = "팔로잉";
                     
                     div1.append(followingBtn);
                 }
@@ -245,7 +245,7 @@ function selectBookmarkList(entries, observer) {
                             for(let bookmark of bookmarkList){
         
                                 const boardContainer = document.createElement("a");
-                                boardContainer.href = "#";
+                                boardContainer.href = "/feedDetail/"+ board.boardNo;
                 
                                 imgContainer.append(boardContainer);
                 

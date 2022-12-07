@@ -186,9 +186,13 @@ public class FeedController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/feedDetail")
-	@ResponseBody
-	public String selectFeedDetail(@SessionAttribute(value="loginMember") Member loginMember, int boardNo) {
+	/** 게시글 상세조회
+	 * @param loginMember
+	 * @param boardNo
+	 * @return
+	 */
+	@GetMapping("/feedDetail/{boardNo}")
+	public String selectFeedDetail(@SessionAttribute(value="loginMember") Member loginMember,@PathVariable("boardNo") int boardNo, Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("memberNo", loginMember.getMemberNo());
@@ -196,7 +200,9 @@ public class FeedController {
 		
 		Board board = service.selectFeedDetail(map);
 		
-		return new Gson().toJson(board);
+		model.addAttribute("board", board);
+		
+		return "feed/feedDetail";
 	}
 	
 

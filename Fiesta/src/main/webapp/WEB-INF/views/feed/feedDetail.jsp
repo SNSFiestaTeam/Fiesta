@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="feedMember" value="${feedMap.feedMember}"></c:set>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,9 +29,14 @@
     <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/action/boardDeteil-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
-    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
+    <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
+
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
  
 
@@ -267,9 +274,12 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <!-- 모달창 include -->
-    <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+   <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
+    <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
     
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
@@ -350,6 +360,9 @@
     <%-- <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script> --%>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
     <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
+    <script src="/resources/js/newpost.js"></script>
+    <script src="/resources/js/boardWriteUpdate.js"></script>
+    
     <%-- 사진크롭 --%>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
