@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
     <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
-    <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
 

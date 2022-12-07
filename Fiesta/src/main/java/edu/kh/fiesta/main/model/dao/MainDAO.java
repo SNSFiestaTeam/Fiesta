@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.Pagination;
+import edu.kh.fiesta.main.model.vo.Report;
 
 
 @Repository
@@ -122,6 +123,15 @@ public class MainDAO {
 	 */
 	public int deleteBoard(int boardNo) {
 		return sqlSession.update("mainMapper.deleteBoard", boardNo);
+	}
+
+
+	/** 신고 삽입
+	 * @param report
+	 * @return
+	 */
+	public int insertReport(Report report) {
+		return sqlSession.insert("mainMapper.insertReport", report);
 	}
 
 

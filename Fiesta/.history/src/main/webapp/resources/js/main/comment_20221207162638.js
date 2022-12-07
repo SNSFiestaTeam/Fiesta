@@ -11,7 +11,6 @@ for (let i = 0; i < commentInput.length; i++) {
   });
 }
 
-
 const loading = 
 '<div class="auto-complete-loading">'
 +' <div class="loader loader--style1" title="0">'
@@ -60,6 +59,7 @@ for (let i = 0; i < commentInput.length; i++) {
       let end2;
       let content;
       let targetCotent;
+      
 
       commentInput[i].addEventListener('input', function (e) { 
 
@@ -210,11 +210,9 @@ for (let i = 0; i < commentInput.length; i++) {
 
 
         } else {
-          if(autoCompleteModal !== undefined) {
+
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
             console.log('모달 삭제');
-
-          }
           event.preventDefault();
           commentInput[i].removeEventListener('input', arguments.callee);
         }
