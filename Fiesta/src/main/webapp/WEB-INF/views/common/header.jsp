@@ -97,7 +97,6 @@
           </button>
         </fieldset>
           <jsp:include page="/WEB-INF/views/search/search-complete2.jsp" />
-
       </form>
     </section>
 
