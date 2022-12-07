@@ -220,3 +220,4 @@ for (let i = 0; i < searchInputList.length; i++) {
 
   });
 }
+ 
