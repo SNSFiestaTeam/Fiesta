@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="feedMember" value="${feedMap.feedMember}"></c:set>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fiesta</title>
+
+    <%-- 무한 스크롤 --%>
+
 
     <!-- CSS 링크 -->
     <link rel="stylesheet" href="/resources/css/common-style.css" />
@@ -34,7 +38,7 @@
     <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-
+ 
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
@@ -49,13 +53,12 @@
         <!-- 인스타 피드 -->
         <section class="feed-section" id="feedSection">
           <!-- 피드 리스트 -->
-
               <div class="feed">
                 <div class="profile-image-area">
                   <!-- 작성자 프로필 -->
                   <div class="feed-header">
                     <div class="writer-info">
-                      <a href="" class="profile-photo">
+                      <a href="/feed/${board.memberNickname}" class="profile-photo">
                         <c:if test="${empty board.memberProfileImg}">
                           <img class="feed-profile-image" src="/resources/images/profile/profile.jpg" />
                         </c:if>
@@ -63,7 +66,7 @@
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
                         </c:if>
                       </a>
-                      <a href="#" class="feed-memberId">${board.memberNickname}</a>
+                      <a href="/feed/${board.memberNickname}" class="feed-memberId">${board.memberNickname}</a>
                     </div>
                     <div>
                       <button type="button" class="fa-solid fa-ellipsis feed-header-menu"></button>
@@ -136,9 +139,10 @@
                     <!-- 본문 내용 -->
                     <div class="feed-main-content">
                       <div class="feed-content one-line">
-                        <a href="#"><span class="member-id">${board.memberNickname}</span></a>
+                        <a href="/feed/${board.memberNickname}"><span class="member-id">${board.memberNickname}</span></a>
                         <span class = "board-content">
                           ${board.boardContent}
+                          
                         </span>
                       </div>
 
@@ -165,7 +169,7 @@
                                 <li class="comment">
                                   <input type="hidden" value="${comment.commentNo}" class="comment-no">
                                   <div class="comment-firstchild">
-                                    <a href="#" class="comment-profile">
+                                    <a href="/feed/${comment.memberNickname}" class="comment-profile">
                                       <c:if test="${empty comment.memberProfileImg}">
                                         <img class="comment-profile-image" src="/resources/images/profile/profile.jpg" />
                                       </c:if>
@@ -176,7 +180,7 @@
                                     <div>
                                       <div class="comment-firstline">
                                         <div class= "comment-id-content">
-                                          <a href="#" class="comment-memberId">${comment.memberNickname}</a>
+                                          <a href="/feed/${comment.memberNickname}" class="comment-memberId">${comment.memberNickname}</a>
                                           <span class="comment-content">${comment.commentContent}</span>
                                         </div>
                                         <div>
@@ -207,7 +211,7 @@
                                     <li class="comment" id="reply">
                                       <input type="hidden" value="${comment.commentNo}" class="comment-no">
                                       <div class="reply-firstchild">
-                                        <a href="#" class="comment-profile">
+                                        <a href="/feed/${comment.memberNickname}" class="comment-profile">
                                           <c:if test="${empty comment.memberProfileImg}">
                                           <img class="comment-profile-image" src="/resources/images/profile/profile.jpg" />
                                           </c:if>
@@ -218,7 +222,7 @@
                                         <div>
                                           <div class="reply-firstline">
                                             <div>
-                                              <a href="#" class="comment-memberId">${comment.memberNickname}</a>
+                                              <a href="/feed/${comment.memberNickname}" class="comment-memberId">${comment.memberNickname}</a>
                                               <a href="#" class="mention">@${comment.mentionNickname}</a>
                                               <span class="comment-content">${comment.commentContent}</span>
                                             </div>
@@ -242,7 +246,7 @@
                           </ul>
                         </div>
                       </c:if>
-                      </div>
+                      </div> 
                     <span class="create-date">${board.boardCreateDate}</span>
                   </div>
                   <div class="comment-input-area">
@@ -258,7 +262,8 @@
               <input type="hidden" class="comment-block-fl" value="${board.commentBlockFlag}">
               <input type="hidden" class="board-pub-pri-fl" value="${board.boardPubPriFlag}">
               </div>
-
+    
+    
         </section>
       </section>
       <div id="endList"></div>
@@ -269,19 +274,19 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <!-- 모달창 include -->
-    <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
+   <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
-
-
+    
 
     <jsp:include page="/WEB-INF/views/action/reportShareMenu.jsp" />
     <jsp:include page="/WEB-INF/views/action/dm-message.jsp" />
     <jsp:include page="/WEB-INF/views/action/comment.jsp" />
     <jsp:include page="/WEB-INF/views/action/confirm.jsp" />
+    <%-- <jsp:include page="/WEB-INF/views/action/boardDeteil.jsp" /> --%>
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
@@ -303,6 +308,12 @@
         var boardMemberNickname;
         var boardMemberProfileImg;
 
+        var commentBlockFlag;
+        var boardPubPriFlag;
+
+        var tags;
+
+        var mentionSet = null;
       </script>
     </c:if>
 
@@ -345,14 +356,18 @@
       });
     </script>
 
-
     <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
-    <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
+    <%-- <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script> --%>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
     <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
-
     <script src="/resources/js/newpost.js"></script>
     <script src="/resources/js/boardWriteUpdate.js"></script>
-
+    
+    <%-- 사진크롭 --%>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
+    <%-- <script type="text/javascript" src="index.js"></script> --%>
+    <script src="/resources/js/newpost.js"></script>
   </body>
 </html>

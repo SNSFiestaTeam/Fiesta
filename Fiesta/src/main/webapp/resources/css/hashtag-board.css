@@ -28,7 +28,7 @@
   }
   
   
-  .following-container {
+  .hashtag-container {
     width: 100vw;
     height: 100vh;
     background-color: #00000070;
@@ -44,7 +44,7 @@
     position: fixed;
   }
   
-  .following-menu {
+  .hashtag-menu {
     width: 400px;
     height: 400px;
     background-color: white;
@@ -64,7 +64,7 @@
     overflow-x: hidden;
   }
   
-  .following-title {
+  .hashtag-title {
     width: 100%;
   
     display: flex;
@@ -75,13 +75,13 @@
   }
   
   
-  .following-title span {
+  .hashtag-title span {
     color: var(--fiesta-color);
     font-weight: bold;
     font-size: 16px;
   }
 
-  .following-subtitle {
+  .hashtag-subtitle {
     width: 400px;
     height: 50px;
     font-weight: bold;
@@ -91,7 +91,7 @@
     align-items: center;
   }
 
-  .following-subtitle > button{
+  .hashtag-subtitle > button{
     display: flex;
     justify-content: center;
     font-size: 16px;
@@ -100,7 +100,7 @@
   }
   
   
-  .following-content {
+  .hashtag-content {
     width: 100%;
     height: 100%;
 
@@ -110,7 +110,7 @@
   }
   
   
-  .following-content div {
+  .hashtag-content div {
     width: 95%;
     padding: 4px 8px;
   
@@ -118,18 +118,18 @@
     align-items: center;
   }
 
-  .following-content > div > span{
+  .hashtag-content > div > span{
     display: flex;
     align-items: center;
   } 
   
   
-  .following-content div:hover {
+  .hashtag-content div:hover {
     background-color: rgba(221, 221, 221, 0.3);
   }
   
   
-  .following-content img{
+  .hashtag-content img{
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -138,17 +138,17 @@
   }
   
   
-  .following-content i {
+  .hashtag-content i {
     margin-right: 10px;
   }
   
-  .following-content a {
+  .hashtag-content a {
     font-size: 14px;
     font-weight: bold;
     margin-left: 20px;
   }
 
-  .following-content button{
+  .hashtag-content button{
     background-color: white;
     border: 1px solid lightgray;
     width: 94px;
@@ -164,13 +164,13 @@
   }
 
 
-  .following-close{
+  .hashtag-close{
     font-size: 16px;
     margin-right: 12px;
     cursor: pointer;
   }
 
-  .following-space{
+  .hashtag-space{
     margin-left: 24px;
   }
   
