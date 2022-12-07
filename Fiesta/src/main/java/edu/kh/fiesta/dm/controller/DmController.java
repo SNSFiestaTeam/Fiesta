@@ -53,10 +53,13 @@ public class DmController {
 	
 	// 채팅방 입장
 	@GetMapping("/enter")
-	public String dmEnter(int targetNo, RedirectAttributes ra,
+	public String dmEnter (int targetNo, RedirectAttributes ra,
 			@SessionAttribute("loginMember") Member loginMember) {
+	
+		System.out.println(targetNo);
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("targetNo", targetNo);
 		map.put("loginMemberNo", loginMember.getMemberNo());
@@ -72,7 +75,7 @@ public class DmController {
         ra.addFlashAttribute("chattingNo", chattingNo);
         System.out.println(chattingNo);
         
-        return "redirect:/dm";
+        return "/enter";
 		
 	}
 	

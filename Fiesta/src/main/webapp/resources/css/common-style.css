@@ -1,44 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cookie&display=swap");
-@import "./root-style.css";
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import './root-style.css';
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500&display=swap');
 
 @font-face {
-  font-family: "NanumSquareNeo-Variable";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2")
-    format("woff2");
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "NanumBarunGothic";
+  font-family: 'NanumBarunGothic';
   font-style: normal;
   font-weight: 400;
-  src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
-  src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
-      format("embedded-opentype"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
-      format("woff"),
-    url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
-      format("truetype");
-}
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+  src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+ }
 
-@font-face {
-  font-family: "S-CoreDream-3Light";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff")
-    format("woff");
+ @font-face {
+  font-family: 'S-CoreDream-3Light';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "SUIT-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
-    format("woff2");
+  font-family: 'SUIT-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -51,7 +43,7 @@
   /* font-family: 'Noto Sans KR', sans-serif; */
   /* font-family: 'Nanum Gothic', sans-serif; */
   /* font-family: 'IBM Plex Sans KR', sans-serif; */
-  font-family: "NanumSquareNeo-Variable";
+  font-family: 'NanumSquareNeo-Variable';
   /* font-family: 'NanumBarunGothic'; */
   /* font-family: 'SUIT-Regular'; */
   letter-spacing: 0.1px;
@@ -81,6 +73,8 @@ button {
 button:focus {
   outline: none;
 }
+
+
 
 button:active {
   transform: scale(0.95);
@@ -127,7 +121,7 @@ header > section {
 }
 
 .logo-section a {
-  font-family: "Cookie", cursive;
+  font-family: 'Cookie', cursive;
   /* font-family: 'Chewy', cursive; */
   color: #dd4132;
   font-size: 50px;
@@ -144,7 +138,7 @@ header > section {
   width: 50%;
 
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end
 }
 
 .search-section fieldset {
@@ -157,8 +151,6 @@ header > section {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  position: relative;
 }
 
 .search-section fieldset input {
@@ -256,6 +248,8 @@ nav i {
   flex-shrink: 0;
 }
 
+
+
 #searchBtn {
   display: none;
 }
@@ -340,6 +334,9 @@ nav i {
   .toggle-search-section fieldset > button:disabled:active {
     transform: none;
   }
+
+  
+
 }
 
 @media screen and (max-width: 470px) {
@@ -356,6 +353,7 @@ nav i {
   body::-webkit-scrollbar {
     display: none;
   }
+
 
   footer {
     display: none;
@@ -383,30 +381,31 @@ nav i {
   }
 }
 
-#header-menu-toggle {
+
+#header-menu-toggle{
   display: none;
 }
 
-label[for="header-menu-toggle"] {
+label[for='header-menu-toggle'] {
   cursor: pointer;
   margin-bottom: 0;
 }
 
 /* 체크박스 다음 div */
-#toggle-menu {
+#toggle-menu{
   display: none;
 }
 
 /* 체크박스가 체크된 경우 다음 div */
-#header-menu-toggle:checked + div {
+#header-menu-toggle:checked + div{
   display: block;
 }
 
-.header-menu-parent {
+.header-menu-parent{
   position: relative;
 }
 
-#toggle-menu {
+#toggle-menu{
   position: absolute;
   top: 38px;
   right: -10px;
@@ -418,7 +417,8 @@ label[for="header-menu-toggle"] {
   border-radius: 6px;
 }
 
-#toggle-menu > a {
+
+#toggle-menu > a{
   display: flex;
   height: 33.3%;
   justify-content: center;
@@ -427,13 +427,14 @@ label[for="header-menu-toggle"] {
   font-weight: bold;
 }
 
-#toggle-menu > a:first-child {
+#toggle-menu > a:first-child{
   border-bottom: 1px solid #ccc;
 }
 
 #toggle-menu > a:nth-child(2) {
   border-bottom: 1px solid #ccc;
 }
+
 
 #topButton {
   width: 70px;
@@ -457,4 +458,7 @@ label[for="header-menu-toggle"] {
   color: white;
 
   z-index: 10;
+
 }
+
+

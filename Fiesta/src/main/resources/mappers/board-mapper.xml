@@ -81,7 +81,7 @@
 			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO BOARD
-		VALUES(#{boardNo},#{boardContent},DEFAULT,DEFAULT,#{boardPubPriFlag},#{commentBlockFlag},#{memberNo})
+		VALUES(#{boardNo},#{boardContent},DEFAULT,DEFAULT,DEFAULT,DEFAULT,#{memberNo})
 	</insert>
 
 	<!-- 이미지 삽입 -->

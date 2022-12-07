@@ -29,6 +29,7 @@
 		<typeAlias type="edu.kh.fiesta.setting.model.vo.Setting" alias="Setting"/>
 		<typeAlias type="edu.kh.fiesta.dm.model.vo.ChattingRoom" alias="ChattingRoom"/>
 		<typeAlias type="edu.kh.fiesta.dm.model.vo.Message" alias="Chat"/>
+		<typeAlias type="edu.kh.fiesta.feed.model.vo.Bookmark" alias="Bookmark"/>
 	</typeAliases>
 	
 	

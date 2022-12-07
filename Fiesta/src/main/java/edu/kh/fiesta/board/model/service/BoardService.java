@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.fiesta.main.model.vo.Board;
-import edu.kh.fiesta.main.model.vo.BoardImg;
 
 public interface BoardService {
 
@@ -15,7 +14,6 @@ public interface BoardService {
 	 * @param fileList
 	 * @param webPath
 	 * @param folderPath
-	 * @param imgAccessibilityList 
 	 * @return boardNo
 	 * @throws IOException 
 	 */

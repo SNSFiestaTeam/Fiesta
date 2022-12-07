@@ -22,7 +22,7 @@
             새로운 메시지
           </div>
           <div class="next">
-          <button id="next">다음</button>
+          <button id="next"><a href="/dm/enter">다음</a></button>
           </div>
         </div>
         <div class="feedMenu2">

@@ -27,24 +27,7 @@ const proImg = document.getElementById("proImg")
 const next = document.getElementById("next");
 const messageName = document.getElementById("messageName");
 
-// 다음 클릭
-next.addEventListener("click", ()=>{
-  dmMenu.style.display = "none";
-  noClick.style.display = "none";
-  click.style.display = "flex";
-  messageName.innerText = recipient.innerText;
 
-  $.ajax({
-    url: "/dm/number",
-    data : {"memberNickname" : RecipientMemberNick},
-    success : (result) =>{
-      
-      const RecipeintMemberNo = result;
-    }
-
-  })
-  
-})
 
 const memberListArea = document.getElementById("memberListArea");
 
@@ -67,12 +50,18 @@ sendPeople.addEventListener("input", ()=>{
       
       for(let member of memberList){
         const li = document.createElement("li");
+        const input = document.createElement("input")
         const img = document.createElement("img");
         const span = document.createElement("span");
         
         memberListArea.append(li);
+        input.setAttribute('type', 'hidden');
+        input.setAttribute("value", member.memberNo);
+        input.setAttribute("name", 'targetNo');
+
+
         li.classList.add("chatMember")
-        li.append(img, span);
+        li.append(input,img, span);
         img.classList.add("modalProfile")
         span.classList.add("modalNick")
         
@@ -88,23 +77,47 @@ sendPeople.addEventListener("input", ()=>{
           item.addEventListener("click", e=>{
             const itemName = item.innerText;
             const itemImage = item.getAttribute("src");
-          
-            const sendPeople = document.getElementById('sendPeople');
-            sendPeople.value = '';
+            const targetNo = item.children[0].value;
+
+            console.log(targetNo);
             recipient.innerText = itemName;  
           
+            
           })
+          $.ajax({
+            url : "/dm/enter",
+            data : {"targetNo" : item.children[0].value},
+            dataType:"JSON",
+            success : ()=>{
+              console.log("성공");
+            }
 
+          });
+          
+          }
         }
-
+ 
+      },
+      error: ()=>{
+        console.log("실패");
       }
-    },
-    error: ()=>{
-      console.log("실패");
-    }
+    }); 
+    })
 
-  
-  });    
+   
+
+
+
+
+// 다음 클릭
+next.addEventListener("click", ()=>{
+  dmMenu.style.display = "none";
+  noClick.style.display = "none";
+  click.style.display = "flex";
+  messageName.innerText = recipient.innerText;
+
+  const RecipientMemberNick = recipient.innerText;
+
 })
 
 
@@ -288,7 +301,7 @@ const selectRoomList = () =>{
 
         const recentSendTime = document.createElement("span");
         recentSendTime.classList.add("recent-send-time");
-        recentSendTime.innerText = roon.sendDate;
+        recentSendTime.innerText = room.sendTime;
 
         p.append(targetName, recentSendTime);
 
@@ -373,7 +386,7 @@ chattingSock.onmessage = function(e){
 
     const span = document.createElement("span");
     span.classList.add("chatDate");
-    span.innerText = msg.sendDate;
+    span.innerText = msg.sendTime;
 
     const p = document.createElement("p");
     p.classList.add("chat");

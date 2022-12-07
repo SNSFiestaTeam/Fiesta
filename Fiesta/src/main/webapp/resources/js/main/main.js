@@ -58,22 +58,17 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
       
       
       loginFeedMenu.style.display = "flex";
-
       
       const likeCount = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
-
       const commentContainer = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling
         .nextElementSibling;
-
       const commentInputArea = feedHeaderMenu[i].parentElement.parentElement.parentElement.
       nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling;
-
       const mainContainer = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling;
       tags = null;
-
       tags = {
         "likeCount": likeCount, "commentContainer": commentContainer,
         "commentInputArea": commentInputArea, "mainContainer": mainContainer
