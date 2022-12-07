@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -34,27 +35,28 @@ public class BoardController {
 			RedirectAttributes ra,
 			HttpSession session, // 파일 어느위치 저장할지 경로 지정때 필요
 			@RequestParam(value="newPostFile") List<MultipartFile> fileList,// 이미지 n개 받아오기
-			Board board// 이미지 n개 받아오기
+			Board board,
+			@RequestHeader("referer") String referer// 이미지 n개 받아오기
 			) throws IOException {
 				
 		
 		// 로그인한 회원 번호 board 객체에 세팅
 		board.setMemberNo(loginMember.getMemberNo());
 		
-		if(board.getBoardPubPriFlag().equals("on")) {
-			board.setBoardPubPriFlag("N");
-		} 
+//		if(board.getBoardPubPriFlag().equals("on")) {
+//			board.setBoardPubPriFlag("N");
+//		} 
 		
-		if(board.getBoardPubPriFlag() == null) {
-			board.setBoardPubPriFlag("Y");
+		if(board.getBoardPubPriFlag() == "N,Y") {
+			board.setBoardPubPriFlag("N");
 		}
 		
 		
-		if(board.getCommentBlockFlag().equals("on")) {
-			board.setCommentBlockFlag("Y");
-		} 
+//		if(board.getCommentBlockFlag().equals("on")) {
+//			board.setCommentBlockFlag("Y");
+//		} 
 		
-		if(board.getCommentBlockFlag() == null) {
+		if(board.getCommentBlockFlag() == "N,Y") {
 			board.setCommentBlockFlag("N");
 		}
 		
@@ -67,9 +69,16 @@ public class BoardController {
 		// 게시글 삽입
 		int boardNo = service.boardWrite(board, fileList, webPath, folderPath);
 		
-
-		
-		return "redirect:/main";
+		String path = null;
+		if(boardNo > 0) {
+			System.out.println("게시물 작성 성공");
+			path = referer;
+					/// /board/1/2003 (상세주회 요청 주소)
+		}else {
+			System.out.println("게시물 작성 실패");
+			path = referer;
+		}
+		return "redirect:"+path;
 	}
 	
 	// 게시글 수정
@@ -81,17 +90,20 @@ public class BoardController {
 	}
 	
 	@PostMapping("/boardUpdate")
-	public String boardUpdate(Board board) throws IOException { 
+	public String boardUpdate(Board board,@RequestHeader("referer") String referer) throws IOException { 
 		
 		int result = service.boardUpdate(board);
 		
-		String path;
-		
+		String path = null;
 		if(result > 0) {
-//			path = 원래 있던 페이지 주소로 리다이렉트
+			System.out.println("게시물 수정 성공");
+			path = referer;
+					/// /board/1/2003 (상세주회 요청 주소)
+		}else {
+			System.out.println("게시물 작성 실패");
+			path =referer;
 		}
-		
-		return "redirect:/main";
+		return "redirect:"+path;
 	}
 	
 	
