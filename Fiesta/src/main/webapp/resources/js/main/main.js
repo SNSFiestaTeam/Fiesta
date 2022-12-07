@@ -164,6 +164,11 @@ const feedUpdateBtnLogin = document.getElementById("feedUpdateBtnLogin");
 const feedShareBtnLogin = document.getElementById("feedShareBtnLogin");
 const feedSelectBtnLogin = document.getElementById("feedSelectBtnLogin");
 
+//게시물로 이동 버튼에 클릭 이벤트 리스너 추가 
+feedSelectBtnLogin.addEventListener('click', () => {
+  location.href = "/feedDetail/" + boardNo;
+})
+
 // 댓글 기능 사용 유무버튼에 클릭 이벤트 리스너 추가
 feedCommentBtnLogin.addEventListener('click', () => { 
 

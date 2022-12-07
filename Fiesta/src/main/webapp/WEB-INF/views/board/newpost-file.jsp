@@ -23,7 +23,7 @@
             </div>
             <div class="file-select-btn" id="basicImage">
               <label for="baceImage" > 기본 이미지</label>
-              <input name="new-post-file"  none>
+              <input name="new-post-file"  type="hidden" value="/resources/images/default/defaultImg.png">
             </div>
             
           </div>

@@ -14,6 +14,7 @@
 
 
         <input type="file" name="newPostFile" id="cropperfile" none accept="image/*" multiple style="display:none" onsubmit="return writeValidate()">
+        <input name="new-post-file"  type="hidden" >
 
 
         <div class="new-post-top-text">

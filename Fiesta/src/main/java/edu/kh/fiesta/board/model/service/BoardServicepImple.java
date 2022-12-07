@@ -82,6 +82,7 @@ public class BoardServicepImple implements BoardService{
 	
 	@Override
 	public Board selectOneBoard(int boardNo) {
+		
 		return dao.selectOneBoard(boardNo);
 	}
 	

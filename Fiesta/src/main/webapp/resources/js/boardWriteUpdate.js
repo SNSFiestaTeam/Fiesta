@@ -24,7 +24,9 @@ feedUpdateBtnLogin.addEventListener("click", () => {
       
       boardNo.value = board.boardNo;
       
+      
       const img = document.createElement('img');
+      if(img.l)
       img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
 
       boardImageOne.append(img);
@@ -39,10 +41,15 @@ feedUpdateBtnLogin.addEventListener("click", () => {
 })
 updateClose.addEventListener("click", () =>{
     modalBackgroundUpdate.style.display = "none";
+    boardImageOne.innerHTML = "";
+    boardContent.innerText = "";
+
     console.log("눌렸나욤?");
 });
 updateClose2.addEventListener("click", () =>{
     modalBackgroundUpdate.style.display = "none";
+    boardImageOne.innerHTML = "";
+    boardContent.innerText = "";
     console.log("눌렸나욤?2");
 });
 });
