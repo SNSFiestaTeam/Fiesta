@@ -369,6 +369,11 @@
     <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script>
     <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
     <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
+    <%-- 사진크롭 --%>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
+    <%-- <script type="text/javascript" src="index.js"></script> --%>
     <script src="/resources/js/newpost.js"></script>
   </body>
 </html>
