@@ -8,9 +8,19 @@
     <!-- post 배경 -->
     <section class="modal_post_section-text" >
       <!-- post top -->
-      <div class="new-post-top-text">
-        <div id="backBtnText">
-          <i class="fa-solid fa-arrow-left"></i>
+
+      <form action="/write" method="POST" enctype="multipart/form-data" id="postForm" name="postForm">
+
+
+        <input type="file" name="newPostFile" id="cropperfile" none accept="image/*" multiple style="display:none" onsubmit="return writeValidate()">
+
+
+        <div class="new-post-top-text">
+          <div id="backBtnText">
+            <i class="fa-solid fa-arrow-left"></i>
+          </div>
+          <p id="postName">새 게시물 만들기</p>
+          <button name="newpostText" id="newPostAll">게시하기</button>
         </div>
         <p>새 게시물 만들기</p>
         <button name="newpostText" id="newPostAll">게시하기</button>

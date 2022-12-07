@@ -7,7 +7,7 @@ const modalBackgroundText = document.getElementById("modalBackgroundText"); // �
 const slideImages = document.getElementById("slideImages"); // edit화면 파일 리스트
 const filePreview = document.getElementById("filePreview"); // edit화면 파일 추가의 미리보기
 const textFileSwiper = document.getElementById("textFileSwiper"); // text화면 파일 리스트(합치기,지우기사용)
-const postFileTextArea = document.getElementById("postFileTextArea"); // text 접근성 리스트
+// const postFileTextArea = document.getElementById("postFileTextArea"); // text 접근성 리스트
 
 var form = new FormData(); // 파일 리스트 보내기 위해 form 선언
 // 게시물 작성 버튼 누르면
@@ -21,20 +21,65 @@ newPostClose.addEventListener("click", function () {
   modalBackground.style.display = "none";
   document.getElementsByTagName("body")[0].classList.remove("scrollLock");
   slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
-    filePreview.innerHTML="";
-    textFileSwiper.innerHTML="";
-    postFileTextArea.innerHTML="";
-});``
-// 작성 중 x버튼
-document.getElementById("newPostClosePostEdit").addEventListener("click", function () {
-    modalBackground.style.display = "flex";
-    modalBackgroundEidt.style.display = "none";
-    modalBackgroundText.style.display = "none";
-    slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
-    filePreview.innerHTML="";
-    textFileSwiper.innerHTML="";
-    postFileTextArea.innerHTML="";
-  });
+  filePreview.innerHTML = "";
+  textFileSwiper.innerHTML = "";
+  // postFileTextArea.innerHTML = "";
+});
+``;
+// edit작성 중 x버튼
+// document
+//   .getElementById("newPostClosePostEdit")
+//   .addEventListener("click", function () {
+//     modalBackground.style.display = "flex";
+//     modalBackgroundEidt.style.display = "none";
+//     modalBackgroundText.style.display = "none";
+//     slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+//     filePreview.innerHTML = "";
+//     textFileSwiper.innerHTML = "";
+//     postFileTextArea.innerHTML = "";
+//   });
+const newPostClosePostEdit = document.getElementById("newPostClosePostEdit");
+const newPostClosePostText = document.getElementById("newPostClosePostText");
+const backBtnedit = document.getElementById("backBtnedit"); // edit 뒤로가기 버튼
+
+backBtnedit.addEventListener("click", function () {
+  console.log("닫기버튼 눌림");
+  modalBackgroundClose.style.display = "flex";
+});
+newPostClosePostEdit.addEventListener("click", function () {
+  console.log("닫기버튼 눌림");
+  modalBackgroundClose.style.display = "flex";
+});
+newPostClosePostText.addEventListener("click", function () {
+  modalBackgroundClose.style.display = "flex";
+});
+// x-> 삭제
+document.getElementById("closeTextDelete").addEventListener("click", () => {
+  modalBackground.style.display = "flex";
+  modalBackgroundClose.style.display = "none";
+  modalBackgroundEidt.style.display = "none";
+  modalBackgroundText.style.display = "none";
+  slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+  filePreview.innerHTML = "";
+  textFileSwiper.innerHTML = "";
+  // postFileTextArea.innerHTML = "";
+});
+const backBtnText = document.getElementById("backBtnText");
+backBtnText.addEventListener("click", () => {
+  modalBackground.style.display = "flex";
+  modalBackgroundClose.style.display = "none";
+  modalBackgroundEidt.style.display = "none";
+  modalBackgroundText.style.display = "none";
+  // slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+  // filePreview.innerHTML = "";
+  // textFileSwiper.innerHTML = "";
+  // postFileTextArea.innerHTML = "";
+  document.postForm.reset();
+  console.log(document.getElementById("cropperfile").files);
+});
+document.getElementById("closeTextCancel").addEventListener("click", () => {
+  modalBackgroundClose.style.display = "none";
+});
 // text작성중 x버튼
 document.getElementById("newPostClosePostText").addEventListener("click", function () {
     modalBackground.style.display = "flex";
@@ -71,14 +116,14 @@ document.getElementById("backBtnedit").addEventListener("click", () => {
 
 });
 // text에서 뒤로가기
-const backBtnText = document.getElementById("backBtnText");
-backBtnText.addEventListener("click", () => {
-  modalBackgroundText.style.display = "none";
-  modalBackgroundEidt.style.display = "flex";
-    textFileSwiper.innerHTML="";
-    postFileTextArea.innerHTML="";
-    // formData.delete('files');
-});
+
+// backBtnText.addEventListener("click", () => {
+//   modalBackgroundText.style.display = "none";
+//   modalBackgroundEidt.style.display = "flex";
+//   textFileSwiper.innerHTML = "";
+//   postFileTextArea.innerHTML = "";
+//   // formData.delete('files');
+// });
 
 
 //! 접근성 토클
@@ -278,7 +323,31 @@ for (let value of form.values()) {
         postFileTextInput.setAttribute("placeholder", "대체 텍스트 입력...");
 
         postFileTextDiv.append(postFileTextImg, postFileTextInput);
-        postFileTextArea.append(postFileTextDiv);
+        // postFileTextArea.append(postFileTextDiv);
+
+        var swiper = new Swiper(".swiper", {
+          spaceBetween: 0.5,    // 슬라이드 사이 여백                     
+          slidesPerView : 'auto', // 한 슬라이드에 보여줄 갯수
+          centeredSlides: true,    //센터모드
+          // autoplay: {     //자동슬라이드 (false-비활성화)
+          //   delay: 2500, // 시간 설정
+          //   disableOnInteraction: false, // false-스와이프 후 자동 재생
+          // },
+          loop : false,   // 슬라이드 반복 여부
+  
+          loopAdditionalSlides : 1,// 슬라이드 반복 시 마지막 슬라이드에서 다음 슬라이드가 보여지지 않는 현상 수정
+          pagination: { // 호출(pager) 여부
+            el: ".swiper-pagination", //버튼을 담을 태그 설정
+            clickable: true, // 버튼 클릭 여부
+          },
+          navigation: {   // 버튼
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+        
+      };
+      
     }
     
 
@@ -390,93 +459,68 @@ newPostAll.addEventListener("click", () => {
 
 
 
-
-// Write Javascript code!
-var isInitialized = false;
-var cropper = '';
-var file = '';
-var _URL = window.URL || window.webkitURL;
-// Initialize Slider
-
-$(document).ready(function () {
-    $("#cropperfile")
-        .change(function (e) {
-          for(let value of form.values()){
-
-            if (file = this.files[0]) {
-                var oFReader = new FileReader();
-                oFReader.readAsDataURL(file);
-                oFReader.onload = function () {
-
-                    $('#cropper-img').addClass('ready');
-                    if (isInitialized == true) {
-                        $('#zoom-slider').val(0);
-                        cropper.destroy();
-                    }
-                    initCropper();
-                }
-            }
-          }
-        });
-
-    $("#zoom-slider").slider({
-        orientation: "horizontal",
-        range: "min",
-        max: 1,
-        min: 0,
-        value: 0,
-        step: 0.0001,
-        slide: function () {
-            if (isInitialized == true) {
-                if (cropper.canvasData.naturalWidth < 600 || cropper.canvasData.naturalHeight < 400) {
-                    event.preventDefault();
-                } else {
-                    var currentValue = $("#zoom-slider").slider("value");
-                    var zoomValue = parseFloat(currentValue);
-                    cropper.zoomTo(zoomValue.toFixed(4));
-                }
-            }
-        }
-    });
+feedUpdateBtnLogin.addEventListener("click", () => {
+  modalBackgroundText.style.display = "flex";
+  feedMenuLogin.style.display = "none";
+  console.log("눌림?");
 });
 
-function initCropper() {
-  for(let i = 0; i <form.length; i++){
-    
-    var vEl = document.getElementsByClassName("cropper-img")[i];
-    cropper = new Cropper(vEl, {
-        viewMode: 3, // 이미지크기 벗어날지 안에서 crop할지
-        dragMode: 'move', // 마우스 포인터의 역할(move, crop, none)
-        aspectRatio: 1, // 자르기 비율
-        checkOrientation: false,
-        cropBoxMovable: true, // 드래그해 자르기 상자 이동
-        cropBoxResizable: false, //CropperBox의 사이즈 고정(자르기 상자 안커지게)
-        zoomOnTouch: true, //터치 드래그 이미지 확대.축소
-        zoomOnWheel: true, // 휠로 확대
-        guides: true,
-        highlight: false,
-        autoCropArea : 1.0,//cropper 시작시 CopperBox의 크기 지정(0.1~1.0)
-        ready: function (e) {
-            var cropper = this.cropper;
-            cropper.zoomTo(0);
+// const update = document.getElementById("update");
+// update.addEventListener("click", () => {
 
-            var imageData = cropper.getImageData();
-            console.log("imageData ", imageData);
-            var minSliderZoom = imageData.width / imageData.naturalWidth;
+//   $.ajax({
+//       url : "/upate",
+//       type : "Post",
+//       data : {"boardContent": boardContent.value},
+//       success: (result) => {
+//           if(result > 0){
+//               console.log("게시물 작성 성공");
+//               modalBackgroundUpdate.style.display = "none";
+//               location.reload();
+//           }else{
+//               console.log("게시물 작성 실패");
+//           }
+//         },
+//         error: () => {
+//           console.log("게시물 작성 에러");
+//         },
+//   });
+// });
+const modalBackgroundUpdate = document.getElementById('modalBackgroundUpdate');
+//! 수정
+feedUpdateBtnLogin.addEventListener("click", () => {
+  
+  const postName = document.getElementById("postName");
+  
+  postName.innerText="";
+  postName.innerText='정보 수정';
 
-            $('#min-zoom-val').html(minSliderZoom.toFixed(4));
+  console.log("눌림?");
 
-            $(".cr-slider-wrap").show();
-            $("#zoom-slider").slider("option", "max", 1);
-            $("#zoom-slider").slider("option", "min", minSliderZoom);
-            $("#zoom-slider").slider("value", minSliderZoom);
-        }
-    });
-    isInitialized = true;
-  }
-    
-}
+  $.ajax({
+    url : "/selectOneBoard",
+    data: {"boardNo": boardNo},
+    dataType: "json",
+    success: (board) => {
 
+      console.log(board);
+      const boardContent = document.getElementById('updateBoardContent');
+      const boardImageOne = document.getElementById('boardImageOne');
+      const boardNo = document.getElementById('boardNo');
 
+      boardNo.value = board.boardNo;
 
+      const img = document.createElement('img');
+      img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
 
+      boardImageOne.append(img);
+      boardContent.innerText = board.boardContent;
+
+      modalBackgroundUpdate.style.display = "flex";
+      feedMenuLogin.style.display = "none";
+    },
+    error: () => {
+      console.log("게시글 조회 error");
+    },
+  })
+});

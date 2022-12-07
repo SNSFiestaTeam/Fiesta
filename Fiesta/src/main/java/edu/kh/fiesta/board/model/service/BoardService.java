@@ -17,6 +17,13 @@ public interface BoardService {
 	 * @return boardNo
 	 * @throws IOException 
 	 */
-	int boardWrite(Board board, List<MultipartFile> fileList, String webPath, String folderPath) throws IOException;
+	int boardWrite(Board board, List<MultipartFile> fileList, String webPath,
+			String folderPath) throws IOException;
+
+	Board selectOneBoard(int boardNo);
+
+	int boardUpdate(Board board);
+
+
 
 }
