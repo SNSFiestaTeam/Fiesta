@@ -164,12 +164,12 @@ followingClose.addEventListener("click", function(){
 
 self.addEventListener("click", function(){
     profileContainer.style.display = "flex";
-    scrollrock.style.overflow = "hidden";
+   
 })
 
 editClose.addEventListener("click", function(){
     profileContainer.style.display = "none"
-    scrollrock.style.overflow = "visible";
+  
 })
 
 const feedSection = document.querySelector(".feed-section");
@@ -365,3 +365,62 @@ window.addEventListener("click", (e) => {
 });
 
 
+const selfImg = document.getElementById("selfImg");
+const profileFrm = document.getElementById("profilefrm");
+const profileUpdate = document.getElementById("profile-update");
+const profileDelete = document.getElementById("profile-delete");
+const imageInput = document.getElementById("image-input");
+
+const originalImage = selfImg.getAttribute("src");
+
+imageInput.style.display = "none";
+
+if(imageInput != null){
+
+    imageInput.addEventListener("change", e => {
+
+        // 선택된 파일의 목록
+        console.log(e.target.files);
+        console.log(e.target.files[0]);
+
+        if(e.target.files[0] != undefined){
+            const reader = new FileReader();
+
+            reader.readAsDataURL(e.target.files[0]);
+
+            reader.onload = event=>{
+                
+                selfImg.setAttribute("src", event.target.result);
+                profileContainer.style.display = "none";
+                profileFrm.submit();
+
+            } 
+
+        } else {
+            selfImg.setAttribute("src", originalImage);
+        }
+    });
+
+    profileDelete.addEventListener("click", ()=>{
+
+        selfImg.setAttribute("src", "/resources/images/user.jpg")
+        profileContainer.style.display = "none";
+        profileFrm.submit();
+
+        imageInput.value = "";
+
+    });
+
+    editClose.addEventListener("click", ()=>{
+        profileContainer.style.display = "none";
+    })
+
+}
+
+function submit(){
+
+    imageInput.addEventListener("change", e => {
+    profileFrm.submit();
+    })
+    
+}
