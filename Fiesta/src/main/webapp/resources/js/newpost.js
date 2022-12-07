@@ -305,14 +305,16 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
 // });
 
 function writeValidate(){
-  const boardContent = document.querySelector("[name='boardContent']");
+  const boardContent = document.getElementById("boardContent");
   if(boardContent.value.trim().length == 0){
     alert("내용을 입력해주세요.");
     boardContent.value = "";
     boardContent.focus();
     return false();
+  } else{
+     return true;
   }
-  return true;
+ 
 }
 
 document.getElementById("newPostCloseFinish").addEventListener("click", () => {
@@ -321,69 +323,58 @@ document.getElementById("newPostCloseFinish").addEventListener("click", () => {
 });
 
 
+// todo: 모달창 바깥 클릭 시 모달창 꺼짐--------------------------------------------
+window.addEventListener('click', (e) => {
 
-feedUpdateBtnLogin.addEventListener("click", () => {
-  modalBackgroundText.style.display = "flex";
-  feedMenuLogin.style.display = "none";
-  console.log("눌림?");
+  const modalBackground = document.getElementById("modalBackground")
+  const modalBackgroundEidt = document.getElementById("modalBackgroundEidt");
+  const modalBackgroundText = document.getElementById("modalBackgroundText");
+  const modalBackgroundFinish = document.getElementById("modalBackgroundFinish");
+  const modalBackgroundClose = document.getElementById("modalBackgroundClose");
+  const modalBackgroundUpdate = document.getElementById("modalBackgroundUpdate");
+
+  // 파일화면
+  e.target === modalBackground ? modalBackground.style.display = 'none' : false
+
+  // 편집화면
+  e.target === modalBackgroundEidt ? modalBackgroundEidt.style.display = 'none' : false
+
+  // 텍스트작성홤녀
+  e.target === modalBackgroundText ? modalBackgroundText.style.display = 'none' : false
+
+  // 작성완료 홤녀
+  e.target === modalBackgroundFinish ? modalBackgroundFinish.style.display = 'none' : false
+  
+  // 업데이트 홤녀
+  e.target === modalBackgroundUpdate ? modalBackgroundUpdate.style.display = 'none' : false
+
+  // 취소화면 
+  e.target === modalBackgroundClose ? modalBackgroundClose.style.display = 'none' : false
+
+  // // 검색 상세조회 시 바깥 클릭하면 닫힘
+  // e.target === feedBackground ? 
+  // (feedBackground.style.display = 'none') && (feedBackground.remove())
+  // : false
+
+  document.querySelector('body').classList.remove("scrollLock");
+
 });
 
-// const update = document.getElementById("update");
-// update.addEventListener("click", () => {
+document.getElementById("boardPubPriFlag").addEventListener('change',()=>{
+  if(document.getElementById("boardPubPriFlag").checked){
+    document.getElementById("boardPubPriFlag_hidden").disabled = true;
+  }else{
+    document.getElementById("boardPubPriFlag_hidden").disabled = false;
+  }
 
-//   $.ajax({
-//       url : "/upate",
-//       type : "Post",
-//       data : {"boardContent": boardContent.value},
-//       success: (result) => {
-//           if(result > 0){
-//               console.log("게시물 작성 성공");
-//               modalBackgroundUpdate.style.display = "none";
-//               location.reload();
-//           }else{
-//               console.log("게시물 작성 실패");
-//           }
-//         },
-//         error: () => {
-//           console.log("게시물 작성 에러");
-//         },
-//   });
-// });
-const modalBackgroundUpdate = document.getElementById('modalBackgroundUpdate');
-//! 수정
-feedUpdateBtnLogin.addEventListener("click", () => {
-  
-  const postName = document.getElementById("postName");
-  
-  postName.innerText="";
-  postName.innerText='정보 수정';
-
-  console.log("눌림?");
-
-  $.ajax({
-    url : "/selectOneBoard",
-    data: {"boardNo": boardNo},
-    dataType: "json",
-    success: (board) => {
-
-      console.log(board);
-      const boardContent = document.getElementById('updateBoardContent');
-      const boardImageOne = document.getElementById('boardImageOne');
-      const boardNo = document.getElementById('boardNo');
-
-      boardNo.value = board.boardNo;
-
-      const img = document.createElement('img');
-      img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
-
-      boardImageOne.append(img);
-      boardContent.innerText = board.boardContent;
-
-      modalBackgroundUpdate.style.display = "flex";
-      feedMenuLogin.style.display = "none";
-    },
-    error: () => {
-      console.log("게시글 조회 error");
-    },
-  })
 });
+
+document.getElementById("commentBlockFlag").addEventListener('change',()=>{
+  if(document.getElementById("commentBlockFlag").checked) {
+    document.getElementById("commentBlockFlag_hidden").disabled = true;
+  }else{
+    document.getElementById("commentBlockFlag_hidden").disabled = false;
+  }
+});
+
+
