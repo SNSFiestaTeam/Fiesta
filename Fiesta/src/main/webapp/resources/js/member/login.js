@@ -7,9 +7,9 @@ const loginBtn = document.getElementById("loginBtn");
 document.addEventListener("DOMContentLoaded", function(){
     memberEmail.removeAttribute("readonly");
     // 로그인 빨리하기 위해 value값 추가. 제일 나중에 지우기
-    // memberEmail.value = "123";
-    // memberEmail.value = "";
-    // memberEmail.focus();
+    memberEmail.value = "123";
+    memberEmail.value = "";
+    memberEmail.focus();
 })
 
 
