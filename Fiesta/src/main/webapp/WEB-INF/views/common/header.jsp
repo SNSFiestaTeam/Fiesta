@@ -25,6 +25,7 @@
                 autocomplete="off"
               />
               <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
+              <jsp:include page="/WEB-INF/views/search/search-complete.jsp" />
             </fieldset>
               
           </form>
