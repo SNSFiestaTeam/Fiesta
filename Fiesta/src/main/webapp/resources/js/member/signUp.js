@@ -71,6 +71,8 @@ emailXmark.classList.add("iHidden");
 
 memberEmail.addEventListener("input", function(){
     
+    memberEmail.focus();
+
     // 필수 입력
     if(memberEmail.value.trim().length == 0){ 
         emailCheck.classList.add("gray");
@@ -121,17 +123,7 @@ memberEmail.addEventListener("input", function(){
         emailXmark.classList.remove("iVisiebl");
         checkObj.memberEmail = false;
     }
-
-})
-
-if(memberEmail.checkObj == true){
-    memberName.addEventListener("focus", () => {
-        alert("이메일 인증을 먼저 진행해주세요😊");
-    })
-}
-
-
-
+});
 
 
 
@@ -596,6 +588,7 @@ checkAuthKeyBtn.addEventListener("click", function(){
 });
 
 
+
 // 버튼 활성화/비활성화
 document.getElementById("signUp-frm").addEventListener("input", function(){
     for(let key in checkObj){
@@ -621,6 +614,7 @@ document.getElementById("signUp-frm").addEventListener("input", function(){
 });
 
 
+
 // 회원가입 form 제출 이벤트
 document.getElementById("signUp-frm").addEventListener("submit", function(event){
 
@@ -633,3 +627,19 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
         }
     }
 });
+
+
+
+
+// if(checkObj.authKey == false){
+//     memberName.addEventListener("focus", () =>{
+//         alert("이메일 인증을 먼저 진행하세요.");
+//         memberEmail.focus();
+//     })
+// } else{
+//     memberName.removeEventListener("focus", () =>{
+//         memberName.removeAttribute("readonly");
+//         memberName.focus();
+//     })
+// };
+

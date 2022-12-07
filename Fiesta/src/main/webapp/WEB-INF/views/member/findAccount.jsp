@@ -64,7 +64,7 @@
 
         <div class="toAdmin">
           <!-- FIXME: 관리자페이지로 수정 -->
-          <a href="#"> 비밀번호를 재설정할 수 없나요? </a>
+          <a href="#" id="refresh"> </a>
         </div>
 
         <div class="line">또는</div>
