@@ -24,7 +24,9 @@ feedUpdateBtnLogin.addEventListener("click", () => {
       
       boardNo.value = board.boardNo;
       
+      
       const img = document.createElement('img');
+      if(img.l)
       img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
 
       boardImageOne.append(img);

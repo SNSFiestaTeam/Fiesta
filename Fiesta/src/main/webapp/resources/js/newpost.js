@@ -149,16 +149,19 @@ document.getElementById("basicImage").addEventListener("click", () => {
 
   //*기본이미지 생성 부분*
   // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
+
+  // -----------
   const swiperSildeDiv = document.createElement("div");
   const fileImg = document.createElement("img");
 
   swiperSildeDiv.classList.add("swiper-slide");
   fileImg.id = "files";
-  fileImg.src = "../../resources/images/default/defaultImg.png";
-  form.append("files", fileImg);
+  fileImg.setAttribute("src", "/resources/images/default/defaultImg.png");
+  console.log(fileImg);
 
   swiperSildeDiv.append(fileImg);
   textFileSwiper.append(swiperSildeDiv);
+  // -----------
 
   postFileText.style.display = "none";
   backBtnText.addEventListener("click", () => {
@@ -167,7 +170,9 @@ document.getElementById("basicImage").addEventListener("click", () => {
     modalBackgroundText.style.display = "none";
   });
 });
-
+document.getElementById("newPostAll").addEventListener("click", ()=>{
+  console.log(fileImg);
+});
 //! 컴퓨터에서 선택
 document.getElementById("cropperfile").addEventListener("change", (e) => {
   if (e.target.files[0] != undefined) {
@@ -197,29 +202,29 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
         swiperSildeDiv.append(fileImg);
         textFileSwiper.append(swiperSildeDiv);
 
-        // *text 접근성 부분 파일*
-        // postFileText.style.display = "block";
+        // // *text 접근성 부분 파일*
+        // // postFileText.style.display = "block";
 
-        // <div class="postFileText">
-        //   <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
-        //   <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
-        // </div>
+        // // <div class="postFileText">
+        // //   <img id="eidtFile" src="../../resources/images/다운로드 (1).jpeg" alt="파일미리보기">
+        // //   <input type="text" name="postFileText" placeholder="대체 텍스트 입력...">
+        // // </div>
 
-        const postFileTextDiv = document.createElement("div");
-        const postFileTextImg = document.createElement("img");
-        const postFileTextInput = document.createElement("input");
+        // const postFileTextDiv = document.createElement("div");
+        // const postFileTextImg = document.createElement("img");
+        // const postFileTextInput = document.createElement("input");
 
-        postFileTextDiv.classList.add("postFileText");
-        postFileTextImg.id = "editFile";
-        postFileTextImg.setAttribute("src", e.target.result);
-        postFileTextInput.setAttribute("type", "text");
-        postFileTextInput.setAttribute("name", "imgAccessibility");
-        postFileTextInput.id = "imgAccessibility"+[i];
-        postFileTextInput.setAttribute("placeholder", "대체 텍스트 입력...");
+        // postFileTextDiv.classList.add("postFileText");
+        // postFileTextImg.id = "editFile";
+        // postFileTextImg.setAttribute("src", e.target.result);
+        // postFileTextInput.setAttribute("type", "text");
+        // postFileTextInput.setAttribute("name", "imgAccessibility");
+        // postFileTextInput.id = "imgAccessibility"+[i];
+        // postFileTextInput.setAttribute("placeholder", "대체 텍스트 입력...");
 
 
 
-        postFileTextDiv.append(postFileTextImg, postFileTextInput);
+        // postFileTextDiv.append(postFileTextImg, postFileTextInput);
         // postFileTextArea.append(postFileTextDiv);
 
         var swiper = new Swiper(".swiper", {
@@ -253,56 +258,6 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
     modalBackgroundText.style.display = "flex";
   }
 });
-
-//! 최종 제출(게시하기 버튼 클릭)
-// const newPostAll = document.getElementById("newPostAll");
-// newPostAll.addEventListener("click", () => {
-//   const boardContent = document.getElementById("boardContent");
-//   const files = document.getElementById("file");
-
-//   if(boardContent.value.trim().length == 0){
-//     alert("내용을 입력해주세요.");
-//     boardContent.value = "";
-//     boardContent.focus();
-//   }else{
-
-  
-//     form.append("boardContent", boardContent.value); //게시물 텍스트 작성담기
-    
-//     // console.log("object");
-//     // const imgAccessibilities = {"av0": document.getElementById('imgAccessibility0').value, 
-//     // "av1": document.getElementById('imgAccessibility1').value,
-//     //                            "av2": document.getElementById('imgAccessibility2').value
-//     //                           }
-                              
-                              
-//     // form.append("imgAccessibilities", imgAccessibilities); //게시물 텍스트 작성담기
-    
-//      // 접근성 담기?여러개가 감기나?
-    
-//     $.ajax({
-//       url: "/write",
-//       type: "Post",
-//       processData: false,
-//       contentType: false,
-//       data: form,
-//       success: (result) => {
-//         if (result > 0) {
-//           console.log("게시물 작성 성공");
-//           modalBackgroundText.style.display = "none";
-//           modalBackgroundFinish.style.display = "flex";
-//           // location.reload();
-//         } else {
-//           console.log("게시물 작성 실패");
-//         }
-//       },
-//       error: () => {
-//         console.log("게시물 작성 에러");
-//       },
-//     });
-
-//   }
-// });
 
 function writeValidate(){
   const boardContent = document.getElementById("boardContent");
