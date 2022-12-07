@@ -10,11 +10,6 @@
     <title>instagram</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/popularfeed.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -105,21 +100,12 @@
       </div>
       </section>
     </div>
-
-    <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
-    <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
-    <jsp:include page="/WEB-INF/views/board/newpost-text.jsp" />
-    <jsp:include page="/WEB-INF/views/board/newpost-close.jsp" />
-    <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
-    <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
   </main>
     
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
   </body>
 
-  <script src="/resources/js/common/common.js"></script>
-  <script src="/resources/js/newpost.js"></script>
-  <script src="/resources/js/boardWriteUpdate.js"></script>
+<script src="/resources/js/common/common.js"></script>
     
 </html>
