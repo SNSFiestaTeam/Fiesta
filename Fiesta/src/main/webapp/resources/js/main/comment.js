@@ -11,6 +11,7 @@ for (let i = 0; i < commentInput.length; i++) {
   });
 }
 
+
 const loading = 
 '<div class="auto-complete-loading">'
 +' <div class="loader loader--style1" title="0">'
@@ -59,8 +60,7 @@ for (let i = 0; i < commentInput.length; i++) {
       let end2;
       let content;
       let targetCotent;
-      
-   
+
       commentInput[i].addEventListener('input', function (e) { 
 
         
@@ -223,6 +223,7 @@ for (let i = 0; i < commentInput.length; i++) {
       event.preventDefault();
     }
 
+
     // #키 입력 시 해시태그 자동완성 모달창 추가
     if (event.key === '#') {
       const selection = window.getSelection();
@@ -281,9 +282,7 @@ for (let i = 0; i < commentInput.length; i++) {
                   autoCompleteModal.innerHTML = '';
     
                   for (let hashtag of hashtagList) {
-                    if(hashtag.boardCount > 0) {
-
-                      
+   
                       const autoCompleteDiv = document.createElement('div');
                     autoCompleteDiv.classList.add('auto-complete-content');
 
@@ -301,12 +300,15 @@ for (let i = 0; i < commentInput.length; i++) {
                     hashtagContent.append(span);
                     hashtagContent.innerText += hashtag.hashtagContent;
                     
+                    hashtagInfo.append(hashtagContent);
                     // 해시태그 관련 게시물 수
-                    const boardCount = document.createElement('span');
-                    boardCount.classList.add('hashtag-board-count');
-                    boardCount.innerText = '게시물 ' +  hashtag.boardCount;
-  
-                    hashtagInfo.append(hashtagContent, boardCount);
+                    if(hashtag.boardCount > 0) {
+                      const boardCount = document.createElement('span');
+                      boardCount.classList.add('hashtag-board-count');
+                      boardCount.innerText = '게시물 ' +  hashtag.boardCount;
+                      hashtagInfo.append(boardCount);
+                    }
+                    
                     
                     autoCompleteDiv.append(hashtagInfo);
                     
@@ -367,7 +369,7 @@ for (let i = 0; i < commentInput.length; i++) {
                       commentInput[i].focus();
                     });
 
-                  }
+                  
                     
                   }  
                 } else {
@@ -401,12 +403,18 @@ for (let i = 0; i < commentInput.length; i++) {
     }
 
 
-
     if (event.keyCode === 32) {
-      if(autoCompleteModal !== undefined) {
         autoCompleteModal.parentElement.removeChild(autoCompleteModal);
         console.log('모달 삭제');
-      }
+      
+      event.preventDefault();
+      commentInput[i].removeEventListener('input', arguments.callee);
+    }
+
+    if (event.key === 'Enter') {
+        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+        console.log('모달 삭제');
+      
       event.preventDefault();
       commentInput[i].removeEventListener('input', arguments.callee);
     }

@@ -90,9 +90,9 @@
 			SELECT MEMBER_PROFILE_IMG, MEMBER_NICKNAME, MEMBER_NO	
 			FROM "MEMBER" 
 			WHERE SECESSION_FL = 'N'
-			AND (MEMBER_NICKNAME LIKE UPPER('%${searchInput}%') OR MEMBER_NICKNAME LIKE LOWER('%${searchInput}%')
-			OR MEMBER_NAME = UPPER('${searchInput}') OR MEMBER_NAME = LOWER('${searchInput}'))
-			AND MEMBER_NICKNAME != #{memberNickname}
+			AND (MEMBER_NICKNAME LIKE UPPER('%${searchInput}%') OR MEMBER_NICKNAME LIKE LOWER('%${searchInput}%') OR MEMBER_NICKNAME LIKE ('%${searchInput}%')
+			OR MEMBER_NAME = UPPER(#{searchInput}) OR MEMBER_NAME = LOWER(#{searchInput}) OR MEMBER_NAME = (#{searchInput}))
+			<!-- AND MEMBER_NICKNAME != #{memberNickname} -->
 			<![CDATA[AND ROWNUM <= 6 ]]>	
 		</select>
 		

@@ -228,8 +228,8 @@ const roomListAddEvent = () =>{
       selectTargetProfile = item.children[0].children[0].getAttribute("src");
       selectTargetName = item.children[1].children[0].children[0].innerText;
 
-      if(item.children[1].children[1].children[1] != undefined){
-        item.children[1].children[1].children[1].remove();
+      if(item.children[1].children[1] != undefined){
+        item.children[1].children[1].remove();
       }
 
       for(let it of chattingItemList) it.classList.remove("select")

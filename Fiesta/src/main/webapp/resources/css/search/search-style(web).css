@@ -196,6 +196,12 @@ main > section {
     cursor: pointer;
 }
 
+.myAccount{
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--fiesta-color);
+    padding-top :4px;
+}
 
 #followToMemberNo{
     display: none;

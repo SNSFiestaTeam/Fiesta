@@ -18,7 +18,7 @@
 
   <c:if test="${ not empty message }"> 
       <script>
-        // alert("${message}");
+        alert("${message}");
         const line = document.getElementsByClassName("line")[0];
         
         line.innerHTML = "${message}";

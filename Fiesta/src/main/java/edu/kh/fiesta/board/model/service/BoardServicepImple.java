@@ -82,12 +82,20 @@ public class BoardServicepImple implements BoardService{
 	
 	@Override
 	public Board selectOneBoard(int boardNo) {
+		
 		return dao.selectOneBoard(boardNo);
 	}
 	
 	
 	@Override
 	public int boardUpdate(Board board) {
+		board.setBoardContent(Util.XSSHandling(board.getBoardContent())); // XSS 방지 처리
+		
+		board.setBoardContent(Util.hashTagHandling(board.getBoardContent())); // 해시태크 감싸기
+		
+		board.setBoardContent(Util.mentionHandling(board.getBoardContent())); // a태그 감싸기
+		
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent())); // 개행문자 처리
 		return dao.boardUpdate(board);
 	}
 

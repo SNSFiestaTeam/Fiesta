@@ -77,7 +77,27 @@
       <result property="boardNo" column="BOARD_NO" />
   </resultMap>
   
+<!--   <resultMap type="Bookmark" id="bookmark_rm">
+        DB에서 PK에 해당하는 필드, 컬럼을 작성하는 태그
+     <id property = "boardNo" column="BOARD_NO"/>
+     나머지 일반 컬럼
+      <result property="memberNo" column="MEMBER_NO" />
+  </resultMap> -->
   
+<!--   <resultMap type="Hashtag" id="hashtag_rm"></resultMap>
+  	<id property="hashtagNo" colum="HASHTAG_NO"/>
+  	<result propery=""></result> -->
+  
+  <!-- 해시태그 목록 조회 -->
+<!-- 	<select id="selectHashtagList">
+	  SELECT F_TO_TARGET_NO, HASHTAG_CONTENT
+		FROM HASHTAG
+		JOIN FOLLOW ON (F_FROM_MEMBER_NO = HASHTAG_NO)
+		JOIN MEMBER ON (MEMBER_NO = HASHTAG_NO)
+		WHERE F_FROM_MEMBER_NO = #{}
+		AND FOLLOW_TYPE = 'H'
+  </select>
+   -->
   <!-- 팔로잉 멤버 조회 -->
   <select id="selectFollowingList" resultMap="member_rm">
 		SELECT MEMBER_NICKNAME, MEMBER_PROFILE_IMG, F_TO_TARGET_NO AS MEMBER_NO
@@ -105,6 +125,14 @@
 		AND MEMBER_NICKNAME = #{memberNickname}
   </select>
   
+   <!-- 북마크 수 조회 -->
+  <select id="selectBookmarkCount" parameterType="string" resultType="_int">
+  	SELECT COUNT(*)
+		FROM BOOKMARK b 
+		JOIN MEMBER m ON (M.MEMBER_NO = B.MEMBER_NO)
+		WHERE m.MEMBER_NICKNAME = #{memberNickname}
+  </select>
+  
   <!-- 게시글 조회 -->
   <select id="selectBoardList" resultMap="board_rm">
 	SELECT * 
@@ -119,6 +147,7 @@
 		FROM BOARD B
 		JOIN MEMBER USING (MEMBER_NO)
 		WHERE MEMBER_NICKNAME = #{memberNickname}
+		AND BOARD_DEL_FL = 'N'
 		ORDER BY BOARD_CREATE_DATE DESC)
   </select>
   
@@ -132,5 +161,24 @@
 		LEFT JOIN INTRODUCE i ON(m.MEMBER_NO = i.MEMBER_NO)
 		WHERE MEMBER_NICKNAME = #{memberNickname}
   </select>
+  
+  <!-- 북마크 조회 -->
+  <select id="selectBookmarkList" resultMap="board_rm">
+		SELECT DISTINCT  * 
+		FROM (SELECT B.BOARD_NO, BOARD_CREATE_DATE,  
+					(SELECT COUNT(*) FROM BOARD_LIKE BL 
+					WHERE BL.BOARD_NO = B.BOARD_NO) LIKE_COUNT,
+					(SELECT (IMG_ADDRESS || IMG_CHANGE_NAME) 
+					FROM BOARD_IMG BI WHERE BI.BOARD_NO = B.BOARD_NO 
+					AND IMG_ORDER = 0) IMG_PATH,
+					(SELECT COUNT(*) FROM "COMMENT" C
+					 WHERE C.BOARD_NO = B.BOARD_NO) COMMENT_COUNT
+					 FROM BOARD B
+					 WHERE B.BOARD_NO IN (SELECT BOARD_NO  FROM BOOKMARK b 
+											JOIN "MEMBER" m USING (MEMBER_NO)
+											WHERE MEMBER_NICKNAME = #{memberNickname}) )
+		ORDER BY BOARD_CREATE_DATE DESC
+  </select>
+  
   
   </mapper>

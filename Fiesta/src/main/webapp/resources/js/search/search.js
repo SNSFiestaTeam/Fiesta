@@ -974,11 +974,11 @@ function createBoard(board) {
         const commentMemberIdA = document.createElement('a');
         commentMemberIdA.classList.add('comment-memberId');
         commentMemberIdA.href = '/feed/' + comment.memberNickname;
-        commentMemberIdA.innerText = comment.memberNickname;
+        commentMemberIdA.innerHTML = comment.memberNickname;
 
         const commentSpan = document.createElement('span');
         commentSpan.classList.add('comment-content');
-        commentSpan.innerText = comment.commentContent;
+        commentSpan.innerHTML = comment.commentContent;
 
         commentDiv2.append(commentMemberIdA, commentSpan);
 
@@ -2534,7 +2534,7 @@ feedCommentBtnLogin.addEventListener('click', () => {
   
               const commentSpan = document.createElement('span');
               commentSpan.classList.add('comment-content');
-              commentSpan.innerText = comment.commentContent;
+              commentSpan.innerHTML = comment.commentContent;
   
               commentDiv2.append(commentMemberIdA, commentSpan);
   

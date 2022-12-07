@@ -219,7 +219,28 @@ body {
     cursor: pointer;
 }
 
+#btn-follow{
+    width: 100px;
+    height: 20px;
+    /* color: var(--fiesta-color); */
+}
 
 
+
+
+
+
+
+.followAccountBtn{
+    color: white;
+    background-color: var(--fiesta-color);
+    border: none;
+}
+
+
+.unfollowAccountBtn{
+    color: gray;
+    border: none;
+}
 
 

@@ -3,43 +3,53 @@
 const updateClose = document.getElementById("updateClose");
 const updateClose2 = document.getElementById("updateClose2");
 
+const modalBackgroundUpdate = document.getElementById('modalBackgroundUpdate');
+
+//! 수정
 feedUpdateBtnLogin.addEventListener("click", () => {
-    modalBackgroundText.style.display = "flex";
-    feedMenuLogin.style.display = "none";
 
-    const postName = document.getElementById("postName");
+  console.log("눌림?");
+  
+  // 게시글 조회해와
+  $.ajax({
+    url : "/selectOneBoard",
+    data: {"boardNo": boardNo},
+    dataType: "json",
+    success: (board) => {
 
-    postName.innerText="";
-    postName.innerText='정보 수정';
+      console.log(board);
+      const boardContent = document.getElementById('updateBoardContent');
+      const boardImageOne = document.getElementById('boardImageOne');
+      const boardNo = document.getElementById('boardNo');
+      
+      boardNo.value = board.boardNo;
+      
+      
+      const img = document.createElement('img');
+      if(img.l)
+      img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
 
-    console.log("눌림?");
-});
-
-const update = document.getElementById("update");
-update.addEventListener("click", () => {
-
-    // $.ajax({
-    //     url : "/upate",
-    //     type : "Post",
-    //     data : {"boardContent": boardContent.value},
-    //     success: (result) => {
-    //         if(result > 0){
-    //             console.log("게시물 작성 성공");
-    //             modalBackgroundUpdate.style.display = "none";
-    //             location.reload();
-    //         }else{
-    //             console.log("게시물 작성 실패");
-    //         }
-    //       },
-    //       error: () => {
-    //         console.log("게시물 작성 에러");
-    //       },
-    // });
-});
+      boardImageOne.append(img);
+      boardContent.innerText = board.boardContent;
+      
+      modalBackgroundUpdate.style.display = "flex";
+      feedMenuLogin.style.display = "none";
+    },
+    error: () => {
+        console.log("게시글 조회 error");
+    },
+})
 updateClose.addEventListener("click", () =>{
-    modalBackgroundText.style.display = "none";
+    modalBackgroundUpdate.style.display = "none";
+    boardImageOne.innerHTML = "";
+    boardContent.innerText = "";
+
+    console.log("눌렸나욤?");
 });
 updateClose2.addEventListener("click", () =>{
-    modalBackgroundText.style.display = "none";
+    modalBackgroundUpdate.style.display = "none";
+    boardImageOne.innerHTML = "";
+    boardContent.innerText = "";
+    console.log("눌렸나욤?2");
 });
-
+});

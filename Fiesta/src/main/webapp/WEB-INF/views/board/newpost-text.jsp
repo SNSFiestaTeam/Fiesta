@@ -14,6 +14,7 @@
 
 
         <input type="file" name="newPostFile" id="cropperfile" none accept="image/*" multiple style="display:none" onsubmit="return writeValidate()">
+        <input name="new-post-file"  type="hidden" >
 
 
         <div class="new-post-top-text">
@@ -21,7 +22,7 @@
             <i class="fa-solid fa-arrow-left"></i>
           </div>
           <p id="postName">새 게시물 만들기</p>
-          <button name="newpostText" id="newPostAll">게시하기</button>
+          <button type="submit" name="newpostText" id="newPostAll">게시하기</button>
         </div>
         <!-- post-bottom -->
         <div class="new-post-bottom-text">
@@ -75,7 +76,8 @@
                     <%-- <label for="toggle" class="toggleSwitch">
                       <span class="toggleButton"></span>
                     </label> --%>
-                    <input type="checkbox" name="boardPubPriFlag" id="boardPubPriFlag">
+                    <input type="checkbox" name="boardPubPriFlag" value='N' id="boardPubPriFlag">
+                    <input type="hidden" name="boardPubPriFlag" value='Y' id="boardPubPriFlag_hidden">
                   </div>
 
                   <p>이 게시물의 총 좋아요 및 조회수는 회원님만 볼 수 있습니다. 나중에 게시물 상단에 있는 ··· 메뉴에서 이 설정을 변경할 수 있습니다. 다른 사람의 게시물에서 좋아요 수를 숨기려면 계정 설정으로 이동하세요. </p>
@@ -88,7 +90,8 @@
                     <%-- <label for="toggle" class="toggleSwitch">
                       <span class="toggleButton"></span>
                     </label> --%>
-                    <input type="checkbox" name="commentBlockFlag" id="commentBlockFlag" onclick='is_checked()'>
+                    <input type="checkbox" name="commentBlockFlag" value='Y' id="commentBlockFlag"/>
+                    <input type="hidden" name="commentBlockFlag" value='N' id="commentBlockFlag_hidden"/>
                     <pre id='result'>
                   </div>
 

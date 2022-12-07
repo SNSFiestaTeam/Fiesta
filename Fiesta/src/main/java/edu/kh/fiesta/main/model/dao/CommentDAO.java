@@ -129,6 +129,25 @@ public class CommentDAO {
 	public List<Hashtag> hashtagAutoComplete(String searchName) {
 		return sqlSession.selectList("commentMapper.selectHashtagList", searchName);
 	}
+
+
+	/** 해시태그 존재 유무 확인
+	 * @param pathName
+	 * @return
+	 */
+	public int hashtagCheck(String keyword) {
+		return sqlSession.selectOne("followMapper.hashtagInsertCheck", keyword);
+	}
+
+
+	/** 해시태그 등록
+	 * @param pathName
+	 * @return 
+	 */
+	public int insertHashtag(String keyword) {
+		
+		return sqlSession.insert("followMapper.insertHashtag2", keyword);
+	}
 	
 	
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.fiesta.main.model.vo.Board;
+import edu.kh.fiesta.main.model.vo.Report;
 
 public interface MainService {
 
@@ -66,6 +67,14 @@ public interface MainService {
 	 * @return result
 	 */
 	public int deleteBoard(int boardNo);
+
+
+
+	/** 신고 삽입
+	 * @param report
+	 * @return
+	 */
+	public int insertReport(Report report);
 
 
 

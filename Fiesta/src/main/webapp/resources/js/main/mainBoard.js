@@ -204,6 +204,13 @@ function createBoard(board) {
 
     boardNo = board.boardNo;
 
+    // 신고할 게시판 번호, 타입 설정
+    const reportTargetNo = document.getElementById('reportTargetNo');
+    reportTargetNo.value = boardNo;
+
+    const reportType = document.getElementById('reportType');
+    reportType.value = "B";
+
     body.classList.add('scrollLock');
   });
 
@@ -251,7 +258,7 @@ function createBoard(board) {
     // img태그에 src 속성, alt 속성 추가
     uploadedImage.setAttribute(
       'src',
-      '/resources/images/board/202211190013.jpg'
+      '/resources/images/default/defaultImg.png'
     );
     uploadedImage.classList.add('uploaded-image');
     imageLi.append(uploadedImage);
@@ -872,6 +879,13 @@ function createBoard(board) {
         console.log(deleteCommentNo);
         console.log(deleteCommentUl);
 
+        // 신고할 게시판 번호, 타입 설정
+        const reportTargetNo = document.getElementById('reportTargetNo');
+        reportTargetNo.value = comment.boardNo;
+
+        const reportType = document.getElementById('reportType');
+        reportType.value = "C";
+
 
         if(commentMemberIdA.innerText == memberNickname) {
           // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
@@ -1311,8 +1325,7 @@ function createBoard(board) {
                   autoCompleteModal.innerHTML = '';
     
                   for (let hashtag of hashtagList) {
-  
-  
+
                     const autoCompleteDiv = document.createElement('div');
                     autoCompleteDiv.classList.add('auto-complete-content');
 
@@ -1330,12 +1343,14 @@ function createBoard(board) {
                     hashtagContent.append(span);
                     hashtagContent.innerText += hashtag.hashtagContent;
                     
+                    hashtagInfo.append(hashtagContent);
                     // 해시태그 관련 게시물 수
-                    const boardCount = document.createElement('span');
-                    boardCount.classList.add('hashtag-board-count');
-                    boardCount.innerText = '게시물 ' +  hashtag.boardCount;
-  
-                    hashtagInfo.append(hashtagContent, boardCount);
+                    if(hashtag.boardCount > 0) {
+                      const boardCount = document.createElement('span');
+                      boardCount.classList.add('hashtag-board-count');
+                      boardCount.innerText = '게시물 ' +  hashtag.boardCount;
+                      hashtagInfo.append(boardCount);
+                    }
   
                     autoCompleteDiv.append(hashtagInfo);
   

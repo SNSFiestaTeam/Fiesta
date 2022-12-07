@@ -1,0 +1,129 @@
+@import '../root-style.css';
+  
+
+  .search-complete-container2{
+    width: 280px;
+    height: 200px;
+    background-color: white;
+/*   
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px; */
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: 1px 1px 3px gray;
+
+
+    padding: 5px 1px;
+    
+    /* overflow-y: search; */
+    overflow-x: hidden;
+
+    z-index: 10;
+
+    display: none;
+  }
+  
+  .search-complete-container2::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .search-complete-content2 {
+    width: 100%;
+    height: 55px;
+    flex-shrink: 0;
+  
+    display: flex;
+    align-items: center;
+
+    padding: 8px 10px;
+
+    border-bottom: 1px solid #dddddd;
+    cursor: pointer;
+  }
+  
+
+  .search-complete-content2 span{
+    display: flex;
+    align-items: center;
+  } 
+
+  
+  .search-complete-content2:hover {
+    background-color: rgba(221, 221, 221, 0.3);
+  }
+  
+  .search-complete-content2 img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .search-complete-content2 i {
+    margin-right: 10px;
+  }
+  
+  .search-complete-content2 a {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .search-complete-content2 button{
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 48px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10%;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .member-info, .hashtag-info {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 10px;
+
+  }
+
+  .member-info > span,
+  .hashtag-info > span {
+    height: 18px;
+  }
+
+  span.mention-nickname,
+  span.hashtag-content {
+    font-size: var(--small-font-size);
+    font-weight: bold;
+
+  }
+
+  span.mention-name,
+  span.hashtag-count {
+    font-size: var(--main-font-size);
+    font-weight: normal;
+    color: gray;
+  }
+
+.search-complete-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg path,
+svg rect{
+  fill: var(--fiesta-color);
+}

@@ -17,10 +17,18 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
 
     console.log(boardNo);
 
-    console.log(boardNo);
     const boardMemberNickname = feedHeaderMenu[i].parentElement.previousElementSibling.
     firstElementChild.nextElementSibling.innerText;
     
+
+    // 신고할 게시판 번호, 타입 설정
+    const reportTargetNo = document.getElementById('reportTargetNo');
+    reportTargetNo.value = boardNo;
+
+    const reportType = document.getElementById('reportType');
+    reportType.value = "B";
+
+
     
     // 로그인 멤버 == 게시글 작성자
     if (memberNickname == boardMemberNickname) {
@@ -50,22 +58,17 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
       
       
       loginFeedMenu.style.display = "flex";
-
       
       const likeCount = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling.firstElementChild;
-
       const commentContainer = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling
         .nextElementSibling;
-
       const commentInputArea = feedHeaderMenu[i].parentElement.parentElement.parentElement.
       nextElementSibling.firstElementChild.nextElementSibling.nextElementSibling;
-
       const mainContainer = feedHeaderMenu[i].parentElement.parentElement.parentElement.
         nextElementSibling.firstElementChild.nextElementSibling;
       tags = null;
-
       tags = {
         "likeCount": likeCount, "commentContainer": commentContainer,
         "commentInputArea": commentInputArea, "mainContainer": mainContainer
@@ -112,6 +115,9 @@ feedReportBtn.addEventListener("click", function () {
 const reportCancle = document.getElementById("reportCancle");
 reportCancle.addEventListener("click", function () {
   report.style.display = "none";
+
+  const reportForm = document.getElementById('reportForm');
+  reportForm.reset();
   
   body.classList.remove("scrollLock");
 });
@@ -157,6 +163,11 @@ const feedDeleteBtnLogin = document.getElementById("feedDeleteBtnLogin");
 const feedUpdateBtnLogin = document.getElementById("feedUpdateBtnLogin");
 const feedShareBtnLogin = document.getElementById("feedShareBtnLogin");
 const feedSelectBtnLogin = document.getElementById("feedSelectBtnLogin");
+
+//게시물로 이동 버튼에 클릭 이벤트 리스너 추가 
+feedSelectBtnLogin.addEventListener('click', () => {
+  location.href = "/feedDetail/" + boardNo;
+})
 
 // 댓글 기능 사용 유무버튼에 클릭 이벤트 리스너 추가
 feedCommentBtnLogin.addEventListener('click', () => { 
