@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>검색</title>
     
-    <!-- CSS 링크 -->
+    <!-- CSS  링크 -->
     <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
