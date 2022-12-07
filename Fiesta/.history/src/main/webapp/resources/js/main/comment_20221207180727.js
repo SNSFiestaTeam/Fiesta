@@ -1,4 +1,5 @@
 // 댓글 창에 입력 시 게시 버튼 활성화
+const commentInput = documnet.getElementsByClassName('comment-input');
 const postingBtn = document.getElementsByClassName('posting-btn');
 for (let i = 0; i < commentInput.length; i++) {
   commentInput[i].addEventListener('input', (e) => {
