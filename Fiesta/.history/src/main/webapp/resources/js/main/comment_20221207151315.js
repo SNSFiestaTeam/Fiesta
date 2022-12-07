@@ -403,7 +403,7 @@ for (let i = 0; i < commentInput.length; i++) {
     }
 
 
-    if (event.keyCode === 32) {
+    if (event.key === 'Space') {
         autoCompleteModal.parentElement.removeChild(autoCompleteModal);
         console.log('모달 삭제');
       

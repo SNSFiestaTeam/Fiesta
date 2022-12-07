@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import com.google.gson.Gson;
 
 import edu.kh.fiesta.main.model.service.MainService;
 import edu.kh.fiesta.main.model.vo.Board;
+import edu.kh.fiesta.main.model.vo.Report;
 import edu.kh.fiesta.member.model.vo.Member;
 
 
@@ -93,6 +96,23 @@ public class MainController {
 	public int deleteBoard(int boardNo) {	
 
 		return service.deleteBoard(boardNo);
+	}
+	
+	@GetMapping("/report")
+	public String insertReport(Report report, HttpServletRequest req) {
+		
+		
+		int result = service.insertReport(report);
+		
+		
+		String path = "/main";
+		
+		if(result > 0) {
+			
+			path = req.getContextPath();
+		}
+
+		return "redirect/" + path;
 	}
 
 

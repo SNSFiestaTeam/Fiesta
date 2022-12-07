@@ -881,10 +881,10 @@ function createBoard(board) {
 
         // 신고할 게시판 번호, 타입 설정
         const reportTargetNo = document.getElementById('reportTargetNo');
-        reportTargetNo.value = comment.boardNo;
+        reportTargetNo.value = boardNo;
 
         const reportType = document.getElementById('reportType');
-        reportType.value = "C";
+        reportType.value = "B";
 
 
         if(commentMemberIdA.innerText == memberNickname) {

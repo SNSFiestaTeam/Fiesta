@@ -66,7 +66,6 @@
     <div class="declaration-content">
       <form action="/report">
         <input type="hidden" name="reportTargetNo" id="reportTargetNo">
-        <input type="hidden" name="reportType" id="reportType">
         <select name="reportReason" id="declarationOption" required>
           <option value="none">신고 사유 선택</option>
           <option value="spam">광고 또는 스팸</option>
@@ -77,7 +76,7 @@
           <option value="etc">기타</option>
         </select>
         <textarea
-          name="reportContent"
+          name="declaration-content"
           id="declaration-textarea"
           placeholder="신고 내용 입력"
         ></textarea>

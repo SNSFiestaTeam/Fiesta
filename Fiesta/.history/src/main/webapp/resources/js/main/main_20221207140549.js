@@ -17,11 +17,11 @@ for (let i = 0; i < feedHeaderMenu.length; i++) {
 
     console.log(boardNo);
 
+    console.log(boardNo);
     const boardMemberNickname = feedHeaderMenu[i].parentElement.previousElementSibling.
     firstElementChild.nextElementSibling.innerText;
     
 
-    // 신고할 게시판 번호, 타입 설정
     const reportTargetNo = document.getElementById('reportTargetNo');
     reportTargetNo.value = boardNo;
 

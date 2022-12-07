@@ -223,7 +223,6 @@ for (let i = 0; i < commentInput.length; i++) {
       event.preventDefault();
     }
 
-
     // #키 입력 시 해시태그 자동완성 모달창 추가
     if (event.key === '#') {
       const selection = window.getSelection();
@@ -403,15 +402,9 @@ for (let i = 0; i < commentInput.length; i++) {
     }
 
 
-    if (event.keyCode === 32) {
-        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-        console.log('모달 삭제');
-      
-      event.preventDefault();
-      commentInput[i].removeEventListener('input', arguments.callee);
-    }
 
-    if (event.key === 'Enter') {
+    if (event.keyCode === 32) {
+
         autoCompleteModal.parentElement.removeChild(autoCompleteModal);
         console.log('모달 삭제');
       

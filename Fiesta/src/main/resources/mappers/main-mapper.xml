@@ -294,5 +294,14 @@
   	BOARD_DEL_FL = 'Y'
   	WHERE BOARD_NO = #{boardNo}
   </update>
+  
+  <insert id="insertReport">
+  	INSERT INTO REPORT
+  	VALUES(SEQ_REPORT_NO.NEXTVAL, #{reportTargetNo}, 
+  	#{reportType}, #{reportReason}, #{reportContent}, DEFAULT)
+  </insert>
+  
+  
+  
 
 </mapper>

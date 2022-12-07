@@ -879,13 +879,6 @@ function createBoard(board) {
         console.log(deleteCommentNo);
         console.log(deleteCommentUl);
 
-        // 신고할 게시판 번호, 타입 설정
-        const reportTargetNo = document.getElementById('reportTargetNo');
-        reportTargetNo.value = comment.boardNo;
-
-        const reportType = document.getElementById('reportType');
-        reportType.value = "C";
-
 
         if(commentMemberIdA.innerText == memberNickname) {
           // 로그인 멤버 닉네임과 일치하면 삭제 메뉴 띄우기
