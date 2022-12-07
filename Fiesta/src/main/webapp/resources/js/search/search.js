@@ -5,7 +5,7 @@
 // prepend(요소) : 첫 번째 자식으로 추가
 // after(요소) : 다음(이후)에 추가
 // before(요소) : 이전에 추가
-
+ 
 // 요소.setAttribute("속성명", "속성값")
 // 요소.removeAttribute("속성명")
 // 검색창 주소
