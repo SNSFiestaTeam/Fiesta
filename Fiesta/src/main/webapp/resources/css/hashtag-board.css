@@ -1,0 +1,178 @@
+:root {
+    --background-color: white;
+    --main-font-color: #8e8e8e;
+    --icon-button-color: #262626;
+    --point-font-color: #0095f6;
+    --mention-font-color: #00376b;
+    --fiesta-color: #dd4132;
+    --small-font-size: 12px;
+    --medium-font-size: 16px;
+    --large-icon-size: 24px;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    text-decoration: none;
+    list-style: none;
+  }
+  
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  a{
+    color:black;
+  }
+  
+  
+  .hashtag-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000070;
+    position: absolute;
+    top: 0;
+    z-index: 500;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+    position: fixed;
+  }
+  
+  .hashtag-menu {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+  
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .list-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  
+  .hashtag-title {
+    width: 100%;
+  
+    display: flex;
+    justify-content: space-between;
+  
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  
+  .hashtag-title span {
+    color: var(--fiesta-color);
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .hashtag-subtitle {
+    width: 400px;
+    height: 50px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .hashtag-subtitle > button{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--fiesta-color);
+    font-weight: bold;
+  }
+  
+  
+  .hashtag-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  
+  .hashtag-content div {
+    width: 95%;
+    padding: 4px 8px;
+  
+    display: flex;
+    align-items: center;
+  }
+
+  .hashtag-content > div > span{
+    display: flex;
+    align-items: center;
+  } 
+  
+  
+  .hashtag-content div:hover {
+    background-color: rgba(221, 221, 221, 0.3);
+  }
+  
+  
+  .hashtag-content img{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .hashtag-content i {
+    margin-right: 10px;
+  }
+  
+  .hashtag-content a {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 20px;
+  }
+
+  .hashtag-content button{
+    background-color: white;
+    border: 1px solid lightgray;
+    width: 94px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10%;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .hashtag-close{
+    font-size: 16px;
+    margin-right: 12px;
+    cursor: pointer;
+  }
+
+  .hashtag-space{
+    margin-left: 24px;
+  }
+  
+  
+  
