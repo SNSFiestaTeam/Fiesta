@@ -1472,10 +1472,9 @@ function createBoard(board) {
     }
 
     if (event.key === 'Enter') {
-      if(autoCompleteModal != undefined) {
+      if(autoCompleteModal !== undefined) {
         autoCompleteModal.parentElement.removeChild(autoCompleteModal);
         console.log('모달 삭제');
-
       }
       commentInput.removeEventListener('input', arguments.callee);
     }
