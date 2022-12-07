@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
@@ -28,6 +29,12 @@
     <link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
 
       <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+=======
+    <link rel="stylesheet" href="/resources/css/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-text-style.css" />
+    <link rel="stylesheet" href="/resources/css/newpost-eidt-style.css" />
+
+>>>>>>> Stashed changes
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -92,9 +99,7 @@
             <span><i class="fa-regular fa-bookmark"></i> 저장됨</span>
            </a> 
 
-            <a href="/feed/${loginMember.memberNickname}/taged" id="title-section-taged">
-            <span><i class="fa-solid fa-children"></i> 태그됨</span>
-            </a>
+          
           </div>
         </section>
 
@@ -118,14 +123,16 @@
           <div id="nickname">
             <span>${memberNickname}</span>
             <input type="hidden" value="${feedMember.memberNo}"/>
+            <input type="hidden" id="follow-to-nickname" value="${feedMember.memberNickname}">
 
             <button id="btn-dm">
               <span>메세지 보내기</span>
             </button>
 
             <button id="btn-follow">
-              <i class="fa-solid fa-user-group"></i>
+
             </button>
+            
 
           </div>
 
@@ -162,13 +169,14 @@
           <div class="img-container">
 
             <c:forEach var="board" items ="${boardList}" begin="0" end="2">
-            <a href="#">
+            <a href="/feedDetail" class="aButtonImg">
               <img class="feed-img" src="${board.imgPath}"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>${board.likeCount}</span>
                 <i class="fa-regular fa-comment"></i><span>${board.commentCount}</span>
               </div>
+               <input type="hidden" class="inputBoardNo" value="${board.boardNo}">
             </a>
             </c:forEach>
 
@@ -180,13 +188,14 @@
           <c:if test ="${fn:length(boardList) > 3}">
           <div class="img-container2">
             <c:forEach var="board" items ="${boardList}" begin="3" end="5">
-            <a href="#">
+            <a href="/feedDetail" class="aButtonImg">
               <img class="feed-img" src="${board.imgPath}"
               />
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>${board.likeCount}</span>
                 <i class="fa-regular fa-comment"></i><span>${board.commentCount}</span>
               </div>
+               <input type="hidden" class="inputBoardNo" value="${board.boardNo}">
             </a>
             </c:forEach>
           </div>
@@ -195,13 +204,15 @@
            <c:if test ="${fn:length(boardList) > 6}">
           <div class="img-container3">
             <c:forEach var="board" items ="${boardList}" begin="6" end="8">
-            <a href="#">
+            <a href="/feedDetail" class="aButtonImg">
               <img class="feed-img" src="${board.imgPath}"
               />
+
               <div class="hover-icon-container">
                 <i class="fa-regular fa-heart"></i><span>${board.likeCount}</span>
                 <i class="fa-regular fa-comment"></i><span>${board.commentCount}</span>
               </div>
+              <input type="hidden" class="inputBoardNo" value="${board.boardNo}">
             </a>
             </c:forEach>
           </div>
@@ -227,14 +238,20 @@
         <jsp:include page="/WEB-INF/views/board/newpost-finish.jsp" />
         <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
       <script>
-        var memberNickname = "${loginMember.memberNickname}";
+
         var memberNo = "${loginMember.memberNo}";
+        var memberNickname = "${loginMember.memberNickname}";
       </script>
 
+
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
     <script src="/resources/js/newpost.js"></script>
     <script src="/resources/js/boardWriteUpdate.js"></script>
     <script src="/resources/js/common/common.js"></script>
+    <script src="/resources/js/profile/myfeed.js"></script>
+
+
     
   </body>
 </html>

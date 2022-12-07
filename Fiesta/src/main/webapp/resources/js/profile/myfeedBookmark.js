@@ -7,12 +7,10 @@ const self = document.getElementById("self");
 const profileContainer = document.getElementById("profile-container");
 const editClose = document.getElementById("edit-close");
 
-
+// 팔로우 ajax
 followBtn.addEventListener("click", function(){
 
     memberNo = document.getElementById('nickname').firstElementChild.nextElementSibling.value;
-    
-    console.log(memberNo);
     
     $.ajax({
         url :"/feed/" + memberNickname + "/followList",
@@ -76,6 +74,7 @@ followBtn.addEventListener("click", function(){
 
 });
 
+// 팔로잉 ajax
 followingBtn.addEventListener("click", function(){
     memberNo = document.getElementById('nickname').firstElementChild.nextElementSibling.value;
     $.ajax({
@@ -131,7 +130,8 @@ followingBtn.addEventListener("click", function(){
                     div2.append(profileImgSpan, nicknameSpan);
                     
                     const followingBtn = document.createElement("button");
-                    followingBtn.innerText = "팔로잉";
+                    followingBtn.classList.add("following-div");
+                    followingBtn.innerText = "팔로잉"
                     
                     div1.append(followingBtn);
                 }
@@ -181,24 +181,6 @@ const option = {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let endList;
 
 window.addEventListener("load", (event) => {
@@ -218,26 +200,22 @@ function createObserver() {
     threshold: 0.8
   };
 
-  observer = new IntersectionObserver(selectBoardList, options);
+  observer = new IntersectionObserver(selectBookmarkList, options);
   observer.observe(endList);
 }
-
-
-
 
 // * 현재 페이지 번호 변수 선언
 let cp = 2;
     
-function selectBoardList(entries, observer) {
+function selectBookmarkList(entries, observer) {
 
     entries.forEach((entry) => {
 
         if(entry.isIntersecting){
 
-            
-            
+                // 게시글 ajax
                 $.ajax({
-                    url : "/feed/" + memberNickname + "/selectBoardList",
+                    url : "/feed/" + memberNickname + "/selectBookmarkList",
                     type : "GET",
                     data : {"memberNo" : memberNo, "cp" : cp},
                     dataType : "json",
@@ -247,9 +225,8 @@ function selectBoardList(entries, observer) {
                             console.log("결과 없음");
                         }else{
 
-                            const boardList = map.boardList;
+                            const bookmarkList = map.bookmarkList;
                             const pagination = map.pagination;
-    
                            
                             if (cp <= pagination.maxPage) {
                                 endList = document.getElementById('feed-section').lastElementChild;
@@ -257,8 +234,6 @@ function selectBoardList(entries, observer) {
                                 cp++;
                                 console.log("cp :" + cp);
                             }
-    
-                            
             
                                 const feedSection = document.getElementById("feed-section");
                     
@@ -267,7 +242,7 @@ function selectBoardList(entries, observer) {
                             
                                 feedSection.append(imgContainer);
                     
-                            for(let board of boardList){
+                            for(let bookmark of bookmarkList){
         
                                 const boardContainer = document.createElement("a");
                                 boardContainer.href = "#";
@@ -276,7 +251,7 @@ function selectBoardList(entries, observer) {
                 
                                 const feedImg = document.createElement("img");
                                 feedImg.classList.add("feed-img");
-                                feedImg.setAttribute("src", board.imgPath);
+                                feedImg.setAttribute("src", bookmark.imgPath);
     
                                 const hoverIconContainer = document.createElement("div")
                                 hoverIconContainer.classList.add("hover-icon-container");
@@ -294,17 +269,13 @@ function selectBoardList(entries, observer) {
                                 const boardLikeSpan = document.createElement("span");
                                 const boardCommentSpan = document.createElement("span");
     
-                                boardLikeSpan.innerText = board.likeCount;
-                                boardCommentSpan.innerText = board.commentCount;
+                                boardLikeSpan.innerText = bookmark.likeCount;
+                                boardCommentSpan.innerText = bookmark.commentCount;
     
                                 faHeart.append(boardLikeSpan);
                                 faComment.append(boardCommentSpan);
-    
                             }
                         }
-                
-
-                    
                 },
                 error : () => {
                     console.log("게시글 오류 발생");
@@ -315,40 +286,6 @@ function selectBoardList(entries, observer) {
     })
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 window.addEventListener("click", (e) => {
 
@@ -363,5 +300,7 @@ window.addEventListener("click", (e) => {
     e.target === profileContainer ? 
         (profileContainer.style.display = "none") && (scrollrock.style.overflow = "visible") : false
 });
+
+
 
 
