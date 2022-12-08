@@ -226,21 +226,34 @@ body {
 }
 
 
-
-
-
-
-
 .followAccountBtn{
     color: white;
     background-color: var(--fiesta-color);
-    border: none;
+    border-radius: 8%;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
+#btn-follow{
+    width: 100px;
+    height: 30px;
+}
 
 .unfollowAccountBtn{
-    color: gray;
-    border: none;
+    background-color: rgb(220, 217, 217);
+    border-radius: 8%;
+    font-weight: bold;
+    margin-left: 10px;
+
 }
 
+#btn-dm{
+    width: 100px;
+    height: 30px;
+    background-color: rgb(220, 217, 217);
+    border-radius: 8%;
+    font-weight: bold;
+
+}
 

@@ -19,6 +19,7 @@
       <result property="followingCount" column="FOLLOWING_COUNT" />
       <result property="followCount" column="FOLLOW_COUNT" />
       <result property="followCheck" column="FOLLOW_CHECK " />
+      <result property="hashtagContent" column="HASHTAG_CONTENT " />
   </resultMap>
   
 		  <!-- 게시글 객체 저장용 resultMap -->
@@ -84,20 +85,22 @@
       <result property="memberNo" column="MEMBER_NO" />
   </resultMap> -->
   
-<!--   <resultMap type="Hashtag" id="hashtag_rm"></resultMap>
-  	<id property="hashtagNo" colum="HASHTAG_NO"/>
-  	<result propery=""></result> -->
+<resultMap type="Hashtag" id="hashtag_rm">
+  	<id property="hashtagNo" column="HASHTAG_NO"/>
+  <result property="hashtagContent" column="HASHTAG_CONTENT"/>
+ </resultMap>
   
   <!-- 해시태그 목록 조회 -->
-<!-- 	<select id="selectHashtagList">
-	  SELECT F_TO_TARGET_NO, HASHTAG_CONTENT
-		FROM HASHTAG
-		JOIN FOLLOW ON (F_FROM_MEMBER_NO = HASHTAG_NO)
-		JOIN MEMBER ON (MEMBER_NO = HASHTAG_NO)
-		WHERE F_FROM_MEMBER_NO = #{}
+	<select id="selectHashtagList" resultMap="hashtag_rm" >
+	  SELECT HASHTAG_CONTENT
+		FROM HASHTAG 
+		JOIN FOLLOW ON (F_TO_TARGET_NO = HASHTAG_NO)
+		JOIN MEMBER ON (F_FROM_MEMBER_NO = MEMBER_NO)
+		WHERE F_FROM_MEMBER_NO  = #{memberNo}
 		AND FOLLOW_TYPE = 'H'
+		AND FOLLOW_ACCEPT_FL = 'Y'
   </select>
-   -->
+
   <!-- 팔로잉 멤버 조회 -->
   <select id="selectFollowingList" resultMap="member_rm">
 		SELECT MEMBER_NICKNAME, MEMBER_PROFILE_IMG, F_TO_TARGET_NO AS MEMBER_NO
