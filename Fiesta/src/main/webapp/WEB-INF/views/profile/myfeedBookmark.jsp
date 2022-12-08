@@ -142,13 +142,13 @@
 
         <section class="title-section">
           <div id="text-area">
-            <a href="/feed/${loginMember.memberNickname}/" id="title-section-board">
+            <a href="/feed/${feedMember.memberNickname}/" id="title-section-board">
              <span><i class="fa-solid fa-chess-board"></i> 게시물</span>
             </a>
 
-            <a href="/feed/${loginMember.memberNickname}/taged" id="title-section-taged">
-            <span><i class="fa-solid fa-children"></i> 태그됨</span>
-            </a>
+             <a href="/feed/${feedMember.memberNickname}/bookmark"  id="title-section-bookmark">
+            <span><i class="fa-regular fa-bookmark"></i> 저장됨</span>
+           </a> 
           </div>
         </section>
 
@@ -223,8 +223,8 @@
     <jsp:include page="/WEB-INF/views/board/newpost-update.jsp" />
 
       <script>
-        var memberNickname = "${loginMember.memberNickname}";
         var memberNo = "${loginMember.memberNo}";
+        var memberNickname = "${feedMember.memberNickname}";
       </script>
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
