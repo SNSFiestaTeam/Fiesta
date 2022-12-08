@@ -46,7 +46,7 @@ public class FindAccountEmailController {
 			status.setComplete();
 			return 1;
 		} 
-		return 0;
+		return 0;  // 원래대로 0으로 돌리기
 	}
 	
 	

@@ -44,8 +44,9 @@
         </div>
 
         <section class="formSection">
-          <form action="/findAccount/changePw/updatePw" method="POST" id="changePw-frm">
+          <form action="/findAccount/changePwPage/updatePw" method="POST" id="changePw-frm">
               <div class="changePw-input-area">
+                <input type="hidden" value="${inputEmail}" name="inputEmail"/>
                 <input type="password" name="memberPw" id="memberPw" value="" 
                      maxlength="30" autocomplete="off" required >
                 <label for="memberPw">비밀번호</label>
@@ -82,7 +83,7 @@
         </section>
 
         <div class="toAdmin">
-          <a href="#"> 비밀번호를 재설정할 수 없나요? </a>
+          <a href="#" id="toAdmin"> 비밀번호를 재설정할 수 없나요? </a>
         </div>
         </section>
         

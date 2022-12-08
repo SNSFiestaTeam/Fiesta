@@ -91,6 +91,8 @@ public class MemberServiceImpl implements MemberService{
 		member.setMemberEmail(inputEmail);
 		member.setMemberPw(memberPw);
 		
+		System.out.println(member.getMemberEmail());
+		
 		return dao.updatePw(member);
 	}
 
