@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,10 +68,14 @@ public class BoardController {
 	// 게시글 수정
 	@GetMapping("/selectOneBoard")
 	@ResponseBody
-	public String selectOneBoard(int boardNo) {
+	public String selectOneBoard(int boardNo, Model model) {
 		Board board = service.selectOneBoard(boardNo);
+//		System.out.println(board.setBoardContent());
+		board.setBoardContent(Util.hashTagClear(board.getBoardContent()));
 		
-		board.setBoardContent(Util.newLineClear(board.getBoardContent()));
+		board.setBoardContent(Util.newLineHandling(board.getBoardContent()));
+//		System.out.println(boardCon);
+//		 model.addAttribute("board", board);
 		return new Gson().toJson(board);
 	}
 	

@@ -24,7 +24,14 @@ feedUpdateBtnLogin.addEventListener("click", () => {
       boardNo.value = board.boardNo;
       
       const img = document.createElement('img');
-      img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
+      // for(let i = 0; i < board.boardImageOne.length; i++){
+        if(board.imageList[0].imgAddress == null){
+          img.setAttribute('src',"/resources/images/default/defaultImg.png");
+        }else{
+          img.setAttribute('src', board.imageList[0].imgAddress+board.imageList[0].imgChangeName);
+        }
+      // }
+     
       img.id="updateImgList";
 
       console.log(img);
@@ -63,11 +70,11 @@ window.addEventListener('click', (e) => {
   const modalBackgroundUpdate = document.getElementById("modalBackgroundUpdate");
 
   // 업데이트 홤녀
-  e.target === modalBackgroundUpdate ? modalBackgroundUpdate.style.display = 'none' : false
-
+  e.target === modalBackgroundUpdate ? (modalBackgroundUpdate.style.display = "none", boardImageOne.innerHTML = "", boardContent.innerText = "") : false
+  e.target === modalBackground ? (modalBackground.style.display = "none") : false;
   document.body.style.overflow = "unset";
   // document.getElementById("updateImgList").remove();
-  boardImageOne.innerHTML = "";
-    boardContent.innerText = "";
+  // boardImageOne.innerHTML = "";
+  // boardContent.innerText = "";
 
 });
