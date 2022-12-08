@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Report;
+import edu.kh.fiesta.member.model.vo.Member;
 
 
 @Repository
@@ -132,6 +133,11 @@ public class MainDAO {
 	 */
 	public int insertReport(Report report) {
 		return sqlSession.insert("mainMapper.insertReport", report);
+	}
+
+
+	public List<Member> selectMember(int memberNo) {
+		return sqlSession.selectList("mainMapper.selectMemberList", memberNo);
 	}
 
 

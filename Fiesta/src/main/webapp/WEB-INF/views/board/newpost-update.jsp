@@ -7,7 +7,7 @@
     <div class="new-post-close" id="updateClose2">&times;</div>
     <!-- post 배경 -->
 
-    <section class="modal_post_section-text" >
+    <section class="modal_post_section_text" >
       <!-- post top -->
 
 
@@ -33,13 +33,13 @@
           </div>
         <div class="swiper-pagination"></div>
 
-            <div class="siltde-btn-area slide-controller">
-              <div class="sild-file-btn swiper-button-prev">
+            <div class="siltde-btn-area ">
+              <div class="sild-file-btn ">
                 <!-- <div class="material-icons">arrow_back</div> -->
               </div>
-              <div class="sild-file-btn swiper-button-next">
+              <%-- <div class="sild-file-btn swiper-button-next"> --%>
                 <!-- <div class="material-icons">arrow_forward</div> -->
-              </div>
+              <%-- </div> --%>
             </div>
           </div>
 

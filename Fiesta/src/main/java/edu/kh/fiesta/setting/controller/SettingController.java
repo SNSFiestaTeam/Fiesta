@@ -4,6 +4,7 @@ package edu.kh.fiesta.setting.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -106,10 +107,13 @@ public class SettingController {
 	public String memberDelete(
 			@SessionAttribute("loginMember") Member loginMember,
 			SessionStatus status, RedirectAttributes ra,
-			@RequestHeader("referer") String referer
+			@RequestHeader("referer") String referer,
+			HttpServletRequest req
 			) {
 		
+		
 		int result = service.memberDelete(loginMember.getMemberNo());
+		HttpSession session = req.getSession();
 		
 		String message = null;
 		String path = null;
@@ -118,8 +122,9 @@ public class SettingController {
 	
 			message = "성공";
 			path = "/";
-			status.setComplete();
-
+			 
+			session.invalidate();
+			
 		} else {
 			message = "실패";
 			path = referer;
@@ -129,6 +134,7 @@ public class SettingController {
 	
 		return "redirect:" + path;
 	}
+	
 	
 	// 사용자이름 중복 검사
 	@GetMapping("/nicknameDupCheck")

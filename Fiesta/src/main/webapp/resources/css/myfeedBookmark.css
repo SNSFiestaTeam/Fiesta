@@ -226,11 +226,6 @@ body {
 }
 
 
-
-
-
-
-
 .followAccountBtn{
     color: white;
     background-color: var(--fiesta-color);
@@ -243,4 +238,13 @@ body {
     border: none;
 }
 
+#br{
+    width: 1000px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: var(--fiesta-color);
+}
 

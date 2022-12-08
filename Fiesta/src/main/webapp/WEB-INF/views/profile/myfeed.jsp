@@ -16,6 +16,9 @@
     <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/myfeed.css" />
+    <link rel="stylesheet" href="/resources/css/myfeed(web).css" />
+    <link rel="stylesheet" href="/resources/css/myfeed(tablet).css" />
+    <link rel="stylesheet" href="/resources/css/myfeed(mobile).css" />
     <%-- <link rel="stylesheet" href="/resources/css/memberfeed.css"> --%>
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
@@ -74,8 +77,8 @@
 
             <div id="profile-board">
               <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
-              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount-1}</button></span>
-              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount-1}</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로워 ${feedMember.followCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로우 ${feedMember.followingCount-1}</button></span>
             </div>
 
             <div class="profileName">${feedMember.memberName}</div>
@@ -217,7 +220,7 @@
         </c:if>
 
         <c:if test="${empty boardList}">
-          <div>게시글을 작성해주세요.</div>
+          <div id="br">게시글을 작성해주세요.</div>
         </c:if>
       
 
