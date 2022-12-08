@@ -5,7 +5,6 @@
 <c:set var="boardList" value="${map.boardList}" />
 <c:set var="pagination" value="${map.pagination}" />
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
