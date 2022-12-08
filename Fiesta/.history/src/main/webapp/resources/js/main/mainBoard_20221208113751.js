@@ -1545,7 +1545,7 @@ function createBoard(board) {
   });
 
 
-  commentInput.addEventListener('keypress', function (event) {
+  commentInput.addEventListener('keydown', function (event) {
     if (event.key === 'Space') {
       if(autoCompleteModal != undefined) {
         

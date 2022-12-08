@@ -1013,8 +1013,6 @@ function createBoard(board) {
 
 
 
-  div4.append(commentInput, postingBtn);
-
 
   // 댓글 입력창에 @, # 입력 이벤트 추가
   commentInput.addEventListener('keyup', function (event) {
@@ -1545,7 +1543,7 @@ function createBoard(board) {
   });
 
 
-  commentInput.addEventListener('keypress', function (event) {
+  commentInput.addEventListener('keydown', function (event) {
     if (event.key === 'Space') {
       if(autoCompleteModal != undefined) {
         
@@ -1570,7 +1568,23 @@ function createBoard(board) {
     }
 
 
-  })
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  div4.append(commentInput, postingBtn);
   
 }
 

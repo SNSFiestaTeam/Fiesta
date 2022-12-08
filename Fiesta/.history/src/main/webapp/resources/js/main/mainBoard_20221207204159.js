@@ -258,7 +258,7 @@ function createBoard(board) {
     // img태그에 src 속성, alt 속성 추가
     uploadedImage.setAttribute(
       'src',
-      '/resources/images/default/defaultImg.png' 
+      '/resources/images/default/defaultImg.png'
     );
     uploadedImage.classList.add('uploaded-image');
     imageLi.append(uploadedImage);
@@ -1013,8 +1013,6 @@ function createBoard(board) {
 
 
 
-  div4.append(commentInput, postingBtn);
-
 
   // 댓글 입력창에 @, # 입력 이벤트 추가
   commentInput.addEventListener('keyup', function (event) {
@@ -1233,40 +1231,16 @@ function createBoard(board) {
 
           }
 
-          if (event.keyCode === 32) {
-            if(autoCompleteModal != undefined) {
-              
-            autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-            console.log('모달 삭제');
-          }
-            
-          commentInput.removeEventListener('input', arguments.callee);
-          e.preventDefault();
-          event.preventDefault();
-          }
-      
-          if (event.key === 'Enter') {
-            if(autoCompleteModal != undefined) {
-
-              autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-              console.log('모달 삭제');
-            }
-            
-            commentInput.removeEventListener('input', arguments.callee);
-            event.preventDefault();
-            e.preventDefault();
-          }
-
 
 
         } else {
           if(autoCompleteModal !== undefined) {
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
             console.log('모달 삭제');
+            event.preventDefault();
           }
-          
+
           commentInput.removeEventListener('input', arguments.callee);
-          event.preventDefault();
         }
 
       });
@@ -1474,103 +1448,57 @@ function createBoard(board) {
             });
           }
 
-
-          if (event.keyCode === 32) {
-            if(autoCompleteModal != undefined) {
-              
-            autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-            console.log('모달 삭제');
-          }
-            
-          commentInput.removeEventListener('input', arguments.callee);
-          e.preventDefault();
-          event.preventDefault();
-          }
-      
-          if (event.key === 'Enter') {
-            if(autoCompleteModal != undefined) {
-
-              autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-              console.log('모달 삭제');
-            }
-            
-            commentInput.removeEventListener('input', arguments.callee);
-            event.preventDefault();
-            e.preventDefault();
-          }
-          
         } else {
           if(autoCompleteModal !== undefined) {
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
             console.log('모달 삭제');
 
           }
-          
           commentInput.removeEventListener('input', arguments.callee);
-          event.preventDefault();
-          e.preventDefault();
         }
 
       });
     }
 
+
+
     if (event.key === 'Space') {
-      if(autoCompleteModal != undefined) {
-        
-      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-      console.log('모달 삭제');
-    }
-      
-    commentInput.removeEventListener('input', arguments.callee);
-    event.preventDefault();
-    }
-
-
-    if (event.key === 'Enter') {
       if(autoCompleteModal != undefined) {
         autoCompleteModal.parentElement.removeChild(autoCompleteModal);
         console.log('모달 삭제');
 
       }
-      
       commentInput.removeEventListener('input', arguments.callee);
-      event.preventDefault();
+    }
+
+    if (event.key === 'Enter') {
+      if(autoCompleteModal !== undefined) {
+        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+        console.log('모달 삭제');
+      }
+      commentInput.removeEventListener('input', arguments.callee);
     }
 
 
-    
-    
     event.preventDefault();
-    commentInput.removeEventListener('input', arguments.callee);
   });
 
 
-  commentInput.addEventListener('keypress', function (event) {
-    if (event.key === 'Space') {
-      if(autoCompleteModal != undefined) {
-        
-      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-      console.log('모달 삭제');
-    }
-      
-    commentInput.removeEventListener('input', arguments.callee);
-    event.preventDefault();
-    }
 
 
-    if (event.key === 'Enter') {
-      if(autoCompleteModal != undefined) {
-        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-        console.log('모달 삭제');
-
-      }
-      
-      commentInput.removeEventListener('input', arguments.callee);
-      event.preventDefault();
-    }
 
 
-  })
+
+
+
+
+
+
+
+
+
+  
+  div4.append(commentInput, postingBtn);
   
 }
 
