@@ -53,12 +53,12 @@
               <div class="new-post-bottom-inputtext">
                 <textarea name="boardContent" rows="15" placeholder="문구 입력..." id="updateBoardContent"></textarea>
               </div>
-
+<%-- 
               <div class="new-post-bottom-textsize">
                 <span>0</span>
                 /
                 <span>3000</span>
-              </div>
+              </div> --%>
 
           
       

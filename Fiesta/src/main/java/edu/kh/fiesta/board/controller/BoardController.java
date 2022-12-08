@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.fiesta.board.model.service.BoardService;
+import edu.kh.fiesta.common.Util;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.member.model.vo.Member;
@@ -68,6 +69,8 @@ public class BoardController {
 	@ResponseBody
 	public String selectOneBoard(int boardNo) {
 		Board board = service.selectOneBoard(boardNo);
+		
+		board.setBoardContent(Util.newLineClear(board.getBoardContent()));
 		return new Gson().toJson(board);
 	}
 	

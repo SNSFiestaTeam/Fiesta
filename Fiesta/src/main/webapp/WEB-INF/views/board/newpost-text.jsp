@@ -18,8 +18,8 @@
 
 
         <div class="new-post-top-text">
-          <div id="backBtnText">
-            <i class="fa-solid fa-arrow-left"></i>
+          <div id="backBtnText" >
+            <i class="fa-solid fa-arrow-left" ></i>
           </div>
           <p id="postName">새 게시물 만들기</p>
           <button type="submit" name="newpostText" id="newPostAll">게시하기</button>
@@ -56,11 +56,11 @@
                 <textarea name="boardContent" rows="5" placeholder="문구 입력..." id="boardContent"></textarea>
               </div>
 
-              <div class="new-post-bottom-textsize">
+              <%-- <div class="new-post-bottom-textsize">
                 <span>0</span>
                 /
                 <span>3000</span>
-              </div>
+              </div> --%>
 
               
               <div class="new-post-bottom-set">

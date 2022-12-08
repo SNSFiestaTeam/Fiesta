@@ -230,6 +230,8 @@
   justify-content: space-between;
   background-color: white;
   /* border-radius: 10px; */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   /* border-radius: 10px; */
   /* justify-content: center; */
   border-bottom: 2px solid #ececec;
@@ -293,7 +295,7 @@
 
 .bottom-right-box {
   /* width: 46%; */
-  overflow: scroll;
+  overflow: auto;
   /* height: auto; */
 
   /* background-color: blueviolet; */

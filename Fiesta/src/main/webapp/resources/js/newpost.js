@@ -74,11 +74,9 @@ backBtnText.addEventListener("click", () => {
   modalBackgroundClose.style.display = "none";
   modalBackgroundEidt.style.display = "none";
   modalBackgroundText.style.display = "none";
-  // slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
-  // filePreview.innerHTML = "";
-  // textFileSwiper.innerHTML = "";
-  // postFileTextArea.innerHTML = "";
-  // document.postForm.reset();
+  slideImages.innerHTML = ""; // 취소했을때 미리보기 이미지 다 지우기
+  filePreview.innerHTML = "";
+  textFileSwiper.innerHTML = "";
   console.log(document.getElementById("cropperfile").files);
 });
 document.getElementById("closeTextCancel").addEventListener("click", () => {
@@ -303,25 +301,20 @@ window.addEventListener("click", (e) => {
 
   // 텍스트작성홤녀
   e.target === modalBackgroundText
-    ? (modalBackgroundText.style.display = "none")
+    ? ( modalBackgroundClose.style.display = "flex")
     : false;
 
   // 작성완료 홤녀
   e.target === modalBackgroundFinish
-    ? (modalBackgroundFinish.style.display = "none")
-    : false;
+    ? (modalBackgroundFinish.style.display = "none" ): false;
 
   // 업데이트 홤녀
   e.target === modalBackgroundUpdate
     ? (modalBackgroundUpdate.style.display = "none")
     : false;
 
-  // 취소화면
-  e.target === modalBackgroundClose
-    ? (modalBackgroundClose.style.display = "none")
-    : false;
-
   document.body.style.overflow = "unset";
+
 });
 
 document.getElementById("boardPubPriFlag").addEventListener("change", () => {
