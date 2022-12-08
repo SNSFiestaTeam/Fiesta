@@ -446,13 +446,14 @@ for (let i = 0; i < commentInput.length; i++) {
       });
     }
 
-    if (event.keyCode === 32) {
+    if (event.key === 'Space') {
       if(autoCompleteModal != undefined) {
         
       autoCompleteModal.parentElement.removeChild(autoCompleteModal);
       console.log('모달 삭제');
     }
       
+      e.preventDefault();
       event.preventDefault();
       commentInput[i].removeEventListener('input', arguments.callee);
     }
@@ -465,6 +466,7 @@ for (let i = 0; i < commentInput.length; i++) {
       }
       
         event.preventDefault();
+        e.preventDefault();
         commentInput[i].removeEventListener('input', arguments.callee);
       }
 
