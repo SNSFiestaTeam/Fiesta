@@ -12,7 +12,7 @@
         min-width: 80%;
         /* width: 702px;   */
         padding: 20px 1% 0;
-        margin: 0 20% 20%;
+        margin: 0 20px 20px;
     
         display: flex;
         flex-direction: column;
@@ -143,7 +143,8 @@
     
     .account-container{
         max-width: 100%;
-        padding: 10px;
+        min-width: 500px;
+        padding: 10px 5px;
     
         display: flex;
     }
@@ -164,9 +165,8 @@
     }
     
     .profileImages img{
-        width: 80%;
-        max-width: 160px;
-        min-width: 55px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         margin-bottom: 8px;
         /* margin-left: 10px; */

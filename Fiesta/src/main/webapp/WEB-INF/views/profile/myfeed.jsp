@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
     <link rel="stylesheet" href="/resources/css/profile-edit-board.css" />
-<link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
+    <link rel="stylesheet" href="/resources/css/hashtag-board.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
@@ -28,8 +29,7 @@
     <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
-<link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
@@ -50,11 +50,8 @@
         <c:if test="${feedMember.memberNickname == loginMember.memberNickname}">
 
         <section class="info-section">
-          <form action="/setting/updateImage" method="POST" id="profilefrm" name="memberProfileImg" enctype="multipart/form-data">
-
           <div id="profile-photo">
-            <button id="self" type="button">
-              <input type="file" name="memberProfileImg", id="image-input" accept="image/*">
+            <button id="self">
               <c:if test="${ empty feedMember.memberProfileImg}">
                 <img id="selfImg" src="/resources/images/profile/profile.jpg" />
               </c:if>
@@ -64,7 +61,6 @@
               </c:if>
             </button>
           </div>
-          </form>
 
           <div id="profile-text">
             <div id="nickname">
@@ -125,11 +121,11 @@
             <input type="hidden" id="follow-to-nickname" value="${feedMember.memberNickname}">
 
             <button id="btn-dm">
-              <span>메세지 보내기</span>
+            <a href="/dm/dm">메세지 보내기</a>
             </button>
 
             <button id="btn-follow">
-
+              
             </button>
             
 
@@ -149,13 +145,13 @@
 
         <section class="title-section">
           <div id="text-area">
-            <a href="/feed/${loginMember.memberNickname}/" id="title-section-board">
+            <a href="/feed/${feedMember.memberNickname}/" id="title-section-board">
              <span><i class="fa-solid fa-chess-board"></i> 게시물</span>
             </a>
 
-            <a href="/feed/${loginMember.memberNickname}/taged" id="title-section-taged">
-            <span><i class="fa-solid fa-children"></i> 태그됨</span>
-            </a>
+           <%-- <a href="/feed/${feedMember.memberNickname}/bookmark"  id="title-section-bookmark">
+            <span><i class="fa-regular fa-bookmark"></i> 저장됨</span>
+           </a>  --%>
           </div>
         </section>
 
@@ -229,7 +225,7 @@
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/follow-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
-        <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>
+        <jsp:include page="/WEB-INF/views/profile/profile-edit-board.jsp"/>
         <%-- 새게시물작성 모달jsp --%>
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
@@ -241,7 +237,7 @@
       <script>
 
         var memberNo = "${loginMember.memberNo}";
-        var memberNickname = "${loginMember.memberNickname}";
+        var memberNickname = "${feedMember.memberNickname}";
       </script>
 
 

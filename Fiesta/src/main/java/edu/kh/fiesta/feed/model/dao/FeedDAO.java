@@ -112,6 +112,10 @@ public class FeedDAO {
 		return sqlSession.selectOne("feedMapper.selectMember", paramMap);
 	}
 
+	/** 상세조회
+	 * @param map
+	 * @return
+	 */
 	public Board selectFeedDetail(Map<String, Object> map) {
 		return sqlSession.selectOne("mainMapper.selectBoard", map);
 	}

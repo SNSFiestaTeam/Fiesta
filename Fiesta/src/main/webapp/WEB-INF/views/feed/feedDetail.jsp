@@ -43,21 +43,17 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/591746f9e8.js" crossorigin="anonymous"></script>
   </head>
-
-  <body style="height:100vh; overflow:hidden">
-
+  <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
     <!-- 메인 섹션 -->
     <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
-
-    <main style="background-color:white; height:100vh;">
+    <main>
       <section>
         <!-- 인스타 피드 -->
-        <section class="feed-section" id="feedSection" >
+        <section class="feed-section" id="feedSection">
           <!-- 피드 리스트 -->
-              <div class="feed" style="margin-top: 80px">
-
+              <div class="feed">
                 <div class="profile-image-area">
                   <!-- 작성자 프로필 -->
                   <div class="feed-header">

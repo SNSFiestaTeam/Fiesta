@@ -140,10 +140,12 @@ public class MemberController {
 	// 계정찾기_비밀번호 재설정하기 
 	@PostMapping("/findAccount/changePwPage/updatePw")
 	public String updatePw(String memberPw, String inputEmail,
-						   RedirectAttributes ra, Model model) {
+						   RedirectAttributes ra, Model model, @RequestHeader("referer") String referer) {
 		
 		
 		int result = service.updatePw(inputEmail, memberPw);
+		
+		System.out.println(result);
 		
 		String message = null;
 		String path = null;
@@ -153,12 +155,13 @@ public class MemberController {
 			path = "/";
 		
 		} else {
-			message = "비밀번호가 변경되지 않았습니다..";
-			path = "/";
+			message = "다시 시도해주세요..";
+			path = referer;
 		}
 		
 		ra.addFlashAttribute("message", message);
-		return "redirect:" + path ;
+		
+		return "redirect:"+path ;
 	}
 	
 

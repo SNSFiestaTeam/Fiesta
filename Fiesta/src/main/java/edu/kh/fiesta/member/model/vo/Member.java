@@ -20,6 +20,7 @@ public class Member {
 	private String memberOpenFl;
 	private String secessionFl;
 	private int authority;
+	private int boardCount;
 	
 	private String introContent;
 	private char userPubPriFl;
@@ -27,4 +28,5 @@ public class Member {
 	private int followingCount;
 	private int followCount;
 	private int followCheck;
+	
 }

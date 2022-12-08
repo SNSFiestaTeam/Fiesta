@@ -53,6 +53,14 @@ signUpButton.classList.remove("buttonOn");
 // signUpButton.disabled = true;
 
 
+// memberName.style.display = 'none';
+// memberNickname.style.display = 'none';
+// memberPw.style.display = 'none';
+// memberPwConfirm.style.display = 'none';
+
+
+
+
 // icon 전체에 회색 적용
 let icon = document.getElementsByClassName("icon");
 
@@ -71,6 +79,8 @@ emailXmark.classList.add("iHidden");
 
 memberEmail.addEventListener("input", function(){
     
+    memberEmail.focus();
+
     // 필수 입력
     if(memberEmail.value.trim().length == 0){ 
         emailCheck.classList.add("gray");
@@ -121,8 +131,10 @@ memberEmail.addEventListener("input", function(){
         emailXmark.classList.remove("iVisiebl");
         checkObj.memberEmail = false;
     }
+});
 
-})
+
+
 
 
 // 성명 아이콘 : 필수 입력, 유효성 검사(한글, 영문자만 가능, 2글자 이상)
@@ -228,6 +240,7 @@ memberNickname.addEventListener("input", () => {
     })
 
 })
+
 
 
 
@@ -558,7 +571,11 @@ checkAuthKeyBtn.addEventListener("click", function(){
                     sendAuthKeyBtn.classList.add("displayOff");
                     sendAuthKeyBtn.classList.remove("displayBlock", "authButtonOn");
 
-                    
+
+                    // memberName.style.display = 'flex';
+                    // memberNickname.style.display = 'flex';
+                    // memberPw.style.display = 'flex';
+                    // memberPwConfirm.style.display = 'flex';
 
                 } else{
                     // alert("인증번호가 일치하지 않습니다.")
@@ -583,6 +600,7 @@ checkAuthKeyBtn.addEventListener("click", function(){
         alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
     }
 });
+
 
 
 // 버튼 활성화/비활성화
@@ -610,6 +628,7 @@ document.getElementById("signUp-frm").addEventListener("input", function(){
 });
 
 
+
 // 회원가입 form 제출 이벤트
 document.getElementById("signUp-frm").addEventListener("submit", function(event){
 
@@ -622,3 +641,19 @@ document.getElementById("signUp-frm").addEventListener("submit", function(event)
         }
     }
 });
+
+
+
+
+// if(checkObj.authKey == false){
+//     memberName.addEventListener("focus", () =>{
+//         alert("이메일 인증을 먼저 진행하세요.");
+//         memberEmail.focus();
+//     })
+// } else{
+//     memberName.removeEventListener("focus", () =>{
+//         memberName.removeAttribute("readonly");
+//         memberName.focus();
+//     })
+// };
+

@@ -214,7 +214,7 @@ main {
 
 /* 인증번호 입력 */
 .inputAuth-area{
-  width: 100%;
+  width: 360px;
   height: 57px;
 
   margin: 3% 0;

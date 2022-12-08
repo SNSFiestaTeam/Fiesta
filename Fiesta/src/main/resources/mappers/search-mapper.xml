@@ -94,6 +94,7 @@
 			OR MEMBER_NAME = UPPER(#{searchInput}) OR MEMBER_NAME = LOWER(#{searchInput}) OR MEMBER_NAME = (#{searchInput}))
 			<!-- AND MEMBER_NICKNAME != #{memberNickname} -->
 			<![CDATA[AND ROWNUM <= 6 ]]>	
+			ORDER BY MEMBER_NICKNAME
 		</select>
 		
 		

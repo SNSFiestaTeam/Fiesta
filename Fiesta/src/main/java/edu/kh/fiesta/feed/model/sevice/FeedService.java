@@ -57,6 +57,11 @@ public interface FeedService {
 	 */
 	List<Hashtag> selectHashtagList(int memberNo);
 
+	
+	/** 상세조회
+	 * @param map
+	 * @return
+	 */
 	Board selectFeedDetail(Map<String, Object> map);
 
 }

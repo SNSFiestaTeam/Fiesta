@@ -18,8 +18,8 @@
 
   <c:if test="${ not empty message }"> 
       <script>
-        alert("${message}");
-        const line = document.getElementsByClassName("line")[0];
+        // alert("${message}");
+        const line = document.getElementById("line");
         
         line.innerHTML = "${message}";
         line.classList.add("lineFont");
