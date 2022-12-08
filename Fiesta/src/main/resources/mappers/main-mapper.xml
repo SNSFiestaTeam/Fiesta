@@ -302,6 +302,15 @@
   </insert>
   
   
+  <select id="selectMemberList" resultMap ="member_rm">
+  	SELECT * FROM "MEMBER" m
+  	<![CDATA[
+	WHERE ROWNUM < 7 ]]>
+	AND MEMBER_NO != #{memberNo}
+	ORDER BY ENROLL_DATE DESC
+  </select>
+  
+  
   
 
 </mapper>
