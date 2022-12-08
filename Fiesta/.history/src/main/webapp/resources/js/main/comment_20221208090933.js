@@ -229,7 +229,6 @@ for (let i = 0; i < commentInput.length; i++) {
 
         } else {
           if(autoCompleteModal !== undefined) {
-            console.log(autoCompleteModal);
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
             console.log('모달 삭제');
 

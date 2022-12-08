@@ -22,7 +22,7 @@
             새로운 메시지
           </div>
           <div class="next">
-          <button id="next">다음</button>
+          <button id="nextBtn">다음</button>
           </div>
         </div>
         <div class="feedMenu2">
@@ -37,7 +37,7 @@
         <div class="feedMenu3">
           <span>추천</span>
           <div id="memberListArea">
-            
+
           </div>
         </div>
       </div>

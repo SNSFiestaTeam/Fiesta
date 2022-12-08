@@ -258,7 +258,7 @@ function createBoard(board) {
     // img태그에 src 속성, alt 속성 추가
     uploadedImage.setAttribute(
       'src',
-      '/resources/images/default/defaultImg.png' 
+      '/resources/images/default/defaultImg.png'
     );
     uploadedImage.classList.add('uploaded-image');
     imageLi.append(uploadedImage);
@@ -1231,7 +1231,7 @@ function createBoard(board) {
 
           }
 
-          if (event.keyCode === 32) {
+          if (event.key === 'Space') {
             if(autoCompleteModal != undefined) {
               
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
@@ -1345,6 +1345,7 @@ function createBoard(board) {
               dataType: 'json',
               success: (hashtagList) => {
                 if (hashtagList != null) {
+                  console.log(hashtagList);
                   autoCompleteModal.innerHTML = '';
     
                   for (let hashtag of hashtagList) {
@@ -1473,7 +1474,7 @@ function createBoard(board) {
           }
 
 
-          if (event.keyCode === 32) {
+          if (event.key === 'Space') {
             if(autoCompleteModal != undefined) {
               
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
@@ -1509,7 +1510,7 @@ function createBoard(board) {
       });
     }
 
-    if (event.keyCode === 32) {
+    if (event.key === 'Space') {
       if(autoCompleteModal != undefined) {
         
       autoCompleteModal.parentElement.removeChild(autoCompleteModal);
@@ -1525,16 +1526,6 @@ function createBoard(board) {
 
         autoCompleteModal.parentElement.removeChild(autoCompleteModal);
         console.log('모달 삭제');
-
-      }
-      commentInput.removeEventListener('input', arguments.callee);
-    }
-
-    if (event.key === 'Enter') {
-      if(autoCompleteModal != undefined) {
-        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-        console.log('모달 삭제');
-
       }
       
         event.preventDefault();

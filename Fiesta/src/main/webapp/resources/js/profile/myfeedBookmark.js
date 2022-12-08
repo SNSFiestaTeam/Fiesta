@@ -164,12 +164,12 @@ followingClose.addEventListener("click", function(){
 
 self.addEventListener("click", function(){
     profileContainer.style.display = "flex";
-    scrollrock.style.overflow = "hidden";
+   
 })
 
 editClose.addEventListener("click", function(){
     profileContainer.style.display = "none"
-    scrollrock.style.overflow = "visible";
+  
 })
 
 const feedSection = document.querySelector(".feed-section");
@@ -205,7 +205,7 @@ function createObserver() {
 }
 
 // * 현재 페이지 번호 변수 선언
-let cp = 2;
+let cp = 4;
     
 function selectBookmarkList(entries, observer) {
 
@@ -245,7 +245,7 @@ function selectBookmarkList(entries, observer) {
                             for(let bookmark of bookmarkList){
         
                                 const boardContainer = document.createElement("a");
-                                boardContainer.href = "/feedDetail/"+ board.boardNo;
+                                boardContainer.href = "/feedDetail/"+ bookmark.boardNo;
                 
                                 imgContainer.append(boardContainer);
                 
@@ -302,5 +302,67 @@ window.addEventListener("click", (e) => {
 });
 
 
+<<<<<<< HEAD:Fiesta/src/main/webapp/resources/js/myfeed.js
+const selfImg = document.getElementById("selfImg");
+const profileFrm = document.getElementById("profilefrm");
+const profileUpdate = document.getElementById("profile-update");
+const profileDelete = document.getElementById("profile-delete");
+const imageInput = document.getElementById("image-input");
+
+const originalImage = selfImg.getAttribute("src");
+
+imageInput.style.display = "none";
+
+if(imageInput != null){
+
+    imageInput.addEventListener("change", e => {
+
+        // 선택된 파일의 목록
+        console.log(e.target.files);
+        console.log(e.target.files[0]);
+
+        if(e.target.files[0] != undefined){
+            const reader = new FileReader();
+
+            reader.readAsDataURL(e.target.files[0]);
+
+            reader.onload = event=>{
+                
+                selfImg.setAttribute("src", event.target.result);
+                profileContainer.style.display = "none";
+                profileFrm.submit();
+
+            } 
+
+        } else {
+            selfImg.setAttribute("src", originalImage);
+        }
+    });
+
+    profileDelete.addEventListener("click", ()=>{
+
+        selfImg.setAttribute("src", "/resources/images/user.jpg")
+        profileContainer.style.display = "none";
+        profileFrm.submit();
+
+        imageInput.value = "";
+
+    });
+
+    editClose.addEventListener("click", ()=>{
+        profileContainer.style.display = "none";
+    })
+
+}
+
+function submit(){
+
+    imageInput.addEventListener("change", e => {
+    profileFrm.submit();
+    })
+    
+}
+=======
 
 
+>>>>>>> main:Fiesta/src/main/webapp/resources/js/profile/myfeedBookmark.js
