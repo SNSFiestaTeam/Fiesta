@@ -27,12 +27,12 @@ public class DmDAO {
 	}
 
 
-	public int checkChattingNo(Map<String, Integer> map) {
+	public int checkChattingNo(Map<String, Object> map) {
 		return sqlSession.selectOne("dmMapper.checkChattingNo", map);
 	}
 
 
-	public int createChattingRoom(Map<String, Integer> map) {
+	public int createChattingRoom(Map<String, Object> map) {
 		int result = sqlSession.insert("dmMapper.createChattingRoom", map);
 		int chattingNo = 0;
 		if(result > 0) chattingNo = (int)map.get("chattingNo");
@@ -50,8 +50,8 @@ public class DmDAO {
 	}
 
 
-	public List<Message> selectMessageList(Map<String, Object> paramMap) {
-		return sqlSession.selectList("dmMapper.selectMessageList", paramMap);
+	public List<Message> selectMessageList(int chattingNo) {
+		return sqlSession.selectList("dmMapper.selectMessageList", chattingNo);
 	}
 
 

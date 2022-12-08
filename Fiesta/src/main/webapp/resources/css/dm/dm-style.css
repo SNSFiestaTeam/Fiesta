@@ -54,6 +54,7 @@ body {
 .left .down{
     
     flex-basis: 90%;
+    overflow: auto;
 
 }
 .left .up .id {
@@ -157,9 +158,23 @@ margin: 10px;
     height: 100%;
 }
 
+.not-read-count{
+	width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--fiesta-color);
+    color: white;
+    font-size: 12px;
+    margin: 10px 10px 0 0;
+}
+
 #chattingRoom{
 
     flex-basis: 80%;
+    overflow: auto;
 
 }
 
@@ -167,12 +182,14 @@ margin: 10px;
     flex-basis: 10%;
     display: flex;
     justify-content: center;
+    padding: 3px;
 }
 
 #chattingInput{
     height: 50%;
     width: 70%;
     border-radius: 15px;
+    padding: 5px;
 
 }
 #memberListArea{
@@ -205,14 +222,17 @@ margin: 10px;
     margin: 20px;
 }
 
-.chatting-item.select{
+.dm-item.select{
 	background-color: #ddd;
 }
 
 .chatting-content{
 	width: 70%;
 }
-
+.target-profile{ width: 65px;
+    border-radius: 50%;
+    margin : 10px;
+}
 
 .dm-area > li{
 	margin: 10px 0;
@@ -252,6 +272,13 @@ margin: 10px;
 	resize: none;
 }
 
+.dm-item > div{ height: 100%; }
+.item-header{ width : 25%; }
+.item-body{ 
+	width : 75%; 
+	padding : 2px 0;
+}
+
 
 .my-chat {
 	text-align: right;
@@ -265,6 +292,26 @@ margin: 10px;
 	font-size: 9px;
 }
 
+.dm-item{
+	height: 12%;
+	display: flex;
+	padding: 5px 0;
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+    width: auto;
+}
+
+.dm-list{
+	width: 100%;
+	border: 1px solid #ccc;
+	list-style: none;
+	overflow: auto;
+}
+
+/* 채팅창 위 사진 */
+#chatProfile{
+    border-radius: 50%;
+}
 
 
 @media screen and (max-width: 470px) {

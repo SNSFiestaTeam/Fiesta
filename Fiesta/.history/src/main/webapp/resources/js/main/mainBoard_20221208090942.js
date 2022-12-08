@@ -1231,7 +1231,7 @@ function createBoard(board) {
 
           }
 
-          if (event.keyCode === 32) {
+          if (event.key === 'Space') {
             if(autoCompleteModal != undefined) {
               
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
@@ -1474,7 +1474,7 @@ function createBoard(board) {
           }
 
 
-          if (event.keyCode === 32) {
+          if (event.key === 'Space') {
             if(autoCompleteModal != undefined) {
               
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);

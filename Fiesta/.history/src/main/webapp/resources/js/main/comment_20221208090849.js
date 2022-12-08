@@ -446,7 +446,7 @@ for (let i = 0; i < commentInput.length; i++) {
       });
     }
 
-    if (event.keyCode === 32) {
+    if (event.key === 'Space') {
       if(autoCompleteModal != undefined) {
         
       autoCompleteModal.parentElement.removeChild(autoCompleteModal);

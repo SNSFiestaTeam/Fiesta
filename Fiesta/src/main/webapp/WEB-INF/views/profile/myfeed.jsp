@@ -50,8 +50,11 @@
         <c:if test="${feedMember.memberNickname == loginMember.memberNickname}">
 
         <section class="info-section">
+          <form action="/setting/updateImage" method="POST" id="profilefrm" name="memberProfileImg" enctype="multipart/form-data">
+
           <div id="profile-photo">
-            <button id="self">
+            <button id="self" type="button">
+              <input type="file" name="memberProfileImg", id="image-input" accept="image/*">
               <c:if test="${ empty feedMember.memberProfileImg}">
                 <img id="selfImg" src="/resources/images/profile/profile.jpg" />
               </c:if>
@@ -61,6 +64,7 @@
               </c:if>
             </button>
           </div>
+          </form>
 
           <div id="profile-text">
             <div id="nickname">
@@ -225,7 +229,7 @@
         <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/follow-board.jsp"/>
         <jsp:include page="/WEB-INF/views/profile/following-board.jsp"/>
-        <jsp:include page="/WEB-INF/views/profile/profile-edit-board.jsp"/>
+        <jsp:include page="/WEB-INF/views/setting/profile-edit-board.jsp"/>
         <%-- 새게시물작성 모달jsp --%>
     <jsp:include page="/WEB-INF/views/board/newpost-file.jsp" />
     <jsp:include page="/WEB-INF/views/board/newpost-eidt.jsp" />
