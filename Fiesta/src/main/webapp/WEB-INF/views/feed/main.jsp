@@ -68,10 +68,10 @@
               <c:if test="${account.memberNickname != loginMember.memberNickname}">
                 <div class="account-Group">
                   <a href="/feed/${account.memberNickname}" class="profileImages" >
-                    <c:if test="${not empty acoount.memberProfileImg}">
+                    <c:if test="${not empty account.memberProfileImg}">
                       <img src="${account.memberProfileImg}">
                     </c:if>
-                    <c:if test="${empty acoount.memberProfileImg}">
+                    <c:if test="${empty account.memberProfileImg}">
                       <img src="/resources/images/profile/profile.jpg">
                     </c:if>
                   </a>
