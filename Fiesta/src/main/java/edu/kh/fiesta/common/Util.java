@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 //유요한 기능을 모아둔 클래스
 public class Util {
+	
+	
+	
 	// 파일명 변경 메소드
 	public static String fileRename(String originFileName) {
 		SimpleDateFormat sdfd = new SimpleDateFormat("yyyyMMdd");
@@ -51,6 +54,7 @@ public class Util {
 	
 	
 	
+	
 //	해시태그 인식해서 a태그로 감싸기
 	public static String hashTagHandling(String content) {
 
@@ -66,6 +70,18 @@ public class Util {
 			content = content.replace(str,
 					"<a href='/search?searchInput="+pathName+"' class='hashtag'>"+str+"</a>");
 		}
+		return content;
+	}
+	
+	
+//	해시태그 인식해서 a태그로 감싸기 해제
+	public static String hashTagClear(String content) {
+		
+
+			content = content.replaceAll("<a href='/search?searchInput=", ""); 
+			content = content.replaceAll("</a>", ""); 
+			content = content.replaceAll("' class='hashtag'>", ""); 
+
 		return content;
 	}
 	

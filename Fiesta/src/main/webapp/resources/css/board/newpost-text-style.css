@@ -80,6 +80,8 @@
     width: 250px;
     height: 250px;
     overflow: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   .new-post-bottom-text {
     width: 100%;
@@ -107,6 +109,8 @@
     width: 350px;
     height: 350px;
     overflow: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   .new-post-bottom-text {
     /* width: 100%;
@@ -135,6 +139,8 @@
     width: 400px;
     height: 250px;
     overflow: auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   .new-post-bottom-text {
     width: 100%;
@@ -165,7 +171,7 @@
     width: 500px;
     height: 500px;
     overflow: hidden;
-    margin: 0 auto;
+    /* margin: 0 auto; */
   }
   .bottom-right-box {
     width: 390px;
