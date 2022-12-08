@@ -4,6 +4,7 @@
 
 <c:set var="boardList" value="${map.boardList}" />
 <c:set var="pagination" value="${map.pagination}" />
+<c:set var="accountList" value="${map.accountList}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +15,9 @@
     <title>Fiesta</title>
 
     <!-- CSS 링크 -->
+        <link rel="stylesheet" href="/resources/css/search/search-style(web).css" />
+    <link rel="stylesheet" href="/resources/css/search/search-style(tablet).css" />
+    <link rel="stylesheet" href="/resources/css/search/search-style(mobile).css" />
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
@@ -47,6 +51,59 @@
     <!-- 메인 섹션 -->
     <!-- main 태그 안쪽에 구현할 태그 작성해주시면 됩니다. -->
     <main>
+      <!-- 최대 6개 -->
+      <div style="display:flex; justify-content:center; 
+        padding-top: 10px; width:90%; border-radius:10px; overflow-x:scroll; height: auto;
+        margin-bottom: 10px">
+        <section class="accountResult-section" style="display:flex; flex-direction:column;">
+            <span class="accountTitle">
+                <span style="margin-left:10px; font-size:13px;">추천 멤버</span>
+                <!-- <span>모두 보기</span> -->
+            </span>
+            
+            <c:if test="${not empty accountList}">
+            <article class="account-container">
+              <c:forEach var="account" items="${accountList}">
+
+              <c:if test="${account.memberNickname != loginMember.memberNickname}">
+                <div class="account-Group">
+                  <a href="/feed/${account.memberNickname}" class="profileImages" >
+                    <c:if test="${not empty acoount.memberProfileImg}">
+                      <img src="${account.memberProfileImg}">
+                    </c:if>
+                    <c:if test="${empty acoount.memberProfileImg}">
+                      <img src="/resources/images/profile/profile.jpg">
+                    </c:if>
+                  </a>
+                  <a href="/feed/${account.memberNickname}" style="font-size:8px" class="profileNickname">
+                    ${account.memberNickname}
+                  </a>
+                </div>
+              </c:if>
+              <!-- 로그인멤버가 검색될때 -->
+              <c:if test="${account.memberNickname == loginMember.memberNickname}">
+                  <div class="account-Group">
+                  <a href="/feed/${loginMember.memberNickname}" class="profileImages">
+                    <c:if test="${not empty memberProfileImg}">
+                      <img src="${memberProfileImg}">
+                    </c:if>
+                    <c:if test="${empty memberProfileImg}">
+                      <img src="/resources/images/profile/profile.jpg">
+                    </c:if>
+                  </a>
+                  <a href="/feed/${loginMember.memberNickname}" class="profileNickname" style="font-size:8px">
+                    ${loginMember.memberNickname}
+                  </a>
+                </div>
+              </c:if>
+
+              </c:forEach>
+            </article>
+            </c:if>
+        </section>
+      </div>
+
+
       <section>
         <!-- 인스타 피드 -->
         <section class="feed-section" id="feedSection">

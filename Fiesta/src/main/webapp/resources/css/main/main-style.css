@@ -54,6 +54,8 @@ button {
 }
 
 main {
+  display: flex;
+  align-items: center;
   width: 100%;
   background-color: #fafafa;
 }
@@ -64,6 +66,7 @@ main > section {
   margin: auto;
   justify-content: center;
 }
+
 
 #emptyBoardList {
   height: 73vh;

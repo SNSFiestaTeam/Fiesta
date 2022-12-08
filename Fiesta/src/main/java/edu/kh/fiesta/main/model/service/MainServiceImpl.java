@@ -13,6 +13,7 @@ import edu.kh.fiesta.main.model.dao.MainDAO;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.Pagination;
 import edu.kh.fiesta.main.model.vo.Report;
+import edu.kh.fiesta.member.model.vo.Member;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -26,36 +27,23 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public Map<String, Object> selectBoardList(int memberNo) {
 		
-		int listCount = dao.getListCount(memberNo);		
+		
+		List<Member> accountList = dao.selectMember(memberNo);
+		
+		
+		int listCount = dao.getListCount(memberNo);	
+		
 		
 		Pagination pagination = new Pagination(listCount, 1);
 		
-		List<Board> boardList = dao.selectBoardList(pagination, memberNo);
 		
-//		for(Board board: boardList) {
-//			board.getBoardContent().replaceAll("(#[^\\s#]+)", 
-//					"<a href='/search?searchInput=\"+tagName+\"' class='hashtag'>\"+match+\"</a>");
-//			
-//			Pattern pattern = Pattern.compile("(#[^\\s#]+)");
-//			
-//			Matcher matcher = pattern.matcher(board.getBoardContent());
-//			
-//			while(matcher.find()) {
-//				String str = matcher.group(1);
-//				
-//				String tagName = str.replaceAll("#", ""); 
-//				
-//				board.setBoardContent(board.getBoardContent().replace(str,
-//						"<a href='/search?searchInput="+tagName+"' class='hashtag'>"+str+"</a>"));
-//			}
-//			
-//			System.out.println();
-//		}
+		List<Board> boardList = dao.selectBoardList(pagination, memberNo);
 				
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
+		map.put("accountList", accountList);
 		
 		
 		return map;
