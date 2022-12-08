@@ -162,10 +162,17 @@ followingClose.addEventListener("click", function(){
 })
 
 
+<<<<<<< Updated upstream
 self.addEventListener("click", function(){
     profileContainer.style.display = "flex";
    
 })
+=======
+// self.addEventListener("click", function(){
+//     profileContainer.style.display = "flex";
+//     scrollrock.style.overflow = "hidden";
+// })
+>>>>>>> Stashed changes
 
 editClose.addEventListener("click", function(){
     profileContainer.style.display = "none"
@@ -205,7 +212,7 @@ function createObserver() {
 }
 
 // * 현재 페이지 번호 변수 선언
-let cp = 4;
+let cp = 2;
     
 function selectBookmarkList(entries, observer) {
 

@@ -27,4 +27,5 @@ public class Member {
 	private int followingCount;
 	private int followCount;
 	private int followCheck;
+	
 }
