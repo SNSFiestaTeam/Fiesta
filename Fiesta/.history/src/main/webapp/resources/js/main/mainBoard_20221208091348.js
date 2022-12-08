@@ -258,7 +258,7 @@ function createBoard(board) {
     // img태그에 src 속성, alt 속성 추가
     uploadedImage.setAttribute(
       'src',
-      '/resources/images/default/defaultImg.png' 
+      '/resources/images/default/defaultImg.png'
     );
     uploadedImage.classList.add('uploaded-image');
     imageLi.append(uploadedImage);
