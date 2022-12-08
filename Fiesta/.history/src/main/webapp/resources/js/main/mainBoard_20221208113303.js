@@ -1013,8 +1013,6 @@ function createBoard(board) {
 
 
 
-  div4.append(commentInput, postingBtn);
-
 
   // 댓글 입력창에 @, # 입력 이벤트 추가
   commentInput.addEventListener('keyup', function (event) {
@@ -1240,7 +1238,7 @@ function createBoard(board) {
             console.log('모달 삭제');
           }
             
-          commentInput.removeEventListener('input', arguments.callee);
+          commentInput[i].removeEventListener('input', arguments.callee);
           e.preventDefault();
           event.preventDefault();
           }
@@ -1252,7 +1250,7 @@ function createBoard(board) {
               console.log('모달 삭제');
             }
             
-            commentInput.removeEventListener('input', arguments.callee);
+            commentInput[i].removeEventListener('input', arguments.callee);
             event.preventDefault();
             e.preventDefault();
           }
@@ -1525,6 +1523,16 @@ function createBoard(board) {
     event.preventDefault();
     }
 
+    if (event.key === 'Enter') {
+      if(autoCompleteModal != undefined) {
+
+        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
+        console.log('모달 삭제');
+
+      }
+      commentInput.removeEventListener('input', arguments.callee);
+      event.preventDefault();
+    }
 
     if (event.key === 'Enter') {
       if(autoCompleteModal != undefined) {
@@ -1545,32 +1553,21 @@ function createBoard(board) {
   });
 
 
-  commentInput.addEventListener('keypress', function (event) {
-    if (event.key === 'Space') {
-      if(autoCompleteModal != undefined) {
-        
-      autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-      console.log('모달 삭제');
-    }
-      
-    commentInput.removeEventListener('input', arguments.callee);
-    event.preventDefault();
-    }
 
 
-    if (event.key === 'Enter') {
-      if(autoCompleteModal != undefined) {
-        autoCompleteModal.parentElement.removeChild(autoCompleteModal);
-        console.log('모달 삭제');
-
-      }
-      
-      commentInput.removeEventListener('input', arguments.callee);
-      event.preventDefault();
-    }
 
 
-  })
+
+
+
+
+
+
+
+
+
+  
+  div4.append(commentInput, postingBtn);
   
 }
 

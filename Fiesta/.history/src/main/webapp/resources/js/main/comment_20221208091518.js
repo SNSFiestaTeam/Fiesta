@@ -211,18 +211,18 @@ for (let i = 0; i < commentInput.length; i++) {
             autoCompleteModal.parentElement.removeChild(autoCompleteModal);
             console.log('모달 삭제');
             
-            commentInput[i].removeEventListener('input', arguments.callee);
             e.preventDefault();
             event.preventDefault();
+            commentInput[i].removeEventListener('input', arguments.callee);
           }
       
           if (event.key === 'Enter') {
               autoCompleteModal.parentElement.removeChild(autoCompleteModal);
               console.log('모달 삭제');
             
-              commentInput[i].removeEventListener('input', arguments.callee);
               event.preventDefault();
               e.preventDefault();
+              commentInput[i].removeEventListener('input', arguments.callee);
             }
 
 
@@ -234,8 +234,8 @@ for (let i = 0; i < commentInput.length; i++) {
             console.log('모달 삭제');
 
           }
-          commentInput[i].removeEventListener('input', arguments.callee);
           event.preventDefault();
+          commentInput[i].removeEventListener('input', arguments.callee);
         }
 
       });
@@ -414,9 +414,9 @@ for (let i = 0; i < commentInput.length; i++) {
             console.log('모달 삭제');
           }
             
-          commentInput[i].removeEventListener('input', arguments.callee);
-          e.preventDefault();
-          event.preventDefault();
+            e.preventDefault();
+            event.preventDefault();
+            commentInput[i].removeEventListener('input', arguments.callee);
           }
       
           if (event.key === 'Enter') {
@@ -426,9 +426,9 @@ for (let i = 0; i < commentInput.length; i++) {
               console.log('모달 삭제');
             }
             
-            commentInput[i].removeEventListener('input', arguments.callee);
-            event.preventDefault();
-            e.preventDefault();
+              event.preventDefault();
+              e.preventDefault();
+              commentInput[i].removeEventListener('input', arguments.callee);
             }
 
 
@@ -440,8 +440,8 @@ for (let i = 0; i < commentInput.length; i++) {
             console.log('모달 삭제');
 
           }
-          commentInput[i].removeEventListener('input', arguments.callee);
           event.preventDefault();
+          commentInput[i].removeEventListener('input', arguments.callee);
         }
 
       });
@@ -454,8 +454,8 @@ for (let i = 0; i < commentInput.length; i++) {
       console.log('모달 삭제');
     }
       
-    commentInput[i].removeEventListener('input', arguments.callee);
-    event.preventDefault();
+      event.preventDefault();
+      commentInput[i].removeEventListener('input', arguments.callee);
     }
 
     if (event.key === 'Enter') {
@@ -465,8 +465,8 @@ for (let i = 0; i < commentInput.length; i++) {
         console.log('모달 삭제');
       }
       
-      commentInput[i].removeEventListener('input', arguments.callee);
-      event.preventDefault();
+        event.preventDefault();
+        commentInput[i].removeEventListener('input', arguments.callee);
       }
 
     
