@@ -204,9 +204,9 @@ followBtn.addEventListener("click", function(){
                     profileNickname.append(nicknameA);
 
                     const deleteBtn = document.createElement("button");
-                    deleteBtn.innerText = "팔로우";
+                    // deleteBtn.innerText = "팔로우";
 
-                    div1.append(deleteBtn);
+                    // div1.append(deleteBtn);
                 }
             }
 

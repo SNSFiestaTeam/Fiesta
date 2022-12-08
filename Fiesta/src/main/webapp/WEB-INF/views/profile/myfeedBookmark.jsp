@@ -17,6 +17,9 @@
     <title>Fiesta</title>
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/myfeedBookmark.css" />
+    <link rel="stylesheet" href="/resources/css/myfeedBookmark(web).css" />
+    <link rel="stylesheet" href="/resources/css/myfeedBookmark(tablet).css" />
+    <link rel="stylesheet" href="/resources/css/myfeedBookmark(mobile).css" />
     <%-- <link rel="stylesheet" href="/resources/css/memberfeed.css"> --%>
     <link rel="stylesheet" href="/resources/css/follow-board.css" />
     <link rel="stylesheet" href="/resources/css/following-board.css" />
@@ -160,7 +163,7 @@
           <c:if test ="${fn:length(bookmarkList) > 0}">
           <div class="img-container">
             <c:forEach var="bookmark" items ="${bookmarkList}" begin="0" end="2">
-            <a href="/feedDetail/${board.boardNo}">
+            <a href="/feedDetail/${bookmark.boardNo}">
               <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
@@ -175,7 +178,7 @@
           <c:if test ="${fn:length(bookmarkList) > 3}">
           <div class="img-container2">
             <c:forEach var="bookmark" items ="${bookmarkList}" begin="3" end="5">
-            <a href="/feedDetail/${board.boardNo}">
+            <a href="/feedDetail/${bookmark.boardNo}">
               <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
@@ -190,7 +193,7 @@
            <c:if test ="${fn:length(bookmarkList) > 6}">
           <div class="img-container3">
             <c:forEach var="bookmark" items ="${bookmarkList}" begin="6" end="8">
-            <a href="/feedDetail/${board.boardNo}">
+            <a href="/feedDetail/${bookmark.boardNo}">
               <img class="feed-img" src="${bookmark.imgPath}"
               />
               <div class="hover-icon-container">
@@ -205,7 +208,7 @@
         </c:if>
 
         <c:if test="${empty bookmarkList}">
-          <pre>게시글을 작성해주세요.</pre>
+          <div id="br">게시글을 작성해주세요.</div>
         </c:if>
       
 
