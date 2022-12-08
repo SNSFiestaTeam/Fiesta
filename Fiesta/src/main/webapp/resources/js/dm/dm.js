@@ -24,31 +24,14 @@ sendMessageBtn.addEventListener("click", ()=>{
 
 
 const proImg = document.getElementById("proImg")
-const next = document.getElementById("next");
+const nextBtn = document.getElementById("nextBtn");
 const messageName = document.getElementById("messageName");
 
-// 다음 클릭
-next.addEventListener("click", ()=>{
-  dmMenu.style.display = "none";
-  noClick.style.display = "none";
-  click.style.display = "flex";
-  messageName.innerText = recipient.innerText;
 
-  $.ajax({
-    url: "/dm/number",
-    data : {"memberNickname" : RecipientMemberNick},
-    success : (result) =>{
-      
-      const RecipeintMemberNo = result;
-    }
-
-  })
-  
-})
 
 const memberListArea = document.getElementById("memberListArea");
 
-const chatMember = document.getElementsByClassName("chatMember");
+
 const modalNick = document.getElementsByClassName("modalNick");
 const recipient = document.getElementById("Recipient");
 
@@ -67,14 +50,24 @@ sendPeople.addEventListener("input", ()=>{
       
       for(let member of memberList){
         const li = document.createElement("li");
+        const input = document.createElement("input")
         const img = document.createElement("img");
         const span = document.createElement("span");
-        
+        const targetNoInput = document.createElement("input");
+
+
         memberListArea.append(li);
+        input.setAttribute('type', 'hidden');
+        input.setAttribute("value", member.memberNo);
+        input.setAttribute("name", 'targetNo');
+
+
         li.classList.add("chatMember")
-        li.append(img, span);
+        li.append(input,img, span, targetNoInput);
         img.classList.add("modalProfile")
         span.classList.add("modalNick")
+        targetNoInput.setAttribute('type', 'hidden');
+        targetNoInput.value = member.memberNo;
         
         if(member.memberProfileImg == null){
           img.setAttribute("src", "/resources/images/user.jpg")
@@ -84,27 +77,86 @@ sendPeople.addEventListener("input", ()=>{
 
         span.innerText = member.memberNickname;
 
-        for(let item of chatMember){
-          item.addEventListener("click", e=>{
-            const itemName = item.innerText;
-            const itemImage = item.getAttribute("src");
-          
-            const sendPeople = document.getElementById('sendPeople');
-            sendPeople.value = '';
-            recipient.innerText = itemName;  
-          
-          })
 
-        }
+        li.addEventListener("click", e => {
 
+
+          targetNo = member.memberNo;
+
+          recipient.innerText = "";  
+          recipient.innerText = member.memberNickname;  
+          sendPeople.value = '';
+          
+
+          // $.ajax({
+          //   url : "/dm/enter",
+          //   data : {"targetNo" : item.children[0].value},
+          //   dataType:"JSON",
+          //   success : ()=>{
+          //     console.log("성공");
+          //   }
+  
+          // });
+
+        })
+
+          
       }
     },
     error: ()=>{
       console.log("실패");
     }
+  }); 
+})
 
+
+
+
+
+// 다음 클릭
+nextBtn.addEventListener("click", () => {
   
-  });    
+  $.ajax({
+    url: "/dm/enter",
+    data: { "targetNo": targetNo },
+    dataType: "json",
+    success: (map) => {
+      console.log(map);
+
+      const messageList = map.messageList;
+
+      // 전역변수 targetNo에 타겟넘버 저장
+      targetNo = map.targetNo;
+      chattingNo = map.chattingNo;
+
+      if (messageList.length > 0) {
+
+
+        // 메세지가 존재하면 화면에 출력
+        for (let message of messageList) {
+
+          // 메세지 출력구문
+
+
+          
+        }
+      }
+
+    },
+    error: () => {
+      console.log("채팅방 입장에러");
+    }
+    
+  })
+
+
+  dmMenu.style.display = "none";
+  noClick.style.display = "none";
+  click.style.display = "flex";
+  messageName.innerText = recipient.innerText;
+
+  const RecipientMemberNick = recipient.innerText;
+
 })
 
 
@@ -176,8 +228,8 @@ const roomListAddEvent = () =>{
       selectTargetProfile = item.children[0].children[0].getAttribute("src");
       selectTargetName = item.children[1].children[0].children[0].innerText;
 
-      if(item.children[1].children[1].children[1] != undefined){
-        item.children[1].children[1].children[1].remove();
+      if(item.children[1].children[1] != undefined){
+        item.children[1].children[1].remove();
       }
 
       for(let it of chattingItemList) it.classList.remove("select")
@@ -190,13 +242,19 @@ const roomListAddEvent = () =>{
   }
 }
 
+const chatProfile = document.getElementById("chatProfile");
 const selectChattingFn = () =>{
 
   $.ajax({
-    url : "dm/selectMessage",
-    data:{"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
+    url : "/dm/selectMessage",
+    data:{"chattingNo" : selectChattingNo},
     dataType : "JSON",
-    success : messageList =>{
+    success : (messageList) =>{
+
+      noClick.style.display = "none";
+      click.style.display = "flex";
+      messageName.innerText = selectTargetName;
+      chatProfile.setAttribute("src", selectTargetProfile);
 
       const ul = document.querySelector(".dm-area");
       ul.innerHTML = "";
@@ -234,13 +292,15 @@ const selectChattingFn = () =>{
           li.append(img,div);
         }
         ul.append(li);
-        display.scrollTop = display.scrollHeight;
+        dmArea.scrollTop = dmArea.scrollHeight;
       }
 
     },
       error : () => {
-        console.log(object);}
+        console.log();}      
+      
   })
+ 
 }
 
 const selectRoomList = () =>{
@@ -288,22 +348,22 @@ const selectRoomList = () =>{
 
         const recentSendTime = document.createElement("span");
         recentSendTime.classList.add("recent-send-time");
-        recentSendTime.innerText = roon.sendDate;
+        recentSendTime.innerText = room.sendTime;
 
-        p.append(targetName, recentSendTime);
-
+        
         const div = document.createElement("div");
-
+        
         const recentMessage = document.createElement("p");
         recentMessage.classList.add("recent-message");
-
+        
         if(room.lastMessage != undefined){
           recentMessage.innerHTML = room.lastMessage;
         }
-
-        div.append(recentMessage);
         
-        itemBody.append(p, div);
+        p.append(targetName, recentSendTime, recentMessage);
+        // div.append(recentMessage);
+        
+        itemBody.append(p);
 
 
         if(room.notReadCount > 0 && room.chattingNo != selectChattingNo){
@@ -312,24 +372,27 @@ const selectRoomList = () =>{
           notReadCount.classList.add("not-read-count");
           notReadCount.innerText = room.notReadCount;
           div.append(notReadCount);
-        } else{
-          $.ajax({
-            url : "/dm/updateReadFlag",
-            data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
-            success : result => {
-              console.log("성공");
-            },
-            error : () => {
-              console.log("실패");
-            }
-          })
-        }
+          } else{
+
+            $.ajax({
+              url : "/dm/updateReadFlag",
+              data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
+              type:"GET",
+              success : result => {
+                console.log(result);
+              },
+              error : () => {
+                console.log("실패");
+              }
+            })
+          }
 
         li.append(itemHeader, itemBody);
         chattingList.append(li);
 
       }
       roomListAddEvent();
+      selectRoomList();
     }
   })
 
@@ -338,7 +401,7 @@ const selectRoomList = () =>{
 
 const sendMessage = () =>{
   const chattingInput = document.getElementById("chattingInput");
-
+  console.log(selectTargetNo);
   if(chattingInput.value.trim().length == 0){
     chattingInput.value = "";
   } else{
@@ -348,6 +411,10 @@ const sendMessage = () =>{
       "chattingNo" : selectChattingNo,
       "messageContent" : chattingInput.value,
     };
+
+    console.log(targetNo);
+    console.log(selectChattingNo);
+    
     chattingSock.send(JSON.stringify(obj));
 
     chattingInput.value = "";
@@ -362,18 +429,32 @@ chattingInput.addEventListener("keyup", e=>{
   }
 })
 
+const chattingRoom = document.getElementById("chattingRoom");
+
+
 
 chattingSock.onmessage = function(e){
   const msg = JSON.parse(e.data);
 
+
+  console.log(msg);
+  console.log(msg.sendDate);
+  console.log(msg.sendTime);
+
   if(selectChattingNo == msg.chattingNo){
+
+    // noClick.style.display = "none";
+    // click.style.display = "flex";
+    // messageName.innerText = selectTargetName;
+    // chatProfile.setAttribute("src", selectTargetProfile);
+
     const ul = document.querySelector(".dm-area");
 
     const li = document.createElement("li");
 
     const span = document.createElement("span");
     span.classList.add("chatDate");
-    span.innerText = msg.sendDate;
+    span.innerText = msg.SendDate;
 
     const p = document.createElement("p");
     p.classList.add("chat");
@@ -381,29 +462,31 @@ chattingSock.onmessage = function(e){
 
     if(loginMemberNo == msg.senderNo){
       li.classList.add("my-chat");
-
       li.append(span, p);
-    } else {
-    li.classList.add("target-chat");
 
-    const img = document.createElement("img");
-    img.setAttribute("src", selectTargetProfile);
+      } else {
+      li.classList.add("target-chat");
 
-    const div = document.createElement("div");
+      const img = document.createElement("img");
+      img.setAttribute("src", selectTargetProfile);
 
-    const b = document.createElement("b");
-    b.innerText = selectTargetName;
+      const div = document.createElement("div");
 
-    const br = document.createElement("br");
+      const b = document.createElement("b");
+      b.innerText = selectTargetName;
 
-    div.append(b, br, p, span);
-    li.append(img, div);
-  }  
+      const br = document.createElement("br");
+
+      div.append(b, br, p, span);
+      li.append(img, div);
+    }  
   ul.append(li);
-  dmArea.scrollTop = dmArea.scrollHeight;
+  chattingRoom.style.scrollTop = chattingRoom.style.scrollHeight;
   }
- selectRoomList();
+
+ selectChattingFn();
 }
+
 
 
 const openNo = () => {

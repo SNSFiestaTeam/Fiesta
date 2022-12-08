@@ -50,8 +50,11 @@ public class ChattingWebsocketHandler extends TextWebSocketHandler{
 	int result = service.insertMessage(msg);
 	
 	if(result > 0) {
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy,MM.dd hh:mm");
 		msg.setSendDate(sdf.format(new Date()));
+		
+		System.out.println(msg);
 		
 		for(WebSocketSession s : sessions) {
 			
