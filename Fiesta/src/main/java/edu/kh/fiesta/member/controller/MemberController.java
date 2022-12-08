@@ -145,12 +145,14 @@ public class MemberController {
 		
 		int result = service.updatePw(inputEmail, memberPw);
 		
+		System.out.println(result);
+		
 		String message = null;
 		String path = null;
 		
 		if(result > 0) {
 			message = "비밀번호가 재설정되었습니다.😊";
-			path = "/login";
+			path = "/";
 		
 		} else {
 			message = "다시 시도해주세요..";

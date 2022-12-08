@@ -1,3 +1,21 @@
+
+const searchX = document.getElementById("searchX");
+searchX.addEventListener("click", () =>{
+
+  searchInput1.blur();
+  searchInput1.value = '';
+
+  if(searchCompleteModal.style.display = 'flex') {
+    searchCompleteModal.style.display = 'none';
+  }
+
+
+})  
+
+
+
+
+
 // 검색 모달창 
 const searchBtn = document.getElementById('searchBtn');
 

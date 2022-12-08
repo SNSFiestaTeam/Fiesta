@@ -53,6 +53,14 @@ signUpButton.classList.remove("buttonOn");
 // signUpButton.disabled = true;
 
 
+// memberName.style.display = 'none';
+// memberNickname.style.display = 'none';
+// memberPw.style.display = 'none';
+// memberPwConfirm.style.display = 'none';
+
+
+
+
 // icon 전체에 회색 적용
 let icon = document.getElementsByClassName("icon");
 
@@ -124,6 +132,8 @@ memberEmail.addEventListener("input", function(){
         checkObj.memberEmail = false;
     }
 });
+
+
 
 
 
@@ -561,7 +571,11 @@ checkAuthKeyBtn.addEventListener("click", function(){
                     sendAuthKeyBtn.classList.add("displayOff");
                     sendAuthKeyBtn.classList.remove("displayBlock", "authButtonOn");
 
-                    
+
+                    // memberName.style.display = 'flex';
+                    // memberNickname.style.display = 'flex';
+                    // memberPw.style.display = 'flex';
+                    // memberPwConfirm.style.display = 'flex';
 
                 } else{
                     // alert("인증번호가 일치하지 않습니다.")

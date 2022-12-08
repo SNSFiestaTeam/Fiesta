@@ -23,8 +23,9 @@
                 placeholder="검색"
                 autocapitalize="none"
                 autocomplete="off"
+                required
               />
-              <button id="searchX"><i class="fa-solid fa-xmark"></i></button>
+              <button type="button" id="searchX"><i class="fa-solid fa-xmark"></i></button>
             </fieldset>
           <jsp:include page="/WEB-INF/views/search/search-complete.jsp" />
           </form>
