@@ -10,7 +10,7 @@
     <section class="modal_post_section_text" >
       <!-- post top -->
 
-      <form action="/write" method="POST" enctype="multipart/form-data" id="postForm" name="postForm" onsubmit="return writeValidate()">
+      <form action="/write" method="POST" enctype="multipart/form-data" id="postForm" name="postForm" onsubmit="return writeValidatee()">
 
 
         <input type="file" name="newPostFile" id="cropperfile"  none accept="image/*" multiple style="display:none" >
@@ -53,7 +53,7 @@
               </div>
 
               <div class="new-post-bottom-inputtext">
-                <textarea name="boardContent" rows="5" placeholder="문구 입력..." id="boardContent"></textarea>
+                <textarea name="boardContent" rows="5" placeholder="문구 입력..." id="boardContent2"></textarea>
               </div>
 
               <%-- <div class="new-post-bottom-textsize">

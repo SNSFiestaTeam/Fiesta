@@ -150,6 +150,7 @@ document.getElementById("basicImage").addEventListener("click", () => {
   // <div class="swiper-slide"><img id="file" src="../../resources/images/20e6905c2155885b86dc81e6a63fc88b.jpg" alt="파일미리보기"></div>
 
   // -----------
+  
   const swiperSildeDiv = document.createElement("div");
   const fileImg = document.createElement("img");
 
@@ -199,6 +200,8 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
         fileImg.classList.add("post-img-viwe");
         fileImg.id = "files";
         fileImg.setAttribute("src", e.target.result);
+
+        console.log(e.target.result);
 
         swiperSildeDiv.append(fileImg);
         textFileSwiper.append(swiperSildeDiv);
@@ -259,7 +262,7 @@ document.getElementById("cropperfile").addEventListener("change", (e) => {
 });
 
 function writeValidate() {
-  const boardContent = document.getElementById("boardContent");
+  const boardContent = document.getElementById("updateBoardContent");
   if (boardContent.value.trim().length == 0) {
     alert("내용을 입력해주세요.");
     boardContent.value = "";
@@ -267,10 +270,22 @@ function writeValidate() {
     return false;
   } else {
     return true;
-    console("true가 들어감");
+    console.log("true가 들어감");
   }
+  
 }
-
+function writeValidatee() {
+const boardContent2 = document.getElementById("boardContent2");
+if (boardContent2.value.trim().length == 0) {
+  alert("내용을 입력해주세요.");
+  boardContent2.value = "";
+  boardContent2.focus();
+  return false;
+} else {
+  return true;
+  console.log("true가 들어감");
+}
+}
 document.getElementById("newPostCloseFinish").addEventListener("click", () => {
   modalBackgroundFinish.style.display = "none";
   location.reload();
