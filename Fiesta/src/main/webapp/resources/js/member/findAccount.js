@@ -27,6 +27,8 @@ const changePwBtn = document.getElementById("changePwBtn");
 
 const toLoginArea = document.getElementById("toLogin");
 
+const refresh = document.getElementById("refresh");
+
 // 이메일로 인증하기 버튼 비활성화
 sendAuthKeyBtn.classList.add("buttonOff");
 sendAuthKeyBtn.classList.remove("buttonOn");
@@ -40,8 +42,11 @@ checkAuthKeyBtn.classList.add("gray");
 changePwBtn.classList.add("displayOff");
 
 
+
 // 이메일 유효성 검사
 memberEmail.addEventListener("input", function(){
+
+    refresh.innerHTML = "느리게 동작할 경우 새로고침 해주세요.";
     
     // 필수 입력
     if(memberEmail.value.trim().length == 0){ 
@@ -93,6 +98,11 @@ memberEmail.addEventListener("input", function(){
 
 });
 
+refresh.addEventListener("click", () => {
+    window.location.reload();
+})
+
+
 
 
 
@@ -104,6 +114,12 @@ let authSec = 59;
 
 // 이메일로 인증하기 버튼 누르면
 sendAuthKeyBtn.addEventListener("click",() => {
+    refresh.innerHTML = "";
+
+    checkAuthKeyBtn.innerHTML = "인증하기"
+    checkAuthKeyBtn.classList.add("gray");
+    checkAuthKeyBtn.classList.remove("red", "black");
+
     inputAuthArea.classList.remove("displayOff");
     inputAuthArea.classList.add("displayFlex");
 
@@ -136,8 +152,8 @@ sendAuthKeyBtn.addEventListener("click",() => {
 
         //_비동기라서 위 ajax와 동시에 아래 코드 실행됨.
         // alert("인증번호가 발송 되었습니다.");
-        toLoginArea.innerHTML = "인증번호가 발송되었습니다!"
-        toLoginArea.classList.add("green");
+        // toLoginArea.innerHTML = "인증번호가 발송되었습니다!"
+        // toLoginArea.classList.add("green");
 
         
         authTimerArea.innerText = "05:00";
@@ -233,6 +249,4 @@ checkAuthKeyBtn.addEventListener("click", function(){
         alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
     }
 });
-
-
 

@@ -174,7 +174,8 @@ main > section {
 }
 
 .profileImages img{
-    width: 80%;
+    width: 135px;
+    height: 135px;
     border-radius: 50%;
     margin-bottom: 8px;
 }

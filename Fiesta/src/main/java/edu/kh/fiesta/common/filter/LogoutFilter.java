@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class LogoutFilter implements Filter {
 
     public void init(FilterConfig fConfig) throws ServletException {
-    	System.out.println("로그인 필터 생성");
+    	System.out.println("로그아웃 필터 생성");
     }
 
     

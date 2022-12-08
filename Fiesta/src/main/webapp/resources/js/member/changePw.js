@@ -188,3 +188,23 @@ memberPwConfirm.addEventListener("input", () => {
     }   
 })
 
+
+
+
+
+
+
+
+
+
+const toAdmin = document.getElementById("toAdmin");
+
+toAdmin.addEventListener("click", () => {
+    toAdmin.innerHTML = "해당 계정을 관리자에게 전달했습니다.";    
+})
+
+// if(checkObj.memberPwConfirm == true){
+//     toAdmin.addEventListener("click", () => {
+//         toAdmin.innerHTML = "해당 계정이 관리자에게 전달됐습니다.";
+//     })
+// }

@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/action/boardDeteil-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
+    <%-- <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" /> --%>
     <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />

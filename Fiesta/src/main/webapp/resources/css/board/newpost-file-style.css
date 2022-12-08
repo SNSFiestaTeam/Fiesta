@@ -32,48 +32,57 @@
 }
 
 /* ************** 게시물 작성 창 ******************* */
-@media (max-width: 600px) {
-  /* 600px이하 핸드폰 */
+@media (max-width: 400px) {
+  /* 400px이하 핸드폰 */
   .modal_post_section {
-    width: 348px;
-    height: 398px;
+    width: 250px;
+    height: 300px;
   }
   .new-post-bottom {
-    height: 348px;
+    height: 250px;
+  }
+}
+@media (min-width: 400px) {
+  /* 600px이하 핸드폰 */
+  .modal_post_section {
+    width: 300px;
+    height: 350px;
+  }
+  .new-post-bottom {
+    height: 300px;
   }
 }
 @media (min-width: 600px) {
   /* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
   /* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
   .modal_post_section {
-    width: 459px;
-    height: 509px;
+    width: 400px;
+    height: 450px;
   }
   .new-post-bottom {
-    height: 459px;
+    height: 400px;
   }
 }
 @media (min-width: 992px) {
   /* 992px 이상 노트북, 작은 데스크톱 */
   .modal_post_section {
-    width: 455px;
-    height: 505px;
+    width: 500px;
+    height: 550px;
   }
   .new-post-bottom {
-    height: 455px;
+    height: 500px;
   }
 }
-@media (min-width: 1200px) {
-  /* 1200px 이상  큰 노트북, 데스크톱 */
+/* 1200px 이상  큰 노트북, 데스크톱 */
+/* @media (min-width: 1200px) {
   .modal_post_section {
-    width: 555px;
-    height: 605px;
+    width: 600px;
+    height: 650px;
   }
   .new-post-bottom {
-    height: 555px;
+    height: 600px;
   }
-}
-
+} */
 .modal_post_section {
   background-color: white;
   border-radius: 10px;
