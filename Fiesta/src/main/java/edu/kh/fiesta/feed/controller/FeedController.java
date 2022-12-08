@@ -97,6 +97,15 @@ public class FeedController {
 		return new Gson().toJson(feedMap);
 	}
 	
+	@GetMapping("/feed/popularFeed/selectPopularList")
+	@ResponseBody
+	public String selectPopularList() {
+		
+		
+		return null;
+		
+	}
+	
 	/** 북마크 AJAX 조회
 	 * @param memberNickname
 	 * @param model
@@ -164,7 +173,10 @@ public class FeedController {
 	 */
 	@PostMapping("/feed/{memberNickname}/hashtagList")
 	@ResponseBody
-	public String selectHashtagList(int memberNo) {
+	public String selectHashtagList(@SessionAttribute(value="loginMember") Member loginMember) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
 		List<Hashtag> hashtagList = service.selectHashtagList(memberNo);
 		
 		return new Gson().toJson(hashtagList);

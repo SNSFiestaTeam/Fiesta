@@ -3,12 +3,19 @@ const followContainer = document.getElementById("follow-container");
 const scrollrock = document.getElementById("scrollrock")
 const followingBtn = document.getElementById("following-btn");
 const followingContainer = document.getElementById("following-container");
+const hashtagContainer = document.getElementById("hashtag-container");
 const self = document.getElementById("self");
 const profileContainer = document.getElementById("profile-container");
 const editClose = document.getElementById("edit-close");
 const followingPeople = document.getElementById("following-people");
+const hashtagArea = document.getElementById("hashtagList");
+// followingContent를 추가할 부모요소 불러오기
+const followingArea = document.getElementById("followingList");
 
 followingPeople.addEventListener("click", function(){
+
+    hashtagArea.style.display = "none";
+    followingArea.style.display = "flex";
 
     memberNo = document.getElementById('nickname').firstElementChild.nextElementSibling.value;
     $.ajax({
@@ -17,13 +24,13 @@ followingPeople.addEventListener("click", function(){
         data : {"memberNo" : memberNo},
         dataType : "json",
         success : (followingList) => {
+
             console.log(followingList);
-            
+
+
             for( let following of followingList) {
                 if(following.memberNo != memberNo) {
                     
-                    // followingContent를 추가할 부모요소 불러오기
-                    const followingArea = document.getElementById("followingList");
                     
                     // followingContent(div)요소 생성 및 class추가
                     const followingContent = document.createElement("div");
@@ -71,15 +78,77 @@ followingPeople.addEventListener("click", function(){
                 }
             }
             
-            followingContainer.style.display = "flex";
+            hashtagArea.style.display = 'none';
             scrollrock.style.overflow = "hidden";
         },
         error : () => {
             console.log("오류 발생");
         }
     });
-    
+})
 
+const followingHashtag = document.getElementById("following-hashtag");
+
+followingHashtag.addEventListener("click", function(){
+    // memberNo = document.getElementById('nickname').firstElementChild.nextElementSibling.value;
+    $.ajax({
+        url : "/feed/" + memberNickname + "/hashtagList",
+        type : "post",
+        data : {"memberNo" : memberNo},
+        dataType : "json",
+        success : (hashtagList) => {
+            hashtagArea.style.display = "flex";
+            hashtagArea.innerHTML = "";
+            
+            for( let hashtag of hashtagList) {
+                // if(hashtag.memberNo != memberNo) {
+                    
+                    
+                    const hashtagContent = document.createElement("div");
+                    hashtagContent.classList.add("hashtag-content");
+                    
+                    hashtagArea.append(hashtagContent);
+
+                    const div1 = document.createElement("div");
+                    const div2 = document.createElement("div");
+
+                    hashtagContent.append(div1);
+                    div1.append(div2);
+
+                    const profileImgSpan = document.createElement("span");
+                    const profileImg = document.createElement("img");
+                    
+                        profileImg.setAttribute("src", "/resources/images/default/hashtag_img.jpg");
+                        
+                    profileImgSpan.append(profileImg);
+
+                    const nicknameSpan = document.createElement("span");
+                    const nicknameA = document.createElement("a");
+                    
+                    nicknameA.href = "/search?searchInput = "+ hashtagContent;
+                    nicknameA.innerText = hashtag.hashtagContent;
+                    
+                    nicknameSpan.append(nicknameA);
+                    
+                    div2.append(profileImgSpan, nicknameSpan);
+                    
+                    const followingBtn = document.createElement("button");
+                    followingBtn.classList.add("hashtag-div");
+                    followingBtn.innerText = "팔로잉";
+                    
+                    div1.append(followingBtn);
+
+                // }
+            }
+            const followingArea = document.getElementById("followingList");
+
+            followingArea.style.display = "none";
+            scrollrock.style.overflow = "hidden";
+        },
+        error : () => {
+            console.log("오류 발생");
+        }
+    });
 })
 
 // 팔로우 ajax
@@ -135,7 +204,7 @@ followBtn.addEventListener("click", function(){
                     profileNickname.append(nicknameA);
 
                     const deleteBtn = document.createElement("button");
-                    deleteBtn.innerText = "삭제";
+                    deleteBtn.innerText = "팔로우";
 
                     div1.append(deleteBtn);
                 }
@@ -206,7 +275,7 @@ followingBtn.addEventListener("click", function(){
                     
                     const followingDiv = document.createElement("button");
 
-                    // followingDiv.innerText = "팔로잉";
+                    followingDiv.innerText = "팔로잉";
                     followingDiv.classList.add("following-div");
                     div1.append(followingDiv);
 
@@ -241,10 +310,10 @@ followingClose.addEventListener("click", function(){
 })
 
 
-self.addEventListener("click", function(){
-    profileContainer.style.display = "flex";
-    scrollrock.style.overflow = "hidden";
-})
+// self.addEventListener("click", function(){
+//     profileContainer.style.display = "flex";
+//     scrollrock.style.overflow = "hidden";
+// })
 
 editClose.addEventListener("click", function(){
     profileContainer.style.display = "none"
@@ -284,7 +353,7 @@ function createObserver() {
 }
 
 // * 현재 페이지 번호 변수 선언
-let cp = 4;
+let cp = 2;
     
 function selectBoardList(entries, observer) {
 
@@ -385,91 +454,90 @@ window.addEventListener("click", (e) => {
     });
 
 
-// // * 관련 계정 팔로우 *
-// const followAccountBtn = document.getElementById("btn-follow");
-// const profileNickname = document.getElementById("follow-to-nickname");
+// * 관련 계정 팔로우 *
+const followAccountBtn = document.getElementById("btn-follow");
+const profileNickname = document.getElementById("follow-to-nickname");
 
-// // * 계정 팔로우 여부 보여주기 -> 버튼 다르게
+// * 계정 팔로우 여부 보여주기 -> 버튼 다르게
 
-//     (()=>{
-//         $.ajax({
-//             url: "/followAccountCheck",
-//             data: {"followToNickname" : profileNickname.value},
-//             type: "GET",
-//             success: (result) => {
+    (()=>{
+        $.ajax({
+            url: "/followAccountCheck",
+            data: {"followToNickname" : profileNickname.value},
+            type: "GET",
+            success: (result) => {
                 
-//                 console.log(profileNickname.innerText);
+                console.log(profileNickname.value);
 
-//                     if(result > 0) {  // 팔로우한 상태
-//                         followAccountBtn.innerText = "팔로잉";
-//                         followAccountBtn.classList.add("unfollowAccountBtn");
-//                         followAccountBtn.classList.remove("followAccountBtn");
-//                         unfollowAccountBtn.style.backgroundColor = "blue";
-//                         console.log("계정 팔로우한 상태");
+                    if(result > 0) {  // 팔로우한 상태
+                        followAccountBtn.innerText = "팔로잉";
+                        followAccountBtn.classList.add("unfollowAccountBtn");
+                        followAccountBtn.classList.remove("followAccountBtn");
+                        console.log("계정 팔로우한 상태");
         
-//                     } else{ // 팔로우 안 한 상태
-//                         followAccountBtn.innerText = "팔로우";
-//                         followAccountBtn.classList.add("followAccountBtn");
-//                         followAccountBtn.classList.remove("unfollowAccountBtn");
-//                         console.log("계정 팔로우 안 한 상태");
-//                     }
-//                 },
-//                 error: (result) => {console.log("계정 팔로우 여부 조회 오류");}
-//             })
-//     })();
+                    } else{ // 팔로우 안 한 상태
+                        followAccountBtn.innerText = "팔로우";
+                        followAccountBtn.classList.add("followAccountBtn");
+                        followAccountBtn.classList.remove("unfollowAccountBtn");
+                        console.log("계정 팔로우 안 한 상태");
+                    }
+                },
+                error: (result) => {console.log("계정 팔로우 여부 조회 오류");}
+            })
+    })();
 
 
 
-// // * 계정 팔로우, 언팔로우
+// * 계정 팔로우, 언팔로우
 
-//     // 클릭됐을 때 해당 아이디(순서)에 맞는 요소가 선택되도록!
-//     followAccountBtn.addEventListener("click", (e) => {
+    // 클릭됐을 때 해당 아이디(순서)에 맞는 요소가 선택되도록!
+    followAccountBtn.addEventListener("click", (e) => {
     
         
-//         if(profileNickname.value != undefined){
-//             if(e.target.classList.contains('followAccountBtn')){ // 팔로우 안 한 상태
+        if(profileNickname.value != undefined){
+            if(e.target.classList.contains('followAccountBtn')){ // 팔로우 안 한 상태
                 
-//                 $.ajax({
-//                     url: "/followAccount",
-//                     data:{"followToNickname" : profileNickname.value},  
-//                     type: "GET",
-//                     success: (result) => {
+                $.ajax({
+                    url: "/followAccount",
+                    data:{"followToNickname" : profileNickname.value},  
+                    type: "GET",
+                    success: (result) => {
                         
-//                         if(result > 0){ 
-//                             e.target.innerText = "팔로잉";
-//                             e.target.classList.add("unfollowAccountBtn");
-//                             e.target.classList.remove("followAccountBtn");
-//                         } else {
-//                             console.log("계정 팔로잉 실패");
-//                         }
-//                     },
-//                     error: () => {
-//                         console.log("계정 팔로우 오류");
-//                     }
+                        if(result > 0){ 
+                            e.target.innerText = "팔로잉";
+                            e.target.classList.add("unfollowAccountBtn");
+                            e.target.classList.remove("followAccountBtn");
+                        } else {
+                            console.log("계정 팔로잉 실패");
+                        }
+                    },
+                    error: () => {
+                        console.log("계정 팔로우 오류");
+                    }
             
-//                 });
+                });
             
-//             } else if(e.target.classList.contains('unfollowAccountBtn')){ // 팔로우한 상태
+            } else if(e.target.classList.contains('unfollowAccountBtn')){ // 팔로우한 상태
         
-//                 $.ajax({
-//                     url: "/unfollowAccount",
-//                     data:{"followToNickname" : profileNickname.value},
-//                     type: "GET",
-//                     success: (result) => {
-//                         if(result > 0) {  // 언팔로우 성공
-//                             console.log(profileNickname.value);
-//                             e.target.innerText = "팔로우";
-//                             e.target.classList.add("followAccountBtn");
-//                             e.target.classList.remove("unfollowAccountBtn");
-//                         } else {
-//                             console.log("계정 언팔로우 실패");
-//                         }
-//                     },
-//                     error : () => {console.log("계정 언팔로우 오류");}
-//                 });
-//             }
-//         }
+                $.ajax({
+                    url: "/unfollowAccount",
+                    data:{"followToNickname" : profileNickname.value},
+                    type: "GET",
+                    success: (result) => {
+                        if(result > 0) {  // 언팔로우 성공
+                            console.log(profileNickname.value);
+                            e.target.innerText = "팔로우";
+                            e.target.classList.add("followAccountBtn");
+                            e.target.classList.remove("unfollowAccountBtn");
+                        } else {
+                            console.log("계정 언팔로우 실패");
+                        }
+                    },
+                    error : () => {console.log("계정 언팔로우 오류");}
+                });
+            }
+        }
 
-//     });
+    });
 
 
