@@ -48,7 +48,7 @@
   
   .follow-menu {
     width: 400px;
-    height: 400px;
+    height: 380px;
     background-color: white;
   
     border-radius: 10px;
@@ -63,6 +63,7 @@
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 400px;
   }
   
   .follow-title {
@@ -131,7 +132,7 @@
   .follow-content button{
     background-color: white;
     border: 1px solid lightgray;
-    width: 48px;
+    width: 94px;
     height: 30px;
     font-size: 14px;
     font-weight: bold;
