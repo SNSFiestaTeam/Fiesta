@@ -1,19 +1,23 @@
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-}
 
-.main-container {
 
-    width: 1000px;
+@media screen and(min-width: 471px) and (max-width: 1023px) {
+    body {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .main-container {
+
+    min-width: 80%;
     padding: 0 20px;
     
     display: flex;
@@ -115,77 +119,50 @@ body {
     align-items: center;
     justify-content: center;
 
-    width: 100vw;
-
+    width: 100%;
+    height: 100%;
 }
 
 .img-container{
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 325px;
-    margin-bottom: 10px;
-
+    width: 84vw;
+    height: 26vw;
+    margin-bottom: 5px;
 }
 
-.img-container2{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 325px;
-    margin-bottom: 10px;
-}
 
-.img-container3{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 325px;
-    margin-bottom: 10px;
-}
 
 .img-container > a {
+    width: 26px;
     display: flex;
     justify-content: center;
     /* width: 315px;
     height: 315px; */
-    margin: 10px;
+    margin: 5px;
     position: relative;
 }
 
-.img-container2 > a{
-    display: flex;
-    justify-content: center;
-    /* width: 315px;
-    height: 315px; */
-    margin: 10px;
-    position: relative;
-}
 
-.img-container3 > a{
-    display: flex;
-    justify-content: center;
-    /* width: 315px;
-    height: 315px; */
-    margin: 10px;
-    position: relative;
-}
+ .feed-img {
 
-.feed-img {
+    width: 26vw;
     /* width: 100%;
     height: 100%; */
-      width: 315px;
-    height: 315px;
-    object-fit: cover;
-}
+      /* width: 315px;
+    height: 315px; */
+    /* object-fit: cover;*/
+} 
+
 
 .hover-icon-container {
     display: none;
   }
   
   .feed-img:hover + .hover-icon-container {
-    width: 315px;
-    height: 315px;
+    /* width: 315px;
+    height: 315px; */
+    width: 26vw;
     background-color: #00000070;
   
     position: absolute;
@@ -200,8 +177,8 @@ body {
   
   .hover-icon-container > i {
     color: white;
-    margin-left: 20px;
-    margin-right: 5px;
+    /* margin-left: 20px;
+    margin-right: 5px; */
   }
   
   .hover-icon-container > span {
@@ -209,11 +186,7 @@ body {
     font-size: 14px;
   }
 
-  @media screen and (min-width: 1000px) {
-    .feed-section {
-      width: 1000px;
-    }
-}
+
 
 #follow-btn, #following-btn {
     cursor: pointer;
@@ -229,22 +202,32 @@ body {
 .followAccountBtn{
     color: white;
     background-color: var(--fiesta-color);
-    border: none;
+    border-radius: 8%;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
+#btn-follow{
+    width: 100px;
+    height: 30px;
+}
 
 .unfollowAccountBtn{
-    color: gray;
-    border: none;
+    background-color: rgb(220, 217, 217);
+    border-radius: 8%;
+    font-weight: bold;
+    margin-left: 10px;
+
 }
 
-#br{
-    width: 1000px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    color: var(--fiesta-color);
+#btn-dm{
+    width: 100px;
+    height: 30px;
+    background-color: rgb(220, 217, 217);
+    border-radius: 8%;
+    font-weight: bold;
+
 }
 
+}
