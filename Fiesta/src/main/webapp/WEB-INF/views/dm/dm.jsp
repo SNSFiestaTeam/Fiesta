@@ -39,8 +39,8 @@
           </section>
           <section class="down">
             <ul class="dm-list">
-              <c:forEach var="chat" items="${roomList}">
-                <li class="dm-item" id="${chat.chattingNo}-${chat.targetNo}">
+              <c:forEach var="room" items="${roomList}">
+                <li class="dm-item" id="${room.chattingNo}-${room.targetNo}">
                   <div class="item-header">
                     <c:if test="${not empty room.targetProfile}">
                       <img class="target-profile" src="${room.targetProfile}">
@@ -82,7 +82,14 @@
            <%-- 클릭되었을때  --%>
           <div id="click">
             <div id="clickUp">
-              <button id="proImg"><img src="/resources/images/user.jpg" style="width: 50px;"></button>
+              <button id="proImg">
+                <c:if test="${not empty room.targetProfile}">
+                  <img id="chatProfile" src="${room.targetProfile}" style="width: 50px;">
+                </c:if>
+                <c:if test="${empty room.targetProfile}">
+                  <img id="chatProfile" src="/resources/images/user.jpg" style="width: 50px;">
+                </c:if>
+              </button>
               <div class="messageName" id="messageName"> test</div>
               <button id="info"><img src="/resources/images/info.png" style="width:24px;"></button>
             </div>
@@ -108,12 +115,13 @@
       // 로그인한 회원 번호
       const loginMemberNo = "${loginMember.memberNo}";
 
-      const RecipientMemberNick = "${Recipeint.innerText}";
-      // 모달에서 닉네임 얻어오기
+      // const RecipientMemberNick = "${Recipeint.innerText}";
+      // // 모달에서 닉네임 얻어오기
 
-
-
-  
+      // 대상 번호 전역변수로 선언
+      var targetNo = 0;
+      var chattingNo = 0;
+        
       // 게시판에서 사용자 닉네임을 눌러서 채팅 화면으로 넘어온 경우
       // 그 때 전달된 채팅방 번호를 저장하는 변수
       const tempNo = "${chattingNo}"; 

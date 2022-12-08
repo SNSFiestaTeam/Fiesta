@@ -15,15 +15,15 @@ public interface DmService {
 	 */
 	List<Member> selectMember(String memberNickname);
 
-	int checkChattingNo(Map<String, Integer> map);
+	int checkChattingNo(Map<String, Object> map);
 
-	int createChattingRoom(Map<String, Integer> map);
+	int createChattingRoom(Map<String, Object> map);
 
 	List<ChattingRoom> selectRoomList(int memberNo);
 
 	int insertMessage(Message msg);
 
-	List<Message> selectMessageList(Map<String, Object> paramMap);
+	List<Message> selectMessageList(int chattingNo);
 
 	int updateReadFlag(Map<String, Object> paramMap);
 

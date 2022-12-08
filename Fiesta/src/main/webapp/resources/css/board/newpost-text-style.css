@@ -66,18 +66,172 @@
   }
 } */
 
+@media (max-width: 400px) {
+  /* 280px이하 핸드폰 */
+  .modal_post_section_text {
+    width: 250px;
+    height: 600px;
+  }
+  .bottom-left-box {
+    width: 250px;
+    height: 250px;
+  }
+  .bottom-right-box {
+    width: 250px;
+    height: 250px;
+    overflow: auto;
+  }
+  .new-post-bottom-text {
+    width: 100%;
+    height: 90%;
+    background-color: white;
+    position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    /* display: flex; */
+    /* overflow: scroll; */
+  }
+}
+@media (min-width: 400px) {
+  /* 400px이상 핸드폰 */
+  .modal_post_section_text {
+    width: 350px;
+    height: 700px;
+  }
+  .bottom-left-box {
+    width: 350px;
+    height: 350px;
+  }
+  .bottom-right-box {
+    width: 350px;
+    height: 350px;
+    overflow: auto;
+  }
+  .new-post-bottom-text {
+    /* width: 100%;
+    height: 90%; */
+    background-color: white;
+    position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    /* display: flex; */
+    /* overflow: scroll; */
+  }
+}
+@media (min-width: 600px) {
+  /* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
+  /* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
+  .modal_post_section_text {
+    width: 400px;
+    height: 700px;
+  }
+  .bottom-left-box {
+    width: 400px;
+    height: 400px;
+  }
+  .bottom-right-box {
+    width: 400px;
+    height: 250px;
+    overflow: auto;
+  }
+  .new-post-bottom-text {
+    width: 100%;
+    height: 90%;
+    background-color: white;
+    position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    /* display: flex; */
+    /* overflow: scroll; */
+  }
+
+  .new-post-bottom-set {
+    display: flex;
+    flex-direction: column;
+    /* overflow: scroll; */
+    /* height: 50px; */
+  }
+}
+@media (min-width: 992px) {
+  /* 992px 이상 노트북, 작은 데스크톱 */
+  .modal_post_section_text {
+    width: 890px;
+    height: 550px;
+  }
+  .bottom-left-box {
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  .bottom-right-box {
+    width: 390px;
+    height: 500px;
+    overflow: auto;
+  }
+  .new-post-bottom-text {
+    /* width: 100%;
+    height: 90%; */
+    background-color: white;
+    position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    display: flex;
+  }
+
+  .new-post-bottom-set {
+    display: flex;
+    flex-direction: column;
+    /* overflow: scroll; */
+    /* height: 50px; */
+  }
+}
+/* 1200px 이상  큰 노트북, 데스크톱 */
+/* @media (min-width: 1200px) {
+  .modal_post_section_text {
+    width: 855px;
+    height: 650px;
+  }
+  .bottom-left-box {
+    width: 600px;
+    height: 600px;
+  }
+  .bottom-right-box {
+    width: 255px;
+    height: 600px;
+  }
+  .new-post-bottom-text {
+    width: 100%;
+    height: 90%;
+    background-color: white;
+    position: relative;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    display: flex;
+    overflow: auto;
+  }
+} */
+.setting-area {
+  width: auto;
+  height: auto;
+}
 .modal_post_section-text {
   background-color: white;
   border-radius: 10px;
-  width: 90%;
-  min-width: 855px;
-  max-width: 855px;
-  /* overflow: auto; */
 }
 /* ----- 게시물작성 top ------ */
 .new-post-top-text {
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  /* border-radius: 10px; */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   /* border-radius: 10px; */
   /* justify-content: center; */
   border-bottom: 2px solid #ececec;
@@ -92,18 +246,23 @@
   cursor: pointer;
   padding: 15px;
   width: 160px;
+  font-size: 14px;
 }
 .new-post-top-text > p {
   margin: 0px;
+  padding: 15px 0 15px 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .new-post-top-text > button:last-of-type {
   color: var(--fiesta-color);
   /* box-sizing: content-box; */
-  font-size: 16px;
+  font-size: 14px;
   flex-direction: row-reverse;
 }
 /* bottom */
-.new-post-bottom-text {
+/* .new-post-bottom-text {
   width: 100%;
   height: 90%;
   background-color: white;
@@ -113,33 +272,32 @@
 
   display: flex;
   overflow: auto;
-}
+} */
 
 .bottom-left-box {
-  position: relative;
+  /* position: relative; */
   display: flex;
-  min-width: 388px;
+  overflow: hidden;
+  margin: 0 auto;
+  /* min-width: 388px;
   max-width: 588px;
   min-height: 388px;
   max-height: 588px;
   width: 70%;
-  height: 50vh;
+  height: 50vh; */
   /* overflow: scroll; */
 }
-.bottom-left-box > img {
-  position: absolute;
-  /* min-width: 388px;
-  max-width: 588px;
-  min-height: 388px;
-  max-height: 588px; */
-  width: 70%;
-  /* height: 100%; */
+.post-img-viwe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .bottom-right-box {
-  width: 46%;
+  /* width: 46%; */
   overflow: auto;
-  height: auto;
+  /* height: auto; */
+
   /* background-color: blueviolet; */
 }
 
@@ -150,7 +308,7 @@
 }
 
 .new-post-bottom-information {
-  height: 480px;
+  /* height: 480px; */
   /* width:322px; */
   display: flex;
   flex-direction: column;
@@ -167,6 +325,9 @@
   height: 60px;
   margin-left: 8px;
   padding: 10px 0;
+}
+.new-post-bottom-member > img {
+  border-radius: 100%;
 }
 .new-post-bottom-member > div {
   font-size: 13px;
@@ -189,6 +350,9 @@
   padding: 0 16px;
   /* overflow: auto; */
 }
+/* .new-post-bottom-inputtext > textarea:active {
+  color: black;
+} */
 .new-post-bottom-inputtext > textarea:focus {
   outline: none;
   color: balck;
@@ -205,7 +369,10 @@
 .new-post-bottom-set {
   display: flex;
   flex-direction: column;
+  /* overflow: scroll; */
+  /* height: 50px; */
 }
+
 .new-post-bottom-set > label {
   display: flex;
   justify-content: space-between;
@@ -256,15 +423,22 @@
   border: 1px solid rgb(197, 197, 197);
   padding: 10px;
 }
-
+.check-btn-on-off > p {
+  color: rgb(129, 129, 129);
+  margin: 10px;
+}
 .setting-on-off {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   font-size: 16px;
-  color: rgb(157, 157, 157);
+  color: rgb(104, 104, 104);
+  margin: 10px;
 }
+/* .setting-on-off > p {
+  margin: 10px;
+} */
 /* .on-off-btn> i{
   font-size: 30px;
   cursor: pointer;
@@ -272,7 +446,7 @@
   margin-left: 10px;
   
 } */
-.toggleSwitch {
+/* .toggleSwitch {
   width: 50px;
   margin: 5px;
   height: 30px;
@@ -280,7 +454,7 @@
   position: relative;
   border-radius: 30px;
   background-color: #fff;
-  /* box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%); */
+  box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
   border: 1px solid rgb(179, 179, 179);
   cursor: pointer;
 }
@@ -308,4 +482,4 @@
 .toggleSwitch,
 .toggleButton {
   transition: all 0.2s ease-in;
-}
+} */
