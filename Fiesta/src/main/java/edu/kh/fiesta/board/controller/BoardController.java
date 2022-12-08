@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.fiesta.board.model.service.BoardService;
+import edu.kh.fiesta.common.Util;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.member.model.vo.Member;
@@ -43,24 +44,6 @@ public class BoardController {
 		// 로그인한 회원 번호 board 객체에 세팅
 		board.setMemberNo(loginMember.getMemberNo());
 		
-////		if(board.getBoardPubPriFlag().equals("on")) {
-////			board.setBoardPubPriFlag("N");
-////		} 
-//		
-//		if(board.getBoardPubPriFlag() == "N,Y") {
-//			board.setBoardPubPriFlag("N");
-//		}
-//		
-//		
-////		if(board.getCommentBlockFlag().equals("on")) {
-////			board.setCommentBlockFlag("Y");
-////		} 
-//		
-//		if(board.getCommentBlockFlag() == "N,Y") {
-//			board.setCommentBlockFlag("N");
-//		}
-//		
-		
 		
 		// 업로드된 파일 웹접근경로, 서버내부 경로
 		String webPath = "/resources/images/board/"; // 웹 접근 경로
@@ -78,7 +61,7 @@ public class BoardController {
 			System.out.println("게시물 작성 실패");
 			path = referer;
 		}
-		return "redirect:";
+		return "redirect:"+path;
 	}
 	
 	// 게시글 수정
@@ -86,6 +69,8 @@ public class BoardController {
 	@ResponseBody
 	public String selectOneBoard(int boardNo) {
 		Board board = service.selectOneBoard(boardNo);
+		
+		board.setBoardContent(Util.newLineClear(board.getBoardContent()));
 		return new Gson().toJson(board);
 	}
 	

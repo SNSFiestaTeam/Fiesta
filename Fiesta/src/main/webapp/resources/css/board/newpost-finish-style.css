@@ -31,54 +31,6 @@
   color: white;
 }
 
-/* ************** 게시물 작성 창 ******************* */
-@media (max-width: 600px), (max-height: 600px) {
-  /* 600px이하 핸드폰 */
-  .modal_post_section {
-    width: 348px;
-    height: 398px;
-  }
-  .new-post-bottom {
-    height: 348px;
-  }
-}
-@media (min-width: 600px), (min-height: 600px) {
-  /* 600px이상 태블릿의 세로모드, 큰 스마트폰 */
-  /* 768px 이상 태블릿의 세로모드, 큰 스마트폰 */
-  .modal_post_section {
-    width: 459px;
-    height: 509px;
-  }
-  .new-post-bottom {
-    height: 459px;
-  }
-}
-@media (min-width: 992px), (min-height: 992px) {
-  /* 992px 이상 노트북, 작은 데스크톱 */
-  .modal_post_section {
-    width: 455px;
-    height: 505px;
-  }
-  .new-post-bottom {
-    height: 455px;
-  }
-}
-@media (min-width: 1200px), (min-height: 1200px) {
-  /* 1200px 이상  큰 노트북, 데스크톱 */
-  .modal_post_section {
-    width: 555px;
-    height: 605px;
-  }
-  .new-post-bottom {
-    height: 555px;
-  }
-}
-
-.modal_post_section {
-  background-color: white;
-  border-radius: 10px;
-}
-
 /* ----- 게시물작성 top ------ */
 .new-post-top-file {
   display: flex;

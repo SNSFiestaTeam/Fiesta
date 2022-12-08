@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
-
+<link rel="stylesheet" href="/resources/css/swiper-bundle.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script
       src="https://kit.fontawesome.com/591746f9e8.js"
       crossorigin="anonymous"
