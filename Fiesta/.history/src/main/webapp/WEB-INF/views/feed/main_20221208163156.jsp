@@ -71,7 +71,7 @@
                     <c:if test="${not empty account.memberProfileImg}">
                       <img src="${account.memberProfileImg}">
                     </c:if>
-                    <c:if test="${empty account.memberProfileImg}">
+                    <c:if test="${empty acoount.memberProfileImg}">
                       <img src="/resources/images/profile/profile.jpg">
                     </c:if>
                   </a>

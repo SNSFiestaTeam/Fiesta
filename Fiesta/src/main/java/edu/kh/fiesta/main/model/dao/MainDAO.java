@@ -135,8 +135,9 @@ public class MainDAO {
 		return sqlSession.insert("mainMapper.insertReport", report);
 	}
 
-
+	
 	public List<Member> selectMember(int memberNo) {
+		
 		return sqlSession.selectList("mainMapper.selectMemberList", memberNo);
 	}
 
