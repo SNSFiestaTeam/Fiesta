@@ -16,6 +16,7 @@
       <result property="memberOpenFl" column="MEMBER_OPEN_FL" />
       <result property="secessionFl" column="SECESSION_FL" />
       <result property="authority" column="AUTHORITY" />
+      <result property="boardCount" column="BOARD_COUNT" />
   </resultMap>
   
   <!-- 게시글 객체 저장용 resultMap -->
@@ -303,13 +304,15 @@
   
   
   <select id="selectMemberList" resultMap ="member_rm">
-  	SELECT * FROM "MEMBER" m
+  	 SELECT MEMBER_NICKNAME , MEMBER_PROFILE_IMG, 
+  	 	(SELECT COUNT(*) FROM BOARD WHERE MEMBER_NO = m.MEMBER_NO) BOARD_COUNT
+  	FROM "MEMBER" m
   	<![CDATA[
 	WHERE ROWNUM < 7 ]]>
 	AND MEMBER_NO != #{memberNo}
-	ORDER BY ENROLL_DATE DESC
+	ORDER BY BOARD_COUNT DESC
   </select>
-  
+
   
   
 
