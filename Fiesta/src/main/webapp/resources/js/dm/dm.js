@@ -350,6 +350,7 @@ const selectRoomList = () =>{
         recentSendTime.classList.add("recent-send-time");
         recentSendTime.innerText = room.sendTime;
 
+        p.append(targetName, recentSendTime);
         
         const div = document.createElement("div");
         
@@ -360,10 +361,9 @@ const selectRoomList = () =>{
           recentMessage.innerHTML = room.lastMessage;
         }
         
-        p.append(targetName, recentSendTime, recentMessage);
-        // div.append(recentMessage);
+        div.append(recentMessage);
         
-        itemBody.append(p);
+        itemBody.append(p,div);
 
 
         if(room.notReadCount > 0 && room.chattingNo != selectChattingNo){
@@ -372,27 +372,22 @@ const selectRoomList = () =>{
           notReadCount.classList.add("not-read-count");
           notReadCount.innerText = room.notReadCount;
           div.append(notReadCount);
-          } else{
+          
+        } else{
 
             $.ajax({
               url : "/dm/updateReadFlag",
               data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
-              type:"GET",
               success : result => {
                 console.log(result);
-              },
-              error : () => {
-                console.log("실패");
               }
             })
-          }
+        }
 
         li.append(itemHeader, itemBody);
         chattingList.append(li);
-
       }
       roomListAddEvent();
-      selectRoomList();
     }
   })
 
@@ -454,7 +449,7 @@ chattingSock.onmessage = function(e){
 
     const span = document.createElement("span");
     span.classList.add("chatDate");
-    span.innerText = msg.SendDate;
+    span.innerText = msg.sendDate;
 
     const p = document.createElement("p");
     p.classList.add("chat");
@@ -481,7 +476,7 @@ chattingSock.onmessage = function(e){
       li.append(img, div);
     }  
   ul.append(li);
-  chattingRoom.style.scrollTop = chattingRoom.style.scrollHeight;
+  chattingRoom.scrollTop = chattingRoom.scrollHeight;
   }
 
  selectChattingFn();
