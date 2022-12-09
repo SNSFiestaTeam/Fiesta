@@ -22,7 +22,7 @@
       <result property="readFlag" column="CHAT_READ_FL" />
       <result property="senderNo" column="C_FROM_MEMBER_NO" />
       <result property="chattingNo" column="CHATTING_NO" />
-      <result property="sendTime" column="CHAT_SEND_TIME" />
+      <result property="sendDate" column="CHAT_SEND_DATE" />
    </resultMap>
    
    <resultMap type="Member" id="member_rm">
@@ -115,7 +115,7 @@ VALUES(SEQ_CHAT_NO.NEXTVAL, #{messageContent}, DEFAULT, DEFAULT, #{chattingNo}, 
 
 <select id="selectMessageList" resultMap="chat_rm">
 SELECT CHAT_NO, CHAT_CONTENT, CHAT_READ_FL, C_FROM_MEMBER_NO, CHATTING_NO,
-TO_CHAR(CHAT_SEND_DATE, 'YYYY.MM.DD HH24:MI') SEND_TIME 
+TO_CHAR(CHAT_SEND_DATE, 'YYYY.MM.DD HH24:MI') CHAT_SEND_DATE
 FROM CHAT
 WHERE CHATTING_NO = #{chattingNo}
 ORDER BY CHAT_NO

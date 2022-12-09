@@ -217,6 +217,7 @@ const dmArea = document.getElementsByClassName("dm-area")[0];
 const roomListAddEvent = () =>{
   const chattingItemList = document.getElementsByClassName("dm-item");
 
+  
   for(let item of chattingItemList){
     item.addEventListener("click", e =>{
 
@@ -238,8 +239,14 @@ const roomListAddEvent = () =>{
 
       selectChattingFn();
 
+  
     });
-  }
+
+   
+    
+ }     
+
+  
 }
 
 const chatProfile = document.getElementById("chatProfile");
@@ -264,7 +271,7 @@ const selectChattingFn = () =>{
 
         const span = document.createElement("span");
         span.classList.add("chat-Date");
-        span.innerText = msg.sendTime;
+        span.innerText = msg.sendDate;
 
         const p = document.createElement("p");
         p.classList.add("chat");
@@ -292,8 +299,9 @@ const selectChattingFn = () =>{
           li.append(img,div);
         }
         ul.append(li);
-        dmArea.scrollTop = dmArea.scrollHeight;
-      }
+      }        
+      chattingRoom.scrollTop = chattingRoom.scrollHeight;
+
 
     },
       error : () => {
@@ -379,7 +387,16 @@ const selectRoomList = () =>{
               url : "/dm/updateReadFlag",
               data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
               success : result => {
+<<<<<<< HEAD
                 console.log(result);
+=======
+                if(result >0){
+                  selectRoomList();
+                }
+              },
+              error : () => {
+                console.log("실패");
+>>>>>>> main
               }
             })
         }
@@ -388,6 +405,10 @@ const selectRoomList = () =>{
         chattingList.append(li);
       }
       roomListAddEvent();
+<<<<<<< HEAD
+=======
+    
+>>>>>>> main
     }
   })
 
@@ -413,6 +434,7 @@ const sendMessage = () =>{
     chattingSock.send(JSON.stringify(obj));
 
     chattingInput.value = "";
+
   }
 }
 
@@ -420,6 +442,8 @@ chattingInput.addEventListener("keyup", e=>{
   if(e.key == "Enter"){
     if(!e.shiftKey){
       sendMessage();
+      chattingRoom.scrollTop = chattingRoom.scrollHeight;
+
     }
   }
 })
@@ -477,10 +501,18 @@ chattingSock.onmessage = function(e){
     }  
   ul.append(li);
   chattingRoom.scrollTop = chattingRoom.scrollHeight;
+<<<<<<< HEAD
   }
+=======
+
+  }  
+
+>>>>>>> main
 
  selectChattingFn();
 }
+
+
 
 
 
