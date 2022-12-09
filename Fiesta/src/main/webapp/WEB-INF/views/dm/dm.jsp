@@ -144,6 +144,6 @@
     </script>
     <script src="/resources/js/dm/dm.js"></script>
     <script src="/resources/js/newpost.js"></script>
-    <script src="/resources/js/boardWriteUpdate.js"></script>
+    <%-- <script src="/resources/js/boardWriteUpdate.js"></script> --%>
   </body>
 </html>

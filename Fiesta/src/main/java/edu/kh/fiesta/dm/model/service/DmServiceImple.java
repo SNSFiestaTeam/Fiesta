@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.fiesta.dm.model.dao.DmDAO;
 import edu.kh.fiesta.dm.model.vo.ChattingRoom;
@@ -29,6 +30,7 @@ public class DmServiceImple implements DmService{
 	}
 
 	@Override
+	@Transactional
 	public int createChattingRoom(Map<String, Object> map) {
 		return dao.createChattingRoom(map);
 	}
@@ -39,6 +41,7 @@ public class DmServiceImple implements DmService{
 	}
 
 	@Override
+	@Transactional
 	public int insertMessage(Message msg) {
 		return dao.insertMessage(msg);
 	}
@@ -50,6 +53,7 @@ public class DmServiceImple implements DmService{
 
 
 	@Override
+	@Transactional
 	public int updateReadFlag(Map<String, Object> paramMap) {
 		return dao.updateReadFlag(paramMap);
 	}

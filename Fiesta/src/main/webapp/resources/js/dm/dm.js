@@ -217,6 +217,7 @@ const dmArea = document.getElementsByClassName("dm-area")[0];
 const roomListAddEvent = () =>{
   const chattingItemList = document.getElementsByClassName("dm-item");
 
+  
   for(let item of chattingItemList){
     item.addEventListener("click", e =>{
 
@@ -238,8 +239,14 @@ const roomListAddEvent = () =>{
 
       selectChattingFn();
 
+  
     });
-  }
+
+   
+    
+ }     
+
+  
 }
 
 const chatProfile = document.getElementById("chatProfile");
@@ -264,7 +271,7 @@ const selectChattingFn = () =>{
 
         const span = document.createElement("span");
         span.classList.add("chat-Date");
-        span.innerText = msg.sendTime;
+        span.innerText = msg.sendDate;
 
         const p = document.createElement("p");
         p.classList.add("chat");
@@ -292,8 +299,9 @@ const selectChattingFn = () =>{
           li.append(img,div);
         }
         ul.append(li);
-        dmArea.scrollTop = dmArea.scrollHeight;
-      }
+      }        
+      chattingRoom.scrollTop = chattingRoom.scrollHeight;
+
 
     },
       error : () => {
@@ -377,9 +385,10 @@ const selectRoomList = () =>{
             $.ajax({
               url : "/dm/updateReadFlag",
               data : {"chattingNo" : selectChattingNo, "memberNo" : loginMemberNo},
-              type:"GET",
               success : result => {
-                console.log(result);
+                if(result >0){
+                  selectRoomList();
+                }
               },
               error : () => {
                 console.log("실패");
@@ -392,7 +401,7 @@ const selectRoomList = () =>{
 
       }
       roomListAddEvent();
-      selectRoomList();
+    
     }
   })
 
@@ -418,6 +427,7 @@ const sendMessage = () =>{
     chattingSock.send(JSON.stringify(obj));
 
     chattingInput.value = "";
+
   }
 }
 
@@ -425,6 +435,8 @@ chattingInput.addEventListener("keyup", e=>{
   if(e.key == "Enter"){
     if(!e.shiftKey){
       sendMessage();
+      chattingRoom.scrollTop = chattingRoom.scrollHeight;
+
     }
   }
 })
@@ -454,7 +466,7 @@ chattingSock.onmessage = function(e){
 
     const span = document.createElement("span");
     span.classList.add("chatDate");
-    span.innerText = msg.SendDate;
+    span.innerText = msg.sendDate;
 
     const p = document.createElement("p");
     p.classList.add("chat");
@@ -481,11 +493,15 @@ chattingSock.onmessage = function(e){
       li.append(img, div);
     }  
   ul.append(li);
-  chattingRoom.style.scrollTop = chattingRoom.style.scrollHeight;
-  }
+  chattingRoom.scrollTop = chattingRoom.scrollHeight;
+
+  }  
+
 
  selectChattingFn();
 }
+
+
 
 
 
