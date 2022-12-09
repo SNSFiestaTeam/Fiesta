@@ -171,6 +171,7 @@ const nickXmark = document.getElementById("nickXmark");
 const nickRefresh = document.getElementById("nickRefresh");
 
 nickXmark.classList.add("iHidden");
+nickCheck.classList.add("iVisible", "gray");
 
 memberNickname.addEventListener("input", () => {
 
@@ -186,7 +187,7 @@ memberNickname.addEventListener("input", () => {
     // 유효성 검사
     const regEx = /^[\w\-\_\.]{3,20}$/;
 
-    if(regEx.test(memberNickname.value)){
+    // if(regEx.test(memberNickname.value)){
 
         // 중복 검사
         $.ajax({
@@ -195,16 +196,23 @@ memberNickname.addEventListener("input", () => {
             type: "GET",
             success: (result) => {
                 if(result == 0){
-                    nickCheck.classList.add("iVisible","green");
-                    nickCheck.classList.remove("gray");
-                    nickXmark.classList.add("iHidden");
-                    nickXmark.classList.remove("iVisible", "red");
-                    nickRefresh.classList.add("blue");
-                    nickRefresh.classList.remove("gray");
-                    checkObj.memberNickname = true;
+                    nickCheck.classList.add("iVisible","gray");
+                    nickCheck.classList.remove("iHidden");
+
+                    // 유효성검사
+                    if(regEx.test(memberNickname.value)){
+                        nickCheck.classList.add("iVisible","green");
+                        nickCheck.classList.remove("gray");
+                        nickXmark.classList.add("iHidden");
+                        nickXmark.classList.remove("iVisible", "red");
+                        nickRefresh.classList.add("blue");
+                        nickRefresh.classList.remove("gray");
+                        checkObj.memberNickname = true;
+                    } 
+
                 } else {
                     nickCheck.classList.add("iHidden");
-                    nickCheck.classList.remove("iVisible","green");
+                    nickCheck.classList.remove("iVisible", "green");
                     nickXmark.classList.remove("iHidden");
                     nickXmark.classList.add("iVisible", "red");
                     nickRefresh.classList.add("gray");
@@ -219,16 +227,6 @@ memberNickname.addEventListener("input", () => {
                 console.log("사용자 이름 중복 검사 수행 완료");
             }
         });
-
-    } else { //유효하지 않을 경우
-        nickCheck.classList.add("iVisible","gray");
-        nickCheck.classList.remove("iHidden","green");
-        nickXmark.classList.add("iHidden");
-        nickXmark.classList.remove("iVisible", "red");
-        nickRefresh.classList.add("gray");
-        nickRefresh.classList.remove("blue");
-        checkObj.memberNickname = false;
-    }
 
 
     // 랜덤 닉네임 생성
