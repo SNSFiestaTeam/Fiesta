@@ -1,5 +1,5 @@
-# :pushpin: goQuality
->SNS(Instagram) 
+# :pushpin: Fiesta
+>SNS(Instagram) 클론 프로젝트
 >데모 사이트 링크
 
 </br>
@@ -7,15 +7,15 @@
 ## 1. 제작 기간 & 참여 인원
 - 2022년 10월 18일 ~ 12월 10일
 - 5인 팀 프로젝트
-- 역할: 팀장, 메인페이지(게시글 조회/삭제, 댓글 등록/삭제, 신고 등록, )
+- 역할: 팀장, 메인페이지(게시글 조회/삭제, 댓글 등록/삭제, 신고 등록, 좋아요/북마크)
 
 </br>
 
 ## 2. 사용 기술
 #### `Back-end`
-  - Java 8
-  - Spring Boot 2.3
-  - Gradle
+  - Java 11
+  - Spring(3.9.18)
+  - Maven
   - Spring Data JPA
   - QueryDSL
   - H2
