@@ -142,5 +142,10 @@ public class MainDAO {
 	}
 
 
+	public List<Member> selectMember(int memberNo) {
+		return sqlSession.selectList("mainMapper.selectMemberList", memberNo);
+	}
+
+
 
 }
