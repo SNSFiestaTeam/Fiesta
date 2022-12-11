@@ -151,12 +151,12 @@ cursor: pointer;
 .changePw-button{
     width: 85%;
     height: 36px;
-    background-color: var(--fiesta-color);
+    /* background-color: var(--fiesta-color); */
     border-radius: 5px;
     color: white;
     
     margin: 2% 0 0 0; 
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 

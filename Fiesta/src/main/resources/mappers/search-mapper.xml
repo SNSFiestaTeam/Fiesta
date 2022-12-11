@@ -87,11 +87,11 @@
 	
 		<!-- 검색_관련 계정 조회 -->  <!-- SUBSTR(MEMBER_NICKNAME, 1, 15) MEMBER_NICKNAME 추가하기 -->
 		<select id="selectAccountList" resultMap="member_rm">
-			SELECT MEMBER_PROFILE_IMG, MEMBER_NICKNAME, MEMBER_NO	
+			SELECT MEMBER_PROFILE_IMG, MEMBER_NICKNAME, MEMBER_NO, MEMBER_NAME	
 			FROM "MEMBER" 
 			WHERE SECESSION_FL = 'N'
 			AND (MEMBER_NICKNAME LIKE UPPER('%${searchInput}%') OR MEMBER_NICKNAME LIKE LOWER('%${searchInput}%') OR MEMBER_NICKNAME LIKE ('%${searchInput}%')
-			OR MEMBER_NAME = UPPER(#{searchInput}) OR MEMBER_NAME = LOWER(#{searchInput}) OR MEMBER_NAME = (#{searchInput}))
+			OR MEMBER_NAME LIKE UPPER('%${searchInput}%') OR MEMBER_NAME LIKE LOWER('%${searchInput}%') OR MEMBER_NAME LIKE ('%${searchInput}%'))
 			<!-- AND MEMBER_NICKNAME != #{memberNickname} -->
 			<![CDATA[AND ROWNUM <= 6 ]]>	
 			ORDER BY MEMBER_NICKNAME

@@ -36,7 +36,6 @@
           <div class="login-area">
 
             <input type="text" name="memberEmail"  id="memberEmail" value="" 
-
                 maxlength="50" autocomplete="off" required readonly> 
             <label for="memberEmail" class="loginLabel">이메일</label>
           </div>
@@ -45,7 +44,6 @@
           <div class="login-area">
 
             <input type="password" name="memberPw" id="memberPw" value="" 
-
                 maxlength="30" required readonly>
             <label for="memberPw">비밀번호</label>
           </div>

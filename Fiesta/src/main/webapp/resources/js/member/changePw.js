@@ -7,10 +7,10 @@
 */
 
 const checkObj = {
-    "memberEmail"   : false,
+    // "memberEmail"   : false,
     "memberPw"      : false,
-    "memberPwConfirm" : false,
-    "authKey"       : false
+    "memberPwConfirm" : false
+    // "authKey"       : false
 }
 
 
@@ -28,9 +28,14 @@ const pwConfirmXmark = document.getElementById("pwConfirmXmark");
 const pwConfirmEye = document.getElementById("pwConfirmEye");
 const pwConfirmEyeSlash = document.getElementById("pwConfirmEyeSlash");
 
-const changPwBtn = document.getElementById("changPwBtn");
+const changePwBtn = document.getElementById("changePwBtn");
 
 memberPw.focus();
+
+changePwBtn.classList.add("buttonOff");
+changePwBtn.classList.remove("buttonOn");
+changePwBtn.disabled = true;
+
 
 // icon 전체에 회색 적용
 let icon = document.getElementsByClassName("icon");
@@ -190,10 +195,25 @@ memberPwConfirm.addEventListener("input", () => {
 
 
 
-
-
-
-
+// 비밀번호 재설정 버튼 비활성화
+document.getElementById("changePw-frm").addEventListener("input", () => {
+    for(let key in checkObj){
+        if(!checkObj[key]){
+            changePwBtn.classList.add("buttonOff");
+            changePwBtn.classList.remove("buttonOn");
+            changePwBtn.disabled = true;
+    
+        }
+    }
+    
+    if(checkObj.memberPw && checkObj.memberPwConfirm){
+        if(memberPw.value == memberPwConfirm.value){
+            changePwBtn.classList.add("buttonOn");
+            changePwBtn.classList.remove("buttonOff");
+            changePwBtn.disabled = false;
+        }
+    }
+})
 
 
 
