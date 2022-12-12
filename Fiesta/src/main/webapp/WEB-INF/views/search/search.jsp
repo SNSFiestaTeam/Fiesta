@@ -120,41 +120,41 @@
               <article class="account-container">
                 <c:forEach var="account" items="${accountList}">
 
-                <c:if test="${account.memberNickname != loginMember.memberNickname}">
-                  <div class="account-Group">
-                    <a href="/feed/${account.memberNickname}" class="profileImages">
-                      <c:if test="${not empty acoount.memberProfileImg}">
-                        <img src="${account.memberProfileImg}">
-                      </c:if>
-                      <c:if test="${empty acoount.memberProfileImg}">
-                        <img src="/resources/images/profile/profile.jpg">
-                      </c:if>
-                    </a>
-                    <a href="/feed/${account.memberNickname}" class="profileNickname">
-                      ${account.memberNickname}
-                    </a>
-                    <!-- 팔로우 버튼 -->
-                    <div class="follow-button-small"></div>
-                  </div>
-                </c:if>
-                <!-- 로그인멤버가 검색될때 -->
-                <c:if test="${account.memberNickname == loginMember.memberNickname}">
-                   <div class="account-Group">
-                    <a href="/feed/${loginMember.memberNickname}" class="profileImages">
-                      <c:if test="${not empty memberProfileImg}">
-                        <img src="${memberProfileImg}">
-                      </c:if>
-                      <c:if test="${empty memberProfileImg}">
-                        <img src="/resources/images/profile/profile.jpg">
-                      </c:if>
-                    </a>
-                    <a href="/feed/${loginMember.memberNickname}" class="profileNickname">
-                      ${loginMember.memberNickname}
-                    </a>
-                    <!-- 팔로우 버튼 -->
-                    <div class="myAccount">내계정</div>
-                  </div>
-                </c:if>
+                  <c:if test="${account.memberNickname != loginMember.memberNickname}">
+                    <div class="account-Group">
+                      <a href="/feed/${account.memberNickname}" class="profileImages">
+                        <c:if test="${not empty acoount.memberProfileImg}">
+                          <img src="${account.memberProfileImg}">
+                        </c:if>
+                        <c:if test="${empty acoount.memberProfileImg}">
+                          <img src="/resources/images/profile/profile.jpg">
+                        </c:if>
+                      </a>
+                      <a href="/feed/${account.memberNickname}" class="profileNickname">
+                        ${account.memberNickname}
+                      </a>
+                      <!-- 팔로우 버튼 -->
+                      <div class="follow-button-small"></div>
+                    </div>
+                  </c:if>
+                  <!-- 로그인멤버가 검색될때 -->
+                  <c:if test="${account.memberNickname == loginMember.memberNickname}">
+                    <div class="account-Group">
+                      <a href="/feed/${loginMember.memberNickname}" class="profileImages">
+                        <c:if test="${not empty memberProfileImg}">
+                          <img src="${memberProfileImg}">
+                        </c:if>
+                        <c:if test="${empty memberProfileImg}">
+                          <img src="/resources/images/profile/profile.jpg">
+                        </c:if>
+                      </a>
+                      <a href="/feed/${loginMember.memberNickname}" class="profileNickname">
+                        ${loginMember.memberNickname}
+                      </a>
+                      <!-- 팔로우 버튼 -->
+                      <div class="myAccount">내계정</div>
+                    </div>
+                 </c:if>
 
                 </c:forEach>
               </article>
