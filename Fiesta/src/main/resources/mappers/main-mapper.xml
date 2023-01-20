@@ -302,15 +302,17 @@
   	#{reportType}, #{reportReason}, #{reportContent}, DEFAULT)
   </insert>
   
-  
+  <!-- 추천 멤버 목록 조회 -->
   <select id="selectMemberList" resultMap ="member_rm">
-  	 SELECT MEMBER_NICKNAME , MEMBER_PROFILE_IMG, 
-  	 	(SELECT COUNT(*) FROM BOARD WHERE MEMBER_NO = m.MEMBER_NO) BOARD_COUNT
-  	FROM "MEMBER" m
-  	<![CDATA[
+	SELECT * 
+	FROM (SELECT MEMBER_NICKNAME , MEMBER_PROFILE_IMG, 
+		 	(SELECT COUNT(*) FROM FOLLOW f WHERE F_TO_TARGET_NO = m.MEMBER_NO) FOLLOW_COUNT,
+		 	(SELECT COUNT(*) FROM BOARD b WHERE MEMBER_NO = m.MEMBER_NO) BOARD_COUNT
+		FROM "MEMBER" m
+		WHERE  MEMBER_NO != #{memberNo}
+		ORDER BY FOLLOW_COUNT DESC, BOARD_COUNT DESC)
+	<![CDATA[
 	WHERE ROWNUM < 7 ]]>
-	AND MEMBER_NO != #{memberNo}
-	ORDER BY BOARD_COUNT DESC
   </select>
 
   
