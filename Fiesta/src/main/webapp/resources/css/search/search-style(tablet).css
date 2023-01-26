@@ -257,28 +257,30 @@
     }
     
     .boardImage{
-        width: 84vw;
-        height: 26vw;
+        width: 100vw;
+        height: 32vw;
         overflow: hidden;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }
     
     .buttonBoardImage{
-        width: 26vw;
+        width: 32vw;
+        height: 32vw;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        margin-right: 5px;
+        margin-right: 10px;
 
         position: relative;
     }
     
     
     .b-img{
-        width: 26vw;
+        width: 32vw;
+        height: 32vw;
         /* width: 100%;
         height: 100%; */
     }
