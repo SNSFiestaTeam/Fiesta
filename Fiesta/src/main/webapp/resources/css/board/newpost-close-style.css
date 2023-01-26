@@ -1,4 +1,4 @@
-@import "./root-style.css";
+@import "../root-style.css";
 /*------------모달 배경------------*/
 .modal_background {
   position: fixed;

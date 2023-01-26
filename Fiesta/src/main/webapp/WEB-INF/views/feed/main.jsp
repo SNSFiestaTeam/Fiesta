@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
     <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
-    <link rel="stylesheet" href="/resources/css/action/boardDeteil-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
     <%-- <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" /> --%>
     <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
@@ -121,7 +120,7 @@
                   <!-- 작성자 프로필 -->
                   <div class="feed-header">
                     <div class="writer-info">
-                      <a href="" class="profile-photo">
+                      <a href="/feed/${board.memberNickname}" class="profile-photo">
                         <c:if test="${empty board.memberProfileImg}">
                           <img class="feed-profile-image" src="/resources/images/profile/profile.jpg" />
                         </c:if>
@@ -129,7 +128,7 @@
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
                         </c:if>
                       </a>
-                      <a href="#" class="feed-memberId">${board.memberNickname}</a>
+                      <a href="/feed/${board.memberNickname}" class="feed-memberId">${board.memberNickname}</a>
                     </div>
                     <div>
                       <button type="button" class="fa-solid fa-ellipsis feed-header-menu"></button>
