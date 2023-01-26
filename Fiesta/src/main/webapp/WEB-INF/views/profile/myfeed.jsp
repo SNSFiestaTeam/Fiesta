@@ -76,9 +76,9 @@
             </div>
 
             <div id="profile-board">
-              <span class="board-menu-btn1 board-menu"><span class="board-text">게시글</span><button class="board-count"> ${boardCount}</button></span>
-              <span class="board-menu-btn2 board-menu"><span class="board-text">팔로워</span><button id="follow-btn" class="board-count"> ${feedMember.followCount-1}</button></span>
-              <span class="board-menu-btn3 board-menu"><span class="board-text">팔로우</span><button id="following-btn" class="board-count"> ${feedMember.followingCount-1}</button></span>
+              <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로워 ${feedMember.followCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로우 ${feedMember.followingCount-1}</button></span>
             </div>
 
             <div class="profileName">${feedMember.memberName}</div>
@@ -135,9 +135,9 @@
           </div>
 
           <div id="profile-board">
-            <span class="board-menu-btn1 board-menu"><span class="board-text">게시글</span><button class="board-count"> ${boardCount}</button></span>
-            <span class="board-menu-btn2 board-menu"><span class="board-text">팔로워</span><button id="follow-btn" class="board-count"> ${feedMember.followCount-1}</button></span>
-            <span class="board-menu-btn3 board-menu"><span class="board-text">팔로우</span><button id="following-btn" class="board-count"> ${feedMember.followingCount-1}</button></span>
+              <span class="board-menu-btn1"><button>게시글 ${boardCount}</button></span>
+              <span class="board-menu-btn2"><button id="follow-btn">팔로우 ${feedMember.followCount-1}</button></span>
+              <span class="board-menu-btn3"><button id="following-btn">팔로잉 ${feedMember.followingCount-1}</button></span>
           </div>
 
           <p class="introduce-text">${feedMember.introContent}</p>
@@ -249,7 +249,6 @@
     <script src="/resources/js/newpost.js"></script>
      <script src="/resources/js/common/common.js"></script>
     <script src="/resources/js/boardWriteUpdate.js"></script>
-    <script src="/resources/js/profile/myfeedSearch.js"></script>
     
   </body>
 </html>
