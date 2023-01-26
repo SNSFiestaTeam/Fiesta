@@ -30,8 +30,7 @@ body {
 .info-section{
     display: flex;
     flex-direction: row;
-    margin: 40px 0;
-    height: 200px;
+    margin-top: 40px;
 }
 
 #profile-photo{
@@ -49,8 +48,8 @@ body {
 }
 
 .info-section img{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     flex-basis: 70%;
     
 }
@@ -76,22 +75,18 @@ body {
     margin-top: 20px;
 }
 
-#profile-board > span {
+#profile-board > span:nth-child(1) {
     margin-right: 50px;
-    font-size: 16px;
 }
 
-.board-count{
-    margin-left: 15px;
-    font-size: 16px;
-    font-weight: bold;
+#profile-board > span:nth-child(2) {
+    margin-right: 50px;
 }
-
 
 .introduce-text{
     margin-top: 20px;
     min-width: 550px;
-    min-height: 70px;
+    min-height: 115.6px;
     font-size: 16px;
 }
 

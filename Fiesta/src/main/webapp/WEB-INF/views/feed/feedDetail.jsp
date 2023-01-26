@@ -18,25 +18,22 @@
     <!-- CSS 링크 -->
     <link rel="stylesheet" href="/resources/css/common-style.css" />
     <link rel="stylesheet" href="/resources/css/main/main-style.css" />
-
-    <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
-
     <link rel="stylesheet" href="/resources/css/action/feed-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/feed-menu-login-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/login-comment-menu-style.css" />
     <link rel="stylesheet" href="/resources/css/action/share-style.css" />
     <link rel="stylesheet" href="/resources/css/action/report-style.css" />
+    <link rel="stylesheet" href="/resources/css/dm/dm-message.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-style.css" />
     <link rel="stylesheet" href="/resources/css/action/confirm-style.css" />
     <link rel="stylesheet" href="/resources/css/action/comment-auto-complete-style.css" />
-
+    <link rel="stylesheet" href="/resources/css/action/boardDeteil-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-file-style.css" />
-    <link rel="stylesheet" href="/resources/css/board/newpost-edit-style.css" />
+    <link rel="stylesheet" href="/resources/css/board/newpost-eidt-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-text-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-finish-style.css" />
     <link rel="stylesheet" href="/resources/css/board/newpost-close-style.css" />
-
     <link rel="stylesheet" href="/resources/css/search/search-complete-style.css" />
     <link rel="stylesheet" href="/resources/css/search/search-complete-style2.css" />
 
@@ -359,18 +356,18 @@
       });
     </script>
 
-    <script src="/resources/js/main/main.js"></script>
-    <%-- <script src="/resources/js/main/mainBoard.js"></script> --%>
-    <script src="/resources/js/main/comment.js"></script>
-    <script src="/resources/js/common/common.js"></script>
+    <script type="text/javascript" defer src="/resources/js/main/main.js"></script>
+    <%-- <script type="text/javascript" defer src="/resources/js/main/mainBoard.js"></script> --%>
+    <script type="text/javascript" defer src="/resources/js/main/comment.js"></script>
+    <script type="text/javascript" defer src="/resources/js/common/common.js"></script>
     <script src="/resources/js/newpost.js"></script>
     <script src="/resources/js/boardWriteUpdate.js"></script>
-    <script src="/resources/js/feed/boardDetail.js"></script>
     
     <%-- 사진크롭 --%>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.1/cropper.js"></script>
     <%-- <script type="text/javascript" src="index.js"></script> --%>
+    <script src="/resources/js/newpost.js"></script>
   </body>
 </html>
