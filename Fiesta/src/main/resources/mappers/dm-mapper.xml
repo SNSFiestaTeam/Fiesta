@@ -46,9 +46,9 @@
 
 <!-- 모달 받는 사람 회원 목록 비동기 조회 -->
 <select id="selectMember" parameterType="string" resultMap="member_rm">
-SELECT MEMBER_NICKNAME, MEMBER_PROFILE_IMG, MEMBER_NO
-FROM "MEMBER"
-WHERE MEMBER_NICKNAME LIKE '%${memberNickname}%'
+	SELECT MEMBER_NICKNAME, MEMBER_PROFILE_IMG, MEMBER_NO
+	FROM "MEMBER"
+	WHERE MEMBER_NICKNAME LIKE '%${memberNickname}%'
 AND MEMBER_NICKNAME != #{memberNickname}
 </select>
 
