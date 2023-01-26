@@ -302,7 +302,7 @@
   	#{reportType}, #{reportReason}, #{reportContent}, DEFAULT)
   </insert>
   
-  <!-- 추천 멤버 목록 조회 -->
+  <!-- 추천 멤버 목록 조회하기 -->
   <select id="selectMemberList" resultMap ="member_rm">
 	SELECT * 
 	FROM (SELECT MEMBER_NICKNAME , MEMBER_PROFILE_IMG, 
