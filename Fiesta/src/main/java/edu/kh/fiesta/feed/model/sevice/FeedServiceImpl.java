@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.fiesta.feed.model.dao.FeedDAO;
 import edu.kh.fiesta.feed.model.vo.Bookmark;
 import edu.kh.fiesta.feed.model.vo.Pagination;
+import edu.kh.fiesta.feed.model.vo.PopularPagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
@@ -171,6 +172,36 @@ public class FeedServiceImpl implements FeedService{
 	@Override
 	public Board selectFeedDetail(Map<String, Object> map) {
 		return dao.selectFeedDetail(map);
+	}
+	
+	/** 인기 피드 목록 조회
+	 *
+	 */
+	@Override
+	public Map<String, Object> selectPopularFeedList(int cp) {
+		
+//		인기 피드 개수
+		int boardCount = dao.selectPopularFeedCount();
+		
+//		인기 피드 리스트(게시글 번호, 댓글 수, 좋아요 수, 첫번째 이미지)	
+		PopularPagination pagination = new PopularPagination(boardCount, cp);
+		
+		if(cp <= pagination.getMaxPage()) {
+			
+		List<Board> boardList = dao.selectPopularFeedList(pagination);
+		
+
+		Map<String, Object> feedMap = new HashMap<String, Object>();
+		
+		feedMap.put("boardCount", boardCount);
+		feedMap.put("pagination", pagination);
+		feedMap.put("boardList", boardList);
+
+		
+		return feedMap;
+		} else {
+			return null;
+		}
 	}
 
 

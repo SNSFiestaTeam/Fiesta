@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.fiesta.feed.model.vo.Bookmark;
 import edu.kh.fiesta.feed.model.vo.Pagination;
+import edu.kh.fiesta.feed.model.vo.PopularPagination;
 import edu.kh.fiesta.main.model.vo.Board;
 import edu.kh.fiesta.main.model.vo.BoardImg;
 import edu.kh.fiesta.main.model.vo.Follow;
@@ -118,6 +119,26 @@ public class FeedDAO {
 	 */
 	public Board selectFeedDetail(Map<String, Object> map) {
 		return sqlSession.selectOne("mainMapper.selectBoard", map);
+	}
+
+	/** 인기 피드 수 조회
+	 * @return
+	 */
+	public int selectPopularFeedCount() {
+		return sqlSession.selectOne("feedMapper.selectPopularFeedCount");
+	}
+
+	/** 인기 피드 목록 조회
+	 * @param pagination
+	 * @return boardList
+	 */
+	public List<Board> selectPopularFeedList(PopularPagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("feedMapper.selectPopularFeedList", null, rowBounds);
 	}
 
 

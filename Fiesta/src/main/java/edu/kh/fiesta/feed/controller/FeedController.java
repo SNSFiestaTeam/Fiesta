@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.support.SessionStatus;
@@ -134,10 +135,32 @@ public class FeedController {
 	 * @return
 	 */
 	@GetMapping("/feed/popularFeed")
-	public String popularFeed() {
+	public String popularFeed(Model model, 
+			@RequestParam(name = "cp", required = false, defaultValue = "1") int cp) {
+		
+		Map<String, Object> map = service.selectPopularFeedList(cp);
+		
+		model.addAttribute("map", map);
 		
 		return "feed/popularfeed";
 	}
+	
+	
+	/** 인기피드 비동기 조회
+	 * @return
+	 */
+	@GetMapping("/PopularFeed/List")
+	@ResponseBody
+	public String popularFeedList(Model model, 
+			@RequestParam(name = "cp", required = false, defaultValue = "1") int cp) {
+		
+		Map<String, Object> map = service.selectPopularFeedList(cp);
+		
+		model.addAttribute("map", map);
+		
+		return new Gson().toJson(map);
+	}
+	
 	
 	
 	/** 팔로잉 목록

@@ -223,7 +223,6 @@ function selectCommentList(boardNo1, commentListUl, flag) {
     data: { 'boardNo': boardNo1, 'myNo': memberNo },
     dataType: 'JSON',
     success: (commentList) => {
-      console.log(commentList);
       if (commentListUl.parentElement.parentElement.firstElementChild.classList.contains('all-comment-btn')) {
         
         // 댓글 모두 보기 버튼 내용 수정

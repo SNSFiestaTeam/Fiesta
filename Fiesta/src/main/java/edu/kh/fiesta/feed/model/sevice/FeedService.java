@@ -64,5 +64,10 @@ public interface FeedService {
 	 */
 	Board selectFeedDetail(Map<String, Object> map);
 
+	/** 인기 피드 목록 조회
+	 * @return map
+	 */
+	Map<String, Object> selectPopularFeedList(int cp);
+
 }
 	

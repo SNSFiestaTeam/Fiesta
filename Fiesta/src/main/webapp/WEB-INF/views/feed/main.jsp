@@ -128,7 +128,7 @@
                           <img class="feed-profile-image" src="${board.memberProfileImg}" />
                         </c:if>
                       </a>
-                      <a href="/feed/${board.memberNickname}" class="feed-memberId">${board.memberNickname}</a>
+                      <a href="#" class="feed-memberId">${board.memberNickname}</a>
                     </div>
                     <div>
                       <button type="button" class="fa-solid fa-ellipsis feed-header-menu"></button>
